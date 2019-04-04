@@ -26,10 +26,11 @@ Branch `master` is kept clean for anything but initial documentation.
 ### Environments
 
 - `production`  
-  Git branch: [production](https://github.com/equinor/radix-flux/tree/production)  
-  Configs for all production clusters
+  Git branch: [release](https://github.com/equinor/radix-flux/tree/release)  
+  Configs for all production clusters  
+
 - `development`  
-  Git branch: [development](https://github.com/equinor/radix-flux/tree/development)  
+  Git branch: [master](https://github.com/equinor/radix-flux)  
   Configs for all development clusters, ie `weekly-*`, `playground-*`  
 
 
@@ -38,15 +39,17 @@ Branch `master` is kept clean for anything but initial documentation.
 The name of any manifest should use the format `{name-of-resource}.yaml`
 
 - `README.md`  
-  It should always have up-to-date information for the configuration of the corrensponding branch/environment.
-- `/docs`  
-  Any additional documentation.
-- `/charts`  
+  It should always have up-to-date information for the configuration of the corrensponding branch/environment.  
+- `/charts/`  
   Contains all helm charts we want flux to deploy.  
   We instruct Flux which charts to deploy and how by using a flux `helmRelease` manifest stored in a different folder.
-- `/radix-platform`  
-  Holds all the radix manifests we want flux to control.  
-  This can be any type of k8s resource manifest or a helm chart in the form of a flux `helmRelease` manifest.  
+- `/development-configs/`  
+  Hold all configs that should be deployed into clusters in development environment  
+  - `/radix-platform/`  
+    Holds all the radix manifests we want flux to control.  
+    This can be any type of k8s resource manifest or a helm chart in the form of a flux `helmRelease` manifest.  
+- `/production-configs/`  
+  Hold all configs that should be deployed into clusters in production environment. It should have the structure as the `/development-configs/` directory
 
 
 ## Development flow
@@ -57,12 +60,14 @@ Due to these possible differences we cannot simply merge changes between the env
 
 ### How to update manifests
 
-1. Commit configuration changes to branch `development`
+1. Create a feature branch based on branch `master`
+1. Make changes for development in `/development-configs/`
+1. Merge feature branch to `master`
 1. Verify acceptable state for development cluster(s)
-1. Create a feature branch and copy the changed development manifests
-1. In feature branch, set and verify production settings (image filters etc)
-1. Make a pull request and run code review of feature branch
-1. Merge feature branch into branch `production`
+1. Update feature branch with production configs in `/production-configs/` (remember to verify container registry, image filters etc) and merge to `master`
+1. Now you should be ready for moving your changes to production
+1. Make a pull request to branch `release` and run code review
+1. Merge `master` into branch `release`
 1. Verify acceptable state for production cluster(s)
 
 
