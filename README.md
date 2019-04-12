@@ -58,7 +58,7 @@ Due to these possible differences we cannot simply merge changes between the env
 1. Verify acceptable state for development cluster(s)
 1. Create a feature branch and copy the changed development manifests
 1. In feature branch, set and verify production settings (image filters etc)
-1. Run code review of feature branch
+1. Make a pull request and run code review of feature branch
 1. Merge feature branch into branch `production`
 1. Verify acceptable state for production cluster(s)
 
