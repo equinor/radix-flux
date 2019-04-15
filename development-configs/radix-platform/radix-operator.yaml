@@ -12,7 +12,7 @@ spec:
   releaseName: "radix-operator"
   chart:
     git: "git@github.com:equinor/radix-flux"
-    ref: "development"
+    ref: "master"
     path: "charts/radix-operator"
   values:
     image:
