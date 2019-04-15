@@ -7,19 +7,19 @@ metadata:
   annotations:
     # flux.weave.works/ignore: "true"
     flux.weave.works/automated: true
-    flux.weave.works/tag.chart-image: glob:master-*
+    flux.weave.works/tag.chart-image: glob:release-*
 spec:
   releaseName: "radix-operator"
   chart:
     git: "git@github.com:equinor/radix-flux"
-    ref: "development"
+    ref: "release"
     path: "charts/radix-operator"
   values:
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
-      tag: "master-weekly-15-test-v2"
+      tag: "release-latest"
   valuesFrom:
   - configMapKeyRef:
       name: "radix-platform-config"
