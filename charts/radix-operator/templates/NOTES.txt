@@ -1,0 +1,4 @@
+Radix Operator is now installed!
+
+To find out about your newly configured system, run:
+  $ helm status {{ .Release.Name }}

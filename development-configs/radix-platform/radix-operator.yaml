@@ -1,0 +1,27 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: radix-operator
+  namespace: default
+  annotations:
+    # flux.weave.works/ignore: "true"
+    flux.weave.works/automated: true
+    flux.weave.works/tag.chart-image: glob:master-*
+spec:
+  releaseName: "radix-operator"
+  chart:
+    git: "git@github.com:equinor/radix-flux"
+    ref: "development"
+    path: "charts/radix-operator"
+  values:
+    image:
+      # For Flux "image.repository" means full path to the image (registry/repository)
+      # The following 2 properties are mandatory for Flux image filtering
+      repository: radixdev.azurecr.io/radix-operator
+      tag: "master-flux-test-1"
+  valuesFrom:
+  - configMapKeyRef:
+      name: "radix-platform-config"
+      key: "platform"
+      optional: false

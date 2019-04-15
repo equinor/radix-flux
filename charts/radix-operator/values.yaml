@@ -1,0 +1,77 @@
+# Default values for radix-operator.
+
+clusterName: clusterz
+
+appAliasBaseURL: app.dev.radix.equinor.com
+dnsZone: dev.radix.equinor.com
+
+imagePullSecretName: radix-docker
+
+# TODO To be refactored when we introduce secret toggle
+# imageCredentials:
+#   registry: radixdev.azurecr.io
+#   username: xx
+#   password: xx
+
+# TODO To be refactored when we introduce secret toggle
+# cicdacr:
+#   name: xx
+#   id: x
+#   password: xx
+#   tenantId: xx
+
+app:
+  # Limit range on app namespace
+  limitrange:
+    default:
+      memory: 1000M
+      cpu: 1
+    defaultRequest:
+      memory: 500M
+      cpu: 0.25
+  env:
+    # Limit range on env namespace
+    limitrange:
+      default:
+        memory: 1G
+        cpu: 1
+      defaultRequest:
+        memory: 500M
+        cpu: 0.25
+
+rbac:
+  enabled: true
+
+replicaCount: 1
+
+image:
+  repository: xx
+  tag: xx
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  internalPort: 9000
+
+resources: {}
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+prometheusName: kube-prometheus
+
+clusterType: development
+
+radixGroups:
+  clusterAdmin: "a5dfa635-dc00-4a28-9ad9-9e7f1e56919d"
+  user: "64b28659-4fe4-4222-8497-85dd7e43e25b"
+  playground: "4b8ec60e-714c-4a9d-8e0a-3e4cfb3c3d31"

@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "radix-operator"
+  labels:
+    app: "radix-operator"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "radix-operator"
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: "radix-operator"
+        release: {{ .Release.Name }}
+    spec:
+      serviceAccount: "radix-operator"
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: metrics
+              containerPort: {{ .Values.service.internalPort }}
+              protocol: TCP
+          env:
+            - name: LABEL_PROMETHEUS_INSTANCE
+              value: {{ .Values.prometheusName }}
+            - name: DNS_ZONE
+              value: {{ .Values.dnsZone }}
+            - name: APP_ALIAS_BASE_URL
+              value: {{ .Values.appAliasBaseURL }}
+            - name: RADIXOPERATOR_CLUSTER_TYPE
+              value: {{ .Values.clusterType }}
+            {{if eq .Values.clusterType "playground"}}
+            - name: RADIXOPERATOR_DEFAULT_USER_GROUP
+              value: "{{ .Values.radixGroups.playground }}"
+            {{else}}
+            - name: RADIXOPERATOR_DEFAULT_USER_GROUP
+              value: "{{ .Values.radixGroups.user }}"
+            {{end}}
+            # For configuring limit ranges on app namespaces
+            - name: RADIXOPERATOR_APP_LIMITS_DEFAULT_MEMORY
+              value: {{ .Values.app.limitrange.default.memory | quote }}
+            - name: RADIXOPERATOR_APP_LIMITS_DEFAULT_CPU
+              value: {{ .Values.app.limitrange.default.cpu | quote }}
+            - name: RADIXOPERATOR_APP_LIMITS_DEFAULT_REQUEST_MEMORY
+              value: {{ .Values.app.limitrange.defaultRequest.memory | quote }}
+            - name: RADIXOPERATOR_APP_LIMITS_DEFAULT_REQUEST_CPU
+              value: {{ .Values.app.limitrange.defaultRequest.cpu | quote }}
+            # For configuring limit ranges on env namespaces
+            - name: RADIXOPERATOR_APP_ENV_LIMITS_DEFAULT_MEMORY
+              value: {{ .Values.app.env.limitrange.default.memory | quote }}
+            - name: RADIXOPERATOR_APP_ENV_LIMITS_DEFAULT_CPU
+              value: {{ .Values.app.env.limitrange.default.cpu | quote }}
+            - name: RADIXOPERATOR_APP_ENV_LIMITS_DEFAULT_REQUEST_MEMORY
+              value: {{ .Values.app.env.limitrange.defaultRequest.memory | quote }}
+            - name: RADIXOPERATOR_APP_ENV_LIMITS_DEFAULT_REQUEST_CPU
+              value: {{ .Values.app.env.limitrange.defaultRequest.cpu | quote }}
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: metrics
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: metrics
+          resources:
+            {{- toYaml .Values.resources | indent 12 }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecretName }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
