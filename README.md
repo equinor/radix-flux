@@ -7,11 +7,14 @@ We will start with the radix-operator, and if successfull, transition more compo
 
 A Flux controller runs inside the cluster. It is configured to watch a specific repo and branch.  
 When we commit a yaml file to that repo/branch then Flux will apply that file to the cluster. Think of it as automated `kubectl apply -f $filename`.  
-Flux will deploy any `*.yaml` it can find in the repo/branch it is set to watch, with the exception of anything that might look like a helm chart.  
-You instruct Flux which helm charts to deploy and how by using a flux [helmRelease](https://github.com/weaveworks/flux/blob/master/site/helm-integration.md) manifest.  
-Flux will then create a `helmRelease` custom resource in the cluster that owns the helm release.
 
-Flux will also scan the container registry for any change based on a image filter in the manifests.  
+### Flux + helm
+By default Flux will deploy any `*.yaml` it can find in the repo/branch it is set to watch, with the exception of anything that might look like a helm chart.  
+You instruct Flux which helm charts to deploy and how by using a flux [helmRelease](https://github.com/weaveworks/flux/blob/master/site/helm-integration.md) manifest. Flux will then create a corrensponding `helmRelease` custom resource in the cluster that is handled by the Flux helm operator. The Flux helm operator then deploy the helm chart as specified by the `helmRelease` resource. It is important to note that each flux `helmRelease` resource owns the corrensponding helm `release` in the cluster.
+
+### Flux + container registry
+Flux will also scan the container registry for any change based on a image filter in the manifests it watches.  
+These filters can then trigger Flux to automatically update the manifests with new image in the config repo and then deploy the updated manifest to the cluster.   
 We can control this behaviour by using [flux annotations](https://github.com/weaveworks/flux/blob/master/site/helm-integration.md#using-annotations-to-control-updates-to-helmrelease-resources) in the manifests.
 
 
@@ -65,8 +68,8 @@ Due to these possible differences we cannot simply merge changes between the env
 
 ### How to update manifest image
 
-Simply build, tag and push your image to the container registry.  
-Flux will then update the manifests in the config repo if it can match the manifest image filter to the new image tag.
+If the manifest use flux [image filter](https://github.com/weaveworks/flux/blob/master/site/fluxctl.md#using-annotations) then all you have to do is to simply build, tag and push your image to the container registry.  
+Flux will then update the manifests in the config repo if it can match the manifest image filter to the new image tag, and then it will deploy the updated manifest.
 
 Example:  
 - Manifests in `development` clusters will have a flux image filter annotation that match `glob:master-*`
