@@ -54,21 +54,10 @@ The name of any manifest should use the format `{name-of-resource}.yaml`
 
 ## Development flow
 
-Configuration for development and production will in most cases be identical, with the exception of the flux image filters.  
-Due to these possible differences we cannot simply merge changes between the environment branches as we then run the risk of releasing work-in-progress images into production clusters.
-
-
-### How to update manifests
-
-1. Create a feature branch based on branch `master`
-1. Make changes for development in `/development-configs/`
-1. Merge feature branch to `master`
-1. Verify acceptable state for development cluster(s)
-1. Update feature branch with production configs in `/production-configs/` (remember to verify container registry, image filters etc) and merge to `master`
-1. Now you should be ready for moving your changes to production
-1. Make a pull request to branch `release` and run code review
-1. Merge `master` into branch `release`
-1. Verify acceptable state for production cluster(s)
+1. Test your changes in branch `master`, in directory `/development-configs/`
+1. When satisifed add your production changes into directory `/production-configs/` (remember to verify container registry, image filters etc)
+1. When ready to release to production, create a pull request to branch `release` and run code review
+1. When merge is complete, verify production cluster state
 
 
 ### How to update manifest image
