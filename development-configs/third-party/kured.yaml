@@ -1,0 +1,23 @@
+# Azure makes sure to patch security updates on our AKS nodes, but does not ensure these updates are applied.
+# To apply these updates we need to reboot the nodes, our solution to this is to use Kured.
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: kured
+  namespace: default
+  annotations:
+    flux.weave.works/automated: true
+spec:
+  releaseName: "kured"
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: kured
+    version: 1.1.1
+  values:
+    updateStrategy: RollingUpdate
+    image:
+      # The following entry is currently required as the helm chart default config is still pointing to the Docker image on quay.io.
+      repository: "docker.io/weaveworks/kured"
+    extraArgs:
+      period: 5m0s
