@@ -1,4 +1,4 @@
-# Third party components for DEVELOPMENT environments
+# Third party components for PRODUCTION environment
 
 ## kured
 
