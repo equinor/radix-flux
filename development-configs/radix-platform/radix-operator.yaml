@@ -11,7 +11,7 @@ metadata:
 spec:
   releaseName: "radix-operator"
   chart:
-    git: "git@github.com:equinor/radix-flux"
+    git: "git@github.com:equinor/radix-operator"
     ref: "master"
     path: "charts/radix-operator"
   values:
