@@ -11,7 +11,7 @@ metadata:
 spec:
   releaseName: "radix-operator"
   chart:
-    git: "git@github.com:equinor/radix-flux"
+    git: "git@github.com:equinor/radix-operator"
     ref: "master"
     path: "charts/radix-operator"
   values:
@@ -19,7 +19,7 @@ spec:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
-      tag: "master-d8f13107b6c3488b68729bd29d04f793bce14969"
+      tag: "master-bea3fb0e27884152afd8338776a13a17a0432a43"
   valuesFrom:
   - configMapKeyRef:
       name: "radix-platform-config"
