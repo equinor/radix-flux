@@ -7,7 +7,7 @@ metadata:
   annotations:
     # flux.weave.works/ignore: "true"
     flux.weave.works/automated: true
-    flux.weave.works/tag.chart-image: glob:feature/ra-86
+    flux.weave.works/tag.chart-image: glob:ra-86*
 spec:
   releaseName: "radix-operator"
   chart:
