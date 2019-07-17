@@ -1,0 +1,16 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: default
+  annotations:
+    flux.weave.works/automated: true
+spec:
+  releaseName: "velero"
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: velero
+    version: 2.1.1
+  values:
+    updateStrategy: RollingUpdate
