@@ -2,6 +2,10 @@
 This is the initial attempt at gitops for the radix platform using [Flux](https://github.com/weaveworks/flux/).  
 We will start with the radix-operator, and if successfull, transition more components to be managed from this repo.
 
+Official docs:
+- https://github.com/weaveworks/flux/
+- https://github.com/fluxcd/flux/blob/master/site/helm-integration.md
+- https://www.weave.works/blog/managing-helm-releases-the-gitops-way
 
 ## How it works
 
@@ -20,17 +24,18 @@ We can control this behaviour by using [flux annotations](https://github.com/wea
 
 ## How we use it
 
-This repo contains the configurations for all cluster environments, where each environment corrensponds to a git branch.  
-Branch `master` is kept clean for anything but initial documentation.  
+This repo contains the configurations for all cluster environments, where each environment corrensponds to a git branch and a directory.  
 
 ### Environments
 
 - `production`  
-  Git branch: [release](https://github.com/equinor/radix-flux/tree/release)  
+  Git branch: `release`  
+  Directory: `./production-configs/`  
   Configs for all production clusters  
 
 - `development`  
-  Git branch: [master](https://github.com/equinor/radix-flux)  
+  Git branch: `master`  
+  Directory: `./development-configs/`  
   Configs for all development clusters, ie `weekly-*`, `playground-*`  
 
 
