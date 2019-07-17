@@ -6,7 +6,6 @@ metadata:
   namespace: velero
   annotations:
     flux.weave.works/ignore: true
-    flux.weave.works/automated: true
 spec:
   releaseName: "velero"
   chart:
