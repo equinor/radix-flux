@@ -1,3 +1,4 @@
+# Dependent on the secret "cloud-credentials", which should be installed by the base component script
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: "HelmRelease"
