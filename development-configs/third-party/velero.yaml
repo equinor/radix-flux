@@ -2,31 +2,31 @@
 # See https://github.com/equinor/radix-platform/scripts/velero
 ---
 apiVersion: flux.weave.works/v1beta1
-kind: "HelmRelease"
+kind: HelmRelease
 metadata:
-  name: "velero"
-  namespace: "velero"
+  name: velero
+  namespace: velero
   annotations:
     flux.weave.works/ignore: false
 spec:
-  releaseName: "velero"
+  releaseName: velero
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
-    name: "velero"
+    name: velero
     version: 2.1.1
   values:
-    updateStrategy: "RollingUpdate"
+    updateStrategy: RollingUpdate
     configuration:
-      provider: "azure"
+      provider: azure
       backupStorageLocation:
-        name: "azure"
-        bucket: "velero"
+        name: azure
+        bucket: velero
         config:
-          resourceGroup: "Velero_Backups"
-          storageAccount: "radixvelerodev"
+          resourceGroup: Velero_Backups
+          storageAccount: radixvelerodev
       volumeSnapshotLocation:
-        name: "azure"
+        name: azure
         apitimeout: 300s
     credentials:
       useSecret: true
-      existingSecret: "cloud-credentials"
+      existingSecret: cloud-credentials
