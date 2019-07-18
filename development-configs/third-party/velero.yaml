@@ -23,11 +23,11 @@ spec:
         name: azure
         bucket: velero
         config:
-          resourceGroup: Velero_Backups
+          resourceGroup: "Velero_Backups"
           storageAccount: radixvelerodev
       volumeSnapshotLocation:
         name: azure
         apitimeout: 300s
     credentials:
       useSecret: true
-      existingSecret: cloud-credentials
+      existingSecret: "cloud-credentials"
