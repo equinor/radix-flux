@@ -1,4 +1,5 @@
 # Dependent on the secret "cloud-credentials", which should be installed by the base component script
+# See https://github.com/equinor/radix-platform/scripts/velero
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: "HelmRelease"
