@@ -21,7 +21,7 @@ spec:
       provider: azure
       backupStorageLocation:
         name: azure
-        bucket: velero
+        # bucket: velero # set by values from configMap
         config:
           resourceGroup: "Velero_Backups"
           storageAccount: radixvelerodev
@@ -31,3 +31,9 @@ spec:
     credentials:
       useSecret: true
       existingSecret: "cloud-credentials"
+  valuesFrom:
+  - configMapKeyRef:
+      name: "velero-flux-values"
+      key: "values"
+      optional: false
+
