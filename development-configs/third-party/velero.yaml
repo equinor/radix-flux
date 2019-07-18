@@ -8,7 +8,7 @@ metadata:
   name: velero
   namespace: velero
   annotations:
-    flux.weave.works/ignore: false
+    flux.weave.works/ignore: true
 spec:
   releaseName: velero
   chart:
@@ -21,10 +21,10 @@ spec:
       provider: azure
       backupStorageLocation:
         name: azure
-        # bucket: velero # set by values from configMap
+        # bucket: "" # Unique per cluster, set by values found in configMap
         config:
           resourceGroup: "Velero_Backups"
-          storageAccount: radixvelerodev
+        # storageAccount: "" # Unique per cluster, set by values found in configMap
       volumeSnapshotLocation:
         name: azure
         apitimeout: 300s
