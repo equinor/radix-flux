@@ -17,6 +17,12 @@ spec:
     version: 2.1.1
   values:
     updateStrategy: RollingUpdate
+    initContainers:
+    - name: radix-velero-plugin
+      image: radixdev.azurecr.io/radix-velero-plugin:latest
+      volumeMounts:
+      - name: plugins
+        mountPath: /target
     configuration:
       provider: azure
       backupStorageLocation:
