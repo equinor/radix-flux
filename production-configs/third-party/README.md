@@ -4,6 +4,8 @@
 
 [kured](https://github.com/weaveworks/kured) is a Kubernetes daemonset that performs safe automatic node reboots when the need to do so is indicated by the package management system of the underlying OS. By default it watches for the presence of a reboot sentinel `/var/run/reboot-required` in all nodes of a Kubernetes cluster.
 
+[velero](https://github.com/heptio/velero) is a component to perform backup/restores of cluster resources between clusters. We have an additional velero plugin that is installed as an init container on the Velero deployment. This plugin ensures that the status of an RD is properly restored into the new cluster
+
 ### Known issues
 
 [Weaveworks](https://www.weave.works/) decided to move their Docker images from `quay.io` to `docker.io`.
