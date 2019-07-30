@@ -14,7 +14,8 @@ When we commit a yaml file to that repo/branch then Flux will apply that file to
 
 ### Flux + helm
 By default Flux will deploy any `*.yaml` it can find in the repo/branch it is set to watch, with the exception of anything that might look like a helm chart.  
-You instruct Flux which helm charts to deploy and how by using a flux [helmRelease](https://github.com/weaveworks/flux/blob/master/site/helm-integration.md) manifest. Flux will then create a corrensponding `helmRelease` custom resource in the cluster that is handled by the Flux helm operator. The Flux helm operator then deploy the helm chart as specified by the `helmRelease` resource. It is important to note that each flux `helmRelease` resource owns the corrensponding helm `release` in the cluster.
+You instruct Flux which helm charts to deploy and how by using a flux [helmRelease](https://github.com/weaveworks/flux/blob/master/site/helm-integration.md) manifest. Flux will then create a corrensponding `helmRelease` custom resource in the cluster that is handled by the Flux helm operator. The Flux helm operator then deploy the helm chart as specified by the `helmRelease` resource. It is important to note that each flux `helmRelease` resource owns the corrensponding helm `release` in the cluster.  
+Deleting a flux `helmRelease` will trigger the flux-helm-operator to delete and purge the corrensponding helm release.
 
 ### Flux + container registry
 Flux will also scan the container registry for any change based on a image filter in the manifests it watches.  
@@ -82,18 +83,15 @@ Example:
 - Manifests in `production` clusters will have a flux image filter annotation that match `glob:release-*`  
 
 
-### How to delete manifest in cluster, keep manifest in config repo
+### How to delete manifest in cluster while keeping it in the config repo
 
 1. In config repo/branch, add the annotation `flux.weave.works/ignore: true` to the manifest you want Flux to ignore
 1. In cluster, delete the manifest  
-   If this is a `helmRelease` manifest then you must delete the corrensponding `helmRelease` custom resource in the cluster.  
-   This will then delete the corrensponding helm release.
 
 
 ### How to delete manifest in cluster and config repo
 
 1. In config repo/branch, delete the manifest
-1. In cluster, delete the manifest
-   If this is a `helmRelease` manifest then you must delete the corrensponding `helmRelease` custom resource in the cluster.  
-   This will then delete the corrensponding helm release.
+1. In cluster, delete the manifest  
+   
   
