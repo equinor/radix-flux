@@ -12,6 +12,10 @@
 
 [kubed](https://github.com/appscode/kubed) can synchronize `ConfigMaps` and `Secrets` to namespaces by annotating the source with a sync key, and add a label to the target namespace(s) that reference that sync key.
 
+## nginx-ingress
+
+We use [NGINX ingress-controller](https://github.com/kubernetes/ingress-nginx) to expose services within the cluster to the Internet. The ingress-controllers main job is to connect hostnames and K8s services, and terminate SSL traffic.
+
 ### Known issues
 
 [Weaveworks](https://www.weave.works/) decided to move their Docker images from `quay.io` to `docker.io`.
