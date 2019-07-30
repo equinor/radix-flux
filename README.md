@@ -70,6 +70,7 @@ Flux running in playground clusters will automatically deploy these changes when
 
 Flux running in production clusters will automatically deploy these changes when it discover a change in the corrensponding directory and branch.
 
+## How to all the things
 
 ### How to update manifest image
 
