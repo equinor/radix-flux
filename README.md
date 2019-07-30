@@ -33,36 +33,42 @@ This repo contains the configurations for all cluster environments, where each e
   Directory: `./production-configs/`  
   Configs for all production clusters  
 
+- `playground`  
+  Git branch: `release`  
+  Directory: `./playground-configs/`  
+  Configs for all playground clusters, ie `playground-*`  
+
 - `development`  
   Git branch: `master`  
   Directory: `./development-configs/`  
-  Configs for all development clusters, ie `weekly-*`, `playground-*`  
-
-
-## Naming conventions and file structure
-
-The name of any manifest should use the format `{name-of-resource}.yaml`
-
-- `README.md`  
-  It should always have up-to-date information for the configuration of the corrensponding branch/environment.  
-- `/charts/`  
-  Contains all helm charts we want flux to deploy.  
-  We instruct Flux which charts to deploy and how by using a flux `helmRelease` manifest stored in a different folder.
-- `/development-configs/`  
-  Hold all configs that should be deployed into clusters in development environment  
-  - `/radix-platform/`  
-    Holds all the radix manifests we want flux to control.  
-    This can be any type of k8s resource manifest or a helm chart in the form of a flux `helmRelease` manifest.  
-- `/production-configs/`  
-  Hold all configs that should be deployed into clusters in production environment. It should have the structure as the `/development-configs/` directory
+  Configs for all development clusters, ie `weekly-*`  
 
 
 ## Development flow
 
-1. Test your changes in branch `master`, in directory `/development-configs/`
-1. When satisifed add your production changes into directory `/production-configs/` (remember to verify container registry, image filters etc)
-1. When ready to release to production, create a pull request to branch `release` and run code review
-1. When merge is complete, verify production cluster state
+### Step 1: Test configuration in development
+
+1. Tweak, add or remove configs the corrensponding directory and branch
+
+Flux running in development clusters will automatically deploy these changes when it discover a change in the corrensponding directory and branch.
+
+### Step 2: Move configs to QA/Playground
+
+1. Create a feature-branch from `master`
+1. Copy the configs you were working on from dev to the playground directory
+1. Update container registry (radixdev/radixprod) and image filters in the configs if necessary
+1. Create a pull request to merge feature-branch into branch `release`, run code review
+
+Flux running in playground clusters will automatically deploy these changes when it discover a change in the corrensponding directory and branch.
+
+### Step 3: Move configs to production
+
+1. Create a feature-branch from `release`
+1. Copy the configs you were working on from playground to the production directory
+1. Update container registry (radixdev/radixprod) and image filters in the configs if necessary
+1. Create a pull request to merge feature-branch into branch `release`, run code review
+
+Flux running in production clusters will automatically deploy these changes when it discover a change in the corrensponding directory and branch.
 
 
 ### How to update manifest image
