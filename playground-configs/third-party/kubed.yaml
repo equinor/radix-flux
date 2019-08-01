@@ -22,4 +22,4 @@ spec:
     rbac:
       create: true
     config:
-      clusterName: "playground"
+      clusterName: "playground" # Used for Kubed notification ...which we do not use.
