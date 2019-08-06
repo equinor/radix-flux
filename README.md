@@ -71,17 +71,9 @@ If you are testing major changes then consider creating your own cluster and set
 
 ### Step 2: Release to QA/Playground
 
-1. Create a feature-branch from `master`
-1. Update configs in playground directory
+1. Update configs in playground directory in branch `master`
 1. Verify that container registry (radixdev/radixprod) and image filters are correct
-1. Create a pull request to merge feature-branch into branch `master`, run code review
-1. If review is ok, merge `master` to `release`  
-   ```sh
-   git checkout release
-   git pull
-   git merge master
-   git push
-   ```
+1. Create a pull request to merge `master` to `release`, run code review
 
 Flux running in playground clusters will automatically deploy these changes when it discover a change in the corrensponding directory and branch.
 
