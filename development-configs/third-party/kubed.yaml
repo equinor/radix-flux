@@ -22,4 +22,4 @@ spec:
     rbac:
       create: true
     config:
-      clusterName: "dev"
+      clusterName: "dev"  # Used for Kubed notification ...which we do not use.
