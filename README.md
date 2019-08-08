@@ -1,10 +1,10 @@
-# radix-flux - k8s GitOps
+# Radix-Flux
 
-This is the initial attempt at gitops for the radix platform using [Flux](https://github.com/weaveworks/flux/).  
-We will start with the radix-operator, and if successfull, transition more components to be managed from this repo.
+Radix k8s GitOps using Weavework Flux.
 
 _Radix flux docs:_
 - [How to flux](./how-to.md)
+- [Flux manifest factorization](./flux-manifest-factorization.md)
 - [Known issues](./known-issues.md)
 - [Radix platform components](https://github.com/equinor/radix-private/blob/master/docs/radix-platform/readme.md)
 
@@ -31,6 +31,9 @@ Flux will also scan the container registry for any change based on a image filte
 These filters can then trigger Flux to automatically update the manifests with new image in the config repo and then deploy the updated manifest to the cluster.   
 We can control this behaviour by using [flux annotations](https://github.com/weaveworks/flux/blob/master/site/helm-integration.md#using-annotations-to-control-updates-to-helmrelease-resources) in the manifests.
 
+### Flux manifest factorization
+
+See [flux-manifest-factorization.md](./flux-manifest-factorization.md)
 
 ## How we use it
 
