@@ -11,6 +11,7 @@ _Radix flux docs:_
 _Official docs:_
 - [Weavework Flux](https://github.com/fluxcd/flux)
 - [Weavework Flux - Helm operator](https://github.com/fluxcd/flux#get-started-with-the-helm-operator)
+- [Weavework Flux - HelmRelease Custom Resource](https://docs.fluxcd.io/en/latest/helm-operator/references/helmrelease-custom-resource.html)
 
 
 ## How it works
