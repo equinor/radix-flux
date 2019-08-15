@@ -7,12 +7,12 @@ metadata:
   annotations:
     # flux.weave.works/ignore: "true"
     flux.weave.works/automated: true
-    flux.weave.works/tag.chart-image: glob:master-*
+    flux.weave.works/tag.chart-image: glob:RA-536-Prototype-*
 spec:
   releaseName: "radix-operator"
   chart:
     git: "git@github.com:equinor/radix-operator"
-    ref: "master"
+    ref: "RA-536-Prototype"
     path: "charts/radix-operator"
   values:
     image:
