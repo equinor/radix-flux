@@ -20,7 +20,7 @@ spec:
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
       tag: "master-b0d6bc01b4b65b0b6305eeeaed060bd975cefd29"
-    activeClusterName: weekly-31
+    activeClusterName: weekly-33-upgrade
   valuesFrom:
   - configMapKeyRef:
       name: "radix-platform-config"
