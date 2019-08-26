@@ -19,7 +19,7 @@ spec:
     updateStrategy: RollingUpdate
     initContainers:
     - name: radix-velero-plugin
-      image: radixdev.azurecr.io/radix-velero-plugin:RA-536-Prototype
+      image: radixdev.azurecr.io/radix-velero-plugin:master
       volumeMounts:
       - name: plugins
         mountPath: /target
