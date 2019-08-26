@@ -7,7 +7,7 @@ metadata:
   annotations:
     # flux.weave.works/ignore: "true"
     flux.weave.works/automated: true
-    flux.weave.works/tag.chart-image: glob:RA-552-AddCommitHash-*
+    flux.weave.works/tag.chart-image: glob:master-*
 spec:
   releaseName: "radix-operator"
   chart:
@@ -19,8 +19,8 @@ spec:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
-      tag: "RA-552-AddCommitHash-5c75c8ce885bcff3f8d5ce7b8cb7cb1a68b3b2d4"
-    activeClusterName: weekly-31
+      tag: "master-72299c0db2bef1b77c8c42c41ea570ed18a02de4"
+    activeClusterName: weekly-33-upgrade
   valuesFrom:
   - configMapKeyRef:
       name: "radix-platform-config"
