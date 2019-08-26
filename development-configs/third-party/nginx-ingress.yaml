@@ -60,6 +60,7 @@ spec:
     version: 1.11.3
   values:
     controller:
+      replicaCount: 2
       publishService:
         enabled: true
       stats:
