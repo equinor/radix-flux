@@ -2,16 +2,14 @@
 
 # PURPOSE
 #
-# Provide a template function in shell script when using flux manifest factorization.
-# It will take a templated yaml and replace variables with values from the "radix-platform-config" configmap.
+# Provide templating function for flux manifest factorization.
+# It will take a templated yaml and replace variables with values from the cluster config map.
 
 # USAGE
 #
-# radixify.sh manifest
+# source radixify.sh manifest
 
 # DEPENDENCIES
-#
-# The configmap "radix-platform-config" must exist in the cluster.
 #
 # Flux container shell sets the limitations for what unix tools that are available (ex no bash).
 #
@@ -24,7 +22,7 @@
 # Do realize that you are working with SH, not BASH.
 # An EXIT will also stop the execution of any remaining generators in .flux.yaml
 
-# DEVELOPER
+# DEVELOPMENT
 #
 # https://www.shellscript.sh/functions.html
 #
@@ -32,7 +30,7 @@
 # Example: 
 # $ echo "Bad bobo in the jungle" >&2
 # $ exit 1
-# Be aware that this will also stop the execution of any remaining generators in .flux.yaml
+# Be aware that using exit will also stop the execution of any remaining generators in .flux.yaml
 
 # INPUTS:
 #
@@ -66,4 +64,3 @@ awk '{sub(/: /,"=")}1' tmp-cluster-config.yaml > tmp-cluster-config.env && chmod
 $(./tmp-heredoc.sh && mv ./tmp-result.yaml "$manifest")
 # Clean up tmp files
 rm tmp-*
-
