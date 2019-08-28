@@ -14,3 +14,9 @@ This may not be necessary in future releases of the helm charts.
 References:
 - https://github.com/weaveworks/kured/issues/68
 - https://github.com/MicrosoftDocs/azure-docs/issues/30144
+
+## Kustomize
+
+Regarding kustomize vars,  
+they are not meant for arbitrary substitution. Kustomize has a hardcoded list for where substitution is allowed (...they have their reasons...), any deviations in your yaml is simply not touched at all, and you will not get any error/warnings from kustomize.
+https://github.com/kubernetes-sigs/kustomize/issues/486
