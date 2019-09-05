@@ -1,5 +1,5 @@
 version: 1
 commandUpdated:
   generators:
-    - command: ../../radixify.sh ./third-party/external-dns.yaml
+    - command: ../radixify.sh ./third-party/external-dns.yaml
     - command: kustomize build .
