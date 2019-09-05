@@ -1,7 +1,8 @@
 resources:
-- ./kubed.yaml
-- ./kured.yaml
-- ./nginx-ingress.yaml
-- ./velero.yaml
-- ./velero-schedule.yaml
-- ./external-dns.yaml
+- ./third-party/kubed.yaml
+- ./third-party/kured.yaml
+- ./third-party/nginx-ingress.yaml
+- ./third-party/velero.yaml
+- ./third-party/velero-schedule.yaml
+- ./third-party/external-dns.yaml
+- ./radix-platform/radix-operator.yaml
