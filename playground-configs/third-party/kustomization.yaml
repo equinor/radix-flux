@@ -1,0 +1,7 @@
+resources:
+- ./kubed.yaml
+- ./kured.yaml
+- ./nginx-ingress.yaml
+- ./velero.yaml
+- ./velero-schedule.yaml
+- ./external-dns.yaml
