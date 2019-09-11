@@ -16,10 +16,11 @@ spec:
     rbac:
       create: true
     interval: 60s
-    txtOwnerId: ${clusterName}
+    txtOwnerId: test-jpsor
     provider: azure
     azure:
       secretName: external-dns-azure-secret
     domainFilters:
-      - ${dnsZone}
+      - dev.radix.equinor.com
     policy: sync
+
