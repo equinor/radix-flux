@@ -7,6 +7,6 @@ commandUpdated:
     # use https://github.com/squaremo/kubeyaml on flux-patch.yaml
     - containerImage:
         command: >-
-          cat flux-patch.yaml |
+          cat ./radix-platform/radix-operator.yaml |
           kubeyaml image --namespace $FLUX_WL_NS --kind $FLUX_WL_KIND --name $FLUX_WL_NAME --container $FLUX_CONTAINER --image "$FLUX_IMG:$FLUX_TAG"
-          > new-flux-patch.yaml && mv new-flux-patch.yaml flux-patch.yaml
+          > new-radix-operator.yaml && mv new-radix-operator.yaml ./radix-platform/radix-operator.yaml
