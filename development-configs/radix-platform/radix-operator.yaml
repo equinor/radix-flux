@@ -19,7 +19,7 @@ spec:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
-      tag: "daft-test"
+      tag: "daft-test-2"
     activeClusterName: weekly-35-b
   valuesFrom:
   - configMapKeyRef:
