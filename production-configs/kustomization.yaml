@@ -6,3 +6,4 @@ resources:
 - ./third-party/velero-schedule.yaml
 - ./third-party/external-dns.yaml
 - ./radix-platform/radix-operator.yaml
+- ./cgroup-garbagecollector.yaml
