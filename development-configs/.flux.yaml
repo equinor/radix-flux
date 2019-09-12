@@ -1,13 +1,8 @@
+# Docs for patchUpdated configuration can be found here:
+# https://github.com/fluxcd/flux/blob/master/docs/references/fluxyaml-config-files.md#the-patchupdated-configuration-variant
 version: 1
-commandUpdated:
+patchUpdated:
   generators:
-    - command: ../radixify.sh ./third-party/external-dns.yaml
-    - command: kustomize build .
-  ## This is somehow also updating external-dns.yaml...  
-  # updaters:
-  #   # use https://github.com/squaremo/kubeyaml on flux-patch.yaml
-  #   - containerImage:
-  #       command: >-
-  #         cat ./radix-platform/radix-operator.yaml |
-  #         kubeyaml image --namespace $FLUX_WL_NS --kind $FLUX_WL_KIND --name $FLUX_WL_NAME --container $FLUX_CONTAINER --image "$FLUX_IMG:$FLUX_TAG"
-  #         > new-radix-operator.yaml && mv new-radix-operator.yaml ./radix-platform/radix-operator.yaml
+    - command: ../update_radix_patch.sh ./third-party/external-dns.yaml ./radix-patch.yaml
+    - command: kustomize build . 
+  patchFile: ./flux-patch.yaml
