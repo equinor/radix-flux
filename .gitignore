@@ -1,0 +1,2 @@
+# Ignore the output of resource transformation script
+**/radix-patch.yaml

@@ -85,6 +85,3 @@ Flux running in playground clusters will automatically deploy these changes when
 
 Repeat the same instructions as for Playground, update configs in production directory.  
 Flux running in production clusters will automatically deploy these changes when it discover a change in the corrensponding directory and branch.
-
-   
-  
