@@ -7,4 +7,4 @@ metadata:
 spec:
   values:
     image:
-      tag: daft-test-2
+      tag: daft-test-3
