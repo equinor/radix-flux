@@ -7,3 +7,5 @@ resources:
 - ./third-party/external-dns.yaml
 - ./radix-platform/radix-operator.yaml
 - ./cgroup-garbagecollector.yaml
+patchesStrategicMerge:
+- ./radix-patch.yaml
