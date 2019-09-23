@@ -75,7 +75,7 @@ Some of our manifests rely on metadata that has been preinstalled in the cluster
 We can inject these values into the manifests by:
 
 1. Use shell variables in manifests, making them into templates. These templates are stored in the config repo.
-1. Tell flux (see `.flux.yaml` in each config dir, and look at the `generator` commands) that is should use a shell script to transform specified manifest templates into manifests
+1. Tell flux (see `.flux.yaml` in each config dir, and look at the `generator` commands) that it should use a shell script to transform specified manifest templates into manifests
    1. The shell script `update_radix_patch.sh` will use `kubectl` to read the values from the cluster, transform the templates and add the result to a temporary file called `radix-patch.yaml`
 1. The final step is to instruct flux to use `kustomize` to combine all the manifests, including the `radix-patch.yaml` as a k8s patch (see `kustomize.yaml` in each config dir)
 1. The output from `kustomize` is what flux will then deploy to the cluster (implicit behaviour)
