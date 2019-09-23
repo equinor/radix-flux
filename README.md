@@ -90,14 +90,14 @@ The `radix-patch.yaml` is a temporary file that contains cluster specific data, 
 We want flux to update some manifests when new images appear in the container registry (example: see image filter in `{environment}-configs/radix-platform/radix-operator.yaml`).  
 When we use flux manifest factorization then we also need to specify how flux should update the manifest. This can be quite hard to implement correctly, and so flux provide a way to store all updates triggered by Flux in a separate file called `flux-patch.yaml`. This feature is enabled by using [patchUpdated configuration](https://github.com/weaveworks/flux/blob/master/site/helm-integration.md#using-annotations-to-control-updates-to-helmrelease-resources) in the `.flux.yaml`.
 
-`patchUpdated` workflow:
+The update configs workflow goes like this:
 
 1. Flux discover a new image in the container registry
 1. Flux discover an image filter in one of the manifests it tracks
 1. Flux will update the manifest image in the file `flux-patch.yaml`
 1. Flux will finally commit and push to the config repo
 
-This will trigger a new "Update cluster" cycle where flux will deploy the patch.
+This will trigger a new "Deploy configs" cycle where flux will deploy the patch.
 
 
 
