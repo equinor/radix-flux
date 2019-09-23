@@ -129,7 +129,7 @@ _Iterate_
 
 ### Step 2: Review and deploy to development cluster(s)
 
-1. Run pull request for merging to branch `master`
+1. Run pull request for merging your task branch to branch `master`
 1. Inspect development cluster(s) to see that the changes in `master` are deployed as expected
 
 By deploying your changes to `development` cluster in one big go like this is that you can now verify that other radix clusters than your dev cluster can handle the update.  
