@@ -94,7 +94,7 @@ The update configs workflow goes like this:
 
 1. Flux discover a new image in the container registry
 1. Flux discover an image filter in one of the manifests it tracks
-1. Flux will update the manifest image in the file `flux-patch.yaml`
+1. Flux will update/add a k8s patch configuration for the tracked resource(s) in the file `flux-patch.yaml`
 1. Flux will finally commit and push to the config repo
 
 This will trigger a new "Deploy configs" cycle where flux will deploy the patch.
