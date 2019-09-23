@@ -1,0 +1,10 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: radix-operator
+  namespace: default
+spec:
+  values:
+    image:
+      tag: master-db74fcf303eff6fe9b9b2af5703c77671cdb5cd8
