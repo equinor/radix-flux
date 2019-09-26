@@ -90,35 +90,73 @@ The `radix-patch.yaml` is a temporary file that contains cluster specific data, 
 We want flux to update some manifests when new images appear in the container registry (example: see image filter in `{environment}-configs/radix-platform/radix-operator.yaml`).  
 When we use flux manifest factorization then we also need to specify how flux should update the manifest. This can be quite hard to implement correctly, and so flux provide a way to store all updates triggered by Flux in a separate file called `flux-patch.yaml`. This feature is enabled by using [patchUpdated configuration](https://github.com/weaveworks/flux/blob/master/site/helm-integration.md#using-annotations-to-control-updates-to-helmrelease-resources) in the `.flux.yaml`.
 
-`patchUpdated` workflow:
+The update configs workflow goes like this:
 
 1. Flux discover a new image in the container registry
 1. Flux discover an image filter in one of the manifests it tracks
-1. Flux will update the manifest image in the file `flux-patch.yaml`
+1. Flux will update/add a k8s patch configuration for the tracked resource(s) in the file `flux-patch.yaml`
 1. Flux will finally commit and push to the config repo
 
-This will trigger a new "Update cluster" cycle where flux will deploy the patch.
+This will trigger a new "Deploy configs" cycle where flux will deploy the patch.
 
 
 
 ## Development flow
 
-### Step 1: Test configuration in development
+### Step 1: Implement and test configuraton in a separate cluster
 
-1. Tweak, add or remove configs in development directory in branch `master`
+_Setup dev environment_  
+1. Create a task branch from branch `master`, ie "RA-999-adding-some-component...", in config repo  
+   ```sh
+   # Be sure that you got the latest changes (ie pull request) in local repo
+   git checkout master
+   git pull
+   git checkout -b "RA-999-adding some component to Development"
+   ```
+1. Add the config changes to the branch in directory `/development-configs/`
+1. Bootstrap a new radix cluster
+1. When you install the base components then point flux to your task branch and directory (see base components script for how)
+1. View the flux container log to see that it can find your configs
+   1. If flux is having trouble, ie wrong config path, then simply redeploy flux (there is a standalone script for this, or run base components script again) to your cluster with correct settings
+1. When you see that flux can find your configs and you see the deployments roll out then this setup is complete
 
-Flux running in development clusters will automatically deploy these changes when it discover a change in the corrensponding directory and branch.  
-If you are testing major changes then consider creating your own cluster and set it to sync configs from a feature branch.
+_Iterate_
+1. Push changes to your branch
+1. Either wait for flux sync or make it sync now by executing command `fluxctl sync`  
+   NB! Syncing flux != execute changes now. It will simply make flux add a new workload to it's internal queue, meaning it will take a couple of minutes before it executes your changes.
+1. Watch for changes in the cluster
+1. Repeat
 
-### Step 2: Release to QA/Playground
+### Step 2: Review and deploy to development cluster(s)
 
-1. Update configs in playground directory in branch `master`
-1. Verify that container registry (radixdev/radixprod) and image filters are correct
-1. Create a pull request to merge `master` to `release`, run code review
+1. Run pull request for merging your task branch to branch `master`
+1. Inspect development cluster(s) to see that the changes in `master` are deployed as expected
 
-Flux running in playground clusters will automatically deploy these changes when it discover a change in the corrensponding directory and branch.
+By deploying your changes to `development` cluster in one big go like this is that you can now verify that other radix clusters than your dev cluster can handle the update.  
+This is as close as we can get to the same behaviour as when deploying to `production` and `playground`.
 
-### Step 3: Release to production
+### Step 3: Implement and deploy to Production and Playground
 
-Repeat the same instructions as for Playground, update configs in production directory.  
-Flux running in production clusters will automatically deploy these changes when it discover a change in the corrensponding directory and branch.
+1. Create a task branch from `master`, ie "RA-999-adding some component to Prod and Playground", in config repo  
+   ```sh
+   # Be sure that you got the latest changes (ie pull request) in local repo
+   git checkout master
+   git pull
+   git checkout -b "RA-999-adding some component to Prod and Playground"
+   ```
+1. Add/update configs for `production` and `playground` in corrensponding directories
+1. Run pull request to merge to branch `master`
+1. Finally release changes to `production` and `playground` by merging branch `master` into `release`  
+   ```sh
+   # Be sure that master has latest changes
+   git checkout master
+   git pull
+   # Be sure that release has latest changes
+   git checkout release
+   git pull
+   # Finally merge master into release
+   git merge master
+   git push
+   ```
+1. Inspect cluster `production` and `playground` to verify deployment
+
