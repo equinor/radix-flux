@@ -37,6 +37,10 @@ spec:
     credentials:
       useSecret: true
       existingSecret: "cloud-credentials"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
   valuesFrom:
   - configMapKeyRef:
       name: "velero-flux-values"
