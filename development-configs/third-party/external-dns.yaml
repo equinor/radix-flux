@@ -23,3 +23,5 @@ spec:
     domainFilters:
       - ${dnsZone}
     policy: sync
+    metrics:
+      enabled: true
