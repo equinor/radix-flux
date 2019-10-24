@@ -23,3 +23,6 @@ spec:
     domainFilters:
       - ${dnsZone}
     policy: sync
+    podAnnotations: {prometheus.io/scrape: "true",prometheus.io/port: "7979"}
+    metrics:
+      enabled: true
