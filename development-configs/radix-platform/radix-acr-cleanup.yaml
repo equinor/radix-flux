@@ -3,8 +3,8 @@ apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: radix-acr-cleanup
-	# Will need to be installed in default namespace
-	# as it relies on radix-sp-acr-azure secret
+  # Will need to be installed in default namespace
+  # as it relies on radix-sp-acr-azure secret
   namespace: default
   annotations:
     # flux.weave.works/ignore: "true"
