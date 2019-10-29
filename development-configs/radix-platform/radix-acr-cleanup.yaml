@@ -19,12 +19,12 @@ spec:
   values:
     registry: radixdev
     deleteUntagged: false
-    performDelete: true
+    performDelete: false
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-acr-cleanup
-      tag: "RA-612-CleanUpACR-6d5ab48930d866239b13e5c15c7cc88fb6578ed2"
+      tag: "RA-612-CleanUpACR-14a5918a75cfe7b4567238325e60fad9aa0472e3"
     metrics:
       enabled: true
   valuesFrom:
