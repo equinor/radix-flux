@@ -20,10 +20,9 @@ spec:
     registry: radixdev
     deleteUntagged: false
     performDelete: true
-    period: 1m
-    cleanupDays: "we,th"
+    period: 1h
     cleanupStart: "0:00"
-    cleanupEnd: "8:30"
+    cleanupEnd: "6:00"
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
