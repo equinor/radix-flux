@@ -19,6 +19,7 @@ spec:
   values:
     registry: radixdev
     deleteUntagged: false
+    retainLatestUntagged: 5
     performDelete: false
     period: 1h
     cleanupStart: "0:00"
