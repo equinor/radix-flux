@@ -2,6 +2,16 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
+  name: radix-acr-cleanup
+  namespace: default
+spec:
+  values:
+    image:
+      tag: RA-612-CleanUpACR-74ee1fee6808beda907fc5555536f5593061aebc
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
   name: radix-operator
   namespace: default
 spec:
