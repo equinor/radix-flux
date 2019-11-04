@@ -14,7 +14,7 @@ spec:
   releaseName: "radix-acr-cleanup"
   chart:
     git: "git@github.com:equinor/radix-acr-cleanup"
-    ref: "RA-612-CleanUpACR"
+    ref: "master"
     path: "charts/radix-acr-cleanup"
   values:
     registry: radixdev
