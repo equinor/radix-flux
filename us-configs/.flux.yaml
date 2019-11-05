@@ -1,0 +1,8 @@
+# Docs for patchUpdated configuration can be found here:
+# https://github.com/fluxcd/flux/blob/master/docs/references/fluxyaml-config-files.md#the-patchupdated-configuration-variant
+version: 1
+patchUpdated:
+  generators:
+    - command: ../update_radix_patch.sh ./third-party/external-dns.yaml ./radix-patch.yaml
+    - command: kustomize build . 
+  patchFile: ./flux-patch.yaml
