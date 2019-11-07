@@ -7,7 +7,7 @@ metadata:
 spec:
   values:
     image:
-      tag: RA-612-CleanUpACR-01478d8a77ad305c5ecce52e177daefb2dd0dd37
+      tag: master-bd3b024df51ecd6d4e75d7dc16d69955f2de0687
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
