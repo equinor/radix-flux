@@ -21,9 +21,9 @@ spec:
     deleteUntagged: false
     retainLatestUntagged: 5
     performDelete: false
-    period: 1h
+    period: 10m
     cleanupStart: "0:00"
-    cleanupEnd: "6:00"
+    cleanupEnd: "23:39"
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
