@@ -18,9 +18,9 @@ spec:
     path: "charts/radix-acr-cleanup"
   values:
     registry: radixdev
-    deleteUntagged: false
-    retainLatestUntagged: 5
-    performDelete: true
+    deleteUntagged: true
+    retainLatestUntagged: 25
+    performDelete: false
     period: 10m
     cleanupStart: "0:00"
     cleanupEnd: "23:39"
