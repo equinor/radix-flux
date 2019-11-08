@@ -2,9 +2,19 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
+  name: radix-acr-cleanup
+  namespace: default
+spec:
+  values:
+    image:
+      tag: master-731c70dc61918224dab5c75a5f690a5b2ad673fc
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
   name: radix-operator
   namespace: default
 spec:
   values:
     image:
-      tag: master-fe247be8504fdc6c9307eb0a4682bb246c9f5da5
+      tag: master-f2b642050b2c643423641cd97abb5fc95a698b57
