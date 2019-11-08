@@ -6,6 +6,7 @@ resources:
 - ./third-party/velero-schedule.yaml
 - ./third-party/external-dns.yaml
 - ./radix-platform/radix-operator.yaml
+- ./radix-platform/radix-acr-cleanup.yaml
 - ./cgroup-garbagecollector.yaml
 patchesStrategicMerge:
 - ./radix-patch.yaml
