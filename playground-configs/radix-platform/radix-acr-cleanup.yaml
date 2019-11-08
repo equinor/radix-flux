@@ -23,7 +23,7 @@ spec:
     performDelete: true
     period: 1h
     cleanupStart: "0:00"
-    cleanupEnd: "23:39"
+    cleanupEnd: "06:00"
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
