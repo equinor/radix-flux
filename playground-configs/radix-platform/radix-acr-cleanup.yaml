@@ -19,10 +19,10 @@ spec:
   values:
     registry: radixdev
     deleteUntagged: true
-    retainLatestUntagged: 0
+    retainLatestUntagged: 1
     performDelete: true
     period: 20m
-    cleanupStart: "19:00"
+    cleanupStart: "20:00"
     cleanupEnd: "05:00"
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
