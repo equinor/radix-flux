@@ -18,12 +18,12 @@ spec:
     path: "charts/radix-acr-cleanup"
   values:
     registry: radixdev
-    deleteUntagged: false
-    retainLatestUntagged: 5
+    deleteUntagged: true
+    retainLatestUntagged: 0
     performDelete: true
-    period: 10m
+    period: 1h
     cleanupStart: "0:00"
-    cleanupEnd: "23:39"
+    cleanupEnd: "6:00"
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
