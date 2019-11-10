@@ -19,7 +19,7 @@ spec:
   values:
     registry: radixdev
     deleteUntagged: true
-    retainLatestUntagged: 1
+    retainLatestUntagged: 0
     performDelete: true
     period: 20m
     cleanupStart: "0:00"
