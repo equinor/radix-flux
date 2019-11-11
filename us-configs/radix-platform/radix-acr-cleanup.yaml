@@ -17,16 +17,17 @@ spec:
     ref: "master"
     path: "charts/radix-acr-cleanup"
   values:
-    registry: radixdev
-    deleteUntagged: false
+    registry: radixus
+    deleteUntagged: true
+    retainLatestUntagged: 0
     performDelete: true
     period: 1h
     cleanupStart: "0:00"
-    cleanupEnd: "06:00"
+    cleanupEnd: "6:00"
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
-      repository: radixdev.azurecr.io/radix-acr-cleanup
+      repository: radixus.azurecr.io/radix-acr-cleanup
       tag: "master-bd3b024df51ecd6d4e75d7dc16d69955f2de0687"
     metrics:
       enabled: true
