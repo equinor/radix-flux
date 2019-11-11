@@ -1,0 +1,38 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: radix-acr-cleanup
+  # Will need to be installed in default namespace
+  # as it relies on radix-sp-acr-azure secret
+  namespace: default
+  annotations:
+    # flux.weave.works/ignore: "true"
+    flux.weave.works/automated: true
+    flux.weave.works/tag.chart-image: glob:master-*
+spec:
+  releaseName: "radix-acr-cleanup"
+  chart:
+    git: "git@github.com:equinor/radix-acr-cleanup"
+    ref: "master"
+    path: "charts/radix-acr-cleanup"
+  values:
+    registry: radixprod
+    deleteUntagged: true
+    retainLatestUntagged: 0
+    performDelete: true
+    period: 1h
+    cleanupStart: "0:00"
+    cleanupEnd: "6:00"
+    image:
+      # For Flux "image.repository" means full path to the image (registry/repository)
+      # The following 2 properties are mandatory for Flux image filtering
+      repository: radixprod.azurecr.io/radix-acr-cleanup
+      tag: "master-bd3b024df51ecd6d4e75d7dc16d69955f2de0687"
+    metrics:
+      enabled: true
+  valuesFrom:
+  - configMapKeyRef:
+      name: "radix-platform-config"
+      key: "platform"
+      optional: false
