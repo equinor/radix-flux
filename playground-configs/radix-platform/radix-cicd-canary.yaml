@@ -1,0 +1,32 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+  annotations:
+    # flux.weave.works/ignore: "true"
+    flux.weave.works/automated: true
+    flux.weave.works/tag.chart-image: glob:release-*
+spec:
+  releaseName: "radix-cicd-canary"
+  chart:
+    git: "git@github.com:equinor/radix-cicd-canary"
+    ref: "release"
+    path: "charts/radix-cicd-canary"
+  values:
+    radixApiPrefix: server-radix-api-prod
+    radixWebhookPrefix: webhook-radix-github-webhook-prod
+    sleepIntervalTestRuns: 300
+    clusterType: ${clusterType}
+    clusterFqdn: "${clusterName}.${dnsZone}"
+    image:
+      # For Flux "image.repository" means full path to the image (registry/repository)
+      # The following 2 properties are mandatory for Flux image filtering
+      repository: radixdev.azurecr.io/radix-cicd-canary
+      tag: "release-2c1b406e5f4270cf3415bf60ccef47671fe225e1"
+  valuesFrom:
+    - secretKeyRef:
+        name: "canary-secrets"
+        key: "radix-cicd-canary-values.yaml"
+        optional: false
