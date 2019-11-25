@@ -2,6 +2,16 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  values:
+    image:
+      tag: master-4338bc6bc810ae4b078a4d227cae1f30faba1df6
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
   name: radix-acr-cleanup
   namespace: default
 spec:
