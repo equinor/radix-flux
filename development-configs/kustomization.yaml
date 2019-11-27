@@ -1,10 +1,10 @@
+#  - ./third-party/external-dns.yaml
 resources:
   - ./third-party/kubed.yaml
   - ./third-party/kured.yaml
   - ./third-party/nginx-ingress.yaml
   - ./third-party/velero.yaml
   - ./third-party/velero-schedule.yaml
-  - ./third-party/external-dns.yaml
   - ./radix-platform/radix-operator.yaml
   - ./radix-platform/radix-acr-cleanup.yaml
   - ./radix-platform/radix-cicd-canary.yaml
