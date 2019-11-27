@@ -87,4 +87,4 @@ awk '{sub(/: /,"=")}1' tmp-cluster-config.yaml > tmp-cluster-config.env && chmod
 $(./tmp-heredoc.sh)
 wait
 # Clean up tmp files
-#rm tmp-*
+rm tmp-*
