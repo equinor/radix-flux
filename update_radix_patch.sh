@@ -82,7 +82,7 @@ kubectl get cm "radix-platform-config" -o jsonpath='{.data.platform}' > tmp-clus
 # Transform cluster-config yaml to shell environment variables script
 awk '{sub(/: /,"=")}1' tmp-cluster-config.yaml > tmp-cluster-config.env && chmod +x tmp-cluster-config.env
 # Create heredoc that we will use as a cheapo template engine
-(echo "#!/bin/sh"; echo ". ./tmp-cluster-config.env"; echo "cat <<EOF >>${patch}"; cat "$(echo $manifest)"; echo ""; echo "EOF";)>tmp-heredoc.sh && chmod +x tmp-heredoc.sh
+(echo "#!/bin/sh"; echo ". ./tmp-cluster-config.env"; echo "cat <<EOF >>${patch}"; cat "$manifest"; echo ""; echo "EOF";)>tmp-heredoc.sh && chmod +x tmp-heredoc.sh
 # Transform manifest using a heredoc to inject the env vars, and do so in a subshell to avoid polluting the main flux shell
 $(./tmp-heredoc.sh)
 wait
