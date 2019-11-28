@@ -7,7 +7,7 @@ resources:
 - ./third-party/external-dns.yaml
 - ./radix-platform/radix-operator.yaml
 - ./radix-platform/radix-acr-cleanup.yaml
-- ./radix-platform/radix-cicd-canary.yaml
+#- ./radix-platform/radix-cicd-canary.yaml
 - ./cgroup-garbagecollector.yaml
 patchesStrategicMerge:
 - ./radix-patch.yaml
