@@ -3,7 +3,7 @@ apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: radix-cicd-canary
-  namespace: radix-cicd-canary
+  namespace: default
   annotations:
     # flux.weave.works/ignore: "true"
     flux.weave.works/automated: true
