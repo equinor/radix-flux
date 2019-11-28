@@ -1,3 +1,4 @@
+#   - ./radix-platform/radix-cicd-canary.yaml
 resources:
   - ./third-party/kubed.yaml
   - ./third-party/kured.yaml

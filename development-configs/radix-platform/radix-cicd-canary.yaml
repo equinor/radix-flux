@@ -7,7 +7,7 @@ metadata:
   annotations:
     # flux.weave.works/ignore: "true"
     flux.weave.works/automated: true
-    flux.weave.works/tag.chart-image: glob:master-*
+    #flux.weave.works/tag.chart-image: glob:master-*
 spec:
   releaseName: "radix-cicd-canary"
   chart:
@@ -24,7 +24,7 @@ spec:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-cicd-canary
-      tag: "master-2c1b406e5f4270cf3415bf60ccef47671fe225e1"
+      tag: "master-latest"
   valuesFrom:
     - secretKeyRef:
         name: "canary-secrets"
