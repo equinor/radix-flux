@@ -73,9 +73,7 @@ fi
 ### 
 
 # Create the patch file if it does not exist
-if [ ! -f "$patch" ]; then
-   touch "$patch"
-fi
+[[ ! -f "$patch" ]] && touch "$patch"
 
 # Read and store contents of cluster config as yaml
 kubectl get cm "radix-platform-config" -o jsonpath='{.data.platform}' > tmp-cluster-config.yaml
