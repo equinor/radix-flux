@@ -7,7 +7,7 @@ metadata:
 spec:
   values:
     image:
-      tag: master-03a2f8d1634dcc52fbf225e24b480610772a0034
+      tag: master-5a21490d4d01e7fbb452f315db869ea6c81d760e
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
@@ -18,3 +18,13 @@ spec:
   values:
     image:
       tag: master-f0cfea96efa17b19bc846f7e7276bb8f822374f2
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  values:
+    image:
+      tag: master-c2a8b7143a6080167284c9413c3aca1645dfdaa7
