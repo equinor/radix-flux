@@ -3,7 +3,6 @@
 version: 1
 patchUpdated:
   generators:
-    # - command: ../update_radix_patch.sh ./radix-platform/radix-cicd-canary.yaml ./radix-patch.yaml
-    - command: ../update_radix_patch.sh ./third-party/external-dns.yaml ./radix-patch.yaml
+    - command: ../update_radix_patch.sh "$PWD/third-party/external-dns.yaml" ./radix-patch.yaml
     - command: kustomize build .
   patchFile: ./flux-patch.yaml
