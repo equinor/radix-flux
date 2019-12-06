@@ -27,4 +27,4 @@ metadata:
 spec:
   values:
     image:
-      tag: release-683b597130e6e0842e034844b1b5a7b06551f9c6
+      tag: release-9adbd1ac630600e72e00011da9d4aff55ebebd97
