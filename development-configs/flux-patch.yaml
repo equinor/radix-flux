@@ -2,6 +2,16 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
+  name: kured
+  namespace: default
+spec:
+  values:
+    image:
+      repository: docker.io/weaveworks/kured:master-f6e4062
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
   name: radix-acr-cleanup
   namespace: default
 spec:
