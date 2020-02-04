@@ -16,8 +16,5 @@ spec:
     version: 1.4.2
   values:
     updateStrategy: RollingUpdate
-    image:
-      # The following entry is currently required as the helm chart default config is still pointing to the Docker image on quay.io.
-      repository: "docker.io/weaveworks/kured"
     extraArgs:
       period: 5m0s
