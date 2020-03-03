@@ -11,7 +11,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: external-dns
-    version: 1.8.2
+    version: 2.18.0
   values:
     rbac:
       create: true
@@ -19,6 +19,7 @@ spec:
     txtOwnerId: ${clusterName}
     provider: azure
     azure:
+      resourceGroup: common
       secretName: external-dns-azure-secret
     domainFilters:
       - ${dnsZone}
