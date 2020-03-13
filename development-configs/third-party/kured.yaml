@@ -11,8 +11,12 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: kured
-    version: 1.4.2
+    version: 1.5.0
   values:
     updateStrategy: RollingUpdate
     extraArgs:
       period: 5m0s
+      reboot-days: mon,tue,wed,thu,fri
+      start-time: 8am
+      end-time: 8:30am
+      time-zone: CET
