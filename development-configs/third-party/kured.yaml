@@ -16,5 +16,5 @@ spec:
     updateStrategy: RollingUpdate
     extraArgs:
       period: 5m0s
-      start-time: 9pm
-      end-time: 8am
+      start-time: 10pm
+      end-time: 11pm
