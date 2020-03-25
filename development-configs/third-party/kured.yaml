@@ -16,7 +16,3 @@ spec:
     updateStrategy: RollingUpdate
     extraArgs:
       period: 5m0s
-      reboot-days: mon,tue,wed,thu,fri
-      start-time: 20:30
-      end-time: 8am
-      time-zone: UTC
