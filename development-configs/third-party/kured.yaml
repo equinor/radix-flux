@@ -18,3 +18,4 @@ spec:
       period: 5m0s
       start-time: 10pm
       end-time: 11pm
+      slack-hook-url: https://hooks.slack.com/services/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
