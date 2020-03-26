@@ -16,6 +16,7 @@ spec:
     updateStrategy: RollingUpdate
     extraArgs:
       period: 5m0s
-      start-time: 10pm
+      reboot-days: mon,tue,wed,thu,fri
+      start-time: 1am
       end-time: 11pm
-      slack-hook-url: https://hooks.slack.com/services/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
+      time-zone: CET
