@@ -9,7 +9,7 @@ metadata:
   annotations:
     # flux.weave.works/ignore: "true"
     flux.weave.works/automated: true
-    flux.weave.works/tag.chart-image: glob:master-*
+    flux.weave.works/tag.chart-image: glob:release-*
 spec:
   releaseName: "radix-acr-cleanup"
   chart:
