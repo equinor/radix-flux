@@ -20,4 +20,4 @@ spec:
       start-time: 1am
       end-time: 11pm
       time-zone: CET
-      slack-hook-url: https://hooks.slack.com/services/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
+      slack-hook-url:
