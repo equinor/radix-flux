@@ -52,3 +52,6 @@ else
    ##echo "      slack-hook-url: $slackWebhookURL" >> "$radixPatch"
    :
 fi
+
+# Clean up tmp files
+rm tmp-*
