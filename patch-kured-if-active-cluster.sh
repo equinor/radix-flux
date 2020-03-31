@@ -28,12 +28,12 @@ fi
 ### 
 
 # Read and store contents of cluster config as yaml
-##kubectl get cm "radix-platform-config" -o jsonpath='{.data.platform}' > tmp-cluster-config.yaml
+kubectl get cm "radix-platform-config" -o jsonpath='{.data.platform}' > tmp-cluster-config.yaml
 # Transform cluster-config yaml to shell environment variables script
-##awk '{sub(/: /,"=")}1' tmp-cluster-config.yaml > tmp-cluster-config.env && chmod +x tmp-cluster-config.env
+awk '{sub(/: /,"=")}1' tmp-cluster-config.yaml > tmp-cluster-config.env && chmod +x tmp-cluster-config.env
 
 # Make the variables available for the script
-##source ./tmp-cluster-config.env
+source ./tmp-cluster-config.env
 
 # Are we in the active cluster? Use grep (if available) or similar tool to very brutish do a string search
 result="$(grep "$clusterName" "$radixOperatorPath")"
