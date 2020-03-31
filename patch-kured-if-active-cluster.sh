@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# PURPOSE
+#
+# This script is meant for patching kured template with Slack Webhook URL if the current cluster is the active cluster.
+# Othwerwise kured will be deployed without Slack notification.
+
 # USAGE
 #
 # ./patch-kured-if-active-cluster.sh "$radixOperatorPath" "$kuredPath" "$radixPatch"
@@ -29,6 +34,7 @@ fi
 
 # Read and store contents of cluster config as yaml
 kubectl get cm "radix-platform-config" -o jsonpath='{.data.platform}' > tmp-cluster-config.yaml
+
 # Transform cluster-config yaml to shell environment variables script
 awk '{sub(/: /,"=")}1' tmp-cluster-config.yaml > tmp-cluster-config.env && chmod +x tmp-cluster-config.env
 
@@ -39,18 +45,14 @@ source ./tmp-cluster-config.env
 result="$(grep "$clusterName" "$radixOperatorPath")"
 
 if [[ -z "$result" ]]; then
+   # Flux is not running in the active cluster
    # Found nothing, do nothing
-   ##echo "$clusterName is not the active cluster. Not adding Slack Webhook URL."
-   ##:
-   cat "$kuredPath" >> "$radixPatch"
-   echo "      slack-hook-url: $slackWebhookURL" >> "$radixPatch"
+   :
 else
    # Flux is running in the active cluster
-   # Add slackUrl as a kured patch in "$radixOperatorPath/radix-patch.yaml"
-   ##echo "Adding Slack Webhook URL."
-   ##cat "$kuredPath" >> "$radixPatch"
-   ##echo "      slack-hook-url: $slackWebhookURL" >> "$radixPatch"
-   :
+   # Add slackWebhookURL as a kured patch in "$radixOperatorPath/radix-patch.yaml"
+   cat "$kuredPath" >> "$radixPatch"
+   echo "      slack-hook-url: $slackWebhookURL" >> "$radixPatch"
 fi
 
 # Clean up tmp files
