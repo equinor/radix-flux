@@ -45,6 +45,7 @@ if [[ -z "$result" ]]; then
 else
    # Flux is running in the active cluster
    # Add slackUrl as a kured patch in "$radixOperatorPath/radix-patch.yaml"
+   echo "Adding Slack Webhook URL."
    cat "$kuredPath" >> "$radixPatch"
-   echo "      slack-hook-url: https://something.somewhere" >> "$radixPatch"
+   echo "      slack-hook-url: $slackWebhookURL" >> "$radixPatch"
 fi
