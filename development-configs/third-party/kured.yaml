@@ -15,6 +15,6 @@ spec:
     extraArgs:
       period: 5m0s
       reboot-days: mon,tue,wed,thu,fri
-      start-time: 1am
+      start-time: 2am
       end-time: 11pm
       time-zone: CET
