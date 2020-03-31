@@ -42,7 +42,6 @@ if [[ -z "$result" ]]; then
    # Found nothing, do nothing
    ##echo "$clusterName is not the active cluster. Not adding Slack Webhook URL."
    ##:
-   echo "Adding Slack Webhook URL."
    cat "$kuredPath" >> "$radixPatch"
    echo "      slack-hook-url: $slackWebhookURL" >> "$radixPatch"
 else
