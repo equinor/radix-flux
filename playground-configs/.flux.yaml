@@ -4,5 +4,6 @@ version: 1
 patchUpdated:
   generators:
     - command: ../update_radix_patch.sh "$PWD/third-party/external-dns.yaml" ./radix-patch.yaml
+    - command: ../patch-kured-if-active-cluster.sh "$PWD/radix-platform/radix-operator.yaml" "$PWD/third-party/kured.yaml" ./radix-patch.yaml
     - command: kustomize build .
   patchFile: ./flux-patch.yaml
