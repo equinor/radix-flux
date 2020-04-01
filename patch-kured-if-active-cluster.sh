@@ -48,11 +48,7 @@ source ./tmp-cluster-config.env
 # Are we in the active cluster? Use grep (if available) or similar tool to very brutish do a string search
 result="$(grep "$clusterName" "$radixOperatorPath")"
 
-if [[ -z "$result" ]]; then
-   # Flux is not running in the active cluster
-   # Found nothing, do nothing
-   :
-else
+if [[ -n "$result" ]]; then
    # Flux is running in the active cluster
    # Add slackWebhookURL as a kured patch in "$radixOperatorPath/radix-patch.yaml"
    cat "$kuredPath" >> "$radixPatch"
