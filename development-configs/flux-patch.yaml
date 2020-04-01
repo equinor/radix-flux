@@ -17,7 +17,7 @@ metadata:
 spec:
   values:
     image:
-      tag: master-2899775964048d0b6f6b7b3470c3cc1398be39da
+      tag: master-29eace28ed5fe097fbefe9e3fa4ea3c04caf44ac
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
