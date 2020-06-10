@@ -28,3 +28,13 @@ spec:
   values:
     image:
       tag: master-37061be5c10bca6d31b0390fa362fc55d7224d7c
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: radix-export-cost
+  namespace: radix-export-cost
+spec:
+  values:
+    image:
+      tag: master-ac03f8faaadf810760de0a50700242d989ad2722
