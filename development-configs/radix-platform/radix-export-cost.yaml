@@ -16,7 +16,7 @@
       values:
         image:
           repository: radixdev.azurecr.io/radix-cost-exporter
-          tag: "master-latest"
+          tag: "master-7f7ddfe43efb6116eff22b3ab454c536311e65a5"
           pullPolicy: Always
       valuesFrom:
       - secretKeyRef: # ref https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/values/#secrets
