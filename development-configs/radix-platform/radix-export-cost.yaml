@@ -1,0 +1,24 @@
+---
+    apiVersion: flux.weave.works/v1beta1
+    kind: HelmRelease
+    metadata:
+      name: radix-export-cost
+      namespace: radix-export-cost
+      annotations:
+        flux.weave.works/automated: true
+        flux.weave.works/tag.chart-image: glob:master-*
+    spec:
+      releaseName: "radix-export-cost"
+      chart:
+        git: "git@github.com:equinor/radix-cost-exporter"
+        ref: "master"
+        path: "charts"
+      values:
+        image:
+          repository: radixdev.azurecr.io/radix-cost-exporter
+          tag: "master-latest"
+          pullPolicy: Always
+      valuesFrom:
+      - secretKeyRef: # ref https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/values/#secrets
+          name: "cost-db-secret"
+    
