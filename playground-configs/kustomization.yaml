@@ -8,6 +8,7 @@ resources:
 - ./radix-platform/radix-operator.yaml
 - ./radix-platform/radix-acr-cleanup.yaml
 - ./radix-platform/radix-cicd-canary.yaml
+- ./radix-platform/radix-cost-allocation.yaml
 - ./cgroup-garbagecollector.yaml
 patchesStrategicMerge:
 - ./radix-patch.yaml
