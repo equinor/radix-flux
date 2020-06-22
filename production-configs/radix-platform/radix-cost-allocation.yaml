@@ -1,0 +1,24 @@
+---
+    apiVersion: flux.weave.works/v1beta1
+    kind: HelmRelease
+    metadata:
+      name: radix-cost-allocation
+      namespace: radix-cost-allocation
+      annotations:
+        flux.weave.works/automated: true
+        flux.weave.works/tag.chart-image: glob:release-*
+    spec:
+      releaseName: "radix-cost-allocation"
+      chart:
+        git: "git@github.com:equinor/radix-cost-allocation"
+        ref: "release"
+        path: "charts"
+      values:
+        image:
+          repository: radixdev.azurecr.io/radix-cost-allocation
+          tag: "release-latest"
+          pullPolicy: Always
+      valuesFrom:
+      - secretKeyRef: # ref https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/values/#secrets
+          name: "cost-db-secret"
+    
