@@ -15,7 +15,7 @@
         path: "charts"
       values:
         image:
-          repository: radixdev.azurecr.io/radix-cost-allocation
+          repository: radixprod.azurecr.io/radix-cost-allocation
           tag: "release-latest"
           pullPolicy: Always
         db:
