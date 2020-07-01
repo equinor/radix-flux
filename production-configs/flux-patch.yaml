@@ -28,3 +28,13 @@ spec:
   values:
     image:
       tag: release-20cbde6ea6988e59831b98bf9ad0996c1ecf67b9
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: radix-cost-allocation
+  namespace: radix-cost-allocation
+spec:
+  values:
+    image:
+      tag: release-d9d08cf2ec26d9d7da6150d4744f6ff5e6e6df77
