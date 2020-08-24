@@ -41,6 +41,14 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
+    resources:
+      limits:
+        cpu: 50m
+        memory: 150Mi
+      requests:
+        cpu: 50m
+        memory: 150Mi
+    priorityClassName: radix-component-priority
   valuesFrom:
   - configMapKeyRef:
       name: "velero-flux-values"

@@ -27,3 +27,11 @@ spec:
     podAnnotations: {prometheus.io/scrape: "true",prometheus.io/port: "7979"}
     metrics:
       enabled: true
+    resources:
+      limits:
+        cpu: 10m
+        memory: 100Mi
+      requests:
+        cpu: 10m
+        memory: 100Mi
+    priorityClassName: radix-component-priority
