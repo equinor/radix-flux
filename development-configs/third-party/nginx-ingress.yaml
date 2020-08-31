@@ -89,7 +89,7 @@ spec:
         worker-shutdown-timeout: "3600s"
       resources:
         limits:
-          cpu: 6
+          cpu: "6"
           memory: 250Mi
         requests:
           cpu: 100m
