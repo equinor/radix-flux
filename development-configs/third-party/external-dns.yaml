@@ -29,7 +29,7 @@ spec:
       enabled: true
     resources:
       limits:
-        cpu: 6
+        cpu: "6"
         memory: 350Mi
       requests:
         cpu: 25m
