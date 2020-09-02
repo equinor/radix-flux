@@ -87,3 +87,11 @@ spec:
         proxy-buffer-size: "16k" # See https://stackoverflow.com/a/40306737 for a great explanation
         proxy-body-size: "100m"
         worker-shutdown-timeout: "3600s"
+      resources:
+        limits:
+          cpu: "6"
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 500Mi
+      priorityClassName: radix-component-priority
