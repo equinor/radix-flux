@@ -93,5 +93,5 @@ spec:
           memory: 2000Mi
         requests:
           cpu: 300m
-          memory: 1800Mi
+          memory: 2000Mi
       priorityClassName: radix-component-priority
