@@ -14,7 +14,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: velero
-    version: 2.1.1
+    version: 2.5.0
   values:
     updateStrategy: RollingUpdate
     initContainers:
