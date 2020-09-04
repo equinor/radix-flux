@@ -23,6 +23,13 @@ spec:
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixprod.azurecr.io/radix-cicd-canary
       tag: "release-2c1b406e5f4270cf3415bf60ccef47671fe225e1"
+    resources:
+      limits:
+        cpu: "2"
+        memory: 100Mi
+      requests:
+        cpu: 50m
+        memory: 100Mi
   valuesFrom:
   - secretKeyRef:
       name: "canary-secrets"

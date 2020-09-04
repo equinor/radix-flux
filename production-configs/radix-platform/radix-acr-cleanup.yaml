@@ -31,6 +31,13 @@ spec:
       tag: "master-c98af28a1c7f03950f6ea3eb7ac4b1a2544b5178"
     metrics:
       enabled: true
+    resources:
+      limits:
+        cpu: "2"
+        memory: 150Mi
+      requests:
+        cpu: 50m
+        memory: 150Mi
   valuesFrom:
   - configMapKeyRef:
       name: "radix-platform-config"

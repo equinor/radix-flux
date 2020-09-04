@@ -20,6 +20,13 @@
           pullPolicy: Always
         db:
           server: sql-radix-cost-allocation-playground.database.windows.net
+        resources:
+          limits:
+            cpu: "2"
+            memory: 100Mi
+          requests:
+            cpu: 50m
+            memory: 100Mi
       valuesFrom:
       - secretKeyRef: # ref https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/values/#secrets
           name: "cost-db-secret"
