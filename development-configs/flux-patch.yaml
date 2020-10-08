@@ -17,7 +17,7 @@ metadata:
 spec:
   values:
     image:
-      tag: blobfuse_flexvolume-b55f28eeb796163d6fc45abe6369bdcb1d6ada6e
+      tag: blobfuse_flexvolume-bdf87061f2cbbb68044a96591edd1998c3ecac96
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
