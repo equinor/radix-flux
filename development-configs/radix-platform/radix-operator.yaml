@@ -7,12 +7,12 @@ metadata:
   annotations:
     # flux.weave.works/ignore: "true"
     flux.weave.works/automated: true
-    flux.weave.works/tag.chart-image: glob:blobfuse_flexvolume-*
+    flux.weave.works/tag.chart-image: glob:master-*
 spec:
   releaseName: "radix-operator"
   chart:
     git: "git@github.com:equinor/radix-operator"
-    ref: "blobfuse_flexvolume"
+    ref: "master"
     path: "charts/radix-operator"
   values:
     image:
