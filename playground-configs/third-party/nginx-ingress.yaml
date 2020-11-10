@@ -90,8 +90,8 @@ spec:
       resources:
         limits:
           cpu: "6"
-          memory: 500Mi
+          memory: 1000Mi
         requests:
           cpu: 100m
-          memory: 500Mi
+          memory: 1000Mi
       priorityClassName: radix-component-priority
