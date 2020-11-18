@@ -71,7 +71,7 @@ spec:
                 - key: app
                   operator: In
                   values:
-                  - nginx-ingress
+                  - ingress-nginx
               topologyKey: kubernetes.io/hostname
       podLabels:
         app: nginx-ingress
