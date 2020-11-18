@@ -47,7 +47,7 @@ spec:
         memory: 2048Mi
       requests:
         cpu: 50m
-        memory: 150Mi
+        memory: 1024Mi
     priorityClassName: radix-component-priority
   valuesFrom:
   - configMapKeyRef:
