@@ -73,6 +73,8 @@ spec:
                   values:
                   - nginx-ingress
               topologyKey: kubernetes.io/hostname
+      podLabels:
+        app: nginx-ingress
       publishService:
         enabled: true
       stats:
