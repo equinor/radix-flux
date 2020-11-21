@@ -20,7 +20,7 @@ spec:
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
       tag: "release-4cbc600ad252dea5796393b017bfbf3b1fd1ee9e"
-    activeClusterName: playground-26-c
+    activeClusterName: playground-47
     imageBuilder: radix-image-builder:release-latest
     resources:
       limits:
