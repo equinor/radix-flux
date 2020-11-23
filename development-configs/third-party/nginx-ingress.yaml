@@ -48,16 +48,16 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: nginx-ingress
+  name: ingress-nginx
   namespace: default
   annotations:
     flux.weave.works/ignore: false
 spec:
-  releaseName: nginx-ingress
+  releaseName: ingress-nginx
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
-    name: nginx-ingress
-    version: 1.41.3
+    repository: https://kubernetes.github.io/ingress-nginx
+    name: ingress-nginx
+    version: 3.10.1
   values:
     controller:
       replicaCount: 2
@@ -71,8 +71,11 @@ spec:
                 - key: app
                   operator: In
                   values:
+                  - ingress-nginx
                   - nginx-ingress
               topologyKey: kubernetes.io/hostname
+      podLabels:
+        app: nginx-ingress
       publishService:
         enabled: true
       stats:
