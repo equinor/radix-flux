@@ -7,7 +7,7 @@ metadata:
 spec:
   values:
     image:
-      tag: release-8a1f146f0ff4e2b47b4d52fec378f79371f0d254
+      tag: release-7cca3d881aba01e7323600d632fc54b3c9711d7e
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
@@ -17,7 +17,7 @@ metadata:
 spec:
   values:
     image:
-      tag: release-8e7db7e8e2872d8bbcef21eb2be6563e650f323b
+      tag: release-db199acf7294f31a17f67de6803ede33e7c7fa17
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
@@ -27,4 +27,14 @@ metadata:
 spec:
   values:
     image:
-      tag: release-20cbde6ea6988e59831b98bf9ad0996c1ecf67b9
+      tag: release-e3b657003e2163ce618b4813af66c75be33ad597
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: radix-cost-allocation
+  namespace: radix-cost-allocation
+spec:
+  values:
+    image:
+      tag: release-18cfd5a5e3bbb3db58ddbf3e9d25703c2da2d74a
