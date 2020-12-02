@@ -5,8 +5,8 @@
       name: radix-cost-allocation
       namespace: radix-cost-allocation
       annotations:
-        flux.weave.works/automated: true
-        flux.weave.works/tag.chart-image: glob:master-*
+        fluxcd.io/automated: true
+        filter.fluxcd.io/chart-image: glob:master-*
         helm.fluxcd.io/migrate: "true"
     spec:
       releaseName: "radix-cost-allocation"
