@@ -5,7 +5,7 @@ metadata:
   name: external-dns
   namespace: default
   annotations:
-    flux.weave.works/automated: true
+    flux.weave.works/automated: "true"
 spec:
   releaseName: "external-dns"
   chart:
