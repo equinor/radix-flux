@@ -26,10 +26,10 @@ spec:
     resources:
       limits:
         cpu: "2"
-        memory: 150Mi
+        memory: 100Mi
       requests:
         cpu: 100m
-        memory: 150Mi
+        memory: 100Mi
   valuesFrom:
   - secretKeyRef: # ref https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/values/#secrets
       name: "cost-db-secret"
