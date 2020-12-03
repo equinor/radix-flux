@@ -1,5 +1,5 @@
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: radix-acr-cleanup
@@ -8,10 +8,12 @@ metadata:
   namespace: default
   annotations:
     # flux.weave.works/ignore: "true"
-    flux.weave.works/automated: true
-    flux.weave.works/tag.chart-image: glob:master-*
+    fluxcd.io/automated: true
+    filter.fluxcd.io/chart-image: glob:master-*
+    helm.fluxcd.io/migrate: "true"
 spec:
   releaseName: "radix-acr-cleanup"
+  helmVersion: v3
   chart:
     git: "git@github.com:equinor/radix-acr-cleanup"
     ref: "master"
