@@ -6,7 +6,7 @@ metadata:
   namespace: default
   annotations:
     # flux.weave.works/ignore: "true"
-    fluxcd.io/automated: true
+    fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: glob:master-*
     helm.fluxcd.io/migrate: "true"
 spec:

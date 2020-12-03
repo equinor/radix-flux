@@ -5,7 +5,7 @@ metadata:
   name: radix-cost-allocation
   namespace: radix-cost-allocation
   annotations:
-    fluxcd.io/automated: true
+    fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: glob:master-*
     helm.fluxcd.io/migrate: "true"
 spec:
