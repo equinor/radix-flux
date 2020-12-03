@@ -11,7 +11,6 @@ metadata:
 spec:
   releaseName: "radix-cost-allocation"
   helmVersion: v3
-  forceUpgrade: true
   chart:
     git: "git@github.com:equinor/radix-cost-allocation"
     ref: "master"
