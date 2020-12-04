@@ -1,13 +1,15 @@
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: external-dns
   namespace: default
   annotations:
-    flux.weave.works/automated: true
+    fluxcd.io/automated: "true"
+    helm.fluxcd.io/migrate: "true"
 spec:
   releaseName: "external-dns"
+  helmVersion: v3
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: external-dns

@@ -1,15 +1,16 @@
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: radix-operator
   namespace: default
   annotations:
-    # flux.weave.works/ignore: "true"
-    flux.weave.works/automated: true
-    flux.weave.works/tag.chart-image: glob:release-*
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:release-*
+    helm.fluxcd.io/migrate: "true"
 spec:
   releaseName: "radix-operator"
+  helmVersion: v3
   chart:
     git: "git@github.com:equinor/radix-operator"
     ref: "release"
