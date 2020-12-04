@@ -1,5 +1,5 @@
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: radix-acr-cleanup
@@ -9,7 +9,7 @@ spec:
     image:
       tag: master-6483dc14de27ae86f719d9cbd35453fa001caeeb
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: radix-operator
@@ -19,7 +19,7 @@ spec:
     image:
       tag: master-bb9552f6f66468e389bf462e0a807efa82796f1a
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: radix-cicd-canary
@@ -29,7 +29,7 @@ spec:
     image:
       tag: master-7422c549caa7f670f42c35a7f097271099c2f5f9
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: radix-cost-allocation

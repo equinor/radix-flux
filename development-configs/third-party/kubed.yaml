@@ -2,15 +2,17 @@
 # and a label exists on the target namespace(s) that reference that sync key.
 # Since we have not enabled notifications from kubed, we can hardcode clusterName for all dev clusters
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: kubed
   namespace: kube-system
   annotations:
-    flux.weave.works/ignore: false
+    fluxcd.io/ignore: "false"
+    helm.fluxcd.io/migrate: "true"
 spec:
   releaseName: "kubed"
+  helmVersion: v3
   chart:
     repository: https://charts.appscode.com/stable/
     name: kubed
