@@ -6,7 +6,7 @@ metadata:
   namespace: default
   annotations:
     fluxcd.io/automated: "true"
-    helm.fluxcd.io/migrate: "true"
+    helm.fluxcd.io/migrate: "false"
 spec:
   releaseName: "external-dns"
   helmVersion: v3
