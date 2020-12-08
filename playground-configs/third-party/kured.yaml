@@ -4,8 +4,6 @@ kind: HelmRelease
 metadata:
   name: kured
   namespace: default
-  annotations:
-    helm.fluxcd.io/migrate: "true"
 spec:
   releaseName: "kured"
   helmVersion: v3

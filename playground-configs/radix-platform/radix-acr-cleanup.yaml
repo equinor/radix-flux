@@ -9,7 +9,6 @@ metadata:
   annotations:
     fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: glob:release-*
-    helm.fluxcd.io/migrate: "true"
 spec:
   releaseName: "radix-acr-cleanup"
   helmVersion: v3
