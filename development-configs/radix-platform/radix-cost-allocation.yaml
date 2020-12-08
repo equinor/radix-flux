@@ -7,7 +7,6 @@ metadata:
   annotations:
     fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: glob:master-*
-    helm.fluxcd.io/migrate: "false"
 spec:
   releaseName: "radix-cost-allocation"
   helmVersion: v3

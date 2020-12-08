@@ -52,7 +52,6 @@ metadata:
   namespace: default
   annotations:
     fluxcd.io/ignore: "false"
-    helm.fluxcd.io/migrate: "true"
 spec:
   releaseName: ingress-nginx
   helmVersion: v3

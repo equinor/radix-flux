@@ -9,7 +9,6 @@ metadata:
   namespace: velero
   annotations:
     fluxcd.io/ignore: "false"
-    helm.fluxcd.io/migrate: "true"
 spec:
   releaseName: velero
   helmVersion: v3

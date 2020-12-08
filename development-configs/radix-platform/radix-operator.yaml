@@ -8,7 +8,6 @@ metadata:
     # flux.weave.works/ignore: "true"
     fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: glob:master-*
-    helm.fluxcd.io/migrate: "false"
 spec:
   releaseName: "radix-operator"
   helmVersion: v3

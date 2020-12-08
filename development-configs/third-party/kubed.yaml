@@ -9,7 +9,6 @@ metadata:
   namespace: kube-system
   annotations:
     fluxcd.io/ignore: "false"
-    helm.fluxcd.io/migrate: "true"
 spec:
   releaseName: "kubed"
   helmVersion: v3
