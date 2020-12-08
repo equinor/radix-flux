@@ -8,7 +8,7 @@ metadata:
     # flux.weave.works/ignore: "true"
     fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: glob:master-*
-    helm.fluxcd.io/migrate: "true"
+    helm.fluxcd.io/migrate: "false"
 spec:
   releaseName: "radix-cicd-canary"
   helmVersion: v3
