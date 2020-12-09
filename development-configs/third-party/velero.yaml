@@ -2,15 +2,16 @@
 # see https://github.com/equinor/radix-platform/scripts/velero
 # For velero chart doc see https://github.com/helm/charts/tree/master/stable/velero
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: velero
   namespace: velero
   annotations:
-    flux.weave.works/ignore: false
+    fluxcd.io/ignore: "false"
 spec:
   releaseName: velero
+  helmVersion: v3
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: velero

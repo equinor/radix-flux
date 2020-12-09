@@ -1,6 +1,6 @@
 # Radix-Flux
 
-Radix k8s GitOps using Weavework Flux.
+To operate a K8s cluster that has a Single Source of Truth, deploy K8s resources in a declarative way, and provide configuration traceability, we use Weaveworks Flux as a GitOps controller. This ensures that the cluster state mirrors the configuration in our Git repository.
 
 _Radix flux docs:_
 - [How to flux](./how-to.md)
@@ -9,6 +9,7 @@ _Radix flux docs:_
 - [Radix platform components](https://github.com/equinor/radix-private/blob/master/docs/radix-platform/readme.md)
 
 _Official docs:_
+- [Flux documentation](https://docs.fluxcd.io/)
 - [Weavework Flux](https://github.com/fluxcd/flux)
 - [Weavework Flux - Helm operator](https://github.com/fluxcd/flux#get-started-with-the-helm-operator)
 - [Weavework Flux - HelmRelease Custom Resource](https://docs.fluxcd.io/en/latest/helm-operator/references/helmrelease-custom-resource.html)
