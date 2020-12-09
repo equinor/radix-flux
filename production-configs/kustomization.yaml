@@ -5,6 +5,8 @@ resources:
 - ./third-party/velero.yaml
 - ./third-party/velero-schedule.yaml
 - ./third-party/external-dns.yaml
+- ./third-party/blobfuse-flexvolume.yaml
+- ./third-party/sysctl-install-blobfuse.yaml
 - ./radix-platform/radix-operator.yaml
 - ./radix-platform/radix-acr-cleanup.yaml
 - ./radix-platform/radix-cicd-canary.yaml
