@@ -87,6 +87,7 @@ spec:
         proxy-buffer-size: "16k" # See https://stackoverflow.com/a/40306737 for a great explanation
         proxy-body-size: "100m"
         worker-shutdown-timeout: "3600s"
+        large-client-header-buffers: "4 24k"
       resources:
         limits:
           cpu: "6"
