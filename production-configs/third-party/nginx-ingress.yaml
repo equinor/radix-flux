@@ -53,7 +53,7 @@ metadata:
   annotations:
     flux.weave.works/ignore: false
 spec:
-  releaseName: nginx-ingress
+  releaseName: ingress-nginx
   chart:
     repository: https://kubernetes.github.io/ingress-nginx
     name: ingress-nginx
