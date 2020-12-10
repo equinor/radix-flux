@@ -23,13 +23,17 @@ spec:
     spec:
       containers:
         - name: blobfuse-flexvol-installer
-          image: mcr.microsoft.com/k8s/flexvolume/blobfuse-flexvolume:1.0.13
+          image: mcr.microsoft.com/k8s/flexvolume/blobfuse-flexvolume:1.0.16
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: volplugins
               mountPath: /etc/kubernetes/volumeplugins/
             - name: varlog
               mountPath: /var/log/
+            - name: tmp
+              mountPath: /tmp/
+            - name: mnt
+              mountPath: /mnt/
       volumes:
         - name: varlog
           hostPath:
@@ -37,5 +41,11 @@ spec:
         - name: volplugins
           hostPath:
             path: /etc/kubernetes/volumeplugins/
+        - name: tmp
+          hostPath:
+            path: /tmp/
+        - name: mnt
+          hostPath:
+            path: /mnt/
       nodeSelector:
         beta.kubernetes.io/os: linux
