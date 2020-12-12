@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: kured
-    version: 1.5.0
+    version: 1.6.0
   values:
     updateStrategy: RollingUpdate
     extraArgs:
