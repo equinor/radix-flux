@@ -45,15 +45,16 @@
 # The key and values in a ConfigMap can only be strings.
 # This means that we want a value with boolean values we need to quote the values, like "true" or "false". Same for numbers, like "100".
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: ingress-nginx
   namespace: default
   annotations:
-    flux.weave.works/ignore: false
+    fluxcd.io/ignore: "false"
 spec:
   releaseName: ingress-nginx
+  helmVersion: v3
   chart:
     repository: https://kubernetes.github.io/ingress-nginx
     name: ingress-nginx
