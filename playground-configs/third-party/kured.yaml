@@ -8,9 +8,9 @@ spec:
   releaseName: "kured"
   helmVersion: v3
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
+    repository: https://weaveworks.github.io/kured
     name: kured
-    version: 1.5.0
+    version: 2.2.1
   values:
     updateStrategy: RollingUpdate
     extraArgs:
