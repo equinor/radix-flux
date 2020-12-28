@@ -52,9 +52,9 @@ if [[ -n "$result" ]]; then
    # Flux is running in the active cluster
    # Add slackWebhookURL as a kured patch in "$radixOperatorPath/radix-patch.yaml"
    cat "$kuredPath" >> "$radixPatch"
-   echo "      slackChannel: $slackWebhookURL" >> "$radixPatch"
-   echo "      messageTemplateDrain: Draining node %s in *$clusterType* cluster *$clusterName*" >> "$radixPatch"
-   echo "      messageTemplateReboot: Rebooting node %s in *$clusterType* cluster *$clusterName*" >> "$radixPatch"
+   echo "      slack-hook-url: $slackWebhookURL" >> "$radixPatch"
+   echo "      message-template-drain: Draining node %s in *$clusterType* cluster *$clusterName*" >> "$radixPatch"
+   echo "      message-template-reboot: Rebooting node %s in *$clusterType* cluster *$clusterName*" >> "$radixPatch"
 fi
 
 # Clean up tmp files

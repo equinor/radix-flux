@@ -20,9 +20,9 @@ spec:
       prometheus.io/scrape: "true"
       prometheus.io/path: "/metrics"
       prometheus.io/port: "8080"
-    configuration:
-      period: "5m0s"
-      rebootDays: ["mon","tue","wed","thu","fri"]
-      startTime: "8am"
-      endTime: "4pm"
-      timeZone: "CET"
+    extraArgs:
+      period: 5m0s
+      reboot-days: mon,tue,wed,thu,fri
+      start-time: 8am
+      end-time: 4pm
+      time-zone: CET
