@@ -53,8 +53,8 @@ if [[ -n "$result" ]]; then
    # Add slackWebhookURL as a kured patch in "$radixOperatorPath/radix-patch.yaml"
    cat "$kuredPath" >> "$radixPatch"
    echo "      slackChannel: $slackWebhookURL" >> "$radixPatch"
-   echo "      messageTemplateDrain: \"Draining node %s in *$clusterType* cluster *$clusterName*\"" >> "$radixPatch"
-   echo "      messageTemplateReboot: \"Rebooting node %s in *$clusterType* cluster *$clusterName*\"" >> "$radixPatch"
+   echo "      messageTemplateDrain: Draining node %s in *$clusterType* cluster *$clusterName*" >> "$radixPatch"
+   echo "      messageTemplateReboot: Rebooting node %s in *$clusterType* cluster *$clusterName*" >> "$radixPatch"
 fi
 
 # Clean up tmp files
