@@ -13,6 +13,13 @@ spec:
     version: 2.2.1
   values:
     updateStrategy: RollingUpdate
+    metrics:
+      create: true
+    service:
+      annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/path: "/metrics"
+      prometheus.io/port: "8080"
     extraArgs:
       period: 5m0s
       reboot-days: mon,tue,wed,thu,fri
