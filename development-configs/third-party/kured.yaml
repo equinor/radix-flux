@@ -21,8 +21,8 @@ spec:
       prometheus.io/path: "/metrics"
       prometheus.io/port: "8080"
     configuration:
-      period: 5m0s
-      rebootDays: mon,tue,wed,thu,fri
-      startTime: 8am
-      endTime: 4pm
-      timeZone: CET
+      period: "5m0s"
+      rebootDays: ["mon","tue","wed","thu","fri"]
+      startTime: "8am"
+      endTime: "4pm"
+      timeZone: "CET"
