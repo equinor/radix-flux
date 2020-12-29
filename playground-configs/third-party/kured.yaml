@@ -17,9 +17,9 @@ spec:
       create: true
     service:
       annotations:
-      prometheus.io/scrape: "true"
-      prometheus.io/path: "/metrics"
-      prometheus.io/port: "8080"
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "8080"
     extraArgs:
       period: 5m0s
       reboot-days: mon,tue,wed,thu,fri
