@@ -22,7 +22,6 @@ spec:
     deleteUntagged: false
     performDelete: true
     period: 1h
-    cleanupDays: "su,sa"
     cleanupStart: "0:00"
     cleanupEnd: "06:00"
     image:
