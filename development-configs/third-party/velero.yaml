@@ -13,9 +13,9 @@ spec:
   releaseName: velero
   helmVersion: v3
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
+    repository: https://vmware-tanzu.github.io/helm-charts
     name: velero
-    version: 2.1.1
+    version: 2.7.3
   values:
     updateStrategy: RollingUpdate
     initContainers:
