@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://vmware-tanzu.github.io/helm-charts
     name: velero
-    version: 2.7.3
+    version: 2.10.0
   values:
     updateStrategy: RollingUpdate
     initContainers:
