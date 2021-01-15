@@ -19,8 +19,8 @@ spec:
   values:
     updateStrategy: RollingUpdate
     initContainers:
-    - name: velero-plugin-for-microsoft-azure:v1.0.0
-      image: velero/velero-plugin-for-microsoft-azure:v1.0.0
+    - name: velero-plugin-for-microsoft-azure:v1.1.1
+      image: velero/velero-plugin-for-microsoft-azure:v1.1.1
       volumeMounts:
       - name: plugins
         mountPath: /target
