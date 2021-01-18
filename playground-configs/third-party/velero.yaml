@@ -13,12 +13,17 @@ spec:
   releaseName: velero
   helmVersion: v3
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
+    repository: https://vmware-tanzu.github.io/helm-charts
     name: velero
-    version: 2.1.1
+    version: 2.14.4
   values:
     updateStrategy: RollingUpdate
     initContainers:
+    - name: velero-plugin-for-microsoft-azure
+      image: velero/velero-plugin-for-microsoft-azure:v1.1.1
+      volumeMounts:
+      - name: plugins
+        mountPath: /target
     - name: radix-velero-plugin
       image: radixdev.azurecr.io/radix-velero-plugin:latest
       volumeMounts:
