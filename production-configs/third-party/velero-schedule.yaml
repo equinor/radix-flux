@@ -21,6 +21,6 @@ spec:
    - pvc
    includedResources:
    - '*'
-   storageLocation: ""
+   storageLocation: azure
    ttl: 168h0m0s
    
