@@ -12,6 +12,16 @@ spec:
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
+  name: radix-operator
+  namespace: default
+spec:
+  values:
+    image:
+      tag: master-6775bd7d6e9f3b7beddfad19fa4b8f87d1e21302
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
   name: radix-cicd-canary
   namespace: radix-cicd-canary
 spec:
