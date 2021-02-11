@@ -60,4 +60,3 @@ spec:
       name: "velero-flux-values"
       key: "values"
       optional: false
-
