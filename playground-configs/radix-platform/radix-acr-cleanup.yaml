@@ -15,7 +15,7 @@ spec:
   helmVersion: v3
   chart:
     git: "git@github.com:equinor/radix-acr-cleanup"
-    ref: "master"
+    ref: "release"
     path: "charts/radix-acr-cleanup"
   values:
     registry: radixdev
