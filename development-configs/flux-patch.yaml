@@ -17,7 +17,7 @@ metadata:
 spec:
   values:
     image:
-      tag: master-6775bd7d6e9f3b7beddfad19fa4b8f87d1e21302
+      tag: master-25e94e2056f314cf4cd1491900b31cab5db4d388
 ---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
