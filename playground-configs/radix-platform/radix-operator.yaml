@@ -26,7 +26,7 @@ spec:
     imageScanner: radix-image-scanner:release-latest
     configToMap: radix-config-2-map:release-latest
     jobScheduler: radix-job-scheduler:release-latest
-    containerRegistry: radixprod.azurecr.io
+    containerRegistry: radixdev.azurecr.io
     resources:
       limits:
         cpu: "2"
