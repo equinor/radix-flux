@@ -30,10 +30,10 @@ spec:
     resources:
       limits:
         cpu: "2"
-        memory: 1000Mi
+        memory: 2000M
       requests:
         cpu: 100m
-        memory: 1000Mi
+        memory: 1500M
   valuesFrom:
   - configMapKeyRef:
       name: "radix-platform-config"
