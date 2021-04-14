@@ -61,7 +61,12 @@ spec:
     version: 3.23.0
   values:
     controller:
-      replicaCount: 2
+      autoscaling:
+        enabled: true
+        minReplicas: 2
+        maxReplicas: 5
+        targetCPUUtilizationPercentage: 50
+        targetMemoryUtilizationPercentage: 50
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
