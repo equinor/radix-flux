@@ -37,4 +37,4 @@ metadata:
 spec:
   values:
     image:
-      tag: master-test1
+      tag: master-test2
