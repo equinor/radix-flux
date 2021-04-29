@@ -37,4 +37,4 @@ metadata:
 spec:
   values:
     image:
-      tag: master-aa6c02d6abcf808af9ea5dc3925ad709e3a81a7d
+      tag: master-27cb5c93b78fc46adbdcc1c03ed0e5a78e85083d
