@@ -21,3 +21,4 @@ spec:
       start-time: 8am
       end-time: 4pm
       time-zone: CET
+      lock-ttl: 30m
