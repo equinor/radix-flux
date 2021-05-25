@@ -65,8 +65,8 @@ spec:
         enabled: true
         minReplicas: 2
         maxReplicas: 5
-        targetCPUUtilizationPercentage: 50
-        targetMemoryUtilizationPercentage: 50
+        targetCPUUtilizationPercentage: 80
+        targetMemoryUtilizationPercentage: 80
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -102,8 +102,8 @@ spec:
       resources:
         limits:
           cpu: "6"
-          memory: 350Mi
+          memory: 500Mi
         requests:
           cpu: 100m
-          memory: 350Mi
+          memory: 500Mi
       priorityClassName: radix-component-priority
