@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://weaveworks.github.io/kured
     name: kured
-    version: 2.3.1
+    version: 2.6.0
   values:
     updateStrategy: RollingUpdate
     metrics:
@@ -21,3 +21,4 @@ spec:
       start-time: 8am
       end-time: 4pm
       time-zone: CET
+      lock-ttl: 30m
