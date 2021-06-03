@@ -21,7 +21,7 @@ spec:
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
       tag: "master-ecfe94aa8d378f1f086f99a12f39443ab286f4c8"
-    activeClusterName: weekly-21
+    activeClusterName: weekly-22
     resources:
       limits:
         cpu: "2"
