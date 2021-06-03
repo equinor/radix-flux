@@ -6,6 +6,7 @@ resources:
   - ./third-party/velero-schedule.yaml
   - ./third-party/external-dns.yaml
   - ./third-party/blobfuse-flexvolume.yaml
+  - ./third-party/blob-csi-azure-driver.yaml
   - ./third-party/sysctl-install-blobfuse.yaml
   - ./third-party/dynatrace.yaml
   - ./radix-platform/radix-operator.yaml

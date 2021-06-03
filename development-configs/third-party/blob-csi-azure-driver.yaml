@@ -1,0 +1,28 @@
+# Dependent on the secret "cloud-credentials", which should be installed by the base component script,
+# see https://github.com/equinor/radix-platform/scripts/velero
+# For velero chart doc see https://github.com/helm/charts/tree/master/stable/velero
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: blob-csi-driver
+  namespace: kube-system
+  annotations:
+    fluxcd.io/ignore: "false"
+spec:
+  releaseName: blob-csi-driver
+  helmVersion: v3
+  chart:
+    repository: https://raw.githubusercontent.com/kubernetes-sigs/blob-csi-driver/master/charts
+    name: blob-csi-driver
+    version: v1.2.0
+  values:
+    updateStrategy: RollingUpdate
+    resources:
+      limits:
+        cpu: "1"
+        memory: 2048Mi
+      requests:
+        cpu: 50m
+        memory: 150Mi
+    priorityClassName: radix-component-priority
