@@ -1,0 +1,7 @@
+resources:
+- ./third-party/kubed.yaml
+- ./third-party/kured.yaml
+- ./third-party/nginx-ingress.yaml
+- ./cgroup-garbagecollector.yaml
+patchesStrategicMerge:
+- ./radix-patch.yaml

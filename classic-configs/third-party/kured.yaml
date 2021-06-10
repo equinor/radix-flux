@@ -1,0 +1,23 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kured
+  namespace: default
+spec:
+  releaseName: "kured"
+  helmVersion: v3
+  chart:
+    repository: https://weaveworks.github.io/kured
+    name: kured
+    version: 2.3.1
+  values:
+    updateStrategy: RollingUpdate
+    metrics:
+      create: true
+    extraArgs:
+      period: 5m0s
+      reboot-days: mon,tue,wed,thu,fri
+      start-time: 5am
+      end-time: 7am
+      time-zone: CET
