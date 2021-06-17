@@ -1,0 +1,34 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: radix-cost-allocation
+  namespace: radix-cost-allocation
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:release-*
+spec:
+  releaseName: "radix-cost-allocation"
+  helmVersion: v3
+  chart:
+    git: "git@github.com:equinor/radix-cost-allocation"
+    ref: "release"
+    path: "charts"
+  values:
+    image:
+      repository: radixprod.azurecr.io/radix-cost-allocation
+      tag: "release-latest"
+      pullPolicy: Always
+    db:
+      server: sql-radix-cost-allocation-prod.database.windows.net
+    resources:
+      limits:
+        cpu: "2"
+        memory: 150Mi
+      requests:
+        cpu: 50m
+        memory: 150Mi
+  valuesFrom:
+  - secretKeyRef: # ref https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/values/#secrets
+      name: "cost-db-secret"
+      key: radix-cost-allocation-values.yaml
