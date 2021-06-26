@@ -53,10 +53,10 @@ spec:
         - resources:
             requests:
               cpu: 5m
-              memory: 500Ki
+              memory: 10Mi
             limits:
               cpu: 5m
-              memory: 10Mi  # This crashes on startup with a 5Mi limit, but only uses about 320Ki after that.
+              memory: 20Mi
           securityContext:
             privileged: true
           image: ubuntu:16.04

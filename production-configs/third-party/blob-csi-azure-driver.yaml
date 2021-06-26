@@ -1,0 +1,25 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: blob-csi-driver
+  namespace: kube-system
+  annotations:
+    fluxcd.io/ignore: "false"
+spec:
+  releaseName: blob-csi-driver
+  helmVersion: v3
+  chart:
+    repository: https://raw.githubusercontent.com/kubernetes-sigs/blob-csi-driver/master/charts
+    name: blob-csi-driver
+    version: v1.2.0
+  values:
+    updateStrategy: RollingUpdate
+    resources:
+      limits:
+        cpu: "1"
+        memory: 2048Mi
+      requests:
+        cpu: 100m
+        memory: 150Mi
+    priorityClassName: radix-component-priority

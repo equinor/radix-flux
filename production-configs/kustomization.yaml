@@ -8,6 +8,7 @@ resources:
 - ./third-party/blobfuse-flexvolume.yaml
 - ./third-party/sysctl-install-blobfuse.yaml
 - ./third-party/dynatrace.yaml
+- ./third-party/blob-csi-azure-driver.yaml
 - ./radix-platform/radix-operator.yaml
 - ./radix-platform/radix-acr-cleanup.yaml
 - ./radix-platform/radix-cicd-canary.yaml
