@@ -61,7 +61,7 @@ spec:
     version: 3.34.0
   values:
     controller:
-      replicaCount: 2
+      replicaCount: 4
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
