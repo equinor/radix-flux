@@ -3,4 +3,5 @@ resources:
 - ./third-party/kured.yaml
 - ./third-party/nginx-ingress.yaml
 - ./third-party/velero.yaml
+- ./third-party/velero-schedule.yaml
 - ./cgroup-garbagecollector.yaml
