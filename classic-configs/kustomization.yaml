@@ -2,4 +2,5 @@ resources:
 - ./third-party/kubed.yaml
 - ./third-party/kured.yaml
 - ./third-party/nginx-ingress.yaml
+- ./third-party/velero.yaml
 - ./cgroup-garbagecollector.yaml
