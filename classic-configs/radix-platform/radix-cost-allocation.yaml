@@ -16,11 +16,11 @@ spec:
     path: "charts"
   values:
     image:
-      repository: radixprod.azurecr.io/radix-cost-allocation
+      repository: radixdev.azurecr.io/radix-cost-allocation
       tag: "release-latest"
       pullPolicy: Always
     db:
-      server: sql-radix-cost-allocation-prod.database.windows.net
+      server: sql-radix-cost-allocation-dev.database.windows.net
     resources:
       limits:
         cpu: "2"
