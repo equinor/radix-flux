@@ -28,8 +28,8 @@ spec:
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
-      repository: radixprod.azurecr.io/radix-acr-cleanup
-      tag: "master-c98af28a1c7f03950f6ea3eb7ac4b1a2544b5178"
+      repository: radixdev.azurecr.io/radix-acr-cleanup
+      tag: "master-bd3b024df51ecd6d4e75d7dc16d69955f2de0687"
     metrics:
       enabled: true
     resources:
