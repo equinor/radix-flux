@@ -16,13 +16,13 @@ spec:
     ref: "release"
     path: "charts/radix-cicd-canary"
   values:
-    radixApiPrefix: server-radix-api-prod
-    radixWebhookPrefix: webhook-radix-github-webhook-prod
+    radixApiPrefix: server-radix-api-qa
+    radixWebhookPrefix: webhook-radix-github-webhook-qa
     sleepIntervalTestRuns: 300
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
-      repository: radixprod.azurecr.io/radix-cicd-canary
+      repository: s045acrs045.azurecr.io/radix-cicd-canary
       tag: "release-2c1b406e5f4270cf3415bf60ccef47671fe225e1"
     resources:
       limits:
