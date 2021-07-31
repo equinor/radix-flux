@@ -4,6 +4,7 @@ resources:
 - ./third-party/nginx-ingress.yaml
 - ./third-party/velero.yaml
 - ./third-party/velero-schedule.yaml
+- ./third-party/external-dns.yaml
 - ./radix-platform/radix-operator.yaml
 - ./radix-platform/radix-cicd-canary.yaml
 - ./cgroup-garbagecollector.yaml
