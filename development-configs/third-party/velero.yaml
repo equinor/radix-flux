@@ -25,7 +25,7 @@ spec:
       - name: plugins
         mountPath: /target
     - name: radix-velero-plugin
-      image: radixdev.azurecr.io/radix-velero-plugin:latest
+      image: radixdev.azurecr.io/radix-velero-plugin:master-latest
       volumeMounts:
       - name: plugins
         mountPath: /target
