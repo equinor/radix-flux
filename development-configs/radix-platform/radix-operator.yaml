@@ -29,6 +29,7 @@ spec:
       requests:
         cpu: 100m
         memory: 1000Mi
+    forceNonRootDeploymentContainers: true
   valuesFrom:
   - configMapKeyRef:
       name: "radix-platform-config"
