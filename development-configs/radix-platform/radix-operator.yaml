@@ -13,7 +13,7 @@ spec:
   helmVersion: v3
   chart:
     git: "git@github.com:equinor/radix-operator"
-    ref: "master"
+    ref: "115443-force-nonroot-flag"
     path: "charts/radix-operator"
   values:
     image:
