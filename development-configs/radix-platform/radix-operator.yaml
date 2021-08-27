@@ -7,20 +7,20 @@ metadata:
   annotations:
     # flux.weave.works/ignore: "true"
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:115443-force-nonroot-flag-*
+    filter.fluxcd.io/chart-image: glob:master-*
 spec:
   releaseName: "radix-operator"
   helmVersion: v3
   chart:
     git: "git@github.com:equinor/radix-operator"
-    ref: "115443-force-nonroot-flag"
+    ref: "master"
     path: "charts/radix-operator"
   values:
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
-      tag: "115443-force-nonroot-flag-dev"
+      tag: "master-ecfe94aa8d378f1f086f99a12f39443ab286f4c8"
     activeClusterName: weekly-34
     resources:
       limits:
