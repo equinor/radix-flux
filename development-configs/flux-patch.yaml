@@ -17,7 +17,7 @@ metadata:
 spec:
   values:
     image:
-      tag: 115443-force-nonroot-flag-3d95233e61291ed64aafd8d0459113ba8d927638
+      tag: master-e51ef5ce62b9ef05fb4a356c1e7c8a45f6387c4b
 ---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
