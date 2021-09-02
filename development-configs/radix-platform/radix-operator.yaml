@@ -30,6 +30,10 @@ spec:
         cpu: 100m
         memory: 1000Mi
     forceNonRootDeploymentContainers: true
+    app:
+      limitrange:
+        default:
+          memory: 1500Mi
   valuesFrom:
   - configMapKeyRef:
       name: "radix-platform-config"
