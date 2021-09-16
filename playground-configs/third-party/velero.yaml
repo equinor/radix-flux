@@ -52,7 +52,7 @@ spec:
         cpu: "6"
         memory: 2048Mi
       requests:
-        cpu: 50m
+        cpu: 200m
         memory: 1024Mi
     priorityClassName: radix-component-priority
   valuesFrom:
