@@ -47,9 +47,7 @@ spec:
       GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/authorize
       GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
       GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor"     # Viewer|Editor|Admin
-    envFrom:
-    - secretRef:
-        name: grafana-secrets
+    envFromSecret: grafana-secrets
   valuesFrom:
   - secretKeyRef:
       name: "grafana-helm-secret"
