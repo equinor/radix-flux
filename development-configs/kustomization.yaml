@@ -11,6 +11,7 @@ resources:
   - ./third-party/dynatrace.yaml
   - ./third-party/aad-pod-identity.yaml
   - ./third-party/cert-manager.yaml
+  - ./third-party/grafana.yaml
   - ./radix-platform/radix-operator.yaml
   - ./radix-platform/radix-acr-cleanup.yaml
   - ./radix-platform/radix-cicd-canary.yaml
