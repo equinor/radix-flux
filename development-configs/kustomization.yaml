@@ -9,7 +9,6 @@ resources:
   - ./third-party/blob-csi-azure-driver.yaml
   - ./third-party/sysctl-install-blobfuse.yaml
   - ./third-party/dynatrace.yaml
-  - ./third-party/aad-pod-identity.yaml
   - ./third-party/cert-manager.yaml
   - ./third-party/grafana.yaml
   - ./radix-platform/radix-operator.yaml
