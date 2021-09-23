@@ -28,7 +28,7 @@ spec:
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
           *Component:* {{ .Annotations.componentName }}
           *Description:* {{ .Annotations.description }}
-          *Graph:* <{{ .GeneratorURL }}|:chart_with_upwards_trend:>
+          *Graph:* {{ .GeneratorURL }}
           {{end}}
           {{end}}
     prometheusOperator:
@@ -88,6 +88,8 @@ spec:
         - name: radix-app-environment
           rules:
           - alert: RadixAppComponentCrashLooping
+            labels:
+              severity: error
             annotations:
               description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} is crash-looping.
               summary: Component is crash looping
@@ -102,6 +104,8 @@ spec:
                 * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""}) * 60 * 5 > 0
               )>0
           - alert: RadixAppComponentNotReady
+            labels:
+              severity: warning
             annotations:
               description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} has been in a non-ready state for more than 10 minutes.
               summary: Component is not ready
