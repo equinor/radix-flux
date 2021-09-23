@@ -28,7 +28,6 @@ spec:
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
           *Component:* {{ .Annotations.componentName }}
           *Description:* {{ .Annotations.description }}
-          *Graph:* {{ .GeneratorURL }}
           {{end}}
           {{end}}
     prometheusOperator:
