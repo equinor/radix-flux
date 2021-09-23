@@ -26,7 +26,7 @@ spec:
           {{define "slack-radix-app-env"}}
           {{ range .Alerts }}
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
-          *Component:* [Markdown Guide]({{ .Annotations.consoleUrl }}/applications/{{ .Labels.label_radix_app }}/envs/{{ .Labels.label_radix_env }}/component/{{ .Labels.label_radix_component }})
+          *Component:* <{{ .Annotations.consoleUrl }}/applications/{{ .Labels.label_radix_app }}/envs/{{ .Labels.label_radix_env }}/component/{{ .Labels.label_radix_component }}|{{ .Labels.label_radix_component }}>
           *Description:* {{ .Annotations.description }}
           {{end}}
           {{end}}
