@@ -21,6 +21,16 @@ spec:
           requests:
             cpu: "10m"
             memory: "400Mi" # default 400Mi
+      templateFiles: # https://github.com/prometheus-community/helm-charts/blob/bd7f3ca7efb7b5806b720b098144d1240c930a70/charts/kube-prometheus-stack/values.yaml#L192
+        radix-app.tmpl: |-
+          {{define "slack-radix-app-env"}}
+          {{ range .Alerts }}
+          *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
+          *Component:* {{ .Annotations.componentName }}
+          *Description:* {{ .Annotations.description }}
+          *Graph:* <{{ .GeneratorURL }}|:chart_with_upwards_trend:>
+          {{end}}
+          {{end}}
     prometheusOperator:
       resources:
         requests:
@@ -72,7 +82,7 @@ spec:
               - source_labels: [__meta_kubernetes_pod_name]
                 action: replace
                 target_label: kubernetes_pod_name
-    additionalPrometheusRulesMap:
+    additionalPrometheusRulesMap: # https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
       radix-app:
         groups:
         - name: radix-app-environment
