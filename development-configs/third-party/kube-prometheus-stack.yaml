@@ -73,7 +73,7 @@ spec:
                 action: replace
                 target_label: kubernetes_pod_name
     additionalPrometheusRulesMap:
-      radix_app:
+      radix-app:
         groups:
         - name: radix-app-environment
           rules:
