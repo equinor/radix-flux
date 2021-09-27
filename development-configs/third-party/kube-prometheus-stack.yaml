@@ -35,14 +35,14 @@ spec:
           {{define "radix-slack-alert-text"}}
           {{ range .Alerts }}
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
-          {{ if (eq .Labels.radixScope "env") }}
+          {{ if (eq .Labels.radixscope "env") }}
           *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
           {{ end }}
           *Description:* {{ .Annotations.description }}
           {{end}}
           {{end}}
           {{define "radix-slack-alert-title"}}
-          {{ if (eq .Labels.radixScope "env") }}
+          {{ if (eq .CommonLabels.radixscope "env") }}
           {{ template "radix-env-slack-alert-title" .}}
           {{ else }}
           {{ template "radix-app-slack-alert-title" .}}
@@ -110,7 +110,7 @@ spec:
           - alert: RadixAppComponentCrashLooping
             labels:
               severity: error
-              radixScope: env
+              radixscope: env
             annotations:
               description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} is crash-looping.
               summary: Component is crash looping
@@ -124,7 +124,7 @@ spec:
           - alert: RadixAppComponentNotReady
             labels:
               severity: warning
-              radixScope: env
+              radixscope: env
             annotations:
               description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} has been in a non-ready state for more than 10 minutes.
               summary: Component is not ready
@@ -140,7 +140,7 @@ spec:
           - alert: RadixAppPipelineJobFailed
             labels:
               severity: error
-              radixScope: app
+              radixscope: app
             annotations:
             expr: >-
               max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
@@ -148,7 +148,7 @@ spec:
           - alert: RadixAppJobFailed
             labels:
               severity: error
-              radixScope: env
+              radixscope: env
             annotations:
             expr: >-
               max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
