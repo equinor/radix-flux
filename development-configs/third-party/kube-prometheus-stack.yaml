@@ -137,6 +137,7 @@ spec:
           - alert: RadixAppComponentNotReady
             labels:
               severity: warning
+              radixscope: env
             annotations:
               description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} has been in a non-ready state for more than 10 minutes.
               summary: Component is not ready
@@ -149,17 +150,6 @@ spec:
                 * on(pod, namespace) group_left(label_radix_app, label_radix_component) (kube_pod_labels{label_radix_app!=""})
                 * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""})
               )>0
-          - alert: RadixAppPipelineJobFailed
-            labels:
-              severity: error
-              radixscope: app
-            annotations:
-              description: Pipeline job {{ $labels.label_radix_job_name}} for application {{ $labels.label_radix_app}} failed.
-              summary: Pipeline job failed
-              consoleUrl: https://console.dev.radix.equinor.com//applications/{{ $labels.label_radix_app }}/jobs/view/{{ $labels.label_radix_job_name }}
-            expr: >-
-              max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
-              * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"} > 0
           - alert: RadixAppJobFailed
             labels:
               severity: error
@@ -171,3 +161,14 @@ spec:
             expr: >-
               max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
               * on(job_name, namespace) group_left(label_radix_app, label_radix_component) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job-scheduler"} > 0
+          - alert: RadixAppPipelineJobFailed
+            labels:
+              severity: error
+              radixscope: app
+            annotations:
+              description: Pipeline job {{ $labels.label_radix_job_name}} for application {{ $labels.label_radix_app}} failed.
+              summary: Pipeline job failed
+              consoleUrl: https://console.dev.radix.equinor.com//applications/{{ $labels.label_radix_app }}/jobs/view/{{ $labels.label_radix_job_name }}
+            expr: >-
+              max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
+              * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"} > 0
