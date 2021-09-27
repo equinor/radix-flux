@@ -35,10 +35,10 @@ spec:
           {{define "radix-slack-alert-text"}}
           {{range .Alerts}}
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
-          {{- if (eq .Labels.radixscope "env") -}}
+          {{if (eq .Labels.radixscope "env") -}}
           *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
           {{end}}
-          *xDescription:* {{ .Annotations.description }}
+          *Description:* {{ .Annotations.description }}
           {{end}}
           {{end}}
           {{define "radix-slack-alert-title"}}
