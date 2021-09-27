@@ -37,7 +37,7 @@ spec:
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
           {{if (eq .Labels.radixscope "env") -}}
           *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
-          {{end}}
+          {{- end}}
           *Description:* {{ .Annotations.description }}
           {{end}}
           {{end}}
