@@ -32,21 +32,29 @@ spec:
           {{define "radix-app-slack-alert-title"}}
           Alerts for application {{.CommonLabels.label_radix_app}}
           {{end}}
+          {{define "radix-slack-alert-text-env"}}
+          *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
+          {{if .Labels.job_name}}
+          *Job:* {{ .Labels.job_name }}
+          {{end}}
+          {{define "radix-slack-alert-text-app"}}
+          *Job:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
+          *Type:* {{ .Labels.label_radix_pipeline }}
+          {{end}}
           {{define "radix-slack-alert-text"}}
           {{range .Alerts}}
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
-          {{if and (eq .Labels.radixscope "env") (.Labels.label_radix_component) -}}
-          *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
-          {{end -}}
-          {{if and (eq .Labels.radixscope "app") (.Labels.label_radix_job_name) -}}
-          *Job:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
-          *Type:* {{ .Labels.label_radix_pipeline }}
-          {{end -}}
+          {{if and (eq .Labels.radixscope "env")}}
+          {{template "radix-slack-alert-text-env" .}}
+          {{end}}
+          {{if and (eq .Labels.radixscope "app")}}
+          {{template "radix-slack-alert-text-app"}}
+          {{end}}
           *Description:* {{ .Annotations.description }}
           {{end}}
           {{end}}
           {{define "radix-slack-alert-title"}}
-          {{- if (eq .CommonLabels.radixscope "env") -}}
+          {{if (eq .CommonLabels.radixscope "env")}}
           {{template "radix-env-slack-alert-title" .}}
           {{else}}
           {{template "radix-app-slack-alert-title" .}}
@@ -143,18 +151,22 @@ spec:
           - alert: RadixAppPipelineJobFailed
             labels:
               severity: error
+              radixscope: app
             annotations:
-              description: Pipeline job {{ $labels.label_radix_job_name}} for application {{ $labels.label_radix_app}} has failed.
+              description: Pipeline job {{ $labels.label_radix_job_name}} for application {{ $labels.label_radix_app}} failed.
               summary: Pipeline job failed
               consoleUrl: https://console.dev.radix.equinor.com//applications/{{ $labels.label_radix_app }}/jobs/view/{{ $labels.label_radix_job_name }}
             expr: >-
               max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
               * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"} > 0
-          # - alert: RadixAppJobFailed
-          #   labels:
-          #     severity: error
-          #     radixscope: env
-          #   annotations:
-          #   expr: >-
-          #     max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
-          #     * on(job_name, namespace) group_left(label_radix_app, label_radix_component) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job-scheduler"} > 0
+          - alert: RadixAppJobFailed
+            labels:
+              severity: error
+              radixscope: env
+            annotations:
+              description: Job {{ $labels.job_name}} for application {{ $labels.label_radix_app}} failed.
+              summary: Job failed
+              consoleUrl: https://console.dev.radix.equinor.com//applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
+            expr: >-
+              max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
+              * on(job_name, namespace) group_left(label_radix_app, label_radix_component) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job-scheduler"} > 0
