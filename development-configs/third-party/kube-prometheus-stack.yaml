@@ -37,6 +37,7 @@ spec:
           {{if .Labels.job_name}}
           *Job:* {{ .Labels.job_name }}
           {{end}}
+          {{end}}
           {{define "radix-slack-alert-text-app"}}
           *Job:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
           *Type:* {{ .Labels.label_radix_pipeline }}
