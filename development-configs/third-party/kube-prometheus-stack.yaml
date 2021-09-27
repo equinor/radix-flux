@@ -37,11 +37,11 @@ spec:
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
           {{if and (eq .Labels.radixscope "env") (.Labels.label_radix_component) -}}
           *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
-          {{- end}}
+          {{end -}}
           {{if and (eq .Labels.radixscope "app") (.Labels.label_radix_job_name) -}}
           *Job:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
           *Type:* {{ .Labels.label_radix_pipeline }}
-          {{- end}}
+          {{end -}}
           *Description:* {{ .Annotations.description }}
           {{end}}
           {{end}}
