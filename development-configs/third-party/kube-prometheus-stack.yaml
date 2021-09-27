@@ -33,23 +33,23 @@ spec:
           Alerts for application {{.CommonLabels.label_radix_app}}
           {{end}}
           {{define "radix-slack-alert-text"}}
-          {{ range .Alerts }}
+          {{range .Alerts}}
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
-          {{ if (eq .Labels.radixscope "env") }}
+          {{- if (eq .Labels.radixscope "env") -}}
           *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
-          {{ end }}
-          *Description:* {{ .Annotations.description }}
+          {{end}}
+          *xDescription:* {{ .Annotations.description }}
           {{end}}
           {{end}}
           {{define "radix-slack-alert-title"}}
-          {{ if (eq .CommonLabels.radixscope "env") }}
-          {{ template "radix-env-slack-alert-title" .}}
-          {{ else }}
-          {{ template "radix-app-slack-alert-title" .}}
-          {{ end }}
+          {{- if (eq .CommonLabels.radixscope "env") -}}
+          {{template "radix-env-slack-alert-title" .}}
+          {{else}}
+          {{template "radix-app-slack-alert-title" .}}
+          {{end}}
           {{end}}
           {{define "radix-slack-alert-titlelink"}}
-          {{ .CommonAnnotations.nonexisting }}
+          {{.CommonAnnotations.nonexisting}}
           {{end}}
     prometheusOperator:
       resources:
