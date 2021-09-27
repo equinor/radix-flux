@@ -46,7 +46,7 @@ spec:
           memory: "100Mi" # default 100Mi
     kube-state-metrics:
       extraArgs:
-        - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type]
+        - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
     prometheus:
       prometheusSpec:
         resources:
