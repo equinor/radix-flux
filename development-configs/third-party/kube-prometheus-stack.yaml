@@ -32,25 +32,25 @@ spec:
           {{define "radix-app-slack-alert-title"}}
           Alerts for application {{.CommonLabels.label_radix_app}}
           {{end}}
-          {{define "radix-slack-alert-text-env"}}
+          {{define "radix-slack-alert-text-env" -}}
           *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
-          {{if .Labels.job_name}}
+          {{if .Labels.job_name -}}
           *Job:* {{ .Labels.job_name }}
-          {{end}}
-          {{end}}
-          {{define "radix-slack-alert-text-app"}}
+          {{end -}}
+          {{end -}}
+          {{define "radix-slack-alert-text-app" -}}
           *Job:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
           *Type:* {{ .Labels.label_radix_pipeline }}
-          {{end}}
+          {{end -}}
           {{define "radix-slack-alert-text"}}
           {{range .Alerts}}
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
-          {{if and (eq .Labels.radixscope "env")}}
+          {{if and (eq .Labels.radixscope "env") -}}
           {{template "radix-slack-alert-text-env" .}}
-          {{end}}
-          {{if and (eq .Labels.radixscope "app")}}
+          {{end -}}
+          {{if and (eq .Labels.radixscope "app") -}}
           {{template "radix-slack-alert-text-app"}}
-          {{end}}
+          {{end -}}
           *Description:* {{ .Annotations.description }}
           {{end}}
           {{end}}
