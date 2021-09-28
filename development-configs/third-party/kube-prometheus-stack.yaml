@@ -160,7 +160,8 @@ spec:
               consoleUrl: https://console.dev.radix.equinor.com//applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
             expr: >-
               max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
-              * on(job_name, namespace) group_left(label_radix_app, label_radix_component) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job-scheduler"} > 0
+              * on(job_name, namespace) group_left(label_radix_app, label_radix_component) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job-scheduler"} 
+              * on(job_name, namespace) group_left() label_replace(kube_pod_owner{owner_kind="Job"}, "job_name", "$1", "owner_name", "(.*)") > 0
           - alert: RadixAppPipelineJobFailed
             labels:
               severity: error
