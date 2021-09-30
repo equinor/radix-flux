@@ -28,8 +28,7 @@ spec:
         radix-app.tmpl: |-
           {{define "radix-env-slack-alert-title"}}
           {{- if (eq .Status "resolved") -}}
-          RESOLVED - 
-          {{- end -}}
+          RESOLVED - {{end -}}
           Alerts for application {{.CommonLabels.label_radix_app}} in environment {{.CommonLabels.label_radix_env}}
           {{end}}
           {{define "radix-app-slack-alert-title"}}
