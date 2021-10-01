@@ -129,7 +129,7 @@ spec:
               description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} is crash-looping.
               summary: Component is crash looping
               consoleUrl: https://console.dev.radix.equinor.com/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
-            for: 5m
+            for: 0m
             expr: >-
               sum by (label_radix_app, label_radix_env, label_radix_component, namespace) (
                 rate(kube_pod_container_status_restarts_total{job="kube-state-metrics",namespace=~".*"}[10m]) 
@@ -144,7 +144,7 @@ spec:
               description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} has been in a non-ready state for more than 10 minutes.
               summary: Component is not ready
               consoleUrl: https://console.dev.radix.equinor.com/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
-            for: 5m
+            for: 0m
             expr: >-
               sum by(label_radix_app, label_radix_env, label_radix_component, namespace) (
                 max by(namespace, pod) (kube_pod_status_phase{job="kube-state-metrics",namespace=~".*",phase=~"Pending|Unknown"}) 
@@ -160,7 +160,7 @@ spec:
               description: Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} has been in a non-ready state for more than 10 minutes.
               summary: Job is not ready
               consoleUrl: https://console.dev.radix.equinor.com/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
-            for: 5m
+            for: 0m
             expr: >-
               sum by(label_radix_app, label_radix_env, label_radix_component, job_name, namespace)(
                 max by(namespace, pod) (kube_pod_status_phase{job="kube-state-metrics",namespace=~".*",phase=~"Pending|Unknown"}) 
