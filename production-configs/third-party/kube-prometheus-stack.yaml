@@ -1,0 +1,75 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: default
+spec:
+  releaseName: kube-prometheus-stack
+  helmVersion: v3
+  chart:
+    repository: https://prometheus-community.github.io/helm-charts
+    name: kube-prometheus-stack
+    version: 16.5.0
+  values:
+    fullnameOverride: prometheus-operator
+    nameOverride: prometheus-operator
+    grafana:
+      enabled: false
+    alertmanager:
+      alertmanagerSpec:
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "400Mi" # default 400Mi
+    prometheusOperator:
+      resources:
+        requests:
+          cpu: "100m" # default 100m
+          memory: "100Mi" # default 100Mi
+    kube-state-metrics:
+      extraArgs:
+        - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env]
+    prometheus:
+      prometheusSpec:
+        resources:
+          limits:
+            memory: "16Gi"
+          requests:
+            cpu: "2"
+            memory: "16Gi" # default 400Mi
+        retention: 30d # default 10d
+        serviceMonitorSelectorNilUsesHelmValues: false
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: managed-premium-retain-nocache
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 1024Gi # default 50Gi
+        additionalScrapeConfigs:
+          - job_name: 'kubernetes-pods'
+            kubernetes_sd_configs:
+              - role: pod
+            relabel_configs:
+              - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+                action: keep
+                regex: true
+              - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+                action: replace
+                target_label: __metrics_path__
+                regex: (.+)
+              - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+                action: replace
+                regex: ([^:]+)(?::\d+)?;(\d+)
+                replacement: $1:$2
+                target_label: __address__
+              - action: labelmap
+                regex: __meta_kubernetes_pod_label_(.+)
+              - source_labels: [__meta_kubernetes_namespace]
+                action: replace
+                target_label: kubernetes_namespace
+              - source_labels: [__meta_kubernetes_pod_name]
+                action: replace
+                target_label: kubernetes_pod_name

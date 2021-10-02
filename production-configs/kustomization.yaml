@@ -1,17 +1,20 @@
 resources:
-- ./third-party/kubed.yaml
-- ./third-party/kured.yaml
-- ./third-party/nginx-ingress.yaml
-- ./third-party/velero.yaml
-- ./third-party/velero-schedule.yaml
-- ./third-party/external-dns.yaml
-- ./third-party/blobfuse-flexvolume.yaml
-- ./third-party/sysctl-install-blobfuse.yaml
-- ./third-party/blob-csi-azure-driver.yaml
-- ./radix-platform/radix-operator.yaml
-- ./radix-platform/radix-acr-cleanup.yaml
-- ./radix-platform/radix-cicd-canary.yaml
-- ./radix-platform/radix-cost-allocation.yaml
-- ./cgroup-garbagecollector.yaml
+  - ./third-party/kubed.yaml
+  - ./third-party/kured.yaml
+  - ./third-party/nginx-ingress.yaml
+  - ./third-party/velero.yaml
+  - ./third-party/velero-schedule.yaml
+  - ./third-party/external-dns.yaml
+  - ./third-party/blobfuse-flexvolume.yaml
+  - ./third-party/blob-csi-azure-driver.yaml
+  - ./third-party/sysctl-install-blobfuse.yaml
+  - ./third-party/cert-manager.yaml
+  - ./third-party/grafana.yaml
+  - ./third-party/kube-prometheus-stack.yaml
+  - ./radix-platform/radix-operator.yaml
+  - ./radix-platform/radix-acr-cleanup.yaml
+  - ./radix-platform/radix-cicd-canary.yaml
+  - ./radix-platform/radix-cost-allocation.yaml
+  - ./cgroup-garbagecollector.yaml
 patchesStrategicMerge:
-- ./radix-patch.yaml
+  - ./radix-patch.yaml
