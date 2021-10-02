@@ -21,7 +21,7 @@ spec:
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixprod.azurecr.io/radix-operator
       tag: "release-4cbc600ad252dea5796393b017bfbf3b1fd1ee9e"
-    activeClusterName: eu-50
+    activeClusterName: eu-39
     imageBuilder: radix-image-builder:release-latest
     imageScanner: radix-image-scanner:release-latest
     configToMap: radix-config-2-map:release-latest
