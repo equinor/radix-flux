@@ -37,7 +37,7 @@ spec:
         - -c
         - |
           apt update
-          apt-get install blobfuse=1.2.4 -y --allow-downgrades
+          apt-get install blobfuse=1.4.1 -y --allow-downgrades
           sleep 600000000s
         image: alpine
         imagePullPolicy: IfNotPresent
