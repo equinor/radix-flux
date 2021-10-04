@@ -1,3 +1,4 @@
+# https://github.com/kubernetes-sigs/blob-csi-driver/releases
 ---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
@@ -12,7 +13,7 @@ spec:
   chart:
     repository: https://raw.githubusercontent.com/kubernetes-sigs/blob-csi-driver/master/charts
     name: blob-csi-driver
-    version: v1.2.0
+    version: v1.5.0
   values:
     updateStrategy: RollingUpdate
     resources:
