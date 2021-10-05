@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://raw.githubusercontent.com/Dynatrace/helm-charts/master/repos/stable
     name: dynatrace-operator
-    version: 0.2.1
+    version: 0.2.3
   values:
     metrics:
       enabled: true

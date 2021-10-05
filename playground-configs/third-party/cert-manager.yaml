@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://charts.jetstack.io
     name: cert-manager
-    version: 1.5.3
+    version: 1.5.4
   values:
     resources:
       limits:
