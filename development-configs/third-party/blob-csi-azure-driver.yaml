@@ -24,3 +24,5 @@ spec:
         cpu: 100m
         memory: 150Mi
     priorityClassName: radix-component-priority
+    node:
+      enableBlobfuseProxy: true
