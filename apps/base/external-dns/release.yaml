@@ -5,15 +5,19 @@ kind: HelmRelease
 metadata:
   name: external-dns
   namespace: default
-  annotations:
-    fluxcd.io/automated: "true"
 spec:
-  releaseName: "external-dns"
-  helmVersion: v3
+  releaseName: external-dns
   chart:
-    repository: https://charts.bitnami.com/bitnami
-    name: external-dns
-    version: 5.4.8
+    spec:
+      chart: external-dns
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
   values:
     rbac:
       create: true
