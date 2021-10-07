@@ -10,7 +10,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps/development
+  path: ./apps/playground
   prune: true
   validation: client
   healthChecks:
