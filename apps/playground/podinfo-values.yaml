@@ -11,3 +11,6 @@ spec:
     ingress:
       hosts:
         - host: podinfo.playground
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
