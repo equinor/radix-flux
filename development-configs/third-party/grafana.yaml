@@ -11,7 +11,7 @@ spec:
   chart:
     repository: https://grafana.github.io/helm-charts
     name: grafana
-    version: 6.16.10
+    version: 6.16.12
   values:
     resources:
       # limits:
