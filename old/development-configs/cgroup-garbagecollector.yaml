@@ -1,17 +1,10 @@
 # This DaemonSet that runs a systemd cgroup garbage collection job once an hour to workaround
 # bugs https://github.com/Azure/AKS/issues/750 & https://github.com/kubernetes/kubernetes/issues/64137.
 # Note that these pods run in privileged mode, which can pose a security risk. Use with caution.
-# This is a temporary workaround to keep the nodes healthy until the k8s community figure out which mix of k8s, linux and docker is causing the problem.
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: cgroup-garbagecollector
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: systemd-cgroup-gc
-  namespace: cgroup-garbagecollector
 data:
   systemd-cgroup-gc: |
     #!/bin/bash
@@ -22,7 +15,7 @@ data:
     count=0
     for i in $(runhost ls /sys/fs/cgroup/systemd/system.slice |grep "^run-r"); do
     pod=$(runhost systemctl list-units --type scope --state running $i |cat |sed -n 's/\(.*\)Kubernetes transient mount for \/var\/lib\/kubelet\/pods\/\(.*\)\/volumes\(.*\)/\2/p')
-    if [ ! -f "/var/lib/kubelet/pods/'$pod'" ]; then
+    if [ ! -e "/var/lib/kubelet/pods/$pod" ]; then
       echo -n "Try to stop '$i' systemd scope... "
       runhost systemctl stop $i
       echo "Stopped."
@@ -35,7 +28,6 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: systemd-cgroup-gc
-  namespace: cgroup-garbagecollector
   labels:
     tier: management
     app: systemd-cgroup-gc
@@ -53,10 +45,10 @@ spec:
         - resources:
             requests:
               cpu: 5m
-              memory: 10Mi
+              memory: 500Ki
             limits:
               cpu: 5m
-              memory: 20Mi
+              memory: 50Mi  # This crashes on startup with a 5Mi limit, but only uses about 320Ki after that.
           securityContext:
             privileged: true
           image: ubuntu:16.04
@@ -71,8 +63,14 @@ spec:
           volumeMounts:
             - name: scriptsrc
               mountPath: /usr/local/bin
+            - name: kubeletpath
+              mountPath: /var/lib/kubelet/pods
       volumes:
         - name: scriptsrc
           configMap:
             name: systemd-cgroup-gc
             defaultMode: 0755
+        - name: kubeletpath
+          hostPath:
+            path: /var/lib/kubelet/pods
+            type: Directory
