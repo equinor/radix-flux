@@ -11,6 +11,7 @@ resources:
   - ./third-party/cert-manager.yaml
   - ./third-party/grafana.yaml
   - ./third-party/kube-prometheus-stack.yaml
+  - ./third-party/csi-blobfuse-proxy.yaml
   - ./radix-platform/radix-operator.yaml
   - ./radix-platform/radix-acr-cleanup.yaml
   - ./radix-platform/radix-cicd-canary.yaml
