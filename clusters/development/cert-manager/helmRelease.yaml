@@ -33,6 +33,6 @@ spec:
         create: true
     podLabels: { aadpodidbinding: certman-label }
   valuesFrom:
-    - secretKeyRef:
-        name: "cert-manager-helm-secret"
-        key: config
+    - kind: Secret
+      name: cert-manager-helm-secret
+      key: config

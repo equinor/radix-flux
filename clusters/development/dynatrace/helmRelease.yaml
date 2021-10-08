@@ -30,6 +30,6 @@ spec:
         cpu: 50m
         memory: 64Mi
   valuesFrom:
-    - secretKeyRef:
-        name: "dynatrace-secret"
-        key: dynatrace-values.yaml
+  - kind: Secret
+    name: dynatrace-secret
+    valuesKey: dynatrace-values.yaml

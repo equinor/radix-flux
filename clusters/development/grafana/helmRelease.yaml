@@ -56,6 +56,6 @@ spec:
       GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor"     # Viewer|Editor|Admin
     envFromSecret: grafana-secrets
   valuesFrom:
-  - secretKeyRef:
-      name: "grafana-helm-secret"
-      key: config
+  - kind: Secret
+    name: grafana-helm-secret
+    key: config
