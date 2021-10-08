@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - gitRepo.yaml
 - helmChart.yaml
+- values.yaml
