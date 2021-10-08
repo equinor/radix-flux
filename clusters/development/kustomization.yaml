@@ -12,4 +12,5 @@ resources:
 - kubed
 - kured
 - radix-acr-cleanup
+- radix-cost-allocation
 - velero
