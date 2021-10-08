@@ -8,6 +8,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kubed
+  namespace: kube-system
 spec:
   releaseName: kubed
   chart:
