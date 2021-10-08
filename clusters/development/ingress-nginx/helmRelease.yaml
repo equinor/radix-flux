@@ -14,8 +14,9 @@ spec:
         kind: HelmRepository
         name: ingress-nginx
         namespace: flux-system
-  interval: 5m
+  interval: 1m0s
   install:
+    createNamespace: true
     remediation:
       retries: 3
   values:
