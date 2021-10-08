@@ -1,0 +1,35 @@
+# https://github.com/Dynatrace/helm-charts/releases
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: dynatrace
+  namespace: dynatrace
+spec:
+  releaseName: dynatrace
+  chart:
+    spec:
+      chart: dynatrace
+      version: 0.2.3
+      sourceRef:
+        kind: HelmRepository
+        name: dynatrace
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    metrics:
+      enabled: true
+    resources:
+      limits:
+        cpu: 100m
+        memory: 256Mi
+      requests:
+        cpu: 50m
+        memory: 64Mi
+  valuesFrom:
+    - secretKeyRef:
+        name: "dynatrace-secret"
+        key: dynatrace-values.yaml

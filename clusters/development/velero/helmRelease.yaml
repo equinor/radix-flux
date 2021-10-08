@@ -1,0 +1,68 @@
+# Dependent on the secret "cloud-credentials", which should be installed by the base component script,
+# see https://github.com/equinor/radix-platform/scripts/velero
+# For velero chart doc see https://github.com/helm/charts/tree/master/stable/velero
+
+# https://github.com/vmware-tanzu/helm-charts/releases
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: velero
+spec:
+  releaseName: velero
+  chart:
+    spec:
+      chart: velero
+      version: 2.23.12
+      sourceRef:
+        kind: HelmRepository
+        name: velero
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    updateStrategy: RollingUpdate
+    initContainers:
+    - name: velero-plugin-for-microsoft-azure
+      image: velero/velero-plugin-for-microsoft-azure:v1.1.1
+      volumeMounts:
+      - name: plugins
+        mountPath: /target
+    - name: radix-velero-plugin
+      image: radixdev.azurecr.io/radix-velero-plugin:master-latest
+      volumeMounts:
+      - name: plugins
+        mountPath: /target
+    configuration:
+      provider: azure
+      backupStorageLocation:
+        name: azure
+        # bucket: "" # Unique per cluster, set by values found in configMap
+        config:
+          resourceGroup: "Velero_Backups"
+        # storageAccount: "" # Unique per cluster, set by values found in configMap
+      volumeSnapshotLocation:
+        name: azure
+        apitimeout: 300s
+    credentials:
+      useSecret: true
+      existingSecret: "cloud-credentials"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    resources:
+      limits:
+        cpu: "6"
+        memory: 1024Mi
+      requests:
+        cpu: 100m
+        memory: 512Mi
+    priorityClassName: radix-component-priority
+  valuesFrom:
+  - configMapKeyRef:
+      name: "velero-flux-values"
+      key: "values"
+      optional: false

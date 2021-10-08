@@ -17,9 +17,9 @@ spec:
         name: kube-prometheus-stack
         namespace: flux-system
   interval: 5m
-  # install:
-  #   remediation:
-  #     retries: 3
+  install:
+    remediation:
+      retries: 3
   values:
     fullnameOverride: prometheus-operator
     nameOverride: prometheus-operator

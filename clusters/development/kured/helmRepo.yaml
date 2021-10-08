@@ -4,5 +4,5 @@ metadata:
   name: kured
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 10m
   url: https://weaveworks.github.io/kured

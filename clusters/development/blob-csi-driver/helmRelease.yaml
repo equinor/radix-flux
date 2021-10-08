@@ -1,0 +1,33 @@
+# https://github.com/kubernetes-sigs/blob-csi-driver/releases
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: blob-csi-driver
+  namespace: kube-system
+spec:
+  releaseName: blob-csi-driver
+  chart:
+    spec:
+      chart: blob-csi-driver
+      version: v1.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: blob-csi-driver
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    updateStrategy: RollingUpdate
+    resources:
+      limits:
+        cpu: "1"
+        memory: 2048Mi
+      requests:
+        cpu: 100m
+        memory: 150Mi
+    priorityClassName: radix-component-priority
+    node:
+      enableBlobfuseProxy: true

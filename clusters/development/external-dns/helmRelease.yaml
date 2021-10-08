@@ -15,9 +15,9 @@ spec:
         name: bitnami
         namespace: flux-system
   interval: 5m
-  # install:
-  #   remediation:
-  #     retries: 3
+  install:
+    remediation:
+      retries: 3
   values:
     rbac:
       create: true

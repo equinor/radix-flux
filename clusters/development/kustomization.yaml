@@ -1,8 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- kube-prometheus-stack
-- ingress-nginx
-- flux-system
-- external-dns
+- kubed
 - kured
+- ingress-nginx
+- velero
+- external-dns
+- blob-csi-driver
+- dynatrace
+- cert-manager
+- grafana
+- kube-prometheus-stack

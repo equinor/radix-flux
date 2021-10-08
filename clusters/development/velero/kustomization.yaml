@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
 - helmRepo.yaml
 - helmRelease.yaml
-- velero-schedule.yaml
