@@ -1,16 +1,18 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: HelmChart
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
 metadata:
   name: radix-acr-cleanup
   namespace: default
 spec:
-  chart: ./charts/radix-acr-cleanup
-  sourceRef:
-    name: radix-acr-cleanup
-    kind: GitRepository
-  interval: 10m
-  valuesFiles:
-    - ./charts/radix-acr-cleanup/values.yaml
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/radix-acr-cleanup
+      sourceRef:
+        kind: GitRepository
+        name: radix-acr-cleanup
+      valuesFiles:
+        - ./charts/radix-acr-cleanup/values.yaml
   values:
     registry: radixdev
     deleteUntagged: false
