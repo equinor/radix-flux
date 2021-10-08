@@ -10,4 +10,4 @@ spec:
     kind: GitRepository
   interval: 10m
   valuesFiles:
-    - ./values.yaml
+    - ./charts/radix-acr-cleanup/values.yaml
