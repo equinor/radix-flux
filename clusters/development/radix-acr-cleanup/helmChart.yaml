@@ -8,7 +8,6 @@ spec:
   sourceRef:
     name: radix-acr-cleanup
     kind: GitRepository
-    namespace: flux-system
   interval: 10m
   values:
     registry: radixdev
