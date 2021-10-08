@@ -11,4 +11,5 @@ resources:
 - kube-prometheus-stack
 - kubed
 - kured
+- radix-acr-cleanup
 - velero
