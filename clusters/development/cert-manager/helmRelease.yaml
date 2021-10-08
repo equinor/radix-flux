@@ -35,4 +35,4 @@ spec:
   valuesFrom:
     - kind: Secret
       name: cert-manager-helm-secret
-      key: config
+      valuesKey: config

@@ -58,4 +58,4 @@ spec:
   valuesFrom:
   - kind: Secret
     name: grafana-helm-secret
-    key: config
+    valuesKey: config
