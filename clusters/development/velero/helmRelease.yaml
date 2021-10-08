@@ -62,7 +62,6 @@ spec:
         memory: 512Mi
     priorityClassName: radix-component-priority
   valuesFrom:
-  - configMapKeyRef:
-      name: "velero-flux-values"
-      key: "values"
-      optional: false
+  - kind: ConfigMap
+    name: velero-flux-values
+    valuesKey: values
