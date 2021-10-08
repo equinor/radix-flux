@@ -13,10 +13,11 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
-  interval: 1m0s
+        namespace: flux-system
+  interval: 5m0s
   install:
     remediation:
-      retries: 10
+      retries: 3
   values:
     controller:
       autoscaling:
