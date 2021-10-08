@@ -5,6 +5,8 @@ kind: HelmRelease
 metadata:
   name: kured
 spec:
+  dependsOn:
+    - name: ingress-nginx
   releaseName: kured
   chart:
     spec:

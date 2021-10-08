@@ -1,0 +1,68 @@
+# https://github.com/kubernetes/ingress-nginx/releases
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+spec:
+  releaseName: ingress-nginx
+  chart:
+    spec:
+      chart: ingress-nginx
+      version: 3.39.0
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-nginx
+        namespace: flux-system
+  interval: 5m
+  # install:
+  #   remediation:
+  #     retries: 3
+  values:
+    controller:
+      autoscaling:
+        enabled: true
+        minReplicas: 2
+        maxReplicas: 5
+        targetCPUUtilizationPercentage: 80
+        targetMemoryUtilizationPercentage: 80
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - ingress-nginx
+                  - nginx-ingress
+              topologyKey: kubernetes.io/hostname
+      podLabels:
+        app: nginx-ingress
+      publishService:
+        enabled: true
+      stats:
+        enabled: true
+      metrics:
+        serviceMonitor: 
+          enabled: true
+        enabled: true
+      service:
+        externalTrafficPolicy: Local
+      config:
+        proxy-buffer-size: "16k" # See https://stackoverflow.com/a/40306737 for a great explanation
+        proxy-body-size: "100m"
+        worker-shutdown-timeout: "3600s"
+        large-client-header-buffers: "4 24k"
+        http2-max-field-size: "16k"
+        http2-max-header-size: "32k"
+      resources:
+        limits:
+          cpu: "6"
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 500Mi
+      priorityClassName: radix-component-priority
