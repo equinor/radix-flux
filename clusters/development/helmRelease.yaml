@@ -21,23 +21,23 @@ spec:
   values:
     rbac:
       create: true
-    interval: 60s
-    txtOwnerId: ${clusterName}
-    provider: azure
-    azure:
-      resourceGroup: common
-      secretName: external-dns-azure-secret
-    domainFilters:
-      - ${dnsZone}
-    policy: sync
-    podAnnotations: {prometheus.io/scrape: "true",prometheus.io/port: "7979"}
-    metrics:
-      enabled: true
-    resources:
-      limits:
-        cpu: "6"
-        memory: 350Mi
-      requests:
-        cpu: 25m
-        memory: 350Mi
-    priorityClassName: radix-component-priority
+    # interval: 60s
+    # txtOwnerId: ${clusterName}
+    # provider: azure
+    # azure:
+    #   resourceGroup: common
+    #   secretName: external-dns-azure-secret
+    # domainFilters:
+    #   - ${dnsZone}
+    # policy: sync
+    # podAnnotations: {prometheus.io/scrape: "true",prometheus.io/port: "7979"}
+    # metrics:
+    #   enabled: true
+    # resources:
+    #   limits:
+    #     cpu: "6"
+    #     memory: 350Mi
+    #   requests:
+    #     cpu: 25m
+    #     memory: 350Mi
+    # priorityClassName: radix-component-priority
