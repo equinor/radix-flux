@@ -1,0 +1,59 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 6.16.13
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: dynatrace-operator
+  namespace: dynatrace
+spec:
+  chart:
+    spec:
+      version: 0.2.3
+---
+# apiVersion: helm.fluxcd.io/v1
+# kind: HelmRelease
+# metadata:
+#   name: radix-acr-cleanup
+#   namespace: default
+# spec:
+#   values:
+#     image:
+#       tag: master-aab545b5b44796c13ddbf5f28d1284bc83885986
+# ---
+# apiVersion: helm.fluxcd.io/v1
+# kind: HelmRelease
+# metadata:
+#   name: radix-operator
+#   namespace: default
+# spec:
+#   values:
+#     image:
+#       tag: master-1c7489ffa1c70a023bc30e0d68c3e1f2099da0c3
+# ---
+# apiVersion: helm.fluxcd.io/v1
+# kind: HelmRelease
+# metadata:
+#   name: radix-cicd-canary
+#   namespace: radix-cicd-canary
+# spec:
+#   values:
+#     image:
+#       tag: master-598c632473b1b2f17e8d73ffc178b9eb856205c4
+# ---
+# apiVersion: helm.fluxcd.io/v1
+# kind: HelmRelease
+# metadata:
+#   name: radix-cost-allocation
+#   namespace: radix-cost-allocation
+# spec:
+#   values:
+#     image:
+#       tag: master-60e7017cb5d959dedf242d2aaec2ffaa63eea894

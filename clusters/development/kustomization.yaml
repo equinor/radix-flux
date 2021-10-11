@@ -15,3 +15,5 @@ resources:
 # - radix-cost-allocation
 - radix-operator
 - velero
+patchesStrategicMerge:
+- ./versions.yaml
