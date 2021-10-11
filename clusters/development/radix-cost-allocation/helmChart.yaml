@@ -28,6 +28,6 @@ spec:
         cpu: 100m
         memory: 100Mi
   valuesFrom:
-  - secretKeyRef: # ref https://docs.fluxcd.io/projects/helm-operator/en/stable/helmrelease-guide/values/#secrets
-      name: "cost-db-secret"
-      key: radix-cost-allocation-values.yaml
+  - kind: Secret
+    name: cost-db-secret
+    valuesKey: radix-cost-allocation-values.yaml
