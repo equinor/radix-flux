@@ -119,6 +119,9 @@ spec:
     initContainers:
     - name: radix-velero-plugin
       image: radixdev.azurecr.io/radix-velero-plugin:release-latest
+      volumeMounts:
+      - name: plugins
+        mountPath: /target
     resources:
       limits:
         memory: 2048Mi

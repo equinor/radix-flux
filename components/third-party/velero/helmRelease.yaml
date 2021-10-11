@@ -30,11 +30,11 @@ spec:
       volumeMounts:
       - name: plugins
         mountPath: /target
-    # - name: radix-velero-plugin
+    # - name: radix-velero-plugin                                           #
     #   image: radixdev.azurecr.io/radix-velero-plugin:master-latest        # Set by flux patch
-    #   volumeMounts:
-    #   - name: plugins
-    #     mountPath: /target
+    #   volumeMounts:                                                       #
+    #   - name: plugins                                                     #
+    #     mountPath: /target                                                #
     configuration:
       provider: azure
       backupStorageLocation:
