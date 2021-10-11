@@ -100,6 +100,15 @@ spec:
     spec:
       version: 2.23.12          # https://github.com/vmware-tanzu/helm-charts/releases
 ---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-acr-cleanup
+  namespace: default
+spec:
+  ref:
+    branch: master
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -109,6 +118,15 @@ spec:
   values:
     image:
       tag: master-aab545b5b44796c13ddbf5f28d1284bc83885986
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-cost-allocation
+  namespace: radix-cost-allocation
+spec:
+  ref:
+    branch: master
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -120,6 +138,15 @@ spec:
     image:
       tag: master-60e7017cb5d959dedf242d2aaec2ffaa63eea894
 ---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-operator
+  namespace: default
+spec:
+  ref:
+    branch: master
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -129,6 +156,15 @@ spec:
   values:
     image:
       tag: master-1c7489ffa1c70a023bc30e0d68c3e1f2099da0c3
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  ref:
+    branch: master
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease

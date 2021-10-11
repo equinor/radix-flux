@@ -8,7 +8,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: v1.5.0
+      version: v1.5.0           # https://github.com/kubernetes-sigs/blob-csi-driver/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -18,7 +18,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.5.4
+      version: 1.5.3            # https://github.com/jetstack/cert-manager/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -28,7 +28,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 0.2.3
+      version: 0.2.1            # https://github.com/Dynatrace/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -38,7 +38,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 5.4.8
+      version: 5.0.3            # helm search repo bitnami/external-dns
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -48,7 +48,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 6.16.13
+      version: 6.12.0          # https://github.com/grafana/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -58,7 +58,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 3.39.0
+      version: 3.32.0           # https://github.com/kubernetes/ingress-nginx/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -68,7 +68,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 19.0.2
+      version: 16.5.0           # https://github.com/prometheus-community/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -78,7 +78,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: v0.12.0
+      version: v0.12.0          # https://github.com/kubeops/kubed/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -88,7 +88,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.9.1
+      version: 2.6.0            # helm search repo kured/kured
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -98,7 +98,16 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.23.12
+      version: 2.21.1          # https://github.com/vmware-tanzu/helm-charts/releases
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-acr-cleanup
+  namespace: default
+spec:
+  ref:
+    branch: release
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -108,7 +117,16 @@ metadata:
 spec:
   values:
     image:
-      tag: master-aab545b5b44796c13ddbf5f28d1284bc83885986
+      tag: release-2f8d2647cf57e3f02b93bb73d86d73c6b68e1ff7
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-cost-allocation
+  namespace: radix-cost-allocation
+spec:
+  ref:
+    branch: release
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -118,7 +136,16 @@ metadata:
 spec:
   values:
     image:
-      tag: master-60e7017cb5d959dedf242d2aaec2ffaa63eea894
+      tag: release-cd8b77a46a26c2db442ab1c9c9923f0cb1454813
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-operator
+  namespace: default
+spec:
+  ref:
+    branch: release
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -128,7 +155,16 @@ metadata:
 spec:
   values:
     image:
-      tag: master-1c7489ffa1c70a023bc30e0d68c3e1f2099da0c3
+      tag: release-5b723359a142116bde688e8e99d52c5ae54f029c
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  ref:
+    branch: release
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -138,4 +174,4 @@ metadata:
 spec:
   values:
     image:
-      tag: master-598c632473b1b2f17e8d73ffc178b9eb856205c4
+      tag: release-ac2a94dfceaf24ba66cc710a490b47225e805979

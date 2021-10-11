@@ -7,4 +7,4 @@ spec:
   interval: 1m
   url: https://github.com/equinor/radix-cicd-canary
   ref:
-    branch: master
+    # branch: master        # Set by patch
