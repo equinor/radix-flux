@@ -1,0 +1,141 @@
+# Versions for all third-party components and radix-components deployed by flux
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: blob-csi-driver
+  namespace: kube-system
+spec:
+  chart:
+    spec:
+      version: v1.5.0
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cert-manager
+  namespace: cert-manager
+spec:
+  chart:
+    spec:
+      version: 1.5.4
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: dynatrace-operator
+  namespace: dynatrace
+spec:
+  chart:
+    spec:
+      version: 0.2.3
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 5.4.8
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 6.16.13
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 3.39.0
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 19.0.2
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kubed
+  namespace: kube-system
+spec:
+  chart:
+    spec:
+      version: v0.12.0
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kured
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 2.9.1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  chart:
+    spec:
+      version: 2.23.12
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-acr-cleanup
+  namespace: default
+spec:
+  values:
+    image:
+      tag: master-aab545b5b44796c13ddbf5f28d1284bc83885986
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cost-allocation
+  namespace: radix-cost-allocation
+spec:
+  values:
+    image:
+      tag: master-60e7017cb5d959dedf242d2aaec2ffaa63eea894
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-operator
+  namespace: default
+spec:
+  values:
+    image:
+      tag: master-1c7489ffa1c70a023bc30e0d68c3e1f2099da0c3
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  values:
+    image:
+      tag: master-598c632473b1b2f17e8d73ffc178b9eb856205c4
