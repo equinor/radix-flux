@@ -3,6 +3,9 @@ kind: HelmRelease
 metadata:
   name: radix-cicd-canary
   namespace: radix-cicd-canary
+  # annotations:
+  #   fluxcd.io/automated: "true"
+  #   filter.fluxcd.io/chart-image: glob:master-*
 spec:
   interval: 5m
   install:
@@ -18,14 +21,14 @@ spec:
       valuesFiles:
         - ./charts/radix-cicd-canary/values.yaml
   values:
-    radixApiPrefix: server-radix-api-qa
-    radixWebhookPrefix: webhook-radix-github-webhook-qa
+    # radixApiPrefix: server-radix-api-qa                             # Set by flux patch
+    # radixWebhookPrefix: webhook-radix-github-webhook-qa             # Set by flux patch
     sleepIntervalTestRuns: 300
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
-      repository: radixdev.azurecr.io/radix-cicd-canary
-      # tag: "master-latest"                          # Set by flux patch
+      # repository: radixdev.azurecr.io/radix-cicd-canary             # Set by flux patch
+      # tag: "master-latest"                                          # Set by flux patch
     resources:
       limits:
         cpu: "2"

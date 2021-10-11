@@ -116,8 +116,34 @@ metadata:
   namespace: default
 spec:
   values:
+    registry: radixdev
+    deleteUntagged: false
+    retainLatestUntagged: 0
     image:
-      tag: release-2f8d2647cf57e3f02b93bb73d86d73c6b68e1ff7
+      repository: radixdev.azurecr.io/radix-acr-cleanup
+      tag: master-bd3b024df51ecd6d4e75d7dc16d69955f2de0687
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  ref:
+    branch: release
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  values:
+    radixApiPrefix: server-radix-api-prod
+    radixWebhookPrefix: webhook-radix-github-webhook-prod
+    image:
+      repository: radixdev.azurecr.io/radix-cicd-canary
+      tag: release-2c1b406e5f4270cf3415bf60ccef47671fe225e1
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
@@ -136,7 +162,15 @@ metadata:
 spec:
   values:
     image:
-      tag: release-cd8b77a46a26c2db442ab1c9c9923f0cb1454813
+      repository: radixdev.azurecr.io/radix-cost-allocation
+      tag: release-latest
+    db:
+      server: sql-radix-cost-allocation-playground.database.windows.net
+    resources:
+      limits:
+        memory: 150Mi
+      requests:
+        memory: 150Mi
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
@@ -155,23 +189,16 @@ metadata:
 spec:
   values:
     image:
-      tag: release-5b723359a142116bde688e8e99d52c5ae54f029c
----
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: GitRepository
-metadata:
-  name: radix-cicd-canary
-  namespace: radix-cicd-canary
-spec:
-  ref:
-    branch: release
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: radix-cicd-canary
-  namespace: radix-cicd-canary
-spec:
-  values:
-    image:
-      tag: release-ac2a94dfceaf24ba66cc710a490b47225e805979
+      repository: radixdev.azurecr.io/radix-operator
+      tag: release-4cbc600ad252dea5796393b017bfbf3b1fd1ee9e
+    activeClusterName: playground-39
+    imageBuilder: radix-image-builder:release-latest
+    imageScanner: radix-image-scanner:release-latest
+    configToMap: radix-config-2-map:release-latest
+    jobScheduler: radix-job-scheduler:release-latest
+    containerRegistry: radixdev.azurecr.io
+    resources:
+      limits:
+        memory: 3000Mi
+      requests:
+        memory: 1500Mi

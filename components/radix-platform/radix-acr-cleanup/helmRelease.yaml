@@ -3,6 +3,10 @@ kind: HelmRelease
 metadata:
   name: radix-acr-cleanup
   namespace: default
+  # annotations:
+  #   # flux.weave.works/ignore: "true"
+  #   fluxcd.io/automated: "true"
+  #   filter.fluxcd.io/chart-image: glob:master-*
 spec:
   interval: 5m
   install:
@@ -17,8 +21,8 @@ spec:
       valuesFiles:
         - ./charts/radix-acr-cleanup/values.yaml
   values:
-    registry: radixdev
-    deleteUntagged: false
+    registry: radixdev                                                # Set by flux patch
+    # deleteUntagged: false                                           # Set by flux patch
     performDelete: true
     period: 1h
     cleanupStart: "0:00"
@@ -26,7 +30,7 @@ spec:
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
-      repository: radixdev.azurecr.io/radix-acr-cleanup
+      # repository: radixdev.azurecr.io/radix-acr-cleanup             # Set by flux patch
       # tag: "master-bd3b024df51ecd6d4e75d7dc16d69955f2de0687"        # Set by flux patch
     metrics:
       enabled: true

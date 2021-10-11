@@ -19,18 +19,18 @@ spec:
         - ./charts/values.yaml
   values:
     image:
-      repository: radixdev.azurecr.io/radix-cost-allocation
-      # tag: "master-latest"                          # Set by flux patch
+      # repository: radixdev.azurecr.io/radix-cost-allocation         # Set by flux patch
+      # tag: "master-latest"                                          # Set by flux patch
       pullPolicy: Always
     db:
-      server: sql-radix-cost-allocation-dev.database.windows.net
+      # server: sql-radix-cost-allocation-dev.database.windows.net    # Set by flux patch
     resources:
       limits:
         cpu: "2"
-        memory: 100Mi
+        # memory: 100Mi                                               # Set by flux patch
       requests:
         cpu: 100m
-        memory: 100Mi
+        # memory: 100Mi                                               # Set by flux patch
   valuesFrom:
   - kind: Secret
     name: cost-db-secret

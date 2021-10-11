@@ -116,8 +116,33 @@ metadata:
   namespace: default
 spec:
   values:
+    registry: radixdev
+    deleteUntagged: false
     image:
-      tag: master-aab545b5b44796c13ddbf5f28d1284bc83885986
+      repository: radixdev.azurecr.io/radix-acr-cleanup
+      tag: master-bd3b024df51ecd6d4e75d7dc16d69955f2de0687
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  ref:
+    branch: master
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  values:
+    radixApiPrefix: server-radix-api-qa
+    radixWebhookPrefix: webhook-radix-github-webhook-qa
+    image:
+      repository: radixdev.azurecr.io/radix-cicd-canary
+      tag: master-latest
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
@@ -136,7 +161,15 @@ metadata:
 spec:
   values:
     image:
-      tag: master-60e7017cb5d959dedf242d2aaec2ffaa63eea894
+      repository: radixdev.azurecr.io/radix-cost-allocation
+      tag: master-latest
+    db:
+      server: sql-radix-cost-allocation-dev.database.windows.net
+    resources:
+      limits:
+        memory: 100Mi
+      requests:
+        memory: 100Mi
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
@@ -155,23 +188,11 @@ metadata:
 spec:
   values:
     image:
-      tag: master-1c7489ffa1c70a023bc30e0d68c3e1f2099da0c3
----
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: GitRepository
-metadata:
-  name: radix-cicd-canary
-  namespace: radix-cicd-canary
-spec:
-  ref:
-    branch: master
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: radix-cicd-canary
-  namespace: radix-cicd-canary
-spec:
-  values:
-    image:
-      tag: master-598c632473b1b2f17e8d73ffc178b9eb856205c4
+      repository: radixdev.azurecr.io/radix-operator
+      tag: master-ecfe94aa8d378f1f086f99a12f39443ab286f4c8
+    activeClusterName: weekly-40
+    resources:
+      limits:
+        memory: 1000Mi
+      requests:
+        memory: 1000Mi
