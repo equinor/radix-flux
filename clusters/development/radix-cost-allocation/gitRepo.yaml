@@ -7,4 +7,5 @@ spec:
   interval: 1m
   url: https://github.com/equinor/radix-cost-allocation
   ref:
+    branch: master
     tag: master-latest
