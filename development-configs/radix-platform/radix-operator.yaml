@@ -20,7 +20,7 @@ spec:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
-      tag: "add-alertconfig-crd-bb586d91d0f5b6187268aaa2677117d82094c668"
+      tag: "add-alertconfig-crd-d421e13c088100d729ed1f4c7b20567acffae39c"
     activeClusterName: weekly-38-c
     resources:
       limits:
