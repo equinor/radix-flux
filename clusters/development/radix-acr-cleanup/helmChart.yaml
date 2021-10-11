@@ -37,7 +37,7 @@ spec:
       requests:
         cpu: 50m
         memory: 150Mi
-    valuesFrom:
-    - kind: ConfigMap
-      name: radix-platform-config
-      valuesKey: platform
+  valuesFrom:
+  - kind: ConfigMap
+    name: radix-platform-config
+    valuesKey: platform
