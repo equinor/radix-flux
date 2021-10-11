@@ -17,4 +17,4 @@ resources:
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
 patchesStrategicMerge:
-- ./versions.yaml
+- ./values.yaml
