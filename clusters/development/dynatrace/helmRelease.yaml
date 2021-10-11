@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: dynatrace-operator
-      version: 0.2.3
+      # version: 0.2.3                          # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: dynatrace-operator

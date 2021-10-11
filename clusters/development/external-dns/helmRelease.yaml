@@ -4,12 +4,13 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: external-dns
+  namespace: default
 spec:
   releaseName: external-dns
   chart:
     spec:
       chart: external-dns
-      version: 5.4.8
+      # version: 5.4.8                          # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: bitnami

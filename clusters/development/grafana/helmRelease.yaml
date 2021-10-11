@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: grafana
-      version: 6.16.12
+      # version: 6.16.12                          # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: grafana

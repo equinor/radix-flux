@@ -14,7 +14,7 @@ spec:
   chart:
     spec:
       chart: kubed
-      version: v0.12.0
+      # version: v0.12.0                          # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: kubed

@@ -14,7 +14,7 @@ spec:
   chart:
     spec:
       chart: velero
-      version: 2.23.12
+      # version: 2.23.12                          # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: velero
