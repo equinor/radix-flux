@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: radix-cost-allocation
+  name: radix-operator
   namespace: default
 spec:
   interval: 5m
@@ -13,7 +13,7 @@ spec:
       chart: ./charts/radix-operator
       sourceRef:
         kind: GitRepository
-        name: radix-cost-allocation
+        name: radix-operator
       valuesFiles:
         - ./charts/radix-operator/values.yaml
   values:
