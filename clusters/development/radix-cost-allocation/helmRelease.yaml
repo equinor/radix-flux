@@ -1,5 +1,3 @@
-# Comment
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -22,7 +20,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-cost-allocation
-      tag: "master-latest"
+      # tag: "master-latest"                          # Set by flux patch
       pullPolicy: Always
     db:
       server: sql-radix-cost-allocation-dev.database.windows.net
