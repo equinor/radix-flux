@@ -59,6 +59,15 @@ spec:
   chart:
     spec:
       version: 3.38.0           # https://github.com/kubernetes/ingress-nginx/releases
+  values:
+    controller:
+      replicaCount: 2
+      resources:
+        limits:
+          memory: 1400Mi
+        requests:
+          cpu: 100m
+          memory: 1400Mi
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -79,6 +88,9 @@ spec:
   chart:
     spec:
       version: v0.12.0          # https://github.com/kubeops/kubed/releases
+  values:
+    config:
+      clusterName: dev          # Used for Kubed notification ...which we do not use.
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -89,6 +101,10 @@ spec:
   chart:
     spec:
       version: 2.9.1            # helm search repo kured/kured
+  values:
+    extraArgs:
+      start-time: 8am
+      end-time: 4pm
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -99,6 +115,16 @@ spec:
   chart:
     spec:
       version: 2.23.12          # https://github.com/vmware-tanzu/helm-charts/releases
+  values:
+    initContainers:
+    - name: radix-velero-plugin
+      image: radixdev.azurecr.io/radix-velero-plugin:release-latest
+    resources:
+      limits:
+        memory: 2048Mi
+      requests:
+        cpu: 200m
+        memory: 1024Mi
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository

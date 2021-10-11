@@ -7,7 +7,7 @@ spec:
   chart:
     spec:
       chart: ingress-nginx
-      # version: 3.39.0                          # Set by flux patch
+      # version: 3.39.0                               # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
@@ -18,12 +18,13 @@ spec:
       retries: 3
   values:
     controller:
-      autoscaling:
-        enabled: true
-        minReplicas: 2
-        maxReplicas: 5
-        targetCPUUtilizationPercentage: 80
-        targetMemoryUtilizationPercentage: 80
+      # autoscaling:                                  # Set
+      #   enabled: true                               #
+      #   minReplicas: 2                              #     by
+      #   maxReplicas: 5                              #
+      #   targetCPUUtilizationPercentage: 80          #        flux
+      #   targetMemoryUtilizationPercentage: 80       #
+      # replicaCount: 2                               #             patch
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -58,9 +59,9 @@ spec:
         http2-max-header-size: "32k"
       resources:
         limits:
-          cpu: "6"
-          memory: 500Mi
+          cpu: 6
+          # memory: 500Mi                             # Set by flux patch
         requests:
-          cpu: 100m
-          memory: 500Mi
+          # cpu: 100m                                 # Set by flux patch
+          # memory: 500Mi                             # Set by flux patch
       priorityClassName: radix-component-priority

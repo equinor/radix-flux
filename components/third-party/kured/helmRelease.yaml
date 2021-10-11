@@ -26,7 +26,7 @@ spec:
     extraArgs:
       period: 5m0s
       reboot-days: mon,tue,wed,thu,fri
-      start-time: 8am
-      end-time: 4pm
+      # start-time: 8am                         # Set by flux patch
+      # end-time: 4pm                           # Set by flux patch
       time-zone: CET
-      lock-ttl: 30m
+      # lock-ttl: 30m                           # Set by flux patch
