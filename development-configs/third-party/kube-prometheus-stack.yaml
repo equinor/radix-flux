@@ -129,7 +129,7 @@ spec:
               description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} is restarting {{ printf "%.2f" $value }} times / 10 minutes.
               summary: Component is crash looping
               consoleUrl: https://console.dev.radix.equinor.com/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
-            for: 10m
+            for: 5m
             expr: >-
               sum by (label_radix_app, label_radix_env, label_radix_component, namespace) (
                 rate(kube_pod_container_status_restarts_total{job="kube-state-metrics",namespace=~".*"}[10m]) 
