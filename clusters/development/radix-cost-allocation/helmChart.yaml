@@ -35,4 +35,5 @@ spec:
   valuesFrom:
   - kind: Secret
     name: cost-db-secret
+    namespace: radix-cost-allocation
     valuesKey: radix-cost-allocation-values.yaml
