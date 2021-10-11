@@ -1,0 +1,42 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cost-allocation
+  namespace: default
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts/radix-operator
+      sourceRef:
+        kind: GitRepository
+        name: radix-cost-allocation
+      valuesFiles:
+        - ./charts/radix-operator/values.yaml
+  values:
+    image:
+      # For Flux "image.repository" means full path to the image (registry/repository)
+      # The following 2 properties are mandatory for Flux image filtering
+      repository: radixdev.azurecr.io/radix-operator
+      tag: "master-ecfe94aa8d378f1f086f99a12f39443ab286f4c8"
+    activeClusterName: weekly-40
+    resources:
+      limits:
+        cpu: "2"
+        memory: 1000Mi
+      requests:
+        cpu: 100m
+        memory: 1000Mi
+    forceNonRootDeploymentContainers: true
+    app:
+      limitrange:
+        default:
+          memory: 1500Mi
+  valuesFrom:
+  - configMapKeyRef:
+      name: radix-platform-config
+      key: platform
+      optional: false
