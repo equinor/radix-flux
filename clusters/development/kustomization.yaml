@@ -12,7 +12,7 @@ resources:
 - kubed
 - kured
 - radix-acr-cleanup
-# - radix-cost-allocation
+- radix-cost-allocation
 - radix-operator
 - velero
 patchesStrategicMerge:
