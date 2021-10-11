@@ -7,20 +7,20 @@ metadata:
   annotations:
     # flux.weave.works/ignore: "true"
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:add-alertconfig-crd-*
+    filter.fluxcd.io/chart-image: glob:master-*
 spec:
   releaseName: "radix-operator"
   helmVersion: v3
   chart:
     git: "git@github.com:equinor/radix-operator"
-    ref: "add-alertconfig-crd"
+    ref: "master"
     path: "charts/radix-operator"
   values:
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       repository: radixdev.azurecr.io/radix-operator
-      tag: "add-alertconfig-crd-836cd2feb2664b4297cffac6251ab3b3bd0c7f40"
+      tag: "master-ecfe94aa8d378f1f086f99a12f39443ab286f4c8"
     activeClusterName: weekly-38-c
     resources:
       limits:
