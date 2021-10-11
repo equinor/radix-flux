@@ -1,20 +1,20 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- blob-csi-driver
-- cert-manager
-- dynatrace
-- external-dns
-- flux-system
-- grafana
-- ingress-nginx
-- kube-prometheus-stack
-- kubed
-- kured
-- radix-acr-cleanup
-- radix-cicd-canary
-- radix-cost-allocation
-- radix-operator
-- velero
+- ../../third-party/blob-csi-driver
+- ../../third-party/cert-manager
+- ../../third-party/dynatrace
+- ../../third-party/external-dns
+- ../../third-party/flux-system
+- ../../third-party/grafana
+- ../../third-party/ingress-nginx
+- ../../third-party/kube-prometheus-stack
+- ../../third-party/kubed
+- ../../third-party/kured
+- ../../third-party/radix-acr-cleanup
+- ../../third-party/radix-cicd-canary
+- ../../third-party/radix-cost-allocation
+- ../../third-party/radix-operator
+- ../../third-party/velero
 patchesStrategicMerge:
 - ./versions.yaml
