@@ -12,6 +12,7 @@ resources:
 - kubed
 - kured
 - radix-acr-cleanup
+- radix-cicd-canary
 - radix-cost-allocation
 - radix-operator
 - velero
