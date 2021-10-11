@@ -100,7 +100,7 @@ spec:
     spec:
       version: 2.23.12
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: radix-acr-cleanup
@@ -110,7 +110,7 @@ spec:
     image:
       tag: master-aab545b5b44796c13ddbf5f28d1284bc83885986
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: radix-cost-allocation
@@ -120,7 +120,7 @@ spec:
     image:
       tag: master-60e7017cb5d959dedf242d2aaec2ffaa63eea894
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: radix-operator
@@ -130,7 +130,7 @@ spec:
     image:
       tag: master-1c7489ffa1c70a023bc30e0d68c3e1f2099da0c3
 ---
-# apiVersion: helm.fluxcd.io/v1
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
 # kind: HelmRelease
 # metadata:
 #   name: radix-cicd-canary
