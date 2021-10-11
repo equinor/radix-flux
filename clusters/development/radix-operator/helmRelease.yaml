@@ -36,7 +36,6 @@ spec:
         default:
           memory: 1500Mi
   valuesFrom:
-  - configMapKeyRef:
-      name: radix-platform-config
-      key: platform
-      optional: false
+  - kind: ConfigMap
+    name: radix-platform-config
+    valuesKey: platform
