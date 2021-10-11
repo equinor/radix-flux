@@ -8,7 +8,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: v1.5.0
+      version: v1.5.0           # https://github.com/kubernetes-sigs/blob-csi-driver/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -18,7 +18,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.5.4
+      version: 1.5.4            # https://github.com/jetstack/cert-manager/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -28,7 +28,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 0.2.3
+      version: 0.2.3            # https://github.com/Dynatrace/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -38,7 +38,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 5.4.8
+      version: 5.4.8            # helm search repo bitnami/external-dns
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -48,7 +48,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 6.16.13
+      version: 6.16.13          # https://github.com/grafana/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -58,7 +58,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 3.39.0
+      version: 3.39.0           # https://github.com/kubernetes/ingress-nginx/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -68,7 +68,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 19.0.2
+      version: 19.0.2           # https://github.com/prometheus-community/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -78,7 +78,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: v0.12.0
+      version: v0.12.0          # https://github.com/kubeops/kubed/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -88,7 +88,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.9.1
+      version: 2.9.1            # helm search repo kured/kured
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -98,7 +98,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.23.12
+      version: 2.23.12          # https://github.com/vmware-tanzu/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease

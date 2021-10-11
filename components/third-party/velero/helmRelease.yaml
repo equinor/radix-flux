@@ -2,7 +2,6 @@
 # see https://github.com/equinor/radix-platform/scripts/velero
 # For velero chart doc see https://github.com/helm/charts/tree/master/stable/velero
 
-# https://github.com/vmware-tanzu/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
