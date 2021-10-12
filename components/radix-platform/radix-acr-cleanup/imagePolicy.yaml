@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   filterTags:
-    pattern: ^master-[a-f0-9]+-(?P<ts>[0-9]+)
+    # pattern: ^master-[a-f0-9]+-(?P<ts>[0-9]+)
     extract: $ts
   imageRepositoryRef:
     name: radix-acr-cleanup

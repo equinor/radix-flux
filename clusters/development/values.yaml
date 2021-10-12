@@ -135,6 +135,9 @@ spec:
         cpu: 100m
         memory: 512Mi
 ---
+#########################################
+#   RADIX ACR CLEANUP
+#
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
@@ -157,6 +160,18 @@ spec:
       repository: radixdev.azurecr.io/radix-acr-cleanup
       tag: master-aab545b5b44796c13ddbf5f28d1284bc83885986
 ---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^master-[a-f0-9]+-(?P<ts>[0-9]+)
+---
+#########################################
+#   RADIX CICD CANARY
+#
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
@@ -179,6 +194,9 @@ spec:
       repository: radixdev.azurecr.io/radix-cicd-canary
       tag: master-598c632473b1b2f17e8d73ffc178b9eb856205c4
 ---
+#########################################
+#   RADIX COST ALLOCATION
+#
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
@@ -206,6 +224,9 @@ spec:
       requests:
         memory: 100Mi
 ---
+#########################################
+#   RADIX OPERATOR
+#
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
