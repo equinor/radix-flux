@@ -4,7 +4,7 @@ metadata:
   name: radix-acr-cleanup
   namespace: flux-system
 spec:
-  image: xx
+  # image: xx                 # Set by flux patch
   interval: 1m0s
   secretRef:
     name: acr-regcred
