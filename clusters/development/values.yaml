@@ -286,7 +286,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-operator
-      tag: master-latest # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      tag: flux2-ac507f2d-1634045113 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: weekly-40
     resources:
       limits:
