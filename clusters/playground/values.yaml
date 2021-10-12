@@ -1,5 +1,3 @@
-# Versions for all third-party components and radix-components deployed by flux
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -8,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: v1.5.0           # https://github.com/kubernetes-sigs/blob-csi-driver/releases
+      version: v1.5.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -18,7 +16,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.5.4            # https://github.com/jetstack/cert-manager/releases
+      version: 1.5.4 # https://github.com/jetstack/cert-manager/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -28,7 +26,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 0.2.3            # https://github.com/Dynatrace/helm-charts/releases
+      version: 0.2.3 # https://github.com/Dynatrace/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -38,7 +36,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 5.4.8            # helm search repo bitnami/external-dns
+      version: 5.4.8 # helm search repo bitnami/external-dns
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -48,7 +46,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 6.16.10          # https://github.com/grafana/helm-charts/releases
+      version: 6.16.10 # https://github.com/grafana/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -58,7 +56,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 3.38.0           # https://github.com/kubernetes/ingress-nginx/releases
+      version: 3.38.0 # https://github.com/kubernetes/ingress-nginx/releases
   values:
     controller:
       replicaCount: 2
@@ -77,7 +75,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 19.0.1           # https://github.com/prometheus-community/helm-charts/releases
+      version: 19.0.1 # https://github.com/prometheus-community/helm-charts/releases
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -87,10 +85,10 @@ metadata:
 spec:
   chart:
     spec:
-      version: v0.12.0          # https://github.com/kubeops/kubed/releases
+      version: v0.12.0 # https://github.com/kubeops/kubed/releases
   values:
     config:
-      clusterName: dev          # Used for Kubed notification ...which we do not use.
+      clusterName: dev # Used for Kubed notification ...which we do not use.
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -100,7 +98,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.9.1            # helm search repo kured/kured
+      version: 2.9.1 # helm search repo kured/kured
   values:
     extraArgs:
       start-time: 8am
@@ -114,14 +112,14 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.23.12          # https://github.com/vmware-tanzu/helm-charts/releases
+      version: 2.23.12 # https://github.com/vmware-tanzu/helm-charts/releases
   values:
     initContainers:
-    - name: radix-velero-plugin
-      image: radixdev.azurecr.io/radix-velero-plugin:release-latest
-      volumeMounts:
-      - name: plugins
-        mountPath: /target
+      - name: radix-velero-plugin
+        image: radixdev.azurecr.io/radix-velero-plugin:release-latest
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
     resources:
       limits:
         memory: 2048Mi
@@ -153,7 +151,7 @@ spec:
     retainLatestUntagged: 0
     image:
       repository: radixdev.azurecr.io/radix-acr-cleanup
-      tag: xx # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      tag: flux2-045233d3-1633072906 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
@@ -195,7 +193,7 @@ spec:
     radixWebhookPrefix: webhook-radix-github-webhook-prod
     image:
       repository: radixdev.azurecr.io/radix-cicd-canary
-      tag: xx # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      tag: flux2-bbf79a9d-1633621053 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
 ---
 #########################################
 #   RADIX COST ALLOCATION
@@ -218,7 +216,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-cost-allocation
-      tag: xx # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      tag: flux2-079bb4bc-1633073962 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
     db:
       server: sql-radix-cost-allocation-playground.database.windows.net
     resources:
@@ -265,7 +263,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-operator
-      tag: xx # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      tag: flux2-ac507f2d-1634045113 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: playground-39
     imageBuilder: radix-image-builder:release-latest
     imageScanner: radix-image-scanner:release-latest
