@@ -201,6 +201,23 @@ spec:
       repository: radixdev.azurecr.io/radix-cicd-canary
       tag: master-latest # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
 ---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-cicd-canary
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+---
 #########################################
 #   RADIX COST ALLOCATION
 #
@@ -231,6 +248,23 @@ spec:
       requests:
         memory: 100Mi
 ---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-cost-allocation
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+---
 #########################################
 #   RADIX OPERATOR
 #
@@ -259,3 +293,20 @@ spec:
         memory: 1000Mi
       requests:
         memory: 1000Mi
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-operator
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-operator
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-operator
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
