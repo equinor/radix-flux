@@ -22,7 +22,7 @@ spec:
       alertmanagerSpec:
         resources:
           requests:
-            cpu: "10m"
+            cpu: "100m"
             memory: "400Mi" # default 400Mi
       templateFiles: # https://github.com/prometheus-community/helm-charts/blob/bd7f3ca7efb7b5806b720b098144d1240c930a70/charts/kube-prometheus-stack/values.yaml#L192
         radix-app.tmpl: |-
