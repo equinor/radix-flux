@@ -1,10 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 metadata:
-  name: flux-system-two${test_var}
+  name: flux-system
 resources:
 - flux-system
-- ./automation/my-app-auto.yaml
+- automation/radix-acr-cleanup
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/cert-manager
 - ../../components/third-party/dynatrace-operator

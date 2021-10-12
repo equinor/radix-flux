@@ -1,0 +1,14 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^master-[a-f0-9]+-(?P<ts>[0-9]+)
+    extract: $ts
+  imageRepositoryRef:
+    name: radix-acr-cleanup
+  policy:
+    numerical:
+      order: asc
