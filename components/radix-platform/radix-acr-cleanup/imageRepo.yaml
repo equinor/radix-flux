@@ -6,5 +6,5 @@ metadata:
 spec:
   image: xx
   interval: 1m0s
-  secretRef:
-    name: regcred
+  # secretRef:
+  #   name: regcred
