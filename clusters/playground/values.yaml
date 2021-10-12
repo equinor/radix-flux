@@ -195,6 +195,23 @@ spec:
       repository: radixdev.azurecr.io/radix-cicd-canary
       tag: flux2-bbf79a9d-1633621053 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
 ---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-cicd-canary
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+---
 #########################################
 #   RADIX COST ALLOCATION
 #
