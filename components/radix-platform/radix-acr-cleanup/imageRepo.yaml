@@ -7,4 +7,4 @@ spec:
   image: xx
   interval: 1m0s
   secretRef:
-    name: flux-github-deploy-key-private
+    name: acr-regcred
