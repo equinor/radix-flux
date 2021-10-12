@@ -199,7 +199,7 @@ spec:
     radixWebhookPrefix: webhook-radix-github-webhook-qa
     image:
       repository: radixdev.azurecr.io/radix-cicd-canary
-      tag: master-latest # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      tag: flux2-bbf79a9d-1633621053 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
@@ -239,7 +239,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-cost-allocation
-      tag: master-latest # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      tag: flux2-079bb4bc-1633073962 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
     db:
       server: sql-radix-cost-allocation-dev.database.windows.net
     resources:
