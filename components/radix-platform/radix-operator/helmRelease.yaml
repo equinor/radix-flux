@@ -3,6 +3,9 @@ kind: HelmRelease
 metadata:
   name: radix-operator
   namespace: default
+  # annotations:
+  #   fluxcd.io/automated: "true"
+  #   filter.fluxcd.io/chart-image: glob:master-*
 spec:
   interval: 5m
   install:
