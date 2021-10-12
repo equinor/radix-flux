@@ -22,7 +22,7 @@ spec:
       valuesFiles:
         - ./charts/radix-acr-cleanup/values.yaml
   values:
-    registry: radixdev                                                # Set by flux patch
+    registry: radixdev # Set by flux patch
     # deleteUntagged: false                                           # Set by flux patch
     performDelete: true
     period: 1h
@@ -32,7 +32,7 @@ spec:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
       # repository: radixdev.azurecr.io/radix-acr-cleanup             # Set by flux patch
-      tag: master-latest # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      tag: flux2-045233d3-1633072906 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       # tag: "master-bd3b024df51ecd6d4e75d7dc16d69955f2de0687"        # Set by flux patch
     metrics:
       enabled: true
@@ -44,6 +44,6 @@ spec:
         cpu: 50m
         memory: 150Mi
   valuesFrom:
-  - kind: ConfigMap
-    name: radix-platform-config
-    valuesKey: platform
+    - kind: ConfigMap
+      name: radix-platform-config
+      valuesKey: platform
