@@ -17,6 +17,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: radix-operator
+        namespace: flux-system
       valuesFiles:
         - ./charts/radix-operator/values.yaml
   values:
