@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
 - gitRepo.yaml
 - helmRelease.yaml
+- automation.yaml
+- imageRepo.yaml
+- imagePolicy.yaml

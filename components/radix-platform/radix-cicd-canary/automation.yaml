@@ -1,0 +1,24 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  git:
+    checkout:
+      ref:
+        branch: olemarkusflux
+    commit:
+      author:
+        email: radix@statoilsrm.onmicrosoft.com
+        name: FluxBot
+      messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
+    push:
+      branch: olemarkusflux
+  update:
+    path: .
+    strategy: Setters

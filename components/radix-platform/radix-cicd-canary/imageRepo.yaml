@@ -1,0 +1,10 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  # image: xx                 # Set by flux patch
+  interval: 1m0s
+  secretRef:
+    name: acr-regcred
