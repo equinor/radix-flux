@@ -17,7 +17,7 @@ metadata:
 spec:
   values:
     image:
-      tag: add-alertconfig-crd-d3f5cbb451fba4fbe5e9eff5b5aefcd30c5fc92d
+      tag: master-1c7489ffa1c70a023bc30e0d68c3e1f2099da0c3
 ---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
