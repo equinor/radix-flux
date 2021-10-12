@@ -4,7 +4,6 @@ metadata:
   name: flux-system
 resources:
 - flux-system
-# - automation/radix-acr-cleanup
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/cert-manager
 - ../../components/third-party/dynatrace-operator
