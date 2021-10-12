@@ -129,11 +129,14 @@ spec:
         cpu: 200m
         memory: 1024Mi
 ---
+#########################################
+#   RADIX ACR CLEANUP
+#
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: radix-acr-cleanup
-  namespace: default
+  namespace: flux-system
 spec:
   ref:
     branch: release
@@ -146,17 +149,37 @@ metadata:
 spec:
   values:
     registry: radixdev
-    deleteUntagged: false
+    deleteUntagged: true
     retainLatestUntagged: 0
     image:
       repository: radixdev.azurecr.io/radix-acr-cleanup
-      tag: master-bd3b024df51ecd6d4e75d7dc16d69955f2de0687
+      tag: xx # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
 ---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-acr-cleanup
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+---
+#########################################
+#   RADIX CICD CANARY
+#
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: radix-cicd-canary
-  namespace: radix-cicd-canary
+  namespace: flux-system
 spec:
   ref:
     branch: release
@@ -172,13 +195,16 @@ spec:
     radixWebhookPrefix: webhook-radix-github-webhook-prod
     image:
       repository: radixdev.azurecr.io/radix-cicd-canary
-      tag: release-2c1b406e5f4270cf3415bf60ccef47671fe225e1
+      tag: xx # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
 ---
+#########################################
+#   RADIX COST ALLOCATION
+#
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: radix-cost-allocation
-  namespace: radix-cost-allocation
+  namespace: flux-system
 spec:
   ref:
     branch: release
@@ -192,7 +218,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-cost-allocation
-      tag: release-latest
+      tag: xx # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
     db:
       server: sql-radix-cost-allocation-playground.database.windows.net
     resources:
@@ -201,11 +227,31 @@ spec:
       requests:
         memory: 150Mi
 ---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-cost-allocation
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+---
+#########################################
+#   RADIX OPERATOR
+#
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: radix-operator
-  namespace: default
+  namespace: flux-system
 spec:
   ref:
     branch: release
@@ -219,7 +265,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-operator
-      tag: release-4cbc600ad252dea5796393b017bfbf3b1fd1ee9e
+      tag: xx # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: playground-39
     imageBuilder: radix-image-builder:release-latest
     imageScanner: radix-image-scanner:release-latest
@@ -231,3 +277,23 @@ spec:
         memory: 3000Mi
       requests:
         memory: 1500Mi
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-operator
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-operator
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-operator
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+---
+
+
