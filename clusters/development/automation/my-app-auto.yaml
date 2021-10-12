@@ -11,7 +11,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: master
+        branch: olemarkusflux
     commit:
       author:
         email: fluxbot@example.com
