@@ -2,13 +2,12 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: radix-acr-cleanup
-  namespace: flux-system
+  namespace: default
   # annotations:
   #   # flux.weave.works/ignore: "true"
   #   fluxcd.io/automated: "true"
   #   filter.fluxcd.io/chart-image: glob:master-*
 spec:
-  targetNamespace: default
   interval: 5m
   install:
     remediation:
