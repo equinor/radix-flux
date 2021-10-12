@@ -156,7 +156,6 @@ spec:
     deleteUntagged: false
     image:
       repository: radixdev.azurecr.io/radix-acr-cleanup
-      # tag: master-latest # master-aab545b5b44796c13ddbf5f28d1284bc83885986
       tag: flux2-045233d3-1633072906 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1

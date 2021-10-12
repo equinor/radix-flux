@@ -294,6 +294,3 @@ metadata:
 spec:
   filterTags:
     pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
----
-
-
