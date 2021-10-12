@@ -183,7 +183,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: radix-cicd-canary
-  namespace: radix-cicd-canary
+  namespace: flux-system
 spec:
   ref:
     branch: master
@@ -208,7 +208,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: radix-cost-allocation
-  namespace: radix-cost-allocation
+  namespace: flux-system
 spec:
   ref:
     branch: master

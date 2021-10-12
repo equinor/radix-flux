@@ -17,7 +17,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: radix-cicd-canary
-        namespace: radix-cicd-canary
+        namespace: flux-system
       valuesFiles:
         - ./charts/radix-cicd-canary/values.yaml
   values:

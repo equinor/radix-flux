@@ -17,7 +17,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: radix-cost-allocation
-        namespace: radix-cost-allocation
+        namespace: flux-system
       valuesFiles:
         - ./charts/values.yaml
   values:
