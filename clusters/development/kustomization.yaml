@@ -4,7 +4,7 @@ metadata:
   name: flux-system-two${test_var}
 resources:
 - flux-system
-- automation
+- ./automation/my-app-auto.yaml
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/cert-manager
 - ../../components/third-party/dynatrace-operator
