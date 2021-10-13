@@ -11,3 +11,7 @@ spec:
   path: ./clusters/development/overlay
   prune: true
   validation: client
+  postBuild:
+    substitute:
+      clusterName: "olemarkusflux"
+      dnsZone: "dev.radix.equinor.com"
