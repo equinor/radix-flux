@@ -16,7 +16,7 @@ resources:
 - ../../components/radix-platform/radix-cicd-canary
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
-- ./variables.yaml
+- variables
 patchesStrategicMerge:
 - ./values.yaml
 # configMapGenerator:
