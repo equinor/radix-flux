@@ -215,7 +215,7 @@ metadata:
   namespace: default
 spec:
   filterTags:
-    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)  # flux2-37ba38c8-1632749264
 ---
 #########################################
 #   RADIX COST ALLOCATION
