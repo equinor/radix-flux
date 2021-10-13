@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - flux-system
-- variables
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/cert-manager
 - ../../components/third-party/dynatrace-operator
@@ -19,3 +18,10 @@ resources:
 - ../../components/radix-platform/radix-operator
 patchesStrategicMerge:
 - ./values.yaml
+configMapGenerator:
+- name: cluster-properties
+  files:
+    - variables.yaml
+# generatorOptions:
+#   annotations:
+#     kustomize.toolkit.fluxcd.io/substitute: disabled
