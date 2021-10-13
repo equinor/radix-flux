@@ -2,14 +2,13 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: radix-cost-allocation
-  namespace: flux-system
+  namespace: default
 spec:
   filterTags:
     # pattern: ^master-[a-f0-9]+-(?P<ts>[0-9]+) # Set by flux patch
     extract: $ts
   imageRepositoryRef:
     name: radix-cost-allocation
-    namespace: default
   policy:
     numerical:
       order: asc

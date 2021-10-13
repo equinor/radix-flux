@@ -170,7 +170,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: radix-acr-cleanup
-  namespace: flux-system
+  namespace: default
 spec:
   filterTags:
     pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
@@ -212,7 +212,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: radix-cicd-canary
-  namespace: flux-system
+  namespace: default
 spec:
   filterTags:
     pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
@@ -259,7 +259,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: radix-cost-allocation
-  namespace: flux-system
+  namespace: default
 spec:
   filterTags:
     pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
@@ -305,7 +305,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: radix-operator
-  namespace: flux-system
+  namespace: default
 spec:
   filterTags:
     pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
