@@ -5,8 +5,6 @@ metadata:
  name: all-hourly
  namespace: velero
 spec:
-  dependsOn:
-    - name: velero
   schedule: 0 * * * *
   template:
     includeClusterResources: true
@@ -25,4 +23,3 @@ spec:
     - '*'
     storageLocation: azure
     ttl: 168h0m0s
-    
