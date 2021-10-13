@@ -2,9 +2,9 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-acr-cleanup
-  namespace: flux-system
+  namespace: default
 spec:
   # image: xx                 # Set by flux patch
   interval: 1m0s
   secretRef:
-    name: acr-regcred
+    name: radix-docker

@@ -9,6 +9,7 @@ spec:
     extract: $ts
   imageRepositoryRef:
     name: radix-cost-allocation
+    namespace: default
   policy:
     numerical:
       order: asc

@@ -162,7 +162,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-acr-cleanup
-  namespace: flux-system
+  namespace: default
 spec:
   image: radixdev.azurecr.io/radix-acr-cleanup
 ---
@@ -204,7 +204,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-cicd-canary
-  namespace: flux-system
+  namespace: default
 spec:
   image: radixdev.azurecr.io/radix-cicd-canary
 ---
@@ -251,7 +251,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-cost-allocation
-  namespace: flux-system
+  namespace: default
 spec:
   image: radixdev.azurecr.io/radix-cost-allocation
 ---
@@ -297,7 +297,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-operator
-  namespace: flux-system
+  namespace: default
 spec:
   image: radixdev.azurecr.io/radix-operator
 ---

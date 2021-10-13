@@ -9,6 +9,7 @@ spec:
     extract: $ts
   imageRepositoryRef:
     name: radix-acr-cleanup
+    namespace: default
   policy:
     numerical:
       order: asc
