@@ -18,3 +18,14 @@ resources:
 - ../../components/radix-platform/radix-operator
 patchesStrategicMerge:
 - ./values.yaml
+configMapGenerator:
+- name: cluster-properties
+  files:
+    - variables.yaml
+vars:
+  - name: clusterName
+    objref:
+      name: clusterName
+# generatorOptions:
+#   annotations:
+#     kustomize.toolkit.fluxcd.io/substitute: disabled

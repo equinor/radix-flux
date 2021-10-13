@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - helmRepo.yaml
 - helmRelease.yaml
-- variables.yaml
+# - variables.yaml

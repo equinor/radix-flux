@@ -5,9 +5,13 @@ metadata:
 spec:
   interval: 5m
   postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: radix-platform-config
+    substitute:
+      clusterName: "olemarkusflux"
+      dnsZone: "dev.radix.equinor.com"
+    # substituteFrom:
+    #   - kind: ConfigMap
+    #     name: radix-platform-config
+
 # configMapGenerator:
 # - env: properties/cluster.properties
 #   name: cluster-properties
