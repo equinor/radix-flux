@@ -3,9 +3,4 @@ kind: Kustomization
 resources:
 - helmRepo.yaml
 - helmRelease.yaml
-# - variables.yaml
-spec:
-  postBuild:
-    substitute:
-      cluster_env: "prod"
-      cluster_region: "eu-central-1"
+- variables.yaml
