@@ -5,6 +5,10 @@ metadata:
   namespace: default
 spec:
   releaseName: external-dns
+  postBuild:
+    substitute:
+      cluster_env: "prod"
+      cluster_region: "eu-central-1"
   chart:
     spec:
       chart: external-dns
