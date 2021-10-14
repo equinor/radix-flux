@@ -19,6 +19,7 @@ resources:
 # - variables
 patchesStrategicMerge:
 - ./values.yaml
+- ./infrastructure.yaml
 # configMapGenerator:
 # - name: cluster-properties
 #   files:
