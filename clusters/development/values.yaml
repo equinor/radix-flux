@@ -227,7 +227,7 @@ metadata:
   namespace: flux-system
 spec:
   update:
-    path: clusters/development
+    path: ./clusters/development
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
@@ -283,7 +283,7 @@ metadata:
   namespace: flux-system
 spec:
   update:
-    path: clusters/development
+    path: ./clusters/development
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
@@ -338,7 +338,7 @@ metadata:
   namespace: flux-system
 spec:
   update:
-    path: clusters/development
+    path: ./clusters/development
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
