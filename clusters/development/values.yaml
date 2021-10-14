@@ -176,7 +176,7 @@ metadata:
   namespace: flux-system
 spec:
   update:
-    path: ./clusters/development
+    path: .
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
