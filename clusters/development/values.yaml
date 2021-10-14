@@ -137,8 +137,8 @@ spec:
       - name: velero-plugin-for-microsoft-azure
         image: velero/velero-plugin-for-microsoft-azure:v1.1.1
         volumeMounts:
-        - name: plugins
-          mountPath: /target
+          - name: plugins
+            mountPath: /target
       - name: radix-velero-plugin
         image: radixdev.azurecr.io/radix-velero-plugin:master-latest
         volumeMounts:
@@ -330,7 +330,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-operator
-      tag: master-0738ab20-1634201605 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      tag: master-d8502148-1634219192 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: weekly-41
     resources:
       limits:
