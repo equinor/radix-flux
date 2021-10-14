@@ -9,8 +9,8 @@ spec:
   ref:
     branch: olemarkusflux
   secretRef:
-    name: flux-github-deploy-key-private
-  url: ssh://git@github.com/equinor/radix-flux
+    name: flux-system
+  url: ssh://git@github.com/equinor/radix-flux.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
