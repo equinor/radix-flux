@@ -22,6 +22,14 @@ spec:
         global:
           resolve_timeout: 5m
       alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: managed-premium-retain-nocache
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 512Mi # default 50Gi
         resources:
           requests:
             cpu: "100m"
