@@ -221,6 +221,15 @@ spec:
       tag: flux2-bbf79a9d-1633621053 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  update:
+    path: clusters/development
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-cicd-canary
@@ -268,6 +277,15 @@ spec:
         memory: 100Mi
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  update:
+    path: clusters/development
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-cost-allocation
@@ -312,6 +330,15 @@ spec:
         memory: 1000Mi
       requests:
         memory: 1000Mi
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: radix-operator
+  namespace: flux-system
+spec:
+  update:
+    path: clusters/development
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
