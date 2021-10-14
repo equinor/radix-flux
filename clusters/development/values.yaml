@@ -218,7 +218,7 @@ spec:
     radixWebhookPrefix: webhook-radix-github-webhook-qa
     image:
       repository: radixdev.azurecr.io/radix-cicd-canary
-      tag: flux2-bbf79a9d-1633621053 # {"$imagepolicy": "default:radix-cicd-canary:tag"}
+      tag: flux2-bbf79a9d-1633621053 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
@@ -233,7 +233,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-cicd-canary
-  namespace: default
+  namespace: flux-system
 spec:
   image: radixdev.azurecr.io/radix-cicd-canary
 ---
@@ -241,7 +241,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: radix-cicd-canary
-  namespace: default
+  namespace: flux-system
 spec:
   filterTags:
     pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+) # flux2-37ba38c8-1632749264
@@ -267,7 +267,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-cost-allocation
-      tag: flux2-079bb4bc-1633073962 # {"$imagepolicy": "default:radix-cost-allocation:tag"}
+      tag: flux2-079bb4bc-1633073962 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
     db:
       server: sql-radix-cost-allocation-dev.database.windows.net
     resources:
@@ -289,7 +289,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-cost-allocation
-  namespace: default
+  namespace: flux-system
 spec:
   image: radixdev.azurecr.io/radix-cost-allocation
 ---
@@ -297,7 +297,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: radix-cost-allocation
-  namespace: default
+  namespace: flux-system
 spec:
   filterTags:
     pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
@@ -323,7 +323,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-operator
-      tag: flux2-ac507f2d-1634045113 # {"$imagepolicy": "default:radix-operator:tag"}
+      tag: flux2-ac507f2d-1634045113 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: weekly-40
     resources:
       limits:
@@ -344,7 +344,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-operator
-  namespace: default
+  namespace: flux-system
 spec:
   image: radixdev.azurecr.io/radix-operator
 ---
@@ -352,7 +352,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: radix-operator
-  namespace: default
+  namespace: flux-system
 spec:
   filterTags:
     pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
