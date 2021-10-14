@@ -329,7 +329,7 @@ spec:
     image:
       repository: radixdev.azurecr.io/radix-operator
       tag: master-0738ab20-1634201605 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-    activeClusterName: weekly-40
+    activeClusterName: weekly-41
     resources:
       limits:
         memory: 1000Mi
