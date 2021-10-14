@@ -29,4 +29,4 @@ patchesStrategicMerge:
 #       name: clusterName
 # generatorOptions:
 #   annotations:
-#     kustomize.toolkit.fluxcd.io/substitute: disabled
+#     kustomize.toolkit.fluxcd.io/substitute: disabled 
