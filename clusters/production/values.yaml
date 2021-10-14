@@ -162,7 +162,7 @@ spec:
     retainLatestUntagged: 0
     image:
       repository: radixprod.azurecr.io/radix-acr-cleanup
-      tag: flux2-045233d3-1633072906 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      tag: master-latest # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
