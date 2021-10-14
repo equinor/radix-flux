@@ -6,9 +6,9 @@ metadata:
 spec:
   interval: 10m1s
   postBuild:
-    substitute:
-      clusterName: "olemarkusflux"
-      dnsZone: "dev.radix.equinor.com"
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
