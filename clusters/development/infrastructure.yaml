@@ -4,14 +4,14 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  timeout: 5m0s
+  # timeout: 5m0s
   interval: 10m1s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./clusters/development
-  prune: true
-  validation: client
+  # sourceRef:
+  #   kind: GitRepository
+  #   name: flux-system
+  # path: ./clusters/development
+  # prune: true
+  # validation: client
   postBuild:
     substitute:
       clusterName: "olemarkusflux"
