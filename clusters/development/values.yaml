@@ -167,7 +167,7 @@ spec:
     deleteUntagged: false
     image:
       repository: radixdev.azurecr.io/radix-acr-cleanup
-      tag: master-latest # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      tag: master-83a71f8a-1634201422 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
@@ -244,7 +244,7 @@ metadata:
   namespace: default
 spec:
   filterTags:
-    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)  # flux2-37ba38c8-1632749264
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+) # flux2-37ba38c8-1632749264
 ---
 #########################################
 #   RADIX COST ALLOCATION
