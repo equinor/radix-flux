@@ -4,6 +4,8 @@ metadata:
   name: ingress-nginx
   namespace: default
 spec:
+  dependsOn:
+    - name: kube-prometheus-stack
   chart:
     spec:
       chart: ingress-nginx
