@@ -21,7 +21,7 @@ spec:
     rbac:
       create: true
     interval: 60s
-    txtOwnerId: ${clusterName}
+    txtOwnerId: ${clusterType}
     provider: azure
     azure:
       resourceGroup: common
