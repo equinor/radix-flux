@@ -167,7 +167,7 @@ spec:
     deleteUntagged: false
     image:
       repository: radixdev.azurecr.io/radix-acr-cleanup
-      tag: master-latest # {"$imagepolicy": "default:radix-acr-cleanup:tag"}
+      tag: master-latest # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
@@ -182,7 +182,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-acr-cleanup
-  namespace: default
+  namespace: flux-system
 spec:
   image: radixdev.azurecr.io/radix-acr-cleanup
 ---
@@ -190,7 +190,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: radix-acr-cleanup
-  namespace: default
+  namespace: flux-system
 spec:
   filterTags:
     pattern: ^master-[a-f0-9]+-(?P<ts>[0-9]+)
