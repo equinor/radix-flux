@@ -170,6 +170,15 @@ spec:
       tag: flux2-045233d3-1633072906 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  update:
+    path: clusters/development
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: radix-acr-cleanup

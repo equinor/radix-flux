@@ -20,5 +20,5 @@ spec:
     push:
       branch: olemarkusflux
   update:
-    path: .
+    # path: .
     strategy: Setters
