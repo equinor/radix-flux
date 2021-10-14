@@ -218,7 +218,7 @@ spec:
     radixWebhookPrefix: webhook-radix-github-webhook-qa
     image:
       repository: radixdev.azurecr.io/radix-cicd-canary
-      tag: flux2-bbf79a9d-1633621053 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      tag: master-11bb9f65-1634207005 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
