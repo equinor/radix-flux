@@ -5,6 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   postBuild:
+    substitute:
+      ALERT_WEB_CONSOLE_BASE_URL: "https://console.dev.radix.equinor.com"
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
