@@ -6,6 +6,5 @@ metadata:
 spec:
   postBuild:
     substitute:
-      radix_cicd_canary_image_tag: master-11bb9f65-1634207005 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       radix_cicd_canary_helm_chart_branch: master
       radix_cicd_canary_image_tag_prefix: master

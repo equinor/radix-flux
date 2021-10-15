@@ -6,7 +6,6 @@ metadata:
 spec:
   postBuild:
     substitute:
-      radix_cost_allocation_image_tag: master-6f810e44-1634201432 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       radix_cost_allocation_helm_chart_branch: master
       radix_cost_allocation_image_tag_prefix: master
       radix_cost_allocation_db_server: sql-radix-cost-allocation-dev.database.windows.net

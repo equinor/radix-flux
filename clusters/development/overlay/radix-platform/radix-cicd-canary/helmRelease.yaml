@@ -5,5 +5,7 @@ metadata:
   namespace: radix-cicd-canary
 spec:
   values:
+    image:
+      tag: master-11bb9f65-1634207005 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
     radixApiPrefix: server-radix-api-qa
     radixWebhookPrefix: webhook-radix-github-webhook-qa
