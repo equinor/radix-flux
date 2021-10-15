@@ -176,15 +176,15 @@ spec:
       repository: radixdev.azurecr.io/radix-acr-cleanup
       tag: master-61bcb716-1634207088 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta1
-kind: ImageUpdateAutomation
-metadata:
-  name: radix-acr-cleanup
-  namespace: flux-system
-spec:
-  update:
-    path: ./clusters/development
----
+# apiVersion: image.toolkit.fluxcd.io/v1beta1
+# kind: ImageUpdateAutomation
+# metadata:
+#   name: radix-acr-cleanup
+#   namespace: flux-system
+# spec:
+#   update:
+#     path: ./clusters/development
+# ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
@@ -227,15 +227,15 @@ spec:
       repository: radixdev.azurecr.io/radix-cicd-canary
       tag: master-11bb9f65-1634207005 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta1
-kind: ImageUpdateAutomation
-metadata:
-  name: radix-cicd-canary
-  namespace: flux-system
-spec:
-  update:
-    path: ./clusters/development
----
+# apiVersion: image.toolkit.fluxcd.io/v1beta1
+# kind: ImageUpdateAutomation
+# metadata:
+#   name: radix-cicd-canary
+#   namespace: flux-system
+# spec:
+#   update:
+#     path: ./clusters/development
+# ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
@@ -283,15 +283,15 @@ spec:
       requests:
         memory: 100Mi
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta1
-kind: ImageUpdateAutomation
-metadata:
-  name: radix-cost-allocation
-  namespace: flux-system
-spec:
-  update:
-    path: ./clusters/development
----
+# apiVersion: image.toolkit.fluxcd.io/v1beta1
+# kind: ImageUpdateAutomation
+# metadata:
+#   name: radix-cost-allocation
+#   namespace: flux-system
+# spec:
+#   update:
+#     path: ./clusters/development
+# ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
@@ -338,15 +338,15 @@ spec:
       requests:
         memory: 1000Mi
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta1
-kind: ImageUpdateAutomation
-metadata:
-  name: radix-operator
-  namespace: flux-system
-spec:
-  update:
-    path: ./clusters/development
----
+# apiVersion: image.toolkit.fluxcd.io/v1beta1
+# kind: ImageUpdateAutomation
+# metadata:
+#   name: radix-operator
+#   namespace: flux-system
+# spec:
+#   update:
+#     path: ./clusters/development
+# ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:

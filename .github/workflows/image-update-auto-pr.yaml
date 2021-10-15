@@ -1,0 +1,22 @@
+name: Image Update Auto-PR
+on:
+  push:
+    branches: ['flux-image-updates']
+
+jobs:
+  pull-request:
+    name: Open PR to olemarkusflux
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: checkout
+
+    - uses: repo-sync/pull-request@v2
+      name: pull-request
+      with:
+        destination_branch: "olemarkusflux"
+        pr_title: "Pulling ${{ github.ref }} into olemarkusflux"
+        pr_body: "👑 *An automated PR*"
+        pr_reviewer: "oleterno-equinor"
+        pr_draft: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
