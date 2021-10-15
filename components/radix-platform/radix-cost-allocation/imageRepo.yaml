@@ -4,7 +4,7 @@ metadata:
   name: radix-cost-allocation
   namespace: flux-system
 spec:
-  # image: xx                 # Set by flux patch
+  image: ${radix_acr_repo_url}/radix-cost-allocation # Defined in flux patch
   interval: 1m0s
   secretRef:
     name: radix-docker

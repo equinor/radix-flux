@@ -7,4 +7,4 @@ spec:
   interval: 1m
   url: https://github.com/equinor/radix-cost-allocation
   ref:
-    # branch: master        # Set by patch
+    branch: ${radix_cost_allocation_helm_chart_branch} # Defined in flux patch

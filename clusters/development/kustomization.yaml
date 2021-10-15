@@ -18,4 +18,5 @@ resources:
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
 patchesStrategicMerge:
-- ./values.yaml
+- ./global-variables.yaml
+- overlay

@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      # version: 5.4.8                          # Set by flux patch
+      version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: bitnami

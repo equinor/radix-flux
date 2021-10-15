@@ -13,7 +13,7 @@ spec:
   chart:
     spec:
       chart: kubed
-      # version: v0.12.0                          # Set by flux patch
+      version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: kubed
@@ -29,4 +29,4 @@ spec:
     rbac:
       create: true
     config:
-      # clusterName: "dev"                        # Set by flux patch
+      clusterName: ${RADIX_ZONE} # Defined in flux patch

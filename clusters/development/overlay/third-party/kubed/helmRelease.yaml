@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kubed
+  namespace: kube-system
+spec:
+  chart:
+    spec:
+      version: v0.12.0 # https://github.com/kubeops/kubed/releases

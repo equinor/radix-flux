@@ -7,4 +7,4 @@ spec:
   interval: 1m
   url: https://github.com/equinor/radix-acr-cleanup
   ref:
-    # branch: master        # Set by patch
+    branch: ${radix_acr_cleanup_helm_branch} # Defined in flux patch

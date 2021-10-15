@@ -3,9 +3,6 @@ kind: HelmRelease
 metadata:
   name: radix-cost-allocation
   namespace: radix-cost-allocation
-  # annotations:
-  #   fluxcd.io/automated: "true"
-  #   filter.fluxcd.io/chart-image: glob:master-*
 spec:
   interval: 5m
   install:
@@ -22,11 +19,11 @@ spec:
         - ./charts/values.yaml
   values:
     image:
-      # repository: radixdev.azurecr.io/radix-cost-allocation         # Set by flux patch
-      # tag: "master-latest"                                          # Set by flux patch
+      repository: ${radix_acr_repo_url}/radix-cost-allocation         # Set by flux patch
+      tag: ${radix_cost_allocation_image_tag}                             # Set by flux patch
       pullPolicy: Always
     db:
-      # server: sql-radix-cost-allocation-dev.database.windows.net    # Set by flux patch
+      server: ${radix_cost_allocation_db_server}                      # Set by flux patch
     resources:
       limits:
         cpu: "2"
