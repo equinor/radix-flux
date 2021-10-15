@@ -274,7 +274,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-cost-allocation
-      tag: master-6f810e44-1634201432 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      tag: master-6f810e44-1634278063 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
     db:
       server: sql-radix-cost-allocation-dev.database.windows.net
     resources:
@@ -330,7 +330,7 @@ spec:
   values:
     image:
       repository: radixdev.azurecr.io/radix-operator
-      tag: master-d8502148-1634219192 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      tag: master-d01e1135-1634280396 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: weekly-41
     resources:
       limits:
