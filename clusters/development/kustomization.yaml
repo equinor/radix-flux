@@ -17,18 +17,18 @@ resources:
 - ../../components/third-party/kured
 - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
-- ../../components/radix-platform/radix-acr-cleanup
-- ../../components/radix-platform/radix-cicd-canary
-- ../../components/radix-platform/radix-cost-allocation
-- ../../components/radix-platform/radix-operator
+- overlay/radix-platform/radix-acr-cleanup
+- overlay/radix-platform/radix-cicd-canary
+- overlay/radix-platform/radix-cost-allocation
+- overlay/radix-platform/radix-operator
 patchesStrategicMerge:
 - ./postBuild.yaml
-- ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
-- ./overlay/radix-platform/radix-acr-cleanup/helmRelease.yaml
-- ./overlay/radix-platform/radix-cicd-canary/postBuild.yaml
-- ./overlay/radix-platform/radix-cicd-canary/helmRelease.yaml
-- ./overlay/radix-platform/radix-cost-allocation/postBuild.yaml
-- ./overlay/radix-platform/radix-cost-allocation/helmRelease.yaml
+# - ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
+# - ./overlay/radix-platform/radix-acr-cleanup/helmRelease.yaml
+# - ./overlay/radix-platform/radix-cicd-canary/postBuild.yaml
+# - ./overlay/radix-platform/radix-cicd-canary/helmRelease.yaml
+# - ./overlay/radix-platform/radix-cost-allocation/postBuild.yaml
+# - ./overlay/radix-platform/radix-cost-allocation/helmRelease.yaml
 - ./overlay/radix-platform/radix-operator/postBuild.yaml
 - ./overlay/radix-platform/radix-operator/helmRelease.yaml
 - ./overlay/third-party/blob-csi-driver/helmRelease.yaml
