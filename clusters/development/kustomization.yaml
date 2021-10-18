@@ -4,7 +4,9 @@ resources:
 - flux-system
 - ./automation.yaml
 - ../../components/third-party/blob-csi-driver
+- ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
+- ../../components/third-party/csi-blobfuse-proxy
 - ../../components/third-party/dynatrace-operator
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
@@ -12,6 +14,7 @@ resources:
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubed
 - ../../components/third-party/kured
+- ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
 - ../../components/radix-platform/radix-acr-cleanup
 - ../../components/radix-platform/radix-cicd-canary
