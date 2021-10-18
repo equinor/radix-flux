@@ -13,8 +13,3 @@ spec:
   path: ./components/third-party/velero-schedule
   prune: true
   validation: client
-  # healthChecks:
-  #   - apiVersion: helm.toolkit.fluxcd.io/v1beta1
-  #     kind: HelmRelease
-  #     name: podinfo
-  #     namespace: podinfo
