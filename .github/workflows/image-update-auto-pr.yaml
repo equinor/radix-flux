@@ -17,6 +17,6 @@ jobs:
         destination_branch: "olemarkusflux"
         pr_title: "Pulling ${{ github.ref }} into olemarkusflux"
         pr_body: "👑 *An automated PR*"
-        pr_reviewer: "equinor/omnia-radix"
+        pr_reviewer: "/omnia-radix"
         pr_draft: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
