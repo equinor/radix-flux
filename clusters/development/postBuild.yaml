@@ -12,3 +12,8 @@ spec:
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: velero
+      namespace: velero
