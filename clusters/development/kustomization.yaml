@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 - flux-system
 - ./imageUpdateAutomation.yaml
-- ./velero-schedule.yaml
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
@@ -21,6 +20,7 @@ resources:
 - ../../components/radix-platform/radix-cicd-canary
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
+- ../../components/third-party/velero-schedule/velero-schedule.yaml
 patchesStrategicMerge:
 - ./postBuild.yaml
 - ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
