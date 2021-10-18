@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../../../components/radix-platform/radix-acr-cleanup
+patchesStrategicMerge:
+- helmRelease.yaml
+- postBuild.yaml
