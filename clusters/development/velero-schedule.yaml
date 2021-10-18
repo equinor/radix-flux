@@ -7,9 +7,9 @@ spec:
   interval: 10m0s
   dependsOn:
     - name: flux-system
-  # sourceRef:
-  #   kind: GitRepository
-  #   name: flux-system
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
   path: ./components/third-party/velero-schedule
   prune: true
   validation: client
