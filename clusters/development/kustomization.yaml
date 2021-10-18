@@ -17,14 +17,14 @@ resources:
 - ../../components/third-party/kured
 - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
-- ./components.yaml
+- ../../components/radix-platform/radix-acr-cleanup
 - ../../components/radix-platform/radix-cicd-canary
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
 patchesStrategicMerge:
 - ./postBuild.yaml
-# - ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
-# - ./overlay/radix-platform/radix-acr-cleanup/helmRelease.yaml
+- ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
+- ./overlay/radix-platform/radix-acr-cleanup/helmRelease.yaml
 - ./overlay/radix-platform/radix-cicd-canary/postBuild.yaml
 - ./overlay/radix-platform/radix-cicd-canary/helmRelease.yaml
 - ./overlay/radix-platform/radix-cost-allocation/postBuild.yaml
