@@ -20,6 +20,7 @@ resources:
 - ../../components/radix-platform/radix-cicd-canary
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
+- ../../components/third-party/velero-schedule/velero-schedule.yaml
 patchesStrategicMerge:
 - ./postBuild.yaml
 - ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml

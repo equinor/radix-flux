@@ -12,3 +12,5 @@ spec:
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
+  wait: true
+  timeout: 5m
