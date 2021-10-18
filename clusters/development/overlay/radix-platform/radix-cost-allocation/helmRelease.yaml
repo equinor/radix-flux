@@ -6,7 +6,7 @@ metadata:
 spec:
   values:
     image:
-      tag: master-6f810e44-1634201432 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      tag: master-6f810e44-1634278063 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
     resources:
       limits:
         memory: 100Mi
