@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 19.0.2 # https://github.com/prometheus-community/helm-charts/releases

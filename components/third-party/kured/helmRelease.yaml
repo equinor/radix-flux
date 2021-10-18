@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: kured
-      # version: 2.9.1                          # Set by flux patch
+      version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: kured

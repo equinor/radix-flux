@@ -4,6 +4,5 @@ resources:
 - namespace.yaml
 - gitRepo.yaml
 - helmRelease.yaml
-# - automation.yaml
 - imageRepo.yaml
 - imagePolicy.yaml

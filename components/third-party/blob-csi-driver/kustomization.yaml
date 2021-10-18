@@ -3,6 +3,3 @@ kind: Kustomization
 resources:
 - helmRepo.yaml
 - helmRelease.yaml
-- blobfuse-flexvolume.yaml
-- csi-blobfuse-proxy.yaml
-- sysctl-install-blobfuse.yaml

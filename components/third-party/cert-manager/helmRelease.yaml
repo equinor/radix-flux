@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: cert-manager
-      # version: 1.5.4                          # Set by flux patch
+      version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: cert-manager

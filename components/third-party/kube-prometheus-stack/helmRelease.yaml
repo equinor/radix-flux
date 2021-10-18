@@ -4,13 +4,11 @@ metadata:
   name: kube-prometheus-stack
   namespace: default
 spec:
-  # dependsOn:
-  #   - name: ingress-nginx
   releaseName: kube-prometheus-stack
   chart:
     spec:
       chart: kube-prometheus-stack
-      # version: 19.0.2                          # Set by flux patch
+      version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: kube-prometheus-stack

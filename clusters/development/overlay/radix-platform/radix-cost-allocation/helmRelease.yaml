@@ -1,0 +1,14 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cost-allocation
+  namespace: radix-cost-allocation
+spec:
+  values:
+    image:
+      tag: master-6f810e44-1634201432 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+    resources:
+      limits:
+        memory: 100Mi
+      requests:
+        memory: 100Mi

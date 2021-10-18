@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   filterTags:
-    # pattern: ^master-[a-f0-9]+-(?P<ts>[0-9]+) # Set by flux patch
+    pattern: ^${radix_acr_cleanup_image_tag_prefix}-[a-f0-9]+-(?P<ts>[0-9]+) # Variable "radix_github_repo_branch" defined in flux patch
     extract: $ts
   imageRepositoryRef:
     name: radix-acr-cleanup
