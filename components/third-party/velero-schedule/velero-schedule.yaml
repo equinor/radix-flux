@@ -1,3 +1,7 @@
+---
+# This Kustomization depends on flux-system to have state 'Ready'.
+# flux-system is configured to run a healthCheck on the Velero deployment.
+# This way we can ensure that velero-schedule is deployed after Velero.
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
@@ -10,6 +14,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/third-party/velero-schedule
+  path: ./components/third-party/velero-schedule/schedule
   prune: true
   validation: client
