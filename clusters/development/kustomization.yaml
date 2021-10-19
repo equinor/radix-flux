@@ -23,6 +23,7 @@ resources:
 - ../../components/radix-platform/radix-operator
 patchesStrategicMerge:
 - ./postBuild.yaml
+- ./healthChecks.yaml
 - ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
 - ./overlay/radix-platform/radix-acr-cleanup/helmRelease.yaml
 - ./overlay/radix-platform/radix-cicd-canary/postBuild.yaml
