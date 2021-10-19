@@ -16,11 +16,11 @@ resources:
 - ../../components/third-party/kured
 - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
+- ../../components/third-party/velero-schedule
 - ../../components/radix-platform/radix-acr-cleanup
 - ../../components/radix-platform/radix-cicd-canary
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
-- ./velero-schedule.yaml
 patchesStrategicMerge:
 - ./postBuild.yaml
 - ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
