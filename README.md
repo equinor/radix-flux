@@ -2,8 +2,8 @@
 
 The Git repository contains the following top directories:
 
-- **clusters** dir contains the Flux configuration per cluster.
-- **components** dir contains all components deployed to the cluster with base configuration.
+- **clusters** directory contains the Flux configuration per cluster.
+- **components** directory contains all components deployed to the cluster with base configuration.
 
 ```
 ├── clusters
@@ -36,7 +36,7 @@ The Git repository contains the following top directories:
 ## Flux system
 The `flux-system` directory is created and managed by Flux. 
 ## Overlay
-In Radix we want separate configurations per cluster. In order to achieve this we use Flux overlays which overrides the configuration defined in the `components` directory. The `overlay` directory has the same structure as the `components` directory, but contains only files for the resources to be overridden. The files then need to be included in the `kustomization.yaml` file in the cluster environment directory. 
+In Radix we want separate configurations per cluster. In order to achieve this we use Flux overlays which override the configuration defined in the `components` directory. The `overlay` directory has the same structure as the `components` directory, but contains only files for the resources to be overridden. The files then need to be included in the `kustomization.yaml` file in the cluster environment directory. 
 
 For example, radix-operator uses cluster-specific configuration which requires overriding the helm release. To do that, a file is with the name `helmRelease.yaml` is created in the `overlay` directory with the same sub-path as the `helmRelease.yaml` file in the `components` directory. Note that the `metadata` tag is used to specify the target resource. 
 
@@ -104,10 +104,10 @@ spec:
 ```
 
 ## Automatic image updates
-Flux v2 can automatically search repositories for new versions of components and update the repository to upgrade the components running in the cluster. To set up automatic image updates, three components are required. 
+Flux v2 can automatically track container registries for new pushed versions of container images and update the Flux configuration repository to upgrade the configured components, deployed to the cluster. To set up automatic image updates, three components are required. 
 
 ### ImageRepository
-The ImageRepository defines the repository where Flux should look for new versions. Examples are Azure Container Registry, helm chart repo and GitHub repo. If the repository is private and requires authentication, a secret can be defined which contains credentials to access it. 
+The ImageRepository defines the container registry where Flux should look for new versions of container images. If the container registry is private and requires authentication, a secret can be defined which contains credentials to access it. 
 
 ```yaml
 # file: components/radix-platform/radix-operator/imageRepo.yaml
@@ -124,7 +124,7 @@ spec:
     name: radix-docker
 ```
 ### imagePolicy
-The imagePolicy resource specifies how Flux should look for versions. It can be configured to filter and extract a timestamp or use semvars to find the latest versions. If the image tags are not using semvars, Flux needs to be able to sort the image tags alphabetically or numerically. They recommend tagging images with a timestamp. 
+The imagePolicy resource specifies how Flux will identify the latest container image scanned from the imageRepository. The `policy` spec specifies whether the latest image is found by a SemVer range or by alphabetical or numberical sorting. If the image tag contains a timestamp, the timestamp can be filtered and extracted using the `filterTags` spec. 
 
 ```yaml
 # file: components/radix-platform/radix-operator/imagePolicy.yaml
@@ -146,7 +146,8 @@ spec:
 ```
 
 ### imageUpdateAutomation
-The imageUpdateAutomation resource specifies how Flux should update the repo. It can be configured to commit directly to the active branch, or to commit to a new branch and use a GitHub workflow to automatically create a Pull Request. This is also where to configure the branch Flux should compare the new image tags with. The commit message can also be modified. When Flux searches the imageRepository and finds a tag that is newer than the one in the Flux repository, it will use the imageUpdateAutomation to commit the changes to a branch in the repository. To prevent updating the tags in the all environments, the `path` spec defines where in the repo Flux should look for the tags to change.
+The imageUpdateAutomation resource specifies which Git repository and branch Flux should write image updates to. It can be configured to commit directly to an existing branch, or to commit to a new branch. A GitHub workflow can be used to automatically create a Pull Request with the updated versions. The commit message can be customized to include information about the image updates. When Flux searches the imageRepository and finds a tag that is newer than the one in the Flux configuration repository, it will use the imageUpdateAutomation to commit the changes to a branch in the repository. 
+
 
 ```yaml
 # file: clusters/development/imageUpdateAutomation.yaml
@@ -177,7 +178,11 @@ spec:
     strategy: Setters
 ```
 
-In order for Flux to know which values to compare with the images from the imageRepository, the values need to be marked with a special comment at the end of the line which specifies the imagePolicy the value is for:
+The `path` spec specifies a directory with files, which is scanned regularly by Flux to find the values which should be changed. This prevents Flux from updating the overlay in all cluster environment configurations. Flux identifies the values to change by looking for an "image policy marker" which contains the name and namespace of the imagePolicy. The marker also specifies whether it is the name or the tag which is the value. 
+
+- `{"$imagepolicy": "namespace:radix-operator"}` resolves to `radixdev.azurecr.io/radix-operator:master-a5e880b9-1634484632`
+- `{"$imagepolicy": "namespace:radix-operator:name"}` resolves to `radixdev.azurecr.io/radix-operator`
+- `{"$imagepolicy": "namespace:radix-operator:tag"}` resolves to `master-a5e880b9-1634484632`
 
 ```yaml
 # file: clusters/development/overlay/radix-platform/radix-operator/helmRelease.yaml
