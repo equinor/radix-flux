@@ -146,7 +146,7 @@ spec:
 ```
 
 ### imageUpdateAutomation
-The imageUpdateAutomation resource specifies which Git repository and branch Flux should write image updates to. It can be configured to commit directly to an existing branch, or to commit to a new branch. A GitHub workflow can be used to automatically create a Pull Request with the updated versions. The commit message can be customized to include information about the image updates. When Flux searches the imageRepository and finds a tag that is newer than the one in the Flux configuration repository, it will use the imageUpdateAutomation to commit the changes to a branch in the repository. 
+The imageUpdateAutomation resource specifies which Git repository and branch Flux should write image updates to. The Git repository should be the Flux configuration repository. It can be configured to commit directly to an existing branch, or to commit to a new branch. A GitHub workflow can be used to automatically create a Pull Request with the updated versions. The commit message can be customized to include information about the image updates. When Flux searches the imageRepository and finds a tag that is newer than the one in the Flux configuration repository, it will use the imageUpdateAutomation to commit the changes to a branch in the repository. 
 
 
 ```yaml
