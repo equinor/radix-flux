@@ -5,7 +5,7 @@ on:
 
 jobs:
   pull-request:
-    name: Open PR to olemarkusflux
+    name: Open PR to master
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -14,8 +14,8 @@ jobs:
     - uses: repo-sync/pull-request@v2
       name: pull-request
       with:
-        destination_branch: "olemarkusflux"
-        pr_title: "Pulling ${{ github.ref }} into olemarkusflux"
+        destination_branch: "master"
+        pr_title: "Pulling ${{ github.ref }} into master"
         pr_body: "👑 *An automated PR*"
         pr_reviewer: "/omnia-radix"
         pr_draft: true
