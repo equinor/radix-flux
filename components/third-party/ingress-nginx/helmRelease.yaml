@@ -20,13 +20,6 @@ spec:
       retries: 3
   values:
     controller:
-      # autoscaling:                                  # Set
-      #   enabled: true                               #
-      #   minReplicas: 2                              #     by
-      #   maxReplicas: 5                              #
-      #   targetCPUUtilizationPercentage: 80          #        flux
-      #   targetMemoryUtilizationPercentage: 80       #
-      # replicaCount: 2                               #             patch
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -62,8 +55,8 @@ spec:
       resources:
         limits:
           cpu: 6
-          # memory: 500Mi                             # Set by flux patch
+          memory: 500Mi
         requests:
-          # cpu: 100m                                 # Set by flux patch
-          # memory: 500Mi                             # Set by flux patch
+          cpu: 100m
+          memory: 500Mi
       priorityClassName: radix-component-priority

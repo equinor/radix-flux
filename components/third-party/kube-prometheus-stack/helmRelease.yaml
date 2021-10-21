@@ -38,7 +38,7 @@ spec:
         resources:
           requests:
             cpu: "100m"
-            memory: "400Mi" # default 400Mi
+            memory: "400Mi"
       templateFiles: # https://github.com/prometheus-community/helm-charts/blob/bd7f3ca7efb7b5806b720b098144d1240c930a70/charts/kube-prometheus-stack/values.yaml#L192
         radix-app.tmpl: |-
           {{define "radix-env-slack-alert-title"}}
@@ -83,8 +83,8 @@ spec:
     prometheusOperator:
       resources:
         requests:
-          cpu: "100m" # default 100m
-          memory: "100Mi" # default 100Mi
+          cpu: "100m"
+          memory: "100Mi"
     kube-state-metrics:
       extraArgs:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]

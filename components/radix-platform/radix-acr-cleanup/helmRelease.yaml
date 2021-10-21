@@ -3,10 +3,6 @@ kind: HelmRelease
 metadata:
   name: radix-acr-cleanup
   namespace: default
-  # annotations:
-  #   # flux.weave.works/ignore: "true"
-  #   fluxcd.io/automated: "true"
-  #   filter.fluxcd.io/chart-image: glob:master-*
 spec:
   interval: 5m
   install:
@@ -23,7 +19,7 @@ spec:
         - ./charts/radix-acr-cleanup/values.yaml
   values:
     registry: radix${RADIX_ENVIRONMENT}                               # Set by flux patch
-    # deleteUntagged: false                                           # Set by flux patch
+    deleteUntagged: xx                                                # Set by flux patch
     performDelete: true
     period: 1h
     cleanupStart: "0:00"

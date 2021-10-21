@@ -27,10 +27,10 @@ spec:
     resources:
       limits:
         cpu: "2"
-        # memory: 100Mi                                               # Set by flux patch
+        memory: 100Mi
       requests:
         cpu: 100m
-        # memory: 100Mi                                               # Set by flux patch
+        memory: 100Mi
   valuesFrom:
   - kind: Secret
     name: cost-db-secret

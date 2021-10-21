@@ -3,9 +3,6 @@ kind: HelmRelease
 metadata:
   name: radix-operator
   namespace: default
-  # annotations:
-  #   fluxcd.io/automated: "true"
-  #   filter.fluxcd.io/chart-image: glob:master-*
 spec:
   interval: 5m
   install:
@@ -26,19 +23,14 @@ spec:
       # The following 2 properties are mandatory for Flux image filtering
       repository: ${radix_acr_repo_url}/radix-operator                # Set by flux patch
       tag: xx                                                         # Set by flux patch
-    # activeClusterName: weekly-40                                    # Set by flux patch
-    # imageBuilder: radix-image-builder:release-latest                # Set by flux patch
-    # imageScanner: radix-image-scanner:release-latest                # Set by flux patch
-    # configToMap: radix-config-2-map:release-latest                  # Set by flux patch
-    # jobScheduler: radix-job-scheduler:release-latest                # Set by flux patch
-    # containerRegistry: radixprod.azurecr.io                         # Set by flux patch
+    activeClusterName: xx                                             # Set by flux patch
     resources:
       limits:
         cpu: "2"
-        # memory: 1000Mi                                              # Set by flux patch
+        memory: 1000Mi
       requests:
         cpu: 100m
-        # memory: 1000Mi                                              # Set by flux patch
+        memory: 1000Mi
     forceNonRootDeploymentContainers: true
     app:
       limitrange:
