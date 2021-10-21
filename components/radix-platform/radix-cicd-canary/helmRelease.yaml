@@ -1,0 +1,39 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts/radix-cicd-canary
+      sourceRef:
+        kind: GitRepository
+        name: radix-cicd-canary
+        namespace: flux-system
+      valuesFiles:
+        - ./charts/radix-cicd-canary/values.yaml
+  values:
+    # radixApiPrefix: server-radix-api-qa                             # Set by flux patch
+    # radixWebhookPrefix: webhook-radix-github-webhook-qa             # Set by flux patch
+    sleepIntervalTestRuns: 300
+    image:
+      # For Flux "image.repository" means full path to the image (registry/repository)
+      # The following 2 properties are mandatory for Flux image filtering
+      repository: ${radix_acr_repo_url}/radix-cicd-canary             # Set by flux patch
+      tag: xx                                                         # Set by flux patch
+    resources:
+      limits:
+        cpu: "2"
+        memory: 100Mi
+      requests:
+        cpu: 50m
+        memory: 100Mi
+  valuesFrom:
+  - kind: Secret
+    name: canary-secrets
+    valuesKey: radix-cicd-canary-values.yaml

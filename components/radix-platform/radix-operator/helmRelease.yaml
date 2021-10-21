@@ -1,0 +1,42 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-operator
+  namespace: default
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts/radix-operator
+      sourceRef:
+        kind: GitRepository
+        name: radix-operator
+        namespace: flux-system
+      valuesFiles:
+        - ./charts/radix-operator/values.yaml
+  values:
+    image:
+      # For Flux "image.repository" means full path to the image (registry/repository)
+      # The following 2 properties are mandatory for Flux image filtering
+      repository: ${radix_acr_repo_url}/radix-operator                # Set by flux patch
+      tag: xx                                                         # Set by flux patch
+    activeClusterName: xx                                             # Set by flux patch
+    resources:
+      limits:
+        cpu: "2"
+        memory: 1000Mi
+      requests:
+        cpu: 100m
+        memory: 1000Mi
+    forceNonRootDeploymentContainers: true
+    app:
+      limitrange:
+        default:
+          memory: 1500Mi
+  valuesFrom:
+  - kind: ConfigMap
+    name: radix-platform-config
+    valuesKey: platform

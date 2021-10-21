@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: blob-csi-driver
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://raw.githubusercontent.com/kubernetes-sigs/blob-csi-driver/master/charts

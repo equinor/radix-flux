@@ -1,0 +1,323 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: blob-csi-driver
+  namespace: kube-system
+spec:
+  chart:
+    spec:
+      version: v1.5.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cert-manager
+  namespace: cert-manager
+spec:
+  chart:
+    spec:
+      version: 1.5.4 # https://github.com/jetstack/cert-manager/releases
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: dynatrace-operator
+  namespace: dynatrace
+spec:
+  chart:
+    spec:
+      version: 0.2.3 # https://github.com/Dynatrace/helm-charts/releases
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 5.4.8 # helm search repo bitnami/external-dns
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 6.16.10 # https://github.com/grafana/helm-charts/releases
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 3.38.0 # https://github.com/kubernetes/ingress-nginx/releases
+  values:
+    controller:
+      replicaCount: 2
+      resources:
+        limits:
+          memory: 1400Mi
+        requests:
+          cpu: 100m
+          memory: 1400Mi
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 19.0.1 # https://github.com/prometheus-community/helm-charts/releases
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kubed
+  namespace: kube-system
+spec:
+  chart:
+    spec:
+      version: v0.12.0 # https://github.com/kubeops/kubed/releases
+  values:
+    config:
+      clusterName: dev # Used for Kubed notification ...which we do not use.
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kured
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 2.9.1 # helm search repo kured/kured
+  values:
+    extraArgs:
+      start-time: 8am
+      end-time: 4pm
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  chart:
+    spec:
+      version: 2.23.12 # https://github.com/vmware-tanzu/helm-charts/releases
+  values:
+    initContainers:
+      - name: radix-velero-plugin
+        image: radixdev.azurecr.io/radix-velero-plugin:release-latest
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
+    resources:
+      limits:
+        memory: 2048Mi
+      requests:
+        cpu: 200m
+        memory: 1024Mi
+---
+#########################################
+#   RADIX ACR CLEANUP
+#
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  ref:
+    branch: release
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-acr-cleanup
+  namespace: default
+spec:
+  values:
+    registry: radixdev
+    deleteUntagged: true
+    retainLatestUntagged: 0
+    image:
+      repository: radixdev.azurecr.io/radix-acr-cleanup
+      tag: master-latest # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-acr-cleanup
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+---
+#########################################
+#   RADIX CICD CANARY
+#
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  ref:
+    branch: release
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  values:
+    radixApiPrefix: server-radix-api-prod
+    radixWebhookPrefix: webhook-radix-github-webhook-prod
+    image:
+      repository: radixdev.azurecr.io/radix-cicd-canary
+      tag: flux2-bbf79a9d-1633621053 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-cicd-canary
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-cicd-canary
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+---
+#########################################
+#   RADIX COST ALLOCATION
+#
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  ref:
+    branch: release
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cost-allocation
+  namespace: radix-cost-allocation
+spec:
+  values:
+    image:
+      repository: radixdev.azurecr.io/radix-cost-allocation
+      tag: flux2-079bb4bc-1633073962 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+    db:
+      server: sql-radix-cost-allocation-playground.database.windows.net
+    resources:
+      limits:
+        memory: 150Mi
+      requests:
+        memory: 150Mi
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-cost-allocation
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)
+---
+#########################################
+#   RADIX OPERATOR
+#
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: radix-operator
+  namespace: flux-system
+spec:
+  ref:
+    branch: release
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-operator
+  namespace: default
+spec:
+  values:
+    image:
+      repository: radixdev.azurecr.io/radix-operator
+      tag: flux2-ac507f2d-1634045113 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+    activeClusterName: playground-39
+    imageBuilder: radix-image-builder:release-latest
+    imageScanner: radix-image-scanner:release-latest
+    configToMap: radix-config-2-map:release-latest
+    jobScheduler: radix-job-scheduler:release-latest
+    containerRegistry: radixdev.azurecr.io
+    subscriptionId: 16ede44b-1f74-40a5-b428-46cca9a5741b
+    resources:
+      limits:
+        memory: 3000Mi
+      requests:
+        memory: 1500Mi
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-operator
+  namespace: flux-system
+spec:
+  image: radixdev.azurecr.io/radix-operator
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-operator
+  namespace: flux-system
+spec:
+  filterTags:
+    pattern: ^flux2-[a-f0-9]+-(?P<ts>[0-9]+)

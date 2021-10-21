@@ -1,0 +1,37 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cost-allocation
+  namespace: radix-cost-allocation
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts
+      sourceRef:
+        kind: GitRepository
+        name: radix-cost-allocation
+        namespace: flux-system
+      valuesFiles:
+        - ./charts/values.yaml
+  values:
+    image:
+      repository: ${radix_acr_repo_url}/radix-cost-allocation         # Set by flux patch
+      tag: xx                                                         # Set by flux patch
+      pullPolicy: Always
+    db:
+      server: ${radix_cost_allocation_db_server}                      # Set by flux patch
+    resources:
+      limits:
+        cpu: "2"
+        memory: 100Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+  valuesFrom:
+  - kind: Secret
+    name: cost-db-secret
+    valuesKey: radix-cost-allocation-values.yaml

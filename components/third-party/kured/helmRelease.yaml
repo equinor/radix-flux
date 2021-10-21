@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kured
+  namespace: default
+spec:
+  # dependsOn:
+  #   - name: ingress-nginx
+  releaseName: kured
+  chart:
+    spec:
+      chart: kured
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: kured
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    updateStrategy: RollingUpdate
+    metrics:
+      create: true
+    extraArgs:
+      period: 5m0s
+      reboot-days: mon,tue,wed,thu,fri
+      # start-time: 8am                         # Set by flux patch
+      # end-time: 4pm                           # Set by flux patch
+      time-zone: CET
+      # lock-ttl: 30m                           # Set by flux patch

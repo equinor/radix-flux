@@ -1,0 +1,14 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  postBuild:
+    substitute:
+      RADIX_ZONE: dev # dev | playground | prod
+      RADIX_ENVIRONMENT: dev # dev | prod
+      radix_acr_repo_url: radixdev.azurecr.io
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
