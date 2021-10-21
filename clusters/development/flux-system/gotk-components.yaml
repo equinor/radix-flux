@@ -5138,6 +5138,7 @@ spec:
                 - lark
                 - matrix
                 - opsgenie
+                - alertmanager
                 type: string
               username:
                 description: Bot username for this provider
@@ -5558,6 +5559,7 @@ rules:
 - apiGroups:
   - ""
   resources:
+  - namespaces
   - secrets
   verbs:
   - get
@@ -5743,7 +5745,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: ghcr.io/fluxcd/helm-controller:v0.12.0
+        image: ghcr.io/fluxcd/helm-controller:v0.12.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -5891,7 +5893,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: ghcr.io/fluxcd/image-reflector-controller:v0.12.0
+        image: ghcr.io/fluxcd/image-reflector-controller:v0.13.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -5970,7 +5972,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: ghcr.io/fluxcd/kustomize-controller:v0.15.5
+        image: ghcr.io/fluxcd/kustomize-controller:v0.16.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -6044,7 +6046,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: ghcr.io/fluxcd/notification-controller:v0.17.1
+        image: ghcr.io/fluxcd/notification-controller:v0.18.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
