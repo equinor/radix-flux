@@ -8,17 +8,6 @@ spec:
     spec:
       version: 2.23.12 # https://github.com/vmware-tanzu/helm-charts/releases
   values:
-    initContainers:
-      - name: velero-plugin-for-microsoft-azure
-        image: velero/velero-plugin-for-microsoft-azure:v1.1.1
-        volumeMounts:
-          - name: plugins
-            mountPath: /target
-      - name: radix-velero-plugin
-        image: radixdev.azurecr.io/radix-velero-plugin:master-latest
-        volumeMounts:
-          - name: plugins
-            mountPath: /target
     resources:
       limits:
         memory: 1024Mi

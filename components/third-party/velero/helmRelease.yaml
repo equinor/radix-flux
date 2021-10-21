@@ -27,17 +27,17 @@ spec:
       retries: 3
   values:
     updateStrategy: RollingUpdate
-    # initContainers:
-    # - name: velero-plugin-for-microsoft-azure
-    #   image: velero/velero-plugin-for-microsoft-azure:v1.1.1
-    #   volumeMounts:
-    #   - name: plugins
-    #     mountPath: /target
-    # - name: radix-velero-plugin                                           #
-    #   image: radixdev.azurecr.io/radix-velero-plugin:master-latest        # Set by flux patch
-    #   volumeMounts:                                                       #
-    #   - name: plugins                                                     #
-    #     mountPath: /target                                                #
+    initContainers:
+    - name: velero-plugin-for-microsoft-azure
+      image: velero/velero-plugin-for-microsoft-azure:v1.1.1
+      volumeMounts:
+      - name: plugins
+        mountPath: /target
+    - name: radix-velero-plugin
+      image: ${velero_plugin_acr_image}                                     # Defined in overlay/third-party/velero/postBuild.yaml
+      volumeMounts:
+      - name: plugins
+        mountPath: /target
     configuration:
       provider: azure
       backupStorageLocation:
