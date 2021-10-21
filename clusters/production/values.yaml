@@ -298,6 +298,7 @@ spec:
     configToMap: radix-config-2-map:release-latest
     jobScheduler: radix-job-scheduler:release-latest
     containerRegistry: radixprod.azurecr.io
+    subscriptionId: ded7ca41-37c8-4085-862f-b11d21ab341a
     resources:
       limits:
         memory: 8000Mi
