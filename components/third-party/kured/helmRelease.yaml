@@ -4,8 +4,6 @@ metadata:
   name: kured
   namespace: default
 spec:
-  # dependsOn:
-  #   - name: ingress-nginx
   releaseName: kured
   chart:
     spec:
@@ -30,3 +28,6 @@ spec:
       # end-time: 4pm                           # Set by flux patch
       time-zone: CET
       # lock-ttl: 30m                           # Set by flux patch
+    slack-hook-url: https://hooks.slack.com/services/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
+    message-template-drain: "Draining node %s in cluster *${clusterName}*"
+    message-template-reboot: "Rebooting node %s in cluster *${clusterName}*"
