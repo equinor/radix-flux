@@ -43,3 +43,4 @@ patchesStrategicMerge:
 - ./overlay/third-party/kubed/helmRelease.yaml
 - ./overlay/third-party/kured/helmRelease.yaml
 - ./overlay/third-party/velero/helmRelease.yaml
+- ./overlay/third-party/velero/postBuild.yaml
