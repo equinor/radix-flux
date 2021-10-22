@@ -27,7 +27,6 @@ spec:
       # start-time: 8am                         # Set by flux patch
       # end-time: 4pm                           # Set by flux patch
       time-zone: CET
-      # lock-ttl: 30m                           # Set by flux patch
     slack-hook-url: ${slackWebhookURL}          # Read from radix-flux-config configmap
     message-template-drain: "Draining node %s in cluster *${clusterName}*"
     message-template-reboot: "Rebooting node %s in cluster *${clusterName}*"

@@ -56,13 +56,7 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
-    resources:
-      limits:
-        cpu: 6
-        # memory: 1024Mi                                                    # Set by flux patch
-      requests:
-        # cpu: 100m                                                         # Set by flux patch
-        # memory: 512Mi                                                     # Set by flux patch
+    resources: xx                                                           # Set by flux patch
     priorityClassName: radix-component-priority
   valuesFrom:
   - kind: ConfigMap

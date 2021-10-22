@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 3.38.0 # https://github.com/kubernetes/ingress-nginx/releases
+  values:
+    controller:
+      replicaCount: 2
+      resources:
+        limits:
+          cpu: 6
+          memory: 1400Mi
+        requests:
+          cpu: 100m
+          memory: 1400Mi
