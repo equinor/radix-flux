@@ -1,0 +1,11 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cicd-canary
+  namespace: radix-cicd-canary
+spec:
+  values:
+    image:
+      tag: master-11bb9f65-1634207005 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+    radixApiPrefix: server-radix-api-prod
+    radixWebhookPrefix: webhook-radix-github-webhook-prod

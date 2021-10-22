@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-operator
+  namespace: default
+spec:
+  values:
+    image:
+      tag: master-a5e880b9-1634484632 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+    activeClusterName: eu-39
+    resources:
+      limits:
+        memory: 8000Mi
+      requests:
+        memory: 4000Mi

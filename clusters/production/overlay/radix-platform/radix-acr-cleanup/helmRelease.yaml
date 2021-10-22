@@ -1,0 +1,11 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-acr-cleanup
+  namespace: default
+spec:
+  values:
+    deleteUntagged: true
+    retainLatestUntagged: 0
+    image:
+      tag: release-2f8d2647cf57e3f02b93bb73d86d73c6b68e1ff7 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
