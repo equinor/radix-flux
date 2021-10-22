@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  chart:
+    spec:
+      version: 2.23.12 # https://github.com/vmware-tanzu/helm-charts/releases
+  values:
+    resources:
+      limits:
+        memory: 2048Mi
+      requests:
+        cpu: 200m
+        memory: 1024Mi
