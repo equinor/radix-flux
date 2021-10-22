@@ -24,7 +24,7 @@ spec:
       repository: ${radix_acr_repo_url}/radix-operator                # Set by flux patch
       tag: xx                                                         # Set by flux patch
     activeClusterName: xx                                             # Set by flux patch
-    resources: xx                                                     # Set by flux patch
+    # resources: xx                                                     # Set by flux patch
     subscriptionId: xx                                                # Set by flux patch
     forceNonRootDeploymentContainers: true
     app:
