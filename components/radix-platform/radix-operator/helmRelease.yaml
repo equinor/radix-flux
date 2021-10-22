@@ -24,13 +24,7 @@ spec:
       repository: ${radix_acr_repo_url}/radix-operator                # Set by flux patch
       tag: xx                                                         # Set by flux patch
     activeClusterName: xx                                             # Set by flux patch
-    resources:
-      limits:
-        cpu: "2"
-        memory: 1000Mi
-      requests:
-        cpu: 100m
-        memory: 1000Mi
+    resources: xx                                                     # Set by flux patch
     subscriptionId: xx                                                # Set by flux patch
     forceNonRootDeploymentContainers: true
     app:

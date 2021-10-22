@@ -52,11 +52,5 @@ spec:
         large-client-header-buffers: "4 24k"
         http2-max-field-size: "16k"
         http2-max-header-size: "32k"
-      resources:
-        limits:
-          cpu: 6
-          memory: 500Mi
-        requests:
-          cpu: 100m
-          memory: 500Mi
+      resources: xx # Set by flux patch
       priorityClassName: radix-component-priority

@@ -10,6 +10,8 @@ spec:
     activeClusterName: playground-39
     resources:
       limits:
+        cpu: 2
         memory: 3000Mi
       requests:
+        cpu: 100m
         memory: 1500Mi
