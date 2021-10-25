@@ -6,7 +6,7 @@ metadata:
 spec:
   values:
     image:
-      tag: master-1fc75c84-1635142427 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      tag: master-1fc75c84-1634908339 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: weekly-41
     resources:
       limits:
