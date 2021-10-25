@@ -2,7 +2,7 @@ name: Image Update Auto-PR
 on:
   push:
     branches: 
-    - github-workflow-test
+    - flux-image-updates
 
 jobs:
   pull-request:
@@ -11,30 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: checkout
-      # with:
-      #   ref: github-workflow
     - uses: repo-sync/pull-request@v2
       name: pull-request
       with:
-        destination_branch: "github-workflow"
+        destination_branch: "master"
         pr_title: "Pulling ${{ github.ref }} into master"
         pr_body: "👑 *An automated PR*"
         pr_reviewer: "equinor/omnia-radix"
         pr_draft: true
         github_token: ${{ secrets.FLUX_REPO_PAT }}
-
-    # - name: Reset promotion branch
-    #   run: |
-    #     git fetch origin github-workflow-test:github-workflow-test
-    #     git reset --hard github-workflow-test
-
-    # - name: Create Pull Request
-    #   uses: peter-evans/create-pull-request@v3
-    #   with:
-    #     title: 'Automatic Image Update'
-    #     body: |
-    #       Update report
-    #       - Updated images
-    #     branch: github-workflow-test-temp
-    #     team-reviewers: omnia-radix
-    #     token: ${{ secrets.FLUX_REPO_PAT }}
