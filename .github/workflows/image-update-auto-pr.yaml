@@ -28,4 +28,4 @@ jobs:
           - Updated images
         branch: github-workflow-test-temp
         team-reviewers: omnia-radix
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.FLUX_REPO_PAT }}
