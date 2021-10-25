@@ -11,11 +11,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: checkout
+      with:
+        ref: github-workflow
 
     - name: Reset promotion branch
       run: |
-        git fetch origin github-workflow:github-workflow
-        git reset --hard github-workflow
+        git fetch origin github-workflow-test:github-workflow-test
+        git reset --hard github-workflow-test
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
