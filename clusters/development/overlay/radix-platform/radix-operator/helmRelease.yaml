@@ -7,7 +7,7 @@ spec:
   values:
     image:
       tag: master-1fc75c84-1635142427 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-    activeClusterName: weekly-41
+    activeClusterName: weekly-43
     resources:
       limits:
         cpu: 2
