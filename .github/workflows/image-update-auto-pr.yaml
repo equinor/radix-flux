@@ -1,7 +1,7 @@
 name: Image Update Auto-PR
 on:
   push:
-    branches: ['github-workflow']
+    branches: ['github-workflow-test']
 
 jobs:
   pull-request:
@@ -18,7 +18,6 @@ jobs:
         body: |
           Update report
           - Updated images
-        branch: github-workflow-test
+        branch: github-workflow-test-temp
         team-reviewers: omnia-radix
         token: ${{ secrets.GITHUB_TOKEN }}
- 
