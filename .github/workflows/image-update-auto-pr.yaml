@@ -16,7 +16,7 @@ jobs:
     - uses: repo-sync/pull-request@v2
       name: pull-request
       with:
-        destination_branch: "master"
+        destination_branch: "github-workflow"
         pr_title: "Pulling ${{ github.ref }} into master"
         pr_body: "👑 *An automated PR*"
         pr_reviewer: "equinor/omnia-radix"
