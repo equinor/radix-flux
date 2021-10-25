@@ -20,4 +20,5 @@ jobs:
           - Updated images
         team-reviewers: omnia-radix
         branch: github-workflow
+        base: master
         token: ${{ secrets.GITHUB_TOKEN }}
