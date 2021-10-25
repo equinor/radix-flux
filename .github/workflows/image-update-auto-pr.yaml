@@ -18,5 +18,5 @@ jobs:
         pr_title: "Pulling ${{ github.ref }} into master"
         pr_body: "👑 *An automated PR*"
         pr_reviewer: "equinor/omnia-radix"
-        pr_draft: true
+        pr_draft: false
         github_token: ${{ secrets.FLUX_REPO_PAT }}
