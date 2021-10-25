@@ -1,7 +1,7 @@
 name: Image Update Auto-PR
 on:
   push:
-    branches: ['flux-image-updates']
+    branches: ['github-workflow']
 
 jobs:
   pull-request:
@@ -17,6 +17,6 @@ jobs:
         destination_branch: "master"
         pr_title: "Pulling ${{ github.ref }} into master"
         pr_body: "👑 *An automated PR*"
-        pr_reviewer: "/omnia-radix"
+        pr_reviewer: "@equinor/omnia-radix"
         pr_draft: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
