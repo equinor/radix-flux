@@ -1,8 +1,7 @@
 name: Image Update Auto-PR
 on:
   push:
-    branches: 
-    - flux-image-updates
+    branches: ['flux-image-updates']
 
 jobs:
   pull-request:
@@ -11,6 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: checkout
+
     - uses: repo-sync/pull-request@v2
       name: pull-request
       with:
