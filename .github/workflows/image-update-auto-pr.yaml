@@ -19,4 +19,4 @@ jobs:
           Update report
           - Updated images
         team-reviewers: omnia-radix
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
