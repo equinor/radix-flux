@@ -7,4 +7,4 @@ spec:
   values:
     deleteUntagged: false
     image:
-      tag: master-d911f09f-1635149961 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      tag: master-e409f649-1635152089 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
