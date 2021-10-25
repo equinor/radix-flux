@@ -24,6 +24,6 @@ jobs:
         body: |
           Update report
           - Updated images
-        branch: github-workflow-test
+        branch: github-workflow-test-temp
         team-reviewers: omnia-radix
         token: ${{ secrets.GITHUB_TOKEN }}
