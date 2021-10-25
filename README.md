@@ -2,8 +2,6 @@
 
 The Git repository contains the following top directories:
 
-ole markus: chhange
-
 - **clusters** directory contains the Flux configuration per cluster.
 - **components** directory contains all components deployed to the cluster with base configuration.
 
