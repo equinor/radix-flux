@@ -19,6 +19,4 @@ jobs:
           Update report
           - Updated images
         team-reviewers: omnia-radix
-        branch: github-workflow
-        base: github-workflow-test
         token: ${{ secrets.GITHUB_TOKEN }}
