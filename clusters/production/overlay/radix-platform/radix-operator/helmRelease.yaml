@@ -20,3 +20,4 @@ spec:
       requests:
         cpu: 100m
         memory: 4000Mi
+    subscriptionId: ded7ca41-37c8-4085-862f-b11d21ab341a
