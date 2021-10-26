@@ -4,6 +4,8 @@ metadata:
   name: external-dns
   namespace: default
 spec:
+  dependsOn:
+    - name: kube-prometheus-stack
   releaseName: external-dns
   chart:
     spec:
@@ -34,7 +36,7 @@ spec:
       enabled: true
     resources:
       limits:
-        cpu: "6"
+        cpu: 6
         memory: 350Mi
       requests:
         cpu: 25m
