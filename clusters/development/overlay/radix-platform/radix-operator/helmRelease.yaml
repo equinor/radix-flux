@@ -7,10 +7,10 @@ spec:
   values:
     image:
       tag: master-1fc75c84-1635142427 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-    activeClusterName: weekly-43
+    activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
     resources:
       limits:
-        cpu: 2
+        cpu: "2"
         memory: 1000Mi
       requests:
         cpu: 100m
