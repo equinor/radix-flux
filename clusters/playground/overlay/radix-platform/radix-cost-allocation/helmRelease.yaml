@@ -9,7 +9,7 @@ spec:
       tag: master-6f810e44-1634278063 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
     resources:
       limits:
-        cpu: 2
+        cpu: "2"
         memory: 150Mi
       requests:
         cpu: 100m

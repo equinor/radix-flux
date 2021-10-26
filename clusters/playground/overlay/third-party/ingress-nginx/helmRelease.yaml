@@ -12,7 +12,7 @@ spec:
       replicaCount: 2
       resources:
         limits:
-          cpu: 6
+          cpu: "6"
           memory: 1400Mi
         requests:
           cpu: 100m

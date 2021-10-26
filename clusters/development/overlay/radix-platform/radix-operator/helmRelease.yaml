@@ -10,7 +10,7 @@ spec:
     activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
     resources:
       limits:
-        cpu: 2
+        cpu: "2"
         memory: 1000Mi
       requests:
         cpu: 100m
