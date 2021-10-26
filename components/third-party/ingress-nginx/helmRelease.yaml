@@ -57,5 +57,8 @@ spec:
         large-client-header-buffers: "4 24k"
         http2-max-field-size: "16k"
         http2-max-header-size: "32k"
+      extraArgs: {
+        default-ssl-certificate: "default/cluster-wildcard-tls-cert"
+      }
       # resources: xx # Set by flux patch
       priorityClassName: radix-component-priority
