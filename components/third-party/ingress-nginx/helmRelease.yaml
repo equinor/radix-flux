@@ -45,6 +45,11 @@ spec:
         enabled: true
       service:
         externalTrafficPolicy: Local
+      ingressClassResource:
+        name: nginx
+        enabled: true
+        default: true
+        controllerValue: "k8s.io/ingress-nginx"
       config:
         proxy-buffer-size: "16k" # See https://stackoverflow.com/a/40306737 for a great explanation
         proxy-body-size: "100m"
