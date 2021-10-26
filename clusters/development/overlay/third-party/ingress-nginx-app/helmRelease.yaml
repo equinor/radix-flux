@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: ingress-nginx
+  name: ingress-nginx-app
   namespace: default
 spec:
   chart:
@@ -17,7 +17,7 @@ spec:
         targetMemoryUtilizationPercentage: 80
       resources:
         limits:
-          cpu: "6"
+          cpu: 6
           memory: 500Mi
         requests:
           cpu: 100m
