@@ -25,7 +25,7 @@ spec:
       tag: xx                                                         # Set by flux patch
     activeClusterName: xx                                             # Set by flux patch
     # resources: xx                                                     # Set by flux patch
-    subscriptionId: xx                                                # Set by flux patch
+    # subscriptionId:                                                 # Altered by flux patch
     forceNonRootDeploymentContainers: true
     app:
       limitrange:
