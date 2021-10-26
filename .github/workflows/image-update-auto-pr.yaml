@@ -20,3 +20,9 @@ jobs:
         pr_reviewer: "equinor/omnia-radix"
         pr_draft: false
         github_token: ${{ secrets.FLUX_REPO_PAT }}
+
+    - name: notify-slack
+      run: |
+        REPO_URL='https://github.com/equinor/radix-flux'
+        PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
+        curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"@omnia-radix Please review PR $REPO_URL/pull/$PR_NUMBER\"}' ${{ secrets.SLACK_WEBHOOK }}
