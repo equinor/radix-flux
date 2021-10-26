@@ -50,6 +50,8 @@ spec:
         enabled: true
         default: true
         controllerValue: "k8s.io/ingress-nginx"
+      ingressClassByName: true
+      watchIngressWithoutClass: true
       config:
         proxy-buffer-size: "16k" # See https://stackoverflow.com/a/40306737 for a great explanation
         proxy-body-size: "100m"
