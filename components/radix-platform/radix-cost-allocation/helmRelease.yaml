@@ -24,7 +24,7 @@ spec:
       pullPolicy: Always
     db:
       server: ${radix_cost_allocation_db_server}                      # Set by flux patch
-    # resources: xx                                                     # Set by flux patch
+    # resources: xx                                                   # Set by flux patch
   valuesFrom:
   - kind: Secret
     name: cost-db-secret
