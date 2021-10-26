@@ -21,6 +21,7 @@ resources:
 - ../../components/radix-platform/radix-cicd-canary
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
+- ../../components/radix-platform/radix-velero-plugin
 patchesStrategicMerge:
 - ./postBuild.yaml
 - ./healthChecks.yaml
@@ -32,6 +33,7 @@ patchesStrategicMerge:
 - ./overlay/radix-platform/radix-cost-allocation/helmRelease.yaml
 - ./overlay/radix-platform/radix-operator/postBuild.yaml
 - ./overlay/radix-platform/radix-operator/helmRelease.yaml
+- ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
 - ./overlay/third-party/blob-csi-driver/helmRelease.yaml
 - ./overlay/third-party/cert-manager/helmRelease.yaml
 - ./overlay/third-party/dynatrace-operator/helmRelease.yaml

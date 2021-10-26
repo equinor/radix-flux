@@ -6,4 +6,4 @@ metadata:
 spec:
   postBuild:
     substitute:
-      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-latest # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      radix_velero_plugin_image_tag_prefix: master
