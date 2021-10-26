@@ -7,7 +7,7 @@ spec:
   values:
     image:
       tag: master-a5e880b9-1634484632 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-    activeClusterName: eu-39
+    activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild production
     imageBuilder: radix-image-builder:release-latest
     imageScanner: radix-image-scanner:release-latest
     configToMap: radix-config-2-map:release-latest
