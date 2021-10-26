@@ -6,4 +6,4 @@ metadata:
 spec:
   postBuild:
     substitute:
-      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-latest
+      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-latest # {"$imagepolicy": "namespace:radix-velero-plugin"}
