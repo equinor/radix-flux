@@ -31,10 +31,9 @@ spec:
                   operator: In
                   values:
                   - ingress-nginx
-                  - nginx-ingress
               topologyKey: kubernetes.io/hostname
       podLabels:
-        app: nginx-ingress
+        app: ingress-nginx
       publishService:
         enabled: true
       stats:
