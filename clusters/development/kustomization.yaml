@@ -42,8 +42,8 @@ patchesStrategicMerge:
 - ./overlay/third-party/external-dns/helmRelease.yaml
 - ./overlay/third-party/grafana/helmRelease.yaml
 - ./overlay/third-party/ingress-nginx/helmRelease.yaml
-- ./overlay/third-party/ingress-nginx-active-cluster/helmRelease.yaml
-- ./overlay/third-party/ingress-nginx-app/helmRelease.yaml
+#- ./overlay/third-party/ingress-nginx-active-cluster/helmRelease.yaml
+#- ./overlay/third-party/ingress-nginx-app/helmRelease.yaml
 - ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
 - ./overlay/third-party/kube-prometheus-stack/postBuild.yaml
 - ./overlay/third-party/kubed/helmRelease.yaml
