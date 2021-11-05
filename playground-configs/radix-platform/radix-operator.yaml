@@ -27,6 +27,7 @@ spec:
     configToMap: radix-config-2-map:release-latest
     jobScheduler: radix-job-scheduler:release-latest
     containerRegistry: radixdev.azurecr.io
+    subscriptionId: 16ede44b-1f74-40a5-b428-46cca9a5741b
     resources:
       limits:
         cpu: "2"
