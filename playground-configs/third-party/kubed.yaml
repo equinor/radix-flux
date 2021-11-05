@@ -24,3 +24,5 @@ spec:
       create: true
     config:
       clusterName: "playground" # Used for Kubed notification ...which we do not use.
+    operator:
+      registry: radixdev.azurecr.io
