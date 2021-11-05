@@ -10,3 +10,4 @@ spec:
   values:
     operator:
       registry: radixprod.azurecr.io
+      tag: v0.12.0
