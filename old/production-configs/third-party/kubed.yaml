@@ -24,5 +24,3 @@ spec:
       create: true
     config:
       clusterName: "production" # Used for Kubed notification ...which we do not use.
-    operator:
-      registry: radixprod.azurecr.io
