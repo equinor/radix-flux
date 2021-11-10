@@ -13,6 +13,7 @@ jobs:
 
     - uses: repo-sync/pull-request@v2
       name: pull-request
+      id: open-pr
       with:
         destination_branch: "master"
         pr_title: "Pulling ${{ github.ref }} into master"
@@ -25,4 +26,4 @@ jobs:
       run: |
         REPO_URL='https://github.com/equinor/radix-flux'
         PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
-        curl -X POST -H 'Content-type: application/json' --data '{"text":"<!subteam^omnia-radix> Please review PR '$REPO_URL'/pull/'$PR_NUMBER'"}' ${{ secrets.SLACK_WEBHOOK }}
+        curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Please review PR ${{steps.open-pr.outputs.pr_url}}","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
