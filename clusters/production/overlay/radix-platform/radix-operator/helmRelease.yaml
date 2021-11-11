@@ -11,7 +11,7 @@ spec:
     imageBuilder: radix-image-builder:release-latest
     imageScanner: radix-image-scanner:release-latest
     configToMap: radix-config-2-map:release-latest
-    jobScheduler: radix-job-scheduler:release-latest
+    jobScheduler: radix-job-scheduler-server:release-latest
     containerRegistry: radixprod.azurecr.io
     resources:
       limits:
