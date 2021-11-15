@@ -19,6 +19,7 @@ spec:
         - ./charts/radix-acr-cleanup/values.yaml
   values:
     registry: radix${RADIX_ENVIRONMENT}                               # Set by flux patch
+    clusterType: ${clusterType}                                       # Read from radix-flux-config configmap
     deleteUntagged: xx                                                # Set by flux patch
     performDelete: true
     period: 1h
@@ -38,7 +39,3 @@ spec:
       requests:
         cpu: 50m
         memory: 150Mi
-  valuesFrom:
-  - kind: ConfigMap
-    name: radix-platform-config
-    valuesKey: platform
