@@ -21,17 +21,20 @@ spec:
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
-      repository: ${radix_acr_repo_url}/radix-operator                # Set by flux patch
-      tag: xx                                                         # Set by flux patch
-    activeClusterName: xx                                             # Set by flux patch
-    # resources: xx                                                     # Set by flux patch
-    # subscriptionId:                                                 # Altered by flux patch
+      repository: ${radix_acr_repo_url}/radix-operator                # Set by zone-specific overlay
+      tag: xx                                                         # Set by zone-specific overlay
+    dnsZone: ${dnsZone}                                               # Read from radix-flux-config configmap
+    appAliasBaseURL: ${appAliasBaseURL}                               # Read from radix-flux-config configmap
+    prometheusName: ${prometheusName}                                 # Read from radix-flux-config configmap
+    imageRegistry: ${radix_acr_repo_url}                              # Set by zone-specific overlay
+    clusterType: ${clusterType}                                       # Read from radix-flux-config configmap
+    activeClusterEgressIps: ${activeClusterIPs}                       # Read from radix-flux-config configmap
+    clusterName: ${clusterName}                                       # Read from radix-flux-config configmap
+    activeClusterName: xx                                             # Set by zone-specific overlay
+    # resources: xx                                                   # Set by zone-specific overlay
+    # subscriptionId:                                                 # Set by zone-specific overlay
     forceNonRootDeploymentContainers: true
     app:
       limitrange:
         default:
           memory: 1500Mi
-  valuesFrom:
-  - kind: ConfigMap
-    name: radix-platform-config
-    valuesKey: platform
