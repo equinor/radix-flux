@@ -8,4 +8,4 @@ spec:
     deleteUntagged: true
     retainLatestUntagged: 0
     image:
-      tag: release-2f8d2647cf57e3f02b93bb73d86d73c6b68e1ff7 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      tag: release-f1261b53-1636706738 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
