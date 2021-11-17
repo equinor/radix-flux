@@ -199,4 +199,4 @@ spec:
               consoleUrl: https://console.playground.radix.equinor.com/applications/{{ $labels.label_radix_app }}/jobs/view/{{ $labels.label_radix_job_name }}
             expr: >-
               max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
-              * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"} > 0                
+              * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"} > 0
