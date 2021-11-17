@@ -6,6 +6,6 @@ metadata:
 spec:
   values:
     image:
-      tag: master-11bb9f65-1634207005 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      tag: release-f50e52e5-1636541583 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
     radixApiPrefix: server-radix-api-prod
     radixWebhookPrefix: webhook-radix-github-webhook-prod

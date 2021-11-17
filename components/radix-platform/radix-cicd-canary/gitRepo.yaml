@@ -7,4 +7,4 @@ spec:
   interval: 1m
   url: https://github.com/equinor/radix-cicd-canary
   ref:
-    branch: ${radix_acr_cleanup_helm_chart_branch} # Defined in flux patch
+    branch: ${radix_cicd_canary_helm_chart_branch} # Defined in flux patch

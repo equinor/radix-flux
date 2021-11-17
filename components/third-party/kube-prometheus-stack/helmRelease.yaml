@@ -174,7 +174,7 @@ spec:
             annotations:
               description: Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} has been in a non-ready state for more than 10 minutes.
               summary: Job is not ready
-              consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
+              consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/jobcomponent/{{ $labels.label_radix_component }}
             for: 10m
             expr: >-
               sum by(label_radix_app, label_radix_env, label_radix_component, job_name, namespace)(
@@ -190,7 +190,7 @@ spec:
             annotations:
               description: Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} failed.
               summary: Job failed
-              consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
+              consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/jobcomponent/{{ $labels.label_radix_component }}
             expr: >-
               max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
               * on(job_name, namespace) group_left(label_radix_app, label_radix_component) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job-scheduler"} 
