@@ -32,10 +32,4 @@ spec:
       tag: xx                                                         # Set by flux patch
     metrics:
       enabled: true
-    resources:
-      limits:
-        cpu: "2"
-        memory: 150Mi
-      requests:
-        cpu: 50m
-        memory: 150Mi
+    # resources: xx                                                   # Set in overlay
