@@ -8,3 +8,10 @@ spec:
     deleteUntagged: false
     image:
       tag: master-8f5edb38-1636706288 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+    resources:
+      limits:
+        cpu: "2"
+        memory: 150Mi
+      requests:
+        cpu: 50m
+        memory: 150Mi

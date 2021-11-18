@@ -9,3 +9,10 @@ spec:
     retainLatestUntagged: 0
     image:
       tag: release-f1261b53-1636706738 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+    resources:
+      limits:
+        cpu: "2"
+        memory: 150Mi
+      requests:
+        cpu: 50m
+        memory: 150Mi
