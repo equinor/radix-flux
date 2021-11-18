@@ -6,7 +6,7 @@ metadata:
 spec:
   postBuild:
     substitute:
-      RADIX_ZONE: production # dev | playground | prod
+      RADIX_ZONE: prod # dev | playground | prod
       RADIX_ENVIRONMENT: prod # dev | prod
       radix_acr_repo_url: radixprod.azurecr.io
       ACTIVE_CLUSTER: eu-39
