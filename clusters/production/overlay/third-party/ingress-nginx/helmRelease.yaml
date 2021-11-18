@@ -9,7 +9,7 @@ spec:
       version: 3.32.0 # https://github.com/kubernetes/ingress-nginx/releases
   values:
     controller:
-      replicaCount: 2
+      replicaCount: 4
       resources:
         limits:
           cpu: "6"
