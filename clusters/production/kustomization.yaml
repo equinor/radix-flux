@@ -6,7 +6,7 @@ resources:
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
-- ../../components/third-party/dynatrace-operator
+# - ../../components/third-party/dynatrace-operator
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
 - ../../components/third-party/ingress-nginx
@@ -35,7 +35,7 @@ patchesStrategicMerge:
 - ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
 - ./overlay/third-party/blob-csi-driver/helmRelease.yaml
 - ./overlay/third-party/cert-manager/helmRelease.yaml
-- ./overlay/third-party/dynatrace-operator/helmRelease.yaml
+# - ./overlay/third-party/dynatrace-operator/helmRelease.yaml
 - ./overlay/third-party/external-dns/helmRelease.yaml
 - ./overlay/third-party/grafana/helmRelease.yaml
 - ./overlay/third-party/ingress-nginx/helmRelease.yaml
