@@ -6,7 +6,7 @@ metadata:
 spec:
   values:
     image:
-      tag: release-f6d6721e-1636644103 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      tag: release-a837a1f6-1637566144 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild playground
     imageBuilder: radix-image-builder:release-latest
     imageScanner: radix-image-scanner:release-latest
