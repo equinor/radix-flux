@@ -6,10 +6,10 @@ metadata:
 spec:
   chart:
     spec:
-      version: 3.32.0 # https://github.com/kubernetes/ingress-nginx/releases
+      version: 3.38.0 # https://github.com/kubernetes/ingress-nginx/releases
   values:
     controller:
-      replicaCount: 4
+      replicaCount: 8
       resources:
         limits:
           cpu: "6"
