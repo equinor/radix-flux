@@ -56,9 +56,7 @@ spec:
         proxy-buffer-size: "16k" # See https://stackoverflow.com/a/40306737 for a great explanation
         proxy-body-size: "100m"
         worker-shutdown-timeout: "3600s"
-        large-client-header-buffers: "4 24k"
-        http2-max-field-size: "16k"
-        http2-max-header-size: "32k"
+        large-client-header-buffers: "4 32k"
       extraArgs: {
         default-ssl-certificate: "default/cluster-wildcard-tls-cert"
       }
