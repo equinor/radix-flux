@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 5.4.8 # helm search repo bitnami/external-dns
+      version: 5.5.0 # helm search repo bitnami/external-dns
