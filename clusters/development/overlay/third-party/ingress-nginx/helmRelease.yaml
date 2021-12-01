@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 4.0.3 # https://github.com/kubernetes/ingress-nginx/releases
+      version: 4.0.12 # https://github.com/kubernetes/ingress-nginx/releases
   values:
     controller:
       autoscaling:
