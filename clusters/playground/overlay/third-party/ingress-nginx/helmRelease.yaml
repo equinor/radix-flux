@@ -17,3 +17,5 @@ spec:
         requests:
           cpu: 100m
           memory: 1400Mi
+      config:
+        main-snippet: "load_module /opt/dynatrace/oneagent/agent/bin/current/linux-musl-x86-64/liboneagentnginx.so;"
