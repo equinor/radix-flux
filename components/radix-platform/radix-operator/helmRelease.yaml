@@ -28,7 +28,7 @@ spec:
     prometheusName: ${prometheusName}                                 # Read from radix-flux-config configmap
     imageRegistry: ${radix_acr_repo_url}                              # Set by zone-specific overlay
     clusterType: ${clusterType}                                       # Read from radix-flux-config configmap
-    activeClusterEgressIps: ${activeClusterIPs}                       # Read from radix-flux-config configmap
+    clusterActiveEgressIps: ${activeClusterIPs}                       # Read from radix-flux-config configmap
     clusterName: ${clusterName}                                       # Read from radix-flux-config configmap
     activeClusterName: xx                                             # Set by zone-specific overlay
     # resources: xx                                                   # Set by zone-specific overlay
