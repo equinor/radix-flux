@@ -9,5 +9,5 @@ spec:
       version: 2.9.1 # helm search repo kured/kured
   values:
     extraArgs:
-      start-time: 8am
-      end-time: 4pm
+      start-time: 5am
+      end-time: 7am
