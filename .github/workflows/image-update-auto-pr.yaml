@@ -24,4 +24,7 @@ jobs:
 
     - name: notify-slack
       run: |
-        curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Please review PR ${{steps.open-pr.outputs.pr_url}}","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
+        PR_URL=${{steps.open-pr.outputs.pr_url}}
+        if [[ ! -z ${PR_URL} ]]; then
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Please review PR ${PR_URL}","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
+        fi
