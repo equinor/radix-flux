@@ -192,9 +192,10 @@ spec:
               summary: Job failed
               consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/jobcomponent/{{ $labels.label_radix_component }}
             expr: >-
-              max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
+              (time() - max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
+              * on(job_name, namespace) kube_job_status_start_time{job="kube-state-metrics"}
               * on(job_name, namespace) group_left(label_radix_app, label_radix_component) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job-scheduler"} 
-              * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""}) > 0
+              * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""})) > 0 < (24*60*60)
           - alert: RadixAppPipelineJobFailed
             labels:
               severity: error
@@ -204,5 +205,6 @@ spec:
               summary: Pipeline job failed
               consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/jobs/view/{{ $labels.label_radix_job_name }}
             expr: >-
-              max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
-              * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"} > 0
+              (time() - max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
+              * on(job_name, namespace) kube_job_status_start_time{job="kube-state-metrics"}
+              * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"}) > 0 < (24*60*60)
