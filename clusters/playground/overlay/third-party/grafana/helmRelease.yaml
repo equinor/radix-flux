@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 6.16.10 # https://github.com/grafana/helm-charts/releases
+      version: 6.18.2 # https://github.com/grafana/helm-charts/releases
