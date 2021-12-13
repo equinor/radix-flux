@@ -17,3 +17,5 @@ spec:
   install:
     remediation:
       retries: 3
+  values:
+    clusterName: ${clusterName} # Read from radix-flux-config configmap
