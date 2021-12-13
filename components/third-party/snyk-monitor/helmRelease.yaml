@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: snyk-monitor
+  namespace: snyk-monitor
+spec:
+  releaseName: snyk-monitor
+  chart:
+    spec:
+      chart: snyk-monitor
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: snyk-charts
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
