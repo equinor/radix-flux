@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 23.1.5 # https://github.com/prometheus-community/helm-charts/releases
+      version: 23.2.0 # https://github.com/prometheus-community/helm-charts/releases
