@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.5.4 # https://github.com/jetstack/cert-manager/releases
+      version: 1.6.1 # https://github.com/jetstack/cert-manager/releases
