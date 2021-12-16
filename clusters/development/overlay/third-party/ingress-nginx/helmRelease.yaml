@@ -17,10 +17,10 @@ spec:
         targetMemoryUtilizationPercentage: 80
       resources:
         limits:
-          cpu: "6"
-          memory: 500Mi
+          cpu: "3"
+          memory: 1500Mi
         requests:
-          cpu: 100m
-          memory: 500Mi
+          cpu: 300m
+          memory: 1000Mi
       config:
         main-snippet: "load_module /opt/dynatrace/oneagent/agent/bin/current/linux-musl-x86-64/liboneagentnginx.so;"
