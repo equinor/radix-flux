@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 3.38.0 # https://github.com/kubernetes/ingress-nginx/releases
+      version: 4.0.13 # https://github.com/kubernetes/ingress-nginx/releases
   values:
     controller:
       replicaCount: 8
