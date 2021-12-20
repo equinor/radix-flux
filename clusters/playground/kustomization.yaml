@@ -13,6 +13,7 @@ resources:
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubed
 - ../../components/third-party/kured
+- ../../components/third-party/snyk-monitor
 - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
 - ../../components/third-party/velero-schedule
@@ -43,5 +44,6 @@ patchesStrategicMerge:
 - ./overlay/third-party/kube-prometheus-stack/postBuild.yaml
 - ./overlay/third-party/kubed/helmRelease.yaml
 - ./overlay/third-party/kured/helmRelease.yaml
+- ./overlay/third-party/snyk-monitor/helmRelease.yaml
 - ./overlay/third-party/velero/helmRelease.yaml
 - ./overlay/third-party/velero/postBuild.yaml
