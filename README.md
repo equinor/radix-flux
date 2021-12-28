@@ -71,7 +71,7 @@ We patch the `flux-system` Kustomization with cluster environment specific confi
 ```yaml
 # file: clusters/development/postBuild.yaml
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: flux-system
@@ -90,7 +90,7 @@ spec:
 ```yaml
 # file: clusters/development/healthChecks.yaml
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: flux-system
