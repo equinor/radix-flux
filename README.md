@@ -62,7 +62,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../components/radix-platform/radix-operator
-patchesStrategicMerge:
+patches:
 - ./overlay/radix-platform/radix-operator/helmRelease.yaml
 ```
 
