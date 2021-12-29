@@ -62,8 +62,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../components/radix-platform/radix-operator
-patchesStrategicMerge:
-- ./overlay/radix-platform/radix-operator/helmRelease.yaml
+patches:
+  - path: ./overlay/radix-platform/radix-operator/helmRelease.yaml
 ```
 
 We patch the `flux-system` Kustomization with cluster environment specific configuration. To make it clear which parts of the configuration is changed, we have separate files for separate fields. For example, we use `postBuild.yaml` to patch the `postBuild` spec of `flux-system` Kustomization, and `healthChecks.yaml` to patch the `healthChecks` spec. 
@@ -71,7 +71,7 @@ We patch the `flux-system` Kustomization with cluster environment specific confi
 ```yaml
 # file: clusters/development/postBuild.yaml
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: flux-system
@@ -90,7 +90,7 @@ spec:
 ```yaml
 # file: clusters/development/healthChecks.yaml
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: flux-system
