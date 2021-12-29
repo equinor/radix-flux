@@ -63,7 +63,7 @@ kind: Kustomization
 resources:
 - ../../components/radix-platform/radix-operator
 patches:
-- ./overlay/radix-platform/radix-operator/helmRelease.yaml
+  - path: ./overlay/radix-platform/radix-operator/helmRelease.yaml
 ```
 
 We patch the `flux-system` Kustomization with cluster environment specific configuration. To make it clear which parts of the configuration is changed, we have separate files for separate fields. For example, we use `postBuild.yaml` to patch the `postBuild` spec of `flux-system` Kustomization, and `healthChecks.yaml` to patch the `healthChecks` spec. 
