@@ -26,5 +26,5 @@ jobs:
       run: |
         PR_URL=${{steps.open-pr.outputs.pr_url}}
         if [[ ! -z ${PR_URL} ]]; then
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Please review PR ${PR_URL}","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
         fi
