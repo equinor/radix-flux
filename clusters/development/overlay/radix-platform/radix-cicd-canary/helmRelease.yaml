@@ -6,6 +6,6 @@ metadata:
 spec:
   values:
     image:
-      tag: master-91171f43-1641308013 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      tag: master-480738ab-1636535378 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
     radixApiPrefix: server-radix-api-qa
     radixWebhookPrefix: webhook-radix-github-webhook-qa
