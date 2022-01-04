@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.75.1 # https://artifacthub.io/packages/helm/snyk/snyk-monitor
+      version: 1.77.2 # https://artifacthub.io/packages/helm/snyk/snyk-monitor
