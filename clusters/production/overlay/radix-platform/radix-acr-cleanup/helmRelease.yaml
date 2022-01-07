@@ -8,7 +8,7 @@ spec:
     deleteUntagged: true
     retainLatestUntagged: 0
     image:
-      tag: release-f1261b53-1636706738 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      tag: release-75e229f3-1641542746 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
     resources:
       limits:
         cpu: "2"
