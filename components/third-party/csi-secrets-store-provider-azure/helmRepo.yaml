@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: csi-secrets-store-provider-azure
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/charts

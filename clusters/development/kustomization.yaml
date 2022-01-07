@@ -37,6 +37,7 @@ patches:
   - path: ./overlay/radix-platform/radix-operator/helmRelease.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
+  - path: ./overlay/third-party/csi-secrets-store-provider-azure/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/helmRelease.yaml
   - path: ./overlay/third-party/dynatrace-operator/helmRelease.yaml
   - path: ./overlay/third-party/external-dns/helmRelease.yaml
