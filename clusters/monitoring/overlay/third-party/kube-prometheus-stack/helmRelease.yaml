@@ -1,0 +1,44 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: 26.1.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+  values:
+    fullnameOverride: prometheus-operator
+    nameOverride: null
+    prometheusOperator: 
+      resources:
+        limits:
+          cpu: "2"
+          memory: "8000Mi"
+        requests:
+          cpu: "0.5"
+          memory: "1000Mi"
+    prometheus:
+      prometheusSpec:
+        additionalScrapeConfigs: null
+        # See https://github.com/coreos/prometheus-operator/blob/master/Documentation/additional-scrape-config.md
+        # Add more jobs to a secret named `prometheus-additional-config` with key `prometheus-additional-config.yaml` for this to work.
+        additionalScrapeConfigsSecret:
+          enabled: true
+          name: prometheus-operator-prometheus-scrape-config
+          key: additional-scrape-configs.yaml
+        retention: 90d
+        resources: null
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              resources:
+                requests:
+                  storage: 256Gi
+    alertmanager: null
+    kube-state-metrics: null
+    additionalPrometheusRulesMap: null
+  valuesFrom:
+  - kind: Secret
+    name: kube-prometheus-stack-helm-secret
+    valuesKey: config
