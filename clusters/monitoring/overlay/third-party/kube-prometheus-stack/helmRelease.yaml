@@ -8,8 +8,6 @@ spec:
     spec:
       version: 26.1.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
   values:
-    fullnameOverride: prometheus-operator
-    nameOverride: null
     prometheusOperator: 
       resources:
         limits:
