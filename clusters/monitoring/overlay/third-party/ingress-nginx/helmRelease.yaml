@@ -18,4 +18,5 @@ spec:
         requests:
           cpu: 100m
           memory: 500Mi
+      extraArgs: null
       priorityClassName: high-priority
