@@ -6,7 +6,7 @@ metadata:
 spec:
   values:
     image:
-      tag: master-729fd3f4-1642428461 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      tag: master-411e9c8d-1642424452 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
     resources:
       limits:
