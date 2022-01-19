@@ -6,6 +6,7 @@ resources:
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
+- ../../components/third-party/csi-secrets-store-provider-azure
 # - ../../components/third-party/dynatrace-operator
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
