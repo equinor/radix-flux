@@ -6,4 +6,11 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.77.2 # https://artifacthub.io/packages/helm/snyk/snyk-monitor
+      version: 1.80.0 # https://artifacthub.io/packages/helm/snyk/snyk-monitor
+  values:
+    limits:
+      cpu: "2"
+      memory: "4Gi"
+    requests:
+      cpu: "1"
+      memory: "2Gi"

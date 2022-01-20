@@ -7,3 +7,13 @@ spec:
   chart:
     spec:
       version: 26.1.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+  values:
+    prometheus:
+      prometheusSpec:
+        resources:
+          limits:
+            cpu: "6"
+            memory: "32Gi"
+          requests:
+            cpu: "3"
+            memory: "16Gi"

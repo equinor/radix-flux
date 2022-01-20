@@ -90,12 +90,6 @@ spec:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
     prometheus:
       prometheusSpec:
-        resources:
-          limits:
-            memory: "16Gi"
-          requests:
-            cpu: "2"
-            memory: "16Gi" # default 400Mi
         retention: 30d # default 10d
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
