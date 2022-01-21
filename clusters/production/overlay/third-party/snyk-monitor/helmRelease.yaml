@@ -9,8 +9,8 @@ spec:
       version: 1.80.0 # https://artifacthub.io/packages/helm/snyk/snyk-monitor
   values:
     limits:
-      cpu: "3"
-      memory: "4Gi"
+      cpu: "6"
+      memory: "6Gi"
     requests:
-      cpu: "2"
-      memory: "2Gi"
+      cpu: "4"
+      memory: "3Gi"
