@@ -7,7 +7,4 @@ spec:
   chart:
     spec:
       version: v0.13.0 # https://artifacthub.io/packages/helm/appscode/kubed
-  values:
-    operator:
-      registry: radixdev.azurecr.io
-      tag: v0.13.0
+
