@@ -39,3 +39,4 @@ spec:
       limitrange:
         default:
           memory: 1500Mi
+    oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.2.0         #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
