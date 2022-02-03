@@ -6,7 +6,7 @@ metadata:
 spec:
   values:
     image:
-      tag: master-774951cf-1643721120 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      tag: master-91bcedc8-1643900583 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
     resources:
       limits:
@@ -21,4 +21,4 @@ spec:
         limitrange:
           default:
             memory: 1000Mi
-    oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.2.0         #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
+    oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.2.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
