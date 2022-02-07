@@ -14,3 +14,5 @@ spec:
     requests:
       cpu: "4"
       memory: "3Gi"
+    image:
+      tag: 1.82.0-approved
