@@ -17,3 +17,9 @@ spec:
           requests:
             cpu: "0.5"
             memory: "4Gi"
+    nodeExporter:
+      podAnnotations:
+        metrics.dynatrace.com/scrape: "true"
+        metrics.dynatrace.com/port: 9100
+      service:
+        servicePort: 9100
