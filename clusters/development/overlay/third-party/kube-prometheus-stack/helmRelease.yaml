@@ -17,7 +17,3 @@ spec:
           requests:
             cpu: "0.5"
             memory: "4Gi"
-    prometheus-node-exporter:
-      podAnnotations:
-        metrics.dynatrace.com/scrape: "true"
-        metrics.dynatrace.com/port: "9100"
