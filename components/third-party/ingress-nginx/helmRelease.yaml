@@ -40,6 +40,12 @@ spec:
       stats:
         enabled: true
       metrics:
+        service:
+          annotations:
+            prometheus.io/scrape: "true"
+            prometheus.io/port: "10254"
+            metrics.dynatrace.com/scrape: "true"
+            metrics.dynatrace.com/port: "10254"
         serviceMonitor: 
           enabled: true
         enabled: true
