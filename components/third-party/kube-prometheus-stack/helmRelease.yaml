@@ -34,6 +34,9 @@ spec:
     kube-state-metrics:
       extraArgs:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
+      podAnnotations:
+        metrics.dynatrace.com/port: "8080"
+        metrics.dynatrace.com/scrape: "true"
     prometheus:
       prometheusSpec:
         retention: 30d # default 10d
