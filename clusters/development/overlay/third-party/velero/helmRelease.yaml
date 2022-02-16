@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.27.3 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      version: 2.27.5 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
   values:
     resources:
       limits:
