@@ -39,3 +39,7 @@ spec:
       limitrange:
         default:
           memory: 1500Mi
+    service:
+      annotations:
+        metrics.dynatrace.com/scrape: "true"
+        metrics.dynatrace.com/port: "9000"
