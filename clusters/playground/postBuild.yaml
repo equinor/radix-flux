@@ -9,7 +9,7 @@ spec:
       RADIX_ZONE: playground # dev | playground | prod
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
-      ACTIVE_CLUSTER: playground-46
+      ACTIVE_CLUSTER: playground-07
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
