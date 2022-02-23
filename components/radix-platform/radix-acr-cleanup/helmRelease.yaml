@@ -32,4 +32,7 @@ spec:
       tag: xx                                                         # Set by flux patch
     metrics:
       enabled: true
+      annotations:
+        metrics.dynatrace.com/scrape: "true"
+        metrics.dynatrace.com/port: "8080"
     # resources: xx                                                   # Set in overlay

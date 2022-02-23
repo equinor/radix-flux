@@ -15,7 +15,3 @@ spec:
       requests:
         cpu: 50m
         memory: 150Mi
-    metrics:
-      annotations:
-        metrics.dynatrace.com/scrape: "true"
-        metrics.dynatrace.com/port: "8080"
