@@ -9,7 +9,3 @@ spec:
       tag: master-e230f7ae-1645546873 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
     radixApiPrefix: server-radix-api-qa
     radixWebhookPrefix: webhook-radix-github-webhook-qa
-    service:
-      annotations:
-        metrics.dynatrace.com/scrape: "true"
-        metrics.dynatrace.com/port: "5000"

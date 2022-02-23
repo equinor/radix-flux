@@ -33,6 +33,10 @@ spec:
       requests:
         cpu: 50m
         memory: 100Mi
+    service:
+      annotations:
+        metrics.dynatrace.com/scrape: "true"
+        metrics.dynatrace.com/port: "5000"
   valuesFrom:
   - kind: Secret
     name: canary-secrets
