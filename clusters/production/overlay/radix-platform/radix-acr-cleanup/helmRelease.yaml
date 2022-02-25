@@ -7,6 +7,7 @@ spec:
   values:
     deleteUntagged: true
     retainLatestUntagged: 0
+    activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild playground
     image:
       tag: release-5a34a776-1645626038 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
     resources:

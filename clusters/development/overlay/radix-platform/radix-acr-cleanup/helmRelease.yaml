@@ -6,6 +6,7 @@ metadata:
 spec:
   values:
     deleteUntagged: false
+    activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild playground
     image:
       tag: master-c46a182f-1645780285 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
     resources:
