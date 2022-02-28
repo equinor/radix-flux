@@ -20,6 +20,7 @@ spec:
   values:
     registry: radix${RADIX_ENVIRONMENT}                               # Set by flux patch
     clusterType: ${clusterType}                                       # Read from radix-flux-config configmap
+    activeClusterName: xx                                             # Set by zone-specific overlay
     deleteUntagged: xx                                                # Set by flux patch
     performDelete: true
     period: 1h
