@@ -7,7 +7,7 @@ spec:
   values:
     deleteUntagged: false
     image:
-      tag: master-c46a182f-1645780285 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      tag: master-69f085ef-1646034002 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
     resources:
       limits:
         cpu: "2"
