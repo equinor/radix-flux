@@ -19,3 +19,7 @@ spec:
       retries: 3
   values:
     clusterName: ${clusterName} # Read from radix-flux-config configmap
+  valuesFrom:
+  - kind: Secret
+    name: snyk-helm-secret
+    valuesKey: config
