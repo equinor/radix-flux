@@ -22,4 +22,4 @@ spec:
   valuesFrom:
   - kind: Secret
     name: snyk-helm-secret
-    valuesKey: config
+    valuesKey: policyOrgs
