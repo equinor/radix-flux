@@ -11,7 +11,7 @@ spec:
   path: ./components/third-party/dynatrace-operator
   prune: true
   healthChecks:
-    - apiVersion: v1
+    - apiVersion: apps/v1
       kind: DaemonSet
       name: dynakube-oneagent
       namespace: dynatrace
