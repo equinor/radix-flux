@@ -9,3 +9,7 @@ spec:
       kind: Deployment
       name: velero
       namespace: velero
+    - apiVersion: v1
+      kind: Daemonset
+      name: dynakube-oneagent
+      namespace: dynatrace
