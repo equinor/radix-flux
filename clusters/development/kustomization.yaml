@@ -3,11 +3,11 @@ kind: Kustomization
 resources:
 - flux-system
 - ./imageUpdateAutomation.yaml
+- ./kustomizations/dynatrace-operator.yaml
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
 - ../../components/third-party/csi-secrets-store-provider-azure
-- ../../components/third-party/dynatrace-operator
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
 - ../../components/third-party/ingress-nginx
@@ -40,7 +40,6 @@ patches:
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/helmRelease.yaml
   - path: ./overlay/third-party/csi-secrets-store-provider-azure/helmRelease.yaml
-  - path: ./overlay/third-party/dynatrace-operator/helmRelease.yaml
   - path: ./overlay/third-party/external-dns/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
