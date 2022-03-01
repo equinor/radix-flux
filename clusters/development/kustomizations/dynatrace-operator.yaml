@@ -15,5 +15,3 @@ spec:
       kind: Daemonset
       name: dynakube-oneagent
       namespace: dynatrace
-  patches:
-  - path: ./overlay/third-party/dynatrace-operator/helmRelease.yaml

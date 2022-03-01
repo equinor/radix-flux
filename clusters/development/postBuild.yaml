@@ -8,6 +8,7 @@ spec:
     substitute:
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ENVIRONMENT: dev # dev | prod
+      DYNATRACE_OPERATOR_VERSION: 0.4.1
       radix_acr_repo_url: radixdev.azurecr.io
       ACTIVE_CLUSTER: weekly-08
     substituteFrom:
