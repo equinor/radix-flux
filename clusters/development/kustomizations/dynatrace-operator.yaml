@@ -12,7 +12,7 @@ spec:
   prune: true
   healthChecks:
     - apiVersion: v1
-      kind: Daemonset
+      kind: DaemonSet
       name: dynakube-oneagent
       namespace: dynatrace
   postBuild:
