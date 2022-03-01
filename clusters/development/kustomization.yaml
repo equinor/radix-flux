@@ -3,11 +3,11 @@ kind: Kustomization
 resources:
 - flux-system
 - ./imageUpdateAutomation.yaml
-- ./kustomizations/dynatrace-operator.yaml
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
 - ../../components/third-party/csi-secrets-store-provider-azure
+- ../../components/third-party/dynatrace-operator.yaml
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
 - ../../components/third-party/ingress-nginx
