@@ -48,5 +48,5 @@ spec:
                 main-snippet: "load_module /opt/dynatrace/oneagent/agent/bin/current/linux-musl-x86-64/liboneagentnginx.so;"
       target:
         kind: HelmRelease
-        name: dynatrace-operator
-        namespace: dynatrace
+        name: ingress-nginx
+        namespace: ingress-nginx
