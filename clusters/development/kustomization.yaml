@@ -23,7 +23,8 @@ resources:
 - ../../components/radix-platform/radix-acr-cleanup
 - ../../components/radix-platform/radix-cicd-canary
 - ../../components/radix-platform/radix-cost-allocation
-- ../../components/radix-platform/radix-operator
+- ./overlay/radix-platform/radix-operator/radix-operator.yaml
+# - ../../components/radix-platform/radix-operator
 - ../../components/radix-platform/radix-velero-plugin
 patches:
   - path: ./postBuild.yaml
@@ -34,8 +35,8 @@ patches:
   - path: ./overlay/radix-platform/radix-cicd-canary/helmRelease.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/postBuild.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/helmRelease.yaml
-  - path: ./overlay/radix-platform/radix-operator/postBuild.yaml
-  - path: ./overlay/radix-platform/radix-operator/helmRelease.yaml
+  # - path: ./overlay/radix-platform/radix-operator/postBuild.yaml
+  # - path: ./overlay/radix-platform/radix-operator/helmRelease.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/helmRelease.yaml
