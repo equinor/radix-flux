@@ -11,6 +11,11 @@ spec:
   path: ./components/radix-platform/radix-operator
   prune: true
   postBuild:
+    substitute:
+      RADIX_ZONE: ${RADIX_ZONE} # dev | playground | prod
+      RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # dev | prod
+      radix_acr_repo_url: ${radix_acr_repo_url}
+      ACTIVE_CLUSTER: ${ACTIVE_CLUSTER}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
