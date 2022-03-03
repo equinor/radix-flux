@@ -19,39 +19,6 @@ spec:
         name: radix-flux-config
   patches:
     - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2beta1
-        kind: HelmRelease
-        metadata:
-          name: radix-operator
-          namespace: default
-        spec:
-          values:
-            image:
-              tag: master-1be2aa43-1646121755 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-            activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
-            resources:
-              limits:
-                cpu: "2"
-                memory: 1000Mi
-              requests:
-                cpu: 100m
-                memory: 1000Mi
-            subscriptionId: 16ede44b-1f74-40a5-b428-46cca9a5741b
-            app:
-              env:
-                limitrange:
-                  default:
-                    memory: 1000Mi
-            oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.2.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
-            service:
-              annotations:
-                metrics.dynatrace.com/scrape: "true"
-                metrics.dynatrace.com/port: "9000"
-      target:
-        kind: HelmRelease
-        name: radix-operator
-        namespace: default
-    - patch: |-
         apiVersion: source.toolkit.fluxcd.io/v1beta1
         kind: GitRepository
         metadata:
