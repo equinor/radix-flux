@@ -65,10 +65,9 @@ spec:
           name: radix-operator
           namespace: flux-system
         spec:
-          postBuild:
-            filterTags:
-              extract: $ts
-              pattern: ^${radix_operator_image_tag_prefix}-[a-f0-9]+-(?P<ts>[0-9]+)
+          filterTags:
+            extract: $ts
+            pattern: ^${radix_operator_image_tag_prefix}-[a-f0-9]+-(?P<ts>[0-9]+)
       target:
         kind: ImagePolicy
         name: radix-operator
