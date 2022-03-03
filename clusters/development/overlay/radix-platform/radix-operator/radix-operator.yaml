@@ -12,8 +12,7 @@ spec:
   prune: true
   postBuild:
     substitute:
-      radix_acr_repo_url: ${radix_acr_repo_url}
-      ACTIVE_CLUSTER: ${ACTIVE_CLUSTER}
+      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -71,7 +70,7 @@ spec:
           name: radix-operator
           namespace: flux-system
         spec:
-          image: ${radix_acr_repo_url}/radix-operator
+          image: ${radix_acr_repo_url}/radix-operator # Set in postBuild development
       target:
         kind: ImageRepository
         name: radix-operator
@@ -84,7 +83,7 @@ spec:
           namespace: flux-system
         spec:
           filterTags:
-            pattern: ^${radix_operator_image_tag_prefix}-[a-f0-9]+-(?P<ts>[0-9]+)
+            pattern: ^${radix_operator_image_tag_prefix}-[a-f0-9]+-(?P<ts>[0-9]+) # Set in postBuild development
       target:
         kind: ImagePolicy
         name: radix-operator
