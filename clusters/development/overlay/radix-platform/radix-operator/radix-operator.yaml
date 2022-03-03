@@ -46,7 +46,7 @@ spec:
         name: ingress-nginx
         namespace: ingress-nginx
     - patch: |-
-        apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+        apiVersion: source.toolkit.fluxcd.io/v1beta1
         kind: GitRepository
         metadata:
           name: radix-operator
@@ -59,6 +59,11 @@ spec:
         name: radix-operator
         namespace: flux-system
     - patch: |
+        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        kind: ImagePolicy
+        metadata:
+          name: radix-operator
+          namespace: flux-system
         spec:
           postBuild:
             filterTags:
