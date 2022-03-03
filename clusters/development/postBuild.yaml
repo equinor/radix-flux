@@ -10,6 +10,9 @@ spec:
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
       ACTIVE_CLUSTER: weekly-09
+      radix_operator_helm_chart_branch: master
+      radix_operator_image_tag_prefix: master
+      RADIX_OPERATOR_TAG: master-1be2aa43-1646121755 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
