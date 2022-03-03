@@ -58,6 +58,18 @@ spec:
         kind: GitRepository
         name: radix-operator
         namespace: flux-system
+    - patch: |-
+        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        kind: ImageRepository
+        metadata:
+          name: radix-operator
+          namespace: flux-system
+        spec:
+          image: ${radix_acr_repo_url}/radix-operator
+      target:
+        kind: ImageRepository
+        name: radix-operator
+        namespace: flux-system
     - patch: |
         apiVersion: image.toolkit.fluxcd.io/v1beta1
         kind: ImagePolicy
@@ -66,7 +78,6 @@ spec:
           namespace: flux-system
         spec:
           filterTags:
-            extract: $ts
             pattern: ^${radix_operator_image_tag_prefix}-[a-f0-9]+-(?P<ts>[0-9]+)
       target:
         kind: ImagePolicy
