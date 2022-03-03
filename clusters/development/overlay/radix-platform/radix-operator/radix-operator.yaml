@@ -43,8 +43,8 @@ spec:
                 metrics.dynatrace.com/port: "9000"
       target:
         kind: HelmRelease
-        name: ingress-nginx
-        namespace: ingress-nginx
+        name: radix-operator
+        namespace: default
     - patch: |-
         apiVersion: source.toolkit.fluxcd.io/v1beta1
         kind: GitRepository
