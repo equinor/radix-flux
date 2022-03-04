@@ -10,7 +10,7 @@ spec:
     name: flux-system
   path: ./components/third-party/dynatrace-operator
   prune: true
-  timeout: 2m0s
+  timeout: 5m0s
   healthChecks:
     - apiVersion: apps/v1
       kind: DaemonSet
