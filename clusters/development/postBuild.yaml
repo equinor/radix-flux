@@ -11,6 +11,7 @@ spec:
       radix_acr_repo_url: radixdev.azurecr.io
       ACTIVE_CLUSTER: weekly-09
       RADIX_ACR_CLEANUP_TAG: master-69f085ef-1646034002 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_COST_ALLOCATION_TAG: master-90344805-1645697862 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-1be2aa43-1646121755 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     substituteFrom:
       - kind: ConfigMap
