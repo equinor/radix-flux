@@ -13,8 +13,8 @@ spec:
   postBuild:
     substitute:
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
-      radix_operator_helm_chart_branch: ${radix_operator_helm_chart_branch} # Set in radix-operator postBuild
-      radix_operator_image_tag_prefix: ${radix_operator_image_tag_prefix} # Set in radix-operator postBuild
+      radix_operator_helm_chart_branch: master
+      radix_operator_image_tag_prefix: master
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config

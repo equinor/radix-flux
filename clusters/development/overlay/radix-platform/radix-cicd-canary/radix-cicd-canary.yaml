@@ -14,8 +14,8 @@ spec:
     substitute:
       RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
-      radix_cicd_canary_helm_chart_branch: ${radix_cicd_canary_helm_chart_branch} # Set in radix-cicd-canary postBuild
-      radix_cicd_canary_image_tag_prefix: ${radix_cicd_canary_image_tag_prefix} # Set in radix-cicd-canary postBuild
+      radix_cicd_canary_helm_chart_branch: master
+      radix_cicd_canary_image_tag_prefix: master
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
