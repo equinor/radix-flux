@@ -28,7 +28,7 @@ resources:
 patches:
   - path: ./postBuild.yaml
   - path: ./healthChecks.yaml
-  - path: ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
+  # - path: ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
   - path: ./overlay/radix-platform/radix-cicd-canary/postBuild.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/postBuild.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/helmRelease.yaml

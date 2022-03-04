@@ -14,8 +14,8 @@ spec:
     substitute:
       RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
-      radix_acr_cleanup_helm_chart_branch: ${radix_acr_cleanup_helm_chart_branch} # Set in radix-acr-cleanup postBuild
-      radix_acr_cleanup_image_tag_prefix: ${radix_acr_cleanup_image_tag_prefix} # Set in radix-acr-cleanup postBuild
+      radix_acr_cleanup_helm_chart_branch: master
+      radix_acr_cleanup_image_tag_prefix: master
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -29,7 +29,7 @@ spec:
         spec:
           values:
             deleteUntagged: false
-            activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild playground
+            activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
             image:
               tag: ${RADIX_ACR_CLEANUP_TAG} # Set in postBuild development
             resources:
