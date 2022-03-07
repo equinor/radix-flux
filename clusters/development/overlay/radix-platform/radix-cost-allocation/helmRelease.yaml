@@ -6,7 +6,7 @@ metadata:
 spec:
   values:
     image:
-      tag: master-90344805-1645697862 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      tag: ${RADIX_COST_ALLOCATION_TAG} # Set in postBuild development
     resources:
       limits:
         cpu: "2"
