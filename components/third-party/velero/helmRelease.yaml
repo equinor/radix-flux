@@ -9,9 +9,6 @@ metadata:
   name: velero
   namespace: velero
 spec:
-  dependsOn:
-    - name: kube-prometheus-stack
-      namespace: default
   releaseName: velero
   chart:
     spec:
