@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./components/third-party/dynatrace-operator
-  prune: true
+  prune: false
   timeout: 5m0s
   healthChecks:
     - apiVersion: apps/v1

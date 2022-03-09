@@ -11,7 +11,7 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./components/third-party/ingress-nginx
-  prune: true
+  prune: false
   timeout: 2m0s
   healthChecks:
     - apiVersion: v1

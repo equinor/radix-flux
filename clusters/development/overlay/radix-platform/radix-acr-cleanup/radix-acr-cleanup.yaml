@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./components/radix-platform/radix-acr-cleanup
-  prune: true
+  prune: false
   postBuild:
     substitute:
       RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development

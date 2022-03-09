@@ -4,6 +4,7 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
+  prune: false
   postBuild:
     substitute:
       RADIX_ZONE: dev # dev | playground | prod
