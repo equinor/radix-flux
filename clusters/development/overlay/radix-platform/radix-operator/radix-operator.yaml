@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./components/radix-platform/radix-operator
-  prune: true
+  prune: false
   postBuild:
     substitute:
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
