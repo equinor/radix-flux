@@ -16,7 +16,4 @@ spec:
         cpu: 100m
         memory: 512Mi
 rbac:
-  # Whether to create the Velero role and role binding to give all permissions to the namespace to Velero.
-  create: true
-  # Whether to create the cluster role binding to give administrator permissions to Velero
   clusterAdministrator: false

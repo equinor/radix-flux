@@ -25,6 +25,7 @@ resources:
 - ./overlay/radix-platform/radix-cost-allocation/radix-cost-allocation.yaml
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
 - ../../components/radix-platform/radix-velero-plugin
+  ./overlay/third-party/velero/rbac.yaml
 patches:
   - path: ./postBuild.yaml
   - path: ./healthChecks.yaml
@@ -43,4 +44,3 @@ patches:
   - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
   - path: ./overlay/third-party/velero/helmRelease.yaml
   - path: ./overlay/third-party/velero/postBuild.yaml
-  - path: ./overlay/third-party/velero/rbac.yaml
