@@ -18,7 +18,7 @@ spec:
       retries: 3
   valuesFrom:
   - kind: Secret
-    name: ingress-ip
+    name: ingress-nginx-ip
     valuesKey: config
   values:
     controller:
