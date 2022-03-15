@@ -16,6 +16,10 @@ spec:
   install:
     remediation:
       retries: 3
+  valuesFrom:
+  - kind: Secret
+    name: ingress-ip
+    valuesKey: config
   values:
     controller:
       affinity:
@@ -47,6 +51,8 @@ spec:
           enabled: true
         enabled: true
       service:
+        annotations:
+          service.beta.kubernetes.io/azure-load-balancer-resource-group: common
         externalTrafficPolicy: Local
       ingressClassResource:
         name: nginx
