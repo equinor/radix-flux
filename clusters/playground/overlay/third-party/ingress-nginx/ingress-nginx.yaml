@@ -1,0 +1,58 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: ingress-nginx
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  dependsOn:
+    - name: dynatrace-operator
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/third-party/ingress-nginx
+  prune: false
+  timeout: 2m0s
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: ingress-nginx
+      namespace: ingress-nginx
+    - apiVersion: v1
+      kind: Service
+      name: ingress-nginx-controller
+      namespace: ingress-nginx
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        kind: HelmRelease
+        metadata:
+          name: ingress-nginx
+          namespace: ingress-nginx
+        spec:
+          chart:
+            spec:
+              version: 4.0.18 # https://artifacthub.io/packages/helm/ingress-nginxingress-nginx
+          valuesFrom:
+          - kind: Secret
+            name: ingress-nginx-ip
+            valuesKey: config
+          values:
+            controller:
+              replicaCount: 2
+              resources:
+                limits:
+                  cpu: "6"
+                  memory: 2500Mi
+                requests:
+                  cpu: 500m
+                  memory: 2000Mi
+              config:
+                main-snippet: "load_module /opt/dynatrace/oneagent/agent/bin/current/linux-musl-x86-64/liboneagentnginx.so;"
+              service:
+                annotations:
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: common
+      target:
+        kind: HelmRelease
+        name: ingress-nginx
+        namespace: ingress-nginx
