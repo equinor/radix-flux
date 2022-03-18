@@ -10,7 +10,7 @@ resources:
 - ../../components/third-party/dynatrace-operator
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
-- ../../components/third-party/ingress-nginx
+- ./overlay/third-party/ingress-nginx/ingress-nginx.yaml
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubed
 - ../../components/third-party/kured
@@ -23,7 +23,6 @@ resources:
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
 - ../../components/radix-platform/radix-velero-plugin
-- ./overlay/third-party/ingress-nginx/ingress-nginx.yaml
 patches:
   - path: ./postBuild.yaml
   - path: ./healthChecks.yaml
