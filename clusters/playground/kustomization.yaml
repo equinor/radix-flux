@@ -23,6 +23,7 @@ resources:
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
 - ../../components/radix-platform/radix-velero-plugin
+- ./overlay/third-party/velero/rbac.yaml
 patches:
   - path: ./postBuild.yaml
   - path: ./healthChecks.yaml

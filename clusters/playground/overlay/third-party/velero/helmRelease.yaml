@@ -15,3 +15,5 @@ spec:
       requests:
         cpu: 200m
         memory: 1024Mi
+    rbac:
+      clusterAdministrator: false
