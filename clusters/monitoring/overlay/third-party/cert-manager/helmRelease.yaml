@@ -16,3 +16,4 @@ spec:
         cpu: 50m
         memory: 256Mi
     podLabels: null
+    serviceAnnotations: null
