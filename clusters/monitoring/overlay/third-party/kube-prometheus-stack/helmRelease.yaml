@@ -9,15 +9,15 @@ spec:
       version: 26.1.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
   values:
     prometheusOperator: 
-      resources:
-        limits:
-          cpu: "2"
-          memory: "8000Mi"
-        requests:
-          cpu: "0.5"
-          memory: "1000Mi"
     prometheus:
       prometheusSpec:
+        resources:
+          limits:
+            cpu: "2"
+            memory: "8000Mi"
+          requests:
+            cpu: "0.5"
+            memory: "1000Mi"
         additionalScrapeConfigs: null
         # See https://github.com/coreos/prometheus-operator/blob/master/Documentation/additional-scrape-config.md
         # Add more jobs to a secret named `prometheus-additional-config` with key `prometheus-additional-config.yaml` for this to work.
@@ -26,7 +26,6 @@ spec:
           name: prometheus-operator-prometheus-scrape-config
           key: additional-scrape-configs.yaml
         retention: 90d
-        resources: null
         storageSpec:
           volumeClaimTemplate:
             spec:
