@@ -13,3 +13,6 @@ spec:
         cpu: "0.2"
         memory: "200Mi"
     envFromSecret: null
+    ingress:
+      annotations:
+        kubernetes.io/tls-acme: "true"
