@@ -10,11 +10,11 @@ spec:
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
-      ACTIVE_CLUSTER: weekly-11
-      RADIX_ACR_CLEANUP_TAG: master-69f085ef-1646034002 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
-      RADIX_CICD_CANARY_TAG: master-77be32e0-1645712349 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: master-90344805-1645697862 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: master-232bff79-1646984711 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      ACTIVE_CLUSTER: weekly-14
+      RADIX_ACR_CLEANUP_TAG: master-1f1c41b7-1649151651 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_CICD_CANARY_TAG: master-1912bfe9-1649248950 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_COST_ALLOCATION_TAG: master-39064f73-1647862268 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_OPERATOR_TAG: master-df7a9545-1649233492 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config

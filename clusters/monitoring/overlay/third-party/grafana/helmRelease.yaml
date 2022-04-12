@@ -6,10 +6,13 @@ metadata:
 spec:
   chart:
     spec:
-      version: 6.20.3 # https://artifacthub.io/packages/helm/grafana/grafana
+      version: 6.24.1 # https://artifacthub.io/packages/helm/grafana/grafana
   values:
     resources:
       requests:
         cpu: "0.2"
         memory: "200Mi"
     envFromSecret: null
+    ingress:
+      annotations:
+        kubernetes.io/tls-acme: "true"
