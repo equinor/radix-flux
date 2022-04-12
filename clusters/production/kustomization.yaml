@@ -7,10 +7,10 @@ resources:
 - ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
 - ../../components/third-party/csi-secrets-store-provider-azure
-- ../../components/third-party/dynatrace-operator
+- ./overlay/third-party/dynatrace-operator/dynatrace-operator.yaml
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
-- ../../components/third-party/ingress-nginx
+- ./overlay/third-party/ingress-nginx/ingress-nginx.yaml
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubed
 - ../../components/third-party/kured
@@ -18,30 +18,21 @@ resources:
 - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
 - ../../components/third-party/velero-schedule
-- ../../components/radix-platform/radix-acr-cleanup
-- ../../components/radix-platform/radix-cicd-canary
-- ../../components/radix-platform/radix-cost-allocation
-- ../../components/radix-platform/radix-operator
+- ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
+- ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
+- ./overlay/radix-platform/radix-cost-allocation/radix-cost-allocation.yaml
+- ./overlay/radix-platform/radix-operator/radix-operator.yaml
 - ../../components/radix-platform/radix-velero-plugin
+- ./overlay/third-party/velero/rbac.yaml
 patches:
   - path: ./postBuild.yaml
   - path: ./healthChecks.yaml
-  - path: ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
-  - path: ./overlay/radix-platform/radix-acr-cleanup/helmRelease.yaml
-  - path: ./overlay/radix-platform/radix-cicd-canary/postBuild.yaml
-  - path: ./overlay/radix-platform/radix-cicd-canary/helmRelease.yaml
-  - path: ./overlay/radix-platform/radix-cost-allocation/postBuild.yaml
-  - path: ./overlay/radix-platform/radix-cost-allocation/helmRelease.yaml
-  - path: ./overlay/radix-platform/radix-operator/postBuild.yaml
-  - path: ./overlay/radix-platform/radix-operator/helmRelease.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/helmRelease.yaml
-  - path: ./overlay/third-party/dynatrace-operator/helmRelease.yaml
   - path: ./overlay/third-party/csi-secrets-store-provider-azure/helmRelease.yaml
   - path: ./overlay/third-party/external-dns/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
-  - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/postBuild.yaml
   - path: ./overlay/third-party/kubed/helmRelease.yaml

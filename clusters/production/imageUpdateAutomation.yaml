@@ -1,7 +1,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
-  name: radix-dev-acr-auto-update
+  name: radix-prod-acr-auto-update
   namespace: flux-system
 spec:
   interval: 1m0s
