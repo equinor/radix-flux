@@ -6,4 +6,4 @@ metadata:
 spec:
   postBuild:
     substitute:
-      ALERT_WEB_CONSOLE_BASE_URL: "https://console.radix.equinor.com"
+      ALERT_WEB_CONSOLE_BASE_URL: "https://console.c2.radix.equinor.com"
