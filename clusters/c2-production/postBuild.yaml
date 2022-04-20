@@ -1,0 +1,20 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  prune: false
+  postBuild:
+    substitute:
+      RADIX_ZONE: c2 # dev | playground | prod
+      RADIX_ENVIRONMENT: prod # dev | prod
+      radix_acr_repo_url: radixc2prod.azurecr.io
+      ACTIVE_CLUSTER: c2-prod-16
+      RADIX_ACR_CLEANUP_TAG: release-9093498e-1649226516 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_CICD_CANARY_TAG: release-458f82c9-1645713342 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-0d20665b-1645714179 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_OPERATOR_TAG: release-cc0b1118-1647000323 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
