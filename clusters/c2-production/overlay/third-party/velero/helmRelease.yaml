@@ -8,6 +8,10 @@ spec:
     spec:
       version: 2.29.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
   values:
+    configuration:
+      backupStorageLocation:
+        config:
+          resourceGroup: "velero-backups-westeurope"
     resources:
       limits:
         cpu: "6"
