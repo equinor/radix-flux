@@ -13,6 +13,7 @@ spec:
     configToMap: radix-config-2-map:release-latest
     jobScheduler: radix-job-scheduler-server:release-latest
     containerRegistry: radixdev.azurecr.io
+    radixZone: ${RADIX_ZONE} # Set in postBuild playground
     resources:
       limits:
         cpu: "2"

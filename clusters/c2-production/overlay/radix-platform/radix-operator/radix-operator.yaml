@@ -35,6 +35,7 @@ spec:
             configToMap: radix-config-2-map:release-latest
             jobScheduler: radix-job-scheduler-server:release-latest
             containerRegistry: ${radix_acr_repo_url} # Set in postBuild production
+            radixZone: ${RADIX_ZONE} # Set in postBuild production
             resources:
               limits:
                 cpu: "2"
