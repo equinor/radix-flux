@@ -32,31 +32,26 @@ spec:
         spec:
           chart:
             spec:
-              version: 4.1.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+              version: 4.0.18 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
           valuesFrom:
           - kind: Secret
             name: ingress-nginx-ip
             valuesKey: config
           values:
             controller:
-              autoscaling:
-                enabled: true
-                minReplicas: 2
-                maxReplicas: 5
-                targetCPUUtilizationPercentage: 80
-                targetMemoryUtilizationPercentage: 80
+              replicaCount: 8
               resources:
                 limits:
-                  cpu: "3"
-                  memory: 1500Mi
+                  cpu: "6"
+                  memory: 5000Mi
                 requests:
                   cpu: 300m
-                  memory: 1000Mi
+                  memory: 5000Mi
               config:
                 main-snippet: "load_module /opt/dynatrace/oneagent/agent/bin/current/linux-musl-x86-64/liboneagentnginx.so;"
               service:
                 annotations:
-                  service.beta.kubernetes.io/azure-load-balancer-resource-group: common
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: common-westeurope
       target:
         kind: HelmRelease
         name: ingress-nginx

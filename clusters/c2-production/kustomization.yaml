@@ -11,12 +11,10 @@ resources:
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
 - ./overlay/third-party/ingress-nginx/ingress-nginx.yaml
-#- ../../components/third-party/ingress-nginx-active-cluster
-#- ../../components/third-party/ingress-nginx-app
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubed
 - ../../components/third-party/kured
-#- ../../components/third-party/snyk-monitor
+- ../../components/third-party/snyk-monitor
 - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
 - ../../components/third-party/velero-schedule
@@ -35,12 +33,10 @@ patches:
   - path: ./overlay/third-party/csi-secrets-store-provider-azure/helmRelease.yaml
   - path: ./overlay/third-party/external-dns/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
-#  - path: ./overlay/third-party/ingress-nginx-active-cluster/helmRelease.yaml
-#  - path: ./overlay/third-party/ingress-nginx-app/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/postBuild.yaml
   - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
-#  - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
+  - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
   - path: ./overlay/third-party/velero/helmRelease.yaml
   - path: ./overlay/third-party/velero/postBuild.yaml

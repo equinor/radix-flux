@@ -6,12 +6,12 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.8.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      version: 1.7.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
   values:
     resources:
       limits:
-        cpu: 100m
-        memory: 512Mi
+        cpu: 200m
+        memory: 1Gi
       requests:
-        cpu: 50m
-        memory: 256Mi
+        cpu: 150m
+        memory: 800Mi

@@ -1,9 +1,9 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: blob-csi-driver
+  name: kubed
   namespace: kube-system
 spec:
   chart:
     spec:
-      version: v1.12.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
+      version: v0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed

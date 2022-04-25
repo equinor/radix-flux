@@ -30,6 +30,7 @@ spec:
             image:
               tag: ${RADIX_OPERATOR_TAG} # Set in postBuild development
             activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
+            radixZone: ${RADIX_ZONE} # Set in postBuild development
             resources:
               limits:
                 cpu: "2"
@@ -43,7 +44,7 @@ spec:
                 limitrange:
                   default:
                     memory: 1000Mi
-            oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.2.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
+            oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.2.1 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
             service:
               annotations:
                 metrics.dynatrace.com/scrape: "true"
