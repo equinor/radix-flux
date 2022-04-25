@@ -35,7 +35,7 @@ spec:
         memory: 100Mi
     service:
       annotations:
-        metrics.dynatrace.com/scrape: "true"
+        metrics.dynatrace.com/scrape: "false"
         metrics.dynatrace.com/port: "5000"
   valuesFrom:
   - kind: Secret

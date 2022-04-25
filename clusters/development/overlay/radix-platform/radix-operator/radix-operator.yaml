@@ -47,7 +47,7 @@ spec:
             oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.2.1 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
             service:
               annotations:
-                metrics.dynatrace.com/scrape: "true"
+                metrics.dynatrace.com/scrape: "false"
                 metrics.dynatrace.com/port: "9000"
       target:
         kind: HelmRelease
