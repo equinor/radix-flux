@@ -14,10 +14,10 @@ spec:
         resources:
           limits:
             cpu: "2"
-            memory: "8000Mi"
+            memory: "16000Mi"
           requests:
             cpu: "0.5"
-            memory: "1000Mi"
+            memory: "6000Mi"
         additionalScrapeConfigs: null
         # See https://github.com/coreos/prometheus-operator/blob/master/Documentation/additional-scrape-config.md
         # Add more jobs to a secret named `prometheus-additional-config` with key `prometheus-additional-config.yaml` for this to work.
