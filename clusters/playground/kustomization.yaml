@@ -22,7 +22,7 @@ resources:
 - ../../components/radix-platform/radix-cicd-canary
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
-- ./overlay/radix-platform/radix-vulnerability-scanner/radix-vulnerability-scanner.yaml
+- ../../components/radix-platform/radix-vulnerability-scanner
 - ../../components/radix-platform/radix-velero-plugin
 - ./overlay/third-party/velero/rbac.yaml
 patches:
