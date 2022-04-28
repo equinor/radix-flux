@@ -14,7 +14,7 @@ spec:
       RADIX_ACR_CLEANUP_TAG: release-7c32b673-1650957888 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: release-458f82c9-1645713342 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-0d20665b-1645714179 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: release-6d88cbc8-1651048454 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: release-114ff414-1651133780 # {"$imagepolicy": "flux-system:radix-operator:tag"}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
