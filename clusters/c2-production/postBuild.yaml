@@ -15,7 +15,7 @@ spec:
       RADIX_CICD_CANARY_TAG: release-08bfcd4f-1651142888 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-0d20665b-1645714179 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: release-114ff414-1651133787 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: release-5e9258d4-1651141233 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: release-06caf9cc-1651218778 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
