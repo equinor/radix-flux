@@ -8,22 +8,40 @@ The Git repository contains the following top directories:
 ```
 ├── clusters
 │   │
-│   ├── development
+│   ├── c2-production
 │   │   ├── (flux-system)
 │   │   ├── overlay
+│   │   ├── healthChecks.yaml
 │   │   ├── imageUpdateAutomation.yaml
 │   │   ├── kustomization.yaml
 │   │   └── postBuild.yaml
 │   │
+│   ├── development
+│   │   ├── (flux-system)
+│   │   ├── overlay
+│   │   ├── healthChecks.yaml
+│   │   ├── imageUpdateAutomation.yaml
+│   │   ├── kustomization.yaml
+│   │   └── postBuild.yaml
+│   │
+│   ├── monitoring
+│   │   ├── (flux-system)
+│   │   ├── overlay
+│   │   └── kustomization.yaml
+│   │
 │   ├── playground 
 │   │   ├── (flux-system)
 │   │   ├── overlay
+│   │   ├── healthChecks.yaml
+│   │   ├── imageUpdateAutomation.yaml
 │   │   ├── kustomization.yaml
 │   │   └── postBuild.yaml
 │   │
 │   └── production
 │       ├── (flux-system)
 │       ├── overlay
+│   │   ├── healthChecks.yaml
+│   │   ├── imageUpdateAutomation.yaml
 │       ├── kustomization.yaml
 │       └── postBuild.yaml
 │
