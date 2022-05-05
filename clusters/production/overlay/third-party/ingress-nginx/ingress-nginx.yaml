@@ -32,7 +32,7 @@ spec:
         spec:
           chart:
             spec:
-              version: 4.0.18 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+              version: 4.1.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
           valuesFrom:
           - kind: Secret
             name: ingress-nginx-ip
@@ -47,8 +47,6 @@ spec:
                 requests:
                   cpu: 300m
                   memory: 5000Mi
-              config:
-                main-snippet: "load_module /opt/dynatrace/oneagent/agent/bin/current/linux-musl-x86-64/liboneagentnginx.so;"
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
