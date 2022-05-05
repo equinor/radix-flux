@@ -47,8 +47,6 @@ spec:
                 requests:
                   cpu: 300m
                   memory: 5000Mi
-              config:
-                main-snippet: "load_module /opt/dynatrace/oneagent/agent/bin/current/linux-musl-x86-64/liboneagentnginx.so;"
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common-westeurope
