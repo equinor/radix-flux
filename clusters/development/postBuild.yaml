@@ -11,7 +11,7 @@ spec:
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
       ACTIVE_CLUSTER: weekly-18
-      RADIX_ACR_CLEANUP_TAG: master-cdc97fc1-1651826870 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_ACR_CLEANUP_TAG: master-a420b82f-1651843401 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: master-205dc657-1651502754 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: master-00fefaf2-1651843307 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-73e1f9ca-1651235711 # {"$imagepolicy": "flux-system:radix-operator:tag"}
