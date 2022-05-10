@@ -14,7 +14,7 @@ spec:
       RADIX_ACR_CLEANUP_TAG: master-47d8c654-1652082019 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: master-344dcc46-1652175070 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: master-052e29bd-1652170884 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: master-73e1f9ca-1651235711 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: master-5860dcf3-1652175053 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: main-1419bb4b-1652085004 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
     substituteFrom:
       - kind: ConfigMap
