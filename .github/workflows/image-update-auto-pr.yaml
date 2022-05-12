@@ -23,8 +23,16 @@ jobs:
         github_token: ${{ secrets.FLUX_REPO_PAT }}
 
     - name: notify-slack
+      env:
+        GITHUB_TOKEN: ${{ secrets.FLUX_REPO_PAT }}
       run: |
         PR_URL=${{steps.open-pr.outputs.pr_url}}
         if [[ ! -z ${PR_URL} ]]; then
           curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
+          exit 0
+        fi
+        if [[ ! `gh pr list --base master --head $GITHUB_REF_NAME --state open --repo $GITHUB_REPOSITORY | grep $GITHUB_REF_NAME` ]]; then
+          # if there is no open PR from flux-image-updates to master, something has gone wrong.
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed.","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
+          exit 1
         fi
