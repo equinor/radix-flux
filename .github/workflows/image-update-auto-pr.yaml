@@ -33,6 +33,6 @@ jobs:
         fi
         if [[ ! `gh pr list --base master --head $GITHUB_REF_NAME --state open --repo $GITHUB_REPOSITORY | grep $GITHUB_REF_NAME` ]]; then
           # if there is no open PR from flux-image-updates to master, something has gone wrong.
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed.","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
           exit 1
         fi
