@@ -36,7 +36,7 @@ spec:
         - {{.}}
         {{ end -}} 
     push:
-      branch: flux-image-updates-c2-production
+      branch: flux-image-updates
   update:
     path: ./clusters/c2-production
     strategy: Setters
