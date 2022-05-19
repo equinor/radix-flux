@@ -13,7 +13,7 @@ spec:
       ACTIVE_CLUSTER: weekly-20
       RADIX_ACR_CLEANUP_TAG: master-47d8c654-1652082019 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: master-7d4c7dba-1652866323 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: master-052e29bd-1652170884 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_COST_ALLOCATION_TAG: master-66a62263-1652968965 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-5860dcf3-1652175053 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: main-19a3f947-1652958804 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
     substituteFrom:
