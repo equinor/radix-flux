@@ -36,7 +36,7 @@ spec:
         - {{.}}
         {{ end -}} 
     push:
-      branch: flux-image-updates
+      branch: flux-image-updates-${clusterType}
   update:
     path: ./clusters/${clusterType}
     strategy: Setters
