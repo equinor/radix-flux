@@ -7,6 +7,7 @@ spec:
   prune: false
   postBuild:
     substitute:
+      FLUX_CONFIG_PATH: ./clusters/production
       RADIX_ZONE: prod # dev | playground | prod
       RADIX_ENVIRONMENT: prod # dev | prod
       radix_acr_repo_url: radixprod.azurecr.io

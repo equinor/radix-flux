@@ -7,6 +7,7 @@ spec:
   prune: false
   postBuild:
     substitute:
+      FLUX_CONFIG_PATH: ./clusters/c2-production
       RADIX_ZONE: c2 # dev | playground | prod
       RADIX_ENVIRONMENT: prod # dev | prod
       radix_acr_repo_url: radixc2prod.azurecr.io
