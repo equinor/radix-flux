@@ -54,9 +54,6 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
-      podAnnotations:
-        metrics.dynatrace.com/scrape: "false"
-        metrics.dynatrace.com/port: "8085"
     # resources: xx                                                         # Set by flux patch
     priorityClassName: radix-component-priority
   valuesFrom:
