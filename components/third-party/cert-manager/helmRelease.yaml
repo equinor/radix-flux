@@ -23,9 +23,6 @@ spec:
     global:
       rbac:
         create: true
-    serviceAnnotations:
-      metrics.dynatrace.com/scrape: "false"
-      metrics.dynatrace.com/port: "9402"
     podLabels: { aadpodidbinding: certman-label }
   valuesFrom:
     - kind: Secret

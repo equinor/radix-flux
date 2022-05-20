@@ -1,5 +1,0 @@
-version: 1
-commandUpdated:
-  generators:
-    - command: ../radixify.sh ./resource-1.yaml
-    - command: kustomize build .
