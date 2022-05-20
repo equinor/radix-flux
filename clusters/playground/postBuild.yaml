@@ -12,6 +12,7 @@ spec:
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
       ACTIVE_CLUSTER: playground-07
+      RADIX_ACR_CLEANUP_TAG: release-04de7516-1652094526 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
     substituteFrom:
-      - kind: ConfigMap
-        name: radix-flux-config
+    - kind: ConfigMap
+      name: radix-flux-config

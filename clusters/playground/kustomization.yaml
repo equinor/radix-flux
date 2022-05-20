@@ -18,7 +18,7 @@ resources:
 - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
 - ../../components/third-party/velero-schedule
-- ../../components/radix-platform/radix-acr-cleanup
+- ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
 - ../../components/radix-platform/radix-cicd-canary
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-operator
@@ -28,8 +28,6 @@ resources:
 patches:
   - path: ./postBuild.yaml
   - path: ./healthChecks.yaml
-  - path: ./overlay/radix-platform/radix-acr-cleanup/postBuild.yaml
-  - path: ./overlay/radix-platform/radix-acr-cleanup/helmRelease.yaml
   - path: ./overlay/radix-platform/radix-cicd-canary/postBuild.yaml
   - path: ./overlay/radix-platform/radix-cicd-canary/helmRelease.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/postBuild.yaml
