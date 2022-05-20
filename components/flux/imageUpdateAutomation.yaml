@@ -1,7 +1,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
-  name: radix-dev-acr-auto-update
+  name: radix-acr-auto-update
   namespace: flux-system
 spec:
   interval: 1m0s
@@ -19,6 +19,8 @@ spec:
       messageTemplate: |
         Automated image update
 
+        Cluster: ${clusterName}
+
         Automation name: {{ .AutomationObject }}
 
         Files:
@@ -34,9 +36,9 @@ spec:
         Images:
         {{ range .Updated.Images -}}
         - {{.}}
-        {{ end -}} 
+        {{ end -}}
     push:
       branch: flux-image-updates
   update:
-    path: ./clusters/${clusterType}
+    path: ${FLUX_CONFIG_PATH}
     strategy: Setters
