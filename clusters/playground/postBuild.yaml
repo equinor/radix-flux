@@ -12,6 +12,11 @@ spec:
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
       ACTIVE_CLUSTER: playground-07
+      RADIX_ACR_CLEANUP_TAG: release-04de7516-1652094526 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_CICD_CANARY_TAG: release-eca96ab4-1653044939 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-93ee65e5-1653043795 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_OPERATOR_TAG: release-4d33ea28-1652697795 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: release-7b6fdcc0-1651846755 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
     substituteFrom:
-      - kind: ConfigMap
-        name: radix-flux-config
+    - kind: ConfigMap
+      name: radix-flux-config
