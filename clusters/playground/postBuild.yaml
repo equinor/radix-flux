@@ -13,6 +13,7 @@ spec:
       radix_acr_repo_url: radixdev.azurecr.io
       ACTIVE_CLUSTER: playground-07
       RADIX_ACR_CLEANUP_TAG: release-04de7516-1652094526 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_CICD_CANARY_TAG: release-eca96ab4-1653044939 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
