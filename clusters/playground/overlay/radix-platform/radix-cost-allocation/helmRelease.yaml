@@ -6,7 +6,7 @@ metadata:
 spec:
   values:
     image:
-      tag: release-17bb48bd-1652703249 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      tag: release-033d2db2-1653035838 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
     resources:
       limits:
         cpu: "2"
