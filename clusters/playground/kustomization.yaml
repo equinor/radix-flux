@@ -20,7 +20,7 @@ resources:
 - ../../components/third-party/velero-schedule
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
-- ../../components/radix-platform/radix-cost-allocation
+- ./overlay/radix-platform/radix-cost-allocation/radix-cost-allocation.yaml
 - ../../components/radix-platform/radix-operator
 - ../../components/radix-platform/radix-vulnerability-scanner
 - ../../components/radix-platform/radix-velero-plugin
@@ -28,8 +28,6 @@ resources:
 patches:
   - path: ./postBuild.yaml
   - path: ./healthChecks.yaml
-  - path: ./overlay/radix-platform/radix-cost-allocation/postBuild.yaml
-  - path: ./overlay/radix-platform/radix-cost-allocation/helmRelease.yaml
   - path: ./overlay/radix-platform/radix-operator/postBuild.yaml
   - path: ./overlay/radix-platform/radix-operator/helmRelease.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/postBuild.yaml

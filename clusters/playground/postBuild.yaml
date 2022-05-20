@@ -14,6 +14,7 @@ spec:
       ACTIVE_CLUSTER: playground-07
       RADIX_ACR_CLEANUP_TAG: release-04de7516-1652094526 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: release-eca96ab4-1653044939 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-93ee65e5-1653043795 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
