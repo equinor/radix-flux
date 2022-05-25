@@ -21,7 +21,10 @@ jobs:
         echo '::set-output name=INITIAL_STATE::'${PR_STATE}''
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+    
+    # The create-pull-request action both 
+    # - merges ${GITHUB_REF_NAME} to dedicatedBranch and 
+    # - creates a PR from dedicatedBranch to destinationBranch
     - name: Create Pull Request
       uses: equinor/OmniaAutomation/actions/create-pull-request/v3@f0c38caca6ad179872f43455bab4cf61047c6278
       with:
