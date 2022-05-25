@@ -8,34 +8,49 @@ jobs:
     name: Open PR to master
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      name: checkout
+    - name: checkout
+      uses: actions/checkout@v2
 
-    - uses: repo-sync/pull-request@v2
-      name: pull-request
-      id: open-pr
-      with:
-        destination_branch: "master"
-        pr_title: "Pulling ${{ github.ref }} into master"
-        pr_body: "👑 *An automated PR*"
-        pr_reviewer: "equinor/omnia-radix"
-        pr_draft: false
-        github_token: ${{ secrets.FLUX_REPO_PAT }}
-
-    - name: notify-slack
-      env:
-        GITHUB_TOKEN: ${{ secrets.FLUX_REPO_PAT }}
+    - name: Get initial state
+      id: get-initial-state
       run: |
-        PR_URL=${{steps.open-pr.outputs.pr_url}}
-        if [[ ! -z ${PR_URL} ]]; then
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
-          exit 0
-        fi
+        PR_STATE=$(gh pr view ${PR_BRANCH} --json state --jq '.state')
+        echo "${PR_STATE}"
+        echo '::set-output name=INITIAL_STATE::'${PR_STATE}''
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-        git fetch $(git remote) master:master
-        git diff master ${GITHUB_REF_NAME} --exit-code --quiet && echo "No difference between ${GITHUB_REF_NAME} and master. No PR created" && exit 0
-        if [[ ! `gh pr list --base master --head $GITHUB_REF_NAME --state open --repo $GITHUB_REPOSITORY | grep $GITHUB_REF_NAME` ]]; then
-          # if there is no open PR from flux-image-updates to master, something has gone wrong.
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
+    - name: Create Pull Request
+      uses: equinor/OmniaAutomation/actions/create-pull-request/v3@f0c38caca6ad179872f43455bab4cf61047c6278
+      with:
+        Token: ${{ secrets.GITHUB_TOKEN }}
+        title: "Automatic image update"
+        body: |
+          **Automatic image update**
+        dedicatedBranch: flux-pr-branch
+        destinationBranch: master
+        force: true
+
+    - name: Delete trigger branch
+      run: |
+        git push origin --delete ${GITHUB_REF_NAME}
+
+    - name: Notify on slack
+      if: ${{ steps.get-initial-state.outputs.INITIAL_STATE != 'OPEN' }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        PR_URL=$(gh pr view ${PR_BRANCH} --json url --jq .url)
+        if [[ ${PR_URL} ]]; then
+          curl --request POST \
+            --header 'Content-type: application/json' \
+            --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' \
+            --url '${{ secrets.SLACK_WEBHOOK }}'
+          exit 0
+        else
+          curl --request POST \
+            --header 'Content-type: application/json' \
+            --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' \
+            --url ${{ secrets.SLACK_WEBHOOK }}
           exit 1
         fi
