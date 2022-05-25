@@ -14,4 +14,3 @@ spec:
     name: flux-system
   path: ./components/flux/pod-monitor-kustomization/pod-monitor
   prune: true
-  validation: client
