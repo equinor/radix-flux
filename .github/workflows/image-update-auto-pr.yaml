@@ -7,6 +7,8 @@ jobs:
   pull-request:
     name: Open PR to master
     runs-on: ubuntu-latest
+    env:
+      PR_BRANCH: flux-pr-branch
     steps:
     - name: checkout
       uses: actions/checkout@v2
@@ -27,7 +29,7 @@ jobs:
         title: "Automatic image update"
         body: |
           **Automatic image update**
-        dedicatedBranch: flux-pr-branch
+        dedicatedBranch: ${{ env.PR_BRANCH }}
         destinationBranch: master
         force: true
 
