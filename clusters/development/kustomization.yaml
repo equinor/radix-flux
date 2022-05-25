@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - flux-system
 - ../../components/flux/imageUpdateAutomation.yaml
-# - ../../components/flux/podMonitor.yaml
+- ../../components/flux/pod-monitor.yaml
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
