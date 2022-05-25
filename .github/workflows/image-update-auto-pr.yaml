@@ -21,7 +21,7 @@ jobs:
         echo '::set-output name=INITIAL_STATE::'${PR_STATE}''
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
+
     # The create-pull-request action both 
     # - merges ${GITHUB_REF_NAME} to dedicatedBranch and 
     # - creates a PR from dedicatedBranch to destinationBranch
@@ -35,10 +35,6 @@ jobs:
         dedicatedBranch: ${{ env.PR_BRANCH }}
         destinationBranch: master
         force: true
-
-    - name: Delete trigger branch
-      run: |
-        git push origin --delete ${GITHUB_REF_NAME}
 
     - name: Notify on slack
       if: ${{ steps.get-initial-state.outputs.INITIAL_STATE != 'OPEN' }}
