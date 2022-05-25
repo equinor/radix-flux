@@ -8,44 +8,31 @@ jobs:
     name: Open PR to master
     runs-on: ubuntu-latest
     env:
-      PR_BRANCH: flux-pr-branch
+      PR_BRANCH: flux-image-updates
     steps:
     - name: checkout
       uses: actions/checkout@v2
 
-    - name: Get initial state
-      id: get-initial-state
-      run: |
-        PR_STATE=$(gh pr view ${PR_BRANCH} --json state --jq '.state')
-        echo "${PR_STATE}"
-        echo '::set-output name=INITIAL_STATE::'${PR_STATE}''
+    - name: Check for existing PR
+      id: get-pr
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
-    # The create-pull-request action both 
-    # - merges ${GITHUB_REF_NAME} to dedicatedBranch and 
-    # - creates a PR from dedicatedBranch to destinationBranch
+      run: |
+        if [[ $(git fetch origin && git branch --remotes) == *"origin/${PR_BRANCH}"* ]]; then
+          PR_STATE=$(gh pr view ${PR_BRANCH} --json state --jq '.state')
+        else
+          PR_STATE="NONEXISTENT"
+        fi
+        echo "Pull request state: ${PR_STATE}"
+        echo '::set-output name=STATE::'${PR_STATE}''
+
     - name: Create Pull Request
-      uses: equinor/OmniaAutomation/actions/create-pull-request/v3@f0c38caca6ad179872f43455bab4cf61047c6278
-      with:
-        Token: ${{ secrets.GITHUB_TOKEN }}
-        title: "Automatic image update"
-        body: |
-          **Automatic image update**
-        dedicatedBranch: ${{ env.PR_BRANCH }}
-        destinationBranch: master
-        force: true
-
-    - name: Delete trigger branch
-      run: |
-        git push origin --delete ${GITHUB_REF_NAME}
-
-    - name: Notify on slack
-      if: ${{ steps.get-initial-state.outputs.INITIAL_STATE != 'OPEN' }}
+      if: ${{ steps.get-pr.outputs.STATE != 'OPEN' }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        PR_URL=$(gh pr view ${PR_BRANCH} --json url --jq .url)
+        echo "Create PR"
+        PR_URL=$(gh pr create --title "Automatic Pull Request" --base master --body "**Automatic Pull Request**")
         if [[ ${PR_URL} ]]; then
           curl --request POST \
             --header 'Content-type: application/json' \
