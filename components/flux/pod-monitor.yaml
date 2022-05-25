@@ -12,5 +12,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/flux/pod-monitor-kustomization/pod-monitor
+  path: ./components/flux/pod-monitor
   prune: true
