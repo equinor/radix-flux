@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: 219596-add-podmonitor
+    branch: olmt-dev
   secretRef:
     name: flux-system
   url: ssh://git@github.com/equinor/radix-flux
