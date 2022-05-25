@@ -40,8 +40,8 @@ The Git repository contains the following top directories:
 │   └── production
 │       ├── (flux-system)
 │       ├── overlay
-│   │   ├── healthChecks.yaml
-│   │   ├── imageUpdateAutomation.yaml
+│       ├── healthChecks.yaml
+│       ├── imageUpdateAutomation.yaml
 │       ├── kustomization.yaml
 │       └── postBuild.yaml
 │
