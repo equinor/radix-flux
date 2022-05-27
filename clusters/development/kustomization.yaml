@@ -44,5 +44,6 @@ patches:
   - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
 #  - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
+  - path: ./overlay/third-party/tekton/release.yaml
   - path: ./overlay/third-party/velero/helmRelease.yaml
   - path: ./overlay/third-party/velero/postBuild.yaml
