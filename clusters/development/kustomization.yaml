@@ -27,6 +27,7 @@ resources:
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
 - ./overlay/radix-platform/radix-vulnerability-scanner/radix-vulnerability-scanner.yaml
 - ../../components/radix-platform/radix-velero-plugin
+- ./overlay/third-party/tekton/release.yaml
 - ./overlay/third-party/velero/rbac.yaml
 patches:
   - path: ./postBuild.yaml
@@ -44,6 +45,5 @@ patches:
   - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
 #  - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
-  - path: ./overlay/third-party/tekton/release.yaml
   - path: ./overlay/third-party/velero/helmRelease.yaml
   - path: ./overlay/third-party/velero/postBuild.yaml
