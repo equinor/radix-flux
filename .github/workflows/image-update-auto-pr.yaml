@@ -7,35 +7,42 @@ jobs:
   pull-request:
     name: Open PR to master
     runs-on: ubuntu-latest
+    env:
+      PR_BRANCH: flux-image-updates
     steps:
-    - uses: actions/checkout@v2
-      name: checkout
+    - name: checkout
+      uses: actions/checkout@v2
 
-    - uses: repo-sync/pull-request@v2
-      name: pull-request
-      id: open-pr
-      with:
-        destination_branch: "master"
-        pr_title: "Pulling ${{ github.ref }} into master"
-        pr_body: "👑 *An automated PR*"
-        pr_reviewer: "equinor/omnia-radix"
-        pr_draft: false
-        github_token: ${{ secrets.FLUX_REPO_PAT }}
-
-    - name: notify-slack
+    - name: Check for existing PR
+      id: get-pr
       env:
-        GITHUB_TOKEN: ${{ secrets.FLUX_REPO_PAT }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        PR_URL=${{steps.open-pr.outputs.pr_url}}
-        if [[ ! -z ${PR_URL} ]]; then
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
-          exit 0
+        if [[ $(git fetch origin && git branch --remotes) == *"origin/${PR_BRANCH}"* ]]; then
+          PR_STATE=$(gh pr view ${PR_BRANCH} --json state --jq '.state')
+        else
+          PR_STATE="NONEXISTENT"
         fi
+        echo "Pull request state: ${PR_STATE}"
+        echo '::set-output name=STATE::'${PR_STATE}''
 
-        git fetch $(git remote) master:master
-        git diff master ${GITHUB_REF_NAME} --exit-code --quiet && echo "No difference between ${GITHUB_REF_NAME} and master. No PR created" && exit 0
-        if [[ ! `gh pr list --base master --head $GITHUB_REF_NAME --state open --repo $GITHUB_REPOSITORY | grep $GITHUB_REF_NAME` ]]; then
-          # if there is no open PR from flux-image-updates to master, something has gone wrong.
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' ${{ secrets.SLACK_WEBHOOK }}
+    - name: Create Pull Request
+      if: ${{ steps.get-pr.outputs.STATE != 'OPEN' }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "Create PR"
+        PR_URL=$(gh pr create --title "Automatic Pull Request" --base master --body "**Automatic Pull Request**")
+        if [[ ${PR_URL} ]]; then
+          curl --request POST \
+            --header 'Content-type: application/json' \
+            --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' \
+            --url '${{ secrets.SLACK_WEBHOOK }}'
+          exit 0
+        else
+          curl --request POST \
+            --header 'Content-type: application/json' \
+            --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' \
+            --url ${{ secrets.SLACK_WEBHOOK }}
           exit 1
         fi
