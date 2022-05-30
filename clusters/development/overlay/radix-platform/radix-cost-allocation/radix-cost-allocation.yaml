@@ -16,7 +16,6 @@ spec:
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
       radix_cost_allocation_helm_chart_branch: master
       radix_cost_allocation_image_tag_prefix: master
-      radix_cost_allocation_db_server: sql-radix-cost-allocation-dev.database.windows.net
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
