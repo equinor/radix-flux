@@ -12,7 +12,6 @@ The Git repository contains the following top directories:
 │   │   ├── (flux-system)
 │   │   ├── overlay
 │   │   ├── healthChecks.yaml
-│   │   ├── imageUpdateAutomation.yaml
 │   │   ├── kustomization.yaml
 │   │   └── postBuild.yaml
 │   │
@@ -20,7 +19,6 @@ The Git repository contains the following top directories:
 │   │   ├── (flux-system)
 │   │   ├── overlay
 │   │   ├── healthChecks.yaml
-│   │   ├── imageUpdateAutomation.yaml
 │   │   ├── kustomization.yaml
 │   │   └── postBuild.yaml
 │   │
@@ -33,7 +31,6 @@ The Git repository contains the following top directories:
 │   │   ├── (flux-system)
 │   │   ├── overlay
 │   │   ├── healthChecks.yaml
-│   │   ├── imageUpdateAutomation.yaml
 │   │   ├── kustomization.yaml
 │   │   └── postBuild.yaml
 │   │
@@ -41,11 +38,11 @@ The Git repository contains the following top directories:
 │       ├── (flux-system)
 │       ├── overlay
 │       ├── healthChecks.yaml
-│       ├── imageUpdateAutomation.yaml
 │       ├── kustomization.yaml
 │       └── postBuild.yaml
 │
 └── components
+    ├── flux
     ├── third-party
     └── radix-platform
 ```
@@ -56,22 +53,44 @@ The `flux-system` directory is created and managed by Flux.
 ## Overlay
 In Radix we want separate configurations per cluster. In order to achieve this we use Flux overlays which override the configuration defined in the `components` directory. The `overlay` directory has the same structure as the `components` directory, but contains only files for the resources to be overridden. The files then need to be included in the `kustomization.yaml` file in the cluster environment directory. 
 
-For example, radix-operator uses cluster-specific configuration which requires overriding the helm release. To do that, a file is with the name `helmRelease.yaml` is created in the `overlay` directory with the same sub-path as the `helmRelease.yaml` file in the `components` directory. Note that the `metadata` tag is used to specify the target resource. 
+For example, radix-operator uses cluster-specific configuration which requires overriding the helm release. To do that, the kustomization found in the overlay for the radix-operator helmRelease has set `clusterName: ${ACTIVE_CLUSTER}`. The variable is substituted by Flux with the key found in `postBuild.yaml`.
 
 ```yaml
-# file: clusters/development/overlay/radix-platform/radix-operator/helmRelease.yaml
+# file: clusters/development/overlay/radix-platform/radix-operator/radix-operator.yaml
 
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
 metadata:
   name: radix-operator
-  namespace: default
+  namespace: flux-system
 spec:
-  values:
-    activeClusterName: weekly-1
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        kind: HelmRelease
+        metadata:
+          name: radix-operator
+          namespace: default
+        spec:
+          values:
+            activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
 ```
 
-Then the file needs to be included in the `kustomization.yaml` file. 
+```yaml
+# file: clusters/development/postBuild.yaml
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  postBuild:
+    substitute:
+        ACTIVE_CLUSTER: cluster-1
+```
+
+The radix-operator kustomization file needs to be included in the `kustomization.yaml` file.
 
 ```yaml
 # file: clusters/development/kustomization.yaml
@@ -79,9 +98,7 @@ Then the file needs to be included in the `kustomization.yaml` file.
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- ../../components/radix-platform/radix-operator
-patches:
-  - path: ./overlay/radix-platform/radix-operator/helmRelease.yaml
+- ./overlay/radix-platform/radix-operator/radix-operator.yaml
 ```
 
 We patch the `flux-system` Kustomization with cluster environment specific configuration. To make it clear which parts of the configuration is changed, we have separate files for separate fields. For example, we use `postBuild.yaml` to patch the `postBuild` spec of `flux-system` Kustomization, and `healthChecks.yaml` to patch the `healthChecks` spec. 
@@ -168,7 +185,7 @@ The imageUpdateAutomation resource specifies which Git repository and branch Flu
 
 
 ```yaml
-# file: clusters/development/imageUpdateAutomation.yaml
+# file: components/flux/imageUpdateAutomation.yaml
 
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
@@ -192,28 +209,28 @@ spec:
     push:
       branch: flux-image-updates
   update:
-    path: ./clusters/development
+    path: ${FLUX_CONFIG_PATH}
     strategy: Setters
 ```
 
-The `path` spec specifies a directory with files, which is scanned regularly by Flux to find the values which should be changed. This prevents Flux from updating the overlay in all cluster environment configurations. Flux identifies the values to change by looking for an "image policy marker" which contains the name and namespace of the imagePolicy. The marker also specifies whether it is the name or the tag which is the value. 
+The `path` spec specifies a directory with files, which is scanned regularly by Flux to find the values which should be changed. This prevents Flux from updating the overlay in all cluster environment configurations. The variable is defined in the `postBuild.yaml` file for the cluster. Flux identifies the values to change by looking for an "image policy marker" which contains the name and namespace of the imagePolicy. The marker also specifies whether it is the name or the tag which is the value. 
 
 - `{"$imagepolicy": "namespace:radix-operator"}` resolves to `radixdev.azurecr.io/radix-operator:master-a5e880b9-1634484632`
 - `{"$imagepolicy": "namespace:radix-operator:name"}` resolves to `radixdev.azurecr.io/radix-operator`
 - `{"$imagepolicy": "namespace:radix-operator:tag"}` resolves to `master-a5e880b9-1634484632`
 
 ```yaml
-# file: clusters/development/overlay/radix-platform/radix-operator/helmRelease.yaml
+# file: clusters/development/overlay/radix-platform/radix-operator/radix-operator.yaml
 
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
 metadata:
-  name: radix-operator
-  namespace: default
+  name: flux-system
+  namespace: flux-system
 spec:
-  values:
-    image:
-      tag: master-a5e880b9-1634484632 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+  postBuild:
+    substitute:
+      RADIX_OPERATOR_TAG: master-a5e880b9-1634484632 # {"$imagepolicy": "flux-system:radix-operator:tag"}
 ```
 
 ## kustomization.yaml
