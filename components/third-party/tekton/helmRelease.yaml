@@ -4,16 +4,16 @@ metadata:
   name: tekton-pipelines
   namespace: default
 spec:
-  releaseName: tekton-pipelines
+  releaseName: tekton-pipeline
   chart:
     spec:
-      chart: ./charts/tekton-pipelines
+      chart: ./charts/tekton-pipeline
       sourceRef:
         kind: GitRepository
         name: tekton-pipelines
         namespace: flux-system
       valuesFiles:
-        - ./charts/tekton-pipelines/values.yaml
+        - ./charts/tekton-pipeline/values.yaml
   interval: 5m
   install:
     remediation:
