@@ -7,13 +7,11 @@ spec:
   releaseName: tekton-pipeline
   chart:
     spec:
-      chart: ./charts/v0.35.1/tekton-pipeline
+      chart: ./charts/${TEKTON_VERSION}/tekton-pipeline
       sourceRef:
         kind: GitRepository
         name: tekton-pipelines
         namespace: flux-system
-      valuesFiles:
-        - ./charts/tekton-pipeline/values.yaml
   interval: 5m
   install:
     remediation:
