@@ -17,6 +17,7 @@ spec:
       RADIX_COST_ALLOCATION_TAG: master-978c1417-1653468792 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-bb2406e6-1654092105 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: main-19a3f947-1653485841 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      TEKTON_VERSION: v0.36.0
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
