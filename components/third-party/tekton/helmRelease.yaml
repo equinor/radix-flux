@@ -7,7 +7,7 @@ spec:
   releaseName: tekton-pipeline
   chart:
     spec:
-      chart: ./charts/tekton-pipeline
+      chart: ./charts/v0.35.1/tekton-pipeline
       sourceRef:
         kind: GitRepository
         name: tekton-pipelines
