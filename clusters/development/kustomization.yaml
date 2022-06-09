@@ -31,7 +31,7 @@ resources:
 - ./overlay/third-party/velero/rbac.yaml
 patches:
   - path: ./postBuild.yaml
-  - path: ./healthChecks.yaml
+  # - path: ./healthChecks.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/helmRelease.yaml
