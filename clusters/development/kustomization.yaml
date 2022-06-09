@@ -19,7 +19,7 @@ resources:
 - ../../components/third-party/kured
 #- ../../components/third-party/snyk-monitor
 - ../../components/third-party/sysctl-install-blobfuse
-- ../../components/third-party/velero/velero.yaml
+- ../../components/third-party/velero
 # - ../../components/third-party/velero-schedule
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
