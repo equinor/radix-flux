@@ -18,7 +18,7 @@ spec:
         spec:
           chart:
             spec:
-              version: 2.29.4 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+              version: ${VELERO_VERSION} # Set in postBuild development
           values:
             resources:
               limits:
