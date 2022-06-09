@@ -10,6 +10,9 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+  postBuild:
+    substitute:
+      velero_plugin_acr_image: ${velero_plugin_acr_image} # Set in postBuild development
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
