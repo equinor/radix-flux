@@ -1,0 +1,26 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: velero
+  namespace: flux-system
+spec:
+  patches:
+    - target:
+        kind: HelmRelease
+        name: velero
+        namespace: velero
+      patch: |-
+        spec:
+          chart:
+            spec:
+              version: 2.29.4 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+          values:
+            resources:
+              limits:
+                cpu: "6"
+                memory: 1024Mi
+              requests:
+                cpu: 100m
+                memory: 512Mi
+            rbac:
+              clusterAdministrator: false
