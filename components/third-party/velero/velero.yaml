@@ -14,6 +14,15 @@ spec:
     substitute:
       velero_plugin_acr_image: ${velero_plugin_acr_image} # Set in postBuild development
       patch_path: ../../../.${FLUX_CONFIG_PATH}/overlay/third-party/velero/helmRelease.yaml # Set in postBuild development
+  patches:
+    - patch: |-
+        apiVersion: kustomize.config.k8s.io/v1beta1
+        kind: Kustomization
+        metadata:
+          name: velero
+          namespace: velero
+        patches:
+          - path: ${patch_path}
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
