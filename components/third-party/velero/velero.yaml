@@ -23,6 +23,10 @@ spec:
           namespace: velero
         patches:
           - path: ${patch_path}
+      target:
+        kind: Kustomization
+        name: velero
+        namespace: velero
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
