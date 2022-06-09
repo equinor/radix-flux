@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tekton-pipelines
+  namespace: default
+spec:
+  releaseName: tekton-pipeline
+  chart:
+    spec:
+      chart: ./charts/${TEKTON_VERSION}/tekton-pipeline
+      sourceRef:
+        kind: GitRepository
+        name: tekton-pipelines
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3

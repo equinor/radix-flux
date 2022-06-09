@@ -16,7 +16,6 @@ spec:
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild playground
       radix_cost_allocation_helm_chart_branch: release
       radix_cost_allocation_image_tag_prefix: release
-      radix_cost_allocation_db_server: sql-radix-cost-allocation-playground.database.windows.net
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
