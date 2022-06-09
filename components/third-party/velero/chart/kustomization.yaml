@@ -7,5 +7,5 @@ resources:
 - namespace.yaml
 - helmRepo.yaml
 - helmRelease.yaml
-patches:
-  - path: ${patch_path}
+# patches:
+#   - path: ${patch_path}
