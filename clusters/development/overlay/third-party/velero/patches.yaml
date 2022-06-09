@@ -10,6 +10,11 @@ spec:
         name: velero
         namespace: velero
       patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        kind: HelmRelease
+        metadata:
+          name: velero
+          namespace: velero
         spec:
           chart:
             spec:
