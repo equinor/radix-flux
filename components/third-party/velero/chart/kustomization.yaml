@@ -4,3 +4,6 @@ resources:
 - namespace.yaml
 - helmRepo.yaml
 - helmRelease.yaml
+patches:
+  - path: ./overlay/third-party/velero/helmRelease.yaml
+  - path: ./overlay/third-party/velero/postBuild.yaml
