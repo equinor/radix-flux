@@ -5,5 +5,5 @@ resources:
 - helmRepo.yaml
 - helmRelease.yaml
 patches:
-  - path: ./overlay/third-party/velero/helmRelease.yaml
-  - path: ./overlay/third-party/velero/postBuild.yaml
+  - path: ../../../../clusters/development/overlay/third-party/velero/helmRelease.yaml
+  - path: ../../../../clusters/development/overlay/third-party/velero/postBuild.yaml
