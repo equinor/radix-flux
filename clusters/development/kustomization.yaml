@@ -33,7 +33,7 @@ patches:
   # - path: ./healthChecks.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
-  - path: ./overlay/third-party/cert-manager/helmRelease.yaml
+  # - path: ./overlay/third-party/cert-manager/helmRelease.yaml
   - path: ./overlay/third-party/csi-secrets-store-provider-azure/helmRelease.yaml
   - path: ./overlay/third-party/external-dns/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
