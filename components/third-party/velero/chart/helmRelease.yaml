@@ -31,7 +31,7 @@ spec:
       - name: plugins
         mountPath: /target
     - name: radix-velero-plugin
-      image: ${velero_plugin_acr_image}                                     # Defined in overlay/third-party/velero/postBuild.yaml
+      image: ${velero_plugin_acr_image} # Set in clusters/<cluster>/postBuild
       volumeMounts:
       - name: plugins
         mountPath: /target
@@ -54,7 +54,7 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
-    # resources: xx                                                         # Set by flux patch
+    # resources: xx # Set by flux patch
     priorityClassName: radix-component-priority
   valuesFrom:
   - kind: ConfigMap
