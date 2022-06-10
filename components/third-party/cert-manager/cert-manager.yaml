@@ -10,12 +10,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  postBuild:
-    substitute:
-      CLUSTER_NAME: ${clusterName}
-    substituteFrom:
-      - kind: Secret
-        name: cert-manager-certificate-values
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
@@ -32,6 +26,12 @@ spec:
     - name: cert-manager
   interval: 5m
   path: "./components/third-party/cert-manager/certs"
+  postBuild:
+    substitute:
+      CLUSTER_NAME: ${clusterName}
+    substituteFrom:
+      - kind: Secret
+        name: cert-manager-certificate-values
   prune: true
   sourceRef:
     kind: GitRepository
