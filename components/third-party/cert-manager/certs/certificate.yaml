@@ -3,6 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: active-cluster-wildcard-tls-cert
+  namespace: default
 spec:
   secretName: active-cluster-wildcard-tls-cert
   secretTemplate:
@@ -22,6 +23,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: app-wildcard-tls-cert
+  namespace: default
 spec:
   secretName: app-wildcard-tls-cert
   secretTemplate:
@@ -41,6 +43,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: cluster-wildcard-tls-cert
+  namespace: default
 spec:
   secretName: cluster-wildcard-tls-cert
   secretTemplate:
