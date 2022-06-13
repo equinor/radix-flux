@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - flux-system
-- ../../components/flux/imageUpdateAutomation.yaml
-- ../../components/flux/pod-monitor.yaml
+- ../../components/flux/image-update-automation
+# - ../../components/flux/pod-monitor.yaml
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
@@ -18,7 +18,6 @@ resources:
 - ../../components/third-party/snyk-monitor
 - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
-- ../../components/third-party/velero-schedule
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
 - ./overlay/radix-platform/radix-cost-allocation/radix-cost-allocation.yaml
@@ -28,10 +27,10 @@ resources:
 - ./overlay/third-party/velero/rbac.yaml
 patches:
   - path: ./postBuild.yaml
-  - path: ./healthChecks.yaml
+  # - path: ./healthChecks.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
-  - path: ./overlay/third-party/cert-manager/helmRelease.yaml
+  - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/csi-secrets-store-provider-azure/helmRelease.yaml
   - path: ./overlay/third-party/external-dns/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
@@ -40,5 +39,4 @@ patches:
   - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
-  - path: ./overlay/third-party/velero/helmRelease.yaml
-  - path: ./overlay/third-party/velero/postBuild.yaml
+  - path: ./overlay/third-party/velero/patches.yaml
