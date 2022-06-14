@@ -24,7 +24,6 @@ resources:
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
 - ./overlay/radix-platform/radix-vulnerability-scanner/radix-vulnerability-scanner.yaml
 - ../../components/radix-platform/radix-velero-plugin
-- ./overlay/third-party/velero/rbac.yaml
 patches:
   - path: ./postBuild.yaml
   # - path: ./healthChecks.yaml
