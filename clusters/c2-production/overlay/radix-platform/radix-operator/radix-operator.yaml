@@ -45,14 +45,6 @@ spec:
                 cpu: 100m
                 memory: 4000Mi
             subscriptionId: ded7ca41-37c8-4085-862f-b11d21ab341a
-            registrationControllerThreads: 21
-            applicationControllerThreads: 21
-            environmentControllerThreads: 21
-            deploymentControllerThreads: 21
-            jobControllerThreads: 21
-            alertControllerThreads: 21
-            kubeClientRateLimitBurst: 500
-            kubeClientRateLimitQPS: 500
             app:
               env:
                 limitrange:
