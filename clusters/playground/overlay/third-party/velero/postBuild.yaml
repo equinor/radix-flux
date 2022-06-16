@@ -1,9 +1,0 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: flux-system
-  namespace: flux-system
-spec:
-  postBuild:
-    substitute:
-      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:release-05a0ccd6-1650988698 # {"$imagepolicy": "flux-system:radix-velero-plugin"}

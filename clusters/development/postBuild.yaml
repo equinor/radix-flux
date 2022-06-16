@@ -17,7 +17,10 @@ spec:
       RADIX_COST_ALLOCATION_TAG: master-978c1417-1653468792 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-405f1b97-1655299500 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: main-19a3f947-1653485841 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-2225215b-1650967695 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      CERT_MANAGER_VERSION: 1.8.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.36.0
+      VELERO_VERSION: 2.29.7 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
