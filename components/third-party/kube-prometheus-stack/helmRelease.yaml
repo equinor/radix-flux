@@ -95,7 +95,7 @@ spec:
           {{end}}
           {{define "radix-slack-alert-text-env" -}}
           *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
-          {{- if .Labels.replica_name }} (replica {{ .Labels.replica_name }}) {{end}}
+          {{- if .Labels.radix_replica_name }} (replica {{ .Labels.radix_replica_name }}) {{end}}
           {{if .Labels.job_name -}}
           *Job:* {{ .Labels.job_name }}
           {{end -}}
@@ -142,7 +142,7 @@ spec:
             for: 5m
             expr: >-
               sum by(label_radix_app, label_radix_env, label_radix_component, namespace, replica_name) (
-                label_replace(rate(kube_pod_container_status_restarts_total{job="kube-state-metrics",namespace=~".*"}[10m]), "replica_name", "$3", "pod","(.+)-(.+)-(.+)") 
+                label_replace(rate(kube_pod_container_status_restarts_total{job="kube-state-metrics",namespace=~".*"}[10m]), "radix_replica_name", "$3", "pod","(.+)-(.+)-(.+)") 
                 * on(pod, namespace) group_left(label_radix_app, label_radix_component) (kube_pod_labels{job="kube-state-metrics",label_radix_app!=""}) 
                 * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""}) * 60 * 5 > 0
               ) > 0
