@@ -95,6 +95,7 @@ spec:
           {{end}}
           {{define "radix-slack-alert-text-env" -}}
           *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
+          {{- if .Labels.replica_name }} (Replica {{ .Labels.replica_name }}){{end -}}
           {{if .Labels.job_name -}}
           *Job:* {{ .Labels.job_name }}
           {{end -}}
