@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Documentation about this script can be found here:
+# https://github.com/equinor/radix-private/blob/master/docs/radix-platform/flux.md
+# Please update the documentation if any changes are made to this script.
+
 if [[ -z "${PR_BRANCH}" ]]; then
     PR_BRANCH="flux-image-updates"
 fi
