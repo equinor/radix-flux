@@ -46,7 +46,7 @@ function get_version() {
                 newest="${current}"
                 file=$(echo ${file} | sed 's/'${SOURCE_CLUSTER}'/'${DESTINATION_CLUSTER}'/')
                 if [[ -f "${file}" ]]; then
-                    current=$(sed ${line}'!d' "${file}" | awk '{print $2}')
+                    current=$(grep "${repo}" "${file}" | awk '{print $2}')
                 fi
             fi
 
