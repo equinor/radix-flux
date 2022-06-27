@@ -31,7 +31,7 @@ jobs:
     name: Check for new versions
     runs-on: ubuntu-latest
     env:
-      PR_BRANCH: flux-image-updates-test
+      PR_BRANCH: automatic-version-update
     steps:
     - name: checkout
       uses: actions/checkout@v2
