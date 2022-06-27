@@ -1,0 +1,48 @@
+name: Check for new versions
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 12 * * *'
+  workflow_dispatch:
+    inputs:
+      sourceCluster:
+        description: 'Source cluster'
+        required: false
+        type: choice
+        options:
+          - "development"
+          - "monitoring"
+          - "playground"
+          - "production"
+          - "c2-production"
+      destinationCluster:
+        description: 'Destination cluster'
+        required: false
+        type: choice
+        options:
+          - "development"
+          - "monitoring"
+          - "playground"
+          - "production"
+          - "c2-production"
+
+jobs:
+  check-version:
+    name: Check for new versions
+    runs-on: ubuntu-latest
+    env:
+      PR_BRANCH: flux-image-updates-test
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Check version
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SOURCE_CLUSTER: ${{ inputs.sourceCluster }}
+        DESTINATION_CLUSTER: ${{ inputs.destinationCluster }}
+      run: .github/workflows/scripts/update_components.sh
+    - name: Create PR
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_BRANCH: ${{ env.PR_BRANCH }}
+      run: .github/workflows/scripts/create_pr.sh
