@@ -26,9 +26,8 @@ function get_version() {
         local file=$(echo ${entry} | awk '{split($1,a,":"); print a[1]}')
         local line=$(echo ${entry} | awk '{split($1,a,":"); print a[2]}')
         local current=$(echo ${entry} | awk '{print $3}')
-        local package_name=$(echo ${entry} | sed 's/\/releases.*$//' | awk '{n=split($5,a,"/"); print a[n]}')
-        local org=$(echo ${entry} | sed 's/\/releases.*$//' | awk '{n=split($5,a,"/"); print a[n-1]}')
-        local repo="${org}/$package_name"
+        local repo=$(echo ${entry} | grep -Eo 'https://[^ >]+' | sed 's/\/releases.*$//' | awk '{n=split($1,a,"/"); print a[n-1]"/"a[n]}')
+        local package_name=${repo##*/}
 
         if [[ "${current}" ]]; then
             if [[ "${SOURCE_CLUSTER}" == "${DESTINATION_CLUSTER}" ]]; then
