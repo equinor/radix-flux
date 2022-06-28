@@ -20,7 +20,8 @@ function get_version() {
     local push=false
     git config --global user.name 'Automatic Update'
     git config --global user.email 'radix@statoilsrm.onmicrosoft.com'
-    git checkout -b "${PR_BRANCH}"
+    git fetch
+    git checkout -t "origin/${PR_BRANCH}" -b "${PR_BRANCH}" || git checkout -b "${PR_BRANCH}"
 
     while read -r entry; do
         local file=$(echo ${entry} | awk '{split($1,a,":"); print a[1]}')
@@ -54,10 +55,12 @@ function get_version() {
             fi
 
             # Compare versions
-            if [[ "${newest}" && "${current}" != "${newest}" ]]; then
+            if [[ "${current}" && "${newest}" && "${current}" != "${newest}" ]]; then
                 # Update file, create branch and commit change
                 printf "New version for %s available: %s -> %s\n" "${package_name}" "${current}" "${newest}"
-                sed -i "s/${current}/${newest}/" "${file}"
+                find="$(echo ${entry} | awk '{print $2}') ${current}"
+                replace="$(echo ${entry} | awk '{print $2}') ${newest}"
+                sed -i "s/${find}/${replace}/" "${file}"
                 git add "${file}"
                 git commit -m "Update ${package_name} from ${current} to ${newest}"
                 push=true

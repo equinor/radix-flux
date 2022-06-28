@@ -28,7 +28,7 @@ if [[ "${PR_STATE}" != "OPEN" ]]; then
         curl --request POST \
         --header 'Content-type: application/json' \
         --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' \
-        --url ${{ secrets.SLACK_WEBHOOK }}
+        --url ${SLACK_WEBHOOK_URL}
         exit 1
     fi
 fi

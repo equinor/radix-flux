@@ -44,5 +44,6 @@ jobs:
     - name: Create PR
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
         PR_BRANCH: ${{ env.PR_BRANCH }}
       run: .github/workflows/scripts/create_pr.sh
