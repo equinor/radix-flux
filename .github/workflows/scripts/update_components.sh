@@ -55,7 +55,7 @@ function get_version() {
             fi
 
             # Compare versions
-            if [[ "${newest}" && "${current}" && "${current}" != "${newest}" ]]; then
+            if [[ "${current}" && "${newest}" && "${current}" != "${newest}" ]]; then
                 # Update file, create branch and commit change
                 printf "New version for %s available: %s -> %s\n" "${package_name}" "${current}" "${newest}"
                 find=$(echo ${entry} | awk '{print $2}')" ${current}"
