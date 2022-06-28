@@ -20,7 +20,8 @@ function get_version() {
     local push=false
     git config --global user.name 'Automatic Update'
     git config --global user.email 'radix@statoilsrm.onmicrosoft.com'
-    git checkout -b "${PR_BRANCH}"
+    git fetch
+    git checkout -t "origin/${PR_BRANCH}" -b "${PR_BRANCH}" || git checkout -b "${PR_BRANCH}"
 
     while read -r entry; do
         local file=$(echo ${entry} | awk '{split($1,a,":"); print a[1]}')
