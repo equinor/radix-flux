@@ -55,7 +55,7 @@ function get_version() {
             fi
 
             # Compare versions
-            if [[ "${newest}" && "${current}" != "${newest}" ]]; then
+            if [[ "${newest}" && "${current}" && "${current}" != "${newest}" ]]; then
                 # Update file, create branch and commit change
                 printf "New version for %s available: %s -> %s\n" "${package_name}" "${current}" "${newest}"
                 sed -i "s/${current}/${newest}/" "${file}"
