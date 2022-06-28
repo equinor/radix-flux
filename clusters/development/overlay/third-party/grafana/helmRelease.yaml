@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 6.26.5 # https://artifacthub.io/packages/helm/grafana/grafana
+      version: 6.31.1 # https://artifacthub.io/packages/helm/grafana/grafana
