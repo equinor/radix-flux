@@ -15,5 +15,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-        PR_BRANCH: ${{ GITHUB_REF_NAME }}
+        PR_BRANCH: flux-image-updates
       run: .github/workflows/scripts/create_pr.sh
