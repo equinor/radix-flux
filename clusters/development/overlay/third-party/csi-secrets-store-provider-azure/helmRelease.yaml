@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: v1.0.1 # https://github.com/Azure/secrets-store-csi-driver-provider-azure/releases
+      version: v1.2.0 # https://github.com/Azure/secrets-store-csi-driver-provider-azure/releases
   values:
     secrets-store-csi-driver:
       syncSecret:
