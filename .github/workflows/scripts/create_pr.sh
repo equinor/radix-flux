@@ -22,7 +22,7 @@ if [[ "${PR_STATE}" != "OPEN" ]]; then
         curl --request POST \
         --header 'Content-type: application/json' \
         --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' \
-        --url '${{ secrets.SLACK_WEBHOOK }}'
+        --url ${SLACK_WEBHOOK_URL}
         exit 0
     else
         curl --request POST \
