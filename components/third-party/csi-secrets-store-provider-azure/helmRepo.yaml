@@ -5,4 +5,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  url: https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/charts
+  url: https://azure.github.io/secrets-store-csi-driver-provider-azure/charts
