@@ -10,6 +10,7 @@ fi
 
 if [[ $(git fetch origin && git branch --remotes) == *"origin/${PR_BRANCH}"* ]]; then
     git switch "${PR_BRANCH}"
+    git pull
     PR_STATE=$(gh pr view ${PR_BRANCH} --json state --jq '.state')
 else
     PR_STATE="NONEXISTENT"
