@@ -11,3 +11,5 @@ spec:
     extraArgs:
       start-time: 8am
       end-time: 4pm
+      drain-timeout: 15m # Remove if PDB does not work out
+      force-reboot: true # Remove if PDB does not work out
