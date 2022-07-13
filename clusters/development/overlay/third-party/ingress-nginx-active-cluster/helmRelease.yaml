@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 4.1.4 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      version: 4.2.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
   values:
     controller:
       autoscaling:
