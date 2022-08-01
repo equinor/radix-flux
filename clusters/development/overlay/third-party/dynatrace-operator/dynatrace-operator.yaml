@@ -30,7 +30,7 @@ spec:
         spec:
           chart:
             spec:
-              version: 0.7.1 # https://artifacthub.io/packages/helm/dynatrace/dynatrace-operator
+              version: 0.7.2 # https://artifacthub.io/packages/helm/dynatrace/dynatrace-operator
       target:
         kind: HelmRelease
         name: dynatrace-operator
