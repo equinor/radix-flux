@@ -20,7 +20,7 @@ spec:
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-2225215b-1650967695 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.9.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.36.0
-      VELERO_VERSION: 2.30.2 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      VELERO_VERSION: 2.31.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
