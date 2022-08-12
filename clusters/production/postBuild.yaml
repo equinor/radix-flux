@@ -13,7 +13,7 @@ spec:
       radix_acr_repo_url: radixprod.azurecr.io
       ACTIVE_CLUSTER: eu-15
       RADIX_ACR_CLEANUP_TAG: release-04de7516-1652094522 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
-      RADIX_CICD_CANARY_TAG: release-28b48c97-1658823165 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_CICD_CANARY_TAG: release-702aa5c7-1660298503 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-fa5647e9-1660041033 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: release-993fec52-1659964348 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-3b5818a5-1655712805 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
