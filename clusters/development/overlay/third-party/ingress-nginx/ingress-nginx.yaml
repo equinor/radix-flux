@@ -30,7 +30,7 @@ spec:
         spec:
           chart:
             spec:
-              version: 4.2.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+              version: 4.2.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
           valuesFrom:
           - kind: Secret
             name: ingress-nginx-ip
