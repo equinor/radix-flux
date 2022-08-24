@@ -14,7 +14,7 @@ spec:
       ACTIVE_CLUSTER: c2-prod-16
       RADIX_ACR_CLEANUP_TAG: release-0df3ef01-1660545623 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: release-702aa5c7-1660298497 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-fa5647e9-1660041029 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-697180b8-1661260328 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: release-73e18758-1660899121 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-3b5818a5-1655712805 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       velero_plugin_acr_image: radixc2prod.azurecr.io/radix-velero-plugin:release-05a0ccd6-1650988700 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
