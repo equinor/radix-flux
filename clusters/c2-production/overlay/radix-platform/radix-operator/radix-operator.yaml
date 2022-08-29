@@ -60,11 +60,14 @@ spec:
                     memory: 1000Mi
             oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.2.1 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
             podSecurityStandard: # Ref https://kubernetes.io/docs/concepts/security/pod-security-standards/
-              audit:
+              enforce:
                 level: baseline
                 version: v1.23
+              audit:
+                level: restricted
+                version: v1.23
               warn:
-                level: baseline
+                level: restricted
                 version: v1.23
       target:
         kind: HelmRelease
