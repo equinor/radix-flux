@@ -28,8 +28,9 @@ function create-pr() {
             curl --request POST \
             --header 'Content-type: application/json' \
             --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' \
-            --url ${SLACK_WEBHOOK_URL}
-            exit 0
+            --url ${SLACK_WEBHOOK_URL} \
+            --fail
+            return
         elif [ "$retry_nr" -lt $MAX_RETRIES ]
         then
           sleep $sleep_before_retry
@@ -39,7 +40,7 @@ function create-pr() {
             --header 'Content-type: application/json' \
             --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' \
             --url ${SLACK_WEBHOOK_URL}
-            exit 1
+            return 1
         fi
     fi
 }
