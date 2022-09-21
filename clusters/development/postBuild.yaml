@@ -11,13 +11,13 @@ spec:
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
-      ACTIVE_CLUSTER: weekly-31
-      RADIX_ACR_CLEANUP_TAG: master-47d8c654-1652082019 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
-      RADIX_CICD_CANARY_TAG: master-1ae2be90-1658754546 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: master-92081325-1655886318 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: master-5b21e123-1658524926 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: main-05241108-1656497969 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
-      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-2225215b-1650967695 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      ACTIVE_CLUSTER: weekly-38
+      RADIX_ACR_CLEANUP_TAG: master-c38c7d20-1661260529 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_CICD_CANARY_TAG: master-e319f12b-1661428361 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_COST_ALLOCATION_TAG: master-bdc81c17-1661249029 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_OPERATOR_TAG: master-c6b0c9a6-1662985833 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: main-0ab71d43-1661258779 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-0d412589-1661844449 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.9.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.36.0
       VELERO_VERSION: 2.31.6 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
