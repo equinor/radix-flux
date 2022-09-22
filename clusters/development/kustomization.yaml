@@ -41,5 +41,6 @@ patches:
   - path: ./overlay/third-party/kube-prometheus-stack/postBuild.yaml
   - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
+  - path: ./overlay/third-party/kured/helmRepo.yaml
 #  - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml

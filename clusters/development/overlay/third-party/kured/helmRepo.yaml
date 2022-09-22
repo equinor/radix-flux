@@ -1,0 +1,4 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+spec:
+  url: https://kubereboot.github.io/charts
