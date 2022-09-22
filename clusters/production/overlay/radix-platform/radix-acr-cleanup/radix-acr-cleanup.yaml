@@ -40,6 +40,27 @@ spec:
               requests:
                 cpu: 50m
                 memory: 250Mi
+            whitelisted:
+              - radix-operator
+              - radix-pipeline
+              - rx
+              - buildx
+              - radix-cicd-canary
+              - radix-image-builder
+              - radix-image-builderx
+              - radix-tekton
+              - radix-image-scanner
+              - radix-acr-cleanup
+              - gitclone
+              - radix-velero-plugin
+              - sima-runtime
+              - radix-config-2-map
+              - radix-cost-allocation
+              - radix-job-scheduler-server
+              - radix-batch-scheduler
+              - radix-vulnerability-scanner
+              - kubed
+              - oauth2-proxy
       target:
         kind: HelmRelease
         name: radix-acr-cleanup
