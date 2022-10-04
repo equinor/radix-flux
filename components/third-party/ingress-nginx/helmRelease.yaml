@@ -54,6 +54,7 @@ spec:
         proxy-body-size: "100m"
         worker-shutdown-timeout: "3600s"
         large-client-header-buffers: "4 32k"
+        custom-http-errors: "503"
       extraArgs: {
         default-ssl-certificate: "default/cluster-wildcard-tls-cert"
       }
