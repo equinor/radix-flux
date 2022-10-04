@@ -53,6 +53,8 @@ spec:
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
+              config:
+                custom-http-errors: "503"
             defaultBackend:
               enabled: true
               autoscaling:
