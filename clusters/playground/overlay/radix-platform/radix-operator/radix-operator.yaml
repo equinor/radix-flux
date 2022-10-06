@@ -37,6 +37,7 @@ spec:
             jobScheduler: radix-job-scheduler-server:release-latest
             containerRegistry: radixdev.azurecr.io
             radixZone: ${RADIX_ZONE} # Set in postBuild playground
+            useImageBuilderCache: 1
             resources:
               limits:
                 cpu: "2"
