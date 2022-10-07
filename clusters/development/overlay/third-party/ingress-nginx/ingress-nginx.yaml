@@ -53,6 +53,37 @@ spec:
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
+              config:
+                custom-http-errors: "503"
+            defaultBackend:
+              enabled: true
+              autoscaling:
+                enabled: true
+                minReplicas: 2
+                maxReplicas: 5
+                targetCPUUtilizationPercentage: 80
+                targetMemoryUtilizationPercentage: 80
+              resources:
+                limits:
+                  cpu: "3"
+                  memory: 1500Mi
+                requests:
+                  cpu: 300m
+                  memory: 1000Mi
+              image:
+                registry: registry.k8s.io
+                image: ingress-nginx/nginx-errors
+                tag: "v20220916-gd32f8c343@sha256:09c421ac743bace19ab77979b82186941c5125c95e62cdb40bdf41293b5c275c" # Check latest version on https://github.com/kubernetes/k8s.io/blob/main/k8s.gcr.io/images/k8s-staging-ingress-nginx/images.yaml#L125
+              extraVolumes:
+              - name: custom-error-pages
+                configMap:
+                  name: custom-error-pages
+                  items:
+                  - key: "503"
+                    path: "503.html"
+              extraVolumeMounts:
+              - name: custom-error-pages
+                mountPath: /www
       target:
         kind: HelmRelease
         name: ingress-nginx
