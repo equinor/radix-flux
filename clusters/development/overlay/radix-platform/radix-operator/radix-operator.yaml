@@ -31,6 +31,7 @@ spec:
               tag: ${RADIX_OPERATOR_TAG} # Set in postBuild development
             activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
             radixZone: ${RADIX_ZONE} # Set in postBuild development
+            useImageBuilderCache: 1
             resources:
               limits:
                 cpu: "2"
