@@ -30,7 +30,7 @@ spec:
             image:
               tag: ${RADIX_OPERATOR_TAG} # Set in postBuild playground
             activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild playground
-            imageBuilder: radix-image-builder:release-latest
+            imageBuilder: radix-image-builder:playground-latest
             imageScanner: radix-image-scanner:release-latest
             configToMap: radix-config-2-map:release-latest
             radixTekton: radix-tekton:release-latest
