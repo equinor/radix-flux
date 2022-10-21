@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 6.11.0 # https://artifacthub.io/packages/helm/bitnami/external-dns
+      version: 6.11.2 # https://artifacthub.io/packages/helm/bitnami/external-dns
