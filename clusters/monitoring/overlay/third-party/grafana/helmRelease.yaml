@@ -16,3 +16,7 @@ spec:
     ingress:
       annotations:
         kubernetes.io/tls-acme: "true"
+    env:
+      GF_DATABASE_HOST: radixgrafana.mysql.database.azure.com
+      GF_DATABASE_NAME: grafana
+      GF_DATABASE_USER: "grafana@radixgrafana"

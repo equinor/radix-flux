@@ -38,9 +38,6 @@ spec:
       GF_DATABASE_TYPE: mysql
       GF_DATABASE_SSL_MODE: "skip-verify"
       GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
-      GF_DATABASE_HOST: radixgrafana.mysql.database.azure.com
-      GF_DATABASE_NAME: grafana
-      GF_DATABASE_USER: "grafana@radixgrafana"
       # GF_SERVER_ROOT_URL: ""                    # Set by secret
       # GF_DATABASE_PASSWORD: ""                  # Set by secret
       # GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ""       # Set by secret
