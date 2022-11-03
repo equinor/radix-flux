@@ -18,9 +18,9 @@ spec:
       RADIX_OPERATOR_TAG: release-4b1c66a7-1667306439 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-f046138b-1664546797 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       velero_plugin_acr_image: radixc2prod.azurecr.io/radix-velero-plugin:release-c8477d62-1662363715 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
-      CERT_MANAGER_VERSION: 1.9.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.10.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.36.0
-      VELERO_VERSION: 2.31.7 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      VELERO_VERSION: 2.32.1 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
