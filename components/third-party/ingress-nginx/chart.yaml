@@ -8,7 +8,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/third-party/ingress-nginx/chart
+  path: "./components/third-party/ingress-nginx/chart"
   prune: false
   timeout: 2m0s
   healthChecks:
