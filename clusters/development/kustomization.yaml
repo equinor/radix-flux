@@ -11,7 +11,7 @@ resources:
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
 #- ./overlay/third-party/ingress-nginx/ingress-nginx.yaml
-- ../../components/third-party/ingress-nginx
+#- ../../components/third-party/ingress-nginx
 #- ../../components/third-party/ingress-nginx-active-cluster
 #- ../../components/third-party/ingress-nginx-app
 - ../../components/third-party/kube-prometheus-stack
