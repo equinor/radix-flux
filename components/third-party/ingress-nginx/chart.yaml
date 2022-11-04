@@ -5,11 +5,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
+  path: "./components/third-party/ingress-nginx/chart"
+  prune: false
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: "./components/third-party/ingress-nginx/chart"
-  prune: false
   timeout: 2m0s
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
