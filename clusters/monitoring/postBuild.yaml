@@ -1,0 +1,19 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  prune: false
+  postBuild:
+    substitute:
+      FLUX_CONFIG_PATH: ./clusters/monitoring
+      RADIX_ZONE: prod # dev | playground | prod
+      RADIX_ENVIRONMENT: prod # dev | prod
+      ACTIVE_CLUSTER: ext-mon-14
+      CERT_MANAGER_VERSION: 1.10.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      VELERO_VERSION: 2.32.1 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      NGINX_VERSION: 4.3.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+    substituteFrom:
+    - kind: ConfigMap
+      name: radix-flux-config
