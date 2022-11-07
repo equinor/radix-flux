@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./components/third-party/ingress-nginx/chart"
+  path: "./components/third-party/ingress-nginx_v2/chart"
   prune: false
   sourceRef:
     kind: GitRepository
