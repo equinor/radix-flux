@@ -10,7 +10,7 @@ resources:
 patches:
   - path: ./postBuild.yaml
   #- path: ./overlay/third-party/cert-manager/patches.yaml
-  #- path: ./overlay/third-party/cert-manager/helmRelease.yaml
+  - path: ./overlay/third-party/cert-manager/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
