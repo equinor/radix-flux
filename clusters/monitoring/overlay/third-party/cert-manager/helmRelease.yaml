@@ -17,23 +17,3 @@ spec:
             memory: 256Mi
       podLabels: null
       serviceAnnotations: null
-
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: cert-manager
-#   namespace: cert-manager
-# spec:
-#   chart:
-#     spec:
-#       version: 1.7.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
-#   values:
-#     resources:
-#       limits:
-#         cpu: 100m
-#         memory: 512Mi
-#       requests:
-#         cpu: 50m
-#         memory: 256Mi
-#     podLabels: null
-#     serviceAnnotations: null

@@ -8,8 +8,6 @@ resources:
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/prometheus-blackbox-exporter
 patches:
-  #- path: ./postBuild.yaml
-  #- path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/cert-manager/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
