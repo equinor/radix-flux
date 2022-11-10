@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cert-manager
+  namespace: cert-manager
+spec:
+  releaseName: cert-manager
+  chart:
+    spec:
+      chart: cert-manager
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: cert-manager
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    # resources: xx # Set by flux patch
+    installCRDs: true
+    global:
+      rbac:
+        create: true
+    podLabels: { aadpodidbinding: certman-label }
+  valuesFrom:
+    - kind: Secret
+      name: cert-manager-helm-secret
+      valuesKey: config
