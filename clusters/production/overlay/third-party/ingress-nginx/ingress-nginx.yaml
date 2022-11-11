@@ -48,33 +48,6 @@ spec:
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
-              config:
-                custom-http-errors: "404,503"
-            defaultBackend:
-              enabled: true
-              resources:
-                limits:
-                  cpu: 50m
-                  memory: 100Mi
-                requests:
-                  cpu: 50m
-                  memory: 50Mi
-              image:
-                registry: registry.k8s.io
-                image: ingress-nginx/nginx-errors
-                tag: "v20220916-gd32f8c343@sha256:09c421ac743bace19ab77979b82186941c5125c95e62cdb40bdf41293b5c275c" # Check latest version on https://github.com/kubernetes/k8s.io/blob/main/k8s.gcr.io/images/k8s-staging-ingress-nginx/images.yaml#L125
-              extraVolumes:
-              - name: custom-error-page
-                configMap:
-                  name: custom-error-page
-                  items:
-                  - key: "404"
-                    path: "404.html"
-                  - key: "503"
-                    path: "503.html"
-              extraVolumeMounts:
-              - name: custom-error-page
-                mountPath: /www
       target:
         kind: HelmRelease
         name: ingress-nginx
