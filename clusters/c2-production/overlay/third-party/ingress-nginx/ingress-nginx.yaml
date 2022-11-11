@@ -49,7 +49,7 @@ spec:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common-westeurope
               config:
-                custom-http-errors: "404,503"
+                custom-http-errors: "503"
             defaultBackend:
               enabled: true
               resources:
@@ -68,8 +68,6 @@ spec:
                 configMap:
                   name: custom-error-page
                   items:
-                  - key: "404"
-                    path: "404.html"
                   - key: "503"
                     path: "503.html"
               extraVolumeMounts:
