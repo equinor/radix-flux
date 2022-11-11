@@ -35,7 +35,6 @@ spec:
     # resources: xx                                                   # Set by zone-specific overlay
     # subscriptionId:                                                 # Set by zone-specific overlay
     tenantId: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
-    forceNonRootDeploymentContainers: true
     app:
       limitrange:
         default:
