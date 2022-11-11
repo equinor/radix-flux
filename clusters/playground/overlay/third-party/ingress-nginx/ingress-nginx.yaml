@@ -54,11 +54,11 @@ spec:
               enabled: true
               resources:
                 limits:
-                  cpu: "3"
-                  memory: 1500Mi
+                  cpu: 50m
+                  memory: 100Mi
                 requests:
-                  cpu: 300m
-                  memory: 1000Mi
+                  cpu: 50m
+                  memory: 50Mi
               image:
                 registry: registry.k8s.io
                 image: ingress-nginx/nginx-errors

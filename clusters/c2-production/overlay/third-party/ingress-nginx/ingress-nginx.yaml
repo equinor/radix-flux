@@ -49,16 +49,16 @@ spec:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common-westeurope
               config:
-                custom-http-errors: "503"
+                custom-http-errors: "404,503"
             defaultBackend:
               enabled: true
               resources:
                 limits:
-                  cpu: "3"
-                  memory: 1500Mi
+                  cpu: 50m
+                  memory: 100Mi
                 requests:
-                  cpu: 300m
-                  memory: 1000Mi
+                  cpu: 50m
+                  memory: 50Mi
               image:
                 registry: registry.k8s.io
                 image: ingress-nginx/nginx-errors
@@ -68,6 +68,8 @@ spec:
                 configMap:
                   name: custom-error-page
                   items:
+                  - key: "404"
+                    path: "404.html"
                   - key: "503"
                     path: "503.html"
               extraVolumeMounts:
