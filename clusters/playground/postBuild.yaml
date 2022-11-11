@@ -13,14 +13,15 @@ spec:
       radix_acr_repo_url: radixdev.azurecr.io
       ACTIVE_CLUSTER: playground-07
       RADIX_ACR_CLEANUP_TAG: release-0df3ef01-1660545624 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
-      RADIX_CICD_CANARY_TAG: release-4a13dc7e-1665737734 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_CICD_CANARY_TAG: release-1e9e1d39-1668065476 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-697180b8-1661253904 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: release-4b1c66a7-1667306440 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: release-9ee1da0d-1668070094 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-f046138b-1664546796 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:release-c8477d62-1662363712 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.10.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.36.0
       VELERO_VERSION: 2.32.1 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      NGINX_VERSION: 4.3.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config

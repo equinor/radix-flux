@@ -1,0 +1,64 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+  namespace: ingress-nginx
+spec:
+  dependsOn:
+    - name: kube-prometheus-stack
+      namespace: default
+  chart:
+    spec:
+      chart: ingress-nginx
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-nginx
+        namespace: flux-system
+  interval: 1m0s
+  install:
+    remediation:
+      retries: 3
+  values:
+    controller:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - ingress-nginx
+              topologyKey: kubernetes.io/hostname
+      podLabels:
+        app: ingress-nginx
+      publishService:
+        enabled: true
+      stats:
+        enabled: true
+      metrics:
+        serviceMonitor: 
+          enabled: true
+        enabled: true
+      service:
+        externalTrafficPolicy: Local
+      ingressClassResource:
+        name: nginx
+        enabled: true
+        default: true
+        controllerValue: "k8s.io/ingress-nginx"
+      ingressClassByName: true
+      watchIngressWithoutClass: true
+      config:
+        proxy-buffer-size: "16k" # See https://stackoverflow.com/a/40306737 for a great explanation
+        proxy-body-size: "100m"
+        worker-shutdown-timeout: "3600s"
+        large-client-header-buffers: "4 32k"
+      extraArgs: {
+        default-ssl-certificate: "default/cluster-wildcard-tls-cert"
+      }
+      # resources: xx # Set by flux patch
+      priorityClassName: radix-component-priority
