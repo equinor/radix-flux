@@ -42,9 +42,9 @@ function get_version() {
                     curl "https://api.github.com/repos/${repo}/tags" \
                     --request "GET" \
                     --header "Accept: application/vnd.github.v3+json" \
-                    --header "Authorization: token ${GITHUB_TOKEN}" \
                     --silent |
                     jq -er '.[0].name // empty') || { echo "Version for $package_name not found. $current"; continue; }
+                    #--header "Authorization: token ${GITHUB_TOKEN}" \
             else
                 # Update versions in destination cluster with versions in source cluster
                 newest="${current}"
@@ -64,11 +64,14 @@ function get_version() {
                 git add "${file}"
                 git commit -m "Update ${package_name} from ${current} to ${newest}"
                 push=true
+            else
+                printf "No new version available for %s - Current %s\n" "${package_name}" "${current}"
             fi
         else
             printf "Could not find package version locally."
+            
         fi
-    done < <(grep -rn -E 'artifacthub.io|github.com' ${GITHUB_WORKSPACE}'/clusters/'${SOURCE_CLUSTER} --exclude-dir 'flux-system')
+    done < <(grep -rn -E 'artifacthub.io|github.com' ${GITHUB_WORKSPACE}'/clusters/'${SOURCE_CLUSTER} --exclude-dir 'flux-system' | grep -v -e "tag:")
 
     if [[ "${push}" == true ]]; then
         echo "push"
