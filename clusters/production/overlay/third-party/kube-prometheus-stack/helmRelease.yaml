@@ -15,8 +15,8 @@ spec:
             cpu: "6"
             memory: "32Gi"
           requests:
-            cpu: "3"
-            memory: "16Gi"
+            cpu: "4"
+            memory: "22Gi"
         storageSpec:
           volumeClaimTemplate:
             spec:
