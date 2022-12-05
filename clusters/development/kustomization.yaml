@@ -46,4 +46,4 @@ patches:
   - path: ./overlay/third-party/kured/helmRelease.yaml
 #  - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
-  - path: ./overlay/third-party/azure-workload-identity/patches.yaml  
+  - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml  
