@@ -22,6 +22,7 @@ spec:
       TEKTON_VERSION: v0.36.0
       VELERO_VERSION: 2.32.3 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       NGINX_VERSION: 4.4.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      AZURE_WORKLOAD_IDENTITY_VERSION: 0.14.0 # https://artifacthub.io/packages/helm/azure-workload-identity/workload-identity-webhook
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
