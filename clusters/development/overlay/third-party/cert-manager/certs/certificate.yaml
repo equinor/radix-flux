@@ -19,4 +19,4 @@ spec:
   - "*.${AZ_RESOURCE_DNS}"
   - "${AZ_RESOURCE_DNS}"
   - "*.app.${AZ_RESOURCE_DNS}"
-  - "*.${CLUSTER_NAME}.${AZ_RESOURCE_DNS}"
+  - "*.${clusterName}.${AZ_RESOURCE_DNS}"
