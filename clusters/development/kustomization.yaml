@@ -6,6 +6,8 @@ resources:
 # - ../../components/flux/pod-monitor.yaml
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
+- ./overlay/third-party/cert-manager/certificate.yaml
+- ../../components/third-party/cert-manager
 #- ./overlay/third-party/dynatrace-operator/dynatrace-operator.yaml
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
@@ -27,18 +29,6 @@ resources:
 - ./overlay/radix-platform/radix-vulnerability-scanner/radix-vulnerability-scanner.yaml
 - ../../components/radix-platform/radix-velero-plugin
 - ../../components/third-party/tekton
-# Cert-manager 
-- ./overlay/third-party/cert-manager/certificate.yaml
-- ../../components/third-party/cert-manager
-# - ../../components/third-party/cert-manager/kustomization.yaml
-# - ../../components/third-party/cert-manager/certs.yaml
-# - ../../components/third-party/cert-manager/certs/kustomization.yaml
-# - ../../components/third-party/cert-manager/certs/clusterIssuer.yaml
-# - ../../components/third-party/cert-manager/chart/kustomization.yaml
-# - ../../components/third-party/cert-manager/chart/helmRelease.yaml
-# - ../../components/third-party/cert-manager/chart/namespace.yaml
-# - ../../components/third-party/cert-manager/chart/helmRepo.yaml
-# - ../../components/third-party/cert-manager/chart.yaml
 patches:
   - path: ./postBuild.yaml
   # - path: ./healthChecks.yaml
