@@ -9,11 +9,11 @@ spec:
   interval: 5m
   path: "./clusters/development/overlay/third-party/cert-manager"
   postBuild:
-    substitute:
-      CLUSTER_NAME: "${clusterName}"
     substituteFrom:
-      - kind: Secret
-        name: cert-manager-certificate-values
+    - kind: ConfigMap
+      name: radix-flux-config
+    - kind: Secret
+      name: cert-manager-certificate-values
   prune: true
   sourceRef:
     kind: GitRepository
