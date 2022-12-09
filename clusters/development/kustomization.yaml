@@ -28,7 +28,7 @@ resources:
 - ../../components/radix-platform/radix-velero-plugin
 - ../../components/third-party/tekton
 # Cert-manager 
-- ./overlay/third-party/cert-manager/
+- ./overlay/third-party/cert-manager
 - ../../components/third-party/cert-manager
 patches:
   - path: ./postBuild.yaml
