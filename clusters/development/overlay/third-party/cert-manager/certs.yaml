@@ -10,7 +10,7 @@ spec:
   path: "./clusters/development/overlay/third-party/cert-manager"
   postBuild:
     substitute:
-      CLUSTER_NAME: ${clusterName}
+      CLUSTER_NAME: "${clusterName}"
     substituteFrom:
       - kind: Secret
         name: cert-manager-certificate-values
