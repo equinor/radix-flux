@@ -28,17 +28,8 @@ resources:
 - ../../components/radix-platform/radix-velero-plugin
 - ../../components/third-party/tekton
 # Cert-manager 
-- ./overlay/third-party/cert-manager/certificate.yaml
+- ./overlay/third-party/cert-manager/
 - ../../components/third-party/cert-manager
-# - ../../components/third-party/cert-manager/kustomization.yaml
-# - ../../components/third-party/cert-manager/certs.yaml
-# - ../../components/third-party/cert-manager/certs/kustomization.yaml
-# - ../../components/third-party/cert-manager/certs/clusterIssuer.yaml
-# - ../../components/third-party/cert-manager/chart/kustomization.yaml
-# - ../../components/third-party/cert-manager/chart/helmRelease.yaml
-# - ../../components/third-party/cert-manager/chart/namespace.yaml
-# - ../../components/third-party/cert-manager/chart/helmRepo.yaml
-# - ../../components/third-party/cert-manager/chart.yaml
 patches:
   - path: ./postBuild.yaml
   # - path: ./healthChecks.yaml
