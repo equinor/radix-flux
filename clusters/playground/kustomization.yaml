@@ -6,6 +6,7 @@ resources:
 # - ../../components/flux/pod-monitor.yaml
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
+- ./overlay/third-party/cert-manager
 - ../../components/third-party/cert-manager
 #- ./overlay/third-party/dynatrace-operator/dynatrace-operator.yaml
 - ../../components/third-party/external-dns
