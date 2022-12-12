@@ -7,7 +7,7 @@ spec:
   dependsOn:
     - name: cert-manager
   interval: 5m
-  path: "./clusters/development/overlay/third-party/cert-manager/certs"
+  path: "./clusters/playground/overlay/third-party/cert-manager/certs"
   postBuild:
     substituteFrom:
     - kind: ConfigMap
