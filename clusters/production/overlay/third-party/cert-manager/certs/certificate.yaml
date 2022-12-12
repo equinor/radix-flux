@@ -1,0 +1,22 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: radix-wildcard-tls-cert
+  namespace: default
+spec:
+  secretName: radix-wildcard-tls-cert
+  secretTemplate:
+    annotations:
+      kubed.appscode.com/sync: "radix-wildcard-sync=radix-wildcard-tls-cert"
+  issuerRef:
+    kind: ClusterIssuer
+    name: ${CERT_ISSUER}
+  duration: 2160h # 90d
+  renewBefore: 762h # 32d. Let's Encrypt will email an alert if 30d remain and cert has not been renewed.
+  commonName: "*.${AZ_RESOURCE_DNS}"
+  dnsNames:
+  - "*.${AZ_RESOURCE_DNS}"
+  - "${AZ_RESOURCE_DNS}"
+  - "*.app.${AZ_RESOURCE_DNS}"
+  - "*.${clusterName}.${AZ_RESOURCE_DNS}"
