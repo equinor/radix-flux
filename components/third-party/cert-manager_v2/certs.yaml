@@ -1,19 +1,19 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: multi-wildcard-cert
+  name: certs
   namespace: flux-system
 spec:
   dependsOn:
     - name: cert-manager
   interval: 5m
-  path: "./clusters/development/overlay/third-party/cert-manager/certs"
+  path: "./components/third-party/cert-manager/certs"
   postBuild:
+    substitute:
+      CLUSTER_NAME: ${clusterName}
     substituteFrom:
-    - kind: ConfigMap
-      name: radix-flux-config
-    - kind: Secret
-      name: cert-manager-certificate-values
+      - kind: Secret
+        name: cert-manager-certificate-values
   prune: true
   sourceRef:
     kind: GitRepository
