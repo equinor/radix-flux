@@ -56,6 +56,11 @@ spec:
               extraVolumeMounts:
               - name: custom-error-page
                 mountPath: /www
+        values:
+          controller:
+            extraArgs: {
+              default-ssl-certificate: "default/radix-wildcard-tls-cert"
+            }
       target:
         kind: HelmRelease
         name: ingress-nginx
