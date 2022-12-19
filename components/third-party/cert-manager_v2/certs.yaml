@@ -7,7 +7,7 @@ spec:
   dependsOn:
     - name: cert-manager
   interval: 5m
-  path: "./components/third-party/cert-manager/certs"
+  path: "./components/third-party/cert-manager_v2/certs"
   postBuild:
     substitute:
       CLUSTER_NAME: ${clusterName}
