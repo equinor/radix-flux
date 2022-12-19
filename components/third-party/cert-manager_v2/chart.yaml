@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/cert-manager/chart"
+  path: "./components/third-party/cert-manager_v2/chart"
   prune: true
   sourceRef:
     kind: GitRepository
