@@ -1,0 +1,21 @@
+name: radix-flux-pr
+on:
+  pull_request:
+    branches:
+    - master
+    - 302601-flux-pr-check
+jobs:
+  kustomize-build:
+    name: kustomize-build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Download kustomize
+      run: |
+        curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+    - name: Kustomize build everything
+      run: |
+        for f in `find . -iname "kustomization.yaml"`
+        do 
+          kustomize build $(dirname $f) >/dev/null || exit
+        done
