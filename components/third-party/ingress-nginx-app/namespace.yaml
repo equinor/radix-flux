@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ingress-nginx-app
-  labels:
-    purpose: radix-base-ns

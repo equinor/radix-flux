@@ -5,7 +5,8 @@ resources:
 - ../../components/flux/image-update-automation
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
-- ../../components/third-party/cert-manager
+- ./overlay/third-party/cert-manager
+- ../../components/third-party/cert-manager_v2
 #- ./overlay/third-party/dynatrace-operator/dynatrace-operator.yaml
 - ../../components/third-party/external-dns
 - ../../components/third-party/grafana
@@ -23,6 +24,7 @@ resources:
 - ./overlay/radix-platform/radix-vulnerability-scanner/radix-vulnerability-scanner.yaml
 - ../../components/radix-platform/radix-velero-plugin
 - ../../components/third-party/tekton
+- ../../components/third-party/azure-workload-identity
 patches:
   - path: ./postBuild.yaml
   # - path: ./healthChecks.yaml
@@ -38,3 +40,4 @@ patches:
   - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
+  - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml  

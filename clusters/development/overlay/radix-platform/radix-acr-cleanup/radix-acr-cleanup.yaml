@@ -32,6 +32,8 @@ spec:
             activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
             image:
               tag: ${RADIX_ACR_CLEANUP_TAG} # Set in postBuild development
+            cleanupStart: "06:00"
+            cleanupEnd: "09:00"
             resources:
               limits:
                 cpu: "2"
