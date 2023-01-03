@@ -42,7 +42,7 @@ spec:
         default: true
         # bucket: "" # Unique per cluster, set by values found in configMap
         config:
-          resourceGroup: "Velero_Backups"
+          resourceGroup: "backups"
         # storageAccount: "" # Unique per cluster, set by values found in configMap
       volumeSnapshotLocation:
         name: azure

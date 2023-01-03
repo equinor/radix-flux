@@ -20,10 +20,6 @@ spec:
             spec:
               version: ${VELERO_VERSION} # Set in postBuild
           values:
-            configuration:
-              backupStorageLocation:
-                config:
-                  resourceGroup: "velero-backups-westeurope"
             resources:
               limits:
                 cpu: "6"
