@@ -62,7 +62,8 @@ spec:
               - radix-vulnerability-scanner
               - kubed
               - oauth2-proxy
-      target:
+              - dnsmasq
+      target: # TODO: dnsmasq whitelist can be removed after NDC security 2023
         kind: HelmRelease
         name: radix-acr-cleanup
         namespace: default
