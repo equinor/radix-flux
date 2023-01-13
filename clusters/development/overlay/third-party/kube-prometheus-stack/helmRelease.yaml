@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 43.3.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      version: 43.3.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
   values:
     prometheus:
       prometheusSpec:
