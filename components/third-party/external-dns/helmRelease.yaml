@@ -21,6 +21,7 @@ spec:
     rbac:
       create: true
     interval: 60s
+    command: "/bin/bash -c external-dns --my-arg=hei $@"
     txtOwnerId: ${clusterName}
     provider: azure
     azure:
