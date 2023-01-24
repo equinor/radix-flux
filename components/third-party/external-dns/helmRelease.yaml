@@ -41,3 +41,65 @@ spec:
         cpu: 25m
         memory: 512Mi
     priorityClassName: radix-component-priority
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns-cnames
+  namespace: default
+spec:
+  releaseName: external-dns-cnames
+  chart:
+    spec:
+      chart: external-dns
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    rbac:
+      create: true
+    interval: 15s
+    crd:
+      create: true
+    txtSuffix: "-ownerrecord"
+    logLevel: info
+    labelFilter: "radix-is-external-dns-source=true"
+    sources:
+      - crd
+    extraVolumes:
+    - name: txt-owner-id-volume
+    extraVolumeMounts:
+    - name: txt-owner-id-volume
+      mountPath: /radixmount
+    initContainers:
+    - name: set-txt-owner-id
+      image: alpine
+      imagePullPolicy: Always
+      volumeMounts:
+      - name: txt-owner-id-volume
+        mountPath: /radixmount
+      command: ["/bin/sh", "-c", "echo \"#!/bin/bash\" > /radixmount/entrypoint.bash; if [ \"$${CLUSTER_NAME}\" == \"$${ACTIVE_CLUSTER}\" ]; then txtOwnerId=delete-me-active-cluster; else txtOwnerId=$${CLUSTER_NAME}; fi; echo \"external-dns --txt-owner-id=$${txtOwnerId} \\\"@$\\\"\" >> /radixmount/entrypoint.bash"]
+    provider: azure
+    azure:
+      resourceGroup: common
+      secretName: external-dns-azure-secret
+    domainFilters:
+      - ${dnsZone}
+    policy: sync
+    podAnnotations: {prometheus.io/scrape: "true",prometheus.io/port: "7979"}
+    metrics:
+      enabled: true
+    resources:
+      limits:
+        cpu: "6"
+        memory: 512Mi
+      requests:
+        cpu: 25m
+        memory: 512Mi
+    priorityClassName: radix-component-priority
