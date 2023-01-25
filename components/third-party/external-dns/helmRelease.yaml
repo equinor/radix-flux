@@ -89,7 +89,7 @@ spec:
       volumeMounts:
       - name: txt-owner-id-volume
         mountPath: /radixmount
-      command: ["/bin/sh", "-c", "echo IyEvYmluL2Jhc2gKZWNobyAiIyEvYmluL2Jhc2giID4gL3JhZGl4bW91bnQvZW50cnlwb2ludC5iYXNoCmlmIFsgIiR7Q0xVU1RFUl9OQU1FfSIgPT0gIiR7QUNUSVZFX0NMVVNURVJ9IiBdCnRoZW4gCiAgdHh0T3duZXJJZD1hY3RpdmUtY2x1c3RlciAKICBlY2hvICIjZXF1YWxpdHkgaG9sZHMiID4+IC9yYWRpeG1vdW50L2VudHJ5cG9pbnQuYmFzaAplbHNlIAogIHR4dE93bmVySWQ9JHtDTFVTVEVSX05BTUV9CmZpCmVjaG8gImV4dGVybmFsLWRucyAtLXR4dC1vd25lci1pZD0ke3R4dE93bmVySWR9IFwiJEBcIiIgPj4gL3JhZGl4bW91bnQvZW50cnlwb2ludC5iYXNoCmNobW9kICt4IC9yYWRpeG1vdW50L2VudHJ5cG9pbnQuYmFzaApjYXQgL3JhZGl4bW91bnQvZW50cnlwb2ludC5iYXNoCgo= | base64 -d > /init-script.sh; chmod +x /init-script.sh; /init-script.sh"]
+      command: ["/bin/sh", "-c", "echo IyEvYmluL2Jhc2gKZWNobyAiIyEvYmluL2Jhc2giID4gL3JhZGl4bW91bnQvZW50cnlwb2ludC5iYXNoCmlmIFsgIiR7Q0xVU1RFUl9OQU1FfSIgPT0gIiR7QUNUSVZFX0NMVVNURVJ9IiBdCnRoZW4gCiAgdHh0T3duZXJJZD1hY3RpdmUtY2x1c3RlciAKICBlY2hvICIjZXF1YWxpdHkgaG9sZHMiID4+IC9yYWRpeG1vdW50L2VudHJ5cG9pbnQuYmFzaAplbHNlIAogIHR4dE93bmVySWQ9JHtDTFVTVEVSX05BTUV9CmZpCmVjaG8gImV4dGVybmFsLWRucyAtLXR4dC1vd25lci1pZD0ke3R4dE93bmVySWR9IFwiJEBcIiIgPj4gL3JhZGl4bW91bnQvZW50cnlwb2ludC5iYXNoCmNobW9kICt4IC9yYWRpeG1vdW50L2VudHJ5cG9pbnQuYmFzaApjYXQgL3JhZGl4bW91bnQvZW50cnlwb2ludC5iYXNoCgo= | base64 -d > /tmp/init-script.sh; ls /tmp/; chmod +x /tmp/init-script.sh; /tmp/init-script.sh"]
     provider: azure
     azure:
       resourceGroup: common
