@@ -81,10 +81,15 @@ spec:
     - name: set-txt-owner-id
       image: alpine
       imagePullPolicy: Always
+      env:
+      - name: CLUSTER_NAME
+        value: ${clusterName}
+      - name: ACTIVE_CLUSTER
+        value: ${ACTIVE_CLUSTER}
       volumeMounts:
       - name: txt-owner-id-volume
         mountPath: /radixmount
-      command: ["/bin/sh", "-c", "echo \"#!/bin/bash\" > /radixmount/entrypoint.bash; if [ \"$${CLUSTER_NAME}\" == \"$${ACTIVE_CLUSTER}\" ]; then txtOwnerId=delete-me-active-cluster; else txtOwnerId=$${CLUSTER_NAME}; fi; echo \"external-dns --txt-owner-id=$${txtOwnerId} \\\"@$\\\"\" >> /radixmount/entrypoint.bash"]
+      command: ["/bin/sh", "-c", "echo \"#!/bin/bash\" > /radixmount/entrypoint.bash; if [ \"$${CLUSTER_NAME}\" == \"$${ACTIVE_CLUSTER}\" ]; then txtOwnerId=active-cluster && echo \"equality holds\" >> /radixmount/entrypoint.bash; else txtOwnerId=$${CLUSTER_NAME}; fi; echo \"external-dns --txt-owner-id=$${txtOwnerId} \\\"@$\\\"\" >> /radixmount/entrypoint.bash; chmod +x /radixmount/entrypoint.bash"]
     provider: azure
     azure:
       resourceGroup: common
