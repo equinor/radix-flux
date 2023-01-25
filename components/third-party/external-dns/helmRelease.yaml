@@ -69,7 +69,7 @@ spec:
     txtSuffix: "-ownerrecord"
     logLevel: info
     labelFilter: "radix-is-external-dns-source=true"
-    command: ["/radixmount/entrypoint.sh"]
+    command: ["/radixmount/entrypoint.bash"]
     sources:
       - crd
     extraVolumes:
