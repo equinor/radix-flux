@@ -36,11 +36,10 @@ function create-pr() {
           sleep $sleep_before_retry
           create-pr $(($retry_nr+1))
         else
-            # curl --request POST \
-            # --header 'Content-type: application/json' \
-            # --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' \
-            # --url ${SLACK_WEBHOOK_URL}
-            echo "failed"
+            curl --request POST \
+            --header 'Content-type: application/json' \
+            --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' \
+            --url ${SLACK_WEBHOOK_URL}
             return 1
         fi
     fi
