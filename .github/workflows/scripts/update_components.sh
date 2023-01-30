@@ -16,6 +16,8 @@ if [[ -z "${DESTINATION_CLUSTER}" ]]; then
     DESTINATION_CLUSTER="development"
 fi
 
+numberOfChanges=0
+
 function get_version() {
     local push=false
     git config --global user.name 'Automatic Update'
@@ -76,7 +78,11 @@ function get_version() {
     if [[ "${push}" == true ]]; then
         echo "push"
         git push --set-upstream origin "${PR_BRANCH}"
+        numberOfChanges+=$((numberOfChanges + 1))
     fi
 }
 
 get_version
+if [[ -n $CI ]]; then
+    echo "numberOfChanges=$numberOfChanges" >> $GITHUB_OUTPUT
+fi
