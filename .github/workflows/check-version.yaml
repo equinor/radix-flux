@@ -45,10 +45,6 @@ jobs:
         DESTINATION_CLUSTER: ${{ inputs.destinationCluster }}
       run: .github/workflows/scripts/update_components.sh
 
-    - name: numberOfChanges
-      run: | 
-        echo "numberOfChanges: ${{ steps.checkversion.outputs.numberOfChanges }}"
-
     - name: Create PR
       if: ${{ steps.checkversion.outputs.numberOfChanges > 0 }} 
       env:
