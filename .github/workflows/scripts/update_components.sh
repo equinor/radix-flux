@@ -78,7 +78,7 @@ function get_version() {
     if [[ "${push}" == true ]]; then
         echo "push"
         git push --set-upstream origin "${PR_BRANCH}"
-        numberOfChanges+=$((numberOfChanges + 1))
+        numberOfChanges=$((numberOfChanges + 1))
     fi
 }
 
