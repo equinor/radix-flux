@@ -32,15 +32,24 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PR_BRANCH: automatic-version-update
+    outputs:
+      numberOfChanges: $${{ steps.checkversion.outputs.numberOfChanges }}
     steps:
     - name: checkout
       uses: actions/checkout@v2
+
     - name: Check version
+      id: checkversion
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SOURCE_CLUSTER: ${{ inputs.sourceCluster }}
         DESTINATION_CLUSTER: ${{ inputs.destinationCluster }}
       run: .github/workflows/scripts/update_components.sh
+
+    - name: numberOfChanges
+      run: | 
+        echo "numberOfChanges: ${{ steps.checkversion.outputs.numberOfChanges }}"
+
     - name: Create PR
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
