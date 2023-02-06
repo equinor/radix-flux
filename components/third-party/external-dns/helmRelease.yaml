@@ -105,11 +105,11 @@ data:
     #!/bin/bash
     if [ "${clusterName}" == "${ACTIVE_CLUSTER}" ]
     then 
-      txtOwnerId=active-cluster-cname
+      txtOwnerId="active-cluster-cname"
     else 
-      txtOwnerId=${clusterName}-cname
+      txtOwnerId="${clusterName}-cname"
     fi
-    external-dns --txt-owner-id=$${txtOwnerId} "$@"
+    external-dns --txt-owner-id="$${txtOwnerId}" "$@"
 kind: ConfigMap
 metadata:
   name: entrypoint
