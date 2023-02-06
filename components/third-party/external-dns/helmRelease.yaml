@@ -106,9 +106,9 @@ data:
     then 
       txtOwnerId=active-cluster-cname
     else 
-      txtOwnerId=${CLUSTER_NAME}-cname
+      txtOwnerId=$${CLUSTER_NAME}-cname
     fi
-    external-dns --txt-owner-id=${txtOwnerId} "$@"
+    external-dns --txt-owner-id=$${txtOwnerId} "$@"
 kind: ConfigMap
 metadata:
   name: entrypoint
