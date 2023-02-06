@@ -76,6 +76,7 @@ spec:
     - name: entrypoint
       configMap:
         name: entrypoint
+      defaultMode: 0700
     extraVolumeMounts:
     - name: entrypoint
       mountPath: /radixmount
