@@ -21,6 +21,7 @@ spec:
     rbac:
       create: true
     interval: 60s
+    labelFilter: "radix-is-external-dns-source=true"
     txtOwnerId: ${clusterName}
     provider: azure
     azure:
@@ -104,9 +105,9 @@ data:
   entrypoint.bash: |
     #!/bin/bash
     if [ "${clusterName}" == "${ACTIVE_CLUSTER}" ]
-    then 
+    then
       txtOwnerId="active-cluster-cname"
-    else 
+    else
       txtOwnerId="${clusterName}-cname"
     fi
     external-dns --txt-owner-id="$${txtOwnerId}" "$@"
