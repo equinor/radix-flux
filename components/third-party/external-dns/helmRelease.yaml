@@ -67,12 +67,14 @@ spec:
     interval: 15s
     crd:
       create: true
-    txtSuffix: "-ownerrecord"
+    txtPrefix: "t"
     logLevel: info
     labelFilter: "radix-is-external-dns-source=true"
     command: ["/radixmount/entrypoint.bash"]
     sources:
       - crd
+    extraArgs: 
+      managed-record-types: CNAME
     extraVolumes:
     - name: entrypoint
       configMap:
