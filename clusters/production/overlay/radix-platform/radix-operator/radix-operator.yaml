@@ -44,7 +44,7 @@ spec:
                 memory: 12Gi
               requests:
                 cpu: 100m
-                memory: 12000Mi
+                memory: 12Gi
             subscriptionId: ded7ca41-37c8-4085-862f-b11d21ab341a
             registrationControllerThreads: 21
             applicationControllerThreads: 21
