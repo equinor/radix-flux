@@ -41,10 +41,10 @@ spec:
             resources:
               limits:
                 cpu: "2"
-                memory: 3000Mi
+                memory: 2Gi
               requests:
                 cpu: 100m
-                memory: 1500Mi
+                memory: 2Gi
             subscriptionId: 16ede44b-1f74-40a5-b428-46cca9a5741b
             registrationControllerThreads: 21
             applicationControllerThreads: 21
