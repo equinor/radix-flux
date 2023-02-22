@@ -17,6 +17,6 @@ spec:
       annotations:
         kubernetes.io/tls-acme: "true"
     env:
-      GF_DATABASE_HOST: radixgrafana.mysql.database.azure.com
+      GF_DATABASE_HOST: s940-radix-grafana-extmon-prod.mysql.database.azure.com
       GF_DATABASE_NAME: grafana
-      GF_DATABASE_USER: "grafana@radixgrafana"
+      GF_DATABASE_USER: grafana
