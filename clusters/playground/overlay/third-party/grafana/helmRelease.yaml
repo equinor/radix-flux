@@ -9,6 +9,6 @@ spec:
       version: 6.50.4 # https://artifacthub.io/packages/helm/grafana/grafana
   values:
     env:
-      GF_DATABASE_HOST: radixgrafana.mysql.database.azure.com
+      GF_DATABASE_HOST: s941-radix-grafana-playground.mysql.database.azure.com
       GF_DATABASE_NAME: grafana
-      GF_DATABASE_USER: "grafana@radixgrafana"
+      GF_DATABASE_USER: grafana
