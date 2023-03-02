@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.103.0 # https://artifacthub.io/packages/helm/snyk/snyk-monitor
+      version: 2.0.0 # https://artifacthub.io/packages/helm/snyk/snyk-monitor
   values:
     limits:
       cpu: "2"
