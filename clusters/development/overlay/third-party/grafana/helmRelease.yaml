@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 6.50.8 # https://artifacthub.io/packages/helm/grafana/grafana
+      version: 6.51.5 # https://artifacthub.io/packages/helm/grafana/grafana
   values:
     env:
       GF_DATABASE_HOST: s941-radix-grafana-dev.mysql.database.azure.com
