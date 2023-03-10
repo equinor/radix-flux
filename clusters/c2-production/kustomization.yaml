@@ -8,7 +8,7 @@ resources:
 - ./overlay/third-party/cert-manager
 - ../../components/third-party/cert-manager_v2
 #- ./overlay/third-party/dynatrace-operator/dynatrace-operator.yaml
-- ../../components/third-party/external-dns
+#- ../../components/third-party/external-dns
 - ../../components/third-party/grafana
 - ../../components/third-party/ingress-nginx_v2
 - ../../components/third-party/kube-prometheus-stack
@@ -31,7 +31,7 @@ patches:
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
-  - path: ./overlay/third-party/external-dns/helmRelease.yaml
+  #- path: ./overlay/third-party/external-dns/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
