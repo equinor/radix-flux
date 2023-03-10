@@ -58,6 +58,7 @@ spec:
               - radix-config-2-map
               - radix-cost-allocation
               - radix-job-scheduler-server
+              - radix-job-scheduler
               - radix-batch-scheduler
               - radix-vulnerability-scanner
               - kubed
