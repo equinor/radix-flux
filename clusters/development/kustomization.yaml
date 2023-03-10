@@ -20,6 +20,7 @@ resources:
 - ../../components/third-party/velero
 # - ../../components/third-party/velero-schedule
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
+- ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
 - ./overlay/radix-platform/radix-cost-allocation/radix-cost-allocation.yaml
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
