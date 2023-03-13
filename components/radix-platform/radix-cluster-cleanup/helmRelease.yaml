@@ -20,7 +20,7 @@ spec:
   values:
     cleanupStart: "00:00"
     cleanupEnd: "23:59"
-    period: "xx"
+    period: 30m
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
