@@ -32,7 +32,7 @@ spec:
               tag: ${RADIX_CLUSTER_CLEANUP_TAG} # Set in postBuild development
             cleanupStart: "00:00"
             cleanupEnd: "23:59"
-            period: 30
+            period: "30"
             resources:
               limits:
                 cpu: "2"
