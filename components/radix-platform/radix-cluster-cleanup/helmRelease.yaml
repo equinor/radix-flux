@@ -18,9 +18,9 @@ spec:
       valuesFiles:
         - ./charts/radix-cluster-cleanup/values.yaml
   values:
-    period: 1m
     cleanupStart: "0:00"
     cleanupEnd: "23:59"
+    period: xx
     image:
       # For Flux "image.repository" means full path to the image (registry/repository)
       # The following 2 properties are mandatory for Flux image filtering
