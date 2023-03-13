@@ -29,7 +29,7 @@ spec:
         spec:
           values:
             image:
-              tag: ${RADIX_cluster_cleanup_TAG} # Set in postBuild development
+              tag: ${RADIX_CLUSTER_CLEANUP_TAG} # Set in postBuild development
             cleanupStart: "00:00"
             cleanupEnd: "23:59"
             resources:
