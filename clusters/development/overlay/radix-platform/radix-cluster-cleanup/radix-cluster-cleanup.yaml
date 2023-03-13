@@ -33,6 +33,8 @@ spec:
             cleanupStart: "00:00"
             cleanupEnd: "23:59"
             period: "30"
+            command: list-rrs-for-stop-and-deletion-continuously
+            logLevel: DEBUG
             resources:
               limits:
                 cpu: "2"
