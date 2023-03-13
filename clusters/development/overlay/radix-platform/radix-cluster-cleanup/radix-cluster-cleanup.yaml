@@ -15,7 +15,7 @@ spec:
       RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
       radix_cluster_cleanup_helm_chart_branch: 321634-autocleanup-in-playground
-      radix_cluster_cleanup_image_tag_prefix: main
+      radix_cluster_cleanup_image_tag_prefix: master
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
