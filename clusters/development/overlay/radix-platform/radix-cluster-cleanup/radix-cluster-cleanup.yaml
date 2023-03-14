@@ -25,7 +25,7 @@ spec:
         kind: HelmRelease
         metadata:
           name: radix-cluster-cleanup
-          namespace: default
+          namespace: radix-cluster-cleanup
         spec:
           values:
             image:
