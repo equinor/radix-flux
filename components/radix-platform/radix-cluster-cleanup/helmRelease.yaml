@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-cluster-cleanup
+  namespace: radix-cluster-cleanup
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts/radix-cluster-cleanup
+      sourceRef:
+        kind: GitRepository
+        name: radix-cluster-cleanup
+        namespace: flux-system
+      valuesFiles:
+        - ./charts/radix-cluster-cleanup/values.yaml
+  values:
+    cleanupStart: "00:00"
+    cleanupEnd: "23:59"
+    period: 30m
+    image:
+      # For Flux "image.repository" means full path to the image (registry/repository)
+      # The following 2 properties are mandatory for Flux image filtering
+      repository: ${radix_acr_repo_url}/radix-cluster-cleanup             # Defined in flux patch
+      tag: xx                                                         # Set by flux patch
+    metrics:
+      enabled: true
+    # resources: xx                                                   # Set in overlay
