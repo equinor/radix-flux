@@ -34,7 +34,7 @@ spec:
             imageScanner: radix-image-scanner:release-latest
             configToMap: radix-config-2-map:release-latest
             radixTekton: radix-tekton:release-latest
-            jobScheduler: radix-job-scheduler-server:release-latest
+            jobScheduler: radix-job-scheduler:release-latest
             containerRegistry: ${radix_acr_repo_url} # Set in postBuild production
             radixZone: ${RADIX_ZONE} # Set in postBuild production
             useImageBuilderCache: 0
