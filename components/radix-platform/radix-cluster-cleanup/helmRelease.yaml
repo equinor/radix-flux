@@ -2,10 +2,12 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: radix-cluster-cleanup
-  namespace: radix-cluster-cleanup
+  namespace: default
 spec:
+  targetNamespace: radix-cluster-cleanup
   interval: 5m
   install:
+    createNamespace: true
     remediation:
       retries: 3
   chart:
