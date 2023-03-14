@@ -17,7 +17,7 @@ spec:
       RADIX_COST_ALLOCATION_TAG: release-697180b8-1661260325 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: release-b0a32d4d-1678202477 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-c9705130-1672398868 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
-      velero_plugin_acr_image: radixprod.azurecr.io/radix-velero-plugin:release-c32a06a6-1678202592 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      velero_plugin_acr_image: radixprod.azurecr.io/radix-velero-plugin:release-4e8aa6e7-1678785670 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.11.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.36.0
       VELERO_VERSION: 3.1.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
