@@ -61,6 +61,7 @@ spec:
               - radix-vulnerability-scanner
               - kubed
               - oauth2-proxy
+              - radix-cluster-cleanup
       target:
         kind: HelmRelease
         name: radix-acr-cleanup
