@@ -1,0 +1,47 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: radix-cluster-cleanup
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-cluster-cleanup
+  prune: false
+  postBuild:
+    substitute:
+      RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
+      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
+      radix_cluster_cleanup_helm_chart_branch: release
+      radix_cluster_cleanup_image_tag_prefix: release
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        kind: HelmRelease
+        metadata:
+          name: radix-cluster-cleanup
+        spec:
+          values:
+            image:
+              tag: ${RADIX_CLUSTER_CLEANUP_TAG} # Set in postBuild development
+            cleanupStart: "06:00"
+            cleanupEnd: "09:00"
+            period: 15m
+            command: list-rrs-for-stop-and-deletion-continuously
+            logLevel: DEBUG
+            resources:
+              limits:
+                cpu: "2"
+                memory: 150Mi
+              requests:
+                cpu: 50m
+                memory: 150Mi
+      target:
+        kind: HelmRelease
+        name: radix-cluster-cleanup
+        namespace: default
