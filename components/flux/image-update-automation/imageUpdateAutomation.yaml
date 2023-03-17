@@ -11,7 +11,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: playground-flux-v0.40.2
+        branch: master
     commit:
       author:
         email: radix@statoilsrm.onmicrosoft.com
@@ -38,7 +38,7 @@ spec:
         - {{.}}
         {{ end -}}
     push:
-      branch: flux-image-updates-playground-flux-v0.40.2
+      branch: flux-image-updates
   update:
     path: ${FLUX_CONFIG_PATH}
     strategy: Setters
