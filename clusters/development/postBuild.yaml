@@ -11,7 +11,7 @@ spec:
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
-      ACTIVE_CLUSTER: weekly-12
+      ACTIVE_CLUSTER: weekly-13
       RADIX_ACR_CLEANUP_TAG: master-7ce41886-1679988500 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-2d7d0dce-1679899975 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: master-5c820017-1677593960 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
@@ -21,8 +21,8 @@ spec:
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-fac8bd8c-1678783963 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.11.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.36.0
-      VELERO_VERSION: 3.1.4 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
-      NGINX_VERSION: 4.5.2 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      VELERO_VERSION: 3.1.5 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      NGINX_VERSION: 4.6.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config

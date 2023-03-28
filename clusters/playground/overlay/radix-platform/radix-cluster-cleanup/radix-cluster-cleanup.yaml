@@ -29,10 +29,10 @@ spec:
           values:
             image:
               tag: ${RADIX_CLUSTER_CLEANUP_TAG} # Set in postBuild development
-            cleanupStart: "06:00"
-            cleanupEnd: "09:00"
+            cleanupStart: "09:00"
+            cleanupEnd: "12:00"
             period: 15m
-            command: list-rrs-for-stop-and-deletion-continuously
+            command: stop-and-delete-rrs-continuously
             logLevel: DEBUG
             resources:
               limits:
