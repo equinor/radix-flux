@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.7.5 # https://artifacthub.io/packages/helm/grafana/loki
+      version: 2.11.1 
