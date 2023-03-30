@@ -11,7 +11,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: loki
+        branch: master
     commit:
       author:
         email: radix@statoilsrm.onmicrosoft.com
