@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: loki
-      version: x.x.x # Set by flux patch
+      version: 2.7.5 # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: loki
