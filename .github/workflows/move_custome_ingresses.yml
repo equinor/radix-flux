@@ -1,0 +1,56 @@
+name: Move Custom ingresses
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'clusters/development/postBuild.yml'
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  getActiveCluster:
+    name: Get active cluster
+    runs-on: ubuntu-22.04
+
+    defaults:
+      run:
+        shell: bash
+
+    env:
+      postBuild: clusters/development/postBuild.yml
+
+    outputs:
+      DEST_CLUSTER: ${{ steps.getActiveCluster.outputs.DEST_CLUSTER }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: getActiveCluster
+        id: getActiveCluster
+        run: |
+          ### Download yq
+          BINARY="yq_linux_amd64"
+          VERSION="v4.32.2"
+
+          wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\
+            tar xz && sudo mv ${BINARY} /usr/bin/yq
+
+          ### Start
+          echo "DEST_CLUSTER=$(yq '.spec.postBuild.substitute.ACTIVE_CLUSTER' < ${{ env.postBuild }})" >> $GITHUB_OUTPUT
+
+  github-action-copy:
+    needs: getActiveCluster
+    uses: equinor/radix-platform/.github/workflows/move_custom_ingresses.yml@master
+    with:
+      DEST_CLUSTER: ${{ needs.getActiveCluster.outputs.DEST_CLUSTER }}
+      environment: operations
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
