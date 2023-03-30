@@ -10,7 +10,7 @@ resources:
 - ../../components/third-party/cert-manager_v2
 #- ./overlay/third-party/dynatrace-operator/dynatrace-operator.yaml
 - ../../components/third-party/grafana
-- ../../components/third-party/grafana-loki
+#- ../../components/third-party/grafana-loki
 - ../../components/third-party/ingress-nginx_v2
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubed
@@ -35,7 +35,7 @@ patches:
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
-  - path: ./overlay/third-party/grafana-loki/helmRelease.yaml
+ # - path: ./overlay/third-party/grafana-loki/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/postBuild.yaml
