@@ -4,7 +4,7 @@ metadata:
   name: grafana-loki
   namespace: default
 spec:
-  releaseName: grafana
+  #releaseName: grafana-loki
   chart:
     spec:
       chart: grafana-loki
