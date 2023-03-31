@@ -1,17 +1,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: loki
+  name: grafana-loki
   namespace: default
 spec:
-  releaseName: loki
+  releaseName: grafana-loki
   chart:
     spec:
-      chart: loki
+      chart: grafana-loki
       version: x.x.x # Set by flux patch
       sourceRef:
         kind: HelmRepository
-        name: loki
+        name: grafana-loki
         namespace: flux-system
   interval: 5m
   install:
