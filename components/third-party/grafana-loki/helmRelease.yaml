@@ -11,7 +11,7 @@ spec:
       version: x.x.x # Set by flux patch
       sourceRef:
         kind: HelmRepository
-        name: grafana
+        name: grafana-loki
         namespace: flux-system
   interval: 5m
   install:
