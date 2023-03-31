@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.9.9
+      version: ${GRAFANA_LOKI} # Set in postBuild development
