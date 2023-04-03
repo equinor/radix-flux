@@ -33,10 +33,10 @@ spec:
             resources:
               limits:
                 cpu: "2"
-                memory: 300Mi
+                memory: 400Mi
               requests:
                 cpu: 100m
-                memory: 300Mi
+                memory: 400Mi
       target:
         kind: HelmRelease
         name: radix-cost-allocation
