@@ -10,7 +10,7 @@ spec:
   values:
     loki:
       enabled: true
-      persistance:
+      persistence:
         enabled: true
         size: 5Gi
         storageClassName: standard
