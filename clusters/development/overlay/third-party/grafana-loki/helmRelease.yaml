@@ -7,3 +7,10 @@ spec:
   chart:
     spec:
       version: ${GRAFANA_LOKI} # Set in postBuild development
+  values:
+    loki:
+      enabled: true
+      persistance:
+        enabled: true
+        size: 5Gi
+        storageClassName: standard
