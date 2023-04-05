@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: v0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
+      version: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed

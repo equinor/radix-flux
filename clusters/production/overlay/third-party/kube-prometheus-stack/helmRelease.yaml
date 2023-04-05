@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 45.7.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack. Upgrade only one step up pr. commited push. Sample: 27.0.0 to 28.0.0 etc.
+      version: 45.9.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack. Upgrade only one step up pr. commited push. Sample: 27.0.0 to 28.0.0 etc.
   values:
     prometheus:
       prometheusSpec:
