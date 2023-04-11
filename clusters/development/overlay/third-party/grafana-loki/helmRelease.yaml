@@ -13,4 +13,4 @@ spec:
       persistence:
         enabled: true
         size: 5Gi
-        storageClassName: standard
+        storageClassName: managed
