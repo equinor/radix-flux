@@ -34,7 +34,6 @@ jobs:
 
     env:
       radixZone: ${{ inputs.radixZone || 'development' }}
-      postBuild: clusters/${{ env.radixZone }}/postBuild.yaml
 
     outputs:
       DEST_CLUSTER: ${{ steps.getActiveCluster.outputs.DEST_CLUSTER }}
@@ -49,20 +48,21 @@ jobs:
           ### Download yq
           BINARY="yq_linux_amd64"
           VERSION="v4.32.2"
+          postBuild="clusters/${{ env.radixZone }}/postBuild.yaml"
 
           wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\
             tar xz && sudo mv ${BINARY} /usr/bin/yq
 
           ### Start
-          echo "DEST_CLUSTER=$(yq '.spec.postBuild.substitute.ACTIVE_CLUSTER' < ${{ env.postBuild }})" >> $GITHUB_OUTPUT
-          echo "RADIX_ENVIRONMENT=$(yq '.spec.postBuild.substitute.RADIX_ENVIRONMENT' < ${{ env.postBuild }})" >> $GITHUB_OUTPUT
+          echo "DEST_CLUSTER=$(yq '.spec.postBuild.substitute.ACTIVE_CLUSTER' < ${postBuild})" >> $GITHUB_OUTPUT
+          echo "RADIX_ENVIRONMENT=$(yq '.spec.postBuild.substitute.RADIX_ENVIRONMENT' < ${postBuild})" >> $GITHUB_OUTPUT
 
   github-action-copy:
     needs: getActiveCluster
     uses: equinor/radix-platform/.github/workflows/move_custom_ingresses.yml@master
     with:
       DEST_CLUSTER: ${{ needs.getActiveCluster.outputs.DEST_CLUSTER }}
-      GH_ENVIRONMENT: "maintenance-${{ needs.getActiveCluster.outputs.RADIX_ENVIRONMENT }}"
+      GH_ENVIRONMENT: 'maintenance-${{ needs.getActiveCluster.outputs.RADIX_ENVIRONMENT }}'
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
