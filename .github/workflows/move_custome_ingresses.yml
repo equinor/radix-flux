@@ -4,7 +4,20 @@ on:
     branches:
       - 'master'
     paths:
-      - 'clusters/development/postBuild.yml'
+      - 'clusters/development/postBuild.yaml'
+  workflow_dispatch:
+    inputs:
+      radixZone:
+        description: 'Radix Zone'
+        required: true
+        type: choice
+        default: 'development'
+        options:
+          - 'development'
+          - 'monitoring'
+          - 'playground'
+          - 'production'
+          - 'c2-production'
 
 permissions:
   id-token: write
@@ -20,7 +33,8 @@ jobs:
         shell: bash
 
     env:
-      postBuild: clusters/development/postBuild.yml
+      radixZone: ${{ inputs.radixZone || 'development' }}
+      postBuild: clusters/${{ env.radixZone }}/postBuild.yaml
 
     outputs:
       DEST_CLUSTER: ${{ steps.getActiveCluster.outputs.DEST_CLUSTER }}
@@ -41,14 +55,14 @@ jobs:
 
           ### Start
           echo "DEST_CLUSTER=$(yq '.spec.postBuild.substitute.ACTIVE_CLUSTER' < ${{ env.postBuild }})" >> $GITHUB_OUTPUT
+          echo "RADIX_ENVIRONMENT=$(yq '.spec.postBuild.substitute.RADIX_ENVIRONMENT' < ${{ env.postBuild }})" >> $GITHUB_OUTPUT
 
   github-action-copy:
     needs: getActiveCluster
     uses: equinor/radix-platform/.github/workflows/move_custom_ingresses.yml@master
     with:
       DEST_CLUSTER: ${{ needs.getActiveCluster.outputs.DEST_CLUSTER }}
-      environment: operations
     secrets:
-      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}_${{ needs.getActiveCluster.outputs.RADIX_ENVIRONMENT }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}_${{ needs.getActiveCluster.outputs.RADIX_ENVIRONMENT }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
