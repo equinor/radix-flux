@@ -37,6 +37,7 @@ jobs:
 
     outputs:
       DEST_CLUSTER: ${{ steps.getActiveCluster.outputs.DEST_CLUSTER }}
+      RADIX_ENVIRONMENT: ${{ steps.getActiveCluster.outputs.RADIX_ENVIRONMENT }}
 
     steps:
       - name: Checkout
@@ -62,7 +63,7 @@ jobs:
     uses: equinor/radix-platform/.github/workflows/move_custom_ingresses.yml@Update-GH-environment
     with:
       DEST_CLUSTER: ${{ needs.getActiveCluster.outputs.DEST_CLUSTER }}
-      GH_ENVIRONMENT: 'maintenance-${{ needs.getActiveCluster.outputs.RADIX_ENVIRONMENT }}'
+      GH_ENVIRONMENT: maintenance-${{ needs.getActiveCluster.outputs.RADIX_ENVIRONMENT }}
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
