@@ -59,7 +59,7 @@ jobs:
 
   github-action-copy:
     needs: getActiveCluster
-    uses: equinor/radix-platform/.github/workflows/move_custom_ingresses.yml@master
+    uses: equinor/radix-platform/.github/workflows/move_custom_ingresses.yml@Update-GH-environment
     with:
       DEST_CLUSTER: ${{ needs.getActiveCluster.outputs.DEST_CLUSTER }}
       GH_ENVIRONMENT: 'maintenance-${{ needs.getActiveCluster.outputs.RADIX_ENVIRONMENT }}'
