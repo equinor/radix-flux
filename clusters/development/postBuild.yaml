@@ -21,7 +21,7 @@ spec:
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-47d21092-1680073174 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.11.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.36.0
-      VELERO_VERSION: 4.0.1 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      VELERO_VERSION: 3.2.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       NGINX_VERSION: 4.6.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       GRAFANA_LOKI: 2.9.10 # https://artifacthub.io/packages/helm/grafana/loki-stack
     substituteFrom:
