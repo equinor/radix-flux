@@ -37,15 +37,16 @@ jobs:
 
       - name: Set environments
         run: |
-          PR_BRANCH_DEFAULT="automatic-version-update"
-          PR_NAME_DEFAULT="Automatic Pull Request"
+          PR_BRANCH_TEMP="automatic-version-update"
+          PR_NAME_TEMP="Automatic Pull Request"
+          destinationCluster=${{ inputs.destinationCluster }}
 
-          if [ -n ${{ inputs.destinationCluster }} ]; then
-            echo "PR_BRANCH=$PR_BRANCH_DEFAULT-${{ inputs.destinationCluster }}" >> $GITHUB_ENV
-            echo "PR_NAME=$PR_NAME_DEFAULT - ${{ inputs.destinationCluster }}" >> $GITHUB_ENV
+          if [ -n $destinationCluster ]; then
+            echo "PR_BRANCH=${PR_BRANCH_TEMP}-${destinationCluster}" >> $GITHUB_ENV
+            echo "PR_NAME=${PR_NAME_TEMP} - ${destinationCluster}" >> $GITHUB_ENV
           else
-            echo "PR_BRANCH=$PR_BRANCH_DEFAULT" >> $GITHUB_ENV
-            echo "PR_NAME=$PR_NAME_DEFAULT" >> $GITHUB_ENV
+            echo "PR_BRANCH=${PR_BRANCH_TEMP}-development" >> $GITHUB_ENV
+            echo "PR_NAME=${PR_NAME_TEMP}-development" >> $GITHUB_ENV
           fi
 
       - name: Check version
