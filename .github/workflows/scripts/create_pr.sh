@@ -13,6 +13,10 @@ function create-pr() {
         PR_BRANCH="flux-image-updates"
     fi
 
+    if [[ -z "${PR_NAME}" ]]; then
+        PR_NAME="Automatic Pull Request"
+    fi
+
     if [[ $(git fetch origin && git branch --remotes) == *"origin/${PR_BRANCH}"* ]]; then
         git switch "${PR_BRANCH}"
         git pull
@@ -23,7 +27,7 @@ function create-pr() {
 
     if [[ "${PR_STATE}" != "OPEN" ]]; then
         echo "Create PR"
-        PR_URL=$(gh pr create --title "Automatic Pull Request" --base master --body "**Automatic Pull Request**")
+        PR_URL=$(gh pr create --title "${PR_NAME}" --base master --body "**Automatic Pull Request**")
         if [[ ${PR_URL} ]]; then
             curl --request POST \
             --header 'Content-type: application/json' \
