@@ -8,13 +8,6 @@ spec:
     spec:
       version: 6.56.1 # https://artifacthub.io/packages/helm/grafana/grafana
   values:
-    securityContext:
-      allowPrivilegeEscalation: false
-      privileged: false
-      runAsNonRoot: true
-      runAsUser: 472
-      runAsGroup: 472
-      fsGroup: 472
     env:
       GF_DATABASE_HOST: s941-radix-grafana-dev.mysql.database.azure.com
       GF_DATABASE_NAME: grafana
