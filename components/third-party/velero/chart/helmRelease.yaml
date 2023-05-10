@@ -25,31 +25,19 @@ spec:
   values:
     updateStrategy: RollingUpdate
     initContainers:
-    - name: velero-plugin-for-microsoft-azure
-      image: velero/velero-plugin-for-microsoft-azure:v1.1.1
-      volumeMounts:
-      - name: plugins
-        mountPath: /target
-    - name: radix-velero-plugin
-      image: ${velero_plugin_acr_image} # Set in clusters/<cluster>/postBuild
-      volumeMounts:
-      - name: plugins
-        mountPath: /target
-    configuration:
-      provider: azure
-      backupStorageLocation:
-        name: azure
-        default: true
-        # bucket: "" # Unique per cluster, set by values found in configMap
-        config:
-          resourceGroup: "backups"
-        # storageAccount: "" # Unique per cluster, set by values found in configMap
-      volumeSnapshotLocation:
-        name: azure
-        apitimeout: 300s
+      - name: velero-plugin-for-microsoft-azure
+        image: velero/velero-plugin-for-microsoft-azure:v1.1.1
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
+      - name: radix-velero-plugin
+        image: ${velero_plugin_acr_image} # Set in clusters/<cluster>/postBuild
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
     credentials:
       useSecret: true
-      existingSecret: "cloud-credentials"
+      existingSecret: 'cloud-credentials'
     metrics:
       enabled: true
       serviceMonitor:
@@ -57,6 +45,6 @@ spec:
     # resources: xx # Set by flux patch
     priorityClassName: radix-component-priority
   valuesFrom:
-  - kind: ConfigMap
-    name: velero-flux-values
-    valuesKey: values
+    - kind: ConfigMap
+      name: velero-flux-values
+      valuesKey: values
