@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.0.0 # https://artifacthub.io/packages/helm/azure-workload-identity/workload-identity-webhook
+      version: 1.1.0 # https://artifacthub.io/packages/helm/azure-workload-identity/workload-identity-webhook
