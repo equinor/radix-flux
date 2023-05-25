@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set environments
         run: |
@@ -43,7 +43,7 @@ jobs:
 
           if [ -z $destinationCluster ]; then
             echo "PR_BRANCH=${PR_BRANCH_TEMP}-development" >> $GITHUB_ENV
-            echo "PR_NAME=${PR_NAME_TEMP}-development" >> $GITHUB_ENV
+            echo "PR_NAME=${PR_NAME_TEMP} - development" >> $GITHUB_ENV
           else
             echo "PR_BRANCH=${PR_BRANCH_TEMP}-${destinationCluster}" >> $GITHUB_ENV
             echo "PR_NAME=${PR_NAME_TEMP} - ${destinationCluster}" >> $GITHUB_ENV
