@@ -2,17 +2,17 @@ name: radix-flux-pr
 on:
   pull_request:
     branches:
-    - master
+      - master
 jobs:
   kustomize-build:
     name: kustomize-build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Kustomize build everything
-      run: |
-        for f in `find . -iname "kustomization.yaml"`
-        do 
-          echo "Running kustomize build $(dirname $f)..."
-          kustomize build $(dirname $f) >/dev/null || exit
-        done
+      - uses: actions/checkout@v3
+      - name: Kustomize build everything
+        run: |
+          for f in `find . -iname "kustomization.yaml"`
+          do 
+            echo "Running kustomize build $(dirname $f)..."
+            kustomize build $(dirname $f) >/dev/null || exit
+          done

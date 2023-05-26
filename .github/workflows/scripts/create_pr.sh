@@ -30,20 +30,19 @@ function create-pr() {
         PR_URL=$(gh pr create --title "${PR_NAME}" --base master --body "**Automatic Pull Request**")
         if [[ ${PR_URL} ]]; then
             curl --request POST \
-            --header 'Content-type: application/json' \
-            --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' \
-            --url ${SLACK_WEBHOOK_URL} \
-            --fail
+                --header 'Content-type: application/json' \
+                --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' \
+                --url ${SLACK_WEBHOOK_URL} \
+                --fail
             return
-        elif [ "$retry_nr" -lt $MAX_RETRIES ]
-        then
-          sleep $sleep_before_retry
-          create-pr $(($retry_nr+1))
+        elif [ "$retry_nr" -lt $MAX_RETRIES ]; then
+            sleep $sleep_before_retry
+            create-pr $(($retry_nr + 1))
         else
             curl --request POST \
-            --header 'Content-type: application/json' \
-            --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' \
-            --url ${SLACK_WEBHOOK_URL}
+                --header 'Content-type: application/json' \
+                --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' \
+                --url ${SLACK_WEBHOOK_URL}
             return 1
         fi
     fi
