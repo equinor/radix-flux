@@ -74,7 +74,6 @@ function get_version() {
             fi
         else
             printf "Could not find package version locally."
-
         fi
     done < <(grep -rn -E 'artifacthub.io|github.com' ${GITHUB_WORKSPACE}'/clusters/'${SOURCE_CLUSTER} --exclude-dir 'flux-system' | grep -v -e "tag:")
 
