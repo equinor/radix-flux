@@ -42,11 +42,14 @@ function get_version() {
                     jq -er '.version // empty' ||
                     # Try GitHub
                     curl "https://api.github.com/repos/${repo}/tags" \
-                    --request "GET" \
-                    --header "Accept: application/vnd.github.v3+json" \
-                    --silent |
-                    jq -er '.[0].name // empty') || { echo "Version for $package_name not found. $current"; continue; }
-                    #--header "Authorization: token ${GITHUB_TOKEN}" \
+                        --request "GET" \
+                        --header "Accept: application/vnd.github.v3+json" \
+                        --silent |
+                    jq -er '.[0].name // empty') || {
+                    echo "Version for $package_name not found. $current"
+                    continue
+                }
+                #--header "Authorization: token ${GITHUB_TOKEN}" \
             else
                 # Update versions in destination cluster with versions in source cluster
                 newest="${current}"
@@ -71,7 +74,6 @@ function get_version() {
             fi
         else
             printf "Could not find package version locally."
-            
         fi
     done < <(grep -rn -E 'artifacthub.io|github.com' ${GITHUB_WORKSPACE}'/clusters/'${SOURCE_CLUSTER} --exclude-dir 'flux-system' | grep -v -e "tag:")
 
@@ -84,5 +86,5 @@ function get_version() {
 
 get_version
 if [[ -n $CI ]]; then
-    echo "numberOfChanges=$numberOfChanges" >> $GITHUB_OUTPUT
+    echo "numberOfChanges=$numberOfChanges" >>$GITHUB_OUTPUT
 fi
