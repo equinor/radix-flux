@@ -1,0 +1,57 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: monitor
+spec:
+  releaseName: grafana
+  chart:
+    spec:
+      chart: grafana
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      # limits:
+      #   cpu: "2"
+      #   memory: "2000Mi"
+      requests:
+        cpu: "50m"
+        memory: "250Mi"
+    nodeSelector: {"kubernetes.io/os": "linux"}
+    # ingress:                                    # Set by secret
+    #   enabled: true                             # Set by secret
+    #   hosts:                                    # Set by secret
+    #   - xx                                      # Set by secret
+    #   tls:                                      # Set by secret
+    #   - secretName: xx                          # Set by secret
+    #     hosts:                                  # Set by secret
+    #     - xx                                    # Set by secret
+    env:
+      GF_DATABASE_TYPE: mysql
+      GF_DATABASE_SSL_MODE: "skip-verify"
+      GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
+      # GF_SERVER_ROOT_URL: ""                    # Set by secret
+      # GF_DATABASE_PASSWORD: ""                  # Set by secret
+      # GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ""       # Set by secret
+      # GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ""   # Set by secret
+      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_AUTH_GENERIC_OAUTH_NAME: Azure AD
+      GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
+      GF_AUTH_GENERIC_OAUTH_SCOPES: openid email name
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/authorize
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
+      GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor"     # Viewer|Editor|Admin
+    envFromSecret: grafana-secrets
+  valuesFrom:
+  - kind: Secret
+    name: grafana-helm-secret
+    valuesKey: config
