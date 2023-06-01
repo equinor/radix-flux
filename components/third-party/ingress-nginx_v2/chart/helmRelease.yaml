@@ -6,7 +6,7 @@ metadata:
 spec:
   dependsOn:
     - name: kube-prometheus-stack
-      namespace: monitoring
+      namespace: monitor
   chart:
     spec:
       chart: ingress-nginx
