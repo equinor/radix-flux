@@ -6,7 +6,7 @@ metadata:
 spec:
   dependsOn:
     - name: kube-prometheus-stack
-      namespace: monitor
+      namespace: default
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2beta1
