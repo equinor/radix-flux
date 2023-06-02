@@ -11,7 +11,7 @@ resources:
 #- ./overlay/third-party/dynatrace-operator/dynatrace-operator.yaml
 - ../../components/third-party/grafana-migration
 #- ../../components/third-party/grafana-loki
-- ../../components/third-party/ingress-nginx_v2
+- ../../components/third-party/ingress-nginx
 - ../../components/third-party/kube-prometheus-stack-migration
 - ../../components/third-party/kubed
 - ../../components/third-party/kured
