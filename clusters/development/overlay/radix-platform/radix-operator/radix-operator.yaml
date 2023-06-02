@@ -13,7 +13,7 @@ spec:
   postBuild:
     substitute:
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
-      radix_operator_helm_chart_branch: master
+      radix_operator_helm_chart_branch: 68-reader-role
       radix_operator_image_tag_prefix: master
     substituteFrom:
       - kind: ConfigMap
