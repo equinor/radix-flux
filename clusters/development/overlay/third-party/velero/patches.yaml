@@ -16,10 +16,6 @@ spec:
           name: velero
           namespace: velero
         spec:
-          securityContext:
-            fsGroup: 1000
-            runAsGroup: 1000
-            runAsUser: 1000
           chart:
             spec:
               version: ${VELERO_VERSION} # Set in postBuild development
