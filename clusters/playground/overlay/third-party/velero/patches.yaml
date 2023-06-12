@@ -20,6 +20,10 @@ spec:
             spec:
               version: ${VELERO_VERSION} # Set in postBuild
           values:
+            podSecurityContext:
+              fsGroup: 1000
+              runAsGroup: 1000
+              runAsUser: 1000
             resources:
               limits:
                 cpu: "6"
