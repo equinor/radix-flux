@@ -6,11 +6,11 @@ metadata:
 spec:
   chart:
     spec:
-      version: 4.5.0 # https://artifacthub.io/packages/helm/kured/kured
+      version: 4.5.1 # https://artifacthub.io/packages/helm/kured/kured
   values:
     extraArgs:
-      start-time: 8am
-      end-time: 4pm
+      start-time: 6am
+      end-time: 8am
       lock-ttl: 30m
       drain-timeout: 15m # Remove if PDB does not work out
       force-reboot: true # Remove if PDB does not work out
