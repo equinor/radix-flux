@@ -9,10 +9,10 @@ resources:
 - ./overlay/third-party/cert-manager
 - ../../components/third-party/cert-manager_v2
 #- ./overlay/third-party/dynatrace-operator/dynatrace-operator.yaml
-- ../../components/third-party/grafana-migration
+- ../../components/third-party/grafana
 #- ../../components/third-party/grafana-loki
 - ../../components/third-party/ingress-nginx
-- ../../components/third-party/kube-prometheus-stack-migration
+- ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubed
 - ../../components/third-party/kured
 #- ../../components/third-party/snyk-monitor
