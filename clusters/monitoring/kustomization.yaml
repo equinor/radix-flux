@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
 - flux-system
 - ../../components/third-party/cert-manager_v2/chart
-- ../../components/third-party/grafana
+- ../../components/third-party/grafana-migration
 - ../../components/third-party/ingress-nginx-monitoring
-- ../../components/third-party/kube-prometheus-stack
+- ../../components/third-party/kube-prometheus-stack-migration
 - ../../components/third-party/prometheus-blackbox-exporter
 patches:
   - path: ./overlay/third-party/cert-manager/helmRelease.yaml
