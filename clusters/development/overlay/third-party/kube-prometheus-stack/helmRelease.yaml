@@ -17,11 +17,11 @@ spec:
           requests:
             cpu: "0.5"
             memory: "4Gi"
-        storageSpec:
-          volumeClaimTemplate:
-            spec:
-              resources:
-                requests:
-                  storage: 128Gi # P10
-                  #Premium SSD Size   P1    P2    P3    P4    P6    P10   P15   P20   P30   P40
-                  #                   4     8     16    32    64    128   256   512   1024  2048
+        # storageSpec:
+        #   volumeClaimTemplate:
+        #     spec:
+        #       resources:
+        #         requests:
+        #           storage: 128Gi # P10
+        #           #Premium SSD Size   P1    P2    P3    P4    P6    P10   P15   P20   P30   P40
+        #           #                   4     8     16    32    64    128   256   512   1024  2048

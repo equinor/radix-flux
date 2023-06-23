@@ -26,12 +26,7 @@ spec:
           name: prometheus-operator-prometheus-scrape-config
           key: additional-scrape-configs.yaml
         retention: 90d
-        storageSpec:
-          volumeClaimTemplate:
-            spec:
-              resources:
-                requests:
-                  storage: 256Gi
+
     alertmanager: null
     kube-state-metrics: null
     additionalPrometheusRulesMap: null
