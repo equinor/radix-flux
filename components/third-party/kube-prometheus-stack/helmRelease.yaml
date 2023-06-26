@@ -32,7 +32,7 @@ spec:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
     prometheus:
       prometheusSpec:
-        retention: 30d # default
+        retention: 60d # default
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
