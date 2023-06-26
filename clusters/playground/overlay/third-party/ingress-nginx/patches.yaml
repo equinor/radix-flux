@@ -21,6 +21,8 @@ spec:
             valuesKey: config
           values:
             controller:
+              image:
+                chroot: true
               replicaCount: 2
               resources:
                 limits:
