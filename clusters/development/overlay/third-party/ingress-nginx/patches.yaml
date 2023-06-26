@@ -21,6 +21,8 @@ spec:
             valuesKey: config
           values:
             controller:
+              image:
+                chroot: true
               resources:
                 limits:
                   cpu: "3"
