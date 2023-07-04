@@ -31,7 +31,7 @@ spec:
                   memory: 5000Mi
               service:
                 annotations:
-                  service.beta.kubernetes.io/azure-load-balancer-resource-group: common
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: common-westeurope
               config:
                 custom-http-errors: "503"
               extraArgs: {

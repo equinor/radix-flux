@@ -21,6 +21,8 @@ spec:
       retries: 3
   values:
     controller:
+      image:
+        chroot: true
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

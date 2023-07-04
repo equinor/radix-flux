@@ -2,11 +2,11 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
-  namespace: default
+  namespace: monitor
 spec:
   chart:
     spec:
-      version: 46.8.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      version: 47.0.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
   values:
     prometheusOperator: 
     prometheus:
