@@ -1,0 +1,25 @@
+---
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+ name: all-hourly
+ namespace: velero
+spec:
+  schedule: 0 * * * *
+  template:
+    includeClusterResources: true
+    includedNamespaces:
+    - '*'
+    excludedNamespaces:
+    - velero
+    - kube-system
+    labelSelector:
+      matchExpressions:
+      - {key: release, operator: NotIn, values: [prometheus-operator]}
+    excludedResources:
+    - pv
+    - pvc
+    includedResources:
+    - '*'
+    storageLocation: azure
+    ttl: 168h0m0s

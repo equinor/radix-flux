@@ -1,0 +1,50 @@
+# Dependent on the secret "cloud-credentials", which should be installed by the base component script,
+# see https://github.com/equinor/radix-platform/tree/master/scripts/velero
+# For velero chart doc see https://github.com/vmware-tanzu/helm-charts
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  releaseName: velero
+  chart:
+    spec:
+      chart: velero
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: velero
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    updateStrategy: RollingUpdate
+    initContainers:
+      - name: velero-plugin-for-microsoft-azure
+        image: velero/velero-plugin-for-microsoft-azure:v1.1.1
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
+      - name: radix-velero-plugin
+        image: ${velero_plugin_acr_image} # Set in clusters/<cluster>/postBuild
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
+    credentials:
+      useSecret: true
+      existingSecret: 'cloud-credentials'
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    # resources: xx # Set by flux patch
+    priorityClassName: radix-component-priority
+  valuesFrom:
+    - kind: ConfigMap
+      name: velero-flux-values
+      valuesKey: values
