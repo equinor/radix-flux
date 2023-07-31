@@ -25,17 +25,14 @@ resources:
 - ../../components/third-party/azure-workload-identity
 patches:
   - path: ./postBuild.yaml
-  # - path: ./healthChecks.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
-  #- path: ./overlay/third-party/grafana-loki/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/postBuild.yaml
   - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
-#  - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml  
