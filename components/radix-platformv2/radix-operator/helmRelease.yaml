@@ -1,0 +1,41 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radix-operator
+  namespace: default
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts/radix-operator
+      sourceRef:
+        kind: GitRepository
+        name: radix-operator
+        namespace: flux-system
+      valuesFiles:
+        - ./charts/radix-operator/values.yaml
+  values:
+    image:
+      # For Flux "image.repository" means full path to the image (registry/repository)
+      # The following 2 properties are mandatory for Flux image filtering
+      repository: ${radix_acr_repo_url}/radix-operator                # Set by zone-specific overlay
+      tag: xx                                                         # Set by zone-specific overlay
+    dnsZone: ${dnsZone}                                               # Read from radix-flux-config configmap
+    appAliasBaseURL: ${appAliasBaseURL}                               # Read from radix-flux-config configmap
+    prometheusName: ${prometheusName}                                 # Read from radix-flux-config configmap
+    imageRegistry: ${radix_acr_repo_url}                              # Set by zone-specific overlay
+    clusterType: ${clusterType}                                       # Read from radix-flux-config configmap
+    clusterActiveEgressIps: ${activeClusterIPs}                       # Read from radix-flux-config configmap
+    clusterName: ${clusterName}                                       # Read from radix-flux-config configmap
+    activeClusterName: xx                                             # Set by zone-specific overlay
+    radixZone: xx                                                     # Set by zone-specific overlay
+    # resources: xx                                                   # Set by zone-specific overlay
+    # subscriptionId:                                                 # Set by zone-specific overlay
+    tenantId: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+    app:
+      limitrange:
+        default:
+          memory: 1500Mi
