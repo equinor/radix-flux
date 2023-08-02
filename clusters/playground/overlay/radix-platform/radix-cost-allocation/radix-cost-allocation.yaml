@@ -1,4 +1,4 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: radix-cost-allocation
@@ -8,7 +8,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/radix-platform/radix-cost-allocation
+  path: ./components/radix-platformv2/radix-cost-allocation
   prune: false
   postBuild:
     substitute:
