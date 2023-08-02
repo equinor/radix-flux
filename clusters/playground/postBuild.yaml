@@ -14,7 +14,7 @@ spec:
       ACTIVE_CLUSTER: playground-07
       RADIX_ACR_CLEANUP_TAG: release-0636c165-1690813611 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: release-d4a66d81-1690886704 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
-      RADIX_CICD_CANARY_TAG: release-3d2631f0-1690802332 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_CICD_CANARY_TAG: release-6ddfe450-1690983031 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-96c93e7e-1690813930 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: release-196c25a7-1690801988 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-874eea1b-1690886653 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
