@@ -3,20 +3,17 @@ kind: Kustomization
 resources:
 - flux-system
 - ../../components/flux/image-update-automation
-# - ../../components/flux/pod-monitor.yaml
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
 - ./overlay/third-party/cert-manager
-- ../../components/third-party/cert-manager_v2
-#- ./overlay/third-party/dynatrace-operator/dynatrace-operator.yaml
+- ../../components/third-partyv2/cert-manager_v2
 - ../../components/third-party/grafana
-- ../../components/third-party/ingress-nginx
+- ../../components/third-partyv2/ingress-nginx
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubed
 - ../../components/third-party/kured
-# - ../../components/third-party/snyk-monitor
 - ../../components/third-party/sysctl-install-blobfuse
-- ../../components/third-party/velero
+- ../../components/third-partyv2/velero
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
 - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
@@ -28,7 +25,6 @@ resources:
 - ../../components/third-party/azure-workload-identity
 patches:
   - path: ./postBuild.yaml
-  # - path: ./healthChecks.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/third-party/blob-csi-driver/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
@@ -38,6 +34,5 @@ patches:
   - path: ./overlay/third-party/kube-prometheus-stack/postBuild.yaml
   - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
-  # - path: ./overlay/third-party/snyk-monitor/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml  
