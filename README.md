@@ -49,7 +49,7 @@ The Git repository contains the following top directories:
 # Clusters
 
 ## Flux system
-The `flux-system` directory is created and managed by Flux. 
+The `flux-system` directory underneath parent folder `clusters` is created and managed by Flux. 
 ## Overlay
 In Radix we want separate configurations per cluster. In order to achieve this we use Flux overlays which override the configuration defined in the `components` directory. The `overlay` directory has the same structure as the `components` directory, but contains only files for the resources to be overridden. The files then need to be included in the `kustomization.yaml` file in the cluster environment directory. 
 
@@ -58,7 +58,7 @@ For example, radix-operator uses cluster-specific configuration which requires o
 ```yaml
 # file: clusters/development/overlay/radix-platform/radix-operator/radix-operator.yaml
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: radix-operator
@@ -79,7 +79,7 @@ spec:
 ```yaml
 # file: clusters/development/postBuild.yaml
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: flux-system
@@ -95,7 +95,7 @@ The radix-operator kustomization file needs to be included in the `kustomization
 ```yaml
 # file: clusters/development/kustomization.yaml
 
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: kustomize.config.k8s.io/v1
 kind: Kustomization
 resources:
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
@@ -106,7 +106,7 @@ We patch the `flux-system` Kustomization with cluster environment specific confi
 ```yaml
 # file: clusters/development/postBuild.yaml
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: flux-system
@@ -125,7 +125,7 @@ spec:
 ```yaml
 # file: clusters/development/healthChecks.yaml
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: flux-system
@@ -222,7 +222,7 @@ The `path` spec specifies a directory with files, which is scanned regularly by 
 ```yaml
 # file: clusters/development/overlay/radix-platform/radix-operator/radix-operator.yaml
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: flux-system
