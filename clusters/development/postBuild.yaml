@@ -23,7 +23,7 @@ spec:
       TEKTON_VERSION: v0.44.3
       VELERO_VERSION: 4.1.4 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       NGINX_VERSION: 4.7.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      GRAFANA_LOKI: 2.9.10 # https://artifacthub.io/packages/helm/grafana/loki-stack
+      GRAFANA_LOKI: 2.9.11 # https://artifacthub.io/packages/helm/grafana/loki-stack
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
