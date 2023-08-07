@@ -6,14 +6,14 @@ resources:
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/blobfuse-flexvolume
 - ./overlay/third-party/cert-manager
-- ../../components/third-partyv2/cert-manager_v2
+- ../../components/third-party/cert-manager
 - ../../components/third-party/grafana
-- ../../components/third-partyv2/ingress-nginx
+- ../../components/third-party/ingress-nginx
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubed
 - ../../components/third-party/kured
 - ../../components/third-party/sysctl-install-blobfuse
-- ../../components/third-partyv2/velero
+- ../../components/third-party/velero
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
 - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml

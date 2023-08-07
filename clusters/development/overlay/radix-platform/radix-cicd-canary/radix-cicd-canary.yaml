@@ -8,7 +8,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/radix-platformv2/radix-cicd-canary
+  path: ./components/radix-platform/radix-cicd-canary
   prune: false
   postBuild:
     substitute:
