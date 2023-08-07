@@ -8,7 +8,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/radix-platformv2/radix-cluster-cleanup
+  path: ./components/radix-platform/radix-cluster-cleanup
   prune: false
   postBuild:
     substitute:

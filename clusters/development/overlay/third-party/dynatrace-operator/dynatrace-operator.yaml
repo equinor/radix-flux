@@ -8,7 +8,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/third-partyv2/dynatrace-operator
+  path: ./components/third-party/dynatrace-operator
   prune: false
   timeout: 5m0s
   healthChecks:
