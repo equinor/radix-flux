@@ -10,6 +10,7 @@ spec:
   values:
     prometheus:
       prometheusSpec:
+        enableAdminAPI: true
         retention: 60d # default
         resources:
           limits:
