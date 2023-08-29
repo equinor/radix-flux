@@ -6,19 +6,5 @@ metadata:
 spec:
   chart:
     spec:
-      version: v1.22.1 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
-  postRenderers:
-    - kustomize:
-        patchesStrategicMerge:
-          - apiVersion: apps/v1
-            kind: DaemonSet
-            metadata:
-              name: csi-blob-node
-              namespace: kube-system
-            spec:
-              template:
-                spec:
-                  initContainers:
-                  - env:
-                    - name: INSTALL_BLOBFUSE2
-                      value: "false"
+      version: v1.21.4 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
+
