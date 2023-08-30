@@ -29,3 +29,5 @@ spec:
     priorityClassName: radix-component-priority
     node:
       enableBlobfuseProxy: true
+      blobfuseProxy:
+        installBlobfuse2: false
