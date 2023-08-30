@@ -54,6 +54,7 @@ spec:
             alertControllerThreads: 21
             kubeClientRateLimitBurst: 500
             kubeClientRateLimitQPS: 500
+            buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}  # Set in postBuild development
             app:
               env:
                 limitrange:
