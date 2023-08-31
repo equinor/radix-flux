@@ -7,8 +7,5 @@ spec:
   chart:
     spec:
       version: v1.22.1 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
-  values:
-    node:
-      blobfuseProxy:
-        installBlobfuse2: false
+
 
