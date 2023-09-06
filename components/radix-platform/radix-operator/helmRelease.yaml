@@ -39,3 +39,10 @@ spec:
       limitrange:
         default:
           memory: 1500Mi
+      builder:
+        resources:
+          limits:
+            memory: 5000M
+          requests:
+            memory: 800M
+            cpu: 800m
