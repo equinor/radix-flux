@@ -59,7 +59,10 @@ function get_version() {
                 fi
             fi
 
-            if [[ "${newest}" == *beta* || "${newest}" == *alpha* || "${newest}" == *rc*  ]]; then continue; fi
+            if [[ "${newest}" == *beta* || "${newest}" == *alpha* || "${newest}" == *rc*  ]]; then 
+                echo "Skipping prerelease for ${package_name} (latest version: ${newest})"
+                continue
+            fi
                 
             # Compare versions
             if [[ "${current}" && "${newest}" && "${current}" != "${newest}" ]]; then
