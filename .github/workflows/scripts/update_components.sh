@@ -59,6 +59,11 @@ function get_version() {
                 fi
             fi
 
+            if [[ "${newest}" == *beta* || "${newest}" == *alpha* || "${newest}" == *rc*  ]]; then 
+                printf "Skipping %s for %s - Current %s\n" "${newest}" "${package_name}" "${current}"
+                continue
+            fi
+                
             # Compare versions
             if [[ "${current}" && "${newest}" && "${current}" != "${newest}" ]]; then
                 # Update file, create branch and commit change
