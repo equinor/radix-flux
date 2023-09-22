@@ -61,7 +61,7 @@ jobs:
   moveCustomIngress:
     name: Move Custom Ingress
     needs: getActiveCluster
-    uses: equinor/radix-platform/.github/workflows/move_custom_ingresses.yml@master
+    uses: equinor/radix-platform/.github/workflows/move_custom_ingresses.yml@move-custome-ingress-exit-1-on-az-commands
     with:
       DEST_CLUSTER: ${{ needs.getActiveCluster.outputs.DEST_CLUSTER }}
       GH_ENVIRONMENT: maintenance-${{ needs.getActiveCluster.outputs.RADIX_ENVIRONMENT }}
