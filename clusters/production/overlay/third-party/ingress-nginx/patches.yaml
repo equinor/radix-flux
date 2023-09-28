@@ -21,7 +21,7 @@ spec:
             valuesKey: config
           values:
             controller:
-              replicaCount: 12
+              replicaCount: 20
               resources:
                 limits:
                   cpu: "6"
