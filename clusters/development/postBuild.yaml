@@ -13,11 +13,11 @@ spec:
       radix_acr_repo_url: radixdev.azurecr.io
       ACTIVE_CLUSTER: weekly-39
       RADIX_ACR_CLEANUP_TAG: master-da1ca592-1695724597 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
-      RADIX_CLUSTER_CLEANUP_TAG: master-d306ed30-1690799862 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
+      RADIX_CLUSTER_CLEANUP_TAG: master-a80aca5f-1695987087 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: master-1be0f3cd-1695708373 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: master-dc80a880-1690549300 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_COST_ALLOCATION_TAG: master-502f029d-1695987133 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-e8da04c6-1695888403 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: main-74f484f5-1690541731 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: main-c22f45ab-1695987131 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-3e2709ec-1695710048 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.13.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
