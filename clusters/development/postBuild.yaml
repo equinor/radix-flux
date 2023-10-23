@@ -11,7 +11,7 @@ spec:
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
-      ACTIVE_CLUSTER: weekly-42
+      ACTIVE_CLUSTER: weekly-43
       RADIX_ACR_CLEANUP_TAG: master-2a633ac5-1697721076 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-d28fff33-1697721007 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: master-43f6cacc-1696509864 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
