@@ -19,6 +19,7 @@ spec:
     excludedResources:
     - pv
     - pvc
+    - jobs
     includedResources:
     - '*'
     storageLocation: azure
