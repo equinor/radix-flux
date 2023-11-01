@@ -21,6 +21,7 @@ spec:
             valuesKey: config
           values:
             controller:
+              enableAnnotationValidations: true
               resources:
                 limits:
                   cpu: "3"
