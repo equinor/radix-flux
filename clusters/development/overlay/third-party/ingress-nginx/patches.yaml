@@ -34,7 +34,7 @@ spec:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
               config:
                 custom-http-errors: "503"
-                annotations-risk-level: "high"
+                annotations-risk-level: "High"
               extraArgs: {
                 default-ssl-certificate: "default/radix-wildcard-tls-cert"
               }
