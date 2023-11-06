@@ -27,9 +27,15 @@ spec:
             resources:
               limits:
                 cpu: "6"
-                memory: 2048Mi
+                memory: 512Mi
               requests:
                 cpu: 100m
-                memory: 2048Mi
+                memory: 512Mi
+            upgradeJobResources:
+              limits:
+                memory: 256Mi
+              requests:
+                cpu: 50m
+                memory: 256Mi
             rbac:
               clusterAdministrator: false
