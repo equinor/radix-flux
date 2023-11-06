@@ -27,9 +27,9 @@ spec:
             resources:
               limits:
                 cpu: "6"
-                memory: 1024Mi
+                memory: 2048Mi
               requests:
                 cpu: 100m
-                memory: 512Mi
+                memory: 2048Mi
             rbac:
               clusterAdministrator: false
