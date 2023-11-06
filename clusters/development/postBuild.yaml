@@ -11,7 +11,7 @@ spec:
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
-      ACTIVE_CLUSTER: weekly-44
+      ACTIVE_CLUSTER: weekly-45
       RADIX_ACR_CLEANUP_TAG: master-2a633ac5-1697721076 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-d28fff33-1697721007 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: master-43f6cacc-1696509864 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
@@ -22,7 +22,7 @@ spec:
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-3e2709ec-1695710048 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.13.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.44.3
-      VELERO_VERSION: 5.1.2 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      VELERO_VERSION: 5.1.3 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       NGINX_VERSION: 4.8.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       GRAFANA_LOKI: 2.9.11 # https://artifacthub.io/packages/helm/grafana/loki-stack
     substituteFrom:
