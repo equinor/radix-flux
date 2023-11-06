@@ -35,8 +35,8 @@ spec:
             configToMap: radix-config-2-map:release-latest
             radixTekton: radix-tekton:release-latest
             jobScheduler: radix-job-scheduler:release-latest
-            containerRegistry: radixdev.azurecr.io
-            appContainerRegistry: radixdevapp.azurecr.io
+            containerRegistry: ${radix_acr_repo_url}
+            appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
             radixZone: ${RADIX_ZONE} # Set in postBuild playground
             useImageBuilderCache: 1
             resources:
