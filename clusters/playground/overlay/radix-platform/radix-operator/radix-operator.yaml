@@ -36,6 +36,7 @@ spec:
             radixTekton: radix-tekton:release-latest
             jobScheduler: radix-job-scheduler:release-latest
             containerRegistry: radixdev.azurecr.io
+            appContainerRegistry: radixdevapp.azurecr.io
             radixZone: ${RADIX_ZONE} # Set in postBuild playground
             useImageBuilderCache: 1
             resources:
