@@ -36,6 +36,7 @@ spec:
             radixTekton: radix-tekton:release-latest
             jobScheduler: radix-job-scheduler:release-latest
             containerRegistry: ${radix_acr_repo_url} # Set in postBuild production
+            appContainerRegistry: ${RADIX_APP_ACR_REPO_URL} # Set in postBuild production
             radixZone: ${RADIX_ZONE} # Set in postBuild production
             useImageBuilderCache: 0
             resources:
