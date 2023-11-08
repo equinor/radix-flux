@@ -13,13 +13,13 @@ spec:
       radix_acr_repo_url: radixc2prod.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixc2app.azurecr.io
       ACTIVE_CLUSTER: c2-prod-25
-      RADIX_ACR_CLEANUP_TAG: release-0636c165-1690813620 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_ACR_CLEANUP_TAG: release-c53f1685-1699341847 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: release-0b35fe6e-1693462704 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-96c93e7e-1690813924 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: release-1a974f1f-1697807913 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: release-874eea1b-1690886660 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-2b5b1144-1699343632 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_OPERATOR_TAG: release-e2281ce3-1699447403 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: release-a6bc0cec-1699343650 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
-      velero_plugin_acr_image: radixc2prod.azurecr.io/radix-velero-plugin:release-5b1f7199-1692001628 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      velero_plugin_acr_image: radixc2prod.azurecr.io/radix-velero-plugin:release-60a58d14-1699366070 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.13.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.44.3
       VELERO_VERSION: 5.1.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
