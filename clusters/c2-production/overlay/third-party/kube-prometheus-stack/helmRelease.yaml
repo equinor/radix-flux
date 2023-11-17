@@ -12,11 +12,11 @@ spec:
       prometheusSpec:
         resources:
           limits:
-            cpu: "6"
-            memory: "32Gi"
+            cpu: "1"
+            memory: "6Gi"
           requests:
-            cpu: "3"
-            memory: "16Gi"
+            cpu: "1"
+            memory: "6Gi"
       storageSpec:
           volumeClaimTemplate:
             spec:
