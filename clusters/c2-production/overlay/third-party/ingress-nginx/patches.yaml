@@ -21,13 +21,12 @@ spec:
             valuesKey: config
           values:
             controller:
-              replicaCount: 8
+              replicaCount: 6
               resources:
                 limits:
-                  cpu: "6"
                   memory: 5000Mi
                 requests:
-                  cpu: 300m
+                  cpu: "1"
                   memory: 5000Mi
               service:
                 annotations:
