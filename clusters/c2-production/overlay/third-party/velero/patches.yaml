@@ -26,10 +26,10 @@ spec:
               runAsUser: 1000
             resources:
               limits:
-                cpu: "6"
-                memory: 4096Mi
+                cpu: 200m
+                memory: 1Gi
               requests:
-                cpu: "2"
-                memory: 2048Mi
+                cpu: 200m
+                memory: 1Gi
             rbac:
               clusterAdministrator: false
