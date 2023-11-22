@@ -31,11 +31,5 @@ spec:
               requests:
                 cpu: 100m
                 memory: 512Mi
-            upgradeJobResources:
-              limits:
-                memory: 256Mi
-              requests:
-                cpu: 50m
-                memory: 256Mi
             rbac:
               clusterAdministrator: false
