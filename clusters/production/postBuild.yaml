@@ -19,7 +19,7 @@ spec:
       RADIX_OPERATOR_TAG: release-b4c13140-1700466728 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-a6bc0cec-1699343647 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
-      velero_plugin_acr_image: radixprod.azurecr.io/radix-velero-plugin:release-60a58d14-1699366081 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      velero_plugin_acr_image: radixprod.azurecr.io/radix-velero-plugin:release-f40b3435-1700833280 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.13.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.44.3
       VELERO_VERSION: 5.1.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
