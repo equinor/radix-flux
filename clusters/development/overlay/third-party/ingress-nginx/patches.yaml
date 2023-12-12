@@ -33,10 +33,8 @@ spec:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
               config:
                 custom-http-errors: "503"
-              extraArgs: {
+              extraArgs:
                 default-ssl-certificate: "default/radix-wildcard-tls-cert"
-                size-buckets: "100,1000,10000,100000,1e+06,1e+07,1e+08"
-              }
             defaultBackend:
               enabled: true
               resources:
