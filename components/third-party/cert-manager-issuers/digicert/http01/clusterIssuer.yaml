@@ -4,8 +4,8 @@ metadata:
   name: digicert-http01
 spec:
   acme:
-    email: $(email)
-    server: $(server)
+    email: ${email}
+    server: ${server}
     skipTLSVerify: false
     externalAccountBinding:
       keyID: ${externalAccountKeyID}
