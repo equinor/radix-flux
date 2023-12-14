@@ -7,7 +7,7 @@ spec:
   dependsOn:
     - name: cert-manager
   interval: 5m
-  path: "./components/third-party/cert-manager-issuers/digicert/http01"
+  path: "./components/third-party/cert-manager-issuers/digicert/http01/resources"
   postBuild:
     substituteFrom:
       - kind: Secret
