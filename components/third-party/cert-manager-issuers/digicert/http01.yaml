@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: digicert-http01
+  name: digicert-http01-clusterissuer
   namespace: flux-system
 spec:
   dependsOn:
