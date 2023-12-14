@@ -23,7 +23,7 @@ resources:
 - ../../components/radix-platform/radix-velero-plugin
 - ../../components/third-party/tekton
 - ../../components/third-party/azure-workload-identity
-# - ../../components/third-party/cert-cluster-issuers/digicert/http01.yaml
+- ../../components/third-party/cert-cluster-issuers/digicert/http01.yaml
 patches:
   - path: ./postBuild.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
