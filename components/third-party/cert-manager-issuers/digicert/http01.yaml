@@ -11,7 +11,7 @@ spec:
   postBuild:
     substituteFrom:
       - kind: Secret
-        name: cert-manager-certificate-values
+        name: digicert-clusterissuer-http01-flux-values
   prune: true
   sourceRef:
     kind: GitRepository
