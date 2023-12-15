@@ -8,7 +8,7 @@ spec:
     server: ${acmeServer}
     skipTLSVerify: false
     externalAccountBinding:
-      keyID: ${externalAccountKeyID}
+      keyID: ${accountKeyID}
       keySecretRef:
         name: digicert-http01-account-hmac-key
         key: secret
