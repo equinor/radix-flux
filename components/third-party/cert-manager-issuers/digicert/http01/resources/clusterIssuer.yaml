@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: digicert-http01
+  name: ${clusterIssuerName}
 spec:
   acme:
     email: ${accountEmail}
@@ -10,10 +10,10 @@ spec:
     externalAccountBinding:
       keyID: ${accountKeyID}
       keySecretRef:
-        name: digicert-http01-account-hmac-key
-        key: secret
+        name: ${accountHMACSecretName}
+        key: ${accountHMACSecretKey}
     privateKeySecretRef:
-      name: digicert-http01
+      name: ${privateKeySecretName}
     solvers:
     # An empty 'selector' means that this solver matches all domains
     - selector: {}

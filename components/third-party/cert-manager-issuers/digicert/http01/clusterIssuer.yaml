@@ -9,6 +9,12 @@ spec:
   interval: 5m
   path: "./components/third-party/cert-manager-issuers/digicert/http01/resources"
   postBuild:
+    substitute:
+      certManagerNamespace: cert-manager
+      clusterIssuerName: digicert-http01
+      accountHMACSecretName: digicert-http01-account-hmac-key
+      accountHMACSecretKey: secret
+      privateKeySecretName: digicert-http01
     substituteFrom:
       - kind: Secret
         name: digicert-clusterissuer-external-account-flux-values
