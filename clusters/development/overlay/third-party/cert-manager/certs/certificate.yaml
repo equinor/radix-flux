@@ -4,6 +4,8 @@ kind: Certificate
 metadata:
   name: radix-wildcard-tls-cert
   namespace: default
+  annotations:
+    test: ${clusterIssuer}
 spec:
   secretName: radix-wildcard-tls-cert
   secretTemplate:

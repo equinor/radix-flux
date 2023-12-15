@@ -26,6 +26,7 @@ spec:
       VELERO_VERSION: 5.1.6 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       NGINX_VERSION: 4.8.4 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       GRAFANA_LOKI: 2.9.11 # https://artifacthub.io/packages/helm/grafana/loki-stack
+      radixZoneCertIssuer: xyz
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config

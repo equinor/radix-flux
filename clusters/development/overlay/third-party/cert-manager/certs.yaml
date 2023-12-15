@@ -9,6 +9,8 @@ spec:
   interval: 5m
   path: "./clusters/development/overlay/third-party/cert-manager/certs"
   postBuild:
+    substitute:
+      clusterIssuer: ${radixZoneCertIssuer:=${CERT_ISSUER}}
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
