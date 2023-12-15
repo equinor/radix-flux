@@ -10,7 +10,7 @@ spec:
   path: "./clusters/development/overlay/third-party/cert-manager/certs"
   postBuild:
     substitute:
-      clusterIssuer: ${radixZoneCertIssuer:=defaultval}
+      clusterIssuer: ${radixZoneCertIssuer}
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
