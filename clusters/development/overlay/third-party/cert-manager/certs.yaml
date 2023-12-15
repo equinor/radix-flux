@@ -9,8 +9,6 @@ spec:
   interval: 5m
   path: "./clusters/development/overlay/third-party/cert-manager/certs"
   postBuild:
-    substitute:
-      clusterIssuer: letsencrypt-prod #digicert-dns01
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
