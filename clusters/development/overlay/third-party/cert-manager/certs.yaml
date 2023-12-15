@@ -9,8 +9,6 @@ spec:
   interval: 5m
   path: "./clusters/development/overlay/third-party/cert-manager/certs"
   postBuild:
-    substitute:
-      clusterIssuer: ${radixZoneCertIssuer:=defaultval}
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
@@ -22,3 +20,4 @@ spec:
     name: flux-system
   wait: true
   timeout: 2m
+  
