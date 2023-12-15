@@ -5,7 +5,7 @@ metadata:
   name: radix-wildcard-tls-cert
   namespace: default
   annotations:
-    test: ${radixZoneCertIssuer:=${CERT_ISSUER}}
+    test: ${radixZoneCertIssuer}
 spec:
   secretName: radix-wildcard-tls-cert
   secretTemplate:
