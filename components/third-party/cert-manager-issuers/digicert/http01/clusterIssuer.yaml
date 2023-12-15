@@ -14,7 +14,7 @@ spec:
       clusterIssuerName: digicert-http01
       accountHMACSecretName: digicert-http01-account-hmac-key
       accountHMACSecretKey: secret
-      privateKeySecretName: digicert-http01
+      privateKeySecretName: digicert-http01-private-key
     substituteFrom:
       - kind: Secret
         name: digicert-clusterissuer-external-account-flux-values
