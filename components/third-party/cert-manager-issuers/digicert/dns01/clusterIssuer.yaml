@@ -1,0 +1,28 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: digicert-clusterissuer-dns01
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: cert-manager
+  interval: 5m
+  path: "./components/third-party/cert-manager-issuers/digicert/dns01/resources"
+  postBuild:
+    substitute:
+      certManagerNamespace: cert-manager
+      clusterIssuerName: digicert-dns01
+      accountHMACSecretName: digicert-dns01-account-hmac-key
+      accountHMACSecretKey: secret
+      privateKeySecretName: digicert-dns01-private-key
+    substituteFrom:
+      - kind: Secret
+        name: digicert-clusterissuer-external-account-flux-values
+      - kind: Secret
+        name: cert-manager-certificate-values
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  timeout: 2m
