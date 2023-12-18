@@ -9,6 +9,8 @@ spec:
   interval: 5m
   path: "./components/third-party/cert-manager/certs"
   postBuild:
+    substitute:
+      CLUSTER_NAME: ${clusterName}
     substituteFrom:
       - kind: Secret
         name: cert-manager-certificate-values
