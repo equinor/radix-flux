@@ -38,7 +38,7 @@ spec:
         - {{.}}
         {{ end -}}
     push:
-      branch: flux-image-updates
+      branch: flux-image-updates-dr-test
   update:
     path: ${FLUX_CONFIG_PATH}
     strategy: Setters
