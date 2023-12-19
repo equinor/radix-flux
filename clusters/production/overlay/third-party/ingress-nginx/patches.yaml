@@ -25,10 +25,10 @@ spec:
               resources:
                 limits:
                   cpu: "6"
-                  memory: 8Gi
+                  memory: 10Gi # Adding ~20% more memory from last limit (8Gi)
                 requests:
                   cpu: 300m
-                  memory: 8Gi
+                  memory: 10Gi
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common

@@ -44,6 +44,12 @@ spec:
         enabled: true
     # resources: xx # Set by flux patch
     priorityClassName: radix-component-priority
+    upgradeJobResources:
+      limits:
+        memory: 256Mi
+      requests:
+        cpu: 50m
+        memory: 256Mi
   valuesFrom:
     - kind: ConfigMap
       name: velero-flux-values
