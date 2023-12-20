@@ -48,6 +48,7 @@ spec:
             alertControllerThreads: 21
             kubeClientRateLimitBurst: 500
             kubeClientRateLimitQPS: 500
+            containerRegistry: ${radix_acr_repo_url}
             appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
             buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}  # Set in postBuild development
             app:

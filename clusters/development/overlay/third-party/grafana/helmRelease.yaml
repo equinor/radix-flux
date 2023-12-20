@@ -6,9 +6,9 @@ metadata:
 spec:
   chart:
     spec:
-      version: 7.0.19 # https://artifacthub.io/packages/helm/grafana/grafana
+      version: ${GRAFANA_VERSION}
   values:
     env:
-      GF_DATABASE_HOST: s941-radix-grafana-dev.mysql.database.azure.com
+      GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
       GF_DATABASE_NAME: grafana
       GF_DATABASE_USER: grafana
