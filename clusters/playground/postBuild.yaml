@@ -24,7 +24,7 @@ spec:
       CERT_MANAGER_VERSION: 1.13.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.53.0
       VELERO_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
-      NGINX_VERSION: 4.8.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      NGINX_VERSION: 4.9.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
