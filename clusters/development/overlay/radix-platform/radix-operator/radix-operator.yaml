@@ -55,7 +55,7 @@ spec:
               env:
                 limitrange:
                   default:
-                    memory: 1000Mi
+                    memory: 500Mi
               builder:
                 resources:
                   limits:
