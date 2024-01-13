@@ -26,7 +26,7 @@ spec:
       VELERO_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       NGINX_VERSION: 4.9.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       GRAFANA_LOKI: 2.10.0 # https://artifacthub.io/packages/helm/grafana/loki-stack
-      GRAFANA_VERSION: 7.1.0 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 7.2.0 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
     substituteFrom:
     - kind: ConfigMap
