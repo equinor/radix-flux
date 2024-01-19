@@ -6,6 +6,6 @@ metadata:
 spec:
   chart:
     spec:
-      version: v1.23.2 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
+      version: v1.23.3 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
 
 
