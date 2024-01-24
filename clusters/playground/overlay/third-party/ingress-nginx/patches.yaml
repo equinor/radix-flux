@@ -65,3 +65,4 @@ spec:
         kind: HelmRelease
         name: ingress-nginx
         namespace: ingress-nginx
+
