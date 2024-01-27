@@ -24,7 +24,7 @@ spec:
       CERT_MANAGER_VERSION: 1.13.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.53.0
       VELERO_VERSION: 5.2.2 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
-      NGINX_VERSION: 4.9.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      NGINX_VERSION: 4.9.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       GRAFANA_LOKI: 2.10.1 # https://artifacthub.io/packages/helm/grafana/loki-stack
       GRAFANA_VERSION: 7.2.4 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
