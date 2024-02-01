@@ -1,0 +1,10 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kubernetes-replicator
+  namespace: kube-system
+spec:
+  chart:
+    spec:
+      version: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
+
