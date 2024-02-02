@@ -15,7 +15,7 @@ spec:
               kind: Deployment
               name: kubernetes-replicator
             patch: |
-              - op: add
+              - op: replace
                 path: /spec/replicas
                 value: 0
 
