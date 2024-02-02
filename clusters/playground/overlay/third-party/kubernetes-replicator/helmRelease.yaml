@@ -8,13 +8,14 @@ spec:
     spec:
       version: ${KUBERNETES_REPLICATOR} # Set in postBuild development
   postRenderers:
-    - kustomize:
-        patchesStrategicMerge:
-          - apiVersion: apps/v1
-            kind: Deployment
-            metadata:
+     - kustomize:
+        patches:
+          - target:
+              version: v1
+              kind: Deployment
               name: kubernetes-replicator
-              namespace: kubernetes-replicator
-            spec:
-              replicas: 0
+            patch: |
+              - op: add
+                path: /spec/replicas
+                value: 0
 
