@@ -25,6 +25,7 @@ spec:
       TEKTON_VERSION: v0.53.0
       VELERO_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       NGINX_VERSION: 4.9.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
