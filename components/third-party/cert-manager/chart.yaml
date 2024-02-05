@@ -15,7 +15,3 @@ spec:
       kind: Deployment
       name: cert-manager
       namespace: cert-manager
-  valuesFrom: # TODO: Remove this section and related bootstrap in radix-platform
-    - kind: Secret
-      name: cert-manager-helm-secret
-      valuesKey: config
