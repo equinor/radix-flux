@@ -28,7 +28,7 @@ spec:
       GRAFANA_LOKI: 2.9.12 # https://artifacthub.io/packages/helm/grafana/loki-stack
       GRAFANA_VERSION: 7.0.21 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
-      RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
+      RADIX_WILDCARD_CERTIFICATE_ISSUER: digicert-dns01
       KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
     substituteFrom:
     - kind: ConfigMap
