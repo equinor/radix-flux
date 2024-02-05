@@ -10,7 +10,7 @@ resources:
 - ../../components/third-party/grafana
 - ../../components/third-party/ingress-nginx
 - ../../components/third-party/kube-prometheus-stack
-- ../../components/third-party/kubed
+- ../../components/third-party/kubernetes-replicator
 - ../../components/third-party/kured
 - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
@@ -35,7 +35,7 @@ patches:
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/postBuild.yaml
-  - path: ./overlay/third-party/kubed/helmRelease.yaml
+  - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml  
