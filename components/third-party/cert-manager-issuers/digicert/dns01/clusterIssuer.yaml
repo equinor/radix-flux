@@ -17,7 +17,7 @@ spec:
       privateKeySecretName: digicert-dns01-private-key
     substituteFrom:
       - kind: Secret
-        name: digicert-clusterissuer-external-account-flux-values
+        name: digicert-clusterissuer-flux-values
       - kind: Secret
         name: cert-manager-certificate-values
   prune: true

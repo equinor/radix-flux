@@ -24,7 +24,7 @@ spec:
       rbac:
         create: true
     podLabels: { aadpodidbinding: certman-label }
-  valuesFrom:
+  valuesFrom: # TODO: Remove this section and related bootstrap in radix-platform
     - kind: Secret
       name: cert-manager-helm-secret
       valuesKey: config
