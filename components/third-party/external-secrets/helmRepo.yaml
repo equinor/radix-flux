@@ -5,4 +5,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  url: https://charts.external-secrets.io
+  url: https://charts.external-secrets.io/
