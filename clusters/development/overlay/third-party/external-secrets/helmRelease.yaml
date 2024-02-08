@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: external-secrets
+  name: external-secrets-operator
   namespace: external-secrets
 spec:
   chart:
@@ -13,7 +13,7 @@ spec:
           - target:
               version: v1
               kind: Deployment
-              name: external-secrets
+              name: external-secrets-operator
             patch: |
               - op: replace
                 path: /spec/replicas
