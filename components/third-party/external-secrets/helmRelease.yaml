@@ -1,17 +1,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: external-secrets
+  name: external-secrets-operator
   namespace: external-secrets
 spec:
-  releaseName: external-secrets
+  releaseName: external-secrets-operator
   chart:
     spec:
-      chart: external-secrets
+      chart: external-secrets-operator
       version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
-        name: external-secrets
+        name: external-secrets-operator
         namespace: flux-system
   interval: 5m
   install:
