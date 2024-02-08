@@ -7,7 +7,7 @@ spec:
   releaseName: external-secrets-operator
   chart:
     spec:
-      chart: external-secrets-operator
+      chart: external-secrets
       version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
