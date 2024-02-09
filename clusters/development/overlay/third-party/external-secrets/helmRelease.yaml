@@ -7,15 +7,15 @@ spec:
   chart:
     spec:
       version: ${EXTERNAL_SECRETS} # Set in postBuild development
-  postRenderers:
-     - kustomize:
-        patches:
-          - target:
-              version: v1
-              kind: Deployment
-              name: external-secrets-operator
-            patch: |
-              - op: replace
-                path: /spec/replicas
-                value: 0
+  # postRenderers:
+  #    - kustomize:
+  #       patches:
+  #         - target:
+  #             version: v1
+  #             kind: Deployment
+  #             name: external-secrets-operator
+  #           patch: |
+  #             - op: replace
+  #               path: /spec/replicas
+  #               value: 0
 
