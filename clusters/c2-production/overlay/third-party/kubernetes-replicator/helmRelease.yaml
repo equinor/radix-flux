@@ -7,15 +7,3 @@ spec:
   chart:
     spec:
       version: ${KUBERNETES_REPLICATOR} # Set in postBuild development
-  postRenderers:
-     - kustomize:
-        patches:
-          - target:
-              version: v1
-              kind: Deployment
-              name: kubernetes-replicator
-            patch: |
-              - op: replace
-                path: /spec/replicas
-                value: 0
-
