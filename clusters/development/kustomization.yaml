@@ -20,7 +20,7 @@ resources:
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
 - ./overlay/radix-platform/radix-cost-allocation/radix-cost-allocation.yaml
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
-- ./overlay/radix-platform/radix-vulnerability-scanner/radix-vulnerability-scanner.yaml
+- ./overlay/radix-platform/radix-vulnerability-scanner
 - ../../components/radix-platform/radix-velero-plugin
 - ../../components/third-party/tekton
 - ../../components/third-party/azure-workload-identity
@@ -40,4 +40,4 @@ patches:
   - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
-  - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml  
+  - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
