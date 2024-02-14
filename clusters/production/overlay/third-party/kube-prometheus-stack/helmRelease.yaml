@@ -13,10 +13,10 @@ spec:
         resources:
           limits:
             cpu: "6"
-            memory: "50Gi"
+            memory: "64Gi"
           requests:
             cpu: "4"
-            memory: "50Gi"
+            memory: "64Gi"
         storageSpec:
           volumeClaimTemplate:
             spec:
