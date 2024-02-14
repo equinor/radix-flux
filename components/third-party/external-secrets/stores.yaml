@@ -14,3 +14,6 @@ spec:
     name: flux-system
   wait: true
   timeout: 2m
+  postBuild:
+    substitute:
+      EXTERNAL_SECRET_URL: ${EXTERNAL_SECRET_URL} # Set in clusters/<cluster>/postBuild
