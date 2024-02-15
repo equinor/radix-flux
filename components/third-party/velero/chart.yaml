@@ -18,3 +18,5 @@ spec:
       kind: Deployment
       name: velero
       namespace: velero
+  dependsOn:
+    - name: external-secrets-operator
