@@ -28,7 +28,7 @@ spec:
       EXTERNAL_SECRETS: 0.9.11 # https://github.com/external-secrets/external-secrets
       EXTERNAL_SECRET_MI_CLIENT_ID: 361d1fbc-43e9-4219-b5e9-78d7cc9aafae
       EXTERNAL_SECRET_URL: https://radix-keyv-platform.vault.azure.net/
-      VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-prod.database.windows.net
+      VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-platform.database.windows.net
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
