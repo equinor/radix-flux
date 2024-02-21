@@ -12,7 +12,7 @@ spec:
       replicator.v1.mittwald.de/replicate-to-matching: "radix-wildcard-sync=radix-wildcard-tls-cert"
   issuerRef:
     kind: ClusterIssuer
-    name: ${CERT_ISSUER}
+    name: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
   duration: 2160h # 90d
   renewBefore: 762h # 32d. Let's Encrypt will email an alert if 30d remain and cert has not been renewed.
   commonName: "*.${AZ_RESOURCE_DNS}"
