@@ -24,6 +24,9 @@ resources:
 - ../../components/radix-platform/radix-velero-plugin
 - ../../components/third-party/tekton
 - ../../components/third-party/azure-workload-identity
+- ../../components/third-party/cert-manager-issuers/digicert/http01
+- ../../components/third-party/cert-manager-issuers/digicert/dns01
+- ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
 patches:
   - path: ./postBuild.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
