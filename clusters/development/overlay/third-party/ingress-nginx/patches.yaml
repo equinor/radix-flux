@@ -33,6 +33,7 @@ spec:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
               config:
                 custom-http-errors: "503"
+                proxy-buffering: "on"
               extraArgs:
                 default-ssl-certificate: "default/radix-wildcard-tls-cert"
             defaultBackend:

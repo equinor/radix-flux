@@ -9,6 +9,8 @@ spec:
   interval: 5m
   path: "./clusters/production/overlay/third-party/cert-manager/certs"
   postBuild:
+    substitute:
+      RADIX_WILDCARD_CERTIFICATE_ISSUER: ${RADIX_WILDCARD_CERTIFICATE_ISSUER:=tba}
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config

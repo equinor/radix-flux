@@ -16,14 +16,20 @@ spec:
       RADIX_ACR_CLEANUP_TAG: release-c53f1685-1699341827 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: release-3fb393bd-1701438080 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-2b5b1144-1699343634 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: release-f2f5ec51-1704462334 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: release-e79e8df1-1708415198 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-a6bc0cec-1699343647 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
       velero_plugin_acr_image: radixprod.azurecr.io/radix-velero-plugin:release-f40b3435-1700833280 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
-      CERT_MANAGER_VERSION: 1.13.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.13.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.53.0
-      VELERO_VERSION: 5.1.4 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
-      NGINX_VERSION: 4.8.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      VELERO_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      NGINX_VERSION: 4.9.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
+      KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
+      EXTERNAL_SECRETS: 0.9.11 # https://github.com/external-secrets/external-secrets
+      EXTERNAL_SECRET_MI_CLIENT_ID: 361d1fbc-43e9-4219-b5e9-78d7cc9aafae
+      EXTERNAL_SECRET_URL: https://radix-keyv-platform.vault.azure.net/
+      VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-platform.database.windows.net
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config

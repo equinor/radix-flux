@@ -12,13 +12,13 @@ spec:
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixdevapp.azurecr.io
-      ACTIVE_CLUSTER: weekly-02
+      ACTIVE_CLUSTER: weekly-08
       RADIX_ACR_CLEANUP_TAG: master-2b13c206-1703837882 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
-      RADIX_CLUSTER_CLEANUP_TAG: master-65d9aaa9-1702557068 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
+      RADIX_CLUSTER_CLEANUP_TAG: master-2b59ccf9-1706788943 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: master-d95ca3d8-1704371088 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: master-070a892e-1704437877 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: master-20bee248-1704455434 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: main-027956df-1704378818 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_COST_ALLOCATION_TAG: master-7b6b8445-1707730679 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_OPERATOR_TAG: master-c6f64c00-1708348926 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: main-ca72f304-1707723924 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-191befc3-1704359801 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.14.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
@@ -28,6 +28,12 @@ spec:
       GRAFANA_LOKI: 2.10.1 # https://artifacthub.io/packages/helm/grafana/loki-stack
       GRAFANA_VERSION: 7.3.2 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
+      RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
+      KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
+      EXTERNAL_SECRETS: 0.9.11 # https://github.com/external-secrets/external-secrets
+      EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d
+      EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
+      VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config

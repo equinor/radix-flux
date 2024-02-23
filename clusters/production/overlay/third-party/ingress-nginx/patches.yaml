@@ -25,15 +25,16 @@ spec:
               resources:
                 limits:
                   cpu: "6"
-                  memory: 10Gi # Adding ~20% more memory from last limit (8Gi)
+                  memory: 20Gi
                 requests:
                   cpu: 300m
-                  memory: 10Gi
+                  memory: 20Gi
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
               config:
                 custom-http-errors: "503"
+                proxy-buffering: "on"
               extraArgs: {
                 default-ssl-certificate: "default/radix-wildcard-tls-cert"
               }

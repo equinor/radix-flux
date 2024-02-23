@@ -17,7 +17,7 @@ spec:
       privateKeySecretName: digicert-http01-private-key
     substituteFrom:
       - kind: Secret
-        name: digicert-clusterissuer-external-account-flux-values
+        name: digicert-clusterissuer-flux-values
   prune: true
   sourceRef:
     kind: GitRepository

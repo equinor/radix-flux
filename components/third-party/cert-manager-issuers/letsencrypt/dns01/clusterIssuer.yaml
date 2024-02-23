@@ -1,0 +1,26 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: letsencrypt-clusterissuer-dns01
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: cert-manager
+  interval: 5m
+  path: "./components/third-party/cert-manager-issuers/letsencrypt/dns01/resources"
+  postBuild:
+    substitute:
+      certManagerNamespace: cert-manager
+      clusterIssuerName: letsencrypt-dns01
+      privateKeySecretName: letsencrypt-dns01-private-key
+    substituteFrom:
+      - kind: Secret
+        name: letsencrypt-clusterissuer-flux-values
+      - kind: Secret
+        name: cert-manager-certificate-values
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  timeout: 2m
