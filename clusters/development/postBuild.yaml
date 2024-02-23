@@ -20,13 +20,13 @@ spec:
       RADIX_OPERATOR_TAG: master-c6f64c00-1708348926 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: main-ca72f304-1707723924 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
-      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-6c98f28d-1706789085 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
-      CERT_MANAGER_VERSION: 1.13.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-191befc3-1704359801 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      CERT_MANAGER_VERSION: 1.14.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.53.0
-      VELERO_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
-      NGINX_VERSION: 4.9.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      GRAFANA_LOKI: 2.9.12 # https://artifacthub.io/packages/helm/grafana/loki-stack
-      GRAFANA_VERSION: 7.0.21 # https://artifacthub.io/packages/helm/grafana/grafana
+      VELERO_VERSION: 5.4.1 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      NGINX_VERSION: 4.9.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      GRAFANA_LOKI: 2.10.1 # https://artifacthub.io/packages/helm/grafana/loki-stack
+      GRAFANA_VERSION: 7.3.2 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
