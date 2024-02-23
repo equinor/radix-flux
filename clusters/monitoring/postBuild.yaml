@@ -7,6 +7,7 @@ spec:
   prune: false
   postBuild:
     substitute:
+      RADIX_ZONE_MIGRATE: extmon
       EXTERNAL_SECRETS: 0.9.11 # https://github.com/external-secrets/external-secrets
       EXTERNAL_SECRET_MI_CLIENT_ID: 4817cdf9-b4bf-4884-863d-c2877ef03757
       EXTERNAL_SECRET_URL: https://radix-keyv-extmon.vault.azure.net/
