@@ -9,6 +9,7 @@ spec:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/production
       RADIX_ZONE: prod # dev | playground | prod
+      RADIX_ZONE_MIGRATE: platform
       RADIX_ENVIRONMENT: prod # dev | prod
       radix_acr_repo_url: radixprod.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixprodapp.azurecr.io

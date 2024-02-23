@@ -32,6 +32,11 @@ spec:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
     prometheus:
       prometheusSpec:
+        tolerations:
+        - effect: NoSchedule
+          key: nodepooltasks
+          operator: Equal
+          value: jobs
         retention: 60d # default
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
