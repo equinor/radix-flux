@@ -22,5 +22,5 @@ spec:
     - jobs
     includedResources:
     - '*'
-    storageLocation: azure
+    storageLocation: default
     ttl: 168h0m0s
