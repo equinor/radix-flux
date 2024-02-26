@@ -32,6 +32,8 @@ spec:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
     prometheus:
       prometheusSpec:
+        query:
+          timeout: 10s
         tolerations:
         - effect: NoSchedule
           key: nodepooltasks
