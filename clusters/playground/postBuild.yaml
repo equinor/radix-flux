@@ -25,7 +25,7 @@ spec:
       CERT_MANAGER_VERSION: 1.14.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       TEKTON_VERSION: v0.53.0
       VELERO_VERSION: 5.4.1 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
-      NGINX_VERSION: 4.9.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      NGINX_VERSION: 4.9.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
       EXTERNAL_SECRETS: 0.9.11 # https://github.com/external-secrets/external-secrets
