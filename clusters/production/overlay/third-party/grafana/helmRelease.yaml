@@ -12,3 +12,4 @@ spec:
       GF_DATABASE_HOST: s940-radix-grafana-platform-prod.mysql.database.azure.com
       GF_DATABASE_NAME: grafana
       GF_DATABASE_USER: grafana
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: f898b3ed-8cda-4f41-9487-7ff55ea41d92
