@@ -12,3 +12,4 @@ spec:
       GF_DATABASE_HOST: s941-radix-grafana-playground.mysql.database.azure.com
       GF_DATABASE_NAME: grafana
       GF_DATABASE_USER: grafana
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: e1f72508-ae39-4231-87f1-27f517aa044a
