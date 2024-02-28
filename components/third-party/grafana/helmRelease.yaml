@@ -40,7 +40,6 @@ spec:
       GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
       # GF_SERVER_ROOT_URL: ""                    # Set by secret
       # GF_DATABASE_PASSWORD: ""                  # Set by secret
-      # GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ""       # Set by secret
       # GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ""   # Set by secret
       GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ENABLED: "false"
