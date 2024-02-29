@@ -21,3 +21,7 @@ spec:
       GF_DATABASE_NAME: grafana
       GF_DATABASE_USER: grafana
       GF_AUTH_GENERIC_OAUTH_CLIENT_ID: 8d25ce2e-aa30-4834-93dc-292645bf2918
+  valuesFrom:
+  - kind: Secret
+    name: kube-prometheus-stack-helm-secret
+    valuesKey: config
