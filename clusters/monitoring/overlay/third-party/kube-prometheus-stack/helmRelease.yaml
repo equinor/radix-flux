@@ -11,6 +11,8 @@ spec:
     prometheusOperator: 
     prometheus:
       prometheusSpec:
+        query:
+          timeout: 60s
         resources:
           limits:
             cpu: "2"
