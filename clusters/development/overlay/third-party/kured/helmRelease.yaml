@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 5.4.2 # https://artifacthub.io/packages/helm/kured/kured
+      version: 5.4.3 # https://artifacthub.io/packages/helm/kured/kured
   values:
     extraArgs:
       start-time: 6am
