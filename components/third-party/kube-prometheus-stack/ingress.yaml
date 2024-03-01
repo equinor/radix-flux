@@ -4,14 +4,12 @@ metadata:
   name: prometheus-ingresses
   namespace: flux-system
 spec:
-  dependsOn:
-  - name: external-secrets-operator
   interval: 5m
   path: "./components/third-party/kube-prometheus-stack/ingress"
   postBuild:
-    substituteFrom:
-    - kind: Secret
-      name: prometheus-secret-v1
+    substitute:
+      AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba} # Set in postBuild
+      ACTIVE_CLUSTER: ${ACTIVE_CLUSTER:=tba} # Set in postBuild
   prune: true
   sourceRef:
     kind: GitRepository
