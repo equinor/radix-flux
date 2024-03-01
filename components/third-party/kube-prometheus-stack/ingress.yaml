@@ -12,7 +12,6 @@ spec:
     substituteFrom:
     - kind: Secret
       name: prometheus-secret-v1
-      namespace: monitor
   prune: true
   sourceRef:
     kind: GitRepository
