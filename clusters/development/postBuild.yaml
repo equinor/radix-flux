@@ -8,6 +8,7 @@ spec:
   postBuild:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/development
+      AZ_RESOURCE_DNS: dev.radix.equinor.com
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io

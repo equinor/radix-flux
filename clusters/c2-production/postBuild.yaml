@@ -8,6 +8,7 @@ spec:
   postBuild:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/c2-production
+      AZ_RESOURCE_DNS: c2.radix.equinor.com
       RADIX_ZONE: c2 # dev | playground | prod
       RADIX_ZONE_MIGRATE: c2
       RADIX_ENVIRONMENT: prod # dev | prod
