@@ -37,7 +37,7 @@ metadata:
   namespace: monitor
 spec:
   rules:
-  - host: test-prometheus-oauth2.${CLUSTER_NAME_LOWER}.$AZ_RESOURCE_DNS
+  - host: test-prometheus-oauth2.${CLUSTER_NAME_LOWER}.${AZ_RESOURCE_DNS}
     http:
       paths:
       - backend:
@@ -49,5 +49,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - test-prometheus-oauth2.${CLUSTER_NAME_LOWER}.$AZ_RESOURCE_DNS
+    - test-prometheus-oauth2.${CLUSTER_NAME_LOWER}.${AZ_RESOURCE_DNS}
     secretName: radix-wildcard-tls-cert
