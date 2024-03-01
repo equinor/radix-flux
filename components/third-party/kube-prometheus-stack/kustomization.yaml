@@ -6,4 +6,3 @@ resources:
 - password.yaml
 - secret.yaml
 - ingress.yaml
-
