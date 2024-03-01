@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: prometheus-htpasswd
+    nginx.ingress.kubernetes.io/auth-secret: prometheus-htpasswd-v1
     nginx.ingress.kubernetes.io/auth-realm: "Authentication Required - ok"
   labels:
     app: prometheus

@@ -23,5 +23,5 @@ spec:
       GF_AUTH_GENERIC_OAUTH_CLIENT_ID: 8d25ce2e-aa30-4834-93dc-292645bf2918
   valuesFrom:
   - kind: Secret
-    name: grafana-helm-secret
+    name: grafana-helm-secret-v1
     valuesKey: config
