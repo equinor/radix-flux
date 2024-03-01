@@ -8,6 +8,7 @@ spec:
   postBuild:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/playground
+      AZ_RESOURCE_DNS: playground.radix.equinor.com
       RADIX_ZONE: playground # dev | playground | prod
       RADIX_ZONE_MIGRATE: playground
       RADIX_ENVIRONMENT: dev # dev | prod
