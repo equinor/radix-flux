@@ -1,17 +1,6 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1
+apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-metadata:
-  name: grafana
-  namespace: flux-system
-spec:
-  interval: 5m
-  path: "./components/third-party/grafana/chart"
-  dependsOn:
-    - name: external-secrets-operator
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  wait: true
-  timeout: 2m
-
+resources:
+- helmRepo.yaml
+- secret.yaml
+- helmRelease.yaml
