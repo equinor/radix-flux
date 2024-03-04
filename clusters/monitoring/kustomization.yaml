@@ -13,6 +13,6 @@ patches:
   - path: ./overlay/third-party/cert-manager/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
-  - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
+  - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/prometheus-blackbox-exporter/helmRelease.yaml
   - path: ./overlay/third-party/external-secrets/patches.yaml
