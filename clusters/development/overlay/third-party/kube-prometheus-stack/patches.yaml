@@ -10,7 +10,7 @@ spec:
   patches:
     - target:
         kind: HelmRelease
-        name: grafana
+        name: kube-prometheus-stack
         namespace: monitor
       patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2beta1
