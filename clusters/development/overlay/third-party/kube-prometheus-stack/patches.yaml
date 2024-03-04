@@ -21,7 +21,7 @@ spec:
         spec:
           chart:
             spec:
-              version: 56.19.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+              version: ${KUBE_PROMETHEUS_STACK} # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
           values:
             prometheus:
               prometheusSpec:
