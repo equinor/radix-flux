@@ -6,7 +6,7 @@ metadata:
 spec:
   postBuild:
     substitute:
-      ALERT_WEB_CONSOLE_BASE_URL: "https://console.dev.radix.equinor.com"
+      ALERT_WEB_CONSOLE_BASE_URL: "https://console.radix.equinor.com"
   patches:
     - target:
         kind: HelmRelease
@@ -25,11 +25,18 @@ spec:
           values:
             prometheus:
               prometheusSpec:
-                retention: 60d # default
                 resources:
                   limits:
-                    cpu: "1"
-                    memory: "8Gi"
+                    cpu: "6"
+                    memory: "100Gi"
                   requests:
-                    cpu: "0.5"
-                    memory: "4Gi"
+                    cpu: "4"
+                    memory: "100Gi"
+                storageSpec:
+                  volumeClaimTemplate:
+                    spec:
+                      resources:
+                        requests:
+                          storage: 2048Gi # P40
+                          #Premium SSD Size   P1    P2    P3    P4    P6    P10   P15   P20   P30   P40
+                          #                   4     8     16    32    64    128   256   512   1024  2048
