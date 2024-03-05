@@ -15,7 +15,7 @@ spec:
       EXTERNAL_SECRET_URL: https://radix-keyv-extmon.vault.azure.net/
       KUBE_PROMETHEUS_STACK: 48.3.3 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       GRAFANA_VERSION: 7.3.3 # https://artifacthub.io/packages/helm/grafana/grafana
-      GF_DATABASE_HOST: s940-radix-grafana-extmon-prod.mysql.database.azure.com
+      GRAFANA_DB_HOST: s940-radix-grafana-extmon-prod.mysql.database.azure.com
     # substituteFrom:
     # - kind: ConfigMap
     #   name: radix-flux-config

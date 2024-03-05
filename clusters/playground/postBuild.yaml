@@ -35,7 +35,7 @@ spec:
       EXTERNAL_SECRET_URL: https://radix-keyv-playground.vault.azure.net/
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-playground.database.windows.net
       KUBE_PROMETHEUS_STACK: 56.19.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      GF_DATABASE_HOST: s941-radix-grafana-playground.mysql.database.azure.com
+      GRAFANA_DB_HOST: s941-radix-grafana-playground.mysql.database.azure.com
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
