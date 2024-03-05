@@ -72,7 +72,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/auth-url: "http://test-oauth:4180/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-url: "http://test-oauth.monitor.svc.cluster.local:4180/oauth2/auth"
   labels:
     app: prometheus
   name: prometheus-oauth2-auth-v1
