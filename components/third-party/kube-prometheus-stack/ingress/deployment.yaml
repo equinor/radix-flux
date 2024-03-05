@@ -28,9 +28,14 @@ spec:
             - name: OAUTH2_PROXY_SKIP_JWT_BEARER_TOKENS
               value: "true"
             - name: OAUTH2_PROXY_CLIENT_ID
-              value: 7ef841f8-a263-45ea-8993-683cc6817ae2
+              value: prometheus.ext-mon
             - name: OAUTH2_PROXY_OIDC_ISSUER_URL
-              value: https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/4905422c-bea8-4ba6-8267-0ebc87eb4b0a/
+              value: https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/d11b9368-ba7a-451c-acb4-186c50caf495/
+            - name: OAUTH2_PROXY_OIDC_GROUPS_CLAIM
+              value: sub
+            - name: OAUTH2_PROXY_ALLOWED_GROUP
+              value: "system:serviceaccount:monitor:default"
+
           image: quay.io/oauth2-proxy/oauth2-proxy:v7.2.0
           name: web
           ports:
