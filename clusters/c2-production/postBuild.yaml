@@ -33,6 +33,7 @@ spec:
       EXTERNAL_SECRET_URL: https://radix-keyv-c2.vault.azure.net/
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-c2-prod.database.windows.net
       KUBE_PROMETHEUS_STACK: 55.6.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      GF_DATABASE_HOST: s940-radix-grafana-c2-prod.mysql.database.azure.com
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config

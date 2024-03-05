@@ -1,0 +1,28 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: grafana
+  namespace: flux-system
+spec:
+  patches:
+    - target:
+        kind: HelmRelease
+        name: grafana
+        namespace: monitor
+      patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        kind: HelmRelease
+        metadata:
+          name: grafana
+          namespace: monitor
+        spec:
+          chart:
+            spec:
+              version: ${GRAFANA_VERSION}
+          values:
+            env:
+              GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
+              GF_DATABASE_NAME: grafana
+              GF_DATABASE_USER: grafana
+              GF_AUTH_GENERIC_OAUTH_CLIENT_ID: e1f72508-ae39-4231-87f1-27f517aa044a
