@@ -4,9 +4,6 @@ metadata:
   name: grafana
   namespace: monitor
 spec:
-  dependsOn:
-  - name: external-secrets-operator
-    namespace: external-secrets
   releaseName: grafana
   chart:
     spec:
