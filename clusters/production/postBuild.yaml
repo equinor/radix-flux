@@ -29,7 +29,7 @@ spec:
       GRAFANA_VERSION: 7.3.3 # https://artifacthub.io/packages/helm/grafana/grafana
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
-      EXTERNAL_SECRETS: 0.9.11 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.9.13 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTERNAL_SECRET_MI_CLIENT_ID: 361d1fbc-43e9-4219-b5e9-78d7cc9aafae
       EXTERNAL_SECRET_URL: https://radix-keyv-platform.vault.azure.net/
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-platform.database.windows.net
