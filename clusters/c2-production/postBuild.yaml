@@ -32,7 +32,7 @@ spec:
       EXTERNAL_SECRETS: 0.9.13 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTERNAL_SECRET_MI_CLIENT_ID: 88ab202e-494e-44c8-a543-a3bd0b499a87
       EXTERNAL_SECRET_URL: https://radix-keyv-c2.vault.azure.net/
-      VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-c2-prod.database.windows.net
+      VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-c2.database.windows.net
       KUBE_PROMETHEUS_STACK: 55.6.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       GRAFANA_DB_HOST: s940-radix-grafana-c2-prod.mysql.database.azure.com
     substituteFrom:
