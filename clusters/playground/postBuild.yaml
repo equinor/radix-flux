@@ -16,7 +16,7 @@ spec:
       RADIX_APP_ACR_REPO_URL: radixplaygroundapp.azurecr.io
       ACTIVE_CLUSTER: playground-07
       RADIX_ACR_CLEANUP_TAG: release-c53f1685-1699341838 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
-      RADIX_CLUSTER_CLEANUP_TAG: release-2f497aa2-1699615782 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
+      RADIX_CLUSTER_CLEANUP_TAG: release-2a76a48b-1709886075 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: release-29b82e0f-1709650905 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-2b5b1144-1699343627 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: release-cfc6e67d-1709650040 # {"$imagepolicy": "flux-system:radix-operator:tag"}
