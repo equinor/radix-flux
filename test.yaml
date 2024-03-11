@@ -1,0 +1,16 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: grafana
+  namespace: flux-system
+spec:
+  patches:
+    - target:
+        kind: Ingress
+        version: v1
+        name: prometheus-basic-auth-v1
+        namespace: monitor
+      patch: |
+        - op: replace
+          path: /metadata/annotations/nginx.ingress.kubernetes.io/auth-secret
+          value: prometheus-htpasswd-v1
