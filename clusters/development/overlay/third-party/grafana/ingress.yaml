@@ -13,6 +13,8 @@ spec:
         apiVersion: networking.k8s.io/v1
         kind: Ingress
         metadata:
+          name: prometheus-basic-auth-v1
+          namespace: monitor
           annotations:
             nginx.ingress.kubernetes.io/auth-secret: prometheus-htpasswd-v1
 
