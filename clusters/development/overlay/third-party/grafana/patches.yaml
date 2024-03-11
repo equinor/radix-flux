@@ -25,3 +25,15 @@ spec:
               GF_DATABASE_NAME: grafana
               GF_DATABASE_USER: grafana
               GF_AUTH_GENERIC_OAUTH_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70
+    - target:
+        kind: Ingress
+        name: prometheus-basic-auth-v1
+        namespace: monitor
+      patch: |-
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/auth-secret: prometheus-htpasswd-v1
+
+    
