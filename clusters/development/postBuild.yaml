@@ -35,7 +35,7 @@ spec:
       EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d
       EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
-      KUBE_PROMETHEUS_STACK: 57.0.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 57.0.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
