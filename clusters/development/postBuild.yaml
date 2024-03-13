@@ -13,7 +13,7 @@ spec:
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixdevapp.azurecr.io
-      ACTIVE_CLUSTER: weekly-10
+      ACTIVE_CLUSTER: weekly-11
       RADIX_ACR_CLEANUP_TAG: master-1512e0ae-1710145282 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-dc69d58c-1710145282 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: master-b558ef8b-1709645481 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
@@ -35,6 +35,7 @@ spec:
       EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d
       EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
+      VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
       KUBE_PROMETHEUS_STACK: 56.19.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
     substituteFrom:
     - kind: ConfigMap
