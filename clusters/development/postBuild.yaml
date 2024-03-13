@@ -19,7 +19,7 @@ spec:
       RADIX_CICD_CANARY_TAG: master-b558ef8b-1709645481 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: master-c59a5bd3-1710149244 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-c94da56a-1709552546 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: main-92fd7c42-1710167254 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: main-d55f49c9-1710320300 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-f6cf02f2-1710145304 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       CERT_MANAGER_VERSION: 1.14.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
