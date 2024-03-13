@@ -34,6 +34,7 @@ spec:
       EXTERNAL_SECRET_MI_CLIENT_ID: 4e3784c7-1a3e-4885-9783-b7227f8d1fb3
       EXTERNAL_SECRET_URL: https://radix-keyv-playground.vault.azure.net/
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-playground.database.windows.net
+      VULNERABILITY_SCANNER_SQL_CLIENT_ID: a59fc37e-f966-4a53-ba73-cac5e2590b24
       KUBE_PROMETHEUS_STACK: 56.19.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       GRAFANA_DB_HOST: s941-radix-grafana-playground.mysql.database.azure.com
     substituteFrom:
