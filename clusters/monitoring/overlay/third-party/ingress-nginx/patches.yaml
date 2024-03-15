@@ -28,6 +28,10 @@ spec:
                         memory: 500Mi
                   extraArgs: null
                   priorityClassName: high-priority
+            valuesFrom:
+            - kind: Secret
+               name: ingress-nginx-controller-pip
+               valuesKey: config
       target:
         kind: HelmRelease
         name: ingress-nginx
