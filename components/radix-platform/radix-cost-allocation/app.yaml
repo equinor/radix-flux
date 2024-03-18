@@ -8,8 +8,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/radix-platform/radix-cost-allocation
-  prune: false
   postBuild:
     substitute:
       # Set in postBuild
