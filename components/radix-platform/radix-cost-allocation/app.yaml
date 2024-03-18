@@ -1,0 +1,23 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-cost-allocation
+  prune: false
+  postBuild:
+    substitute:
+      # Set in postBuild
+      radix_acr_repo_url: ${radix_acr_repo_url:=tba}
+      RADIX_COST_ALLOCATION_TAG: ${RADIX_COST_ALLOCATION_TAG:=tba}
+      COST_ALLOCATION_SQL_CLIENT_ID: ${COST_ALLOCATION_SQL_CLIENT_ID:=tba}
+      COST_ALLOCATION_SQL_SERVER: ${COST_ALLOCATION_SQL_SERVER:=tba}
+  path: ./components/radix-platform/radix-cost-allocation/app
+  prune: false
+  dependsOn:
+    - name: external-secrets-operator

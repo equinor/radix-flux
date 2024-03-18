@@ -4,21 +4,10 @@ metadata:
   name: radix-cost-allocation
   namespace: flux-system
 spec:
-  interval: 10m0s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./components/radix-platform/radix-cost-allocation
-  prune: false
   postBuild:
     substitute:
-      RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
-      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
       radix_cost_allocation_helm_chart_branch: master
       radix_cost_allocation_image_tag_prefix: master
-    substituteFrom:
-      - kind: ConfigMap
-        name: radix-flux-config
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2beta1
@@ -28,8 +17,6 @@ spec:
           namespace: radix-cost-allocation
         spec:
           values:
-            image:
-              tag: ${RADIX_COST_ALLOCATION_TAG} # Set in postBuild development
             resources:
               limits:
                 cpu: "2"

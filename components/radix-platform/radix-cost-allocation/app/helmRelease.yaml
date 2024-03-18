@@ -19,9 +19,21 @@ spec:
         - ./charts/values.yaml
   values:
     image:
-      repository: ${radix_acr_repo_url}/radix-cost-allocation         # Set by flux patch
-      tag: xx                                                         # Set by flux patch
+      repository: ${radix_acr_repo_url}/radix-cost-allocation  # Set by flux patch
+      tag: ${RADIX_COST_ALLOCATION_TAG}                        # Set by flux patch
       pullPolicy: Always
+
+    db:
+      server: ${COST_ALLOCATION_SQL_SERVER}
+      database: sqldb-radix-cost-allocation
+
+    podLabels:
+      azure.workload.identity/use: "true"
+    serviceAccount:
+      annotations:
+        azure.workload.identity/client-id: ${COST_ALLOCATION_SQL_CLIENT_ID}
+
+  # Remove belove when new app is released
   valuesFrom:
   - kind: Secret
     name: cost-db-secret
