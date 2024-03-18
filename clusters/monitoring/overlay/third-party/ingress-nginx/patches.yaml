@@ -12,26 +12,26 @@ spec:
            name: ingress-nginx
            namespace: ingress-nginx
         spec:
-           chart:
-              spec:
-                 version: ${NGINX_VERSION} # Set in postBuild development
-            values:
-               controller:
-                  metrics:
-                     serviceMonitor: null
-                  resources:
-                     limits:
-                        cpu: "6"
-                        memory: 500Mi
-                     requests:
-                        cpu: 100m
-                        memory: 500Mi
-                  extraArgs: null
-                  priorityClassName: high-priority
-            valuesFrom:
-            - kind: Secret
-               name: ingress-nginx-controller-pip
-               valuesKey: config
+         chart:
+            spec:
+               version: ${NGINX_VERSION} # Set in postBuild development
+         values:
+            controller:
+               metrics:
+                  serviceMonitor: null
+               resources:
+                  limits:
+                     cpu: "6"
+                     memory: 500Mi
+                  requests:
+                     cpu: 100m
+                     memory: 500Mi
+               extraArgs: null
+               priorityClassName: high-priority
+         valuesFrom:
+         - kind: Secret
+            name: ingress-nginx-controller-pip
+            valuesKey: config
       target:
         kind: HelmRelease
         name: ingress-nginx
