@@ -34,6 +34,8 @@ spec:
       EXTERNAL_SECRET_URL: https://radix-keyv-c2.vault.azure.net/
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-c2.database.windows.net
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 7264db03-2c4a-47b7-87d2-1bdfcc188131
+      COST_ALLOCATION_SQL_CLIENT_ID: e48dda41-942a-4b25-94a6-c017014abaa9
+      COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-c2-prod.database.windows.net
       KUBE_PROMETHEUS_STACK: 55.6.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       GRAFANA_DB_HOST: s940-radix-grafana-c2-prod.mysql.database.azure.com
     substituteFrom:
