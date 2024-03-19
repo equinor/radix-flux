@@ -7,7 +7,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: ext-mon-14
+      ACTIVE_CLUSTER: ext-mon-11
       AZ_RESOURCE_DNS: radix.equinor.com
       RADIX_ZONE_MIGRATE: extmon
       EXTERNAL_SECRETS: 0.9.11 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
