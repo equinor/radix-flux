@@ -17,5 +17,3 @@ spec:
       COST_ALLOCATION_SQL_SERVER: ${COST_ALLOCATION_SQL_SERVER:=tba}
   path: ./components/radix-platform/radix-cost-allocation/app
   prune: false
-  dependsOn:
-    - name: external-secrets-operator
