@@ -17,7 +17,7 @@ spec:
       ACTIVE_CLUSTER: eu-18
       RADIX_ACR_CLEANUP_TAG: release-c53f1685-1699341827 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: release-29b82e0f-1709650904 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-2b5b1144-1699343634 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-aadfa970-1710864558 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: release-30aa0fdb-1710753229 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-488bfb68-1710492687 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
