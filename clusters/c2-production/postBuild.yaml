@@ -18,7 +18,7 @@ spec:
       RADIX_ACR_CLEANUP_TAG: release-c53f1685-1699341847 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       RADIX_CICD_CANARY_TAG: release-29b82e0f-1709650905 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-aadfa970-1710864555 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: release-30aa0fdb-1710753230 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: release-8e1cfea9-1711020262 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-488bfb68-1710492687 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
       velero_plugin_acr_image: radixc2prod.azurecr.io/radix-velero-plugin:release-733b6867-1709886105 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
