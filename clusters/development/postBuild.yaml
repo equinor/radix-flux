@@ -38,7 +38,7 @@ spec:
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
       COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
-      KUBE_PROMETHEUS_STACK: 57.0.3 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 57.1.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
