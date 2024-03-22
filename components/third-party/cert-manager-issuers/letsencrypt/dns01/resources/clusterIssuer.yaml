@@ -13,7 +13,7 @@ spec:
       - dns01:
           azureDNS:
             managedIdentity:
-              clientID: "${managedIdentityClientId}"
+              clientID: "${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI}"
             subscriptionID: "${AZ_SUBSCRIPTION_ID}"
             resourceGroupName: "${AZ_RESOURCE_GROUP_COMMON}"
             hostedZoneName: "${AZ_RESOURCE_DNS}"
