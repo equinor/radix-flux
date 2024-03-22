@@ -13,7 +13,7 @@ spec:
       certManagerNamespace: cert-manager
       clusterIssuerName: letsencrypt-dns01
       privateKeySecretName: letsencrypt-dns01-private-key
-      # CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: ${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI}
+      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: ${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI}
     substituteFrom:
       - kind: Secret
         name: letsencrypt-clusterissuer-flux-values
