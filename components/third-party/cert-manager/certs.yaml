@@ -10,7 +10,7 @@ spec:
   path: "./components/third-party/cert-manager/certs"
   postBuild:
     substitute:
-      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: ${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI}
+      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: ${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI:=tba}
     substituteFrom:
       - kind: Secret
         name: cert-manager-certificate-values
