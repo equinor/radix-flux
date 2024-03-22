@@ -10,7 +10,6 @@ spec:
   path: "./components/third-party/cert-manager/certs"
   postBuild:
     substitute:
-      CLUSTER_NAME: ${clusterName}
       managedIdentityClientId: ${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI}
     substituteFrom:
       - kind: Secret
