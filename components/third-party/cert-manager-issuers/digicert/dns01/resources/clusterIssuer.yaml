@@ -20,7 +20,7 @@ spec:
             managedIdentity:
               clientID: "${managedIdentityClientId}"
             subscriptionID: "${AZ_SUBSCRIPTION_ID}" # The id of the subscription that controls the az dns zone. Ex: az account show -s "Omnia Radix Development" --query id
-            tenantID: "${DNS_SP_TENANT_ID}" # The id of the tenant which host the dns service principal. Ex: az ad sp show --id http://radix-dns-dev --query appOwnerTenantId
+            # tenantID: "${DNS_SP_TENANT_ID}" # The id of the tenant which host the dns service principal. Ex: az ad sp show --id http://radix-dns-dev --query appOwnerTenantId
             resourceGroupName: "${AZ_RESOURCE_GROUP_COMMON}"
             hostedZoneName: "${AZ_RESOURCE_DNS}"
             # Azure Cloud Environment, default to AzurePublicCloud
