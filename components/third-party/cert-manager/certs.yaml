@@ -11,6 +11,7 @@ spec:
   postBuild:
     substitute:
       CLUSTER_NAME: ${clusterName}
+      managedIdentityClientId: ${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI}
     substituteFrom:
       - kind: Secret
         name: cert-manager-certificate-values

@@ -15,6 +15,7 @@ spec:
       accountHMACSecretName: digicert-dns01-account-hmac-key
       accountHMACSecretKey: secret
       privateKeySecretName: digicert-dns01-private-key
+      managedIdentityClientId: ${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI}
     substituteFrom:
       - kind: Secret
         name: digicert-clusterissuer-flux-values

@@ -12,10 +12,8 @@ spec:
     solvers:
       - dns01:
           azureDNS:
-            clientID: "${DNS_SP_ID}"
-            clientSecretSecretRef:
-              key: client-secret
-              name: azure-dns-secret
+            managedIdentity:
+              clientID: "${managedIdentityClientId}"
             subscriptionID: "${AZ_SUBSCRIPTION_ID}"
             tenantID: "${DNS_SP_TENANT_ID}" # The id of the tenant which host the dns service principal. Ex: az ad sp show --id http://radix-dns-dev --query appOwnerTenantId
             resourceGroupName: "${AZ_RESOURCE_GROUP_COMMON}"

@@ -23,7 +23,11 @@ spec:
     global:
       rbac:
         create: true
-    podLabels: { aadpodidbinding: certman-label }
+    podLabels:
+      azure.workload.identity/use: "true"
+    serviceAccount:
+      labels:
+        azure.workload.identity/use: "true"
   valuesFrom: # TODO: Remove this section and related bootstrap in radix-platform
     - kind: Secret
       name: cert-manager-helm-secret
