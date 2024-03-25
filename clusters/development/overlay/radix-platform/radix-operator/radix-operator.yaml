@@ -66,7 +66,7 @@ spec:
             podSecurityStandard: # Ref https://kubernetes.io/docs/concepts/security/pod-security-standards/
               enforce:
                 level: baseline
-                version: v1.24
+                version: v1.25
               audit:
                 level: restricted
                 version: v1.23
