@@ -32,9 +32,3 @@ spec:
     serviceAccount:
       annotations:
         azure.workload.identity/client-id: ${COST_ALLOCATION_SQL_CLIENT_ID}
-
-  # Remove belove when new app is released
-  valuesFrom:
-  - kind: Secret
-    name: cost-db-secret
-    valuesKey: radix-cost-allocation-values.yaml
