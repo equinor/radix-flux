@@ -28,7 +28,3 @@ spec:
     serviceAccount:
       labels:
         azure.workload.identity/use: "true"
-  valuesFrom: # TODO: Remove this section and related bootstrap in radix-platform
-    - kind: Secret
-      name: cert-manager-helm-secret
-      valuesKey: config
