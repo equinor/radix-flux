@@ -28,6 +28,14 @@ spec:
             ingress:
               annotations:
                 kubernetes.io/tls-acme: "true"
+            podLabels: 
+              azure.workload.identity/use: "true"
+            serviceAccount:
+              annotations:
+                azure.workload.identity/client-id: 9a9bf432-aeb4-4903-aa1a-59f3236087f6 # AR radix-ar-grafana-logreader-extmon
+            grafana.ini:
+              azure:
+                workload_identity_enabled: "true"
             env:
               GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
               GF_DATABASE_NAME: grafana
