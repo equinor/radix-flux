@@ -73,10 +73,6 @@ spec:
               warn:
                 level: restricted
                 version: v1.23
-            ingress:
-              certificate:
-                automation:
-                  clusterIssuer: digicert-http01
       target:
         kind: HelmRelease
         name: radix-operator
