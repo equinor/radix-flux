@@ -52,5 +52,5 @@ spec:
     envFromSecret: grafana-secrets-v1
   valuesFrom:
   - kind: Secret
-    name: grafana-helm-secret-v1
+    name: grafana-helm-secret
     valuesKey: config
