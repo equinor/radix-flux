@@ -12,10 +12,9 @@ spec:
     substitute:
       # Set in postBuild
       AZ_SUBSCRIPTION_ID: ${AZ_SUBSCRIPTION_ID}
-
-      AZURE_SERVICE_OPERATOR_VERSION: ${AZURE_SERVICE_OPERATOR_VERSION:tba}
-      AZURE_SERVICE_OPERATOR_CLIENT_ID: ${AZURE_SERVICE_OPERATOR_CLIENT_ID:tba}
-  path: ./components/third-party/azure-service-operator/app
+      AZURE_SERVICE_OPERATOR_VERSION: ${AZURE_SERVICE_OPERATOR_VERSION:=tba}
+      AZURE_SERVICE_OPERATOR_CLIENT_ID: ${AZURE_SERVICE_OPERATOR_CLIENT_ID:=tba}
+  path: ./components/third-party/azure-service-operator/chart
   prune: false
   dependsOn:
     - name: cert-manager
