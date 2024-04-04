@@ -9,6 +9,7 @@ spec:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/development
       AZ_RESOURCE_DNS: dev.radix.equinor.com
+      AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ENVIRONMENT: dev # dev | prod
       radix_acr_repo_url: radixdev.azurecr.io
@@ -32,6 +33,8 @@ spec:
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
+      AZURE_SERVICE_OPERATOR_CLIENT_ID: 0d3f6248-cc0f-4669-8220-b46b5a94f64b
+      AZURE_SERVICE_OPERATOR_VERSION: v2.6.0 # https://github.com/Azure/azure-service-operator
       EXTERNAL_SECRETS: 0.9.13 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d
       EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
