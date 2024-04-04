@@ -6,6 +6,7 @@ metadata:
 spec:
   dependsOn:
     - name: cert-manager
+    - name: external-secrets-operator
   interval: 5m
   path: "./components/third-party/cert-manager-issuers/digicert/dns01/resources"
   postBuild:
