@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-realm: "Authentication Required - ok"
   labels:
     app: prometheus
-  name: prometheus-basic-auth-v1
+  name: prometheus-basic-auth
   namespace: monitor
 spec:
   rules:
@@ -33,7 +33,7 @@ metadata:
     nginx.ingress.kubernetes.io/enable-cors: "true"
   labels:
     app: prometheus
-  name: prometheus-oauth2-auth-v1
+  name: prometheus-oauth2-auth
   namespace: monitor
 spec:
   rules:
