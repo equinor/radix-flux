@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: oauth-guard
+  namespace: monitor
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts/radix-operator
+      sourceRef:
+        kind: HelmRepository
+        name: radix-oauth-guard
+        namespace: flux-system
+  values:
+    image:
+      tag: latest # override in patches
+    logLevel: info
+    logPretty: "False"
+    issuer: ""
+    audience: ""
+    subjects: []
+      #  - "system:serviceaccount:monitor:prometheus-operator-prometheus"
+
