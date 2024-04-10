@@ -30,7 +30,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    nginx.ingress.kubernetes.io/auth-url: "http://oauth-guard-radix-oauth-guard.monitor.svc.cluster.local:8000/auth"
+    nginx.ingress.kubernetes.io/auth-url: "http://prometheus-guard-radix-oauth-guard.monitor.svc.cluster.local:8000/auth"
   labels:
     app: prometheus
   name: prometheus-oauth2-auth
