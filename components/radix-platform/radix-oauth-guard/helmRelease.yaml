@@ -16,12 +16,10 @@ spec:
         name: radix-oauth-guard
         namespace: flux-system
   values:
-    image:
-      tag: latest # override in patches
     logLevel: info
     logPretty: "False"
     issuer: ""
-    audience: ""
-    subjects: []
-      #  - "system:serviceaccount:monitor:prometheus-operator-prometheus"
+    audience: "extmonprom"
+    subjects:
+      - "system:serviceaccount:monitor:prometheus-operator-prometheus"
 
