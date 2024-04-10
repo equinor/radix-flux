@@ -43,6 +43,17 @@ spec:
                   name: prometheus-operator-prometheus-scrape-config
                   key: additional-scrape-configs.yaml
                 retention: 90d
+                volumes:
+                  - name: scraper-token
+                    projected:
+                      sources:
+                        - serviceAccountToken:
+                            path: scraper-token
+                            expirationSeconds: 660
+                            audience: extmonprom
+                volumeMounts:
+                  - name: scraper-token
+                    mountPath: /var/run/secrets/scraper-tokens
                 storageSpec:
                   volumeClaimTemplate:
                     spec:
