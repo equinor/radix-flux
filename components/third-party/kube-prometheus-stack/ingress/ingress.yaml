@@ -30,7 +30,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/auth-url: "http://oauth-guard.monitor.svc.cluster.local:8000/auth"
   labels:
     app: prometheus
   name: prometheus-oauth2-auth
@@ -44,7 +44,7 @@ spec:
           service:
             name: prometheus-operator-prometheus
             port:
-              number: 4180
+              number: 9090
         path: /
         pathType: Prefix
   tls:
