@@ -10,7 +10,7 @@ spec:
       retries: 3
   chart:
     spec:
-      chart: ./charts/radix-operator
+      chart: radix-oauth-guard
       sourceRef:
         kind: HelmRepository
         name: radix-oauth-guard
