@@ -1,53 +1,27 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: prometheus-htpasswd
-    nginx.ingress.kubernetes.io/auth-realm: "Authentication Required - ok"
-  labels:
-    app: prometheus
-  name: prometheus-basic-auth
+  name: prometheus-operator-prometheus.custom-domain
   namespace: monitor
-spec:
-  rules:
-  - host: prometheus.${ACTIVE_CLUSTER}.${AZ_RESOURCE_DNS}
-    http:
-      paths:
-      - backend:
-          service:
-            name: prometheus-operator-prometheus
-            port:
-              number: 9090
-        path: /
-        pathType: Prefix
-  tls:
-  - hosts:
-    - prometheus.${ACTIVE_CLUSTER}.${AZ_RESOURCE_DNS}
-    secretName: radix-wildcard-tls-cert
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
   annotations:
+    ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/auth-url: "http://prometheus-guard-radix-oauth-guard.monitor.svc.cluster.local:8000/auth"
   labels:
     app: prometheus
-  name: prometheus-oauth2-auth
-  namespace: monitor
 spec:
+  ingressClassName: nginx
   rules:
-  - host: prometheus-oauth2.${ACTIVE_CLUSTER}.${AZ_RESOURCE_DNS}
-    http:
-      paths:
-      - backend:
-          service:
-            name: prometheus-operator-prometheus
-            port:
-              number: 9090
-        path: /
-        pathType: Prefix
+    - host: prometheus.{dnsZone}
+      http:
+        paths:
+          - backend:
+              service:
+                name: prometheus-operator-prometheus
+                port:
+                  number: 9090
+            path: /
+            pathType: Prefix
   tls:
-  - hosts:
-    - prometheus-oauth2.${ACTIVE_CLUSTER}.${AZ_RESOURCE_DNS}
-    secretName: radix-wildcard-tls-cert
+    - hosts:
+        - prometheus.{dnsZone}
+      secretName: radix-wildcard-tls-cert
