@@ -10,6 +10,7 @@ spec:
     substitute:
       AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba} # Set in postBuild
       ACTIVE_CLUSTER: ${ACTIVE_CLUSTER:=tba} # Set in postBuild
+      dnsZone: ${dnsZone:=tba} # set in configmap flux-system/radix-flux-config
   prune: true
   sourceRef:
     kind: GitRepository
