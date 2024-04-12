@@ -14,5 +14,6 @@ patches:
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
+  - path: ./overlay/third-party/kube-prometheus-stack/scrape-config-patches.yaml
   - path: ./overlay/third-party/prometheus-blackbox-exporter/helmRelease.yaml
   - path: ./overlay/third-party/external-secrets/patches.yaml
