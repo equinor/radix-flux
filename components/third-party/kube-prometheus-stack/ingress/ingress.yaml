@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: prometheus.{dnsZone}
+    - host: prometheus.${dnsZone}
       http:
         paths:
           - backend:
@@ -23,5 +23,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - prometheus.{dnsZone}
+        - prometheus.${dnsZone}
       secretName: radix-wildcard-tls-cert
