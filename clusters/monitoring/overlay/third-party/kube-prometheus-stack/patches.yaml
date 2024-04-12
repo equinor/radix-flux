@@ -35,13 +35,250 @@ spec:
                   requests:
                     cpu: "0.5"
                     memory: "6000Mi"
-                additionalScrapeConfigs: null
-                # See https://github.com/coreos/prometheus-operator/blob/master/Documentation/additional-scrape-config.md
-                # Add more jobs to a secret named `prometheus-additional-config` with key `prometheus-additional-config.yaml` for this to work.
-                additionalScrapeConfigsSecret:
-                  enabled: true
-                  name: prometheus-operator-prometheus-scrape-config
-                  key: additional-scrape-configs.yaml
+                additionalScrapeConfigs: 
+                  - job_name: "federated-prod.radix.equinor.com"
+                    honor_labels: true
+                    scrape_interval: 15s
+                    scrape_timeout: 10s
+                    metrics_path: /federate
+                    scheme: https
+                    authorization:
+                      type:  Bearer
+                      credentials_file: /var/run/secrets/scraper-tokens/scraper-token
+                    params:
+                      'match[]':
+                        - '{job="ingress-nginx-controller-metrics",__name__="nginx_ingress_controller_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_allocatable"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_condition"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_created"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_spec_taint"}'
+                        - '{job="kubelet",__name__="container_memory_working_set_bytes"}'
+                        - '{job="node-exporter",__name__="node_cpu_seconds_total"}'
+                        - '{job="node-exporter",__name__="node_memory_MemAvailable_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_avail_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_size_bytes"}'
+                        - '{job="velero",__name__="velero_backup_failure_total"}'
+                        - '{job="velero",__name__="velero_backup_last_status"}'
+                        - '{__name__=~"radix_.*"}'
+                        - '{__name__=~"gotk.*"}' # Flux metrics
+                        - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                    static_configs:
+                      - targets: ["prometheus.radix.equinor.com"]
+                        labels:
+                          federated: prod.radix.equinor.com
+                          RadixCluster: prod
+        
+                  - job_name: "federated-c2prod.radix.equinor.com"
+                    honor_labels: true
+                    scrape_interval: 15s
+                    scrape_timeout: 10s
+                    metrics_path: /federate
+                    scheme: https
+                    authorization:
+                      type:  Bearer
+                      credentials_file: /var/run/secrets/scraper-tokens/scraper-token
+                    params:
+                      'match[]':
+                        - '{job="ingress-nginx-controller-metrics",__name__="nginx_ingress_controller_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_allocatable"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_condition"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_created"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_spec_taint"}'
+                        - '{job="kubelet",__name__="container_memory_working_set_bytes"}'
+                        - '{job="node-exporter",__name__="node_cpu_seconds_total"}'
+                        - '{job="node-exporter",__name__="node_memory_MemAvailable_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_avail_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_size_bytes"}'
+                        - '{job="velero",__name__="velero_backup_failure_total"}'
+                        - '{job="velero",__name__="velero_backup_last_status"}'
+                        - '{__name__=~"radix_.*"}'
+                        - '{__name__=~"gotk.*"}' # Flux metrics
+                        - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                    static_configs:
+                      - targets: ["prometheus.c2.radix.equinor.com"]
+                        labels:
+                          federated: prod.c2.radix.equinor.com
+                          RadixCluster: c2prod
+        
+                  - job_name: "federated-playground.playground.radix.equinor.com"
+                    honor_labels: true
+                    scrape_interval: 15s
+                    scrape_timeout: 10s
+                    metrics_path: /federate
+                    scheme: https
+                    authorization:
+                      type:  Bearer
+                      credentials_file: /var/run/secrets/scraper-tokens/scraper-token
+                    params:
+                      'match[]':
+                        - '{job="ingress-nginx-controller-metrics",__name__="nginx_ingress_controller_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_allocatable"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_condition"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_created"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_spec_taint"}'
+                        - '{job="kubelet",__name__="container_memory_working_set_bytes"}'
+                        - '{job="node-exporter",__name__="node_cpu_seconds_total"}'
+                        - '{job="node-exporter",__name__="node_memory_MemAvailable_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_avail_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_size_bytes"}'
+                        - '{job="velero",__name__="velero_backup_failure_total"}'
+                        - '{job="velero",__name__="velero_backup_last_status"}'
+                        - '{__name__=~"radix_.*"}'
+                        - '{__name__=~"gotk.*"}' # Flux metrics
+                        - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                    static_configs:
+                      - targets: ["prometheus.playground.radix.equinor.com"]
+                        labels:
+                          federated: playground.radix.equinor.com
+                          RadixCluster: playground
+        
+                  - job_name: "federated-dev.radix.equinor.com"
+                    honor_labels: true
+                    scrape_interval: 15s
+                    scrape_timeout: 10s
+                    metrics_path: /federate
+                    scheme: https
+                    authorization:
+                      type:  Bearer
+                      credentials_file: /var/run/secrets/scraper-tokens/scraper-token
+                    params:
+                      'match[]':
+                        - '{job="ingress-nginx-controller-metrics",__name__="nginx_ingress_controller_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_allocatable"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_condition"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_created"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_spec_taint"}'
+                        - '{job="kubelet",__name__="container_memory_working_set_bytes"}'
+                        - '{job="node-exporter",__name__="node_cpu_seconds_total"}'
+                        - '{job="node-exporter",__name__="node_memory_MemAvailable_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_avail_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_size_bytes"}'
+                        - '{job="velero",__name__="velero_backup_failure_total"}'
+                        - '{job="velero",__name__="velero_backup_last_status"}'
+                        - '{__name__=~"radix_.*"}'
+                        - '{__name__=~"gotk.*"}' # Flux metrics
+                        - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                    static_configs:
+                      - targets: ["prometheus.dev.radix.equinor.com"]
+                        labels:
+                          federated: dev.radix.equinor.com
+                          RadixCluster: dev
+        
+                  # blackbox probing of apis on prod, playground, dev
+                  - job_name: 'uptime-probe-dev'
+                    metrics_path: /probe
+                    scrape_interval: 10s
+                    scrape_timeout: 10s
+                    params:
+                      module: [http_2xx]  # Look for a HTTP 200 response.
+                    static_configs:
+                      - targets:
+                          - https://api.dev.radix.equinor.com/health/
+                          - https://canary.dev.radix.equinor.com
+                          - https://webhook.dev.radix.equinor.com/health
+                          - https://www.dev.radix.equinor.com
+                          - https://console.dev.radix.equinor.com/ping
+                          - https://cost-api.dev.radix.equinor.com/health/
+                        labels:
+                          RadixCluster: dev
+                    relabel_configs:
+                      - source_labels: [__address__]
+                        target_label: __param_target
+                      - source_labels: [__param_target]
+                        target_label: instance
+                      - target_label: __address__
+                        replacement: prometheus-blackbox-exporter:9115
+        
+                  # blackbox probing of apis on prod, playground, dev
+                  - job_name: 'uptime-probe-playground'
+                    metrics_path: /probe
+                    scrape_interval: 10s
+                    scrape_timeout: 10s
+                    params:
+                      module: [http_2xx]  # Look for a HTTP 200 response.
+                    static_configs:
+                      - targets:
+                          - https://api.playground.radix.equinor.com/health/
+                          - https://canary.playground.radix.equinor.com
+                          - https://webhook.playground.radix.equinor.com/health
+                          - https://www.playground.radix.equinor.com
+                          - https://console.playground.radix.equinor.com/ping
+                          - https://cost-api.playground.radix.equinor.com/health/
+                        labels:
+                          RadixCluster: playground
+                    relabel_configs:
+                      - source_labels: [__address__]
+                        target_label: __param_target
+                      - source_labels: [__param_target]
+                        target_label: instance
+                      - target_label: __address__
+                        replacement: prometheus-blackbox-exporter:9115
+        
+                  # blackbox probing of apis on prod, playground, dev
+                  - job_name: 'uptime-probe-prod'
+                    metrics_path: /probe
+                    scrape_interval: 10s
+                    scrape_timeout: 10s
+                    params:
+                      module: [http_2xx]  # Look for a HTTP 200 response.
+                    static_configs:
+                      - targets:
+                          - https://api.radix.equinor.com/health/
+                          - https://canary.radix.equinor.com
+                          - https://webhook.radix.equinor.com/health
+                          - https://www.radix.equinor.com
+                          - https://console.radix.equinor.com/ping
+                          - https://cost-api.radix.equinor.com/health/
+                        labels:
+                          RadixCluster: prod
+                    relabel_configs:
+                      - source_labels: [__address__]
+                        target_label: __param_target
+                      - source_labels: [__param_target]
+                        target_label: instance
+                      - target_label: __address__
+                        replacement: prometheus-blackbox-exporter:9115
+        
+                  # blackbox probing of apis on prod2
+                  - job_name: 'uptime-probe-c2prod'
+                    metrics_path: /probe
+                    scrape_interval: 10s
+                    scrape_timeout: 10s
+                    params:
+                      module: [http_2xx]  # Look for a HTTP 200 response.
+                    static_configs:
+                      - targets:
+                          - https://api.c2.radix.equinor.com/health/
+                          - https://canary.c2.radix.equinor.com
+                          - https://webhook.c2.radix.equinor.com/health
+                          - https://www.c2.radix.equinor.com
+                          - https://console.c2.radix.equinor.com/ping
+                          - https://cost-api.c2.radix.equinor.com/health/
+                        labels:
+                          RadixCluster: c2prod
+                    relabel_configs:
+                      - source_labels: [__address__]
+                        target_label: __param_target
+                      - source_labels: [__param_target]
+                        target_label: instance
+                      - target_label: __address__
+                        replacement: prometheus-blackbox-exporter:9115
                 retention: 90d
                 volumes:
                   - name: scraper-token
