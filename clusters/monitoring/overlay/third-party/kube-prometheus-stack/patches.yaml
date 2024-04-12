@@ -63,7 +63,3 @@ spec:
             alertmanager: null
             kube-state-metrics: null
             additionalPrometheusRulesMap: null
-          valuesFrom:
-          - kind: Secret
-            name: kube-prometheus-stack-helm-secret
-            valuesKey: config

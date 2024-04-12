@@ -8,6 +8,7 @@ spec:
   path: "./components/third-party/grafana/chart"
   dependsOn:
     - name: external-secrets-operator
+    - name: kube-prometheus-stack
   prune: true
   sourceRef:
     kind: GitRepository
