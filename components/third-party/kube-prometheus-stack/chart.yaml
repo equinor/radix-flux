@@ -6,12 +6,13 @@ metadata:
 spec:
   interval: 5m
   path: "./components/third-party/kube-prometheus-stack/chart"
-  dependsOn:
-    - name: external-secrets-operator
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   wait: true
   timeout: 2m
+  postBuild:
+    substitute:
+      AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba} # set in postBuild
 

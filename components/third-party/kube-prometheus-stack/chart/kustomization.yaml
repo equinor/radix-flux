@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
 - helmRepo.yaml
 - helmRelease.yaml
-- password.yaml
-- secret.yaml
+- ingress.yaml
 
