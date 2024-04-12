@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: prometheus-operator-prometheus.custom-domain
+  name: prometheus.custom-domain
   namespace: monitor
   annotations:
     ingress.kubernetes.io/force-ssl-redirect: "true"
