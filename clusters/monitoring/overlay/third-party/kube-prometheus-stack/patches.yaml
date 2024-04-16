@@ -298,5 +298,6 @@ spec:
                         requests:
                           storage: 256Gi
             alertmanager: null
-            kube-state-metrics: null
+            kube-state-metrics:
+              extraArgs: []  
             additionalPrometheusRulesMap: null
