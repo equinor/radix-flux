@@ -17,6 +17,7 @@ spec:
       GRAFANA_VERSION: 7.3.3 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_DB_HOST: s940-radix-grafana-extmon-prod.mysql.database.azure.com
       NGINX_VERSION: 4.10.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      CERT_MANAGER_VERSION: 1.14.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
     # substituteFrom:
     # - kind: ConfigMap
     #   name: radix-flux-config

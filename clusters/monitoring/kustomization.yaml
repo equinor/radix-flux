@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - flux-system
-- ../../components/third-party/cert-manager/chart
+- ../../components/third-party/cert-manager
 - ../../components/third-party/grafana
 - ../../components/third-party/ingress-nginx
 - ../../components/third-party/kube-prometheus-stack
@@ -10,7 +10,7 @@ resources:
 - ../../components/third-party/external-secrets
 patches:
   - path: ./postBuild.yaml
-  - path: ./overlay/third-party/cert-manager/helmRelease.yaml
+  - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
