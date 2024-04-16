@@ -17,6 +17,19 @@ spec:
   install:
     remediation:
       retries: 3
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              version: v1
+              kind: Deployment
+              name: grafana
+            patch: |
+              - op: add
+                path: /spec/template/spec/containers/0/securityContext
+                value: 
+                  readOnlyRootFilesystem: true
+
   values:
     resources:
       # limits:
@@ -50,9 +63,6 @@ spec:
       GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
       GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor"     # Viewer|Editor|Admin
     envFromSecret: grafana-secrets
-    imageRenderer:
-      containerSecurityContext:
-        readOnlyRootFilesystem: true
   valuesFrom:
   - kind: Secret
     name: grafana-helm-secret
