@@ -24,6 +24,8 @@ spec:
               requests:
                 cpu: 100m
                 memory: 400Mi
+            securityContext:
+              readOnlyRootFilesystem: true                
       target:
         kind: HelmRelease
         name: radix-cost-allocation
