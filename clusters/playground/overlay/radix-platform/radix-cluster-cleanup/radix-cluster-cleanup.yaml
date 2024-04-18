@@ -41,6 +41,8 @@ spec:
               requests:
                 cpu: 50m
                 memory: 150Mi
+            securityContext:
+              readOnlyRootFilesystem: true                
       target:
         kind: HelmRelease
         name: radix-cluster-cleanup
