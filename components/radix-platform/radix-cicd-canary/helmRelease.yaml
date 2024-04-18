@@ -33,6 +33,8 @@ spec:
       requests:
         cpu: 50m
         memory: 100Mi
+    securityContext:
+      readOnlyRootFilesystem: true
   valuesFrom:
   - kind: Secret
     name: canary-secrets
