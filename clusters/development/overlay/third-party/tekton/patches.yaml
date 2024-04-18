@@ -14,9 +14,8 @@ spec:
               name: tekton-pipelines-controller
             patch: |
               - op: add
-                path: /spec/template/spec/containers/0/securityContext
-                value: 
-                  readOnlyRootFilesystem: true
+                path: /spec/template/spec/containers/0/securityContext/readOnlyRootFilesystem
+                value: true
 
           - target:
               version: v1
@@ -25,9 +24,8 @@ spec:
               name: tekton-events-controller
             patch: |
               - op: add
-                path: /spec/template/spec/containers/0/securityContext
-                value: 
-                  readOnlyRootFilesystem: true
+                path: /spec/template/spec/containers/0/securityContext/readOnlyRootFilesystem
+                value: true
 
           - target:
               version: v1
@@ -36,17 +34,5 @@ spec:
               name: tekton-pipelines-webhook
             patch: |
               - op: add
-                path: /spec/template/spec/containers/0/securityContext
-                value: 
-                  readOnlyRootFilesystem: true
-
-          - target:
-              version: v1
-              kind: Deployment
-              namespace: tekton-pipelines-resolvers
-              name: tekton-pipelines-remote-resolvers
-            patch: |
-              - op: add
-                path: /spec/template/spec/containers/0/securityContext
-                value: 
-                  readOnlyRootFilesystem: true
+                path: /spec/template/spec/containers/0/securityContext/readOnlyRootFilesystem
+                value: true
