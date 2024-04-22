@@ -72,6 +72,8 @@ spec:
               warn:
                 level: restricted
                 version: v1.23
+            securityContext:
+              readOnlyRootFilesystem: true
       target:
         kind: HelmRelease
         name: radix-operator
