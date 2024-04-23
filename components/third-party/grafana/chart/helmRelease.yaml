@@ -17,6 +17,19 @@ spec:
   install:
     remediation:
       retries: 3
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              version: v1
+              kind: Deployment
+              name: grafana
+            patch: |
+              - op: add
+                path: /spec/template/spec/containers/0/securityContext
+                value: 
+                  readOnlyRootFilesystem: true
+
   values:
     resources:
       # limits:

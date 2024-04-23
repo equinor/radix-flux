@@ -50,6 +50,8 @@ spec:
       requests:
         cpu: 50m
         memory: 256Mi
+    containerSecurityContext:
+      readOnlyRootFilesystem: true
   valuesFrom:
     - kind: ConfigMap
       name: velero-flux-values

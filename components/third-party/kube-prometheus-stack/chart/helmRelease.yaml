@@ -28,6 +28,8 @@ spec:
           cpu: "100m"
           memory: "100Mi"
     kube-state-metrics:
+      containerSecurityContext:
+        readOnlyRootFilesystem: true
       extraArgs:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
     prometheus:

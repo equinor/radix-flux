@@ -76,6 +76,8 @@ spec:
               certificate:
                 automation:
                   clusterIssuer: digicert-http01
+            securityContext:
+              readOnlyRootFilesystem: true
       target:
         kind: HelmRelease
         name: radix-operator
