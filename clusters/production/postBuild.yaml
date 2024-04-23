@@ -22,22 +22,22 @@ spec:
       RADIX_VULNERABILITY_SCANNER_TAG: release-41812d1d-1713509675 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
       velero_plugin_acr_image: radixprod.azurecr.io/radix-velero-plugin:release-733b6867-1709886107 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
-      CERT_MANAGER_VERSION: 1.14.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.14.4 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: 42416e89-eff0-40db-9d42-c1fc5e6fff33 # MI radix-id-certmanager-platform
       TEKTON_VERSION: v0.53.0
       VELERO_VERSION: 6.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       NGINX_VERSION: 4.10.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      GRAFANA_VERSION: 7.3.3 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 7.3.9 # https://artifacthub.io/packages/helm/grafana/grafana
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
-      EXTERNAL_SECRETS: 0.9.13 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.9.16 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTERNAL_SECRET_MI_CLIENT_ID: 361d1fbc-43e9-4219-b5e9-78d7cc9aafae
       EXTERNAL_SECRET_URL: https://radix-keyv-platform.vault.azure.net/
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-platform.database.windows.net
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: eea03dbd-455d-4cce-895e-85d20a38ee02
       COST_ALLOCATION_SQL_CLIENT_ID: 081fa1b1-e38b-43c0-88fe-4a4807f1798b
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-platform.database.windows.net
-      KUBE_PROMETHEUS_STACK: 56.19.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 58.2.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       GRAFANA_DB_HOST: s940-radix-grafana-platform-prod.mysql.database.azure.com
       RADIX_OAUTH_GUARD_TAG: 0.3.1
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
