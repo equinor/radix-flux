@@ -37,7 +37,7 @@ spec:
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: eea03dbd-455d-4cce-895e-85d20a38ee02
       COST_ALLOCATION_SQL_CLIENT_ID: 081fa1b1-e38b-43c0-88fe-4a4807f1798b
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-platform.database.windows.net
-      KUBE_PROMETHEUS_STACK: 56.19.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 58.2.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       GRAFANA_DB_HOST: s940-radix-grafana-platform-prod.mysql.database.azure.com
       RADIX_OAUTH_GUARD_TAG: 0.3.1
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
