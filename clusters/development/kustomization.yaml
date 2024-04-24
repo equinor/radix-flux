@@ -46,3 +46,4 @@ patches:
   - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
+  - path: ./overlay/third-party/tekton/patches.yaml
