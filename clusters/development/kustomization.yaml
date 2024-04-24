@@ -10,7 +10,6 @@ resources:
 - ../../components/third-party/azure-service-operator
 - ../../components/third-party/azure-workload-identity
 - ../../components/third-party/blob-csi-driver
-# - ../../components/third-party/blobfuse-flexvolume
 - ../../components/third-party/cert-manager
 - ../../components/third-party/cert-manager-issuers/digicert/dns01
 - ../../components/third-party/cert-manager-issuers/digicert/externalaccount
@@ -22,7 +21,6 @@ resources:
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubernetes-replicator
 - ../../components/third-party/kured
-# - ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/tekton
 - ../../components/third-party/velero
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
