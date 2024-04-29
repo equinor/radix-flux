@@ -16,3 +16,36 @@ spec:
   install:
     remediation:
       retries: 3
+
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              version: v1
+              kind: Deployment
+              namespace: tekton-pipelines
+              name: tekton-pipelines-controller
+            patch: |
+              - op: add
+                path: /spec/template/spec/containers/0/securityContext/readOnlyRootFilesystem
+                value: true
+
+          - target:
+              version: v1
+              kind: Deployment
+              namespace: tekton-pipelines
+              name: tekton-events-controller
+            patch: |
+              - op: add
+                path: /spec/template/spec/containers/0/securityContext/readOnlyRootFilesystem
+                value: true
+
+          - target:
+              version: v1
+              kind: Deployment
+              namespace: tekton-pipelines
+              name: tekton-pipelines-webhook
+            patch: |
+              - op: add
+                path: /spec/template/spec/containers/0/securityContext/readOnlyRootFilesystem
+                value: true
