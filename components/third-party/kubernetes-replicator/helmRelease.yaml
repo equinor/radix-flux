@@ -18,3 +18,24 @@ spec:
     remediation:
       retries: 3
 
+  values:
+    resources:
+      limits:
+        memory: 1Gi
+      requests:
+        cpu: 20m
+        memory: 1Gi
+    podSecurityContext:
+      fsGroup: 1000
+      runAsGroup: 1000
+      runAsUser: 1000
+
+    securityContext:
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      runAsNonRoot: true
+      privileged: false
+      runAsUser: 1000
+      capabilities:
+        drop:
+        - ALL
