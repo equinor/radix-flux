@@ -27,11 +27,17 @@ spec:
     initContainers:
       - name: velero-plugin-for-microsoft-azure
         image: velero/velero-plugin-for-microsoft-azure:v1.1.1
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
         volumeMounts:
           - name: plugins
             mountPath: /target
       - name: radix-velero-plugin
         image: ${velero_plugin_acr_image} # Set in clusters/<cluster>/postBuild
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
         volumeMounts:
           - name: plugins
             mountPath: /target
