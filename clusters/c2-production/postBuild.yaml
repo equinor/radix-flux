@@ -27,7 +27,7 @@ spec:
       TEKTON_VERSION: v0.53.0
       VELERO_VERSION: 6.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       NGINX_VERSION: 4.10.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      GRAFANA_VERSION: 7.0.6 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 7.3.9 # https://artifacthub.io/packages/helm/grafana/grafana
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
       EXTERNAL_SECRETS: 0.9.13 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
