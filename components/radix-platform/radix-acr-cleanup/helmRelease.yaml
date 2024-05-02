@@ -33,4 +33,18 @@ spec:
       tag: xx                                                         # Set by flux patch
     metrics:
       enabled: true
+    securityContext:
+      readOnlyRootFilesystem: true
+    extraVolumes:
+    - name: tmp
+      emptyDir:
+        sizeLimit: 1M
+    - name: azurehome
+      emptyDir:
+        sizeLimit: 5M
+    extraVolumeMounts:
+    - name: tmp
+      mountPath: /tmp
+    - name: azurehome
+      mountPath: /home/acr-cleanup/.azure
     # resources: xx                                                   # Set in overlay
