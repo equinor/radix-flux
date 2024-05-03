@@ -41,20 +41,6 @@ spec:
               requests:
                 cpu: 50m
                 memory: 250Mi
-            securityContext:
-              readOnlyRootFilesystem: true
-            extraVolumes:
-              - name: tmp
-                emptyDir:
-                  sizeLimit: 1M
-              - name: azurehome
-                emptyDir:
-                  sizeLimit: 1M
-            extraVolumeMounts:
-              - name: tmp
-                mountPath: /tmp
-              - name: azurehome
-                mountPath: /home/acr-cleanup/.azure                
             whitelisted:
               - radix-operator
               - radix-pipeline
