@@ -18,13 +18,13 @@ spec:
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
       EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d
       EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
-      EXTERNAL_SECRETS: 0.9.16 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.9.17 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/development
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
       GRAFANA_LOKI: 2.10.2 # https://artifacthub.io/packages/helm/grafana/loki-stack
       GRAFANA_VERSION: 7.3.9 # https://artifacthub.io/packages/helm/grafana/grafana
-      KUBE_PROMETHEUS_STACK: 58.2.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 58.3.3 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.10.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ACR_CLEANUP_TAG: master-cee85e34-1714048302 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
@@ -42,7 +42,7 @@ spec:
       RADIX_ZONE: dev # dev | playground | prod
       TEKTON_VERSION: v0.53.0
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-f6cf02f2-1710145304 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
-      velero_plugin_azure: v1.1.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
+      velero_plugin_azure: v1.9.2 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94
       VELERO_VERSION: 6.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
