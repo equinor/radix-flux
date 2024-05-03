@@ -26,7 +26,7 @@ spec:
     updateStrategy: RollingUpdate
     initContainers:
       - name: velero-plugin-for-microsoft-azure
-        image: velero/velero-plugin-for-microsoft-azure:v1.1.1
+        image: velero/velero-plugin-for-microsoft-azure:${velero_plugin_azure} # Set in clusters/<cluster>/postBuild
         securityContext:
           readOnlyRootFilesystem: true
           runAsNonRoot: true
