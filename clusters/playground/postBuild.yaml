@@ -10,19 +10,19 @@ spec:
       ACTIVE_CLUSTER: playground-11
       AZ_RESOURCE_DNS: playground.radix.equinor.com
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: fb932ba4-56e6-468d-9e75-4389507a3fde # MI radix-id-certmanager-playground
-      CERT_MANAGER_VERSION: 1.14.4 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.14.5 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: b1a842b2-8e0e-4c2f-807e-8355eeb21f32
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-playground.database.windows.net
       EXTERNAL_SECRET_MI_CLIENT_ID: 4e3784c7-1a3e-4885-9783-b7227f8d1fb3
       EXTERNAL_SECRET_URL: https://radix-keyv-playground.vault.azure.net/
-      EXTERNAL_SECRETS: 0.9.16 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.9.17 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/playground
       GRAFANA_DB_HOST: s941-radix-grafana-playground.mysql.database.azure.com
       GRAFANA_VERSION: 7.3.9 # https://artifacthub.io/packages/helm/grafana/grafana
-      KUBE_PROMETHEUS_STACK: 58.2.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 58.3.3 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.9.2 # https://github.com/mittwald/kubernetes-replicator
-      NGINX_VERSION: 4.10.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      NGINX_VERSION: 4.10.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ACR_CLEANUP_TAG: release-bf0754b9-1713358015 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       radix_acr_repo_url: radixdev.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixplaygroundapp.azurecr.io
@@ -39,7 +39,7 @@ spec:
       RADIX_ZONE_MIGRATE: playground
       TEKTON_VERSION: v0.53.0
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:release-733b6867-1709886109 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
-      velero_plugin_azure: v1.1.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
+      velero_plugin_azure: v1.9.2 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: 50671a4a-0236-4f40-9b6e-54a559cbe824
       VELERO_VERSION: 6.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: a59fc37e-f966-4a53-ba73-cac5e2590b24
