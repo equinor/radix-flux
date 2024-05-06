@@ -1,15 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: grafana-test
+  name: grafana
   namespace: monitor
   labels:
     app: grafana
 spec:
   ingressClassName: nginx
   rules:
-    - host: grafana-test.${clusterName}.${dnsZone}
+  - host: grafana.${clusterName}.${dnsZone}
+    http:
+      paths:
+      - backend:
+          service:
+            name: grafana
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
   tls:
   - secretName: radix-wildcard-tls-cert
     hosts:
-    - grafana-test.${clusterName}.${dnsZone}
+    - grafana.${clusterName}.${dnsZone}
