@@ -42,8 +42,17 @@ spec:
           - name: plugins
             mountPath: /target
     credentials:
-      useSecret: true
-      existingSecret: 'cloud-credentials'
+      useSecret: false
+    serviceAccount:
+      server:
+        annotations:
+          azure.workload.identity/client-id: ${velero_azure_workload_identity_id}
+        create: true
+        labels:
+          azure.workload.identity/use: "true"
+        name: velero
+    podLabels:
+      azure.workload.identity/use: "true"
     metrics:
       enabled: true
       serviceMonitor:
