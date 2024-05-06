@@ -1,7 +1,4 @@
-# Dependent on the secret "cloud-credentials", which should be installed by the base component script,
-# see https://github.com/equinor/radix-platform/tree/master/scripts/velero
 # For velero chart doc see https://github.com/vmware-tanzu/helm-charts
-
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
