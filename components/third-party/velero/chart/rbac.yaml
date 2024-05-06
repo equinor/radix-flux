@@ -8,5 +8,5 @@ roleRef:
   name: velero-admin
 subjects:
 - kind: ServiceAccount
-  name: velero-server
+  name: velero
   namespace: velero
