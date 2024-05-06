@@ -1,0 +1,10 @@
+ingress:
+  enabled: false
+  hosts:
+  - grafana-test..
+  tls:
+  - secretName: radix-wildcard-tls-cert
+    hosts:
+    - grafana-test..
+env:
+  GF_SERVER_ROOT_URL: https://grafana.
