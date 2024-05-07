@@ -5,7 +5,7 @@ metadata:
   namespace: radix-cicd-canary
 spec:
   scaleTargetRef:
-    name:
+    name: radix-cicd-canary
   advanced:
     restoreToOriginalReplicaCount: true  # Optionally restore to original replica count after the specified time
   triggers:
