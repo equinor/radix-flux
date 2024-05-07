@@ -19,7 +19,7 @@ resources:
 - ../../components/third-party/ingress-nginx
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubernetes-replicator
-- ../../components/third-party/kured
+- ../../components/third-party/keda
 - ../../components/third-party/tekton
 - ../../components/third-party/velero
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
@@ -42,5 +42,4 @@ patches:
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
-  - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
