@@ -11,7 +11,7 @@ spec:
   triggers:
     - type: cron
       metadata:
-        timezone: "CET"
+        timezone: "Europe/Oslo"
         start: "0 8 * * 1-5"
         end: "0 18 * * 1-5"
         desiredReplicas: "1"
