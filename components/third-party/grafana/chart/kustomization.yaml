@@ -4,4 +4,3 @@ resources:
 - helmRepo.yaml
 - secret.yaml
 - helmRelease.yaml
-- ingress.yaml
