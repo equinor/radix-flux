@@ -26,7 +26,6 @@ resources:
 - ../../components/third-party/velero
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
-- ./overlay/radix-platform/radix-cicd-canary/cron-scaledobject.yaml
 - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
 - ./overlay/radix-platform/radix-oauth-guard/helmRelease-prometheus.yaml # Sidecar to Prometheus
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml

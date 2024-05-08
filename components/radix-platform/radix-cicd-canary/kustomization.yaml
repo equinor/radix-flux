@@ -6,3 +6,4 @@ resources:
 - helmRelease.yaml
 - imageRepo.yaml
 - imagePolicy.yaml
+- cron-scaledobject.yaml
