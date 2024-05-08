@@ -1,0 +1,17 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cron-scaledobject
+  namespace: radix-cicd-canary
+spec:
+  scaleTargetRef:
+    name: radix-cicd-canary
+  advanced:
+    restoreToOriginalReplicaCount: true  # Optionally restore to original replica count after the specified time
+  triggers:
+    - type: cron
+      metadata:
+        timezone: "Europe/Oslo"
+        start: "0 8 * * 1-5"
+        end: "0 18 * * 1-5"
+        desiredReplicas: "1"
