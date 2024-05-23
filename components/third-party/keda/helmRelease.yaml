@@ -17,3 +17,7 @@ spec:
   install:
     remediation:
       retries: 3
+  values:
+    podLabels:
+      keda:
+        azure.workload.identity/use: "true"
