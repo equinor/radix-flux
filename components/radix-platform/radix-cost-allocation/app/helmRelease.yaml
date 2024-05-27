@@ -32,3 +32,6 @@ spec:
     serviceAccount:
       annotations:
         azure.workload.identity/client-id: ${COST_ALLOCATION_SQL_CLIENT_ID}
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.io/arch: amd64
