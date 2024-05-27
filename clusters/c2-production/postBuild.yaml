@@ -28,8 +28,8 @@ spec:
       radix_acr_repo_url: radixc2prod.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixc2app.azurecr.io
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
-      RADIX_CICD_CANARY_TAG: release-129436a3-1713435864 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-e04cf500-1713334367 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_CICD_CANARY_TAG: release-771e8eb4-1716792555 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-4e653f4b-1716792556 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: prod # dev | prod
       RADIX_OAUTH_GUARD_TAG: 0.3.1
       RADIX_OPERATOR_TAG: release-740b5881-1716279559 # {"$imagepolicy": "flux-system:radix-operator:tag"}
