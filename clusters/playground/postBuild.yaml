@@ -28,13 +28,13 @@ spec:
       radix_acr_repo_url: radixdev.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixplaygroundapp.azurecr.io
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
-      RADIX_CICD_CANARY_TAG: release-129436a3-1713435869 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_CICD_CANARY_TAG: release-771e8eb4-1716792551 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: release-17d9c505-1712064054 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-e04cf500-1713334372 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-4e653f4b-1716792545 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 0.3.1
       RADIX_OPERATOR_TAG: release-740b5881-1716279562 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: release-41812d1d-1713509694 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: release-434646b8-1716792569 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: playground # dev | playground | prod
       RADIX_ZONE_MIGRATE: playground
