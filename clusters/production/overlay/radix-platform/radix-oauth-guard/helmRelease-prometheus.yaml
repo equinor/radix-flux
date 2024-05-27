@@ -22,4 +22,6 @@ spec:
     issuer: ${EXTMON_CLUSTER_ISSUER}
     audience: "extmonprom"
     subjects: ["system:serviceaccount:monitor:prometheus-operator-prometheus"]
-
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.io/arch: amd64
