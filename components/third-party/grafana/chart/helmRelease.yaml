@@ -42,13 +42,13 @@ spec:
     ingress:
       enabled: true
       hosts:
-      - grafana.${clusterName}.${dnZone}
-      - grafana.${dnZone}
+      - grafana.${clusterName:=tba}.${dnZone:=tba}
+      - grafana.${dnZone:=tba}
       tls:
       - secretName: radix-wildcard-tls-cert
         hosts:
-        - grafana.${clusterName}.${dnZone}
-        - grafana.${dnZone}
+        - grafana.${clusterName:=tba}.${dnZone:=tba}
+        - grafana.${dnZone:=tba}
     # ingress:                                    # Set by secret
     #   enabled: true                             # Set by secret
     #   hosts:                                    # Set by secret
@@ -58,7 +58,7 @@ spec:
     #     hosts:                                  # Set by secret
     #     - xx                                    # Set by secret
     env:
-      GF_SERVER_ROOT_URL: https://grafana.${dnZone}
+      GF_SERVER_ROOT_URL: https://grafana.${dnZone:=tba}
       GF_DATABASE_TYPE: mysql
       GF_DATABASE_SSL_MODE: "skip-verify"
       GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
