@@ -39,6 +39,16 @@ spec:
         cpu: "50m"
         memory: "250Mi"
     nodeSelector: {"kubernetes.io/os": "linux"}
+    ingress:
+      enabled: true
+      hosts:
+      - grafana.${clusterName}.${dnZone}
+      - grafana.${dnZone}
+      tls:
+      - secretName: radix-wildcard-tls-cert
+        hosts:
+        - grafana.${clusterName}.${dnZone}
+        - grafana.${dnZone}
     # ingress:                                    # Set by secret
     #   enabled: true                             # Set by secret
     #   hosts:                                    # Set by secret
@@ -48,6 +58,7 @@ spec:
     #     hosts:                                  # Set by secret
     #     - xx                                    # Set by secret
     env:
+      GF_SERVER_ROOT_URL: https://grafana.${dnZone}
       GF_DATABASE_TYPE: mysql
       GF_DATABASE_SSL_MODE: "skip-verify"
       GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
