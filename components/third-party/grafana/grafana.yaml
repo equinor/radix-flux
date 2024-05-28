@@ -19,30 +19,3 @@ spec:
       name: radix-flux-config
   wait: true
   timeout: 2m
-
-  patches:
-    - target:
-        kind: HelmRelease
-        name: grafana
-        namespace: monitor
-      patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2beta1
-        kind: HelmRelease
-        metadata:
-          name: grafana
-          namespace: monitor
-        spec:
-          values:
-            ingress:
-              enabled: true
-              hosts:
-                - grafana.${ACTIVE_CLUSTER}.${AZ_RESOURCE_DNS}
-                - grafana.${AZ_RESOURCE_DNS}
-              tls:
-                - secretName: radix-wildcard-tls-cert
-                  hosts:
-                    - grafana.${ACTIVE_CLUSTER}.${AZ_RESOURCE_DNS}
-                    - grafana.${AZ_RESOURCE_DNS}
-            
-            env:
-              GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
