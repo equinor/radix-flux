@@ -35,6 +35,9 @@ spec:
         memory: 100Mi
     securityContext:
       readOnlyRootFilesystem: true
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.io/arch: amd64
   valuesFrom:
   - kind: Secret
     name: canary-secrets
