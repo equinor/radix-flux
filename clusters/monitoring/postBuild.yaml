@@ -14,6 +14,7 @@ spec:
       EXTERNAL_SECRET_URL: https://radix-keyv-extmon.vault.azure.net/
       EXTERNAL_SECRETS: 0.9.11 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       GRAFANA_DB_HOST: s940-radix-grafana-extmon-prod.mysql.database.azure.com
+      GRAFANA_URL: grafana.ext-mon
       GRAFANA_VERSION: 7.3.3 # https://artifacthub.io/packages/helm/grafana/grafana
       KUBE_PROMETHEUS_STACK: 48.3.3 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       NGINX_VERSION: 4.10.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
