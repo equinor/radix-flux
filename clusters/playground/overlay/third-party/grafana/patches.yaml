@@ -21,7 +21,19 @@ spec:
               version: ${GRAFANA_VERSION}
           values:
             env:
+              GF_SERVER_ROOT_URL: https://grafana.${dnsZone}
               GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
               GF_DATABASE_NAME: grafana
               GF_DATABASE_USER: grafana
               GF_AUTH_GENERIC_OAUTH_CLIENT_ID: e1f72508-ae39-4231-87f1-27f517aa044a
+        
+            ingress:
+              enabled: true
+              hosts:
+                - grafana.${clusterName}.${dnsZone}
+                - grafana.${AZ_RESOURCE_DNS}
+              tls:
+                - secretName: radix-wildcard-tls-cert
+                  hosts:
+                    - grafana.${clusterName}.${dnsZone}
+                    - grafana.${dnsZone}
