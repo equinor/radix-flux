@@ -41,7 +41,7 @@ spec:
           key: nodepooltasks
           operator: Equal
           value: jobs
-        retention: 60d # default
+        retention: 40d # default
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
