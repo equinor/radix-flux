@@ -64,6 +64,9 @@ spec:
         memory: 256Mi
     containerSecurityContext:
       readOnlyRootFilesystem: true
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.io/arch: amd64
   valuesFrom:
     - kind: ConfigMap
       name: velero-flux-values
