@@ -49,11 +49,6 @@ spec:
                           operator: In
                           values:
                           - armpipelpool
-                tolerations:
-                - effect: NoSchedule
-                  key: nodepooltasks
-                  operator: Equal
-                  value: jobs
                 retention: 60d # default
                 resources:
                   limits:
