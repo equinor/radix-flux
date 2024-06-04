@@ -33,11 +33,11 @@ spec:
                         operator: In
                         values:
                         - armpipelpool
-                tolerations:
-                - effect: NoSchedule
-                  key: nodepooltasks
-                  operator: Equal
-                  value: jobs
+              tolerations:
+              - effect: NoSchedule
+                key: nodepooltasks
+                operator: Equal
+                value: jobs
             prometheus:
               prometheusSpec:
                 affinity:
