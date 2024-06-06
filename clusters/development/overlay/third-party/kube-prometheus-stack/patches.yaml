@@ -24,31 +24,31 @@ spec:
               version: ${KUBE_PROMETHEUS_STACK}
           values:
             prometheusOperator:
-              affinity:
-                nodeAffinity:
-                  requiredDuringSchedulingIgnoredDuringExecution:
-                    nodeSelectorTerms:
-                    - matchExpressions:
-                      - key: agentpool
-                        operator: In
-                        values:
-                        - armpipelpool
-              tolerations:
-              - effect: NoSchedule
-                key: nodepooltasks
-                operator: Equal
-                value: jobs
+              # affinity:
+              #   nodeAffinity:
+              #     requiredDuringSchedulingIgnoredDuringExecution:
+              #       nodeSelectorTerms:
+              #       - matchExpressions:
+              #         - key: agentpool
+              #           operator: In
+              #           values:
+              #           - armpipelpool
+              # tolerations:
+              # - effect: NoSchedule
+              #   key: nodepooltasks
+              #   operator: Equal
+              #   value: jobs
             prometheus:
               prometheusSpec:
-                affinity:
-                  nodeAffinity:
-                    requiredDuringSchedulingIgnoredDuringExecution:
-                      nodeSelectorTerms:
-                      - matchExpressions:
-                        - key: agentpool
-                          operator: In
-                          values:
-                          - armpipelpool
+                # affinity:
+                #   nodeAffinity:
+                #     requiredDuringSchedulingIgnoredDuringExecution:
+                #       nodeSelectorTerms:
+                #       - matchExpressions:
+                #         - key: agentpool
+                #           operator: In
+                #           values:
+                #           - armpipelpool
                 retention: 60d # default
                 resources:
                   limits:
