@@ -39,7 +39,7 @@ spec:
       RADIX_OPERATOR_TAG: master-85a0f8c6-1718181179 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 0.4.0
-      RADIX_VULNERABILITY_SCANNER_TAG: main-7ae98210-1716534190 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: main-872523d3-1718286141 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: dev # dev | playground | prod
       TEKTON_VERSION: v0.53.0
