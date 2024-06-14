@@ -23,6 +23,15 @@ spec:
     grafana:
       enabled: false
     prometheusOperator:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - arm64
       resources:
         requests:
           cpu: "100m"
@@ -36,11 +45,15 @@ spec:
       prometheusSpec:
         query:
           timeout: 10s
-        tolerations:
-        - effect: NoSchedule
-          key: nodepooltasks
-          operator: Equal
-          value: jobs
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                  - arm64
         retention: 40d # default
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
@@ -81,6 +94,15 @@ spec:
         global:
           resolve_timeout: 5m
       alertmanagerSpec:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                  - arm64
         storage:
           volumeClaimTemplate:
             spec:
