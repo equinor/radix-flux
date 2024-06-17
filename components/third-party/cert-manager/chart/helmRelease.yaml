@@ -19,6 +19,15 @@ spec:
       retries: 3
   values:
     # resources: xx # Set by flux patch
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - arm64
     installCRDs: true
     global:
       rbac:
