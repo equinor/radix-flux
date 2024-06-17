@@ -21,3 +21,8 @@ spec:
     podLabels:
       keda:
         azure.workload.identity/use: "true"
+    prometheus:
+      operator:
+        enabled: true
+        serviceMonitor:
+          enabled: true
