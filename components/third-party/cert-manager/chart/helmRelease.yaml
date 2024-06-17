@@ -24,6 +24,10 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
             - key: kubernetes.io/arch
               operator: In
               values:
@@ -37,3 +41,21 @@ spec:
     serviceAccount:
       labels:
         azure.workload.identity/use: "true"
+    cainjector:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - cert-manager
+    webhook:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - cert-manager
