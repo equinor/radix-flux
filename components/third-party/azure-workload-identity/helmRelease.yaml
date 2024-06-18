@@ -19,3 +19,16 @@ spec:
       retries: 3
   values:
     azureTenantID: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - arm64

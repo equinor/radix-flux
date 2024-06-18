@@ -17,8 +17,20 @@ spec:
   install:
     remediation:
       retries: 3
-
   values:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - arm64
     resources:
       limits:
         memory: 1Gi
@@ -29,7 +41,6 @@ spec:
       fsGroup: 1000
       runAsGroup: 1000
       runAsUser: 1000
-
     securityContext:
       readOnlyRootFilesystem: true
       allowPrivilegeEscalation: false
