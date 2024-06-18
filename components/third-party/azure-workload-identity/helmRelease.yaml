@@ -20,6 +20,17 @@ spec:
   values:
     azureTenantID: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
     affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - workload-identity-webhook
+            topologyKey: kubernetes.io/hostname
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
