@@ -29,13 +29,16 @@ spec:
                 path: /spec/template/spec/containers/0/securityContext
                 value: 
                   readOnlyRootFilesystem: true
-
   values:
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
             - key: kubernetes.io/arch
               operator: In
               values:
