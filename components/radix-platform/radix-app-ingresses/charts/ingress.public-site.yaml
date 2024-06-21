@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: "${dnsZone}"
+    - host: "${dnsZone:=tba}"
       http:
         paths:
           - backend:
@@ -23,7 +23,7 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - "${dnsZone}"
+        - "${dnsZone:=tba}"
       secretName: radix-wildcard-tls-cert
 ---
 apiVersion: networking.k8s.io/v1
@@ -39,7 +39,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: "www.${dnsZone}"
+    - host: "www.${dnsZone:=tba}"
       http:
         paths:
           - backend:
@@ -51,5 +51,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - "www.${dnsZone}"
+        - "www.${dnsZone:=tba}"
       secretName: radix-wildcard-tls-cert
