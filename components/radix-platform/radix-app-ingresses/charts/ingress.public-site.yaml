@@ -6,7 +6,7 @@ metadata:
   labels:
     radix-app: radix-public-site
     radix-component: public-site
-  name: public-site.custom-domain
+  name: public-site-at.custom-domain
   namespace: radix-public-site-prod
 spec:
   ingressClassName: nginx
@@ -21,6 +21,24 @@ spec:
                   number: 8080
             path: /
             pathType: Prefix
+  tls:
+    - hosts:
+        - "${dnsZone}"
+      secretName: radix-wildcard-tls-cert
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+  labels:
+    radix-app: radix-public-site
+    radix-component: public-site
+  name: public-site.custom-domain
+  namespace: radix-public-site-prod
+spec:
+  ingressClassName: nginx
+  rules:
     - host: "www.${dnsZone}"
       http:
         paths:
@@ -33,6 +51,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - "${dnsZone}"
         - "www.${dnsZone}"
       secretName: radix-wildcard-tls-cert
