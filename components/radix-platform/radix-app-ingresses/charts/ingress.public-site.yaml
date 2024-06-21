@@ -7,7 +7,7 @@ metadata:
     radix-app: radix-public-site
     radix-component: public-site
   name: public-site-at.custom-domain
-  namespace: radix-public-site-prod
+  namespace: radix-public-site-${RADIX_APP_ENV:=tba}
 spec:
   ingressClassName: nginx
   rules:
@@ -35,7 +35,7 @@ metadata:
     radix-app: radix-public-site
     radix-component: public-site
   name: public-site.custom-domain
-  namespace: radix-public-site-prod
+  namespace: radix-public-site-${RADIX_APP_ENV:=tba}
 spec:
   ingressClassName: nginx
   rules:
