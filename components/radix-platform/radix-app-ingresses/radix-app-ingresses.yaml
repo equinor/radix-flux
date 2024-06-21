@@ -1,0 +1,21 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-app-ingresses
+  namespace: flux-system
+spec:
+  interval: 10m
+  retryInterval: 1m
+  # timeout: 2m
+  wait: true
+  prune: true
+  force: true # replace existing resources
+
+  path: "./components/radix-platform/radix-app-ingresses/charts"
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+
+  postBuild:
+    substitute:
+      RADIX_APP_ENV: ${RADIX_APP_ENV:=prod} # SET TO qa IN DEV
