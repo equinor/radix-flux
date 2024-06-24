@@ -13,7 +13,7 @@ resources:
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubernetes-replicator
 - ../../components/third-party/kured
-- ../../components/third-party/sysctl-install-blobfuse
+#- ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/velero
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
