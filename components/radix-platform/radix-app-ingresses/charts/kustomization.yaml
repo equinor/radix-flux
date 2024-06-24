@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
   - namespace.public-site.yaml
   - ingress.public-site.yaml
+
+  - namespace.cost-api.yaml
+  - ingress.cost-api.yaml
