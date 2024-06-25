@@ -38,7 +38,7 @@ spec:
               GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
               GF_DATABASE_NAME: grafana
               GF_DATABASE_USER: radix-id-grafana-admin-dev
-              GF_DATABASE_PASSWORD: $__file{/var/run/secrets/azure/tokens}
+              GF_DATABASE_PASSWORD: $__file{/var/run/secrets/azure/tokens/azure-identity-token}
               GF_AUTH_GENERIC_OAUTH_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70
 
             ingress:
