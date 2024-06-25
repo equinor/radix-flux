@@ -74,6 +74,9 @@ spec:
               volumeMounts:
               - name: access-token-volume
                 mountPath: /tmp
+              env:
+                - name: HOME
+                  value: "/tmp"
               command:
               - 'sh'
               - '-c'
