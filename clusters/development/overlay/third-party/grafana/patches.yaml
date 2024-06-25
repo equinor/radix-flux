@@ -88,14 +88,12 @@ spec:
               - '-c'
               - |
                 # Log in to Azure with the provided credentials, that matches the configured ferated credential
-                az login --service-principal \
-                --username $AZURE_CLIENT_ID \
-                --tenant $AZURE_TENANT_ID \
-                --federated-token `cat $AZURE_FEDERATED_TOKEN_FILE` \
-                --allow-no-subscriptions \
-                --query [0].name
+                az login --service-principal --username $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --federated-token `cat $AZURE_FEDERATED_TOKEN_FILE` --allow-no-subscriptions
                 
-                az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv >  /tmp/token
-                cat /tmp/token
+                TOKEN=`az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv`
+                if [ -n "$TOKEN" ]; then
+                  echo "$TOKEN" > /tmp/token
+                fi
+                ls -lah /tmp
                 sleep 3000
                 :
