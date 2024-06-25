@@ -19,6 +19,6 @@ spec:
       NGINX_VERSION: 4.10.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ZONE_MIGRATE: extmon
       VELERO_MI_CLIENT_ID: 069f097a-be9a-4e59-bffc-9b1e3d5cbbe9
-    # substituteFrom:
-    # - kind: ConfigMap
-    #   name: radix-flux-config
+    substituteFrom:
+    - kind: ConfigMap
+      name: radix-flux-config
