@@ -34,7 +34,7 @@ spec:
                       - op: add
                         path: /spec/template/spec/containers/0/volumeMounts
                         value: 
-                          - mountPath: /var/run/secrets/ossrdbms-aad/tokens
+                          - mountPath: /var/run/secrets/ossrdbms-aad
                             name: access-token-volume
                             readOnly: true
                                         
@@ -75,7 +75,7 @@ spec:
               restartPolicy: Always
               readinessProbe:
                 exec:
-                  command: ['cat', '/tmp/access_token']
+                  command: ['cat', '/tmp/token']
                 initialDelaySeconds: 5
               volumeMounts:
               - name: access-token-volume
