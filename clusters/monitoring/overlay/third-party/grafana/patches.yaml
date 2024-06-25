@@ -24,16 +24,18 @@ spec:
               requests:
                 cpu: "0.2"
                 memory: "200Mi"
-            envFromSecret: null
+            envFromSecret: grafana-secrets
             ingress:
               enabled: true
               annotations:
                 kubernetes.io/tls-acme: "true"
               hosts:
+              - grafana.${clusterName}.${AZ_RESOURCE_DNS}
               - grafana.${AZ_RESOURCE_DNS}
               tls:
               - secretName: grafana-tls
                 hosts:
+                - grafana.${clusterName}.${AZ_RESOURCE_DNS}
                 - grafana.${AZ_RESOURCE_DNS}
             podLabels: 
               azure.workload.identity/use: "true"

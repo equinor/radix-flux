@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: grafana.${clusterName}.${dnsZone}
+  - host: grafana.${clusterName}.${AZ_RESOURCE_DNS}
     http:
       paths:
       - backend:
@@ -21,4 +21,4 @@ spec:
   tls:
   - secretName: radix-wildcard-tls-cert
     hosts:
-    - grafana.${clusterName}.${dnsZone}
+    - grafana.${clusterName}.${AZ_RESOURCE_DNS}
