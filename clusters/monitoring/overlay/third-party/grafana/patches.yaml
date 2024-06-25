@@ -26,8 +26,15 @@ spec:
                 memory: "200Mi"
             envFromSecret: null
             ingress:
+              enabled: true
               annotations:
                 kubernetes.io/tls-acme: "true"
+              hosts:
+              - grafana.${AZ_RESOURCE_DNS}
+              tls:
+              - secretName: grafana-tls
+                hosts:
+                - grafana.${AZ_RESOURCE_DNS}
             podLabels: 
               azure.workload.identity/use: "true"
             serviceAccount:
@@ -37,11 +44,8 @@ spec:
               azure:
                 workload_identity_enabled: "true"
             env:
+              GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
               GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
               GF_DATABASE_NAME: grafana
               GF_DATABASE_USER: grafana
               GF_AUTH_GENERIC_OAUTH_CLIENT_ID: 8d25ce2e-aa30-4834-93dc-292645bf2918
-          valuesFrom:
-          - kind: Secret
-            name: grafana-helm-secret
-            valuesKey: config
