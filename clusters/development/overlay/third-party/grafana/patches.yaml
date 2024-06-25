@@ -38,3 +38,9 @@ spec:
                     - grafana.${clusterName}.${AZ_RESOURCE_DNS}
                     - grafana.${AZ_RESOURCE_DNS}
         
+            serviceAccount:
+              annotations:
+                azure.workload.identity/client-id: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a
+            
+            extraLabels:
+              azure.workload.identity/use: "true"
