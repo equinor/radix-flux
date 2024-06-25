@@ -73,7 +73,7 @@ spec:
               securityContext:
                 runAsUser: 1000
               restartPolicy: Always
-              readinessProbe:
+              livenessProbe:
                 exec:
                   command: ['cat', '/tmp/token']
                 initialDelaySeconds: 5
