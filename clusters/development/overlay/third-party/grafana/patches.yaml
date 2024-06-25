@@ -31,12 +31,18 @@ spec:
                       - op: add
                         path: /spec/template/metadata/labels/azure.workload.identity~1use
                         value: "true"
-                      
+                      - op: add
+                        path: /spec/template/spec/containers/0/volumeMounts
+                        value: 
+                          - mountPath: /var/run/secrets/ossrdbms-aad/tokens
+                            name: access-token-volume
+                            readOnly: true
+                                        
           values:
             env:
               GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
               
-              GF_DATABASE_URL: mysql://radix-id-grafana-admin-dev:$__file{/var/run/secrets/azure/tokens/azure-identity-token}@${GRAFANA_DB_HOST}/grafana?allowCleartextPasswords=1
+              GF_DATABASE_URL: mysql://radix-id-grafana-admin-dev:$__file{/var/run/secrets/ossrdbms-aad/token}@${GRAFANA_DB_HOST}/grafana?allowCleartextPasswords=1
               # GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
               # GF_DATABASE_NAME: grafana
               # GF_DATABASE_USER: radix-id-grafana-admin-dev
@@ -89,7 +95,7 @@ spec:
                 --allow-no-subscriptions \
                 --query [0].name
                 
-                az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv >  /tmp/access_token
-                cat /tmp/access_token
+                az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv >  /tmp/token
+                cat /tmp/token
                 sleep 3000
                 :
