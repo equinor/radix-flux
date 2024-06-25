@@ -19,12 +19,26 @@ spec:
           chart:
             spec:
               version: ${GRAFANA_VERSION}
+          postRenderers:
+            - kustomize:
+                patches:
+                  - target:
+                      version: v1
+                      kind: Deployment
+                      namespace: monitor
+                      name: grafana
+                    patch: |
+                      - op: add
+                        path: /spec/template/metadata/labels/azure.workload.identity~1use
+                        value: true
+                      
           values:
             env:
               GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
               GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
               GF_DATABASE_NAME: grafana
-              GF_DATABASE_USER: grafana
+              GF_DATABASE_USER: radix-id-grafana-admin-dev
+              GF_DATABASE_PASSWORD: $__file{/etc/secrets/gf_sql_password}
               GF_AUTH_GENERIC_OAUTH_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70
 
             ingress:
@@ -42,5 +56,35 @@ spec:
               annotations:
                 azure.workload.identity/client-id: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a
             
-            extraLabels:
-              azure.workload.identity/use: "true"
+            extraContainerVolumes: 
+              - name: access-token-volume
+                emptyDir: {}
+            extraInitContainer:          
+            - name: fetch-token
+              image: mcr.microsoft.com/azure-cli:2.55.0
+              securityContext:
+                runAsUser: 1000
+              restartPolicy: Always
+              readinessProbe:
+                exec:
+                  command: ['cat', '/tmp/access_token']
+                initialDelaySeconds: 5
+              volumeMounts:
+              - name: access-token-volume
+                mountPath: /tmp
+              command:
+              - 'sh'
+              - '-c'
+              - |
+                # Log in to Azure with the provided credentials, that matches the configured ferated credential
+                az login --service-principal \
+                --username $AZURE_CLIENT_ID \
+                --tenant $AZURE_TENANT_ID \
+                --federated-token `cat $AZURE_FEDERATED_TOKEN_FILE` \
+                --allow-no-subscriptions \
+                --query [0].name
+                
+                az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv >  /tmp/access_token
+                cat /tmp/access_token
+                sleep 3000
+                :
