@@ -6,3 +6,15 @@ resources:
 
   - namespace.webhook.yaml
   - ingress.webhook.yaml
+ 
+  - namespace.cost-api.yaml
+  - ingress.cost-api.yaml
+
+  - namespace.console.yaml
+  - ingress.console.yaml
+
+  - namespace.canary.yaml
+  - ingress.canary.yaml
+
+  - namespace.api.yaml
+  - ingress.api.yaml
