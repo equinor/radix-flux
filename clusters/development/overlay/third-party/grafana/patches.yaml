@@ -61,7 +61,7 @@ spec:
             extraContainerVolumes: 
               - name: access-token-volume
                 emptyDir: {}
-            extraInitContainer:          
+            extraInitContainers:          
             - name: fetch-token
               image: mcr.microsoft.com/azure-cli:2.55.0
               securityContext:
