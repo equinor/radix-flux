@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+  labels:
+    radix-app: radix-canary-golang
+    radix-component: www
+  name: www.custom-domain
+  namespace: radix-canary-golang-${RADIX_APP_ENV:=tba}
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: canary.${AZ_RESOURCE_DNS:=tba}
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: www
+                port:
+                  number: 5000
+  tls:
+    - hosts:
+        - canary.${AZ_RESOURCE_DNS:=tba}
+      secretName: "radix-wildcard-tls-cert"
