@@ -31,6 +31,7 @@ spec:
                       - op: add
                         path: /spec/template/metadata/labels/azure.workload.identity~1use
                         value: "true"
+                      
                       - op: add
                         path: /spec/template/spec/containers/0/volumeMounts
                         value: 
@@ -72,7 +73,7 @@ spec:
               image: mcr.microsoft.com/azure-cli:2.55.0
               securityContext:
                 runAsUser: 1000
-              restartPolicy: Always
+              # restartPolicy: Always
               livenessProbe:
                 exec:
                   command: ['cat', '/tmp/token']
@@ -95,5 +96,5 @@ spec:
                   echo "$TOKEN" > /tmp/token
                 fi
                 ls -lah /tmp
-                sleep 3000
+                # sleep 3000
                 :
