@@ -74,10 +74,10 @@ spec:
               securityContext:
                 runAsUser: 1000
               # restartPolicy: Always
-              livenessProbe:
-                exec:
-                  command: ['cat', '/tmp/token']
-                initialDelaySeconds: 5
+             # livenessProbe:
+             #   exec:
+             #     command: ['cat', '/tmp/token']
+             #   initialDelaySeconds: 5
               volumeMounts:
               - name: access-token-volume
                 mountPath: /tmp
