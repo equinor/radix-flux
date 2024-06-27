@@ -11,6 +11,10 @@ resources:
 - ../../components/third-party/external-secrets
 patches:
   - path: ./postBuild.yaml
+  - path: ../../components/flux/helm-controller.yaml
+  - path: ../../components/flux/kustomize-controller.yaml
+  - path: ../../components/flux/notification-controller.yaml
+  - path: ../../components/flux/source-controller.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml

@@ -33,6 +33,12 @@ resources:
 - ./overlay/radix-platform/radix-oauth-guard/helmRelease-prometheus.yaml # Sidecar to Prometheus
 patches:
   - path: ./postBuild.yaml
+  - path: ../../components/flux/helm-controller.yaml
+  - path: ../../components/flux/image-automation-controller.yaml
+  - path: ../../components/flux/image-reflector-controller.yaml
+  - path: ../../components/flux/kustomize-controller.yaml
+  - path: ../../components/flux/notification-controller.yaml
+  - path: ../../components/flux/source-controller.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
