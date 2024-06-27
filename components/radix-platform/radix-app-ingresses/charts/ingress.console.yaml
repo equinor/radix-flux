@@ -21,7 +21,18 @@ spec:
                 name: auth
                 port:
                   number: 8000
+    - host: console.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: auth
+                port:
+                  number: 8000
   tls:
     - hosts:
         - console.${AZ_RESOURCE_DNS:=tba}
+        - console.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
       secretName: "radix-wildcard-tls-cert"

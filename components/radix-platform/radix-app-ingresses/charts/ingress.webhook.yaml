@@ -21,7 +21,18 @@ spec:
                 name: webhook
                 port:
                   number: 3001
+    - host: webhook.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: webhook
+                port:
+                  number: 3001
   tls:
     - hosts:
         - webhook.${AZ_RESOURCE_DNS:=tba}
+        - webhook.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
       secretName: "radix-wildcard-tls-cert"
