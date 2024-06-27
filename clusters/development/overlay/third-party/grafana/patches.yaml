@@ -19,12 +19,30 @@ spec:
           chart:
             spec:
               version: ${GRAFANA_VERSION}
+          postRenderers:
+            - kustomize:
+                patches:
+                  - target:
+                      version: v1
+                      kind: Deployment
+                      namespace: monitor
+                      name: grafana
+                    patch: |
+                      - op: add
+                        path: /spec/template/metadata/labels/azure.workload.identity~1use
+                        value: "true"
+                      
+                      - op: add
+                        path: /spec/template/spec/containers/0/volumeMounts
+                        value: 
+                          - mountPath: /var/run/secrets/ossrdbms-aad
+                            name: access-token-volume
+                            readOnly: true
+                                        
           values:
             env:
               GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
-              GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
-              GF_DATABASE_NAME: grafana
-              GF_DATABASE_USER: grafana
+              GF_DATABASE_URL: mysql://radix-id-grafana-admin-dev:$__file{/var/run/secrets/ossrdbms-aad/token}@${GRAFANA_DB_HOST}/grafana?allowCleartextPasswords=1
               GF_AUTH_GENERIC_OAUTH_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70
 
             ingress:
@@ -38,3 +56,32 @@ spec:
                     - grafana.${clusterName}.${AZ_RESOURCE_DNS}
                     - grafana.${AZ_RESOURCE_DNS}
         
+            serviceAccount:
+              annotations:
+                azure.workload.identity/client-id: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a
+            
+            extraContainerVolumes: 
+              - name: access-token-volume
+                emptyDir: {}
+            extraInitContainers:          
+            - name: fetch-token
+              image: mcr.microsoft.com/azure-cli:2.61.0
+              securityContext:
+                runAsUser: 1000
+              # restartPolicy: Always
+              # startupProbe:
+              #   exec:
+              #     command: ['sh', '-c', '[ -s /tmp/token ]'] # Check token exist and is not empty
+              #   initialDelaySeconds: 5
+              volumeMounts:
+              - name: access-token-volume
+                mountPath: /tmp
+              env:
+                - name: HOME
+                  value: "/tmp"
+              command:
+              - 'sh'
+              - '-c'
+              - |
+                az login --service-principal --username $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --federated-token `cat $AZURE_FEDERATED_TOKEN_FILE` --allow-no-subscriptions
+                az account get-access-token --resource-type oss-rdbms --query accessToken --output tsv > /tmp/token
