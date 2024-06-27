@@ -20,3 +20,6 @@ spec:
     substitute:
       RADIX_APP_ENV: ${RADIX_APP_ENV:=prod} # SET TO qa IN DEV
       AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba} # set in postBuild
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
