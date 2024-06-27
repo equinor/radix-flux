@@ -21,7 +21,18 @@ spec:
                 name: server
                 port:
                   number: 3003
+    - host: cost-api.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: server
+                port:
+                  number: 3003
   tls:
     - hosts:
         - cost-api.${AZ_RESOURCE_DNS:=tba}
+        - cost-api.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
       secretName: "radix-wildcard-tls-cert"
