@@ -35,7 +35,7 @@ resources:
 
 patches:
   - path: ./postBuild.yaml
-  - path: ../../components/flux/helm-controller.yaml
+  - path: ../../../components/flux/helm-controller.yaml
   - path: ../../components/flux/image-automation-controller.yaml
   - path: ../../components/flux/image-reflector-controller.yaml
   - path: ../../components/flux/kustomize-controller.yaml
