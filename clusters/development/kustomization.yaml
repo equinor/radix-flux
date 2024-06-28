@@ -21,6 +21,7 @@ resources:
 - ../../components/third-party/ingress-nginx
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubernetes-replicator
+- ../../components/third-party/sysctl-install-blobfuse
 - ../../components/third-party/kured
 - ../../components/third-party/keda
 - ../../components/third-party/tekton
