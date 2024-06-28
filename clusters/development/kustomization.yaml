@@ -10,7 +10,7 @@ resources:
 - ../../components/radix-platform/radix-app-ingresses
 - ../../components/third-party/azure-service-operator
 - ../../components/third-party/azure-workload-identity
-- ../../components/third-party/blob-csi-driver
+# - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/cert-manager
 - ../../components/third-party/cert-manager-issuers/digicert/dns01
 - ../../components/third-party/cert-manager-issuers/digicert/externalaccount
