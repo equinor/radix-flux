@@ -66,7 +66,7 @@ metadata:
 spec:
   patches:
     - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        apiVersion: helm.toolkit.fluxcd.io/v2
         kind: HelmRelease
         metadata:
           name: radix-operator

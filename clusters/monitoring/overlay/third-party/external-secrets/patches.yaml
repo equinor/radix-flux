@@ -13,7 +13,7 @@ spec:
         - op: replace
           path: /spec/chart/spec/version
           value: ${EXTERNAL_SECRETS} # Set in postBuild development
-#        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+#        apiVersion: helm.toolkit.fluxcd.io/v2
 #        kind: HelmRelease
 #        metadata:
 #          name: external-secrets-operator
