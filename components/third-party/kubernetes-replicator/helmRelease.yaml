@@ -18,6 +18,8 @@ spec:
     remediation:
       retries: 3
   values:
+    image:
+      repository: ${RADIX_CACHE_REGISTRY}/mittwald/kubernetes-replicator
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:

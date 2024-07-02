@@ -15,6 +15,7 @@ spec:
       velero_plugin_acr_image: ${velero_plugin_acr_image} # Set in clusters/<cluster>/postBuild
       velero_plugin_azure: ${velero_plugin_azure} # Set in clusters/<cluster>/postBuild
       velero_azure_workload_identity_id: ${VELERO_MI_CLIENT_ID} # Set in clusters/<cluster>/postBuild
+      RADIX_CACHE_REGISTRY: ${RADIX_CACHE_REGISTRY:=tba}
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment

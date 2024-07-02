@@ -15,4 +15,4 @@ spec:
   postBuild:
     substitute:
       AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba} # set in postBuild
-
+      RADIX_CACHE_REGISTRY: ${RADIX_CACHE_REGISTRY:=tba} # set in postBuild
