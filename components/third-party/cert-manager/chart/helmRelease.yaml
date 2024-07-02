@@ -80,10 +80,6 @@ spec:
       image:
         registry: ${RADIX_CACHE_REGISTRY}
 
-    acmesolver:
-      image:
-        registry: ${RADIX_CACHE_REGISTRY}
-
     startupapicheck:
       image:
         registry: ${RADIX_CACHE_REGISTRY}
