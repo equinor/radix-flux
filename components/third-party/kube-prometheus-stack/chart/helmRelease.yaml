@@ -18,6 +18,8 @@ spec:
     remediation:
       retries: 3
   values:
+    global:
+      imageRegistry: ${RADIX_CACHE_REGISTRY}
     fullnameOverride: prometheus-operator
     nameOverride: prometheus-operator
     grafana:
