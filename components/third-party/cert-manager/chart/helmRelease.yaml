@@ -36,12 +36,16 @@ spec:
     global:
       rbac:
         create: true
+    image:
+      registry: ${RADIX_CACHE_REGISTRY}
     podLabels:
       azure.workload.identity/use: "true"
     serviceAccount:
       labels:
         azure.workload.identity/use: "true"
     cainjector:
+      image:
+        registry: ${RADIX_CACHE_REGISTRY}
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -56,6 +60,8 @@ spec:
                 values:
                 - arm64
     webhook:
+      image:
+        registry: ${RADIX_CACHE_REGISTRY}
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -69,3 +75,15 @@ spec:
                 operator: In
                 values:
                 - arm64
+
+    acmesolver:
+      image:
+        registry: ${RADIX_CACHE_REGISTRY}
+
+    acmesolver:
+      image:
+        registry: ${RADIX_CACHE_REGISTRY}
+
+    startupapicheck:
+      image:
+        registry: ${RADIX_CACHE_REGISTRY}
