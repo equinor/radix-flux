@@ -61,8 +61,8 @@ spec:
                 values:
                 - arm64
     webhook:
-    #  image:
-    #    repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-webhook
+      image:
+        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-webhook
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -83,5 +83,4 @@ spec:
 
     startupapicheck:
       image:
-        registry: ${RADIX_CACHE_REGISTRY}
         repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-startupapicheck
