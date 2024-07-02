@@ -68,11 +68,11 @@ spec:
               image: mcr.microsoft.com/azure-cli:2.61.0
               securityContext:
                 runAsUser: 1000
-              # restartPolicy: Always
-              # startupProbe:
-              #   exec:
-              #     command: ['sh', '-c', '[ -s /tmp/token ]'] # Check token exist and is not empty
-              #   initialDelaySeconds: 5
+              restartPolicy: Always
+              startupProbe:
+                exec:
+                  command: ['sh', '-c', '[ -s /tmp/token ]'] # Check token exist and is not empty
+                initialDelaySeconds: 5
               volumeMounts:
               - name: access-token-volume
                 mountPath: /tmp
@@ -85,3 +85,4 @@ spec:
               - |
                 az login --service-principal --username $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --federated-token `cat $AZURE_FEDERATED_TOKEN_FILE` --allow-no-subscriptions
                 az account get-access-token --resource-type oss-rdbms --query accessToken --output tsv > /tmp/token
+                sleep 82800 # 23 hours
