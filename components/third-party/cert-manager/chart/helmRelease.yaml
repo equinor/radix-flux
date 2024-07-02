@@ -61,8 +61,8 @@ spec:
                 values:
                 - arm64
     webhook:
-      image:
-        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-webhook
+    #  image:
+    #    repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-webhook
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
