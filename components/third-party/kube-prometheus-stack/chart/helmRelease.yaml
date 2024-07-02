@@ -18,13 +18,13 @@ spec:
     remediation:
       retries: 3
   values:
-    global:
-      imageRegistry: ${RADIX_CACHE_REGISTRY}
     fullnameOverride: prometheus-operator
     nameOverride: prometheus-operator
     grafana:
       enabled: false
     prometheusOperator:
+      image:
+        registry: ${RADIX_CACHE_REGISTRY}
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -45,6 +45,8 @@ spec:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
     prometheus:
       prometheusSpec:
+        image:
+          registry: ${RADIX_CACHE_REGISTRY}
         query:
           timeout: 10s
         affinity:
@@ -96,6 +98,8 @@ spec:
         global:
           resolve_timeout: 5m
       alertmanagerSpec:
+        image:
+          registry: ${RADIX_CACHE_REGISTRY}
         affinity:
           nodeAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
