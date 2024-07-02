@@ -37,15 +37,16 @@ spec:
       rbac:
         create: true
     image:
-      registry: ${RADIX_CACHE_REGISTRY}
+      repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-controller
     podLabels:
       azure.workload.identity/use: "true"
     serviceAccount:
       labels:
         azure.workload.identity/use: "true"
+
     cainjector:
       image:
-        registry: ${RADIX_CACHE_REGISTRY}
+        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-cainjector
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -61,7 +62,7 @@ spec:
                 - arm64
     webhook:
       image:
-        registry: ${RADIX_CACHE_REGISTRY}
+        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-webhook
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -78,8 +79,9 @@ spec:
 
     acmesolver:
       image:
-        registry: ${RADIX_CACHE_REGISTRY}
+        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-acmesolver
 
     startupapicheck:
       image:
         registry: ${RADIX_CACHE_REGISTRY}
+        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-startupapicheck
