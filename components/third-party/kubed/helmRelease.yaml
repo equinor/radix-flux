@@ -3,7 +3,7 @@
 # Since we have not enabled notifications from kubed, we can hardcode clusterName for all dev clusters
 
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: kubed
