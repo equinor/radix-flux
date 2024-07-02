@@ -38,6 +38,9 @@ spec:
         requests:
           cpu: "100m"
           memory: "100Mi"
+      prometheusConfigReloader:
+        image:
+          registry: ${RADIX_CACHE_REGISTRY}
     kube-state-metrics:
       containerSecurityContext:
         readOnlyRootFilesystem: true
