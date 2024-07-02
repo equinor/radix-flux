@@ -22,7 +22,8 @@ spec:
     nameOverride: prometheus-operator
     grafana:
       enabled: false
-    prometheusOperator:
+
+    prometheusOperator: #
       image:
         registry: ${RADIX_CACHE_REGISTRY}
       affinity:
@@ -41,11 +42,20 @@ spec:
       prometheusConfigReloader:
         image:
           registry: ${RADIX_CACHE_REGISTRY}
+      admissionWebhooks:
+        deployment:
+          image:
+            registry: ${RADIX_CACHE_REGISTRY}
+        deployment:
+          image:
+            registry: ${RADIX_CACHE_REGISTRY}
+
     kube-state-metrics:
       containerSecurityContext:
         readOnlyRootFilesystem: true
       extraArgs:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
+
     prometheus:
       prometheusSpec:
         image:
@@ -96,6 +106,7 @@ spec:
               - source_labels: [__meta_kubernetes_pod_name]
                 action: replace
                 target_label: kubernetes_pod_name
+
     alertmanager:
       config:
         global:
@@ -166,6 +177,7 @@ spec:
           {{define "radix-slack-alert-titlelink"}}
           {{.CommonAnnotations.nonexisting}}
           {{end}}
+
     additionalPrometheusRulesMap: # https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
       radix-app:
         groups:
