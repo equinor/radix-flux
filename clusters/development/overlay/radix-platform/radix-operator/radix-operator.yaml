@@ -78,6 +78,9 @@ spec:
                 version: v1.23
             securityContext:
               readOnlyRootFilesystem: true
+            seccompProfile:
+              installer:
+                image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE}
       target:
         kind: HelmRelease
         name: radix-operator
