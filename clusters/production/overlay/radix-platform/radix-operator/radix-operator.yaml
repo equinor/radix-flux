@@ -56,6 +56,9 @@ spec:
             kubeClientRateLimitBurst: 500
             kubeClientRateLimitQPS: 500
             buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}  # Set in postBuild development
+            gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}  # Set in postBuild development
+            gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE}  # Set in postBuild development
+            gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE}  # Set in postBuild development
             app:
               env:
                 limitrange:
@@ -78,6 +81,9 @@ spec:
                   clusterIssuer: digicert-http01
             securityContext:
               readOnlyRootFilesystem: true
+            seccompProfile:
+              installer:
+                image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE}
       target:
         kind: HelmRelease
         name: radix-operator

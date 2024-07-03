@@ -29,6 +29,9 @@ spec:
       RADIX_APP_ACR_REPO_URL: radixplaygroundapp.azurecr.io
       RADIX_APP_ENV: prod
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.31
+      RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixplaygroundcache.azurecr.io/alpine:3.20
+      RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixplaygroundcache.azurecr.io/alpine/git:2.45.2
+      RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixplaygroundcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixplaygroundcache.azurecr.io
       RADIX_CICD_CANARY_TAG: release-771e8eb4-1716792551 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: release-17d9c505-1712064054 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
@@ -47,6 +50,7 @@ spec:
       VELERO_VERSION: 6.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: a59fc37e-f966-4a53-ba73-cac5e2590b24
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-playground.database.windows.net
+      RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixplaygroundcache.azurecr.io/alpine:3.20
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
