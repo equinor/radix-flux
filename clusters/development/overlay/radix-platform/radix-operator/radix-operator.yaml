@@ -51,6 +51,9 @@ spec:
             containerRegistry: ${radix_acr_repo_url}
             appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
             buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}  # Set in postBuild development
+            gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}  # Set in postBuild development
+            gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE}  # Set in postBuild development
+            gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE}  # Set in postBuild development
             app:
               env:
                 limitrange:
