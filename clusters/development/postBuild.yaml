@@ -36,6 +36,7 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixdevcache.azurecr.io/alpine:3.20
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixdevcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
+      RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io
       RADIX_CICD_CANARY_TAG: master-0c931cb5-1716470258 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-5feb3752-1711099209 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_COST_ALLOCATION_TAG: master-ed861c42-1716466507 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}

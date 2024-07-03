@@ -15,3 +15,9 @@ spec:
       kind: Deployment
       name: cert-manager
       namespace: cert-manager
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+    substitute:
+      RADIX_CACHE_REGISTRY: ${RADIX_CACHE_REGISTRY:=tba}
