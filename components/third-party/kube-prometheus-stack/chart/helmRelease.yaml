@@ -46,9 +46,6 @@ spec:
         deployment:
           image:
             registry: ${RADIX_CACHE_REGISTRY}
-        deployment:
-          image:
-            registry: ${RADIX_CACHE_REGISTRY}
 
     kube-state-metrics:
       containerSecurityContext:
