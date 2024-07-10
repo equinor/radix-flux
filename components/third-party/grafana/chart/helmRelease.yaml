@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: grafana
@@ -29,8 +29,22 @@ spec:
                 path: /spec/template/spec/containers/0/securityContext
                 value: 
                   readOnlyRootFilesystem: true
-
   values:
+    global:
+      imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - arm64
     resources:
       # limits:
       #   cpu: "2"

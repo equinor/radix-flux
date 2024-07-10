@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: cert-manager
@@ -19,12 +19,68 @@ spec:
       retries: 3
   values:
     # resources: xx # Set by flux patch
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - arm64
     installCRDs: true
     global:
       rbac:
         create: true
+    image:
+      repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-controller
     podLabels:
       azure.workload.identity/use: "true"
     serviceAccount:
       labels:
         azure.workload.identity/use: "true"
+
+    cainjector:
+      image:
+        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-cainjector
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/os
+                operator: In
+                values:
+                - linux
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - arm64
+    webhook:
+      image:
+        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-webhook
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/os
+                operator: In
+                values:
+                - linux
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - arm64
+
+    acmesolver:
+      image:
+        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-acmesolver
+
+    startupapicheck:
+      image:
+        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-startupapicheck

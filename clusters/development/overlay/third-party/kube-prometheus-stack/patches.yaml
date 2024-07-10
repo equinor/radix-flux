@@ -13,7 +13,7 @@ spec:
         name: kube-prometheus-stack
         namespace: monitor
       patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        apiVersion: helm.toolkit.fluxcd.io/v2
         kind: HelmRelease
         metadata:
           name: kube-prometheus-stack
@@ -23,32 +23,8 @@ spec:
             spec:
               version: ${KUBE_PROMETHEUS_STACK}
           values:
-            prometheusOperator:
-              # affinity:
-              #   nodeAffinity:
-              #     requiredDuringSchedulingIgnoredDuringExecution:
-              #       nodeSelectorTerms:
-              #       - matchExpressions:
-              #         - key: agentpool
-              #           operator: In
-              #           values:
-              #           - armpipelpool
-              # tolerations:
-              # - effect: NoSchedule
-              #   key: nodepooltasks
-              #   operator: Equal
-              #   value: jobs
             prometheus:
               prometheusSpec:
-                # affinity:
-                #   nodeAffinity:
-                #     requiredDuringSchedulingIgnoredDuringExecution:
-                #       nodeSelectorTerms:
-                #       - matchExpressions:
-                #         - key: agentpool
-                #           operator: In
-                #           values:
-                #           - armpipelpool
                 retention: 60d # default
                 resources:
                   limits:

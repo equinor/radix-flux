@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: snyk-monitor
@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 2.14.1 # https://artifacthub.io/packages/helm/snyk/snyk-monitor
+      version: 2.14.2 # https://artifacthub.io/packages/helm/snyk/snyk-monitor
   values:
     limits:
       cpu: "2"

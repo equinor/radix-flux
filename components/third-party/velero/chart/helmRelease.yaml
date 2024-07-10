@@ -1,6 +1,6 @@
 # For velero chart doc see https://github.com/vmware-tanzu/helm-charts
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: velero
@@ -20,10 +20,12 @@ spec:
     remediation:
       retries: 3
   values:
+    image:
+      repository: ${RADIX_CACHE_REGISTRY}/velero/velero
     updateStrategy: RollingUpdate
     initContainers:
       - name: velero-plugin-for-microsoft-azure
-        image: velero/velero-plugin-for-microsoft-azure:${velero_plugin_azure} # Set in clusters/<cluster>/postBuild
+        image: ${RADIX_CACHE_REGISTRY}/velero/velero-plugin-for-microsoft-azure:${velero_plugin_azure} # Set in clusters/<cluster>/postBuild
         securityContext:
           readOnlyRootFilesystem: true
           runAsNonRoot: true

@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - flux-system
+- ../../components/flux/image-update-automation
 - ../../components/third-party/cert-manager
 - ../../components/third-party/grafana
 - ../../components/third-party/ingress-nginx
@@ -10,6 +11,10 @@ resources:
 - ../../components/third-party/external-secrets
 patches:
   - path: ./postBuild.yaml
+  - path: ./helm-controller.yaml
+  - path: ./kustomize-controller.yaml
+  - path: ./notification-controller.yaml
+  - path: ./source-controller.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml

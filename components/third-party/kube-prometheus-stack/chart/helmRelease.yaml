@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
@@ -22,25 +22,52 @@ spec:
     nameOverride: prometheus-operator
     grafana:
       enabled: false
-    prometheusOperator:
+
+    prometheusOperator: #
+      image:
+        registry: ${RADIX_CACHE_REGISTRY}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - arm64
       resources:
         requests:
           cpu: "100m"
           memory: "100Mi"
+      prometheusConfigReloader:
+        image:
+          registry: ${RADIX_CACHE_REGISTRY}
+      admissionWebhooks:
+        deployment:
+          image:
+            registry: ${RADIX_CACHE_REGISTRY}
+
     kube-state-metrics:
       containerSecurityContext:
         readOnlyRootFilesystem: true
       extraArgs:
         - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
+
     prometheus:
       prometheusSpec:
+        image:
+          registry: ${RADIX_CACHE_REGISTRY}
         query:
           timeout: 10s
-        tolerations:
-        - effect: NoSchedule
-          key: nodepooltasks
-          operator: Equal
-          value: jobs
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                  - arm64
         retention: 40d # default
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
@@ -76,11 +103,23 @@ spec:
               - source_labels: [__meta_kubernetes_pod_name]
                 action: replace
                 target_label: kubernetes_pod_name
+
     alertmanager:
       config:
         global:
           resolve_timeout: 5m
       alertmanagerSpec:
+        image:
+          registry: ${RADIX_CACHE_REGISTRY}
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                  - arm64
         storage:
           volumeClaimTemplate:
             spec:
@@ -135,6 +174,7 @@ spec:
           {{define "radix-slack-alert-titlelink"}}
           {{.CommonAnnotations.nonexisting}}
           {{end}}
+
     additionalPrometheusRulesMap: # https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
       radix-app:
         groups:

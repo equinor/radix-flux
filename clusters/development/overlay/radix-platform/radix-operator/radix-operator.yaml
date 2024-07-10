@@ -20,7 +20,7 @@ spec:
         name: radix-flux-config
   patches:
     - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        apiVersion: helm.toolkit.fluxcd.io/v2
         kind: HelmRelease
         metadata:
           name: radix-operator
@@ -51,6 +51,9 @@ spec:
             containerRegistry: ${radix_acr_repo_url}
             appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
             buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}  # Set in postBuild development
+            gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}  # Set in postBuild development
+            gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE}  # Set in postBuild development
+            gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE}  # Set in postBuild development
             app:
               env:
                 limitrange:
@@ -75,6 +78,9 @@ spec:
                 version: v1.23
             securityContext:
               readOnlyRootFilesystem: true
+            seccompProfile:
+              installer:
+                image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE}
       target:
         kind: HelmRelease
         name: radix-operator

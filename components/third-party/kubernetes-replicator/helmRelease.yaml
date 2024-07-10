@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: kubernetes-replicator
@@ -17,8 +17,22 @@ spec:
   install:
     remediation:
       retries: 3
-
   values:
+    image:
+      repository: ${RADIX_CACHE_REGISTRY}/mittwald/kubernetes-replicator
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - arm64
     resources:
       limits:
         memory: 1Gi
@@ -29,7 +43,6 @@ spec:
       fsGroup: 1000
       runAsGroup: 1000
       runAsUser: 1000
-
     securityContext:
       readOnlyRootFilesystem: true
       allowPrivilegeEscalation: false

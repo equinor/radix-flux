@@ -10,7 +10,7 @@ spec:
         name: grafana
         namespace: monitor
       patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        apiVersion: helm.toolkit.fluxcd.io/v2
         kind: HelmRelease
         metadata:
           name: grafana
@@ -21,7 +21,7 @@ spec:
               version: ${GRAFANA_VERSION}
           values:
             env:
-              GF_SERVER_ROOT_URL: https://grafana.${dnsZone}
+              GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
               GF_DATABASE_HOST: ${GRAFANA_DB_HOST} # Set in postBuild.yaml
               GF_DATABASE_NAME: grafana
               GF_DATABASE_USER: grafana
@@ -30,10 +30,10 @@ spec:
             ingress:
               enabled: true
               hosts:
-                - grafana.${clusterName}.${dnsZone}
+                - grafana.${clusterName}.${AZ_RESOURCE_DNS}
                 - grafana.${AZ_RESOURCE_DNS}
               tls:
                 - secretName: radix-wildcard-tls-cert
                   hosts:
-                    - grafana.${clusterName}.${dnsZone}
-                    - grafana.${dnsZone}
+                    - grafana.${clusterName}.${AZ_RESOURCE_DNS}
+                    - grafana.${AZ_RESOURCE_DNS}

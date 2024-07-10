@@ -10,7 +10,7 @@ spec:
       radix_cost_allocation_image_tag_prefix: master
   patches:
     - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        apiVersion: helm.toolkit.fluxcd.io/v2
         kind: HelmRelease
         metadata:
           name: radix-cost-allocation
@@ -26,6 +26,19 @@ spec:
                 memory: 100Mi
             securityContext:
               readOnlyRootFilesystem: true
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: kubernetes.io/os
+                          operator: In
+                          values:
+                            - linux
+                        - key: kubernetes.io/arch
+                          operator: In
+                          values:
+                            - arm64
       target:
         kind: HelmRelease
         name: radix-cost-allocation
