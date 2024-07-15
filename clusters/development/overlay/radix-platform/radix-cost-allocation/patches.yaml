@@ -39,6 +39,9 @@ spec:
                           operator: In
                           values:
                             - arm64
+            nodeSelector:
+              kubernetes.io/os: linux
+              kubernetes.io/arch: arm64
       target:
         kind: HelmRelease
         name: radix-cost-allocation
