@@ -36,10 +36,10 @@ spec:
             resources:
               limits:
                 cpu: "2"
-                memory: 150Mi
+                memory: 250Mi
               requests:
                 cpu: 50m
-                memory: 150Mi
+                memory: 250Mi
             whitelisted:
               - radix-operator
               - radix-pipeline
