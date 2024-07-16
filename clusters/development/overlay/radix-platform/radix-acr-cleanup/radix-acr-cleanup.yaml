@@ -64,22 +64,6 @@ spec:
               - oauth2-proxy
               - radix-cluster-cleanup
               - radix-buildah-image-builder
-            affinity:
-              nodeAffinity:
-                requiredDuringSchedulingIgnoredDuringExecution:
-                  nodeSelectorTerms:
-                    - matchExpressions:
-                        - key: kubernetes.io/os
-                          operator: In
-                          values:
-                            - linux
-                        - key: kubernetes.io/arch
-                          operator: In
-                          values:
-                            - arm64
-            nodeSelector:
-              kubernetes.io/os: linux
-              kubernetes.io/arch: arm64
       target:
         kind: HelmRelease
         name: radix-acr-cleanup
