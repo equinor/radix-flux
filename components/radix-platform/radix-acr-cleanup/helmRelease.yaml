@@ -41,7 +41,7 @@ spec:
         sizeLimit: 1M
     - name: azurehome
       emptyDir:
-        sizeLimit: 5M
+        sizeLimit: 10M
     extraVolumeMounts:
     - name: tmp
       mountPath: /tmp
