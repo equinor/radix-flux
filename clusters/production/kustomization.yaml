@@ -31,6 +31,7 @@ resources:
 - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
 - ../../components/radix-platform/radix-oauth-guard # radix-oauth-guard repo
 - ./overlay/radix-platform/radix-oauth-guard/helmRelease-prometheus.yaml # Sidecar to Prometheus
+- ./overlay/radix-platform/radix-acr-cleanup/secret.yaml
 patches:
   - path: ./postBuild.yaml
   - path: ./helm-controller.yaml
