@@ -32,22 +32,6 @@ spec:
               tag: ${RADIX_CICD_CANARY_TAG} # Set in postBuild development
             radixApiPrefix: server-radix-api-qa
             radixWebhookPrefix: webhook-radix-github-webhook-qa
-            affinity:
-              nodeAffinity:
-                requiredDuringSchedulingIgnoredDuringExecution:
-                  nodeSelectorTerms:
-                    - matchExpressions:
-                        - key: kubernetes.io/os
-                          operator: In
-                          values:
-                            - linux
-                        - key: kubernetes.io/arch
-                          operator: In
-                          values:
-                            - arm64
-            nodeSelector:
-              kubernetes.io/os: linux
-              kubernetes.io/arch: arm64
       target:
         kind: HelmRelease
         name: radix-cicd-canary
