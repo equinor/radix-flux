@@ -37,8 +37,8 @@ spec:
       RADIX_COST_ALLOCATION_TAG: release-b99c0ee2-1721048356 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: prod # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.0 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
-      RADIX_OPERATOR_TAG: release-b68c20af-1721632769 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: release-4e88c2a1-1718353782 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_OPERATOR_TAG: release-22f4fd82-1721979336 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: release-9155704a-1722002656 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: c2 # dev | playground | prod
       RADIX_ZONE_MIGRATE: c2
