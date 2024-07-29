@@ -81,22 +81,6 @@ spec:
             seccompProfile:
               installer:
                 image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE}
-            affinity:
-              nodeAffinity:
-                requiredDuringSchedulingIgnoredDuringExecution:
-                  nodeSelectorTerms:
-                    - matchExpressions:
-                        - key: kubernetes.io/os
-                          operator: In
-                          values:
-                            - linux
-                        - key: kubernetes.io/arch
-                          operator: In
-                          values:
-                            - arm64
-            nodeSelector:
-              kubernetes.io/os: linux
-              kubernetes.io/arch: arm64
       target:
         kind: HelmRelease
         name: radix-operator
