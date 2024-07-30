@@ -42,10 +42,9 @@ spec:
                         values:
                         - monitorpool
               tolerations:
-              - key: "nodepooltasks"
-                operator: "Equal"
-                value: "monitor"
-                effect: "NoSchedule"
+                - effect: NoSchedule
+                  key: nodetasks
+                  operator: Exists
             prometheus:
               prometheusSpec:
                 affinity:
@@ -67,9 +66,8 @@ spec:
                           - monitorpool
                 tolerations:
                 - effect: NoSchedule
-                  key: nodepooltasks
-                  operator: Equal
-                  value: monitor
+                  key: nodetasks
+                  operator: Exists
                 resources:
                   limits:
                     cpu: "6"
