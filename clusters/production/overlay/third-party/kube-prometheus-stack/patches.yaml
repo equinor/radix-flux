@@ -23,6 +23,29 @@ spec:
             spec:
               version: ${KUBE_PROMETHEUS_STACK}
           values:
+            prometheusOperator:
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                    - matchExpressions:
+                      - key: kubernetes.io/os
+                        operator: In
+                        values:
+                        - linux
+                      - key: kubernetes.io/arch
+                        operator: In
+                        values:
+                        - arm64
+                      - key: agentpool
+                        operator: In
+                        values:
+                        - monitorpool
+              tolerations:
+              - key: "nodepooltasks"
+                operator: "Equal"
+                value: "monitor"
+                effect: "NoSchedule"
             prometheus:
               prometheusSpec:
                 resources:
