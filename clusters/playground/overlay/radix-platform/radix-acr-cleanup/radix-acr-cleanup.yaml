@@ -28,6 +28,7 @@ spec:
           namespace: default
         spec:
           values:
+            registry: radixplayground
             deleteUntagged: true
             retainLatestUntagged: 0
             activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild playground
