@@ -36,9 +36,19 @@ spec:
                 proxy-buffering: "on"
               extraArgs:
                 default-ssl-certificate: "default/radix-wildcard-tls-cert"
-              nodeSelector:
-                kubernetes.io/os: linux
-                kubernetes.io/arch: amd64
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                    - matchExpressions:
+                      - key: kubernetes.io/os
+                        operator: In
+                        values:
+                        - linux
+                      - key: kubernetes.io/arch
+                        operator: In
+                        values:
+                        - amd64
             defaultBackend:
               enabled: true
               resources:
