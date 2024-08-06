@@ -23,15 +23,58 @@ spec:
             spec:
               version: ${KUBE_PROMETHEUS_STACK}
           values:
+            prometheusOperator:
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                    - matchExpressions:
+                      - key: kubernetes.io/os
+                        operator: In
+                        values:
+                        - linux
+                      - key: kubernetes.io/arch
+                        operator: In
+                        values:
+                        - arm64
+                      - key: agentpool
+                        operator: In
+                        values:
+                        - monitorpool
+              tolerations:
+                - effect: NoSchedule
+                  key: nodetasks
+                  operator: Exists
             prometheus:
               prometheusSpec:
+                affinity:
+                  nodeAffinity:
+                    requiredDuringSchedulingIgnoredDuringExecution:
+                      nodeSelectorTerms:
+                      - matchExpressions:
+                        - key: kubernetes.io/os
+                          operator: In
+                          values:
+                          - linux
+                        - key: kubernetes.io/arch
+                          operator: In
+                          values:
+                          - arm64
+                        - key: agentpool
+                          operator: In
+                          values:
+                          - monitorpool
+                tolerations:
+                - effect: NoSchedule
+                  key: nodetasks
+                  operator: Exists
                 resources:
                   limits:
                     cpu: "6"
-                    memory: "100Gi"
+                    memory: "128Gi"
                   requests:
                     cpu: "4"
-                    memory: "100Gi"
+                    memory: "128Gi"
                 storageSpec:
                   volumeClaimTemplate:
                     spec:

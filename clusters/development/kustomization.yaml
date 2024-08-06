@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - flux-system
+- ../../components/flux/externalsecrets
 - ../../components/flux/image-update-automation
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-oauth-guard # radix-oauth-guard repo
@@ -21,7 +22,7 @@ resources:
 - ../../components/third-party/ingress-nginx
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubernetes-replicator
-- ../../components/third-party/kured
+# - ../../components/third-party/kured
 - ../../components/third-party/keda
 - ../../components/third-party/tekton
 - ../../components/third-party/velero
@@ -31,7 +32,6 @@ resources:
 - ./overlay/radix-platform/radix-oauth-guard/helmRelease-prometheus.yaml # Sidecar to Prometheus
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
 - ./overlay/third-party/cert-manager
-
 
 patches:
   - path: ./postBuild.yaml
@@ -52,5 +52,5 @@ patches:
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
-  - path: ./overlay/third-party/kured/helmRelease.yaml
+  # - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
