@@ -38,6 +38,19 @@ spec:
               extraArgs: {
                 default-ssl-certificate: "default/radix-wildcard-tls-cert"
               }
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                    - matchExpressions:
+                      - key: kubernetes.io/os
+                        operator: In
+                        values:
+                        - linux
+                      - key: kubernetes.io/arch
+                        operator: In
+                        values:
+                        - amd64
             defaultBackend:
               enabled: true
               resources:
