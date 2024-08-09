@@ -34,7 +34,7 @@ spec:
               - key: kubernetes.io/arch
                 operator: In
                 values:
-                - arm64
+                - amd64
       resources:
         requests:
           cpu: "100m"
@@ -67,7 +67,7 @@ spec:
                 - key: kubernetes.io/arch
                   operator: In
                   values:
-                  - arm64
+                  - amd64
         retention: 40d # default
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
@@ -119,7 +119,7 @@ spec:
                 - key: kubernetes.io/arch
                   operator: In
                   values:
-                  - arm64
+                  - amd64
         storage:
           volumeClaimTemplate:
             spec:

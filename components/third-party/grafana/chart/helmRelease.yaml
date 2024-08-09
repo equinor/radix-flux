@@ -44,7 +44,7 @@ spec:
             - key: kubernetes.io/arch
               operator: In
               values:
-              - arm64
+              - amd64
     resources:
       # limits:
       #   cpu: "2"
