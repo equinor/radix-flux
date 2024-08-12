@@ -11,11 +11,10 @@ spec:
   postBuild:
     substitute:
       RADIX_WILDCARD_CERTIFICATE_ISSUER: ${RADIX_WILDCARD_CERTIFICATE_ISSUER:=tba}
+      AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba}
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
-    - kind: Secret
-      name: cert-manager-certificate-values
   prune: true
   sourceRef:
     kind: GitRepository
