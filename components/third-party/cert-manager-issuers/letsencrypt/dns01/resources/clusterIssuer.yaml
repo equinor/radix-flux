@@ -15,8 +15,7 @@ spec:
             managedIdentity:
               clientID: "${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI}"
             subscriptionID: "${AZ_SUBSCRIPTION_ID}"
-            resourceGroupName: "${AZ_RESOURCE_GROUP_COMMON}"
+            resourceGroupName: "${CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP}"
             hostedZoneName: "${AZ_RESOURCE_DNS}"
             # Azure Cloud Environment, default to AzurePublicCloud
             environment: AzurePublicCloud
-        
