@@ -17,8 +17,8 @@ spec:
       accountHMACSecretKey: secret
       privateKeySecretName: digicert-dns01-private-key
       AZ_SUBSCRIPTION_ID: ${AZ_SUBSCRIPTION_ID:=tba}
-      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: ${CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP:=common}
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: ${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI:=tba}
+      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: ${CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP:=common}
     substituteFrom:
       - kind: Secret
         name: digicert-clusterissuer-flux-values
