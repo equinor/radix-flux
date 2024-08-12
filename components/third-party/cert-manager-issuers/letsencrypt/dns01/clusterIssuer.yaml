@@ -14,7 +14,7 @@ spec:
       clusterIssuerName: letsencrypt-dns01
       privateKeySecretName: letsencrypt-dns01-private-key
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: ${CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI:=tba}
-      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: ${CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP:=common}
+      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: ${CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP:=tba}
       AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba}
       AZ_SUBSCRIPTION_ID: ${AZ_SUBSCRIPTION_ID:=tba}
     substituteFrom:
