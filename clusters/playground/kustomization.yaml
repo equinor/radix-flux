@@ -12,6 +12,7 @@ resources:
 - ../../components/third-party/azure-workload-identity
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/cert-manager
+- ../../components/third-party/cert-manager-certs
 - ../../components/third-party/cert-manager-issuers/digicert/dns01
 - ../../components/third-party/cert-manager-issuers/digicert/externalaccount
 - ../../components/third-party/cert-manager-issuers/digicert/http01
@@ -29,7 +30,6 @@ resources:
 - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
 - ./overlay/radix-platform/radix-oauth-guard/helmRelease-prometheus.yaml # Sidecar to Prometheus
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
-- ./overlay/third-party/cert-manager
 
 patches:
   - path: ./postBuild.yaml
