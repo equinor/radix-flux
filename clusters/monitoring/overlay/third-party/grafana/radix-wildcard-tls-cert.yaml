@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: radix-wildcard-tls-cert
+  namespace: monitor
+spec:
+  secretName: radix-wildcard-tls-cert
+  issuerRef:
+    kind: ClusterIssuer
+    name: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
+  duration: 2160h # 90d
+  renewBefore: 762h # 32d. Let's Encrypt will email an alert if 30d remain and cert has not been renewed.
+  commonName: "grafana.${AZ_RESOURCE_DNS}"
+  dnsNames:
+    - "grafana.${clusterName}.${AZ_RESOURCE_DNS}"
+    - "grafana.${AZ_RESOURCE_DNS}"
