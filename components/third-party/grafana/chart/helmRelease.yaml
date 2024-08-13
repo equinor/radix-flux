@@ -37,10 +37,16 @@ spec:
                     name: access-token-volume
                     readOnly: true
               
-              #              - op: add
-              #                path: /spec/template/spec/containers/0/securityContext
-              #                value: 
-              #                  readOnlyRootFilesystem: true
+              - op: add
+                path: /spec/template/spec/containers/0/volumeMounts
+                value: 
+                  - mountPath: /var/lib/grafana/
+                    name: grafana-lib
+
+              - op: add
+                path: /spec/template/spec/containers/0/securityContext
+                value: 
+                  readOnlyRootFilesystem: true
   values:
     global:
       imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
@@ -103,6 +109,8 @@ spec:
 
     extraContainerVolumes:
       - name: access-token-volume
+        emptyDir: { }
+      - name: grafana-lib
         emptyDir: { }
     extraInitContainers:
       - name: fetch-token
