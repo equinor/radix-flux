@@ -43,8 +43,8 @@ spec:
       RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io
       RADIX_CICD_CANARY_TAG: master-f2a3df39-1721292637 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-291cfbfe-1721286977 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
-      RADIX_COST_ALLOCATION_TAG: master-8a7e86b6-1722860271 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: master-06dc93ae-1723445248 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_COST_ALLOCATION_TAG: master-3b5c47e2-1723544494 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_OPERATOR_TAG: master-d1e88b35-1723539999 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.0 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: main-bfaf2c4e-1722510856 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
