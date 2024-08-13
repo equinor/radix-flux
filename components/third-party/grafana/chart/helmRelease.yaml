@@ -27,10 +27,6 @@ spec:
               namespace: monitor
             patch: |
               - op: add
-                path: /spec/template/spec/containers/0/securityContext
-                value: 
-                  readOnlyRootFilesystem: true
-              - op: add
                 path: /spec/template/metadata/labels/azure.workload.identity~1use
                 value: "true"
       
@@ -40,6 +36,11 @@ spec:
                   - mountPath: /var/run/secrets/ossrdbms-aad
                     name: access-token-volume
                     readOnly: true
+              
+              #              - op: add
+              #                path: /spec/template/spec/containers/0/securityContext
+              #                value: 
+              #                  readOnlyRootFilesystem: true
   values:
     global:
       imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
