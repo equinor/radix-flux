@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: grafana
-      version: xx # Set by flux patch
+      version: ${GRAFANA_VERSION} # Set by postbuild
       sourceRef:
         kind: HelmRepository
         name: grafana
@@ -24,14 +24,41 @@ spec:
               version: v1
               kind: Deployment
               name: grafana
+              namespace: monitor
             patch: |
               - op: add
                 path: /spec/template/spec/containers/0/securityContext
                 value: 
                   readOnlyRootFilesystem: true
+              - op: add
+                path: /spec/template/metadata/labels/azure.workload.identity~1use
+                value: "true"
+      
+              - op: add
+                path: /spec/template/spec/containers/0/volumeMounts
+                value: 
+                  - mountPath: /var/run/secrets/ossrdbms-aad
+                    name: access-token-volume
+                    readOnly: true
   values:
     global:
       imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
+
+    ingress:
+      enabled: true
+      hosts:
+        - grafana.${clusterName}.${AZ_RESOURCE_DNS}
+        - grafana.${AZ_RESOURCE_DNS}
+      tls:
+        - secretName: radix-wildcard-tls-cert
+          hosts:
+            - grafana.${clusterName}.${AZ_RESOURCE_DNS}
+            - grafana.${AZ_RESOURCE_DNS}
+
+    serviceAccount:
+      annotations:
+        azure.workload.identity/client-id: ${GRAFANA_WI_CLIENT_ID}
+
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -68,5 +95,36 @@ spec:
       GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/authorize
       GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
       GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor"     # Viewer|Editor|Admin
+      GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
+      GF_DATABASE_URL: mysql://radix-id-grafana-admin-dev:$__file{/var/run/secrets/ossrdbms-aad/token}@${GRAFANA_DB_HOST}/grafana?allowCleartextPasswords=1
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ${GRAFANA_AR_CLIENT_ID}
     envFromSecret: grafana-secrets
+
+    extraContainerVolumes:
+      - name: access-token-volume
+        emptyDir: { }
+    extraInitContainers:
+      - name: fetch-token
+        image: mcr.microsoft.com/azure-cli:2.61.0
+        securityContext:
+          runAsUser: 1000
+        restartPolicy: Always
+        startupProbe:
+          exec:
+            command: [ 'sh', '-c', '[ -s /tmp/token ]' ] # Check token exist and is not empty
+          initialDelaySeconds: 5
+        volumeMounts:
+          - name: access-token-volume
+            mountPath: /tmp
+        env:
+          - name: HOME
+            value: "/tmp"
+        command:
+          - 'sh'
+          - '-c'
+          - |
+            az login --service-principal --username $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --federated-token `cat $AZURE_FEDERATED_TOKEN_FILE` --allow-no-subscriptions
+            az account get-access-token --resource-type oss-rdbms --query accessToken --output tsv > /tmp/token
+            sleep 82800 # 23 hours
+
 

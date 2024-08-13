@@ -18,6 +18,11 @@ spec:
     - kind: ConfigMap
       name: radix-flux-config
     substitute:
+      AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba}
+      GRAFANA_AR_CLIENT_ID: ${GRAFANA_AR_CLIENT_ID:=tba}
+      GRAFANA_DB_HOST: ${GRAFANA_DB_HOST:=tba}
+      GRAFANA_VERSION: ${GRAFANA_VERSION:=tba}
+      GRAFANA_WI_CLIENT_ID: ${GRAFANA_WI_CLIENT_ID:=tba}
       RADIX_CACHE_REGISTRY: ${RADIX_CACHE_REGISTRY:=tba}
   wait: true
   timeout: 2m
