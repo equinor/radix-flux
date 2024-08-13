@@ -16,7 +16,6 @@ patches:
   - path: ./notification-controller.yaml
   - path: ./source-controller.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
-  - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/prometheus-blackbox-exporter/helmRelease.yaml

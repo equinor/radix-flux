@@ -20,6 +20,8 @@ spec:
       EXTERNAL_SECRETS: 0.10.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/production
+      GRAFANA_AR_CLIENT_ID: f898b3ed-8cda-4f41-9487-7ff55ea41d92
+      GRAFANA_WI_CLIENT_ID: d7c9d6c1-1688-4016-befe-7506a16a459c
       GRAFANA_DB_HOST: s940-radix-grafana-platform-prod.mysql.database.azure.com
       GRAFANA_VERSION: 8.4.1 # https://artifacthub.io/packages/helm/grafana/grafana
       KEDA_VERSION: 2.15.0 # https://artifacthub.io/packages/helm/kedacore/keda
