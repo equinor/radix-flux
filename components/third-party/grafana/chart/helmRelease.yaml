@@ -36,10 +36,6 @@ spec:
                   - mountPath: /var/run/secrets/ossrdbms-aad
                     name: access-token-volume
                     readOnly: true
-              
-              - op: add
-                path: /spec/template/spec/containers/0/volumeMounts
-                value: 
                   - mountPath: /var/lib/grafana/
                     name: grafana-lib
 
