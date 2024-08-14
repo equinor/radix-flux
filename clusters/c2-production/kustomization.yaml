@@ -5,8 +5,8 @@ resources:
 - ../../components/flux/externalsecrets
 - ../../components/flux/image-update-automation
 - ../../components/third-party/blob-csi-driver
-- ./overlay/third-party/cert-manager
 - ../../components/third-party/cert-manager
+- ../../components/third-party/cert-manager-certs
 - ../../components/third-party/external-secrets
 - ../../components/third-party/grafana
 - ../../components/third-party/ingress-nginx

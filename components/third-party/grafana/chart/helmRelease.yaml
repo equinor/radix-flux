@@ -27,10 +27,6 @@ spec:
               namespace: monitor
             patch: |
               - op: add
-                path: /spec/template/metadata/labels/azure.workload.identity~1use
-                value: "true"
-      
-              - op: add
                 path: /spec/template/spec/containers/0/volumeMounts
                 value: 
                   - mountPath: /var/run/secrets/ossrdbms-aad
@@ -41,7 +37,7 @@ spec:
 
               - op: add
                 path: /spec/template/spec/containers/0/securityContext
-                value: 
+                value:
                   readOnlyRootFilesystem: true
   values:
     global:
@@ -58,6 +54,8 @@ spec:
             - grafana.${clusterName}.${AZ_RESOURCE_DNS}
             - grafana.${AZ_RESOURCE_DNS}
 
+    podLabels:
+      azure.workload.identity/use: "true"
     serviceAccount:
       annotations:
         azure.workload.identity/client-id: ${GRAFANA_WI_CLIENT_ID}
@@ -130,6 +128,5 @@ spec:
           - |
             az login --service-principal --username $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --federated-token "$(cat $AZURE_FEDERATED_TOKEN_FILE)" --allow-no-subscriptions
             az account get-access-token --resource-type oss-rdbms --query accessToken --output tsv > /tmp/token
-            sleep 82800 # 23 hours
-
-
+            sleep 3300 # 55min
+            

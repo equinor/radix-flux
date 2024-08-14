@@ -22,6 +22,7 @@ spec:
       KUBE_PROMETHEUS_STACK: 48.3.3 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       NGINX_VERSION: 4.10.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
+      RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-prod # installed by platform scripts
       RADIX_ZONE_MIGRATE: extmon
       VELERO_MI_CLIENT_ID: 069f097a-be9a-4e59-bffc-9b1e3d5cbbe9
     substituteFrom:

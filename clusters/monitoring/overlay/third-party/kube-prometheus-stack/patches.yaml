@@ -9,6 +9,23 @@ spec:
       ALERT_WEB_CONSOLE_BASE_URL: "https://console.dev.radix.equinor.com"
   patches:
     - target:
+        kind: Ingress
+        name: prometheus.custom-domain
+        namespace: monitor
+      patch: |-
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: prometheus.custom-domain
+          namespace: monitor
+          annotations:
+            cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
+        spec:
+          tls:
+            - hosts:
+                - prometheus.${AZ_RESOURCE_DNS}
+              secretName: prometheus-tls-cert
+    - target:
         kind: HelmRelease
         name: kube-prometheus-stack
         namespace: monitor
