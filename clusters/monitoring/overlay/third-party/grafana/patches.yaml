@@ -31,7 +31,7 @@ spec:
                 - grafana.${AZ_RESOURCE_DNS}
             
             env:
-              GF_AZURE_WORKLOAD_IDENTITY_ENABLED: "true""
+              GF_AZURE_WORKLOAD_IDENTITY_ENABLED: "true"
 #            grafana.ini:
 #              azure:
 #                workload_identity_enabled: "true"
