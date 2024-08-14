@@ -27,10 +27,6 @@ spec:
               namespace: monitor
             patch: |
               - op: add
-                path: /spec/template/metadata/labels/azure.workload.identity~1use
-                value: "true"
-      
-              - op: add
                 path: /spec/template/spec/containers/0/volumeMounts
                 value: 
                   - mountPath: /var/run/secrets/ossrdbms-aad
@@ -58,6 +54,8 @@ spec:
             - grafana.${clusterName}.${AZ_RESOURCE_DNS}
             - grafana.${AZ_RESOURCE_DNS}
 
+    podLabels:
+      azure.workload.identity/use: "true"
     serviceAccount:
       annotations:
         azure.workload.identity/client-id: ${GRAFANA_WI_CLIENT_ID}
