@@ -128,6 +128,5 @@ spec:
           - |
             az login --service-principal --username $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --federated-token "$(cat $AZURE_FEDERATED_TOKEN_FILE)" --allow-no-subscriptions
             az account get-access-token --resource-type oss-rdbms --query accessToken --output tsv > /tmp/token
-            sleep 82800 # 23 hours
-
-
+            sleep 3300 # 55min
+            
