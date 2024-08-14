@@ -29,7 +29,9 @@ spec:
                 hosts:
                 - grafana.${clusterName}.${AZ_RESOURCE_DNS}
                 - grafana.${AZ_RESOURCE_DNS}
-        
-            grafana.ini:
-              azure:
-                workload_identity_enabled: "true"
+            
+            env:
+              GF_AZURE_WORKLOAD_IDENTITY_ENABLED: "true""
+#            grafana.ini:
+#              azure:
+#                workload_identity_enabled: "true"
