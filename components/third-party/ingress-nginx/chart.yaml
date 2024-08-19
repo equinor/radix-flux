@@ -7,10 +7,6 @@ spec:
   interval: 10m
   path: "./components/third-party/ingress-nginx/chart"
   prune: false
-  configMapGenerator:
-    - name: error-page
-      files:
-        - ./error_page.html
   sourceRef:
     kind: GitRepository
     name: flux-system
