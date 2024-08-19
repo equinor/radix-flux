@@ -49,8 +49,8 @@ spec:
                   configMap:
                     name: error-page
                     items:
-                      - key: "503.html"
-                        path: "error-page.refresh.html"
+                      - path: "503.html"
+                        key: "error-page.refresh.html"
               extraVolumeMounts:
                 - name: custom-error-page
                   mountPath: /www
