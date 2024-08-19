@@ -40,6 +40,14 @@ spec:
                               values:
                                 - ingress-nginx
                         topologyKey: kubernetes.io/hostname
+            defaultBackend:
+              extraVolumes:
+                - name: error-page
+                  configMap:
+                    name: error-page
+                    items:
+                      - path: "503.html"
+                        key: "error-page.equinor.html"
       target:
         kind: HelmRelease
         name: ingress-nginx
