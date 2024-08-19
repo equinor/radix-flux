@@ -8,6 +8,6 @@ resources:
 configMapGenerator:
   - name: error-page
     files:
-      - error-page.regular.html
+      - error-page.equinor.html
       - error-page.refresh.html
-      - error-page.equnior.html
+      - error-page.regular.html
