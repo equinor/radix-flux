@@ -11,6 +11,9 @@ spec:
     kind: GitRepository
     name: flux-system
   timeout: 2m0s
+  postBuild:
+    substitute:
+      NGINX_VERSION: ${NGINX_VERSION:=tba}
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
