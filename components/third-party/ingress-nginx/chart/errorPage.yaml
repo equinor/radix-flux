@@ -10,7 +10,6 @@ data:
 
     <head>
         <meta charset="utf-8"/>
-        <meta http-equiv="refresh" content="5">
         <style>
             @import url('https://cdn.eds.equinor.com/font/equinor-uprights-vf.css');
             @import url('https://cdn.eds.equinor.com/font/equinor-mono.css');
