@@ -7,6 +7,8 @@ resources:
 - helmRelease.yaml
 configMapGenerator:
   - name: error-page
+    options:
+      disableNameSuffixHash: true
     files:
       - error-page.equinor.html
       - error-page.refresh.html
