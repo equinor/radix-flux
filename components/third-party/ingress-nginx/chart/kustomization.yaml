@@ -5,4 +5,9 @@ resources:
 - namespace.yaml
 - helmRepo.yaml
 - helmRelease.yaml
-- errorPage.yaml
+configMapGenerator:
+  - name: error-page
+    files:
+      - ./error_page.regular.html
+      - ./error_page.refresh.html
+      - ./error_page.equnior.html
