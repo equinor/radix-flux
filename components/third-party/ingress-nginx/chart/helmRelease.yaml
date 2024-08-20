@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: ingress-nginx
-      version: xx # Set by flux patch
+      version: ${NGINX_VERSION} # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
@@ -24,18 +24,6 @@ spec:
       enableAnnotationValidations: true
       image:
         chroot: true
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                  - ingress-nginx
-              topologyKey: kubernetes.io/hostname
       podLabels:
         app: ingress-nginx
       publishService:
@@ -43,7 +31,7 @@ spec:
       stats:
         enabled: true
       metrics:
-        serviceMonitor: 
+        serviceMonitor:
           enabled: true
         enabled: true
       service:
@@ -61,8 +49,35 @@ spec:
         proxy-body-size: "100m"
         worker-shutdown-timeout: "3600s"
         large-client-header-buffers: "4 32k"
-      extraArgs: {
-        default-ssl-certificate: "default/cluster-wildcard-tls-cert"
-      }
-      # resources: xx # Set by flux patch
+        custom-http-errors: "503"
+      extraArgs:
+        default-ssl-certificate: "default/radix-wildcard-tls-cert"
+
       priorityClassName: radix-component-priority
+
+    defaultBackend:
+      enabled: true
+      resources:
+        limits:
+          cpu: 50m
+          memory: 100Mi
+        requests:
+          cpu: 50m
+          memory: 50Mi
+      image:
+        registry: registry.k8s.io
+        image: ingress-nginx/nginx-errors
+        tag: "v20230312-helm-chart-4.5.2-28-g66a760794@sha256:332be6ff8c4e93e8845963932f98839dfd52ae49829c29e06475368a3e4fbd9e" # Check latest version on https://github.com/kubernetes/k8s.io/blob/main/k8s.gcr.io/images/k8s-staging-ingress-nginx/images.yaml#L125
+      extraVolumes:
+        - name: error-page
+          configMap:
+            name: error-page
+            items:
+              - path: "503.html"
+                key: "error-page.regular.html"
+      extraVolumeMounts:
+        - name: error-page
+          mountPath: /www
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch: amd64

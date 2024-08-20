@@ -12,9 +12,10 @@ spec:
           name: ingress-nginx
           namespace: ingress-nginx
         spec:
-          chart:
-            spec:
-              version: ${NGINX_VERSION} # Set in postBuild development
+          valuesFrom:
+            - kind: Secret
+              name: ingress-nginx-controller-pip
+              valuesKey: config
           values:
             controller:
               metrics:
@@ -28,10 +29,16 @@ spec:
                   memory: 500Mi
               extraArgs: null
               priorityClassName: high-priority
-          valuesFrom:
-          - kind: Secret
-            name: ingress-nginx-controller-pip
-            valuesKey: config
+              config:
+                proxy-buffering: "on"
+            defaultBackend:
+              extraVolumes:
+                - name: error-page
+                  configMap:
+                    name: error-page
+                    items:
+                      - path: "503.html"
+                        key: "error-page.refresh.html"
       target:
         kind: HelmRelease
         name: ingress-nginx
