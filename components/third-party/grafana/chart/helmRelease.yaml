@@ -132,5 +132,11 @@ spec:
           - |
             az login --service-principal --username $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --federated-token "$(cat $AZURE_FEDERATED_TOKEN_FILE)" --allow-no-subscriptions
             az account get-access-token --resource-type oss-rdbms --query accessToken --output tsv > /tmp/token
+            jq -R 'split(".") | .[1] | @base64d | fromjson | .exp' <<< $(cat /tmp/token) > /tmp/token.exp
             killall -q -SIGINT grafana # If grafana already runs, kill it so it reloads with new token
-            sleep 3300 # 55min
+            
+            timeout="$(expr "$(cat /tmp/token.exp)" - 120)"
+            now="$(date +%s)"
+            sleepSeconds="$(expr $timeout - $now)"
+            echo "Sleeping for $sleepSeconds seconds"
+            sleep "$sleepSeconds"
