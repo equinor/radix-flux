@@ -138,9 +138,7 @@ spec:
             echo "$(date): Restarting grafana..."
             killall -q -SIGINT grafana # If grafana already runs, kill it so it reloads with new token
             
-            now="$(date +%s)"
-            expiration="$(cat /tmp/token |  jq -R 'split(".") | .[1] | @base64d | fromjson | .exp')"
-            sleepSeconds="$(expr $expiration - $now - 120)"
+            sleepSeconds="$(jq -R 'split(".") | .[1] | @base64d | fromjson | .exp - now - 120 | floor' /tmp/token)"
             echo "$(date): Sleeping for $sleepSeconds seconds..."
             sleep "$sleepSeconds"
             echo "$(date): Finished."
