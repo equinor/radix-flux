@@ -39,6 +39,10 @@ spec:
                 path: /spec/template/spec/containers/0/securityContext
                 value:
                   readOnlyRootFilesystem: true
+            
+              - op: add
+                path: /spec/template/spec/shareProcessNamespace
+                value: true
   values:
     global:
       imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
@@ -110,7 +114,7 @@ spec:
       - name: fetch-token
         image: mcr.microsoft.com/azure-cli:2.61.0
         securityContext:
-          runAsUser: 1000
+          runAsUser: 472
         restartPolicy: Always
         startupProbe:
           exec:
@@ -128,5 +132,5 @@ spec:
           - |
             az login --service-principal --username $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --federated-token "$(cat $AZURE_FEDERATED_TOKEN_FILE)" --allow-no-subscriptions
             az account get-access-token --resource-type oss-rdbms --query accessToken --output tsv > /tmp/token
+            killall -q -SIGINT grafana # If grafana already runs, kill it so it reloads with new token
             sleep 3300 # 55min
-            
