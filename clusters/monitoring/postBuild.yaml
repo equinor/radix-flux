@@ -9,10 +9,10 @@ spec:
     substitute:
       ACTIVE_CLUSTER: ext-mon-11
       AZ_RESOURCE_DNS: ext-mon.radix.equinor.com
-      CERT_MANAGER_VERSION: 1.14.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.15.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       EXTERNAL_SECRET_MI_CLIENT_ID: 4817cdf9-b4bf-4884-863d-c2877ef03757
       EXTERNAL_SECRET_URL: https://radix-keyv-extmon.vault.azure.net/
-      EXTERNAL_SECRETS: 0.9.11 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.10.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       FLUX_CONFIG_PATH: ./clusters/monitoring
       GRAFANA_AR_CLIENT_ID: 8d25ce2e-aa30-4834-93dc-292645bf2918
       GRAFANA_WI_CLIENT_ID: 9a9bf432-aeb4-4903-aa1a-59f3236087f6 # AR radix-ar-grafana-logreader-extmon
@@ -20,7 +20,7 @@ spec:
       GRAFANA_DB_USERNAME: radix-ar-grafana-logreader-extmon
       GRAFANA_VERSION: 8.4.4 # https://artifacthub.io/packages/helm/grafana/grafana
       KUBE_PROMETHEUS_STACK: 62.3.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      NGINX_VERSION: 4.10.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      NGINX_VERSION: 4.11.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-prod # installed by platform scripts
       RADIX_ZONE_MIGRATE: extmon
