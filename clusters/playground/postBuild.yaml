@@ -10,6 +10,7 @@ spec:
       ACTIVE_CLUSTER: playground-29
       AZ_RESOURCE_DNS: playground.radix.equinor.com
       AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
+      BLOB_CSI_DRIVER: v1.24.3 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: fb932ba4-56e6-468d-9e75-4389507a3fde # MI radix-id-certmanager-playground
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common
       CERT_MANAGER_VERSION: 1.15.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
