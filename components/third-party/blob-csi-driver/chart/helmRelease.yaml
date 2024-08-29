@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: blob-csi-driver
-      version: xx # Set by flux patch
+      version: ${BLOB_CSI_DRIVER} # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: blob-csi-driver
