@@ -59,6 +59,7 @@ spec:
             gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}  # Set in postBuild development
             gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE}  # Set in postBuild development
             gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE}  # Set in postBuild development
+            externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
             app:
               env:
                 limitrange:
