@@ -31,6 +31,7 @@ spec:
               tag: ${RADIX_OPERATOR_TAG} # Set in postBuild production
             activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild production
             imageBuilder: radix-image-builder:release-latest
+            buildkitImageBuilder: radix-buildkit-builder:release-latest
             imageScanner: radix-image-scanner:release-latest
             configToMap: radix-config-2-map:release-latest
             radixTekton: radix-tekton:release-latest
