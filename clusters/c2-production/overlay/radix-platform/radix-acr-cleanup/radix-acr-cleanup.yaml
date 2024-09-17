@@ -63,6 +63,7 @@ spec:
               - radix-vulnerability-scanner
               - kubed
               - oauth2-proxy
+              - radix-buildkit-builder
       target:
         kind: HelmRelease
         name: radix-acr-cleanup
