@@ -16,7 +16,7 @@ spec:
       version: ${RADIX_PROMETHEUS_TAG}
       sourceRef:
         kind: HelmRepository
-        name: radix-oauth-guard
+        name: radix-prometheus-proxy
         namespace: flux-system
   values:
     prometheusUrl: http://prometheus-operator-prometheus:9090
