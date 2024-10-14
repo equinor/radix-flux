@@ -7,7 +7,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: weekly-37
+      ACTIVE_CLUSTER: weekly-41
       AZ_RESOURCE_DNS: dev.radix.equinor.com
       AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
       BLOB_CSI_DRIVER: v1.24.3 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
@@ -30,7 +30,7 @@ spec:
       GRAFANA_LOKI: 2.10.2 # https://artifacthub.io/packages/helm/grafana/loki-stack
       GRAFANA_VERSION: 8.5.1 # https://artifacthub.io/packages/helm/grafana/grafana
       KEDA_VERSION: 2.15.1 # https://artifacthub.io/packages/helm/kedacore/keda
-      KUBE_PROMETHEUS_STACK: 62.6.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 62.7.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.10.2 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.11.2 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ACR_CLEANUP_TAG: master-9f8369d6-1721286981 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}

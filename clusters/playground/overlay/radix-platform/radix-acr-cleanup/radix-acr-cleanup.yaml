@@ -64,6 +64,7 @@ spec:
               - kubed
               - oauth2-proxy
               - radix-cluster-cleanup
+              - radix-buildkit-builder
       target:
         kind: HelmRelease
         name: radix-acr-cleanup
