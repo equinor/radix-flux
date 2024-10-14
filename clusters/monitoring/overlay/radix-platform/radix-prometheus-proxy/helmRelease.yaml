@@ -13,7 +13,7 @@ spec:
   chart:
     spec:
       chart: radix-prometheus-proxy
-      version: ${RADIX_PROMETHEUS_TAG}
+      version: ${RADIX_PROMETHEUS_PROXY_TAG}
       sourceRef:
         kind: HelmRepository
         name: radix-prometheus-proxy
