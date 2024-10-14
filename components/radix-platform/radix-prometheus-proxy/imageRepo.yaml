@@ -7,3 +7,9 @@ metadata:
 spec:
   image: ghcr.io/equinor/radix-prometheus-proxy
   interval: 1m0s
+  exclusionList:
+    - "^.*\\.sig$"
+    - "^pr.*"
+    - "^latest.*"
+
+
