@@ -3,8 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     ingress.kubernetes.io/force-ssl-redirect: "true"
-    annotations:
-      cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
+    cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
   labels:
     radix-app: radix-prometheus-proxy
     radix-component: radix-prometheus-proxy
