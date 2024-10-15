@@ -4,35 +4,35 @@ metadata:
   annotations:
     ingress.kubernetes.io/force-ssl-redirect: "true"
   labels:
-    radix-app: radix-cost-allocation-api
-    radix-component: server
-  name: server.custom-domain
-  namespace: radix-cost-allocation-api-${RADIX_APP_ENV:=tba}
+    radix-app: radix-prometheus-proxy
+    radix-component: radix-prometheus-proxy
+  name: radix-prometheus-proxy
+  namespace: monitor
 spec:
   ingressClassName: nginx
   rules:
-    - host: cost-api.${AZ_RESOURCE_DNS:=tba}
+    - host: uptime.${AZ_RESOURCE_DNS:=tba}
       http:
         paths:
           - path: "/"
             pathType: Prefix
             backend:
               service:
-                name: server
+                name: monitor-radix-prometheus-proxy
                 port:
-                  number: 3003
-    - host: cost-api.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+                  number: 8000
+    - host: uptme.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
       http:
         paths:
           - path: "/"
             pathType: Prefix
             backend:
               service:
-                name: server
+                name: monitor-radix-prometheus-proxy
                 port:
-                  number: 3003
+                  number: 8000
   tls:
     - hosts:
-        - cost-api.${AZ_RESOURCE_DNS:=tba}
-        - cost-api.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+        - uptime.${AZ_RESOURCE_DNS:=tba}
+        - uptime.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
       secretName: "radix-wildcard-tls-cert"
