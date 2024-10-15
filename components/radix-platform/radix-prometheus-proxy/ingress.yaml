@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   annotations:
     ingress.kubernetes.io/force-ssl-redirect: "true"
+    annotations:
+      cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
   labels:
     radix-app: radix-prometheus-proxy
     radix-component: radix-prometheus-proxy
@@ -35,4 +37,4 @@ spec:
     - hosts:
         - uptime.${AZ_RESOURCE_DNS:=tba}
         - uptime.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
-      secretName: "radix-wildcard-tls-cert"
+      secretName: "uptime-cert"
