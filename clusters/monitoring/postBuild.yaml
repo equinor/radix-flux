@@ -12,7 +12,7 @@ spec:
       CERT_MANAGER_VERSION: 1.16.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       EXTERNAL_SECRET_MI_CLIENT_ID: 4817cdf9-b4bf-4884-863d-c2877ef03757
       EXTERNAL_SECRET_URL: https://radix-keyv-extmon.vault.azure.net/
-      EXTERNAL_SECRETS: 0.10.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.10.4 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       FLUX_CONFIG_PATH: ./clusters/monitoring
       GRAFANA_AR_CLIENT_ID: 8d25ce2e-aa30-4834-93dc-292645bf2918
       GRAFANA_WI_CLIENT_ID: 9a9bf432-aeb4-4903-aa1a-59f3236087f6 # AR radix-ar-grafana-logreader-extmon
