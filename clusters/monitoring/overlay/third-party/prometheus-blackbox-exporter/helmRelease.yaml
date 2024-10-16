@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: 7.6.1 # https://artifacthub.io/packages/helm/prometheus-community/prometheus-blackbox-exporter
+      version: 9.0.1 # https://artifacthub.io/packages/helm/prometheus-community/prometheus-blackbox-exporter
