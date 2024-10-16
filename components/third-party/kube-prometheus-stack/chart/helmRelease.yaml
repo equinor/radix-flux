@@ -78,8 +78,7 @@ spec:
                   values:
                   - amd64
         retention: 40d # default
-        serviceMonitorSelector:
-          matchLabels: null
+        serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
             spec:
