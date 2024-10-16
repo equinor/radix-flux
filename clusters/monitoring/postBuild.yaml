@@ -9,7 +9,7 @@ spec:
     substitute:
       ACTIVE_CLUSTER: ext-mon-11
       AZ_RESOURCE_DNS: ext-mon.radix.equinor.com
-      CERT_MANAGER_VERSION: 1.15.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.16.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       EXTERNAL_SECRET_MI_CLIENT_ID: 4817cdf9-b4bf-4884-863d-c2877ef03757
       EXTERNAL_SECRET_URL: https://radix-keyv-extmon.vault.azure.net/
       EXTERNAL_SECRETS: 0.10.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
