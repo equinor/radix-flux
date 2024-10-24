@@ -31,7 +31,8 @@ spec:
               config:
                 proxy-buffering: "on"
               extraArgs:
-               - "--default-backend-service=$(POD_NAMESPACE)/radix-default-backend"
+                 default-backend-service: "$(POD_NAMESPACE)/radix-default-backend"
+                 default-ssl-certificate: "default/radix-wildcard-tls-cert"
               affinity:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:
