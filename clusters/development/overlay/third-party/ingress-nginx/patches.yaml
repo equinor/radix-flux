@@ -30,6 +30,9 @@ spec:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
               config:
                 proxy-buffering: "on"
+              extraArgs:
+                 default-backend-service: "$(POD_NAMESPACE)/radix-default-backend"
+                 default-ssl-certificate: "default/radix-wildcard-tls-cert"
               affinity:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:
@@ -43,6 +46,8 @@ spec:
                         operator: In
                         values:
                         - amd64
+            defaultBackend:
+              enabled: false
 
       target:
         kind: HelmRelease

@@ -23,6 +23,7 @@ resources:
 - ../../components/third-party/ingress-nginx
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/kubernetes-replicator
+- ../../components/radix-platform/radix-ingress-default-backend
 # - ../../components/third-party/kured
 - ../../components/third-party/keda
 - ../../components/third-party/tekton
