@@ -57,14 +57,7 @@ spec:
       priorityClassName: radix-component-priority
 
     defaultBackend:
-      enabled: true
-      resources:
-        limits:
-          cpu: 50m
-          memory: 100Mi
-        requests:
-          cpu: 50m
-          memory: 50Mi
+      enabled: false
       image:
         registry: registry.k8s.io
         image: ingress-nginx/nginx-errors
