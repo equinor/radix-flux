@@ -53,7 +53,7 @@ The `flux-system` directory underneath parent folder `clusters` is created and m
 ## Overlay
 In Radix we want separate configurations per cluster. In order to achieve this we use Flux overlays which override the configuration defined in the `components` directory. The `overlay` directory has the same structure as the `components` directory, but contains only files for the resources to be overridden. The files then need to be included in the `kustomization.yaml` file in the cluster environment directory. 
 
-For example, radix-operator uses cluster-specific configuration which requires overriding the helm release. To do that, the kustomization found in the overlay for the radix-operator helmRelease has set `clusterName: ${ACTIVE_CLUSTER}`. The variable is substituted by Flux with the key found in `postBuild.yaml`.
+For example, radix-operator uses cluster-specific configuration which requires overriding the helm release. The variable is substituted by Flux with the key found in `postBuild.yaml`.
 
 ```yaml
 # file: clusters/development/overlay/radix-platform/radix-operator/radix-operator.yaml
@@ -73,7 +73,7 @@ spec:
           namespace: default
         spec:
           values:
-            activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
+            radixZone: ${RADIX_ZONE} # Set in postBuild development
 ```
 
 ```yaml
@@ -87,7 +87,7 @@ metadata:
 spec:
   postBuild:
     substitute:
-        ACTIVE_CLUSTER: cluster-1
+      RADIX_ZONE: dev # dev | playground | prod
 ```
 
 The radix-operator kustomization file needs to be included in the `kustomization.yaml` file.

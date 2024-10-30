@@ -29,7 +29,6 @@ spec:
           values:
             image:
               tag: ${RADIX_OPERATOR_TAG} # Set in postBuild development
-            activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
             imageBuilder: radix-image-builder:master-latest
             buildKitImageBuilder: radix-buildkit-builder:main-latest
             radixTekton: radix-tekton:main-latest
