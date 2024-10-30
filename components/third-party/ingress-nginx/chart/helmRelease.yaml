@@ -51,33 +51,10 @@ spec:
         large-client-header-buffers: "4 32k"
         custom-http-errors: "503"
       extraArgs:
+        default-backend-service: "$(POD_NAMESPACE)/radix-default-backend"
         default-ssl-certificate: "default/radix-wildcard-tls-cert"
 
       priorityClassName: radix-component-priority
 
     defaultBackend:
-      enabled: true
-      resources:
-        limits:
-          cpu: 50m
-          memory: 100Mi
-        requests:
-          cpu: 50m
-          memory: 50Mi
-      image:
-        registry: registry.k8s.io
-        image: ingress-nginx/nginx-errors
-        tag: "v20230312-helm-chart-4.5.2-28-g66a760794@sha256:332be6ff8c4e93e8845963932f98839dfd52ae49829c29e06475368a3e4fbd9e" # Check latest version on https://github.com/kubernetes/k8s.io/blob/main/k8s.gcr.io/images/k8s-staging-ingress-nginx/images.yaml#L125
-      extraVolumes:
-        - name: error-page
-          configMap:
-            name: error-page
-            items:
-              - path: "503.html"
-                key: "error-page.regular.html"
-      extraVolumeMounts:
-        - name: error-page
-          mountPath: /www
-      nodeSelector:
-        kubernetes.io/os: linux
-        kubernetes.io/arch: amd64
+      enabled: false

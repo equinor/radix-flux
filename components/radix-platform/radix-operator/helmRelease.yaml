@@ -30,7 +30,6 @@ spec:
     clusterType: ${clusterType}                                       # Read from radix-flux-config configmap
     clusterActiveEgressIps: ${activeClusterIPs}                       # Read from radix-flux-config configmap
     clusterName: ${clusterName}                                       # Read from radix-flux-config configmap
-    activeClusterName: xx                                             # Set by zone-specific overlay
     radixZone: xx                                                     # Set by zone-specific overlay
     # resources: xx                                                   # Set by zone-specific overlay
     # subscriptionId:                                                 # Set by zone-specific overlay
@@ -46,6 +45,15 @@ spec:
           requests:
             memory: 800M
             cpu: 800m
+    seccompProfile:
+      installer:
+        resources:
+          limits:
+            cpu: 10m
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
