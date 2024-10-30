@@ -43,8 +43,6 @@ spec:
                         operator: In
                         values:
                         - amd64
-            defaultBackend:
-              enabled: false
 
       target:
         kind: HelmRelease
