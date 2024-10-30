@@ -51,6 +51,7 @@ spec:
         large-client-header-buffers: "4 32k"
         custom-http-errors: "503"
       extraArgs:
+        default-backend-service: "$(POD_NAMESPACE)/radix-default-backend"
         default-ssl-certificate: "default/radix-wildcard-tls-cert"
 
       priorityClassName: radix-component-priority
