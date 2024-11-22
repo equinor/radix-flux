@@ -25,7 +25,7 @@ spec:
       GRAFANA_WI_CLIENT_ID: fa6ac394-78ec-4710-9923-77b772f5de74
       GRAFANA_DB_HOST: s940-radix-grafana-c2-prod.mysql.database.azure.com
       GRAFANA_DB_USERNAME: radix-id-grafana-admin-c2
-      GRAFANA_VERSION: 8.4.8 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 8.6.0 # https://artifacthub.io/packages/helm/grafana/grafana
       KEDA_VERSION: 2.15.1 # https://artifacthub.io/packages/helm/kedacore/keda
       KUBE_PROMETHEUS_STACK: 62.3.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.10.2 # https://github.com/mittwald/kubernetes-replicator
