@@ -37,10 +37,6 @@ spec:
                         operator: In
                         values:
                         - arm64
-                      - key: agentpool
-                        operator: In
-                        values:
-                        - monitorpool
               tolerations:
                 - effect: NoSchedule
                   key: nodetasks
