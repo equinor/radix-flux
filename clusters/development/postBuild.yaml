@@ -43,9 +43,9 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io
       RADIX_CICD_CANARY_TAG: master-dda43000-1724407563 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_CLUSTER_CLEANUP_TAG: master-695cfbe1-1726225898 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
+      RADIX_CLUSTER_CLEANUP_TAG: master-b3e39101-1732882709 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_COST_ALLOCATION_TAG: master-d5da75d5-1724316150 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: master-8e16e509-1732260570 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: master-c7b7de42-1732879777 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.0 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
