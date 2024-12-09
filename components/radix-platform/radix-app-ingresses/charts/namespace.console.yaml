@@ -1,0 +1,4 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: radix-web-console-${RADIX_APP_ENV:=tba}
