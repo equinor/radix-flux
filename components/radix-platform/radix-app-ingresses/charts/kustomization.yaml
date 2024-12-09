@@ -7,6 +7,9 @@ resources:
   - namespace.webhook.yaml
   - ingress.webhook.yaml
 
+  - namespace.console.yaml
+  - ingress.console.yaml
+
   - namespace.cost-api.yaml
   - ingress.cost-api.yaml
 
