@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+  labels:
+    radix-app: radix-api
+    radix-component: server
+  name: server.custom-domain
+  namespace: radix-api-${RADIX_APP_ENV:=tba}
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: api.${AZ_RESOURCE_DNS:=tba}
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: server
+                port:
+                  number: 3002
+    - host: api.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: server
+                port:
+                  number: 3002
+  tls:
+    - hosts:
+        - api.${AZ_RESOURCE_DNS:=tba}
+        - api.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+      secretName: "radix-wildcard-tls-cert"

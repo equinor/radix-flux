@@ -1,0 +1,4 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: radix-public-site-${RADIX_APP_ENV:=tba}
