@@ -17,9 +17,6 @@ spec:
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: ${CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP:=tba}
       AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba}
       AZ_SUBSCRIPTION_ID: ${AZ_SUBSCRIPTION_ID:=tba}
-    substituteFrom:
-      - kind: Secret
-        name: letsencrypt-clusterissuer-flux-values
   prune: true
   sourceRef:
     kind: GitRepository
