@@ -8,7 +8,7 @@ resources:
 - ../../components/radix-platform/radix-oauth-guard # radix-oauth-guard repo
 - ../../components/radix-platform/radix-velero-plugin
 - ../../components/radix-platform/radix-vulnerability-scanner
-- ../../components/radix-platform/radix-app-ingresses-2
+- ../../components/radix-platform/radix-app-ingresses
 - ../../components/third-party/azure-service-operator
 - ../../components/third-party/azure-workload-identity
 - ../../components/third-party/blob-csi-driver
