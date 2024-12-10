@@ -4,8 +4,8 @@ metadata:
   name: ${clusterIssuerName}
 spec:
   acme:
-    email: ${accountEmail}
-    server: ${acmeServer}
+    email: Radix@StatoilSRM.onmicrosoft.com
+    server: https://acme-v02.api.letsencrypt.org/directory
     skipTLSVerify: false
     privateKeySecretRef:
       name: ${privateKeySecretName}
