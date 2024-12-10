@@ -4,6 +4,7 @@ resources:
 - flux-system
 - ../../components/flux/externalsecrets
 - ../../components/flux/image-update-automation
+- ../../components/flux/storageclasses
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/external-secrets
 - ../../components/third-party/grafana
