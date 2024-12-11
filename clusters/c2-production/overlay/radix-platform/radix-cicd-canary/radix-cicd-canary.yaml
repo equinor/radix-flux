@@ -32,6 +32,7 @@ spec:
               tag: ${RADIX_CICD_CANARY_TAG} # Set in postBuild production
             radixApiPrefix: server-radix-api-prod
             radixWebhookPrefix: webhook-radix-github-webhook-prod
+            clusterFqdn: ${clusterName}.${dnsZone}
       target:
         kind: HelmRelease
         name: radix-cicd-canary
