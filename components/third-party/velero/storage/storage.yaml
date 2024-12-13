@@ -1,0 +1,15 @@
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  name: default-test
+  namespace: velero
+spec:
+  accessMode: ReadWrite
+  config:
+    resourceGroup: common-${RADIX_ZONE_MIGRATE}
+    storageAccount: radixvelero${RADIX_ZONE_MIGRATE}
+    useAAD: "true"
+  default: false
+  objectStorage:
+    bucket: ${clusterName}
+  provider: azure
