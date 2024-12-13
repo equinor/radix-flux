@@ -4,6 +4,12 @@ metadata:
   name: velero
   namespace: flux-system
 spec:
+  postBuild:
+    substitute:
+      RADIX_ZONE_MIGRATE: ${RADIX_ZONE_MIGRATE} # Set in postBuild development
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
   patches:
     - target:
         kind: HelmRelease
@@ -33,3 +39,17 @@ spec:
                 memory: 2048Mi
             rbac:
               clusterAdministrator: false
+            configuration:
+              backupStorageLocation:
+              - name: default
+                provider: azure
+                default: true
+                bucket: ${clusterName}
+                config:
+                  resourceGroup: common-${RADIX_ZONE_MIGRATE}
+                  storageAccount: radixvelero${RADIX_ZONE_MIGRATE}
+                  useAAD: "true"
+              volumeSnapshotLocation:
+                - name: azure
+                  provider: azure
+                  apitimeout: 300s
