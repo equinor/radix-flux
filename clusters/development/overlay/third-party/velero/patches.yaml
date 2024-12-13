@@ -4,6 +4,12 @@ metadata:
   name: velero
   namespace: flux-system
 spec:
+  postBuild:
+    substitute:
+      RADIX_ZONE_MIGRATE: ${RADIX_ZONE_MIGRATE} # Set in postBuild development
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
   patches:
     - target:
         kind: HelmRelease
