@@ -79,7 +79,7 @@ spec:
                   operator: In
                   values:
                     - arm64
-  valuesFrom:
-    - kind: ConfigMap
-      name: velero-flux-values
-      valuesKey: values
+  # valuesFrom:
+  #   - kind: ConfigMap
+  #     name: velero-flux-values
+  #     valuesKey: values
