@@ -4,10 +4,10 @@ metadata:
   name: velero-schedule
   namespace: flux-system
 spec:
-  interval: 5m
-  path: "./components/third-party/velero/storage"
   dependsOn:
     - name: velero
+  interval: 5m
+  path: "./components/third-party/velero/storage"
   prune: true
   sourceRef:
     kind: GitRepository
