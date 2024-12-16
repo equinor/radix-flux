@@ -4,7 +4,9 @@ resources:
 - flux-system
 - ../../components/flux/externalsecrets
 - ../../components/flux/image-update-automation
+- ../../components/flux/namespaces
 - ../../components/flux/storageclasses
+- ../../components/radix-platform/radix-platform
 - ../../components/radix-platform/radix-cost-allocation
 - ../../components/radix-platform/radix-oauth-guard # radix-oauth-guard repo
 - ../../components/radix-platform/radix-velero-plugin
