@@ -4,7 +4,9 @@ resources:
 - flux-system
 - ../../components/flux/externalsecrets
 - ../../components/flux/image-update-automation
+- ../../components/flux/namespaces
 - ../../components/flux/storageclasses
+- ../../components/radix-platform/radix-platform
 - ../../components/third-party/blob-csi-driver
 - ../../components/third-party/cert-manager
 - ../../components/third-party/cert-manager-certs
