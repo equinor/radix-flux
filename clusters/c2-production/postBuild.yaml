@@ -40,11 +40,11 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixc2cache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixc2cache.azurecr.io
       RADIX_CICD_CANARY_TAG: release-3e9c9aa4-1721306993 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-b99c0ee2-1721048356 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-5cd8db59-1734360862 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: prod # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_OPERATOR_TAG: release-72af8bae-1732883478 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: release-0eaeea39-1722511853 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: release-3d873479-1734361031 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: c2 # dev | playground | prod
       RADIX_ZONE_MIGRATE: c2
