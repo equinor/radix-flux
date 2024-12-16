@@ -40,7 +40,7 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixplatformcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
       RADIX_CICD_CANARY_TAG: release-3e9c9aa4-1721306998 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-b99c0ee2-1721048362 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-5cd8db59-1734360869 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: prod # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_OPERATOR_TAG: release-72af8bae-1732883462 # {"$imagepolicy": "flux-system:radix-operator:tag"}
