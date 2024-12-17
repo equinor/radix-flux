@@ -43,7 +43,7 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io
       RADIX_CICD_CANARY_TAG: master-dda43000-1724407563 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_CLUSTER_CLEANUP_TAG: master-8e77dac5-1734435199 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
+      RADIX_CLUSTER_CLEANUP_TAG: master-290c2841-1734444487 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_COST_ALLOCATION_TAG: master-c2b2c789-1734360014 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-f07283dc-1734349582 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
@@ -54,7 +54,7 @@ spec:
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ZONE_MIGRATE: dev
       TEKTON_VERSION: v0.53.0
-      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-00cb757f-1733842494 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-56eca60d-1734437751 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       velero_plugin_azure: v1.11.0 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94
       VELERO_VERSION: 8.1.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
