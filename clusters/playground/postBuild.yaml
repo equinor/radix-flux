@@ -53,7 +53,7 @@ spec:
       velero_plugin_acr_image: radixplayground.azurecr.io/radix-velero-plugin:release-20cc2933-1734435732 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       velero_plugin_azure: v1.11.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: 50671a4a-0236-4f40-9b6e-54a559cbe824
-      VELERO_VERSION: 7.1.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      VELERO_VERSION: 8.2.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: a59fc37e-f966-4a53-ba73-cac5e2590b24
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-playground.database.windows.net
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixplaygroundcache.azurecr.io/alpine:3.20
