@@ -29,3 +29,17 @@ spec:
                 memory: 256Mi
             podLabels: null
             serviceAnnotations: null
+            cainjector:
+              resources:
+                limits:
+                  memory: 100Mi
+                requests:
+                  cpu: 5m
+                  memory: 100Mi
+            webhook:
+              resources:
+                limits:
+                  memory: 25Mi
+                requests:
+                  cpu: 5m
+                  memory: 25Mi
