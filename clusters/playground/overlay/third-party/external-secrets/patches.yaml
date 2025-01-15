@@ -13,6 +13,37 @@ spec:
         - op: replace
           path: /spec/chart/spec/version
           value: ${EXTERNAL_SECRETS} # Set in postBuild development
+    - target:
+        kind: HelmRelease
+        name: external-secrets-operator
+        namespace: external-secrets
+      patch: |-
+        - op: add
+          path: /spec/values/resources
+          value: 
+            limits:
+              memory: 64Mi
+            requests:
+              memory: 64Mi
+              cpu: 5m
+        - op: add
+          path: /spec/values/certController
+          value:
+            resources:
+              limits:
+                memory: 64Mi
+              requests:
+                memory: 64Mi
+                cpu: 1m
+        - op: add
+          path: /spec/values/webhook
+          value:
+            resources:
+              limits:
+                memory: 64Mi
+              requests:
+                memory: 64Mi
+                cpu: 1m
 #        apiVersion: helm.toolkit.fluxcd.io/v2
 #        kind: HelmRelease
 #        metadata:
