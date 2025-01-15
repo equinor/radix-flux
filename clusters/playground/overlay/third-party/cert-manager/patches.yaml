@@ -30,6 +30,7 @@ spec:
             cainjector:
               resources:
                 limits:
+                  cpu: 5m
                   memory: 100Mi
                 requests:
                   cpu: 5m
@@ -37,6 +38,7 @@ spec:
             webhook:
               resources:
                 limits:
+                  cpu: 5m
                   memory: 50Mi
                 requests:
                   cpu: 5m
