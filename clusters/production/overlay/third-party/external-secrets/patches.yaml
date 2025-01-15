@@ -22,17 +22,20 @@ spec:
           path: /spec/values/resources
           value: 
             limits:
+              cpu: 5m
               memory: 256Mi
             requests:
-              memory: 256Mi
               cpu: 5m
+              memory: 256Mi
         - op: add
           path: /spec/values/certController
           value:
             resources:
               limits:
+                cpu: 2m
                 memory: 64Mi
               requests:
+                cpu: 2m
                 memory: 64Mi
                 cpu: 2m
         - op: add
@@ -40,10 +43,11 @@ spec:
           value:
             resources:
               limits:
+                cpu: 1m
                 memory: 64Mi
               requests:
-                memory: 64Mi
                 cpu: 1m
+                memory: 64Mi
 #        apiVersion: helm.toolkit.fluxcd.io/v2
 #        kind: HelmRelease
 #        metadata:
