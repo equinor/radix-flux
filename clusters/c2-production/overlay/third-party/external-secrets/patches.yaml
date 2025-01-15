@@ -22,9 +22,9 @@ spec:
           path: /spec/values/resources
           value: 
             limits:
-              memory: 128Mi
+              memory: 256Mi
             requests:
-              memory: 128Mi
+              memory: 256Mi
               cpu: 5m
         - op: add
           path: /spec/values/certController
