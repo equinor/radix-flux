@@ -13,7 +13,7 @@ spec:
       BLOB_CSI_DRIVER: v1.25.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: abdbd354-57e3-4bac-9fc6-b99ef03c0905 # MI radix-id-certmanager-c2
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-westeurope
-      CERT_MANAGER_VERSION: 1.16.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.16.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: e48dda41-942a-4b25-94a6-c017014abaa9
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-c2.database.windows.net
       EXTERNAL_SECRET_MI_CLIENT_ID: 88ab202e-494e-44c8-a543-a3bd0b499a87
