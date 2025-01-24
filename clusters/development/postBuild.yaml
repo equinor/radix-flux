@@ -35,6 +35,7 @@ spec:
       NGINX_VERSION: 4.11.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ACR_CLEANUP_TAG: master-9f8369d6-1721286981 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       radix_acr_repo_url: radixdev.azurecr.io
+      radix_velero_plugin_image_tag_prefix: master
       RADIX_APP_ACR_REPO_URL: radixdevapp.azurecr.io
       RADIX_APP_ENV: qa
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.36

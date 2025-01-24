@@ -43,7 +43,6 @@ patches:
   - path: ./kustomize-controller.yaml
   - path: ./notification-controller.yaml
   - path: ./source-controller.yaml
-  - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
