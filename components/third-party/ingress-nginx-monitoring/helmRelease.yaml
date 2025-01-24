@@ -4,6 +4,7 @@ metadata:
   name: ingress-nginx
   namespace: ingress-nginx
 spec:
+  createNamespace: true
   chart:
     spec:
       chart: ingress-nginx
@@ -37,7 +38,7 @@ spec:
       stats:
         enabled: true
       metrics:
-        serviceMonitor: 
+        serviceMonitor:
           enabled: true
         enabled: true
       service:
