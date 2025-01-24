@@ -37,7 +37,6 @@ resources:
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
 
 patches:
-  - path: ./postBuild.yaml
 #  - path: ./helm-controller.yaml
 #  - path: ./image-automation-controller.yaml
 #  - path: ./image-reflector-controller.yaml
