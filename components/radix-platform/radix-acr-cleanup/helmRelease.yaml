@@ -46,6 +46,8 @@ spec:
     - name: tmp
       mountPath: /tmp
     - name: azurehome
+      mountPath: /home/nonroot/.azure
+    - name: azurehome # TODO: Backward-compatibility with old acr-cleanup users. remove after radix-acr-cleanup merged to release and installed in all clusters
       mountPath: /home/acr-cleanup/.azure
     affinity:
       nodeAffinity:
