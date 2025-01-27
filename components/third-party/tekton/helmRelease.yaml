@@ -49,3 +49,20 @@ spec:
               - op: add
                 path: /spec/template/spec/containers/0/securityContext/readOnlyRootFilesystem
                 value: true
+
+          - target:
+              version: v1
+              kind: Deployment
+              namespace: tekton-pipelines
+              name: tekton-events-controller
+            patch: |
+              - op: add
+                path: /spec/template/spec/containers/0/resources
+                value: 
+                  resources:
+                    limits:
+                      cpu: 10m
+                      memory: 50Mi
+                    requests:
+                      cpu: 5m
+                      memory: 20Mi
