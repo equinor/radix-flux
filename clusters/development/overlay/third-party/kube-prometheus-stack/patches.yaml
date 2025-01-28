@@ -28,8 +28,25 @@ spec:
                 retention: 60d # default
                 resources:
                   limits:
-                    cpu: "1"
-                    memory: "8Gi"
+                    cpu: 600m
+                    memory: 6Gi
                   requests:
-                    cpu: "0.5"
-                    memory: "4Gi"
+                    cpu: 600m
+                    memory: 4Gi
+            prometheusOperator:
+              resources:
+                  limits:
+                    cpu: 32m
+                    memory: 128Mi
+                  requests:
+                    cpu: 32m
+                    memory: 64Mi
+            alertmanager:
+              alertmanagerSpec:
+                resources:
+                  limits:
+                    cpu: 600m
+                    memory: 128Mi
+                  requests:
+                    cpu: 600m
+                    memory: 64Mi
