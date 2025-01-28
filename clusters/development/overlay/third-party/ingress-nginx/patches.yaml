@@ -20,11 +20,11 @@ spec:
             controller:
               resources:
                 limits:
-                  cpu: "3"
-                  memory: 1500Mi
+                  cpu: 300m
+                  memory: 512Mi
                 requests:
                   cpu: 300m
-                  memory: 1000Mi
+                  memory: 256Mi
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common

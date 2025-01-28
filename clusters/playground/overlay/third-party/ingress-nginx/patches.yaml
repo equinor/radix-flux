@@ -21,11 +21,11 @@ spec:
               replicaCount: 2
               resources:
                 limits:
-                  cpu: "6"
-                  memory: 2500Mi
+                  cpu: 500m
+                  memory: 1024Mi
                 requests:
                   cpu: 500m
-                  memory: 2000Mi
+                  memory: 512Mi
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: common
