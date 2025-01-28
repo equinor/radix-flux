@@ -33,19 +33,19 @@ spec:
                     cpu: 600m
                     memory: "4Gi"
             prometheusOperator:
+              resources:
+                  limits:
+                    cpu: 32m
+                    memory: 128Mi
+                  requests:
+                    cpu: 32m
+                    memory: 64Mi
+            alertmanager:
+              alertmanagerSpec:
                 resources:
-                    limits:
-                      cpu: 32m
-                      memory: 128Mi
-                    requests:
-                      cpu: 32m
-                      memory: 64Mi
-              alertmanager:
-                alertmanagerSpec:
-                  resources:
-                    limits:
-                      cpu: 600m
-                      memory: 128Mi
-                    requests:
-                      cpu: 600m
-                      memory: 64Mi
+                  limits:
+                    cpu: 600m
+                    memory: 128Mi
+                  requests:
+                    cpu: 600m
+                    memory: 64Mi
