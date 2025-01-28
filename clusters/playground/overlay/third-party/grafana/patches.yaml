@@ -1,0 +1,21 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: grafana
+  namespace: flux-system
+spec:
+  patches:
+    - target:
+        kind: HelmRelease
+        name: grafana
+        namespace: monitor
+      patch: |-
+        - op: replace
+          path: /spec/values/resources
+          value: 
+            limits:
+              cpu: 6m
+              memory: 256Mi
+            requests:
+              cpu: 6m
+              memory: 128Mi
