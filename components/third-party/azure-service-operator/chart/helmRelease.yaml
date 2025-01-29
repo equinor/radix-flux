@@ -17,6 +17,19 @@ spec:
   install:
     remediation:
       retries: 3
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              version: v1
+              kind: Deployment
+              name: azureserviceoperator-controller-manager
+              namespace: azure-service-operator-system
+            patch: |
+              - op: add
+                path: /spec/template/metadata/labels/radix-component
+                value: 
+                  3party
   values:
     affinity:
       nodeAffinity:
