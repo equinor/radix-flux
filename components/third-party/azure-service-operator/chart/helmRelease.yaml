@@ -17,19 +17,6 @@ spec:
   install:
     remediation:
       retries: 3
-  postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              version: v1
-              kind: Deployment
-              name: azureserviceoperator-controller-manager
-              namespace: azure-service-operator-system
-            patch: |
-              - op: add
-                path: /spec/template/metadata/labels/radix-component
-                value: 
-                  3party
   values:
     affinity:
       nodeAffinity:
@@ -48,7 +35,8 @@ spec:
     azureSubscriptionID: ${AZ_SUBSCRIPTION_ID}
     azureClientID: ${AZURE_SERVICE_OPERATOR_CLIENT_ID}
     useWorkloadIdentityAuth: true
-
+    podLabels:
+      grafana.radix.equinor.com/monitor-health: "true"
     ## Azure Best Practice:
     # We strongly recommend including entire groups such as dbformysql.azure.com/* in crdPattern.
     # Individual CRDs such as dbformysql.azure.com/FlexibleServer may be specified as well, but there are often other
