@@ -41,7 +41,7 @@ spec:
       RADIX_CACHE_REGISTRY: radixplaygroundcache.azurecr.io
       RADIX_CICD_CANARY_TAG: release-3e9c9aa4-1721306982 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: release-b32ade02-1734593393 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-5cd8db59-1734360865 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-a2499393-1738143671 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_OPERATOR_TAG: release-4116cc9b-1737102320 # {"$imagepolicy": "flux-system:radix-operator:tag"}
