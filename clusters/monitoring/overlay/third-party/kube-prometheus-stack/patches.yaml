@@ -71,6 +71,7 @@ spec:
                         - '{job="kube-state-metrics",__name__="kube_node_status_allocatable"}'
                         - '{job="kube-state-metrics",__name__="kube_node_status_condition"}'
                         - '{job="kube-state-metrics",__name__="kube_namespace_created"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_labels"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_status_phase"}'
                         - '{job="kube-state-metrics",__name__="kube_namespace_status_phase"}'
                         - '{job="kube-state-metrics",__name__="kube_node_spec_taint"}'
@@ -92,7 +93,7 @@ spec:
                         labels:
                           federated: prod.radix.equinor.com
                           RadixCluster: prod
-        
+
                   - job_name: "federated-c2prod.radix.equinor.com"
                     honor_labels: true
                     scrape_interval: 15s
@@ -111,6 +112,7 @@ spec:
                         - '{job="kube-state-metrics",__name__="kube_node_status_allocatable"}'
                         - '{job="kube-state-metrics",__name__="kube_node_status_condition"}'
                         - '{job="kube-state-metrics",__name__="kube_namespace_created"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_labels"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_status_phase"}'
                         - '{job="kube-state-metrics",__name__="kube_namespace_status_phase"}'
                         - '{job="kube-state-metrics",__name__="kube_node_spec_taint"}'
@@ -132,7 +134,7 @@ spec:
                         labels:
                           federated: prod.c2.radix.equinor.com
                           RadixCluster: c2prod
-        
+
                   - job_name: "federated-playground.playground.radix.equinor.com"
                     honor_labels: true
                     scrape_interval: 15s
@@ -151,6 +153,7 @@ spec:
                         - '{job="kube-state-metrics",__name__="kube_node_status_allocatable"}'
                         - '{job="kube-state-metrics",__name__="kube_node_status_condition"}'
                         - '{job="kube-state-metrics",__name__="kube_namespace_created"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_labels"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_status_phase"}'
                         - '{job="kube-state-metrics",__name__="kube_namespace_status_phase"}'
                         - '{job="kube-state-metrics",__name__="kube_node_spec_taint"}'
@@ -172,7 +175,7 @@ spec:
                         labels:
                           federated: playground.radix.equinor.com
                           RadixCluster: playground
-        
+
                   - job_name: "federated-dev.radix.equinor.com"
                     honor_labels: true
                     scrape_interval: 15s
@@ -191,6 +194,7 @@ spec:
                         - '{job="kube-state-metrics",__name__="kube_node_status_allocatable"}'
                         - '{job="kube-state-metrics",__name__="kube_node_status_condition"}'
                         - '{job="kube-state-metrics",__name__="kube_namespace_created"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_labels"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_status_phase"}'
                         - '{job="kube-state-metrics",__name__="kube_namespace_status_phase"}'
                         - '{job="kube-state-metrics",__name__="kube_node_spec_taint"}'

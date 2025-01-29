@@ -52,6 +52,7 @@ spec:
         name: velero
     podLabels:
       azure.workload.identity/use: "true"
+      grafana.radix.equinor.com/monitor-health: "true"
     metrics:
       enabled: true
       serviceMonitor:

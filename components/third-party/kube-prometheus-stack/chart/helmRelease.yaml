@@ -51,7 +51,7 @@ spec:
       containerSecurityContext:
         readOnlyRootFilesystem: true
       extraArgs:
-        - --metric-labels-allowlist=pods=[radix-app,radix-component],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
+        - --metric-labels-allowlist=pods=[radix-app,radix-component,grafana.radix.equinor.com/monitor-health],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

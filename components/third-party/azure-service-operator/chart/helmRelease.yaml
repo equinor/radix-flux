@@ -35,7 +35,8 @@ spec:
     azureSubscriptionID: ${AZ_SUBSCRIPTION_ID}
     azureClientID: ${AZURE_SERVICE_OPERATOR_CLIENT_ID}
     useWorkloadIdentityAuth: true
-
+    podLabels:
+      grafana.radix.equinor.com/monitor-health: "true"
     ## Azure Best Practice:
     # We strongly recommend including entire groups such as dbformysql.azure.com/* in crdPattern.
     # Individual CRDs such as dbformysql.azure.com/FlexibleServer may be specified as well, but there are often other
