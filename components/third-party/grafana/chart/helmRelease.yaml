@@ -60,6 +60,7 @@ spec:
 
     podLabels:
       azure.workload.identity/use: "true"
+      grafana.radix.equinor.com/monitor-health: "true"
     serviceAccount:
       annotations:
         azure.workload.identity/client-id: ${GRAFANA_WI_CLIENT_ID}

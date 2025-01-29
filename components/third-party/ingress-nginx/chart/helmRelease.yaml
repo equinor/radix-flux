@@ -26,6 +26,7 @@ spec:
         chroot: true
       podLabels:
         app: ingress-nginx
+        grafana.radix.equinor.com/monitor-health: "true"
       publishService:
         enabled: true
       stats:
