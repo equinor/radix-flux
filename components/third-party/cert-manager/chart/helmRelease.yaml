@@ -45,6 +45,8 @@ spec:
       labels:
         azure.workload.identity/use: "true"
     cainjector:
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
       image:
         repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-cainjector
       affinity:
@@ -61,6 +63,8 @@ spec:
                 values:
                 - arm64
     webhook:
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
       image:
         repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-webhook
       affinity:
