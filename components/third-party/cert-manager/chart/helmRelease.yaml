@@ -40,10 +40,10 @@ spec:
       repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-controller
     podLabels:
       azure.workload.identity/use: "true"
+      grafana.radix.equinor.com/monitor-health: "true"
     serviceAccount:
       labels:
         azure.workload.identity/use: "true"
-
     cainjector:
       image:
         repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-cainjector

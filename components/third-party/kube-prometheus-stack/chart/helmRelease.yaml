@@ -23,7 +23,9 @@ spec:
     grafana:
       enabled: false
 
-    prometheusOperator: #
+    prometheusOperator:
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
       image:
         registry: ${RADIX_CACHE_REGISTRY}
       affinity:
