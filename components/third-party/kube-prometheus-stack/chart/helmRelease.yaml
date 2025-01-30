@@ -22,7 +22,6 @@ spec:
     nameOverride: prometheus-operator
     grafana:
       enabled: false
-
     prometheusOperator:
       podLabels:
         grafana.radix.equinor.com/monitor-health: "true"
@@ -48,7 +47,6 @@ spec:
         deployment:
           image:
             registry: ${RADIX_CACHE_REGISTRY}
-
     kube-state-metrics:
       containerSecurityContext:
         readOnlyRootFilesystem: true
@@ -63,7 +61,6 @@ spec:
                     operator: In
                     values:
                       - amd64
-
     prometheus:
       prometheusSpec:
         image:
@@ -114,7 +111,9 @@ spec:
               - source_labels: [__meta_kubernetes_pod_name]
                 action: replace
                 target_label: kubernetes_pod_name
-
+    prometheus-node-exporter:
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
     alertmanager:
       config:
         global:
