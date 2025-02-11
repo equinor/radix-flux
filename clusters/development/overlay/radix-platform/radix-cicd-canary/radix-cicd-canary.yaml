@@ -33,6 +33,8 @@ spec:
             radixApiPrefix: server-radix-api-qa
             radixWebhookPrefix: webhook-radix-github-webhook-qa
             clusterFqdn: ${clusterName}.${dnsZone}
+            radixGroups:
+              user: 64b28659-4fe4-4222-8497-85dd7e43e25b
       target:
         kind: HelmRelease
         name: radix-cicd-canary
