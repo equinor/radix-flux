@@ -79,6 +79,8 @@ spec:
             seccompProfile:
               installer:
                 image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE}
+            radixGroups:
+              user: 4b8ec60e-714c-4a9d-8e0a-3e4cfb3c3d31
       target:
         kind: HelmRelease
         name: radix-operator
