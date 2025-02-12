@@ -1,8 +1,0 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: radix-platform-operators-edit
-subjects:
-- apiGroup: rbac.authorization.k8s.io
-  kind: Group
-  name: bed2b667-ceec-4377-83f7-46888ed23887 # Entra Group "AZ PIM OMNIA RADIX Cluster Admin - dev"
