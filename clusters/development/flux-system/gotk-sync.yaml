@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: 2595-add-clusterrolebinding-to-the-buildin-clusterrole-view-extract-ks
+    branch: 2595-add-clusterrolebinding-to-the-buildin-clusterrole-view
   secretRef:
     name: flux-system
   url: ssh://git@github.com/equinor/radix-flux
