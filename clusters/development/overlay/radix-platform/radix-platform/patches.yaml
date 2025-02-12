@@ -2,21 +2,16 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: radix-platform-operators-view
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: view
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
-  name: be5526de-1b7d-4389-b1ab-a36a99ef5cc5 # Entra Group "Radix Platform Operators"
+  name: a5dfa635-dc00-4a28-9ad9-9e7f1e56919d # Entra Group "Radix Platform Developers"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: radix-platform-operators-edit
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: view
-subjects: []
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: bed2b667-ceec-4377-83f7-46888ed23887 # Entra Group "AZ PIM OMNIA RADIX Cluster Admin - dev"
