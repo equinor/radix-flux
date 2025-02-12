@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/radix-platform/radix-platform/rbac/"
+  path: "./components/radix-platform/radix-platform/rbac"
   prune: true
   sourceRef:
     kind: GitRepository
