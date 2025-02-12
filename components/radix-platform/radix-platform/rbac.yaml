@@ -12,4 +12,8 @@ spec:
     name: flux-system
   wait: true
   timeout: 2m
-  
+  postBuild:
+    substitute:
+      viewGroup: be5526de-1b7d-4389-b1ab-a36a99ef5cc5 # Entra Group "Radix Platform Operators"
+      editGroup: 0e0d22c6-9f03-48a5-89be-be7b060c8a32 # Entra Group "AZ PIM OMNIA RADIX Cluster Admin - prod"
+      adminGroup: 0e0d22c6-9f03-48a5-89be-be7b060c8a32 # Entra Group "AZ PIM OMNIA RADIX Cluster Admin - prod"

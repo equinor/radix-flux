@@ -9,4 +9,4 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
-  name: 0e0d22c6-9f03-48a5-89be-be7b060c8a32 # Entra Group "AZ PIM OMNIA RADIX Cluster Admin - prod"
+  name: ${editGroup}

@@ -9,4 +9,4 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
-  name: be5526de-1b7d-4389-b1ab-a36a99ef5cc5 # Entra Group "Radix Platform Operators"
+  name: ${viewGroup}
