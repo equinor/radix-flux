@@ -47,12 +47,11 @@ patches:
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
   - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
+  - path: ./overlay/radix-platform/radix-platform/patches.yaml
     target:
       group: rbac.authorization.k8s.io
       kind: ClusterRoleBinding
       name: radix-platform-operators-view
-
-  - path: ./overlay/radix-platform/radix-platform/patches.yaml
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/external-secrets/patches.yaml
