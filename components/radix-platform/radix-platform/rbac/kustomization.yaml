@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - radix-platform-operators-view.yaml
   - radix-platform-operators-edit.yaml
-  - radix-platform-operators-admin.yaml
+  # - radix-platform-operators-admin.yaml
