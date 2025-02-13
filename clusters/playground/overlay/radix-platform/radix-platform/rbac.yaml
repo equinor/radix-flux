@@ -1,0 +1,11 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-platform-rbac
+  namespace: flux-system
+spec:
+  postBuild:
+    substitute:
+      viewGroup: a5dfa635-dc00-4a28-9ad9-9e7f1e56919d # Entra Group "Radix Platform Developers"
+      editGroup: bed2b667-ceec-4377-83f7-46888ed23887 # Entra Group "AZ PIM OMNIA RADIX Cluster Admin - dev"
+      adminGroup: bed2b667-ceec-4377-83f7-46888ed23887 # Entra Group "AZ PIM OMNIA RADIX Cluster Admin - dev"
