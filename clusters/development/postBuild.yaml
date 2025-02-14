@@ -44,17 +44,17 @@ spec:
       RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io
       RADIX_CICD_CANARY_TAG: master-b6f9e1a0-1739281431 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-695bebaa-1738051604 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
-      RADIX_COST_ALLOCATION_TAG: master-9c176929-1739529418 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: master-5d4ecfcf-1739530154 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_COST_ALLOCATION_TAG: master-9c176929-1738067133 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_OPERATOR_TAG: master-5d4ecfcf-1739280777 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: main-982c24cf-1739529374 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: main-982c24cf-1738058090 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ZONE_MIGRATE: dev
       TEKTON_VERSION: v0.53.0
-      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-0a1eb1da-1739529350 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-0a1eb1da-1739460011 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       velero_plugin_azure: v1.11.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94
       VELERO_VERSION: 8.2.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
