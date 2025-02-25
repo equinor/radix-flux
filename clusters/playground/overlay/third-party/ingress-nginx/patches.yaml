@@ -28,7 +28,7 @@ spec:
                   memory: 512Mi
               service:
                 annotations:
-                  service.beta.kubernetes.io/azure-load-balancer-resource-group: common
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-playground
               config:
                 proxy-buffering: "on"
 
