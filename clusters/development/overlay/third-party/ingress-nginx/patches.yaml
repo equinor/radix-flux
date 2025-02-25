@@ -27,7 +27,7 @@ spec:
                   memory: 256Mi
               service:
                 annotations:
-                  service.beta.kubernetes.io/azure-load-balancer-resource-group: common
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-dev
               config:
                 proxy-buffering: "on"
               affinity:
