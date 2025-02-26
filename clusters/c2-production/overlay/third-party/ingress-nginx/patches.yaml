@@ -27,7 +27,7 @@ spec:
                   memory: 5000Mi
               service:
                 annotations:
-                  service.beta.kubernetes.io/azure-load-balancer-resource-group: common-westeurope
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-c2
               affinity:
                 podAntiAffinity:
                   preferredDuringSchedulingIgnoredDuringExecution:
