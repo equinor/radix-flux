@@ -12,7 +12,7 @@ spec:
       AZ_SUBSCRIPTION_ID: ded7ca41-37c8-4085-862f-b11d21ab341a
       BLOB_CSI_DRIVER: v1.25.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: 42416e89-eff0-40db-9d42-c1fc5e6fff33 # MI radix-id-certmanager-platform
-      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common
+      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-platform
       CERT_MANAGER_VERSION: 1.16.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: 081fa1b1-e38b-43c0-88fe-4a4807f1798b
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-platform.database.windows.net
