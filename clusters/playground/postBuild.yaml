@@ -12,7 +12,7 @@ spec:
       AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
       BLOB_CSI_DRIVER: v1.25.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: fb932ba4-56e6-468d-9e75-4389507a3fde # MI radix-id-certmanager-playground
-      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common
+      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-playground
       CERT_MANAGER_VERSION: 1.16.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: b1a842b2-8e0e-4c2f-807e-8355eeb21f32
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-playground.database.windows.net
@@ -44,7 +44,7 @@ spec:
       RADIX_COST_ALLOCATION_TAG: release-a2499393-1738143671 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
-      RADIX_OPERATOR_TAG: release-6a33ada1-1740409139 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: release-21fc3145-1741094292 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-c76c1f14-1738067117 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: playground # dev | playground | prod
