@@ -87,25 +87,24 @@ spec:
         memory: "250Mi"
     nodeSelector: {"kubernetes.io/os": "linux"}
     env:
-      GF_DATABASE_TYPE: mysql
-      GF_DATABASE_SSL_MODE: "skip-verify"
-      GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
-      # GF_SERVER_ROOT_URL: ""                    # Set by secret
-      # GF_DATABASE_PASSWORD: ""                  # Set by secret
-      # GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ""   # Set by secret
-      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ENABLED: "false"
-      GF_AUTH_GENERIC_OAUTH_NAME: Azure AD
       GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
-      GF_AUTH_GENERIC_OAUTH_SCOPES: openid email name
       GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/authorize
-      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
-      GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor"     # Viewer|Editor|Admin
-      GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
-      GF_DATABASE_URL: mysql://${GRAFANA_DB_USERNAME}:$__file{/var/run/secrets/ossrdbms-aad/token}@${GRAFANA_DB_HOST}/grafana?allowCleartextPasswords=1
       GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ${GRAFANA_AR_CLIENT_ID}
+      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+      GF_AUTH_GENERIC_OAUTH_NAME: Azure AD
+      GF_AUTH_GENERIC_OAUTH_SCOPES: openid email name
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
+      GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
+      GF_DATABASE_SSL_MODE: "skip-verify"
+      GF_DATABASE_URL: mysql://${GRAFANA_DB_USERNAME}:$__file{/var/run/secrets/ossrdbms-aad/token}@${GRAFANA_DB_HOST}/grafana?allowCleartextPasswords=1
+      GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
+      GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor"     # Viewer|Editor|Admin
+      # GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ""   # Set by secret
+      # GF_DATABASE_PASSWORD: ""                  # Set by secret
+      # GF_DATABASE_TYPE: mysql                   # Removed after 8.9.0
+      # GF_SERVER_ROOT_URL: ""                    # Set by secret
     envFromSecret: grafana-secrets
-
     extraContainerVolumes:
       - name: access-token-volume
         emptyDir: { }
