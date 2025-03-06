@@ -30,7 +30,7 @@ spec:
       KUBE_PROMETHEUS_STACK: 67.9.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.11.0 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.12.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      RADIX_ACR_CLEANUP_TAG: release-efb478db-1738056160 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_ACR_CLEANUP_TAG: release-4dad2f63-1741178398 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       radix_acr_repo_url: radixplayground.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixplaygroundapp.azurecr.io
       RADIX_APP_ENV: prod
@@ -40,11 +40,11 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixplaygroundcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixplaygroundcache.azurecr.io
       RADIX_CICD_CANARY_TAG: release-42737e1f-1739284625 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_CLUSTER_CLEANUP_TAG: release-04c67af2-1738145440 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-a2499393-1738143671 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_CLUSTER_CLEANUP_TAG: release-48df7bcd-1741178314 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-9c6668ca-1741178296 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
-      RADIX_OPERATOR_TAG: release-21fc3145-1741094292 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: release-fddc93d6-1741250648 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-c76c1f14-1738067117 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: playground # dev | playground | prod
