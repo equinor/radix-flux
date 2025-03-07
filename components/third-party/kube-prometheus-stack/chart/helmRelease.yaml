@@ -18,6 +18,10 @@ spec:
     remediation:
       retries: 3
   values:
+    crds:
+      upgradeJob:
+        enabled: true
+        forceConflicts: true
     fullnameOverride: prometheus-operator
     nameOverride: prometheus-operator
     grafana:

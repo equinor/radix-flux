@@ -23,10 +23,6 @@ spec:
             spec:
               version: ${KUBE_PROMETHEUS_STACK}
           values:
-            crds:
-              upgradeJob:
-                enabled: true
-                forceConflicts: true
             prometheus:
               prometheusSpec:
                 retention: 60d # default
