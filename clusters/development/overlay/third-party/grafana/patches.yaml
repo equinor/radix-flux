@@ -14,8 +14,8 @@ spec:
           path: /spec/values/resources
           value: 
             limits:
-              cpu: 1m
+              cpu: 100m
               memory: 256Mi
             requests:
-              cpu: 1m
+              cpu: 20m
               memory: 128Mi
