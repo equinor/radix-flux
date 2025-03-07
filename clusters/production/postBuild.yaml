@@ -18,7 +18,7 @@ spec:
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-platform.database.windows.net
       EXTERNAL_SECRET_MI_CLIENT_ID: 361d1fbc-43e9-4219-b5e9-78d7cc9aafae
       EXTERNAL_SECRET_URL: https://radix-keyv-platform.vault.azure.net/
-      EXTERNAL_SECRETS: 0.12.1 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.14.3 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/production
       GRAFANA_AR_CLIENT_ID: f898b3ed-8cda-4f41-9487-7ff55ea41d92
