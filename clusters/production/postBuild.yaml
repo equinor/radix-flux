@@ -10,15 +10,15 @@ spec:
       ACTIVE_CLUSTER: eu-18
       AZ_RESOURCE_DNS: radix.equinor.com
       AZ_SUBSCRIPTION_ID: ded7ca41-37c8-4085-862f-b11d21ab341a
-      BLOB_CSI_DRIVER: v1.25.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
+      BLOB_CSI_DRIVER: v1.26.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: 42416e89-eff0-40db-9d42-c1fc5e6fff33 # MI radix-id-certmanager-platform
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-platform
-      CERT_MANAGER_VERSION: 1.16.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.17.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: 081fa1b1-e38b-43c0-88fe-4a4807f1798b
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-platform.database.windows.net
       EXTERNAL_SECRET_MI_CLIENT_ID: 361d1fbc-43e9-4219-b5e9-78d7cc9aafae
       EXTERNAL_SECRET_URL: https://radix-keyv-platform.vault.azure.net/
-      EXTERNAL_SECRETS: 0.12.1 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.14.3 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/production
       GRAFANA_AR_CLIENT_ID: f898b3ed-8cda-4f41-9487-7ff55ea41d92
@@ -27,7 +27,7 @@ spec:
       GRAFANA_DB_USERNAME: radix-id-grafana-admin-platform
       GRAFANA_VERSION: 8.10.1 # https://artifacthub.io/packages/helm/grafana/grafana
       KEDA_VERSION: 2.16.1 # https://artifacthub.io/packages/helm/kedacore/keda
-      KUBE_PROMETHEUS_STACK: 67.9.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 69.8.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.11.0 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.12.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ACR_CLEANUP_TAG: release-4dad2f63-1741178376 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
