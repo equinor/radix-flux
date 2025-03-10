@@ -21,6 +21,7 @@ spec:
   values:
     prometheusUrl: http://prometheus-operator-prometheus:9090
     ingress:
+      enabled: true
       hosts:
         - uptime.${AZ_RESOURCE_DNS:=tba}
         - uptme.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
