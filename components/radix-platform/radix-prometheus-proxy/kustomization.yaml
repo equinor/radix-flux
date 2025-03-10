@@ -4,4 +4,3 @@ resources:
   - helmRepo.yaml
   - imageRepo.yaml
   - imagePolicy.yaml
-  - ingress.yaml
