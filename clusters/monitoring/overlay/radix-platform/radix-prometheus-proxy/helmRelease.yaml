@@ -20,6 +20,13 @@ spec:
         namespace: flux-system
   values:
     prometheusUrl: http://prometheus-operator-prometheus:9090
+    ingress:
+      hosts:
+        - uptime.${AZ_RESOURCE_DNS:=tba}
+        - uptme.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+      annotations:
+        cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
+      certSecretName: "uptime-cert"
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
