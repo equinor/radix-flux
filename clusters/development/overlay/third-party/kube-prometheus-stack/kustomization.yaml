@@ -1,0 +1,60 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+patches:
+  - target:
+      kind: Deployment
+      name: kube-prometheus-stack-kube-state-metrics
+    patch: |-
+      - op: add
+        path: /spec/template/spec/contaiers/0/resources/limits
+        value:
+          - cpu: 10mi
+          - memory: 128Mi
+      - op: add
+        path: /spec/template/spec/contaiers/0/resources/requests
+        value:
+          - cpu: 5mi
+          - memory: 64Mi
+  - target:
+        kind: HelmRelease
+        name: kube-prometheus-stack
+        namespace: monitor
+    patch: |-
+      apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      metadata:
+        name: kube-prometheus-stack
+        namespace: monitor
+      spec:
+        chart:
+          spec:
+            version: ${KUBE_PROMETHEUS_STACK}
+        values:
+          prometheus:
+            prometheusSpec:
+              retention: 60d # default
+              resources:
+                limits:
+                  cpu: 600m
+                  memory: 6Gi
+                requests:
+                  cpu: 600m
+                  memory: 4Gi
+          prometheusOperator:
+            resources:
+                limits:
+                  cpu: 32m
+                  memory: 128Mi
+                requests:
+                  cpu: 32m
+                  memory: 64Mi
+          alertmanager:
+            alertmanagerSpec:
+              resources:
+                limits:
+                  cpu: 600m
+                  memory: 128Mi
+                requests:
+                  cpu: 600m
+                  memory: 64Mi
