@@ -11,6 +11,7 @@ spec:
     - target:
         kind: Deployment
         name: kube-prometheus-stack-kube-state-metrics
+        namespace: monitor
       patch: |-
         - op: add
           path: /spec/template/spec/contaiers/0/resources/limits
