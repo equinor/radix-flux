@@ -50,3 +50,19 @@ spec:
                   requests:
                     cpu: 600m
                     memory: 64Mi
+            kube-state-metrics:
+              resources:
+                limits:
+                  cpu: 10m
+                  memory: 128Mi
+                requests:
+                  cpu: 5m
+                  memory: 64Mi
+            prometheus-node-exporter:
+              resources:
+                limits:
+                  cpu: 40m
+                  memory: 256Mi
+                requests:
+                  cpu: 20m
+                  memory: 128Mi
