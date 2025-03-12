@@ -9,20 +9,6 @@ spec:
       ALERT_WEB_CONSOLE_BASE_URL: "https://console.dev.radix.equinor.com"
   patches:
     - target:
-        kind: Deployment
-        name: kube-prometheus-stack-kube-state-metrics
-        namespace: monitor
-      patch: |-
-        - op: add
-          path: /spec/template/spec/containers/0/resources
-          value:
-            limits:
-              cpu: 10mi
-              memory: 128Mi
-            requests:
-              cpu: 5mi
-              memory: 64Mi
-    - target:
         kind: HelmRelease
         name: kube-prometheus-stack
         namespace: monitor
@@ -64,3 +50,19 @@ spec:
                   requests:
                     cpu: 600m
                     memory: 64Mi
+            kube-state-metrics:
+              resources:
+                limits:
+                  cpu: 10m
+                  memory: 128Mi
+                requests:
+                  cpu: 5m
+                  memory: 64Mi
+            prometheus-node-exporter:
+              resources:
+                limits:
+                  cpu: 40m
+                  memory: 256Mi
+                requests:
+                  cpu: 20m
+                  memory: 128Mi
