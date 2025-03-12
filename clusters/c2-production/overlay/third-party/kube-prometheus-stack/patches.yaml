@@ -40,3 +40,11 @@ spec:
                           storage: 256Gi # P30
                           #Premium SSD Size   P1    P2    P3    P4    P6    P10   P15   P20   P30   P40
                           #                   4     8     16    32    64    128   256   512   1024  204
+            kube-state-metrics:
+              resources:
+                limits:
+                  cpu: 10m
+                  memory: 512Mi
+                requests:
+                  cpu: 5m
+                  memory: 256Mi
