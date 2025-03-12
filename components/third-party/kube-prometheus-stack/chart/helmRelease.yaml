@@ -118,6 +118,13 @@ spec:
     prometheus-node-exporter:
       podLabels:
         grafana.radix.equinor.com/monitor-health: "true"
+      resources:
+        limits:
+          cpu: 10m
+          memory: 64Mi
+        requests:
+          cpu: 5m
+          memory: 32Mi
     alertmanager:
       config:
         global:
