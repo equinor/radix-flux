@@ -56,3 +56,6 @@ patches:
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
+
+patchesStrategicMerge:
+  - ./overlay/third-party/kube-prometheus-stack/resource-limts.yaml
