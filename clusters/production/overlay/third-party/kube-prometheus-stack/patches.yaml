@@ -82,8 +82,8 @@ spec:
             kube-state-metrics:
               resources:
                 limits:
-                  cpu: 64m
-                  memory: 512Mi
+                  cpu: 1
+                  memory: 4Gi
                 requests:
-                  cpu: 32m
-                  memory: 256Mi
+                  cpu: 64m
+                  memory: 2Gi
