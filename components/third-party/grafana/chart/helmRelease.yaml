@@ -78,13 +78,6 @@ spec:
               operator: In
               values:
               - amd64
-    resources:
-      # limits:
-      #   cpu: "2"
-      #   memory: "2000Mi"
-      requests:
-        cpu: "50m"
-        memory: "250Mi"
     nodeSelector: {"kubernetes.io/os": "linux"}
     env:
       GF_AUTH_ANONYMOUS_ENABLED: "false"

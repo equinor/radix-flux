@@ -10,11 +10,11 @@ spec:
         name: grafana
         namespace: monitor
       patch: |-
-        - op: replace
+        - op: add
           path: /spec/values/resources
           value: 
             limits:
-              cpu: 100m
+              cpu: 40m
               memory: 256Mi
             requests:
               cpu: 20m

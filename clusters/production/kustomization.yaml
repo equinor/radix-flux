@@ -47,6 +47,7 @@ patches:
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/external-secrets/patches.yaml
+  - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
