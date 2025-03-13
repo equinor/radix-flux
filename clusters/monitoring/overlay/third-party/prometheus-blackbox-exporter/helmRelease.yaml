@@ -7,3 +7,11 @@ spec:
   chart:
     spec:
       version: 9.3.0 # https://artifacthub.io/packages/helm/prometheus-community/prometheus-blackbox-exporter
+  values:
+    resources:
+      limits:
+        cpu: 40m
+        memory: 256Mi
+      requests:
+        cpu: 20m
+        memory: 128Mi
