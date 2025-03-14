@@ -49,7 +49,10 @@ spec:
                   key: nodetasks
                   operator: Exists
             prometheus:
-              prometheusSpec:
+               prometheusSpec:
+                additionalScrapeConfigs:
+                  scrape_interval: 30s
+                  scrape_timeout: 20s
                 affinity:
                   nodeAffinity:
                     requiredDuringSchedulingIgnoredDuringExecution:
@@ -87,6 +90,9 @@ spec:
                           #Premium SSD Size   P1    P2    P3    P4    P6    P10   P15   P20   P30   P40
                           #                   4     8     16    32    64    128   256   512   1024  2048
             kube-state-metrics:
+              prometheus:
+                monitor:
+                  scrapeTimeout: 20s
               resources:
                 limits:
                   cpu: 128m
