@@ -49,7 +49,12 @@ spec:
                   key: nodetasks
                   operator: Exists
             prometheus:
+              monitor:
+                scrapeTimeout: 20s
               prometheusSpec:
+                additionalScrapeConfigs:
+                  scrape_interval: 30s
+                  scrape_timeout: 20s
                 affinity:
                   nodeAffinity:
                     requiredDuringSchedulingIgnoredDuringExecution:
