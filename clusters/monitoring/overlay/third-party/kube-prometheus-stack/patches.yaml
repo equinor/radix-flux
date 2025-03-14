@@ -40,7 +40,14 @@ spec:
             spec:
               version: ${KUBE_PROMETHEUS_STACK}
           values:
-            prometheusOperator: 
+            prometheusOperator:
+              resources:
+                limits:
+                  cpu: 100m
+                  memory: 8Gi
+                requests:
+                  cpu: 100m
+                  memory: 4Gi
             prometheus:
               prometheusSpec:
                 query:
