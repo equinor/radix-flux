@@ -90,8 +90,9 @@ spec:
                           #Premium SSD Size   P1    P2    P3    P4    P6    P10   P15   P20   P30   P40
                           #                   4     8     16    32    64    128   256   512   1024  2048
             kube-state-metrics:
-              monitor:
-                scrapeTimeout: 20s
+              prometheus:
+                monitor:
+                  scrapeTimeout: 20s
               resources:
                 limits:
                   cpu: 128m
