@@ -24,6 +24,13 @@ spec:
               version: ${KUBE_PROMETHEUS_STACK}
           values:
             prometheusOperator:
+              resources:
+                limits:
+                  cpu: 800m
+                  memory: 256Mi
+                requests:
+                  cpu: 400m
+                  memory: 128Mi
               affinity:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:
