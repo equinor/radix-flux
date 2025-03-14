@@ -47,11 +47,11 @@ spec:
                   timeout: 60s
                 resources:
                   limits:
-                    cpu: "2"
-                    memory: "16000Mi"
+                    cpu: 2
+                    memory: 14Gi
                   requests:
-                    cpu: "0.5"
-                    memory: "6000Mi"
+                    cpu: 1
+                    memory: 7Gi
                 additionalScrapeConfigs: 
                   - job_name: "federated-prod.radix.equinor.com"
                     honor_labels: true
@@ -342,7 +342,22 @@ spec:
                       resources:
                         requests:
                           storage: 256Gi
-            alertmanager: null
+            alertmanager:
+              alertmanagerSpec:
+                resources:
+                  limits:
+                    cpu: 10m
+                    memory: 128Mi
+                  requests:
+                    cpu: 5m
+                    memory: 64Mi
             kube-state-metrics:
+              resources:
+                limits:
+                  cpu: 10m
+                  memory: 128Mi
+                requests:
+                  cpu: 5m
+                  memory: 64Mi
               extraArgs: []  
             additionalPrometheusRulesMap: null
