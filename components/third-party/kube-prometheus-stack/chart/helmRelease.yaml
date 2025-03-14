@@ -92,6 +92,8 @@ spec:
                   storage: 128Gi # default 50Gi
         additionalScrapeConfigs:
           - job_name: 'kubernetes-pods'
+            scrape_interval: 30s
+            scrape_timeout: 20s
             kubernetes_sd_configs:
               - role: pod
             relabel_configs:
