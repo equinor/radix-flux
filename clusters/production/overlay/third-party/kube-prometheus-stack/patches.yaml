@@ -50,9 +50,6 @@ spec:
                   operator: Exists
             prometheus:
                prometheusSpec:
-                additionalScrapeConfigs:
-                  scrape_interval: 30s
-                  scrape_timeout: 20s
                 affinity:
                   nodeAffinity:
                     requiredDuringSchedulingIgnoredDuringExecution:
