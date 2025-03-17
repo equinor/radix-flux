@@ -7,7 +7,7 @@ spec:
   template:
     metadata:
       labels:
-        grafana.radix.equinor.com/monitor-health: true
+        grafana.radix.equinor.com/monitor-health: "true"
     spec:
       affinity:
         nodeAffinity:
