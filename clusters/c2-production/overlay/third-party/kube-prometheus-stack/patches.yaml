@@ -48,6 +48,15 @@ spec:
                 requests:
                   cpu: 50m
                   memory: 64Mi
+            alertmanager:
+              alertmanagerSpec:
+                resources:
+                  limits:
+                    cpu: 30m
+                    memory: 256Mi
+                  requests:
+                    cpu: 5m
+                    memory: 128Mi
             kube-state-metrics:
               resources:
                 limits:
