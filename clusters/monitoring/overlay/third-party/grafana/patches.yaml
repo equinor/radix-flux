@@ -34,8 +34,8 @@ spec:
               GF_AZURE_WORKLOAD_IDENTITY_ENABLED: "true"
             resources:
               limits:
+                cpu: 256m
+                memory: 2Gi
+              requests:
                 cpu: 128m
                 memory: 1Gi
-              requests:
-                cpu: 64m
-                memory: 512Mi
