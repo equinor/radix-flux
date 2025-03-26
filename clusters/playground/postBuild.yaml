@@ -50,7 +50,7 @@ spec:
       RADIX_ZONE: playground # dev | playground | prod
       RADIX_ZONE_MIGRATE: playground
       TEKTON_VERSION: v0.53.0
-      velero_plugin_acr_image: radixplayground.azurecr.io/radix-velero-plugin:release-c396d94a-1738147306 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      velero_plugin_acr_image: radixplayground.azurecr.io/radix-velero-plugin:release-d0282b2d-1742898418 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       velero_plugin_azure: v1.11.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: 50671a4a-0236-4f40-9b6e-54a559cbe824
       VELERO_VERSION: 8.6.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
