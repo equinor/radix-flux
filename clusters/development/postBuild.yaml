@@ -7,10 +7,10 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: weekly-11
+      ACTIVE_CLUSTER: weekly-13
       AZ_RESOURCE_DNS: dev.radix.equinor.com
       AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
-      BLOB_CSI_DRIVER: v1.26.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
+      BLOB_CSI_DRIVER: v1.26.1 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
       AZURE_SERVICE_OPERATOR_CLIENT_ID: 0d3f6248-cc0f-4669-8220-b46b5a94f64b
       AZURE_SERVICE_OPERATOR_VERSION: v2.12.0 # https://github.com/Azure/azure-service-operator
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: a22f9976-c8a8-4802-b95b-d6e08aac203a # MI radix-id-certmanager-dev
@@ -20,7 +20,7 @@ spec:
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
       EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d
       EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
-      EXTERNAL_SECRETS: 0.14.4 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.15.1 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/development
       GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a
@@ -28,12 +28,12 @@ spec:
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
       GRAFANA_DB_USERNAME: radix-id-grafana-admin-dev
       GRAFANA_LOKI: 2.10.2 # https://artifacthub.io/packages/helm/grafana/loki-stack
-      GRAFANA_VERSION: 8.10.3 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 8.11.0 # https://artifacthub.io/packages/helm/grafana/grafana
       KEDA_VERSION: 2.16.1 # https://artifacthub.io/packages/helm/kedacore/keda
-      KUBE_PROMETHEUS_STACK: 69.8.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 70.3.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.11.1 # https://github.com/mittwald/kubernetes-replicator
-      NGINX_VERSION: 4.12.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      RADIX_ACR_CLEANUP_TAG: master-ae447f5f-1740400402 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      NGINX_VERSION: 4.12.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      RADIX_ACR_CLEANUP_TAG: master-7b1c7921-1742571417 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       radix_acr_repo_url: radixdev.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixdevapp.azurecr.io
       RADIX_APP_ENV: qa
@@ -50,18 +50,18 @@ spec:
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: main-982c24cf-1739529374 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: main-9ba92b6a-1742468967 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ZONE_MIGRATE: dev
       TEKTON_VERSION: v0.53.0
-      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-0a1eb1da-1739529350 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-47f61988-1742888028 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       velero_plugin_azure: v1.11.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94
-      VELERO_VERSION: 8.5.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      VELERO_VERSION: 8.7.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixdevcache.azurecr.io/alpine:3.20
     substituteFrom:
-    - kind: ConfigMap
-      name: radix-flux-config
+      - kind: ConfigMap
+        name: radix-flux-config
