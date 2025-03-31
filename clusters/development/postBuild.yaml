@@ -63,5 +63,5 @@ spec:
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixdevcache.azurecr.io/alpine:3.20
     substituteFrom:
-      - kind: ConfigMap
-        name: radix-flux-config
+    - kind: ConfigMap
+      name: radix-flux-config
