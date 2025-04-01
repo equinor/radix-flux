@@ -52,6 +52,7 @@ spec:
             alertControllerThreads: 21
             kubeClientRateLimitBurst: 500
             kubeClientRateLimitQPS: 500
+            pipelineImageTag: ${RADIX_PIPELINE_IMAGE_TAG} # Set in postBuild development
             buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}  # Set in postBuild development
             gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}  # Set in postBuild development
             gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE}  # Set in postBuild development
