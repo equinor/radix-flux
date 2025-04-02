@@ -7,6 +7,9 @@ spec:
   interval: 10m0s
   path: ./components/radix-platform/radix-pipeline
   prune: false
+  sourceRef:
+    kind: ImagePolicy
+    name: flux-system
   postBuild:
     substitute:
       radix_acr_repo_url: ${radix_acr_repo_url}
