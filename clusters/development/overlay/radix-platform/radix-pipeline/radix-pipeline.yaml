@@ -8,9 +8,10 @@ spec:
   path: ./components/radix-platform/radix-pipeline
   prune: false
   sourceRef:
-    kind: ImagePolicy
+    kind: GitRepository
     name: flux-system
   postBuild:
     substitute:
       radix_acr_repo_url: ${radix_acr_repo_url}
+      radix_operator_helm_chart_branch: master
       radix_pipeline_image_tag_prefix: master
