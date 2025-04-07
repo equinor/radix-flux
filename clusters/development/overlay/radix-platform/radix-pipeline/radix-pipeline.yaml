@@ -5,13 +5,14 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./components/radix-platform/radix-pipeline
-  prune: false
   sourceRef:
     kind: GitRepository
     name: flux-system
+  path: ./components/radix-platform/radix-pipeline
+  prune: false
   postBuild:
     substitute:
-      radix_acr_repo_url: ${radix_acr_repo_url}
-      radix_operator_helm_chart_branch: master
+      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
+      radix_pipeline_repository_branch: master
       radix_pipeline_image_tag_prefix: master
+
