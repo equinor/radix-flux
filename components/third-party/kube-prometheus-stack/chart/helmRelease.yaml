@@ -258,6 +258,7 @@ spec:
               description: Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} failed.
               summary: Job failed
               consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/jobcomponent/{{ $labels.label_radix_component }}
+            keep_firing_for: 1h
             expr: >-
               (time() - max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
               * on(job_name, namespace) kube_job_status_start_time{job="kube-state-metrics"}
@@ -271,6 +272,7 @@ spec:
               description: Pipeline job {{ $labels.label_radix_job_name}} for application {{ $labels.label_radix_app}} failed.
               summary: Pipeline job failed
               consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/jobs/view/{{ $labels.label_radix_job_name }}
+            keep_firing_for: 1h
             expr: >-
               (time() - max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
               * on(job_name, namespace) kube_job_status_start_time{job="kube-state-metrics"}
