@@ -69,7 +69,7 @@ spec:
                     memory: 3000M
                   requests:
                     memory: 700M
-            oauthProxyImage: radixdev.azurecr.io/oauth2-proxy:v7.8.2-11-gdcb1d5f9-dirty # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
+            oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.9.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
             podSecurityStandard: # Ref https://kubernetes.io/docs/concepts/security/pod-security-standards/
               enforce:
                 level: baseline
