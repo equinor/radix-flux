@@ -10,7 +10,7 @@ spec:
       ACTIVE_CLUSTER: c2-11
       AZ_RESOURCE_DNS: c2.radix.equinor.com
       AZ_SUBSCRIPTION_ID: ded7ca41-37c8-4085-862f-b11d21ab341a
-      BLOB_CSI_DRIVER: v1.26.0 # https://github.com/kubernetes-sigs/blob-csi-driver/releases
+      BLOB_CSI_DRIVER: v1.26.0 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: abdbd354-57e3-4bac-9fc6-b99ef03c0905 # MI radix-id-certmanager-c2
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-c2
       CERT_MANAGER_VERSION: 1.17.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
