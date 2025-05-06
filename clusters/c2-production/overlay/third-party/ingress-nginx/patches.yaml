@@ -21,13 +21,17 @@ spec:
               replicaCount: 6
               resources:
                 limits:
-                  memory: 5000Mi
+                  memory: 10Gi
+                  cpu: "10"
                 requests:
-                  cpu: "1"
-                  memory: 5000Mi
+                  cpu: "2"
+                  memory: 3Gi
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-c2
+              config:
+                max-worker-connections: "5000"
+                worker-processes: "1"
               affinity:
                 podAntiAffinity:
                   preferredDuringSchedulingIgnoredDuringExecution:
