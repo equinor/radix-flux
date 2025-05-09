@@ -30,10 +30,9 @@ spec:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-playground
               config:
+                proxy-buffering: "on"
                 max-worker-connections: "5000"
                 worker-processes: "1"
-              config:
-                proxy-buffering: "on"
 
       target:
         kind: HelmRelease
