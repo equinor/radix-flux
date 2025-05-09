@@ -21,7 +21,7 @@ spec:
               replicaCount: 2
               resources:
                 limits:
-                  cpu: 500m
+                  cpu: 1500m
                   memory: 1024Mi
                 requests:
                   cpu: 500m
@@ -31,6 +31,8 @@ spec:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-playground
               config:
                 proxy-buffering: "on"
+                max-worker-connections: "5000"
+                worker-processes: "1"
 
       target:
         kind: HelmRelease
