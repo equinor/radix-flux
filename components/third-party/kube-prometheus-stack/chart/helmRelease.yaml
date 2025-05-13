@@ -392,10 +392,10 @@ spec:
         grafana.radix.equinor.com/monitor-health: "true"
       resources:
         limits:
-          cpu: 10m
+          cpu: 500m
           memory: 64Mi
         requests:
-          cpu: 5m
+          cpu: 50m
           memory: 32Mi
     alertmanager:
       config:
