@@ -73,11 +73,11 @@ spec:
                   operator: Exists
                 resources:
                   limits:
-                    cpu: "6"
-                    memory: "128Gi"
+                    cpu: "16"
+                    memory: 145Gi
                   requests:
-                    cpu: "4"
-                    memory: "128Gi"
+                    cpu: "8"
+                    memory: 128Gi
                 storageSpec:
                   volumeClaimTemplate:
                     spec:
