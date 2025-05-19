@@ -348,7 +348,7 @@ spec:
                     spec:
                       resources:
                         requests:
-                          storage: 256Gi
+                          storage: 512Gi
             alertmanager:
               alertmanagerSpec:
                 resources:
