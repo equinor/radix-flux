@@ -39,12 +39,12 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixplatformcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixplatformcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
-      RADIX_CICD_CANARY_TAG: release-9623184d-1744719495 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_CICD_CANARY_TAG: release-b66e373a-1747815619 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-9c6668ca-1741178292 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: prod # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
-      RADIX_OPERATOR_TAG: release-244a600d-1747304569 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_PIPELINE_IMAGE_TAG: release-244a600d-1747304569 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
+      RADIX_OPERATOR_TAG: release-27514e69-1747814516 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_PIPELINE_IMAGE_TAG: release-27514e69-1747814509 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-26e85f8d-1742480174 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: prod # dev | playground | prod
