@@ -18,14 +18,14 @@ spec:
             valuesKey: config
           values:
             controller:
-              replicaCount: 20
+              replicaCount: 5
               resources:
                 limits:
-                  cpu: "6"
-                  memory: 20Gi
+                  cpu: 2000m
+                  memory: 7Gi
                 requests:
-                  cpu: 300m
-                  memory: 20Gi
+                  cpu: 1000m
+                  memory: 7Gi
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-platform
