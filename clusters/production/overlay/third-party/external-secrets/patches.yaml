@@ -22,7 +22,7 @@ spec:
           path: /spec/values/resources
           value: 
             limits:
-              cpu: 5m
+              cpu: 50m
               memory: 256Mi
             requests:
               cpu: 5m
@@ -32,7 +32,7 @@ spec:
           value:
             resources:
               limits:
-                cpu: 2m
+                cpu: 50m
                 memory: 64Mi
               requests:
                 cpu: 2m
@@ -43,7 +43,7 @@ spec:
           value:
             resources:
               limits:
-                cpu: 1m
+                cpu: 50m
                 memory: 64Mi
               requests:
                 cpu: 1m
