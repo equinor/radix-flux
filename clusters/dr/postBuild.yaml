@@ -7,17 +7,17 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: disaster-22
-      AZ_RESOURCE_DNS: d1.radix.equinor.com
-      AZ_SUBSCRIPTION_ID: 939950ec-da7e-4349-8b8d-77d9c278af04
+      ACTIVE_CLUSTER: disaster-22 # Changed
+      AZ_RESOURCE_DNS: d1.radix.equinor.com # Changed
+      AZ_SUBSCRIPTION_ID: 939950ec-da7e-4349-8b8d-77d9c278af04 # Changed
       BLOB_CSI_DRIVER: 1.26.3 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
-      AZURE_SERVICE_OPERATOR_CLIENT_ID: 0d3f6248-cc0f-4669-8220-b46b5a94f64b
+      #AZURE_SERVICE_OPERATOR_CLIENT_ID: 0d3f6248-cc0f-4669-8220-b46b5a94f64b # Changed
       AZURE_SERVICE_OPERATOR_VERSION: v2.13.0 # https://github.com/Azure/azure-service-operator
-      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: 2d9860e7-eab0-42dc-904d-a7058cd6ed7d # MI radix-id-certmanager-dev
-      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-d1
+      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: 2d9860e7-eab0-42dc-904d-a7058cd6ed7d # MI radix-id-certmanager-d1 # Changed
+      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-d1 # Changed
       CERT_MANAGER_VERSION: 1.17.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c
-      COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
+      COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-d1.database.windows.net
       EXTERNAL_SECRET_MI_CLIENT_ID: b7794a5d-5cda-4d6e-a657-d0689357a35d
       EXTERNAL_SECRET_URL: https://radix-keyv-d1.vault.azure.net/
       EXTERNAL_SECRETS: 0.17.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
@@ -25,8 +25,8 @@ spec:
       FLUX_CONFIG_PATH: ./clusters/d1
       GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a
       GRAFANA_AR_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70
-      GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
-      GRAFANA_DB_USERNAME: radix-id-grafana-admin-dev
+      GRAFANA_DB_HOST: s941-radix-grafana-d1.mysql.database.azure.com
+      GRAFANA_DB_USERNAME: radix-id-grafana-admin-d1
       GRAFANA_LOKI: 2.10.2 # https://artifacthub.io/packages/helm/grafana/loki-stack
       GRAFANA_VERSION: 8.12.1 # https://artifacthub.io/packages/helm/grafana/grafana
       KEDA_VERSION: 2.17.1 # https://artifacthub.io/packages/helm/kedacore/keda
@@ -48,19 +48,19 @@ spec:
       RADIX_OPERATOR_TAG: master-c883f3f1-1748866984 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_PIPELINE_IMAGE_TAG: master-c883f3f1-1748866984 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
-      RADIX_ENVIRONMENT: dev # dev | prod
+      RADIX_ENVIRONMENT: d1 # d1 | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: main-9ba92b6a-1742468967 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
-      RADIX_ZONE: dev # dev | playground | prod
-      RADIX_ZONE_MIGRATE: dev
+      RADIX_ZONE: d1 # d1 | playground | prod
+      RADIX_ZONE_MIGRATE: d1
       TEKTON_VERSION: v0.53.0
       velero_plugin_acr_image: radixd1.azurecr.io/radix-velero-plugin:master-47f61988-1742888028 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       velero_plugin_azure: v1.12.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: 3c2aa948-5399-4a18-9887-303178018fb8
       VELERO_VERSION: 10.0.1 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
-      VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
+      VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-d1.database.windows.net
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixd1cache.azurecr.io/alpine:3.20
     substituteFrom:
     - kind: ConfigMap
