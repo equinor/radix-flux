@@ -1,0 +1,60 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: kube-prometheus-stack
+  namespace: flux-system
+spec:
+  postBuild:
+    substitute:
+      ALERT_WEB_CONSOLE_BASE_URL: "https://console.dev.radix.equinor.com"
+  patches:
+    - target:
+        kind: HelmRelease
+        name: kube-prometheus-stack
+        namespace: monitor
+      patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: kube-prometheus-stack
+          namespace: monitor
+        spec:
+          chart:
+            spec:
+              version: ${KUBE_PROMETHEUS_STACK}
+          values:
+            prometheus:
+              prometheusSpec:
+                retention: 60d # default
+                resources:
+                  limits:
+                    cpu: 600m
+                    memory: 6Gi
+                  requests:
+                    cpu: 600m
+                    memory: 4Gi
+            prometheusOperator:
+              resources:
+                  limits:
+                    cpu: 32m
+                    memory: 128Mi
+                  requests:
+                    cpu: 32m
+                    memory: 64Mi
+            alertmanager:
+              alertmanagerSpec:
+                resources:
+                  limits:
+                    cpu: 600m
+                    memory: 128Mi
+                  requests:
+                    cpu: 600m
+                    memory: 64Mi
+            kube-state-metrics:
+              resources:
+                limits:
+                  cpu: 10m
+                  memory: 256Mi
+                requests:
+                  cpu: 5m
+                  memory: 64Mi

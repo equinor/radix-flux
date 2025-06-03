@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: loki-stack
+  namespace: default
+spec:
+  chart:
+    spec:
+      version: ${GRAFANA_LOKI} # Set in postBuild development
+  values:
+    loki:
+      enabled: true
+      persistence:
+        enabled: true
+        size: 5Gi
+        storageClassName: managed
