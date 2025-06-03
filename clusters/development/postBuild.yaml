@@ -46,7 +46,7 @@ spec:
       RADIX_CLUSTER_CLEANUP_TAG: master-32c9e7b7-1740407776 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_COST_ALLOCATION_TAG: master-15fd6c6c-1740408722 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-a9f7f657-1748949479 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_PIPELINE_IMAGE_TAG: master-a9f7f657-1748949476 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
+      RADIX_PIPELINE_IMAGE_TAG: master-c883f3f1-1748866984 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
