@@ -7,22 +7,22 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: weekly-23
-      AZ_RESOURCE_DNS: dev.radix.equinor.com
-      AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
+      ACTIVE_CLUSTER: disaster-22
+      AZ_RESOURCE_DNS: d1.radix.equinor.com
+      AZ_SUBSCRIPTION_ID: 939950ec-da7e-4349-8b8d-77d9c278af04
       BLOB_CSI_DRIVER: 1.26.3 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       AZURE_SERVICE_OPERATOR_CLIENT_ID: 0d3f6248-cc0f-4669-8220-b46b5a94f64b
       AZURE_SERVICE_OPERATOR_VERSION: v2.13.0 # https://github.com/Azure/azure-service-operator
-      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: a22f9976-c8a8-4802-b95b-d6e08aac203a # MI radix-id-certmanager-dev
-      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-dev
+      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: 2d9860e7-eab0-42dc-904d-a7058cd6ed7d # MI radix-id-certmanager-dev
+      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-d1
       CERT_MANAGER_VERSION: 1.17.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
-      EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d
-      EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
+      EXTERNAL_SECRET_MI_CLIENT_ID: b7794a5d-5cda-4d6e-a657-d0689357a35d
+      EXTERNAL_SECRET_URL: https://radix-keyv-d1.vault.azure.net/
       EXTERNAL_SECRETS: 0.17.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
-      FLUX_CONFIG_PATH: ./clusters/development
+      FLUX_CONFIG_PATH: ./clusters/d1
       GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a
       GRAFANA_AR_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
@@ -34,14 +34,14 @@ spec:
       KUBERNETES_REPLICATOR: v2.11.1 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.12.2 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ACR_CLEANUP_TAG: master-7b1c7921-1742571417 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
-      radix_acr_repo_url: radixdev.azurecr.io
-      RADIX_APP_ACR_REPO_URL: radixdevapp.azurecr.io
+      radix_acr_repo_url: radixd1.azurecr.io
+      RADIX_APP_ACR_REPO_URL: radixd1app.azurecr.io
       RADIX_APP_ENV: qa
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.36
-      RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixdevcache.azurecr.io/alpine:3.20
-      RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixdevcache.azurecr.io/alpine/git:2.45.2
-      RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
-      RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io
+      RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixd1cache.azurecr.io/alpine:3.20
+      RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixd1cache.azurecr.io/alpine/git:2.45.2
+      RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixd1cache.azurecr.io/bash:5.2
+      RADIX_CACHE_REGISTRY: radixd1cache.azurecr.io
       RADIX_CICD_CANARY_TAG: master-d7ecfa15-1747730974 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-32c9e7b7-1740407776 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_COST_ALLOCATION_TAG: master-15fd6c6c-1740408722 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
@@ -55,13 +55,13 @@ spec:
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ZONE_MIGRATE: dev
       TEKTON_VERSION: v0.53.0
-      velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-47f61988-1742888028 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      velero_plugin_acr_image: radixd1.azurecr.io/radix-velero-plugin:master-47f61988-1742888028 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       velero_plugin_azure: v1.12.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
-      VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94
+      VELERO_MI_CLIENT_ID: 3c2aa948-5399-4a18-9887-303178018fb8
       VELERO_VERSION: 10.0.1 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
-      RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixdevcache.azurecr.io/alpine:3.20
+      RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixd1cache.azurecr.io/alpine:3.20
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config
