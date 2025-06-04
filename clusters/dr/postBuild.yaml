@@ -13,7 +13,7 @@ spec:
       BLOB_CSI_DRIVER: 1.26.3 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       #AZURE_SERVICE_OPERATOR_CLIENT_ID: 0d3f6248-cc0f-4669-8220-b46b5a94f64b # Changed
       AZURE_SERVICE_OPERATOR_VERSION: v2.13.0 # https://github.com/Azure/azure-service-operator
-      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: 2d9860e7-eab0-42dc-904d-a7058cd6ed7d # MI radix-id-certmanager-d1 # Changed
+      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: e8b880e2-73ce-40ba-988d-eada44c12bb7 # MI radix-id-certmanager-d1 # Changed
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-d1 # Changed
       CERT_MANAGER_VERSION: 1.17.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c
