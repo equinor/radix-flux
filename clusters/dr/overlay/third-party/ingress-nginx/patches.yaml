@@ -27,7 +27,7 @@ spec:
                   memory: 256Mi
               service:
                 annotations:
-                  service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-dev
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-d1
               config:
                 proxy-buffering: "on"
                 max-worker-connections: "5000"
