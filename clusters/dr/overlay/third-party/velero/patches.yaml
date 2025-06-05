@@ -46,8 +46,8 @@ spec:
                 default: true
                 bucket: ${clusterName}
                 config:
-                  resourceGroup: common-${RADIX_ZONE_MIGRATE}
-                  storageAccount: radixvelero${RADIX_ZONE_MIGRATE}
+                  resourceGroup: common-${RADIX_ZONE}
+                  storageAccount: radixvelero${RADIX_ZONE}
                   useAAD: "true"
               volumeSnapshotLocation:
                 - name: azure
