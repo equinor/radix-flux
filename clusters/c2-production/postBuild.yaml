@@ -42,7 +42,7 @@ spec:
       RADIX_CICD_CANARY_TAG: release-b66e373a-1747815625 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_COST_ALLOCATION_TAG: release-9c6668ca-1741178279 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: prod # dev | prod
-      RADIX_OAUTH_GUARD_TAG: v1.0.3 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
+      RADIX_OAUTH_GUARD_TAG: 1.0.4 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_OPERATOR_TAG: release-823432cc-1749204634 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_PIPELINE_IMAGE_TAG: release-823432cc-1749204636 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-26e85f8d-1742480165 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
