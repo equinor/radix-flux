@@ -45,7 +45,7 @@ spec:
       RADIX_OAUTH_GUARD_TAG: 1.0.4 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_OPERATOR_TAG: release-823432cc-1749204634 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_PIPELINE_IMAGE_TAG: release-823432cc-1749204636 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: release-26e85f8d-1742480174 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: release-cd191b0c-1750418188 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: prod # dev | playground | prod
       RADIX_ZONE_MIGRATE: platform
