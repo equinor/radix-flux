@@ -30,7 +30,7 @@ spec:
       KUBE_PROMETHEUS_STACK: 70.3.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.11.1 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.12.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      RADIX_ACR_CLEANUP_TAG: release-4dad2f63-1741178376 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
+      RADIX_ACR_CLEANUP_TAG: release-26b8b736-1750747007 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
       radix_acr_repo_url: radixprod.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixprodapp.azurecr.io
       RADIX_APP_ENV: prod
@@ -39,18 +39,18 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixplatformcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixplatformcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
-      RADIX_CICD_CANARY_TAG: release-b66e373a-1747815619 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
-      RADIX_COST_ALLOCATION_TAG: release-9c6668ca-1741178292 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
+      RADIX_CICD_CANARY_TAG: release-433d6dfc-1750746230 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_COST_ALLOCATION_TAG: release-f1036416-1750418147 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: prod # dev | prod
-      RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
-      RADIX_OPERATOR_TAG: release-032a68f8-1748340592 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_PIPELINE_IMAGE_TAG: release-032a68f8-1748340590 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: release-26e85f8d-1742480174 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_OAUTH_GUARD_TAG: 1.0.4 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
+      RADIX_OPERATOR_TAG: release-fabf2756-1750759230 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_PIPELINE_IMAGE_TAG: release-fabf2756-1750759224 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: release-cd191b0c-1750418188 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: prod # dev | playground | prod
       RADIX_ZONE_MIGRATE: platform
       TEKTON_VERSION: v0.53.0
-      velero_plugin_acr_image: radixprod.azurecr.io/radix-velero-plugin:release-d0282b2d-1742898438 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      velero_plugin_acr_image: radixprod.azurecr.io/radix-velero-plugin:release-5bd662a5-1750763341 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       velero_plugin_azure: v1.11.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: 7b222fb8-30d2-462f-9128-66bad1df2267
       VELERO_VERSION: 8.6.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
