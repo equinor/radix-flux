@@ -29,9 +29,6 @@ spec:
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-c2
-              config:
-                max-worker-connections: "5000"
-                worker-processes: "1"
               affinity:
                 podAntiAffinity:
                   preferredDuringSchedulingIgnoredDuringExecution:
