@@ -29,11 +29,6 @@ spec:
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-playground
-              config:
-                proxy-buffering: "on"
-                max-worker-connections: "5000"
-                worker-processes: "1"
-
       target:
         kind: HelmRelease
         name: ingress-nginx
