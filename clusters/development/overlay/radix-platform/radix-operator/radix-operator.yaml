@@ -94,9 +94,10 @@ spec:
               logPretty: true
               requireAdGroups: true
               requireConfigurationItem: true
-              
+
               image: 
                 repository: ghcr.io/equinor/radix-webhook
+                tag: ${RADIX_WEBHOOK_TAG}
 
       target:
         kind: HelmRelease
