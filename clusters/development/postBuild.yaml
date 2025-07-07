@@ -51,7 +51,7 @@ spec:
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.2 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: main-9ba92b6a-1742468967 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
-      RADIX_WEBHOOK_TAG: master-9ba92b6a-1742468967 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
+      RADIX_WEBHOOK_TAG: master-26d9cbaf-1751894701 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ZONE_MIGRATE: dev
