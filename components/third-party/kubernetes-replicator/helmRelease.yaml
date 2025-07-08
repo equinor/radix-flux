@@ -37,10 +37,10 @@ spec:
               - arm64
     resources:
       limits:
-        cpu: 20m
+        cpu: 200m
         memory: 512Mi
       requests:
-        cpu: 10m
+        cpu: 50m
         memory: 256Mi
     podSecurityContext:
       fsGroup: 1000
