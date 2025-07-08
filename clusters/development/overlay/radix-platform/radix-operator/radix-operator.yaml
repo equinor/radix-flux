@@ -88,6 +88,18 @@ spec:
                 image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE}
             radixGroups:
               user: 64b28659-4fe4-4222-8497-85dd7e43e25b
+
+            radixWebhook:
+              enabled: true
+              logLevel: trace
+              logPretty: true
+              requireAdGroups: true
+              requireConfigurationItem: true
+
+              image: 
+                repository: ghcr.io/equinor/radix-webhook
+                tag: ${RADIX_WEBHOOK_TAG}
+
       target:
         kind: HelmRelease
         name: radix-operator
