@@ -28,10 +28,6 @@ spec:
               service:
                 annotations:
                   service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-dev
-              config:
-                proxy-buffering: "on"
-                max-worker-connections: "5000"
-                worker-processes: "1"
               affinity:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:

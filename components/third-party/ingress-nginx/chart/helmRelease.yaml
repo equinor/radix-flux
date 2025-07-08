@@ -45,10 +45,14 @@ spec:
       ingressClassByName: true
       watchIngressWithoutClass: true
       config:
+        worker-processes: "1"
+        max-worker-connections: "5000"
+        worker-shutdown-timeout: "3600s"
         annotations-risk-level: "High"
+        strict-validate-path-type: "false"
         proxy-buffer-size: "32k" # See https://stackoverflow.com/a/40306737 for a great explanation
         proxy-body-size: "100m"
-        worker-shutdown-timeout: "3600s"
+        proxy-buffering: "on"
         large-client-header-buffers: "4 32k"
         custom-http-errors: "503"
       extraArgs:
