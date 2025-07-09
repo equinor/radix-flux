@@ -90,8 +90,8 @@ spec:
 
             radixWebhook:
               enabled: true
-              logLevel: trace
-              logPretty: true
+              logLevel: info
+              logPretty: false
               requireAdGroups: true
               requireConfigurationItem: true
 
