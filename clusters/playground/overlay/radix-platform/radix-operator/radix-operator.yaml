@@ -86,10 +86,10 @@ spec:
 
             radixWebhook:
               enabled: true
-              logLevel: trace
-              logPretty: true
-              requireAdGroups: true
-              requireConfigurationItem: true
+              logLevel: info
+              logPretty: false
+              requireAdGroups: false
+              requireConfigurationItem: false
 
               image: 
                 repository: ghcr.io/equinor/radix-webhook
