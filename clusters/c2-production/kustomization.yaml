@@ -34,6 +34,8 @@ resources:
 - ../../components/radix-platform/radix-oauth-guard # radix-oauth-guard repo
 - ./overlay/radix-platform/radix-oauth-guard/helmRelease-prometheus.yaml # Sidecar to Prometheus
 - ./overlay/radix-platform/radix-pipeline/radix-pipeline.yaml
+- ./overlay/radix-platform/radix-webhook/radix-webhook.yaml
+
 patches:
   - path: ./postBuild.yaml
   - path: ./helm-controller.yaml
