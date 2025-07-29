@@ -548,17 +548,17 @@ spec:
               * on(job_name, namespace) kube_job_status_start_time{job="kube-state-metrics"}
               * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"}) > 0 < (24*60*60)
           - alert: RadixDeploymentActivated
-            labels:
-              severity: info
-              radixscope: env
             annotations:
               description: Radix deployment {{ $labels.label_radix_deployment_name}} for application {{ $labels.label_radix_app}} in environment {{ $labels.label_radix_env}} activated.
               summary: Radix deployment activated
               consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/mini-app/deployments/{{ $labels.label_radix_deployment_name }}
-            keep_firing_for: 1h
+            for: 5m
             expr: >-
               (time() -
                 max by(label_radix_app, label_radix_env, label_radix_deployment_name) (
                   radix_operator_radix_deployment_activation_timestamp
                 )
               ) > 0 < (24*60*60)
+            labels:
+              severity: info
+              radixscope: env
