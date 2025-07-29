@@ -485,7 +485,7 @@ spec:
             expr: >-
               sum by(label_radix_app, label_radix_env, label_radix_component, namespace, radix_replica_name) (
                 label_replace(rate(kube_pod_container_status_restarts_total{job="kube-state-metrics",namespace=~".*"}[10m]), "radix_replica_name", "$3", "pod","(.+)-(.+)-(.+)") 
-                * on(pod, namespace) group_left(label_radix_app, label_radix_component) (kube_pod_labels{job="kube-state-metrics",label_radix_app!=""}) 
+                * on(pod, namespace) group_left(RadixAppComponentNotReady, label_radix_component) (kube_pod_labels{job="kube-state-metrics",label_radix_app!=""}) 
                 * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""}) * 60 * 5 > 0
               ) > 0
           - alert: RadixAppComponentNotReady
@@ -547,7 +547,7 @@ spec:
               (time() - max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
               * on(job_name, namespace) kube_job_status_start_time{job="kube-state-metrics"}
               * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"}) > 0 < (24*60*60)
-          - alert: RadixAppDeploymentActivated
+          - alert: RadixDeploymentActivated
             labels:
               severity: info
               radixscope: env
@@ -558,7 +558,7 @@ spec:
             keep_firing_for: 1h
             expr: >-
               (time() -
-                max by(application, environment, deployment_name) (
+                max by(label_radix_app, label_radix_env, label_radix_deployment_name) (
                   radix_operator_radix_deployment_activation_timestamp
                 )
               ) > 0 < (24*60*60)
