@@ -58,3 +58,96 @@ spec:
                 requests:
                   cpu: 5m
                   memory: 64Mi
+            additionalPrometheusRulesMap: # https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+              radix-app:
+                groups:
+                  - name: radix-app-env-alerts
+                    rules:
+                      - alert: RadixAppComponentCrashLooping
+                        labels:
+                          severity: error
+                          radixscope: env
+                        annotations:
+                          description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} is restarting {{ printf "%.2f" $value }} times / 10 minutes.
+                          summary: Component is crash looping
+                          consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
+                        for: 5m
+                        expr: >-
+                          sum by(label_radix_app, label_radix_env, label_radix_component, namespace, radix_replica_name) (
+                            label_replace(rate(kube_pod_container_status_restarts_total{job="kube-state-metrics",namespace=~".*"}[10m]), "radix_replica_name", "$3", "pod","(.+)-(.+)-(.+)") 
+                            * on(pod, namespace) group_left(label_radix_app, label_radix_component) (kube_pod_labels{job="kube-state-metrics",label_radix_app!=""}) 
+                            * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""}) * 60 * 5 > 0
+                          ) > 0
+                      - alert: RadixAppComponentNotReady
+                        labels:
+                          severity: warning
+                          radixscope: env
+                        annotations:
+                          description: Component {{ $labels.label_radix_component}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} has been in a non-ready state for more than 10 minutes.
+                          summary: Component is not ready
+                          consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/component/{{ $labels.label_radix_component }}
+                        for: 10m
+                        expr: >-
+                          sum by(label_radix_app, label_radix_env, label_radix_component, namespace) (
+                            max by(namespace, pod) (kube_pod_status_phase{job="kube-state-metrics",namespace=~".*",phase=~"Pending|Unknown"}) 
+                            * on(namespace, pod) group_left(owner_kind) topk by(namespace, pod) (1, max by(namespace, pod, owner_kind) (kube_pod_owner{owner_kind="ReplicaSet"})) 
+                            * on(pod, namespace) group_left(label_radix_app, label_radix_component) (kube_pod_labels{job="kube-state-metrics",label_radix_app!=""})
+                            * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""})
+                          )>0
+                      - alert: RadixAppJobNotReady
+                        labels:
+                          severity: warning
+                          radixscope: env
+                        annotations:
+                          description: Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} has been in a non-ready state for more than 10 minutes.
+                          summary: Job is not ready
+                          consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/jobcomponent/{{ $labels.label_radix_component }}
+                        for: 10m
+                        expr: >-
+                          sum by(label_radix_app, label_radix_env, label_radix_component, job_name, namespace)(
+                            max by(namespace, pod) (kube_pod_status_phase{job="kube-state-metrics",namespace=~".*",phase=~"Pending|Unknown"}) 
+                            * on(namespace, pod) group_left(owner_kind, job_name) topk by(namespace, job_name) (1, max by(namespace, pod, owner_kind, job_name) (label_replace(kube_pod_owner{owner_kind="Job"}, "job_name", "$1", "owner_name", "(.*)"))) 
+                            * on(job_name, namespace) group_left(label_radix_app, label_radix_component) (kube_job_labels{job="kube-state-metrics",label_radix_job_type="job-scheduler",label_radix_app!=""})
+                            * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""})
+                          )>0
+                      - alert: RadixAppJobFailed
+                        labels:
+                          severity: error
+                          radixscope: env
+                        annotations:
+                          description: Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env }} for application {{ $labels.label_radix_app}} failed.
+                          summary: Job failed
+                          consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/envs/{{ $labels.label_radix_env }}/jobcomponent/{{ $labels.label_radix_component }}
+                        keep_firing_for: 1h
+                        expr: >-
+                          (time() - max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
+                          * on(job_name, namespace) kube_job_status_start_time{job="kube-state-metrics"}
+                          * on(job_name, namespace) group_left(label_radix_app, label_radix_component) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job-scheduler",label_radix_app!=""} 
+                          * on(namespace) group_left(label_radix_env) (kube_namespace_labels{label_radix_env!=""})) > 0 < (24*60*60)
+                      - alert: RadixAppPipelineJobFailed
+                        labels:
+                          severity: error
+                          radixscope: app
+                        annotations:
+                          description: Pipeline job {{ $labels.label_radix_job_name}} for application {{ $labels.label_radix_app}} failed.
+                          summary: Pipeline job failed
+                          consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/jobs/view/{{ $labels.label_radix_job_name }}
+                        keep_firing_for: 1h
+                        expr: >-
+                          (time() - max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
+                          * on(job_name, namespace) kube_job_status_start_time{job="kube-state-metrics"}
+                          * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"}) > 0 < (24*60*60)
+                      - alert: RadixDeploymentActivated
+                        annotations:
+                          description: Activated Radix deployment {{ $labels.label_radix_deployment}} for application {{ $labels.label_radix_app}} in environment {{ $labels.label_radix_env}}.
+                          summary: Radix deployment activated
+                          consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/deployments/{{ $labels.label_radix_deployment }}
+                        for: 1m
+                        expr: >-
+                          (time() -
+                            max by(label_radix_app, label_radix_env, label_radix_deployment, namespace) (
+                              radix_operator_radix_deployment_activation_timestamp
+                            )
+                          ) > 0 < (60*60)
+                        labels:
+                          radixscope: env
