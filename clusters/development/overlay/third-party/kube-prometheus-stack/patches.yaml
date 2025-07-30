@@ -50,6 +50,56 @@ spec:
                   requests:
                     cpu: 600m
                     memory: 64Mi
+              templateFiles: # https://github.com/prometheus-community/helm-charts/blob/bd7f3ca7efb7b5806b720b098144d1240c930a70/charts/kube-prometheus-stack/values.yaml#L192
+                radix-app.tmpl: |-
+                  {{define "radix-env-slack-alert-title"}}
+                  {{- if eq .Status "resolved"}}RESOLVED - {{end -}}
+                  Alerts for application {{.CommonLabels.label_radix_app}} in environment {{.CommonLabels.label_radix_env}}
+                  {{end}}
+                  {{define "radix-app-slack-alert-title"}}
+                  Alerts for application {{.CommonLabels.label_radix_app}}
+                  {{end}}
+                  {{define "radix-slack-alert-text-env" -}}
+                  {{- if .Labels.label_radix_component }}
+                  *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
+                  {{- if .Labels.radix_replica_name }} (replica {{ .Labels.radix_replica_name }}){{ end }}
+                  {{ end }}
+                  {{- if .Labels.label_radix_deployment }}
+                  *Deployment:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_deployment }}>
+                  {{ end }}
+                  {{- if .Labels.radix_replica_name }} (replica {{ .Labels.radix_replica_name }}) {{end}}
+                  {{if .Labels.job_name -}}
+                  *Job:* {{ .Labels.job_name }}
+                  {{end -}}
+                  {{end -}}
+                  {{define "radix-slack-alert-text-app" -}}
+                  *Job:* <{{ .Annotations.consoleUrl }}|{{ .Labels.job_name }}>
+                  *Type:* {{ .Labels.label_radix_pipeline }}
+                  {{end -}}
+                  {{define "radix-slack-alert-text"}}
+                  {{range .Alerts}}
+                  {{- if .Labels.severity }}
+                  *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
+                  {{end -}}
+                  {{if eq .Labels.radixscope "env" -}}
+                  {{template "radix-slack-alert-text-env" . -}}
+                  {{end -}}
+                  {{if eq .Labels.radixscope "app" -}}
+                  {{template "radix-slack-alert-text-app" . -}}
+                  {{end -}}
+                  *Description:* {{ .Annotations.description }}
+                  {{end}}
+                  {{end}}
+                  {{define "radix-slack-alert-title"}}
+                  {{if eq .CommonLabels.radixscope "env"}}
+                  {{template "radix-env-slack-alert-title" .}}
+                  {{else}}
+                  {{template "radix-app-slack-alert-title" .}}
+                  {{end}}
+                  {{end}}
+                  {{define "radix-slack-alert-titlelink"}}
+                  {{.CommonAnnotations.nonexisting}}
+                  {{end}}
             kube-state-metrics:
               resources:
                 limits:
