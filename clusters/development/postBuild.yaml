@@ -56,7 +56,7 @@ spec:
       RADIX_ZONE_MIGRATE: dev
       TEKTON_VERSION: v0.53.0
       velero_plugin_acr_image: radixdev.azurecr.io/radix-velero-plugin:master-dbd9263e-1750747471 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
-      velero_plugin_azure: v1.12.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
+      velero_plugin_azure: v1.12.2 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94
       VELERO_VERSION: 10.0.10 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
