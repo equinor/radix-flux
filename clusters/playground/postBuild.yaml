@@ -39,15 +39,15 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixplaygroundcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixplaygroundcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixplaygroundcache.azurecr.io
-      RADIX_CICD_CANARY_TAG: release-94529f33-1752236167 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
+      RADIX_CICD_CANARY_TAG: release-8d1c2f7b-1753946694 # {"$imagepolicy": "flux-system:radix-cicd-canary:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: release-a61ccf6e-1750418253 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_COST_ALLOCATION_TAG: release-f1036416-1750418145 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_OAUTH_GUARD_TAG: 1.0.4 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
-      RADIX_OPERATOR_TAG: release-9a277fb4-1753709067 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_PIPELINE_IMAGE_TAG: release-9a277fb4-1753709066 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
+      RADIX_OPERATOR_TAG: release-a6939780-1753958262 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_PIPELINE_IMAGE_TAG: release-a6939780-1753958261 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-cd191b0c-1750418208 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
-      RADIX_WEBHOOK_TAG: release-9a277fb4-1753709066 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
+      RADIX_WEBHOOK_TAG: release-a6939780-1753958263 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: playground # dev | playground | prod
       RADIX_ZONE_MIGRATE: playground
