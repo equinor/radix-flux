@@ -435,7 +435,13 @@ spec:
           Alerts for application {{.CommonLabels.label_radix_app}}
           {{end}}
           {{define "radix-slack-alert-text-env" -}}
+          {{- if .Labels.label_radix_component }}
           *Component:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_component }}>
+          {{- if .Labels.radix_replica_name }} (replica {{ .Labels.radix_replica_name }}){{ end }}
+          {{ end }}
+          {{- if .Labels.label_radix_deployment }}
+          *Deployment:* <{{ .Annotations.consoleUrl }}|{{ .Labels.label_radix_deployment }}>
+          {{ end }}
           {{- if .Labels.radix_replica_name }} (replica {{ .Labels.radix_replica_name }}) {{end}}
           {{if .Labels.job_name -}}
           *Job:* {{ .Labels.job_name }}
@@ -447,7 +453,9 @@ spec:
           {{end -}}
           {{define "radix-slack-alert-text"}}
           {{range .Alerts}}
+          {{- if .Labels.severity }}
           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
+          {{end -}}
           {{if eq .Labels.radixscope "env" -}}
           {{template "radix-slack-alert-text-env" . -}}
           {{end -}}
@@ -547,3 +555,17 @@ spec:
               (time() - max by(job_name, namespace) (kube_job_failed{job="kube-state-metrics",namespace=~".*"}) 
               * on(job_name, namespace) kube_job_status_start_time{job="kube-state-metrics"}
               * on(job_name, namespace) group_left(label_radix_app, label_radix_job_name, label_radix_pipeline) kube_job_labels{job="kube-state-metrics",label_radix_job_type="job"}) > 0 < (24*60*60)
+          - alert: RadixDeploymentActivated
+            annotations:
+              description: Activated Radix deployment {{ $labels.label_radix_deployment}} for application {{ $labels.label_radix_app}} in environment {{ $labels.label_radix_env}}.
+              summary: Radix deployment activated
+              consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{ $labels.label_radix_app }}/deployments/{{ $labels.label_radix_deployment }}
+            for: 1m
+            expr: >-
+              (time() -
+                max by(label_radix_app, label_radix_env, label_radix_deployment, namespace) (
+                  radix_operator_radix_deployment_activation_timestamp
+                )
+              ) > 0 < (60*60)
+            labels:
+              radixscope: env
