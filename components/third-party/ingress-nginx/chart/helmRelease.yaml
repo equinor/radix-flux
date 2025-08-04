@@ -51,6 +51,7 @@ spec:
         annotations-risk-level: "High"
         strict-validate-path-type: "false"
         proxy-buffer-size: "32k" # See https://stackoverflow.com/a/40306737 for a great explanation
+        proxy-busy-buffers-size: 32k # https://github.com/kubernetes/ingress-nginx/issues/13598
         proxy-body-size: "100m"
         proxy-buffering: "on"
         large-client-header-buffers: "4 32k"
