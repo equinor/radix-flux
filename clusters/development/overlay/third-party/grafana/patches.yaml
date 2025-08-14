@@ -19,10 +19,6 @@ spec:
             requests:
               cpu: 20m
               memory: 128Mi
-        - op: add
-          path: /spec/values/serviceAccount/annotations
-          value:
-            azure.workload.identity/client-id: ${GRAFANA_AR_CLIENT_ID}
     - target:
         kind: HelmRelease
         name: grafana
@@ -43,5 +39,8 @@ spec:
               GF_AUTH_AZUREAD_TOKEN_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token"
               GF_AUTH_AZUREAD_CLIENT_AUTHENTICATION: "workload_identity"
               GF_AUTH_AZUREAD_FEDERATED_CREDENTIAL_AUDIENCE: "api://AzureADTokenExchange"
+            serviceAccount:
+              annotations:
+                azure.workload.identity/client-id: ${GRAFANA_AR_CLIENT_ID}
     
     
