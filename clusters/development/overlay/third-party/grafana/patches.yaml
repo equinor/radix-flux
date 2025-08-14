@@ -22,22 +22,13 @@ spec:
         - op: add
           path: /spec/values/env
           value:
-            - name: GF_AUTH_GENERIC_OAUTH_ENABLED
-              value: "false"
-            - name: GF_AUTH_AZUREAD_ENABLED
-              value: "true"
-            - name: GF_AUTH_AZUREAD_CLIENT_ID
-              value: "${GRAFANA_AR_CLIENT_ID}"
-            - name: GF_AUTH_AZUREAD_AUTH_URL
-              value: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/authorize"
-            - name: GF_AUTH_AZUREAD_TOKEN_URL
-              value: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token"
-            - name: GF_AUTH_AZUREAD_CLIENT_AUTHENTICATION
-              value: "workload_identity"
-            - name: GF_AUTH_AZUREAD_FEDERATED_CREDENTIAL_AUDIENCE
-              value: "api://AzureADTokenExchange"
-            - name: GF_AUTH_AZUREAD_WORKLOAD_IDENTITY_TOKEN_FILE
-              value: "/var/run/secrets/azure/tokens/azure-identity-token"
+            GF_AUTH_GENERIC_OAUTH_ENABLED: "false"
+            GF_AUTH_AZUREAD_ENABLED: "true"
+            GF_AUTH_AZUREAD_CLIENT_ID: "${GRAFANA_AR_CLIENT_ID}"
+            GF_AUTH_AZUREAD_AUTH_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/authorize"
+            GF_AUTH_AZUREAD_TOKEN_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token"
+            GF_AUTH_AZUREAD_CLIENT_AUTHENTICATION: "workload_identity"
+            GF_AUTH_AZUREAD_FEDERATED_CREDENTIAL_AUDIENCE: "api://AzureADTokenExchange"
         - op: add
           path: /spec/values/serviceAccount/annotations
           value:
