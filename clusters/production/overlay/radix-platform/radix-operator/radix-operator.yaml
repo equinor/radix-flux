@@ -65,7 +65,7 @@ spec:
                   default:
                     memory: 500M
             oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.9.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
-            oauthRedisImage: bitnami/redis:8.0 # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated
+            oauthRedisImage: radixplatformcache.azurecr.io/library/redis:8.0 # https://hub.docker.com/_/redis/tags
             podSecurityStandard: # Ref https://kubernetes.io/docs/concepts/security/pod-security-standards/
               enforce:
                 level: baseline
