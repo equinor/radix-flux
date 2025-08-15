@@ -38,6 +38,7 @@ spec:
       RADIX_APP_ACR_REPO_URL: radixdevapp.azurecr.io
       RADIX_APP_ENV: qa
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.36
+      RADIX_REDIS_IMAGE: radixdevcache.azurecr.io/redis:8.0
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixdevcache.azurecr.io/alpine:3.20
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixdevcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
