@@ -10,12 +10,25 @@ spec:
         name: grafana
         namespace: monitor
       patch: |-
-        - op: add
-          path: /spec/values/resources
-          value: 
-            limits:
-              cpu: 40m
-              memory: 256Mi
-            requests:
-              cpu: 20m
-              memory: 128Mi
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: grafana
+          namespace: monitor
+        spec:
+          values:
+            resources:
+              limits:
+                cpu: 40m
+                memory: 256Mi
+              requests:
+                cpu: 20m
+                memory: 128Mi
+            env:
+              GF_AUTH_GENERIC_OAUTH_ENABLED: "false"
+              GF_AUTH_AZUREAD_ENABLED: "true"
+              GF_AUTH_AZUREAD_CLIENT_ID: "${GRAFANA_AR_CLIENT_ID}"
+              GF_AUTH_AZUREAD_AUTH_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/authorize"
+              GF_AUTH_AZUREAD_TOKEN_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token"
+              GF_AUTH_AZUREAD_CLIENT_AUTHENTICATION: "workload_identity"
+              GF_AUTH_AZUREAD_FEDERATED_CREDENTIAL_AUDIENCE: "api://AzureADTokenExchange"
