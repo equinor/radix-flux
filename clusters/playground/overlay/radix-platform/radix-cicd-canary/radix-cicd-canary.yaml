@@ -13,9 +13,7 @@ spec:
   postBuild:
     substitute:
       RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild playground
-      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild playground
-      radix_cicd_canary_helm_chart_branch: release
-      radix_cicd_canary_image_tag_prefix: release
+      RADIX_CICD_CANARY_CHART_VERSION: ${RADIX_CICD_CANARY_CHART_VERSION} # From postBuild.yaml
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
