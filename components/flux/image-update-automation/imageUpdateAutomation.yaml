@@ -11,7 +11,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: master
+        branch: 2892-configure-radix-cicd-canary-for-dev-to-install-from-ghcrioequinorradixchartsradix-cicd-canary
     commit:
       author:
         email: radix@statoilsrm.onmicrosoft.com
@@ -38,7 +38,7 @@ spec:
         - {{.}}
         {{ end -}}
     push:
-      branch: flux-image-updates
+      branch: flux-image-updates-test
   update:
     path: ${FLUX_CONFIG_PATH}
     strategy: Setters
