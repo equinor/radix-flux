@@ -47,7 +47,7 @@ spec:
       RADIX_OPERATOR_TAG: release-6aaa09ba-1755254868 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_PIPELINE_IMAGE_TAG: release-6aaa09ba-1755254867 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: release-cd191b0c-1750418208 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
-      RADIX_WEBHOOK_TAG: release-6aaa09ba-1755254870 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
+      RADIX_WEBHOOK_TAG: release-f03c9931-1755519305 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: playground # dev | playground | prod
       RADIX_ZONE_MIGRATE: playground
