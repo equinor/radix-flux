@@ -27,7 +27,7 @@ spec:
           namespace: radix-cicd-canary
         spec:
           values:
-            radixApiPrefix: server-radix-api-qa
+            radixApiPrefix: aserver-radix-api-qa
             radixWebhookPrefix: webhook-radix-github-webhook-qa
             clusterFqdn: ${clusterName}.${dnsZone}
             radixGroups:
