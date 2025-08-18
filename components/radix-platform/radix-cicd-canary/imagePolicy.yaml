@@ -8,4 +8,4 @@ spec:
     name: radix-cicd-canary-chart
   policy:
     semver:
-      range: ${RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE:='>=0.0.0'}
+      range: '>=0.0.0' # ${RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE:='>=0.0.0'}
