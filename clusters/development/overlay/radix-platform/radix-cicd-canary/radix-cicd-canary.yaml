@@ -13,9 +13,8 @@ spec:
   postBuild:
     substitute:
       RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
-      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
-      radix_cicd_canary_helm_chart_branch: master
-      radix_cicd_canary_image_tag_prefix: master
+      RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE: '>=0.0.0-0' # Include pre-release versions
+      RADIX_CICD_CANARY_CHART_VERSION: ${RADIX_CICD_CANARY_CHART_VERSION}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -28,8 +27,6 @@ spec:
           namespace: radix-cicd-canary
         spec:
           values:
-            image:
-              tag: ${RADIX_CICD_CANARY_TAG} # Set in postBuild development
             radixApiPrefix: server-radix-api-qa
             radixWebhookPrefix: webhook-radix-github-webhook-qa
             clusterFqdn: ${clusterName}.${dnsZone}
