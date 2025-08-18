@@ -27,7 +27,7 @@ spec:
           namespace: radix-cicd-canary
         spec:
           values:
-            radixApiPrefix: aserver-radix-api-qa
+            radixApiPrefix: server-radix-api-qa
             radixWebhookPrefix: webhook-radix-github-webhook-qa
             clusterFqdn: ${clusterName}.${dnsZone}
             radixGroups:
@@ -44,7 +44,7 @@ spec:
           namespace: flux-system
         spec:
           ref:
-            tag: ${RADIX_CICD_CANARY_CHART_VERSION}
+            tag: '1.0.0'
       target:
         kind: OCIRepository
         name: radix-cicd-canary-chart
