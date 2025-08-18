@@ -13,7 +13,7 @@ spec:
   postBuild:
     substitute:
       RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
-      RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE: '>=0.0.0-0' # Include pre-release versions
+      # RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE: '>=0.0.0-0' # Include pre-release versions
       RADIX_CICD_CANARY_CHART_VERSION: "1.3.0" # From postBuild.yaml
       quote: '"' # Hack to enclose RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE in quotes: https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
     substituteFrom:
