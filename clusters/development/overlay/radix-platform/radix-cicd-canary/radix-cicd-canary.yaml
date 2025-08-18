@@ -14,7 +14,7 @@ spec:
     substitute:
       RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
       RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE: '>=0.0.0-0' # Include pre-release versions
-      RADIX_CICD_CANARY_CHART_VERSION: 1.0.0 #${RADIX_CICD_CANARY_CHART_VERSION}
+      RADIX_CICD_CANARY_CHART_VERSION: 2.3.4
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -36,16 +36,16 @@ spec:
         kind: HelmRelease
         name: radix-cicd-canary
         namespace: radix-cicd-canary
-    - patch: |-
-        apiVersion: source.toolkit.fluxcd.io/v1
-        kind: OCIRepository
-        metadata:
-          name: radix-cicd-canary-chart
-          namespace: flux-system
-        spec:
-          ref:
-            tag: '1.0.0'
-      target:
-        kind: OCIRepository
-        name: radix-cicd-canary-chart
-        namespace: flux-system
+    # - patch: |-
+    #     apiVersion: source.toolkit.fluxcd.io/v1
+    #     kind: OCIRepository
+    #     metadata:
+    #       name: radix-cicd-canary-chart
+    #       namespace: flux-system
+    #     spec:
+    #       ref:
+    #         tag: '1.0.0'
+    #   target:
+    #     kind: OCIRepository
+    #     name: radix-cicd-canary-chart
+    #     namespace: flux-system
