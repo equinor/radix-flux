@@ -7,4 +7,4 @@ spec:
   interval: 1m
   url: oci://ghcr.io/equinor/radix/charts/radix-cicd-canary
   ref:
-    tag: ${RADIX_CICD_CANARY_CHART_VERSION} # Defined in by cluster kustyomization patch
+    tag: ${RADIX_CICD_CANARY_CHART_VERSION} # Set in cluster postBuild.yaml
