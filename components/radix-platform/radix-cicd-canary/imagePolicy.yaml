@@ -8,9 +8,9 @@ spec:
     name: radix-cicd-canary-chart
   policy:
     semver:
-      range: ${quote}${RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE:='>=0.0.0'}${quote} 
+      range: ${quote}${RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE:='>=0.0.0'}${quote} # Default stable versions only
       # postBuild substitution can contain special yaml chars (colon, anchors), booleans or numbers where string is expected.
       # To "escape" such values, Flux suggest using a ${quote} hack: https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
       # If the value is not escaped, Flux Kustomization will report a "envsubst error: YAMLToJSON" error
       # Usage:
-      #  - When defining RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE in postBuild.substiture, e.g. '>=0.0.0-0', also define quote: '"'
+      #  - When defining RADIX_CICD_CANARY_CHART_POLICY_SEMVER_RANGE in postBuild.substitute, e.g. '>=0.0.0-0', also define quote: '"'
