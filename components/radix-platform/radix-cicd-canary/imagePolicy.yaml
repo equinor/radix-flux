@@ -1,14 +1,11 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
-  name: radix-cicd-canary
-  namespace: flux-system
+  name: radix-cicd-canary-chart
+  namespace: flux-system      
 spec:
-  filterTags:
-    pattern: ^${radix_cicd_canary_image_tag_prefix}-[a-f0-9]+-(?P<ts>[0-9]+) # Set by flux patch
-    extract: $ts
   imageRepositoryRef:
-    name: radix-cicd-canary
+    name: radix-cicd-canary-chart
   policy:
-    numerical:
-      order: asc
+    semver:
+      range: '>=0.0.0'

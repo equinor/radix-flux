@@ -12,10 +12,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
-      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
-      radix_cicd_canary_helm_chart_branch: master
-      radix_cicd_canary_image_tag_prefix: master
+      RADIX_CICD_CANARY_CHART_VERSION: ${RADIX_CICD_CANARY_CHART_VERSION:=tba} # From postBuild.yaml
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -28,8 +25,6 @@ spec:
           namespace: radix-cicd-canary
         spec:
           values:
-            image:
-              tag: ${RADIX_CICD_CANARY_TAG} # Set in postBuild development
             radixApiPrefix: server-radix-api-qa
             radixWebhookPrefix: webhook-radix-github-webhook-qa
             clusterFqdn: ${clusterName}.${dnsZone}
@@ -39,3 +34,21 @@ spec:
         kind: HelmRelease
         name: radix-cicd-canary
         namespace: radix-cicd-canary
+    - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
+        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        kind: ImagePolicy
+        metadata:
+          name: radix-cicd-canary-chart
+          namespace: flux-system
+        spec:
+          imageRepositoryRef:
+            name: radix-cicd-canary-chart
+          policy:
+            semver:
+              range: '>=0.0.0-0'
+      target:
+        kind: ImagePolicy
+        name: radix-cicd-canary-chart
+        namespace: flux-system
+
+
