@@ -7,7 +7,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: weekly-33
+      ACTIVE_CLUSTER: weekly-34
       AZ_RESOURCE_DNS: dev.radix.equinor.com
       AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
       BLOB_CSI_DRIVER: 1.26.3 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
@@ -45,11 +45,11 @@ spec:
       RADIX_CICD_CANARY_CHART_VERSION: 1.5.0 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-5d2307c5-1749810852 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_COST_ALLOCATION_TAG: master-2f3d5136-1749723436 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_OPERATOR_TAG: master-5f883d92-1755178706 # {"$imagepolicy": "flux-system:radix-operator:tag"}
-      RADIX_PIPELINE_IMAGE_TAG: master-5f883d92-1755178706 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
+      RADIX_OPERATOR_TAG: master-8b874ffc-1755516121 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_PIPELINE_IMAGE_TAG: master-8b874ffc-1755516116 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_ENVIRONMENT: dev # dev | prod
-      RADIX_WEBHOOK_TAG: master-5f883d92-1755178709 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
+      RADIX_WEBHOOK_TAG: master-8b874ffc-1755516120 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
       RADIX_OAUTH_GUARD_TAG: 1.0.4 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_VULNERABILITY_SCANNER_TAG: main-8c4b12eb-1749735888 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
