@@ -48,7 +48,7 @@ spec:
             name: radix-cicd-canary-chart
           policy:
             semver:
-              range: '>=0.0.0-1'
+              range: '>=0.0.0-0'
       target:
         kind: ImagePolicy
         name: radix-cicd-canary-chart
