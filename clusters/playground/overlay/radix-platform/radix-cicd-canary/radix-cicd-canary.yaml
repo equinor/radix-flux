@@ -12,8 +12,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild playground
-      RADIX_CICD_CANARY_CHART_VERSION: ${RADIX_CICD_CANARY_CHART_VERSION} # From postBuild.yaml
+      RADIX_CICD_CANARY_CHART_VERSION: ${RADIX_CICD_CANARY_CHART_VERSION:=tba} # From postBuild.yaml
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -26,8 +25,6 @@ spec:
           namespace: radix-cicd-canary
         spec:
           values:
-            image:
-              tag: ${RADIX_CICD_CANARY_TAG} # Set in postBuild playground
             radixApiPrefix: server-radix-api-prod
             radixWebhookPrefix: webhook-radix-github-webhook-prod
             clusterFqdn: ${clusterName}.${dnsZone}

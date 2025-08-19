@@ -12,7 +12,6 @@ spec:
   prune: false
   postBuild:
     substitute:
-      # RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
       RADIX_CICD_CANARY_CHART_VERSION: ${RADIX_CICD_CANARY_CHART_VERSION:=tba} # From postBuild.yaml
     substituteFrom:
       - kind: ConfigMap
