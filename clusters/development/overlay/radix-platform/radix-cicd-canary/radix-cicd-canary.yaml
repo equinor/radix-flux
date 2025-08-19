@@ -11,9 +11,9 @@ spec:
   path: ./components/radix-platform/radix-cicd-canary
   prune: false
   postBuild:
-    # substitute:
+    substitute:
       # RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
-      # RADIX_CICD_CANARY_CHART_VERSION: ${RADIX_CICD_CANARY_CHART_VERSION} # From postBuild.yaml
+      RADIX_CICD_CANARY_CHART_VERSION: ${RADIX_CICD_CANARY_CHART_VERSION:=tba} # From postBuild.yaml
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
