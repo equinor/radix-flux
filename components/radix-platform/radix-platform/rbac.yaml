@@ -15,5 +15,5 @@ spec:
   postBuild:
     substitute:
       viewGroup: be5526de-1b7d-4389-b1ab-a36a99ef5cc5 # Entra Group "Radix Platform Operators"
-      editGroup: 0e0d22c6-9f03-48a5-89be-be7b060c8a32 # Entra Group "AZ PIM OMNIA RADIX Cluster Admin - prod"
+      editGroup: fa475c8f-5202-444a-a3f3-734f02938616 # Entra Group "AZ PIM OMNIA RADIX Cluster Edit - prod"
       adminGroup: 0e0d22c6-9f03-48a5-89be-be7b060c8a32 # Entra Group "AZ PIM OMNIA RADIX Cluster Admin - prod"
