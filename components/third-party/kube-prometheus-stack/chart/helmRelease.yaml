@@ -22,6 +22,9 @@ spec:
       upgradeJob:
         enabled: true
         forceConflicts: true
+    global:
+      rbac: 
+        createAggregateClusterRoles: true
     fullnameOverride: prometheus-operator
     nameOverride: prometheus-operator
     grafana:
