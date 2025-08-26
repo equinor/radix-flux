@@ -11,7 +11,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: 2911-configure-radix-vulnerability-scanner-to-install-from-ghrcio
+        branch: master
     commit:
       author:
         email: radix@statoilsrm.onmicrosoft.com
