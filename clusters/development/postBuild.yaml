@@ -42,7 +42,7 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixdevcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io
-      RADIX_CICD_CANARY_CHART_VERSION: 1.5.1-rc.1 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
+      RADIX_CICD_CANARY_CHART_VERSION: 1.5.1-rc.2 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
       RADIX_CLUSTER_CLEANUP_TAG: master-5d2307c5-1749810852 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
       RADIX_COST_ALLOCATION_TAG: master-2f3d5136-1749723436 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-1b7b92db-1755599013 # {"$imagepolicy": "flux-system:radix-operator:tag"}
@@ -51,7 +51,7 @@ spec:
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_WEBHOOK_TAG: master-1b7b92db-1755599008 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
       RADIX_OAUTH_GUARD_TAG: 1.0.4 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
-      RADIX_VULNERABILITY_SCANNER_TAG: main-8c4b12eb-1749735888 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
+      RADIX_VULNERABILITY_SCANNER_TAG: main-b7ed6e9f-1756192042 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE: dev # dev | playground | prod
       RADIX_ZONE_MIGRATE: dev
