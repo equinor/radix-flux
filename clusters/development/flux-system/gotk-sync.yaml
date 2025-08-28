@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: master
+    branch: 2914-configure-radix-acr-cleanup-to-install-from-ghrcio
   secretRef:
     name: flux-system
   url: ssh://git@github.com/equinor/radix-flux
