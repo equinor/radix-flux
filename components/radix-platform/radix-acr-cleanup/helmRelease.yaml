@@ -8,17 +8,11 @@ spec:
   install:
     remediation:
       retries: 3
-  chart:
-    spec:
-      chart: ./charts/radix-acr-cleanup
-      sourceRef:
-        kind: GitRepository
-        name: radix-acr-cleanup
-        namespace: flux-system
-      valuesFiles:
-        - ./charts/radix-acr-cleanup/values.yaml
+  chartRef:
+    kind: OCIRepository
+    name: radix-acr-cleanup-chart
+    namespace: flux-system
   values:
-    registry: radix${RADIX_ENVIRONMENT}                               # Set by flux patch
     clusterType: ${clusterType}                                       # Read from radix-flux-config configmap
     activeClusterName: xx                                             # Set by zone-specific overlay
     deleteUntagged: xx                                                # Set by flux patch
@@ -26,11 +20,6 @@ spec:
     period: 1h
     cleanupStart: "0:00"
     cleanupEnd: "06:00"
-    image:
-      # For Flux "image.repository" means full path to the image (registry/repository)
-      # The following 2 properties are mandatory for Flux image filtering
-      repository: ${radix_acr_repo_url}/radix-acr-cleanup             # Defined in flux patch
-      tag: xx                                                         # Set by flux patch
     metrics:
       enabled: true
     securityContext:
