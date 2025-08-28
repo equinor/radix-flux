@@ -12,10 +12,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild production
-      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild production
-      radix_acr_cleanup_helm_chart_branch: release
-      radix_acr_cleanup_image_tag_prefix: release
+      RADIX_ACR_CLEANUP_CHART_VERSION: ${RADIX_ACR_CLEANUP_CHART_VERSION:=tba} # From postBuild.yaml
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -32,8 +29,6 @@ spec:
             deleteUntagged: true
             retainLatestUntagged: 0
             activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild production
-            image:
-              tag: ${RADIX_ACR_CLEANUP_TAG} # Set in postBuild production
             resources:
               limits:
                 cpu: "2"
