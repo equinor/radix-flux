@@ -30,7 +30,7 @@ spec:
       GRAFANA_LOKI: 2.10.2 # https://artifacthub.io/packages/helm/grafana/loki-stack
       GRAFANA_VERSION: 9.4.3 # https://artifacthub.io/packages/helm/grafana/grafana
       KEDA_VERSION: 2.17.2 # https://artifacthub.io/packages/helm/kedacore/keda
-      KUBE_PROMETHEUS_STACK: 77.1.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 77.1.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.12.0 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.13.2 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ACR_CLEANUP_TAG: master-19f56cb9-1749802441 # {"$imagepolicy": "flux-system:radix-acr-cleanup:tag"}
