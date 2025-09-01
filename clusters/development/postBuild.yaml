@@ -10,7 +10,7 @@ spec:
       ACTIVE_CLUSTER: weekly-34
       AZ_RESOURCE_DNS: dev.radix.equinor.com
       AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
-      BLOB_CSI_DRIVER: 1.26.3 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
+      BLOB_CSI_DRIVER: 1.27.0 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       AZURE_SERVICE_OPERATOR_CLIENT_ID: 0d3f6248-cc0f-4669-8220-b46b5a94f64b
       AZURE_SERVICE_OPERATOR_VERSION: v2.15.0 # https://github.com/Azure/azure-service-operator
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: a22f9976-c8a8-4802-b95b-d6e08aac203a # MI radix-id-certmanager-dev
