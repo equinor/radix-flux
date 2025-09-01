@@ -12,13 +12,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
-      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
-      radix_cluster_cleanup_helm_chart_branch: master
-      radix_cluster_cleanup_image_tag_prefix: master
-    substituteFrom:
-      - kind: ConfigMap
-        name: radix-flux-config
+      RADIX_CLUSTER_CLEANUP_CHART_VERSION: ${RADIX_CLUSTER_CLEANUP_CHART_VERSION:=tba} # From postBuild.yaml
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2
@@ -27,8 +21,6 @@ spec:
           name: radix-cluster-cleanup
         spec:
           values:
-            image:
-              tag: ${RADIX_CLUSTER_CLEANUP_TAG} # Set in postBuild development
             cleanupStart: "08:00"
             cleanupEnd: "16:00"
             period: 15m
@@ -47,3 +39,17 @@ spec:
         kind: HelmRelease
         name: radix-cluster-cleanup
         namespace: default
+    - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
+        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        kind: ImagePolicy
+        metadata:
+          name: radix-cluster-cleanup-chart
+          namespace: flux-system
+        spec:
+          policy:
+            semver:
+              range: '>=0.0.0-0'
+      target:
+        kind: ImagePolicy
+        name: radix-cluster-cleanup-chart
+        namespace: flux-system        

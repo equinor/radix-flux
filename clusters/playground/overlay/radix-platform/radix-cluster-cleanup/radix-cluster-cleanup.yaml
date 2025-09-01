@@ -12,13 +12,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      RADIX_ENVIRONMENT: ${RADIX_ENVIRONMENT} # Set in postBuild development
-      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild development
-      radix_cluster_cleanup_helm_chart_branch: release
-      radix_cluster_cleanup_image_tag_prefix: release
-    substituteFrom:
-      - kind: ConfigMap
-        name: radix-flux-config
+      RADIX_CLUSTER_CLEANUP_CHART_VERSION: ${RADIX_CLUSTER_CLEANUP_CHART_VERSION:=tba} # From postBuild.yaml
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2
@@ -27,8 +21,6 @@ spec:
           name: radix-cluster-cleanup
         spec:
           values:
-            image:
-              tag: ${RADIX_CLUSTER_CLEANUP_TAG} # Set in postBuild development
             cleanupStart: "09:00"
             cleanupEnd: "12:00"
             period: 15m

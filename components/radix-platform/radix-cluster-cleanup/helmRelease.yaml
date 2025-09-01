@@ -10,24 +10,14 @@ spec:
     createNamespace: true
     remediation:
       retries: 3
-  chart:
-    spec:
-      chart: ./charts/radix-cluster-cleanup
-      sourceRef:
-        kind: GitRepository
-        name: radix-cluster-cleanup
-        namespace: flux-system
-      valuesFiles:
-        - ./charts/radix-cluster-cleanup/values.yaml
+  chartRef:
+    kind: OCIRepository
+    name: radix-cluster-cleanup-chart
+    namespace: flux-system
   values:
     cleanupStart: "00:00"
     cleanupEnd: "23:59"
     period: 30m
-    image:
-      # For Flux "image.repository" means full path to the image (registry/repository)
-      # The following 2 properties are mandatory for Flux image filtering
-      repository: ${radix_acr_repo_url}/radix-cluster-cleanup             # Defined in flux patch
-      tag: xx                                                         # Set by flux patch
     metrics:
       enabled: true
     affinity:
@@ -43,4 +33,3 @@ spec:
                   operator: In
                   values:
                     - arm64
-    # resources: xx                                                   # Set in overlay
