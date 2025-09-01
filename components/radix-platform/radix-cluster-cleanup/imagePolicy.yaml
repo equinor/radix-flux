@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: radix-cluster-cleanup
+    name: radix-cluster-cleanup-chart
   policy:
     semver:
       range: '>=0.0.0'
