@@ -43,6 +43,7 @@ spec:
     alertControllerThreads: 21
     kubeClientRateLimitBurst: 500
     kubeClientRateLimitQPS: 500
+    externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
 
     oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.9.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
     oauthRedisImage: ${OAUTH2REDIS_IMAGE}:${OAUTH2REDIS_TAG} # https://hub.docker.com/_/redis/tags
