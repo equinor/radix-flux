@@ -45,7 +45,7 @@ spec:
     kubeClientRateLimitQPS: 500
 
     oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.9.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
-    oauthRedisImage: radixplaygroundcache.azurecr.io/library/redis:8.0 # https://hub.docker.com/_/redis/tags
+    oauthRedisImage: ${OAUTH2REDIS_IMAGE}:${OAUTH2REDIS_TAG} # https://hub.docker.com/_/redis/tags
     pipelineImageTag: ${RADIX_PIPELINE_IMAGE_TAG}
     buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}
     gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}
