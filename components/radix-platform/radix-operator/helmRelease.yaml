@@ -22,16 +22,16 @@ spec:
       repository: ${radix_acr_repo_url}/radix-operator
       tag: ${RADIX_OPERATOR_TAG}
 
-    dnsZone: ${dnsZone}       
+    dnsZone: ${dnsZone} # set in configmap flux-system/radix-flux-config
+    appAliasBaseURL: ${appAliasBaseURL}  # set in configmap flux-system/radix-flux-config
+    prometheusName: ${prometheusName}  # set in configmap flux-system/radix-flux-config
+    clusterType: ${clusterType}  # set in configmap flux-system/radix-flux-config
+    clusterActiveEgressIps: ${activeClusterIPs}  # set in configmap flux-system/radix-flux-config
+    clusterName: ${clusterName}  # set in configmap flux-system/radix-flux-config
+
     subscriptionId: ${AZ_SUBSCRIPTION_ID}
     tenantId: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
-    
-    appAliasBaseURL: ${appAliasBaseURL}                               
-    prometheusName: ${prometheusName}                                 
-    imageRegistry: ${radix_acr_repo_url}                              
-    clusterType: ${clusterType}                                       
-    clusterActiveEgressIps: ${activeClusterIPs}                       
-    clusterName: ${clusterName}   
+                                                     
     radixZone: ${RADIX_ZONE}
     containerRegistry: ${radix_acr_repo_url}
     appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
@@ -45,7 +45,6 @@ spec:
     kubeClientRateLimitBurst: 500
     kubeClientRateLimitQPS: 500
 
-    externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
     oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.9.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
     oauthRedisImage: radixplaygroundcache.azurecr.io/library/redis:8.0 # https://hub.docker.com/_/redis/tags
     pipelineImageTag: ${RADIX_PIPELINE_IMAGE_TAG}
