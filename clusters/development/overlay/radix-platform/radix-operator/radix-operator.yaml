@@ -26,6 +26,8 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE:=tba}
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE:=tba}
       RADIX_WEBHOOK_TAG: ${RADIX_WEBHOOK_TAG:=tba}
+      OAUTH2REDIS_IMAGE: ${RADIX_CACHE_REGISTRY:=tba}/library/redis
+      OAUTH2REDIS_TAG: 8.0
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -47,7 +49,7 @@ spec:
 
             radixGroups:
               user: 64b28659-4fe4-4222-8497-85dd7e43e25b
-              
+
       target:
         kind: HelmRelease
         name: radix-operator
