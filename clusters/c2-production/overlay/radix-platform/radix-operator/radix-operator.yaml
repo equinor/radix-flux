@@ -50,7 +50,6 @@ spec:
                 automation:
                   clusterIssuer: digicert-http01
 
-
       target:
         kind: HelmRelease
         name: radix-operator
