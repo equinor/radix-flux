@@ -45,8 +45,6 @@ spec:
             radixTekton: radix-tekton:release-latest
             jobScheduler: radix-job-scheduler:release-latest
             
-            externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
-            
             resources:
               requests:
                 memory: 3Gi
