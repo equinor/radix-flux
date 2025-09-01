@@ -45,6 +45,11 @@ spec:
             
             externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
             
+            resources:
+              requests:
+                memory: 3Gi
+
+            
             ingress:
               certificate:
                 automation:
