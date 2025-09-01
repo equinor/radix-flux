@@ -43,7 +43,7 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
       RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io
       RADIX_CICD_CANARY_CHART_VERSION: 1.5.1 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
-      RADIX_CLUSTER_CLEANUP_TAG: master-5d2307c5-1749810852 # {"$imagepolicy": "flux-system:radix-cluster-cleanup:tag"}
+      RADIX_CLUSTER_CLEANUP_CHART_VERSION: 1.1.0 # {"$imagepolicy": "flux-system:radix-cluster-cleanup-chart:tag"}
       RADIX_COST_ALLOCATION_TAG: master-2f3d5136-1749723436 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_OPERATOR_TAG: master-f7a6952b-1756385533 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_PIPELINE_IMAGE_TAG: master-f7a6952b-1756385531 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
