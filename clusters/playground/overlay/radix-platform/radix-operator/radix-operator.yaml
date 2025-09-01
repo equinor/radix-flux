@@ -12,9 +12,17 @@ spec:
   prune: false
   postBuild:
     substitute:
-      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild playground
+      radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild
       radix_operator_helm_chart_branch: release
       radix_operator_image_tag_prefix: release
+      AZ_SUBSCRIPTION_ID: ${AZ_SUBSCRIPTION_ID} # Set in postBuild
+      RADIX_ZONE: ${RADIX_ZONE} # Set in postBuild
+      RADIX_APP_ACR_REPO_URL: ${RADIX_APP_ACR_REPO_URL}
+      RADIX_PIPELINE_IMAGE_TAG: ${RADIX_PIPELINE_IMAGE_TAG}
+      RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}
+      RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}
+      RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE}
+      RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -27,73 +35,18 @@ spec:
           namespace: default
         spec:
           values:
-            image:
-              tag: ${RADIX_OPERATOR_TAG} # Set in postBuild playground
             imageBuilder: radix-image-builder:release-latest
             buildKitImageBuilder: radix-buildkit-builder:release-latest
             radixTekton: radix-tekton:release-latest
             jobScheduler: radix-job-scheduler:release-latest
-            containerRegistry: ${radix_acr_repo_url}
-            appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
-            radixZone: ${RADIX_ZONE} # Set in postBuild playground
-            useImageBuilderCache: 1
-            resources:
-              limits:
-                cpu: "2"
-                memory: 2Gi
-              requests:
-                cpu: 100m
-                memory: 2Gi
-            subscriptionId: 16ede44b-1f74-40a5-b428-46cca9a5741b
-            registrationControllerThreads: 21
-            applicationControllerThreads: 21
-            environmentControllerThreads: 21
-            deploymentControllerThreads: 21
-            jobControllerThreads: 21
-            alertControllerThreads: 21
-            kubeClientRateLimitBurst: 500
-            kubeClientRateLimitQPS: 500
-            pipelineImageTag: ${RADIX_PIPELINE_IMAGE_TAG} # Set in postBuild development
-            buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}  # Set in postBuild development
-            gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}  # Set in postBuild development
-            gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE}  # Set in postBuild development
-            gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE}  # Set in postBuild development
-            externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
-            app:
-              env:
-                limitrange:
-                  default:
-                    memory: 500M
-            oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.9.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
-            oauthRedisImage: radixplaygroundcache.azurecr.io/library/redis:8.0 # https://hub.docker.com/_/redis/tags
-            podSecurityStandard: # Ref https://kubernetes.io/docs/concepts/security/pod-security-standards/
-              enforce:
-                level: baseline
-                version: v1.23
-              audit:
-                level: restricted
-                version: v1.23
-              warn:
-                level: restricted
-                version: v1.23
-            securityContext:
-              readOnlyRootFilesystem: true
-            seccompProfile:
-              installer:
-                image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE}
+
             radixGroups:
               user: 4b8ec60e-714c-4a9d-8e0a-3e4cfb3c3d31
 
             radixWebhook:
-              enabled: true
-              logLevel: info
-              logPretty: false
               requireAdGroups: false
               requireConfigurationItem: false
 
-              image: 
-                repository: ghcr.io/equinor/radix-webhook
-                tag: ${RADIX_WEBHOOK_TAG}
       target:
         kind: HelmRelease
         name: radix-operator
