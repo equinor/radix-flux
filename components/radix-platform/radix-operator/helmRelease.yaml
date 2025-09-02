@@ -83,7 +83,7 @@ spec:
         pullSecrets:
         - "radix-external-registry-default-auth"
       installer:
-        image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE} # deprecated, remove after 
+        image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
         resources:
           limits:
             cpu: 10m
