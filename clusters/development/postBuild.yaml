@@ -49,7 +49,7 @@ spec:
       RADIX_PIPELINE_IMAGE_TAG: master-f7a6952b-1756385531 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_ENVIRONMENT: dev # dev | prod
-      RADIX_WEBHOOK_TAG: master-f7a6952b-1756385533 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
+      RADIX_WEBHOOK_TAG: master-5cc968a9-1756812487 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
       RADIX_OAUTH_GUARD_TAG: 1.0.4 # {"$imagepolicy": "flux-system:radix-oauth-guard:tag"}
       RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.0-rc.2 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
