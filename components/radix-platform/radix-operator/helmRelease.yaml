@@ -79,7 +79,7 @@ spec:
     seccompProfile:
       image:
         repository: docker.io/alpine
-        tag: "3.20"
+        tag: "3.22"
         pullSecrets:
         - "radix-external-registry-default-auth"
       installer:
@@ -91,6 +91,42 @@ spec:
           requests:
             cpu: 10m
             memory: 10Mi
+
+    # Image containing git
+    gitClone:
+      image:
+        tag: "2.45.2"
+        repository: docker.io/alpine/git
+
+    oauth2proxy:
+      image:
+        tag: "v7.9.0"
+        repository: quay.io/oauth2-proxy/oauth2-proxy
+
+    oauth2redis:
+      image:
+        tag: "8.0"
+        repository: docker.io/redis
+
+    radixPipelineRunner:
+      image:
+        tag: ${RADIX_PIPELINE_IMAGE_TAG}
+        repository: ${radix_acr_repo_url}/radix-pipeline
+
+    radixImageBuilder:
+      image: 
+        tag: release-latest
+        repository:  ${radix_acr_repo_url}/radix-image-builder
+
+    radixBuildKitImageBuilder:
+      image:
+        tag: release-latest
+        repository: ${radix_acr_repo_url}/radix-buildkit-builder
+
+    radixJobScheduler:
+      image:
+        tag: release-latest
+        repository: ${radix_acr_repo_url}/radix-job-scheduler
 
     radixGroups:
       user: 64b28659-4fe4-4222-8497-85dd7e43e25b
