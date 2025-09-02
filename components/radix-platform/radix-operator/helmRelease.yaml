@@ -92,7 +92,6 @@ spec:
             cpu: 10m
             memory: 10Mi
 
-    # Image containing git
     gitClone:
       image:
         tag: "2.45.2"
