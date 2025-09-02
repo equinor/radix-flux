@@ -8,25 +8,14 @@ spec:
   install:
     remediation:
       retries: 3
-  chart:
-    spec:
-      chart: ./charts
-      sourceRef:
-        kind: GitRepository
-        name: radix-cost-allocation
-        namespace: flux-system
-      valuesFiles:
-        - ./charts/values.yaml
+  chartRef:
+    kind: OCIRepository
+    name: radix-cost-allocation-chart
+    namespace: flux-system
   values:
-    image:
-      repository: ${radix_acr_repo_url}/radix-cost-allocation  # Set by flux patch
-      tag: ${RADIX_COST_ALLOCATION_TAG}                        # Set by flux patch
-      pullPolicy: Always
-
     db:
       server: ${COST_ALLOCATION_SQL_SERVER}
       database: sqldb-radix-cost-allocation
-
     podLabels:
       azure.workload.identity/use: "true"
     serviceAccount:

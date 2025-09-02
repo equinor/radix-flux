@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: radix-cost-allocation-chart
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: oci://ghcr.io/equinor/radix/charts/radix-radix-cost-allocation
+  ref:
+    tag: ${RADIX_COST_ALLOCATION_CHART_VERSION} # Set in cluster postBuild.yaml
