@@ -77,8 +77,13 @@ spec:
       readOnlyRootFilesystem: true
 
     seccompProfile:
+      image:
+        repository: docker.io/alpine
+        tag: "3.20"
+        pullSecrets:
+        - "radix-external-registry-default-auth"
       installer:
-        image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE}
+        image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE} # deprecated, remove after 
         resources:
           limits:
             cpu: 10m
