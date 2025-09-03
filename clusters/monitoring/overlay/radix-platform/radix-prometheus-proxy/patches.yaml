@@ -13,3 +13,6 @@ spec:
   postBuild:
     substitute:
       RADIX_PROMETHEUS_PROXY_CHART_VERSION: ${RADIX_PROMETHEUS_PROXY_CHART_VERSION:=tba} # From postBuild.yaml
+      RADIX_WILDCARD_CERTIFICATE_ISSUER: ${RADIX_WILDCARD_CERTIFICATE_ISSUER:=tba}
+      AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba}
+      clusterName: ${clusterName:=tba}
