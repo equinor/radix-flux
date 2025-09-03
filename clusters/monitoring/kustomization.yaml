@@ -10,8 +10,7 @@ resources:
 - ../../components/third-party/kube-prometheus-stack
 - ../../components/third-party/prometheus-blackbox-exporter
 - ../../components/third-party/external-secrets
-- ../../components/radix-platform/radix-prometheus-proxy
-- overlay/radix-platform/radix-prometheus-proxy/helmRelease.yaml
+- overlay/radix-platform/radix-prometheus-proxy/patches.yaml
 patches:
   - path: ./postBuild.yaml
   - path: ./helm-controller.yaml
