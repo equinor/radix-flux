@@ -2,15 +2,8 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
-  name: radix-prometheus-proxy
+  name: radix-prometheus-proxy-chart
   namespace: flux-system
 spec:
-  image: ghcr.io/equinor/radix-prometheus-proxy
+  image: ghcr.io/equinor/radix/charts/radix-prometheus-proxy
   interval: 1m0s
-  exclusionList:
-    - "^.*\\.sig$"
-    - "^pr.*"
-    - "^latest.*"
-    - "^main.*"
-
-
