@@ -16,7 +16,7 @@ spec:
       GIT_CLONE_TAG: ${GIT_CLONE_TAG:=tba}
       OAUTH2PROXY_TAG: ${OAUTH2PROXY_TAG:=tba}
       OAUTH2REDIS_IMAGE: ${RADIX_CACHE_REGISTRY:=tba}/library/redis
-      OAUTH2REDIS_TAG: "8.0"
+      OAUTH2REDIS_TAG: ${OAUTH2REDIS_TAG:=tba}
       radix_acr_repo_url: ${radix_acr_repo_url:=tba} # Set in postBuild development
       RADIX_APP_ACR_REPO_URL: ${RADIX_APP_ACR_REPO_URL:=tba}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE:=tba}
@@ -53,18 +53,6 @@ spec:
 
             radixGroups:
               user: 64b28659-4fe4-4222-8497-85dd7e43e25b
-
-            radixImageBuilder:
-              image: 
-                tag: master-latest
-
-            radixBuildKitImageBuilder:
-              image:
-                tag: main-latest
-
-            radixJobScheduler:
-              image:
-                tag: main-latest
 
       target:
         kind: HelmRelease

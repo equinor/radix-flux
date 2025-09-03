@@ -16,7 +16,7 @@ spec:
       GIT_CLONE_TAG: ${GIT_CLONE_TAG:=tba}
       OAUTH2PROXY_TAG: ${OAUTH2PROXY_TAG:=tba}
       OAUTH2REDIS_IMAGE: ${RADIX_CACHE_REGISTRY:=tba}/library/redis
-      OAUTH2REDIS_TAG: "8.0"
+      OAUTH2REDIS_TAG: ${OAUTH2REDIS_TAG:=tba}
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild
       RADIX_APP_ACR_REPO_URL: ${RADIX_APP_ACR_REPO_URL:=tba}
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE:=tba}
