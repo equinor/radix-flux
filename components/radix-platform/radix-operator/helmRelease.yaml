@@ -45,13 +45,16 @@ spec:
     kubeClientRateLimitQPS: 500
     externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
 
-    oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG}  # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    oauthRedisImage: ${OAUTH2REDIS_IMAGE}:${OAUTH2REDIS_TAG}  # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    pipelineImageTag: ${RADIX_PIPELINE_IMAGE_TAG}  # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}  # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}  # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE}  # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE}  # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    imageBuilder: radix-image-builder:${RADIX_IMAGE_BUILDER_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    buildKitImageBuilder: radix-buildkit-builder:${RADIX_BUILDKIT_IMAGE_BUILDER_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    jobScheduler: radix-job-scheduler:${RADIX_JOB_SCHEDULER_IMAGE_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    oauthRedisImage: ${OAUTH2REDIS_IMAGE}:${OAUTH2REDIS_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    pipelineImageTag: ${RADIX_PIPELINE_IMAGE_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
 
     resources:
       limits:

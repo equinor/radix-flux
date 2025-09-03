@@ -46,11 +46,6 @@ spec:
           namespace: default
         spec:
           values:
-            imageBuilder: radix-image-builder:master-latest
-            buildKitImageBuilder: radix-buildkit-builder:main-latest
-            radixTekton: radix-tekton:main-latest
-            jobScheduler: radix-job-scheduler:main-latest
-
             radixGroups:
               user: 64b28659-4fe4-4222-8497-85dd7e43e25b
 

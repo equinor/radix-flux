@@ -46,10 +46,6 @@ spec:
           namespace: default
         spec:
           values:
-            imageBuilder: radix-image-builder:release-latest
-            buildKitImageBuilder: radix-buildkit-builder:release-latest
-            radixTekton: radix-tekton:release-latest
-            jobScheduler: radix-job-scheduler:release-latest
 
             ingress:
               certificate:
