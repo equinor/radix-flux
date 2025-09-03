@@ -33,7 +33,7 @@ spec:
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE:=tba}
       RADIX_WEBHOOK_TAG: ${RADIX_WEBHOOK_TAG:=tba}
       RADIX_ZONE: ${RADIX_ZONE:=tba} # Set in postBuild
-      SECCOMP_IMAGE_TAG: "${SECCOMP_IMAGE_TAG:=tba}"
+      SECCOMP_IMAGE_TAG: ${SECCOMP_IMAGE_TAG:=tba}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
