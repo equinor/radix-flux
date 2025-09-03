@@ -79,7 +79,7 @@ spec:
     seccompProfile:
       image:
         repository: docker.io/alpine
-        tag: "${SECCOMP_IMAGE_TAG}"
+        tag: ${SECCOMP_IMAGE_TAG}
         pullSecrets:
         - "radix-external-registry-default-auth"
       installer:
