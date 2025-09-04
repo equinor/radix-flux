@@ -1,0 +1,31 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-oauth-guard
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-oauth-guard
+  prune: false
+  postBuild:
+    substitute:
+      RADIX_OAUTH_GUARD_CHART_VERSION: ${RADIX_OAUTH_GUARD_CHART_VERSION:=tba} # From postBuild.yaml
+      EXTMON_CLUSTER_ISSUER: ${EXTMON_CLUSTER_ISSUER:=tba}
+  patches:
+    - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
+        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        kind: ImagePolicy
+        metadata:
+          name: radix-oauth-guard-chart
+          namespace: flux-system
+        spec:
+          policy:
+            semver:
+              range: '>=0.0.0-0'
+      target:
+        kind: ImagePolicy
+        name: radix-oauth-guard-chart
+        namespace: flux-system        

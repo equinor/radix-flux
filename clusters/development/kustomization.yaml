@@ -8,7 +8,6 @@ resources:
 - ../../components/flux/storageclasses
 - ../../components/radix-platform/radix-platform
 - ../../components/radix-platform/radix-cost-allocation
-- ../../components/radix-platform/radix-oauth-guard # radix-oauth-guard repo
 - ../../components/radix-platform/radix-velero-plugin
 - ../../components/radix-platform/radix-vulnerability-scanner
 - ../../components/radix-platform/radix-app-ingresses
@@ -33,7 +32,7 @@ resources:
 - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
 - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
 - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
-- ./overlay/radix-platform/radix-oauth-guard/helmRelease-prometheus.yaml # Sidecar to Prometheus
+- ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
 - ./overlay/radix-platform/radix-pipeline/radix-pipeline.yaml
 - ./overlay/radix-platform/radix-webhook/radix-webhook.yaml
