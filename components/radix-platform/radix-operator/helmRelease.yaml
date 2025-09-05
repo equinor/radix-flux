@@ -45,13 +45,16 @@ spec:
     kubeClientRateLimitQPS: 500
     externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
 
-    oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:v7.9.0 #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
-    oauthRedisImage: ${OAUTH2REDIS_IMAGE}:${OAUTH2REDIS_TAG} # https://hub.docker.com/_/redis/tags
-    pipelineImageTag: ${RADIX_PIPELINE_IMAGE_TAG}
-    buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE}
-    gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE}
-    gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE}
-    gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE}
+    imageBuilder: radix-image-builder:${RADIX_IMAGE_BUILDER_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    buildKitImageBuilder: radix-buildkit-builder:${RADIX_BUILDKIT_IMAGE_BUILDER_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    jobScheduler: radix-job-scheduler:${RADIX_JOB_SCHEDULER_IMAGE_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    oauthRedisImage: ${OAUTH2REDIS_IMAGE}:${OAUTH2REDIS_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    pipelineImageTag: ${RADIX_PIPELINE_IMAGE_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
+    gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
 
     resources:
       limits:
@@ -77,8 +80,13 @@ spec:
       readOnlyRootFilesystem: true
 
     seccompProfile:
+      image:
+        repository: docker.io/alpine
+        tag: ${SECCOMP_IMAGE_TAG}
+        pullSecrets:
+        - "radix-external-registry-default-auth"
       installer:
-        image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE}
+        image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
         resources:
           limits:
             cpu: 10m
@@ -86,6 +94,41 @@ spec:
           requests:
             cpu: 10m
             memory: 10Mi
+
+    gitClone:
+      image:
+        tag: ${GIT_CLONE_TAG}
+        repository: docker.io/alpine/git
+
+    oauth2proxy:
+      image:
+        tag: ${OAUTH2PROXY_TAG}
+        repository: quay.io/oauth2-proxy/oauth2-proxy
+
+    oauth2redis:
+      image:
+        tag: ${OAUTH2REDIS_TAG}
+        repository: docker.io/redis
+
+    radixPipelineRunner:
+      image:
+        tag: "${RADIX_PIPELINE_IMAGE_TAG}"
+        repository: ${radix_acr_repo_url}/radix-pipeline
+
+    radixImageBuilder:
+      image:
+        tag: ${RADIX_IMAGE_BUILDER_TAG}
+        repository: ${radix_acr_repo_url}/radix-image-builder
+
+    radixBuildKitImageBuilder:
+      image:
+        tag: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
+        repository: ${radix_acr_repo_url}/radix-buildkit-builder
+
+    radixJobScheduler:
+      image:
+        tag: ${RADIX_JOB_SCHEDULER_IMAGE_TAG}
+        repository: ${radix_acr_repo_url}/radix-job-scheduler
 
     radixGroups:
       user: 64b28659-4fe4-4222-8497-85dd7e43e25b
