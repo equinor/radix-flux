@@ -2,8 +2,8 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
-  name: radix-oauth-guard
+  name: radix-oauth-guard-chart
   namespace: flux-system
 spec:
-  image: ghcr.io/equinor/radix-oauth-guard
+  image: ghcr.io/equinor/radix/charts/radix-oauth-guard
   interval: 1m0s

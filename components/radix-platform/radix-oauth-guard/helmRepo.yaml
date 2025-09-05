@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: radix-oauth-guard
-  namespace: flux-system
-spec:
-  interval: 5m
-  url: https://equinor.github.io/radix-oauth-guard
