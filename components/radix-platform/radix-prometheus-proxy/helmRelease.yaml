@@ -10,14 +10,10 @@ spec:
     createNamespace: true
     remediation:
       retries: 3
-  chart:
-    spec:
-      chart: radix-prometheus-proxy
-      version: ${RADIX_PROMETHEUS_PROXY_TAG}
-      sourceRef:
-        kind: HelmRepository
-        name: radix-prometheus-proxy
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: radix-prometheus-proxy-chart
+    namespace: flux-system
   values:
     prometheusUrl: http://prometheus-operator-prometheus:9090
     ingress:

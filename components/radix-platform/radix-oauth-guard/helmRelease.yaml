@@ -8,14 +8,10 @@ spec:
   install:
     remediation:
       retries: 3
-  chart:
-    spec:
-      chart: radix-oauth-guard
-      version: ${RADIX_OAUTH_GUARD_TAG}
-      sourceRef:
-        kind: HelmRepository
-        name: radix-oauth-guard
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: radix-oauth-guard-chart
+    namespace: flux-system
   values:
     logLevel: info
     logPretty: "False"
@@ -35,5 +31,3 @@ spec:
                   operator: In
                   values:
                     - amd64
-
-

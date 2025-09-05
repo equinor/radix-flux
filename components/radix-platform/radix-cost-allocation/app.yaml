@@ -11,8 +11,6 @@ spec:
   postBuild:
     substitute:
       # Set in postBuild
-      radix_acr_repo_url: ${radix_acr_repo_url:=tba}
-      RADIX_COST_ALLOCATION_TAG: ${RADIX_COST_ALLOCATION_TAG:=tba}
       COST_ALLOCATION_SQL_CLIENT_ID: ${COST_ALLOCATION_SQL_CLIENT_ID:=tba}
       COST_ALLOCATION_SQL_SERVER: ${COST_ALLOCATION_SQL_SERVER:=tba}
   path: ./components/radix-platform/radix-cost-allocation/app

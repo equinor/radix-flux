@@ -6,8 +6,7 @@ metadata:
 spec:
   postBuild:
     substitute:
-      radix_cost_allocation_helm_chart_branch: release
-      radix_cost_allocation_image_tag_prefix: release
+      RADIX_COST_ALLOCATION_CHART_VERSION: ${RADIX_COST_ALLOCATION_CHART_VERSION:=tba} # From postBuild.yaml
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2
@@ -24,8 +23,6 @@ spec:
               requests:
                 cpu: 100m
                 memory: 400Mi
-            securityContext:
-              readOnlyRootFilesystem: true                
       target:
         kind: HelmRelease
         name: radix-cost-allocation
