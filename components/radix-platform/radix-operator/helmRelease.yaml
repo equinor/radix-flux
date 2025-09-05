@@ -116,7 +116,7 @@ spec:
         repository: ${radix_acr_repo_url}/radix-pipeline
 
     radixImageBuilder:
-      image: 
+      image:
         tag: ${RADIX_IMAGE_BUILDER_TAG}
         repository:  ${radix_acr_repo_url}/radix-image-builder
 
