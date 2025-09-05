@@ -58,7 +58,7 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixdevcache.azurecr.io/alpine:3.20
       RADIX_PIPELINE_IMAGE_TAG: master-e4eb87fd-1756986718 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixdevcache.azurecr.io/alpine:3.20
-      RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.0-rc.4 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
+      RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.0-rc.5 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
       RADIX_WEBHOOK_TAG: master-e4eb87fd-1756986717 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: dev
