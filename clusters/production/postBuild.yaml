@@ -57,7 +57,7 @@ spec:
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: platform
       RADIX_ZONE: prod # dev | playground | prod
-      SECCOMP_IMAGE_TAG: "3.22"
+      SECCOMP_IMAGE_TAG: 3.22.1
       TEKTON_VERSION: v0.53.0
       VELERO_MI_CLIENT_ID: 7b222fb8-30d2-462f-9128-66bad1df2267
       velero_plugin_acr_image: radixprod.azurecr.io/radix-velero-plugin:release-5bd662a5-1750763341 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
