@@ -47,7 +47,6 @@ spec:
       RADIX_CLUSTER_CLEANUP_CHART_VERSION: 1.1.0 # {"$imagepolicy": "flux-system:radix-cluster-cleanup-chart:tag"}
       RADIX_COST_ALLOCATION_CHART_VERSION: 1.3.0 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
       RADIX_COST_ALLOCATION_TAG: master-2f3d5136-1749723436 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
-      RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_IMAGE_BUILDER_TAG: "master-latest" 
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
