@@ -118,12 +118,10 @@ spec:
     radixImageBuilder:
       image:
         tag: ${RADIX_IMAGE_BUILDER_TAG}
-        repository: ${radix_acr_repo_url}/radix-image-builder
 
     radixBuildKitImageBuilder:
       image:
         tag: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
-        repository: ${radix_acr_repo_url}/radix-buildkit-builder
 
     radixJobScheduler:
       image:

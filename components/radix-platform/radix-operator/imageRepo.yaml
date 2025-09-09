@@ -8,3 +8,25 @@ spec:
   interval: 1m0s
   secretRef:
     name: radix-docker
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-image-builder
+  namespace: flux-system
+spec:
+  image: ghcr.io/equinor/radix/image-builder
+  interval: 1m0s
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: radix-buildkit-builder
+  namespace: flux-system
+spec:
+  image: ghcr.io/equinor/radix/buildkit-builder
+  interval: 1m0s
