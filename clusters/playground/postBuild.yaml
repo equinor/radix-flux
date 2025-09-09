@@ -47,7 +47,7 @@ spec:
       RADIX_IMAGE_BUILDER_TAG: "release-latest"
       RADIX_JOB_SCHEDULER_IMAGE_TAG: "release-latest"
       RADIX_OAUTH_GUARD_CHART_VERSION: 1.1.0 # {"$imagepolicy": "flux-system:radix-oauth-guard-chart:tag"}
-      RADIX_OPERATOR_TAG: release-c33d9b28-1757331978 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: release-11eac0ad-1757399375 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixplaygroundcache.azurecr.io/bash:5.2
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixplaygroundcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixplaygroundcache.azurecr.io/alpine:3.20
