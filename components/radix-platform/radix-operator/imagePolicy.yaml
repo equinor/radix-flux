@@ -12,3 +12,31 @@ spec:
   policy:
     numerical:
       order: asc
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-image-builder
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: radix-image-builder
+  policy:
+    semver:
+      range: '>=0.0.0'
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: radix-buildkit-builder
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: radix-buildkit-builder
+  policy:
+    semver:
+      range: '>=0.0.0'
