@@ -52,14 +52,14 @@ spec:
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_JOB_SCHEDULER_IMAGE_TAG: "main-latest"
       RADIX_OAUTH_GUARD_CHART_VERSION: 1.1.0 # {"$imagepolicy": "flux-system:radix-oauth-guard-chart:tag"}
-      RADIX_OPERATOR_TAG: master-a7bd8070-1757334172 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_TAG: master-5597832d-1757405618 # {"$imagepolicy": "flux-system:radix-operator:tag"}
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixdevcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixdevcache.azurecr.io/alpine:3.20
-      RADIX_PIPELINE_IMAGE_TAG: master-a7bd8070-1757334178 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
+      RADIX_PIPELINE_IMAGE_TAG: master-5597832d-1757405619 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixdevcache.azurecr.io/alpine:3.20
       RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.0-rc.7 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
-      RADIX_WEBHOOK_TAG: master-a7bd8070-1757334188 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
+      RADIX_WEBHOOK_TAG: master-5597832d-1757405619 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: dev
       RADIX_ZONE: dev # dev | playground | prod
