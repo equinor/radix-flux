@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: radix-operator-chart
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: oci://ghcr.io/equinor/radix/charts/radix-operator
+  ref:
+    tag: ${RADIX_OPERATOR_CHART_VERSION} # Set in cluster postBuild.yaml
