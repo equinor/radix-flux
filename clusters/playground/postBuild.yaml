@@ -51,10 +51,8 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixplaygroundcache.azurecr.io/bash:5.2
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixplaygroundcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixplaygroundcache.azurecr.io/alpine:3.20
-      RADIX_PIPELINE_IMAGE_TAG: release-7049e870-1757427872 # {"$imagepolicy": "flux-system:radix-pipeline:tag"}
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixplaygroundcache.azurecr.io/alpine:3.20
       RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.0 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
-      RADIX_WEBHOOK_TAG: release-7049e870-1757427870 # {"$imagepolicy": "flux-system:radix-webhook:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: playground
       RADIX_ZONE: playground # dev | playground | prod
