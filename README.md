@@ -230,7 +230,7 @@ metadata:
 spec:
   postBuild:
     substitute:
-      RADIX_OPERATOR_TAG: master-a5e880b9-1634484632 # {"$imagepolicy": "flux-system:radix-operator:tag"}
+      RADIX_OPERATOR_CHART_VERSION: 1.100.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
 ```
 
 ## kustomization.yaml

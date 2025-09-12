@@ -23,15 +23,11 @@ spec:
       RADIX_BUILDKIT_IMAGE_BUILDER_TAG: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG:=tba}
       RADIX_IMAGE_BUILDER_TAG: ${RADIX_IMAGE_BUILDER_TAG:=tba}
       RADIX_JOB_SCHEDULER_IMAGE_TAG: ${RADIX_JOB_SCHEDULER_IMAGE_TAG:=tba}
-      radix_operator_helm_chart_branch: master
-      radix_operator_image_tag_prefix: master
-      RADIX_OPERATOR_TAG: ${RADIX_OPERATOR_TAG:=tba}
+      RADIX_OPERATOR_CHART_VERSION: ${RADIX_OPERATOR_CHART_VERSION:=tba}
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE:=tba}
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE:=tba}
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE:=tba}
-      RADIX_PIPELINE_IMAGE_TAG: ${RADIX_PIPELINE_IMAGE_TAG:=tba}
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE:=tba}
-      RADIX_WEBHOOK_TAG: ${RADIX_WEBHOOK_TAG:=tba}
       RADIX_ZONE: ${RADIX_ZONE:=tba} # Set in postBuild
       SECCOMP_IMAGE_TAG: ${SECCOMP_IMAGE_TAG:=tba}
     substituteFrom:
@@ -80,4 +76,18 @@ spec:
       target:
         kind: ImagePolicy
         name: radix-buildkit-builder
+        namespace: flux-system
+    - patch: |-
+        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        kind: ImagePolicy
+        metadata:
+          name: radix-operator-chart
+          namespace: flux-system
+        spec:
+          policy:
+            semver:
+              range: '>=0.0.0-0'
+      target:
+        kind: ImagePolicy
+        name: radix-operator-chart
         namespace: flux-system

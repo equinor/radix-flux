@@ -8,20 +8,11 @@ spec:
   install:
     remediation:
       retries: 3
-  chart:
-    spec:
-      chart: ./charts/radix-operator
-      sourceRef:
-        kind: GitRepository
-        name: radix-operator
-        namespace: flux-system
-      valuesFiles:
-        - ./charts/radix-operator/values.yaml
+  chartRef:
+    kind: OCIRepository
+    name: radix-operator-chart
+    namespace: flux-system
   values:
-    image:
-      repository: ${radix_acr_repo_url}/radix-operator
-      tag: ${RADIX_OPERATOR_TAG}
-
     dnsZone: ${dnsZone} # set in configmap flux-system/radix-flux-config
     appAliasBaseURL: ${appAliasBaseURL}  # set in configmap flux-system/radix-flux-config
     prometheusName: ${prometheusName}  # set in configmap flux-system/radix-flux-config
@@ -50,7 +41,6 @@ spec:
     jobScheduler: radix-job-scheduler:${RADIX_JOB_SCHEDULER_IMAGE_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
     oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
     oauthRedisImage: ${OAUTH2REDIS_IMAGE}:${OAUTH2REDIS_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    pipelineImageTag: ${RADIX_PIPELINE_IMAGE_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
     buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
     gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
     gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
@@ -110,11 +100,6 @@ spec:
         tag: ${OAUTH2REDIS_TAG}
         repository: docker.io/redis
 
-    radixPipelineRunner:
-      image:
-        tag: "${RADIX_PIPELINE_IMAGE_TAG}"
-        repository: ${radix_acr_repo_url}/radix-pipeline
-
     radixImageBuilder:
       image:
         tag: ${RADIX_IMAGE_BUILDER_TAG}
@@ -130,6 +115,13 @@ spec:
 
     radixGroups:
       user: 64b28659-4fe4-4222-8497-85dd7e43e25b
+
+    radixWebhook:
+      enabled: true
+      logLevel: info
+      logPretty: false
+      requireAdGroups: true
+      requireConfigurationItem: true
 
     affinity:
       nodeAffinity:
@@ -155,13 +147,3 @@ spec:
       warn:
         level: restricted
         version: v1.23
-
-    radixWebhook:
-      enabled: true
-      logLevel: info
-      logPretty: false
-      requireAdGroups: true
-      requireConfigurationItem: true
-      image:
-        repository: ghcr.io/equinor/radix-webhook
-        tag: ${RADIX_WEBHOOK_TAG}

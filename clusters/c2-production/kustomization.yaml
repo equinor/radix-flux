@@ -32,8 +32,6 @@ resources:
 - ../../components/third-party/cert-manager-issuers/digicert/dns01
 - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
 - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
-- ./overlay/radix-platform/radix-pipeline/radix-pipeline.yaml
-- ./overlay/radix-platform/radix-webhook/radix-webhook.yaml
 
 patches:
   - path: ./postBuild.yaml

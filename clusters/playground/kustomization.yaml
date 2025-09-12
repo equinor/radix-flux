@@ -33,8 +33,6 @@ resources:
 - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
 - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
-- ./overlay/radix-platform/radix-pipeline/radix-pipeline.yaml
-- ./overlay/radix-platform/radix-webhook/radix-webhook.yaml
 
 patches:
   - path: ./postBuild.yaml
