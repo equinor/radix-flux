@@ -61,11 +61,7 @@ spec:
                     "duration": $request_time,
                     "method": "$request_method", 
                     "http_referrer": "$http_referer",
-                    "http_user_agent": "$http_user_agent",
-                    "ssl_client_certificate": "$ssl_client_certificate",
-                    "ssl_verify_client": "$ssl_verify_client",
-                    "ssl_client_s_dn": "$ssl_client_s_dn",
-                    "ssl_client_verify": "$ssl_client_verify"
+                    "http_user_agent": "$http_user_agent"
                   }'
 
       target:
