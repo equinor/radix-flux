@@ -45,10 +45,10 @@ spec:
             radixGroups: # deprecated: remove after https://github.com/equinor/radix-private/issues/443
               user: a5dfa635-dc00-4a28-9ad9-9e7f1e56919d
 
-          rbac:
-            createApp:
-              groups:
-                - a5dfa635-dc00-4a28-9ad9-9e7f1e56919d # Radix Platform Developers
+            rbac:
+              createApp:
+                groups:
+                  - a5dfa635-dc00-4a28-9ad9-9e7f1e56919d # Radix Platform Developers
 
       target:
         kind: HelmRelease
