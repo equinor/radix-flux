@@ -113,8 +113,14 @@ spec:
         tag: ${RADIX_JOB_SCHEDULER_IMAGE_TAG}
         repository: ${radix_acr_repo_url}/radix-job-scheduler
 
-    radixGroups:
+    radixGroups: # deprecated: remove after https://github.com/equinor/radix-private/issues/443
       user: 64b28659-4fe4-4222-8497-85dd7e43e25b
+
+    rbac:
+      createApp:
+        groups:
+          - 64b28659-4fe4-4222-8497-85dd7e43e25b # Radix Platform Users
+          - 4e1761bc-0c4f-4672-a16d-7f3d8608e366 # AZAPPL Radix Platform
 
     radixWebhook:
       enabled: true
