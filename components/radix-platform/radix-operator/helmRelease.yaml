@@ -61,9 +61,9 @@ spec:
       builder:
         resources:
           limits:
-            memory: 5000M
+            memory: 10Gi
           requests:
-            memory: 800M
+            memory: 1Gi
             cpu: 800m
 
     securityContext:
