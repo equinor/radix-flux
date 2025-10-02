@@ -10,15 +10,15 @@ spec:
       ACTIVE_CLUSTER: c2-11
       AZ_RESOURCE_DNS: c2.radix.equinor.com
       AZ_SUBSCRIPTION_ID: ded7ca41-37c8-4085-862f-b11d21ab341a
-      BLOB_CSI_DRIVER: 1.26.3 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
+      BLOB_CSI_DRIVER: 1.27.0 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: abdbd354-57e3-4bac-9fc6-b99ef03c0905 # MI radix-id-certmanager-c2
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-c2
-      CERT_MANAGER_VERSION: 1.18.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.18.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: e48dda41-942a-4b25-94a6-c017014abaa9
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-c2.database.windows.net
       EXTERNAL_SECRET_MI_CLIENT_ID: 88ab202e-494e-44c8-a543-a3bd0b499a87
       EXTERNAL_SECRET_URL: https://radix-keyv-c2.vault.azure.net/
-      EXTERNAL_SECRETS: 0.18.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 0.20.1 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/c2-production
       GIT_CLONE_TAG: "2.45.2"
@@ -28,9 +28,9 @@ spec:
       GRAFANA_VERSION: 8.12.1 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_WI_CLIENT_ID: fa6ac394-78ec-4710-9923-77b772f5de74
       KEDA_VERSION: 2.17.2 # https://artifacthub.io/packages/helm/kedacore/keda
-      KUBE_PROMETHEUS_STACK: 75.6.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      KUBERNETES_REPLICATOR: v2.11.1 # https://github.com/mittwald/kubernetes-replicator
-      NGINX_VERSION: 4.12.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      KUBE_PROMETHEUS_STACK: 76.4.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBERNETES_REPLICATOR: v2.12.0 # https://github.com/mittwald/kubernetes-replicator
+      NGINX_VERSION: 4.13.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       OAUTH2PROXY_TAG: "v7.9.0"
       OAUTH2REDIS_TAG: 8.2.1
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.0 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
@@ -59,8 +59,8 @@ spec:
       TEKTON_VERSION: v0.53.0
       VELERO_MI_CLIENT_ID: 1275007a-e9e9-484c-af66-941d864c2a63
       velero_plugin_acr_image: radixc2prod.azurecr.io/radix-velero-plugin:release-5bd662a5-1750763345 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
-      velero_plugin_azure: v1.12.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
-      VELERO_VERSION: 10.0.7 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      velero_plugin_azure: v1.13.0 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
+      VELERO_VERSION: 11.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 7264db03-2c4a-47b7-87d2-1bdfcc188131
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-c2.database.windows.net
     substituteFrom:
