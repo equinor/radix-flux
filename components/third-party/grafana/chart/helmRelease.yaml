@@ -97,7 +97,7 @@ spec:
       # GF_DATABASE_PASSWORD: ""                  # Set by secret
       # GF_DATABASE_TYPE: mysql                   # Removed after 8.9.0
       # GF_SERVER_ROOT_URL: ""                    # Set by secret
-    envFromSecret: grafana-secrets
+    # envFromSecret: grafana-secrets
     extraContainerVolumes:
       - name: access-token-volume
         emptyDir: { }
