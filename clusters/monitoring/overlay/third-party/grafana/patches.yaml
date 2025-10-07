@@ -32,6 +32,14 @@ spec:
             
             env:
               GF_AZURE_WORKLOAD_IDENTITY_ENABLED: "true"
+              GF_AUTH_GENERIC_OAUTH_ENABLED: "false"
+              GF_AUTH_AZUREAD_ENABLED: "true"
+              GF_AUTH_AZUREAD_CLIENT_ID: "${GRAFANA_AR_CLIENT_ID}"
+              GF_AUTH_AZUREAD_AUTH_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/authorize"
+              GF_AUTH_AZUREAD_TOKEN_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token"
+              GF_AUTH_AZUREAD_CLIENT_AUTHENTICATION: "workload_identity"
+              GF_AUTH_AZUREAD_FEDERATED_CREDENTIAL_AUDIENCE: "api://AzureADTokenExchange"
+              GF_AUTH_AZUREAD_ALLOWED_ORGANIZATIONS: "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
             resources:
               limits:
                 cpu: 256m
