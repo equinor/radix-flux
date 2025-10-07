@@ -14,11 +14,11 @@ spec:
     namespace: flux-system
   values:
     dnsZone: ${dnsZone} # set in configmap flux-system/radix-flux-config
-    appAliasBaseURL: ${appAliasBaseURL}  # set in configmap flux-system/radix-flux-config
-    prometheusName: ${prometheusName}  # set in configmap flux-system/radix-flux-config
-    clusterType: ${clusterType}  # set in configmap flux-system/radix-flux-config
-    clusterActiveEgressIps: ${activeClusterIPs}  # set in configmap flux-system/radix-flux-config
-    clusterName: ${clusterName}  # set in configmap flux-system/radix-flux-config
+    appAliasBaseURL: ${appAliasBaseURL} # set in configmap flux-system/radix-flux-config
+    prometheusName: ${prometheusName} # set in configmap flux-system/radix-flux-config
+    clusterType: ${clusterType} # set in configmap flux-system/radix-flux-config
+    clusterActiveEgressIps: ${activeClusterIPs} # set in configmap flux-system/radix-flux-config
+    clusterName: ${clusterName} # set in configmap flux-system/radix-flux-config
 
     subscriptionId: ${AZ_SUBSCRIPTION_ID}
     tenantId: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
@@ -35,16 +35,6 @@ spec:
     kubeClientRateLimitBurst: 500
     kubeClientRateLimitQPS: 500
     externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
-
-    imageBuilder: radix-image-builder:${RADIX_IMAGE_BUILDER_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    buildKitImageBuilder: radix-buildkit-builder:${RADIX_BUILDKIT_IMAGE_BUILDER_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    jobScheduler: radix-job-scheduler:${RADIX_JOB_SCHEDULER_IMAGE_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    oauthProxyImage: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    oauthRedisImage: ${OAUTH2REDIS_IMAGE}:${OAUTH2REDIS_TAG} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    buildahImageBuilder: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    gitCloneNsLookupImage: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    gitCloneGitImage: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
-    gitCloneBashImage: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
 
     resources:
       limits:
@@ -74,9 +64,8 @@ spec:
         repository: docker.io/alpine
         tag: ${SECCOMP_IMAGE_TAG}
         pullSecrets:
-        - "radix-external-registry-default-auth"
+          - "radix-external-registry-default-auth"
       installer:
-        image: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE} # deprecated, remove after https://github.com/equinor/radix-flux/pull/2933 is merged
         resources:
           limits:
             cpu: 10m
