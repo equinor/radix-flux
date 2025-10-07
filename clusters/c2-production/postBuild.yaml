@@ -32,7 +32,7 @@ spec:
       KUBERNETES_REPLICATOR: v2.12.0 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.13.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       OAUTH2PROXY_TAG: "v7.9.0"
-      OAUTH2REDIS_TAG: 8.2.1
+      OAUTH2REDIS_TAG: 8.2.2
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.0 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixc2prod.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixc2app.azurecr.io
@@ -64,5 +64,5 @@ spec:
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 7264db03-2c4a-47b7-87d2-1bdfcc188131
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-c2.database.windows.net
     substituteFrom:
-    - kind: ConfigMap
-      name: radix-flux-config
+      - kind: ConfigMap
+        name: radix-flux-config
