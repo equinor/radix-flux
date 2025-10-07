@@ -18,7 +18,7 @@ spec:
       GRAFANA_WI_CLIENT_ID: 9a9bf432-aeb4-4903-aa1a-59f3236087f6 # AR radix-ar-grafana-logreader-extmon
       GRAFANA_DB_HOST: s940-radix-grafana-extmon-prod.mysql.database.azure.com
       GRAFANA_DB_USERNAME: radix-ar-grafana-logreader-extmon
-      GRAFANA_VERSION: 8.12.1 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 9.3.2 # https://artifacthub.io/packages/helm/grafana/grafana
       KUBE_PROMETHEUS_STACK: 76.4.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       NGINX_VERSION: 4.12.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
