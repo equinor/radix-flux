@@ -11,7 +11,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: master
+        branch: 2980-configure-velero-plugin-image-from-ghcrio
     commit:
       author:
         email: radix@statoilsrm.onmicrosoft.com
@@ -38,7 +38,7 @@ spec:
         - {{.}}
         {{ end -}}
     push:
-      branch: flux-image-updates
+      branch: flux-image-updates-2980-configure-velero-plugin-image-from-ghcrio
   update:
     path: ${FLUX_CONFIG_PATH}
     strategy: Setters
