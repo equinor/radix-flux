@@ -17,6 +17,8 @@ metadata:
 spec:
   image: ghcr.io/equinor/radix/image-builder
   interval: 1m0s
+  secretRef:
+    name: test
 
 ---
 
