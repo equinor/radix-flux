@@ -64,7 +64,7 @@ spec:
       SECCOMP_IMAGE_TAG: 3.22.1
       TEKTON_VERSION: v0.53.0
       VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94
-      VELERO_RADIX_PLUGIN_IMAGE: ghcr.io/equinor/radix/velero-plugin:1.102.0-rc.1 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
+      VELERO_RADIX_PLUGIN_IMAGE: ghcr.io/equinor/radix/velero-plugin:1.102.0-rc.2 # {"$imagepolicy": "flux-system:radix-velero-plugin"}
       VELERO_AZURE_PLUGIN_TAG: v1.13.0 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_VERSION: 11.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
