@@ -33,7 +33,7 @@ resources:
 - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
 - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
-- ./components/radix-platform/radix-velero-plugin
+- ../../components/radix-platform/radix-velero-plugin
 # - ./overlay/radix-platform/radix-velero-plugin/radix-velero-plugin.yaml
 
 patches:
