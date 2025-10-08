@@ -4,7 +4,5 @@ metadata:
   name: radix-velero-plugin
   namespace: flux-system
 spec:
-  image: ${radix_acr_repo_url}/radix-velero-plugin # Set by flux patch
+  image: ghcr.io/equinor/radix/velero-plugin
   interval: 1m0s
-  secretRef:
-    name: radix-docker

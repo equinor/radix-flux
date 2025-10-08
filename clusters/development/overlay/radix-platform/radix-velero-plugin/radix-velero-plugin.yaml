@@ -1,0 +1,27 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-velero-plugin
+  namespace: flux-system
+spec:
+  interval: 10m
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-velero-plugin
+  patches:
+    - patch: |-
+        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        kind: ImagePolicy
+        metadata:
+          name: radix-velero-plugin
+          namespace: flux-system
+        spec:
+          policy:
+            semver:
+              range: '>=0.0.0-0'
+      target:
+        kind: ImagePolicy
+        name: radix-velero-plugin
+        namespace: flux-system

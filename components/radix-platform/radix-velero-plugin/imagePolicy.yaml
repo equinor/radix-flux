@@ -4,11 +4,8 @@ metadata:
   name: radix-velero-plugin
   namespace: flux-system
 spec:
-  filterTags:
-    pattern: ^${radix_velero_plugin_image_tag_prefix}-[a-f0-9]+-(?P<ts>[0-9]+) # Set by flux patch
-    extract: $ts
   imageRepositoryRef:
     name: radix-velero-plugin
   policy:
-    numerical:
-      order: asc
+    semver:
+      range: '>=0.0.0'

@@ -12,9 +12,9 @@ spec:
     name: flux-system
   postBuild:
     substitute:
-      velero_plugin_acr_image: ${velero_plugin_acr_image} # Set in clusters/<cluster>/postBuild
-      velero_plugin_azure: ${velero_plugin_azure} # Set in clusters/<cluster>/postBuild
-      velero_azure_workload_identity_id: ${VELERO_MI_CLIENT_ID} # Set in clusters/<cluster>/postBuild
+      VELERO_RADIX_PLUGIN_IMAGE: ${VELERO_RADIX_PLUGIN_IMAGE} # Set in clusters/<cluster>/postBuild
+      VELERO_AZURE_PLUGIN_TAG: ${VELERO_AZURE_PLUGIN_TAG} # Set in clusters/<cluster>/postBuild
+      VELERO_AZURE_WORKLOAD_IDENTITY_ID: ${VELERO_MI_CLIENT_ID} # Set in clusters/<cluster>/postBuild
       RADIX_CACHE_REGISTRY: ${RADIX_CACHE_REGISTRY:=tba}
   healthChecks:
     - apiVersion: apps/v1
