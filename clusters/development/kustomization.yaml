@@ -8,7 +8,6 @@ resources:
 - ../../components/flux/storageclasses
 - ../../components/radix-platform/radix-platform
 - ../../components/radix-platform/radix-cost-allocation
-- ../../components/radix-platform/radix-velero-plugin
 - ../../components/radix-platform/radix-vulnerability-scanner
 - ../../components/radix-platform/radix-app-ingresses
 - ../../components/third-party/azure-service-operator
