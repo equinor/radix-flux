@@ -6,3 +6,5 @@ metadata:
 spec:
   image: ghcr.io/equinor/radix/velero-plugin
   interval: 1m0s
+  secretRef:
+    name: test
