@@ -4,5 +4,5 @@ metadata:
   name: radix-velero-plugin
   namespace: flux-system
 spec:
-  image: ghcr.io/equinor/radix/velero-plugin2
+  image: ghcr.io/equinor/radix/velero-plugin
   interval: 1m0s
