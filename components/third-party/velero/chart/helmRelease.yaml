@@ -25,7 +25,7 @@ spec:
     updateStrategy: RollingUpdate
     initContainers:
       - name: velero-plugin-for-microsoft-azure
-        image: ${RADIX_CACHE_REGISTRY}/velero/velero-plugin-for-microsoft-azure:${velero_plugin_azure} # Set in clusters/<cluster>/postBuild
+        image: ${RADIX_CACHE_REGISTRY}/velero/velero-plugin-for-microsoft-azure:${VELERO_AZURE_PLUGIN_TAG} # Set in clusters/<cluster>/postBuild
         securityContext:
           readOnlyRootFilesystem: true
           runAsNonRoot: true
@@ -33,7 +33,7 @@ spec:
           - name: plugins
             mountPath: /target
       - name: radix-velero-plugin
-        image: ${velero_plugin_acr_image} # Set in clusters/<cluster>/postBuild
+        image: ${VELERO_RADIX_PLUGIN_IMAGE} # Set in clusters/<cluster>/postBuild
         securityContext:
           readOnlyRootFilesystem: true
           runAsNonRoot: true
@@ -45,7 +45,7 @@ spec:
     serviceAccount:
       server:
         annotations:
-          azure.workload.identity/client-id: ${velero_azure_workload_identity_id}
+          azure.workload.identity/client-id: ${VELERO_AZURE_WORKLOAD_IDENTITY_ID}
         create: true
         labels:
           azure.workload.identity/use: "true"
