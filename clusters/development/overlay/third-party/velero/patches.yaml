@@ -17,7 +17,7 @@ spec:
         namespace: velero
       patch: |-
         - op: remove
-          path: /spec/values/initContainers/0
+          path: /spec/values/initContainers/1
     - target:
         kind: HelmRelease
         name: velero
