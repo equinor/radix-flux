@@ -22,7 +22,6 @@ spec:
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: ${RADIX_BUILDAH_IMAGE_BUILDER_IMAGE:=tba}
       RADIX_BUILDKIT_IMAGE_BUILDER_TAG: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG:=tba}
       RADIX_IMAGE_BUILDER_TAG: ${RADIX_IMAGE_BUILDER_TAG:=tba}
-      RADIX_JOB_SCHEDULER_IMAGE_TAG: ${RADIX_JOB_SCHEDULER_IMAGE_TAG:=tba}
       RADIX_OPERATOR_CHART_VERSION: ${RADIX_OPERATOR_CHART_VERSION:=tba}
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE:=tba}
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE:=tba}
@@ -50,7 +49,7 @@ spec:
                 groups:
                   - a5dfa635-dc00-4a28-9ad9-9e7f1e56919d # Radix Platform Developers
                   - 64b28659-4fe4-4222-8497-85dd7e43e25b # Radix Platform Users
-
+            radixJobScheduler: ~
       target:
         kind: HelmRelease
         name: radix-operator
