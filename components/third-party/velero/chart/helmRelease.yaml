@@ -32,14 +32,6 @@ spec:
         volumeMounts:
           - name: plugins
             mountPath: /target
-      - name: radix-velero-plugin
-        image: ${velero_plugin_acr_image} # Set in clusters/<cluster>/postBuild
-        securityContext:
-          readOnlyRootFilesystem: true
-          runAsNonRoot: true
-        volumeMounts:
-          - name: plugins
-            mountPath: /target
     credentials:
       useSecret: false
     serviceAccount:
