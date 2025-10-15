@@ -22,7 +22,6 @@ resources:
 - ./overlay/radix-platform/radix-operator/radix-operator.yaml
 - ../../components/radix-platform/radix-vulnerability-scanner
 - ../../components/radix-platform/radix-cost-allocation
-- ../../components/radix-platform/radix-velero-plugin
 - ../../components/radix-platform/radix-app-ingresses
 - ../../components/third-party/keda
 - ../../components/third-party/tekton
@@ -41,7 +40,6 @@ patches:
   - path: ./kustomize-controller.yaml
   - path: ./notification-controller.yaml
   - path: ./source-controller.yaml
-  - path: ./overlay/radix-platform/radix-velero-plugin/postBuild.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
