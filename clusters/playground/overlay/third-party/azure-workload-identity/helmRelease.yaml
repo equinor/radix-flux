@@ -7,11 +7,3 @@ spec:
   chart:
     spec:
       version: 1.4.1 # https://artifacthub.io/packages/helm/azure-workload-identity/workload-identity-webhook
-  values:
-    resources:
-      limits:
-        cpu: 100m
-        memory: 100Mi
-      requests:
-        cpu: 100m
-        memory: 50Mi
