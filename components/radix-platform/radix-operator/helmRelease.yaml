@@ -17,7 +17,6 @@ spec:
     appAliasBaseURL: ${appAliasBaseURL} # set in configmap flux-system/radix-flux-config
     prometheusName: ${prometheusName} # set in configmap flux-system/radix-flux-config
     clusterType: ${clusterType} # set in configmap flux-system/radix-flux-config
-    clusterActiveEgressIps: ${activeClusterIPs} # set in configmap flux-system/radix-flux-config
     clusterName: ${clusterName} # set in configmap flux-system/radix-flux-config
 
     subscriptionId: ${AZ_SUBSCRIPTION_ID}
