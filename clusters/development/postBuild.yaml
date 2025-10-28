@@ -34,7 +34,7 @@ spec:
       KUBE_PROMETHEUS_STACK: 76.4.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.12.0 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.13.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      OAUTH2PROXY_TAG: "v7.9.0" #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
+      OAUTH2PROXY_TAG: "v7.12.0" #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
       OAUTH2REDIS_TAG: 8.2.2-alpine3.22 # https://hub.docker.com/_/redis/tags
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.0 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixdev.azurecr.io
