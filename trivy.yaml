@@ -1,0 +1,4 @@
+misconfig:
+  include-deprecated-checks: false
+  policy:
+    policy-file-path: .trivyignore.yaml
