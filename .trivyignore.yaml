@@ -1,4 +1,10 @@
 misconfigurations:
+  - id: AVD-KSV-0111
+    statement: Radix Cluster Operators needs RBAC for access
+    paths:
+      - components/radix-platform/radix-platform/rbac/radix-platform-operators-admin.yaml
+      - components/radix-platform/radix-platform/rbac/radix-platform-operators-edit.yaml
+
   - id: AVD-KSV-0041
     statement: Flux needs to manage secrets
     paths:
@@ -132,3 +138,8 @@ misconfigurations:
     statement: sysctl-install-blobfuse requires unrestricted access to configure kernel parameters
     paths:
       - components/third-party/sysctl-install-blobfuse/daemonset.yaml
+
+  - id: AVD-KSV-0037
+    statement: blob-csi-driver is a system-level component that belongs in kube-system namespace
+    paths:
+      - components/third-party/blob-csi-driver/chart/helmRelease.yaml
