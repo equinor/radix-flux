@@ -1,24 +1,33 @@
 name: Generate SBOM
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
 permissions:
-    contents: write
+  contents: write
 
 jobs:
-    generate-sbom:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
+  generate-sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-            - name: Run Trivy in GitHub SBOM mode and submit results to Dependency Graph
-              uses: aquasecurity/trivy-action@0.28.0
-              with:
-                  scan-type: "config"
-                  format: "github"
-                  output: "dependency-results.sbom.json"
-                  scan-ref: "."
-                  github-pat: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Trivy in GitHub SBOM mode and submit results to Dependency Graph
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: "config"
+          format: "sarif"
+          output: "trivy-results.sarif"
+          scan-ref: "."
+          github-pat: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: trivy-results.sari
+          # Optional category for the results
+          # Used to differentiate multiple results for one commit
+          category: trivy
