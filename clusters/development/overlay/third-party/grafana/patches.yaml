@@ -17,6 +17,10 @@ spec:
           namespace: monitor
         spec:
           values:
+            image:
+              registry: ghcr.io
+              repository: equinor/radix/grafana
+              tag: 12.2.2-test
             resources:
               limits:
                 cpu: 40m
@@ -33,4 +37,3 @@ spec:
               GF_AUTH_AZUREAD_CLIENT_AUTHENTICATION: "workload_identity"
               GF_AUTH_AZUREAD_FEDERATED_CREDENTIAL_AUDIENCE: "api://AzureADTokenExchange"
               GF_AUTH_AZUREAD_ALLOWED_ORGANIZATIONS: "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
-
