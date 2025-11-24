@@ -49,23 +49,3 @@ spec:
                 requests:
                   cpu: 300m
                   memory: 256Mi
-
-    # - patch: |-
-    #     apiVersion: helm.toolkit.fluxcd.io/v2
-    #     kind: HelmRelease
-    #     metadata:
-    #       name: istio-ingressgateway
-    #       namespace: istio-system
-    #     spec:
-    #       values:
-    #         resources:
-    #           limits:
-    #             cpu: 300m
-    #             memory: 512Mi
-    #           requests:
-    #             cpu: 300m
-    #             memory: 256Mi
-    #   target:
-    #     kind: HelmRelease
-    #     name: istio-ingressgateway
-    #     namespace: istio-system
