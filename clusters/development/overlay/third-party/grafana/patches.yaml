@@ -17,6 +17,8 @@ spec:
           namespace: monitor
         spec:
           values:
+            global:
+              imageRegistry: ""
             image:
               registry: ghcr.io
               repository: equinor/radix/grafana
