@@ -20,9 +20,7 @@ spec:
     crds: CreateReplace
   upgrade:
     crds: CreateReplace
-  # values:
-  #   # resources: xx # Set by flux patch
-  #   global:
-  #     hub: ${RADIX_CACHE_REGISTRY}/istio
-  #   pilot:
-  #     image: ${RADIX_CACHE_REGISTRY}/istio/pilot
+  values:
+    meshConfig:
+      accessLogFile: /dev/stdout
+      accessLogEncoding: TEXT
