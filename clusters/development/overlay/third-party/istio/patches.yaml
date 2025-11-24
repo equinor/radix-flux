@@ -16,6 +16,9 @@ spec:
             name: istiod
             namespace: istio-system
           spec:
+            chart:
+              spec:
+                version: ${ISTIO_VERSION} # Set in postBuild development
             values:
               resources:
                 limits:

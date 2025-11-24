@@ -10,9 +10,9 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  postBuild:
-    substituteFrom:
-    - kind: ConfigMap
-      name: radix-flux-config
-    substitute:
-      ISTIO_VERSION: ${ISTIO_VERSION:=tba}
+  # postBuild:
+  #   substituteFrom:
+  #   - kind: ConfigMap
+  #     name: radix-flux-config
+  #   substitute:
+  #     ISTIO_VERSION: ${ISTIO_VERSION:=tba}
