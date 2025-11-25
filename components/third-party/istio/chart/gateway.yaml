@@ -23,19 +23,16 @@ spec:
     # resources: xx # Set by flux patch
     service:
       type: LoadBalancer
+      externalTrafficPolicy: Local
       ports:
-        - name: status-port
-          port: 15021
-          protocol: TCP
-          targetPort: 15021
-        - name: http2
-          port: 80
-          protocol: TCP
-          targetPort: 8080
-        - name: https
-          port: 443
-          protocol: TCP
-          targetPort: 8443
+      - name: http
+        port: 80
+        protocol: TCP
+        targetPort: 8080
+      - name: https
+        port: 443
+        protocol: TCP
+        targetPort: 8443
     autoscaling:
       enabled: true
       minReplicas: 1
