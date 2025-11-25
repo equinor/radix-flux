@@ -38,10 +38,17 @@ spec:
             name: istio-ingressgateway
             namespace: istio-system
           spec:
+            valuesFrom:
+            - kind: Secret
+              name: ingress-istio-ip
+              valuesKey: config
             chart:
               spec:
                 version: ${ISTIO_VERSION} # Set in postBuild development
             values:
+              service:
+                annotations:
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-dev
               resources:
                 limits:
                   cpu: 300m
