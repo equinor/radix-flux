@@ -22,8 +22,9 @@ spec:
   values:
     # resources: xx # Set by flux patch
     service:
-      type: LoadBalancer
-      ports:
+type: LoadBalancer
+externalTrafficPolicy: Local
+ports:
         - name: http
           port: 80
           protocol: TCP
