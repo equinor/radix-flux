@@ -22,7 +22,7 @@ spec:
             image:
               registry: ghcr.io
               repository: equinor/radix/grafana
-              tag: 12.2.2-test
+              tag: 12.3.0.1-test
             resources:
               limits:
                 cpu: 40m
