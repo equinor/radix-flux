@@ -24,11 +24,7 @@ spec:
     service:
       type: LoadBalancer
       ports:
-        - name: status-port
-          port: 15021
-          protocol: TCP
-          targetPort: 15021
-        - name: http2
+        - name: http
           port: 80
           protocol: TCP
           targetPort: 8080
