@@ -21,6 +21,11 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
+    pilot:
+      env:
+        PILOT_ENABLE_GATEWAY_API: "true"
+        PILOT_ENABLE_GATEWAY_API_STATUS: "true"
+        PILOT_ENABLE_GATEWAY_API_DEPLOYMENT_CONTROLLER: "true"
     meshConfig:
       accessLogFile: /dev/stdout
       accessLogEncoding: TEXT
