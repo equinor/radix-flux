@@ -1,33 +1,76 @@
-name: Generate SBOM
-on:
-  push:
-    branches:
-      - main
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
 
-permissions:
-  contents: write
+# Notes: This workflow does not apply to fork PRs as those do not have enough permissions to run it
+name: Trivy IaC & Dockerfile Scanning Example
+
+# Always set explicit permissions for workflows.
+# In this case we give it no permissions by default and rather set them explicitly in the job.
+permissions: {}
+
+on:
+  # Trigger on every push to the main (default) branch.
+  # Ensures that the main branch is always analyzed.
+  push:
+    branches: ["main"]
+  # Trigger on pull requests targeting the main branch.
+  # Ensures that pull requests are analyzed before merging.
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: ["main"]
+  # Trigger on a schedule to run the analysis periodically.
+  # Ensures that the code is regularly scanned, even if no changes are made, so that if new scan rules release, they will be used on the codebase.
+  schedule:
+    # Run at 00:36 AM every Wednesday
+    - cron: "36 0 * * 3"
 
 jobs:
-  generate-sbom:
+  trivy-scan:
+    name: Scan on Main with Trivy
     runs-on: ubuntu-latest
+    # Set an explicit timeout. Default/not setting is 6 hours.
+    # Ensures that we are not using resources longer than expected.
+    timeout-minutes: 30
+    permissions:
+      # Required as the workflow needs to upload (write) any findings to the security tab.
+      security-events: write
+
+      # Required to read the repository contents for analysis.
+      contents: read
+      actions: read
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run Trivy in GitHub SBOM mode and submit results to Dependency Graph
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: actions/checkout@v5
         with:
-          scan-type: "config"
-          format: "sarif"
-          output: "trivy-results.sarif"
-          scan-ref: "."
-          github-pat: ${{ secrets.GITHUB_TOKEN }}
+          # Ensures that the credentials used for checking out the repository are not persisted or accessed by the following jobs
+          persist-credentials: false
 
-      - name: Upload SARIF file
+      # Initializes Trivy for IaC & Dockerfile scanning.
+      - name: Run Trivy vulnerability Scanner
+        # Using SHA to pin to latest version as Trivy is a third party tool.
+        # Dependabot will up the version when there are new releases if enabled.
+        uses: aquasecurity/trivy-action@b6643a29fecd7f34b3597bc6acb0a98b03d33ff8
+        with:
+          # Specifies the type of artifact that will be scanned, config tells Trivy we will scan IaC & Dockerfile files.
+          scan-type: "config"
+          # Only consider these vulnerability severities, ignore all others, possible values are: CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN
+          severity: "CRITICAL,HIGH"
+          # filter SARIF output to only the selected severities
+          limit-severities-for-sarif: true
+          # Output format of the scan results.
+          format: "sarif"
+          # File to save the scan results to.
+          output: "trivy-results-iac.sarif"
+          # Trivy will exit with code 0 even if vulnerabilities are found and will not fail the job (report only).
+          # GHAS will pick up the results and flag new alerts on changed lines if any.
+          exit-code: "0"
+
+      # Upload Trivy IaC & Dockerfile scan results to Github Security
+      - name: Upload scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v4
         with:
-          # Path to SARIF file relative to the root of the repository
-          sarif_file: trivy-results.sari
-          # Optional category for the results
-          # Used to differentiate multiple results for one commit
-          category: trivy
+          # File to upload.
+          sarif_file: "trivy-results-iac.sarif"
