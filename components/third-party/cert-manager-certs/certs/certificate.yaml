@@ -8,7 +8,6 @@ spec:
   secretName: radix-wildcard-tls-cert
   secretTemplate:
     annotations:
-      kubed.appscode.com/sync: "radix-wildcard-sync=radix-wildcard-tls-cert"
       replicator.v1.mittwald.de/replicate-to-matching: "radix-wildcard-sync=radix-wildcard-tls-cert"
   issuerRef:
     kind: ClusterIssuer
