@@ -36,7 +36,7 @@ jobs:
       - name: Run Trivy vulnerability Scanner
         # Using SHA to pin to latest version as Trivy is a third party tool.
         # Dependabot will up the version when there are new releases if enabled.
-        uses: aquasecurity/trivy-action@b6643a29fecd7f34b3597bc6acb0a98b03d33ff8
+        uses: aquasecurity/trivy-action@e6c2c5e321ed9123bda567646e2f96565e34abe1 # v0.2.4
         with:
           # Specifies the type of artifact that will be scanned, config tells Trivy we will scan IaC & Dockerfile files.
           scan-type: "config"
