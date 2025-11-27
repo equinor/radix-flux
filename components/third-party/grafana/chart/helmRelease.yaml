@@ -44,8 +44,12 @@ spec:
                 path: /spec/template/spec/shareProcessNamespace
                 value: true
   values:
-    global:
-      imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
+    # global:
+    #  imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
+    image:
+      registry: ghcr.io
+      repository: equinor/radix/grafana
+      tag: 12.3.0.1-test
 
     ingress:
       enabled: true
