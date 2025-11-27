@@ -14,23 +14,16 @@ jobs:
   trivy-scan:
     name: Scan with Trivy
     runs-on: ubuntu-latest
-    # Set an explicit timeout. Default/not setting is 6 hours.
-    # Ensures that we are not using resources longer than expected.
     timeout-minutes: 30
     permissions:
       # Required as the workflow needs to upload (write) any findings to the security tab.
       security-events: write
-
-      # Required to read the repository contents for analysis.
       contents: read
       actions: read
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-        with:
-          # Ensures that the credentials used for checking out the repository are not persisted or accessed by the following jobs
-          persist-credentials: false
           
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@b6643a29fecd7f34b3597bc6acb0a98b03d33ff8 # v0.33.1
@@ -43,7 +36,6 @@ jobs:
           limit-severities-for-sarif: true
           exit-code: "0"
 
-      # Upload Trivy IaC & Dockerfile scan results to Github Security
       - name: Upload scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v4
         with:
