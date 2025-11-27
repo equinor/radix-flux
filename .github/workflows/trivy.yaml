@@ -1,13 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# Notes: This workflow does not apply to fork PRs as those do not have enough permissions to run it
-name: Trivy IaC & Dockerfile Scanning Example
-
-# Always set explicit permissions for workflows.
-# In this case we give it no permissions by default and rather set them explicitly in the job.
+name: Trivy IaC & Dockerfile Scanning
 permissions: {}
 
 on:
