@@ -31,25 +31,16 @@ jobs:
         with:
           # Ensures that the credentials used for checking out the repository are not persisted or accessed by the following jobs
           persist-credentials: false
-
-      # Initializes Trivy for IaC & Dockerfile scanning.
-      - name: Run Trivy vulnerability Scanner
-        # Using SHA to pin to latest version as Trivy is a third party tool.
-        # Dependabot will up the version when there are new releases if enabled.
+          
+      - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@b6643a29fecd7f34b3597bc6acb0a98b03d33ff8 # v0.33.1
         with:
-          # Specifies the type of artifact that will be scanned, config tells Trivy we will scan IaC & Dockerfile files.
           scan-type: "config"
-          # Only consider these vulnerability severities, ignore all others, possible values are: CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN
-          severity: "CRITICAL,HIGH"
-          # filter SARIF output to only the selected severities
+          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
           limit-severities-for-sarif: true
-          # Output format of the scan results.
-          format: "sarif"
-          # File to save the scan results to.
-          output: "trivy-results-iac.sarif"
-          # Trivy will exit with code 0 even if vulnerabilities are found and will not fail the job (report only).
-          # GHAS will pick up the results and flag new alerts on changed lines if any.
           exit-code: "0"
 
       # Upload Trivy IaC & Dockerfile scan results to Github Security
@@ -57,4 +48,4 @@ jobs:
         uses: github/codeql-action/upload-sarif@v4
         with:
           # File to upload.
-          sarif_file: "trivy-results-iac.sarif"
+          sarif_file: 'trivy-results.sarif'
