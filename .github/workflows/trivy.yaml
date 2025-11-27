@@ -14,17 +14,18 @@ on:
   # Trigger on every push to the main (default) branch.
   # Ensures that the main branch is always analyzed.
   push:
-    branches: ["main"]
+    branches: ["master"]
   # Trigger on pull requests targeting the main branch.
   # Ensures that pull requests are analyzed before merging.
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: ["main"]
+    branches: ["master"]
   # Trigger on a schedule to run the analysis periodically.
   # Ensures that the code is regularly scanned, even if no changes are made, so that if new scan rules release, they will be used on the codebase.
   schedule:
     # Run at 00:36 AM every Wednesday
     - cron: "36 0 * * 3"
+  workflow_dispatch:
 
 jobs:
   trivy-scan:
