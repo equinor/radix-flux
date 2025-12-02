@@ -18,6 +18,7 @@ spec:
             valuesKey: config
           values:
             controller:
+              allowSnippetAnnotations: true
               resources:
                 limits:
                   cpu: 300m
@@ -41,6 +42,8 @@ spec:
                         operator: In
                         values:
                         - amd64
+              config:
+                annotations-risk-level: "Critical"
 
       target:
         kind: HelmRelease
