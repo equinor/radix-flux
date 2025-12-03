@@ -18,6 +18,7 @@ spec:
             valuesKey: config
           values:
             controller:
+              allowSnippetAnnotations: true # NB! To be removed: https://github.com/equinor/radix-platform/issues/1822
               resources:
                 limits:
                   cpu: 300m
@@ -41,6 +42,8 @@ spec:
                         operator: In
                         values:
                         - amd64
+              config:
+                annotations-risk-level: "Critical" # NB! To be removed: https://github.com/equinor/radix-platform/issues/1822
 
       target:
         kind: HelmRelease
