@@ -12,6 +12,9 @@ spec:
       group: ""
       kind: ConfigMap
       name: istio-gateway-config
+  allowedListeners:
+    namespaces:
+      from: All
   listeners:
     - name: http
       port: 80
