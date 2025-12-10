@@ -1,0 +1,64 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-acr-cleanup
+  prune: false
+  postBuild:
+    substitute:
+      RADIX_ACR_CLEANUP_CHART_VERSION: ${RADIX_ACR_CLEANUP_CHART_VERSION:=tba} # From postBuild.yaml
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: radix-acr-cleanup
+          namespace: default
+        spec:
+          values:
+            registry: radixc2prod
+            deleteUntagged: true
+            retainLatestUntagged: 0
+            activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild production
+            resources:
+              limits:
+                cpu: "2"
+                memory: 500Mi
+              requests:
+                cpu: 50m
+                memory: 250Mi
+            whitelisted:
+              - radix-operator
+              - radix-pipeline
+              - rx
+              - buildx
+              - radix-cicd-canary
+              - radix-image-builder
+              - radix-image-builderx
+              - radix-tekton
+              - radix-image-scanner
+              - radix-acr-cleanup
+              - gitclone
+              - radix-velero-plugin
+              - sima-runtime
+              - radix-config-2-map
+              - radix-cost-allocation
+              - radix-job-scheduler-server
+              - radix-job-scheduler
+              - radix-batch-scheduler
+              - radix-vulnerability-scanner
+              - oauth2-proxy
+              - radix-buildkit-builder
+      target:
+        kind: HelmRelease
+        name: radix-acr-cleanup
+        namespace: default

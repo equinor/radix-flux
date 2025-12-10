@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kubernetes-replicator
+  namespace: kubernetes-replicator
+spec:
+  chart:
+    spec:
+      version: ${KUBERNETES_REPLICATOR} # Set in postBuild development

@@ -1,0 +1,67 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: kube-prometheus-stack
+  namespace: flux-system
+spec:
+  postBuild:
+    substitute:
+      ALERT_WEB_CONSOLE_BASE_URL: "https://console.c2.radix.equinor.com"
+  patches:
+    - target:
+        kind: HelmRelease
+        name: kube-prometheus-stack
+        namespace: monitor
+      patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: kube-prometheus-stack
+          namespace: monitor
+        spec:
+          chart:
+            spec:
+              version: ${KUBE_PROMETHEUS_STACK}
+          values:
+            prometheus:
+              prometheusSpec:
+                resources:
+                  limits:
+                    cpu: "1"
+                    memory: "12Gi"
+                  requests:
+                    cpu: "1"
+                    memory: "6Gi"
+              storageSpec:
+                  volumeClaimTemplate:
+                    spec:
+                      resources:
+                        requests:
+                          storage: 256Gi # P30
+                          #Premium SSD Size   P1    P2    P3    P4    P6    P10   P15   P20   P30   P40
+                          #                   4     8     16    32    64    128   256   512   1024  204
+            prometheusOperator:
+              resources:
+                limits:
+                  cpu: 100m
+                  memory: 128Mi
+                requests:
+                  cpu: 50m
+                  memory: 64Mi
+            alertmanager:
+              alertmanagerSpec:
+                resources:
+                  limits:
+                    cpu: 30m
+                    memory: 256Mi
+                  requests:
+                    cpu: 5m
+                    memory: 128Mi
+            kube-state-metrics:
+              resources:
+                limits:
+                  cpu: 64m
+                  memory: 1Gi
+                requests:
+                  cpu: 32m
+                  memory: 256Mi
