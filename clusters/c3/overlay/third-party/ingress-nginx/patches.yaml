@@ -1,0 +1,55 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ingress-nginx
+  namespace: flux-system
+spec:
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: ingress-nginx
+          namespace: ingress-nginx
+        spec:
+          valuesFrom:
+          - kind: Secret
+            name: ingress-nginx-ip
+            valuesKey: config
+          values:
+            controller:
+              replicaCount: 6
+              resources:
+                limits:
+                  memory: 10Gi
+                  cpu: "10"
+                requests:
+                  cpu: "2"
+                  memory: 3Gi
+              service:
+                annotations:
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-c2
+              affinity:
+                podAntiAffinity:
+                  preferredDuringSchedulingIgnoredDuringExecution:
+                    - weight: 100
+                      podAffinityTerm:
+                        labelSelector:
+                          matchExpressions:
+                            - key: app
+                              operator: In
+                              values:
+                                - ingress-nginx
+                        topologyKey: kubernetes.io/hostname
+            defaultBackend:
+              extraVolumes:
+                - name: error-page
+                  configMap:
+                    name: error-page
+                    items:
+                      - path: "503.html"
+                        key: "error-page.equinor.html"
+      target:
+        kind: HelmRelease
+        name: ingress-nginx
+        namespace: ingress-nginx

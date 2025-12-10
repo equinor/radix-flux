@@ -1,0 +1,58 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: external-secrets-operator
+  namespace: flux-system
+spec:
+  patches:
+    - target:
+        kind: HelmRelease
+        name: external-secrets-operator
+        namespace: external-secrets
+      patch: |-
+        - op: replace
+          path: /spec/chart/spec/version
+          value: ${EXTERNAL_SECRETS} # Set in postBuild development
+    - target:
+        kind: HelmRelease
+        name: external-secrets-operator
+        namespace: external-secrets
+      patch: |-
+        - op: add
+          path: /spec/values/resources
+          value: 
+            limits:
+              cpu: 50m
+              memory: 256Mi
+            requests:
+              cpu: 5m
+              memory: 256Mi
+        - op: add
+          path: /spec/values/certController
+          value:
+            resources:
+              limits:
+                cpu: 50m
+                memory: 64Mi
+              requests:
+                cpu: 2m
+                memory: 64Mi
+        - op: add
+          path: /spec/values/webhook
+          value:
+            resources:
+              limits:
+                cpu: 50m
+                memory: 64Mi
+              requests:
+                cpu: 1m
+                memory: 64Mi
+#        apiVersion: helm.toolkit.fluxcd.io/v2
+#        kind: HelmRelease
+#        metadata:
+#          name: external-secrets-operator
+#          namespace: external-secrets
+#        spec:
+#          chart:
+#            spec:
+#              version: ${EXTERNAL_SECRETS} # Set in postBuild development
