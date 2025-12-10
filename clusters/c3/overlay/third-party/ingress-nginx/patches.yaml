@@ -28,7 +28,7 @@ spec:
                   memory: 3Gi
               service:
                 annotations:
-                  service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-c2
+                  service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-c3
               affinity:
                 podAntiAffinity:
                   preferredDuringSchedulingIgnoredDuringExecution:
