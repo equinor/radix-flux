@@ -1,37 +1,38 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- flux-system
-- ../../components/flux/externalsecrets
-- ../../components/flux/image-update-automation
-- ../../components/flux/namespaces
-- ../../components/flux/storageclasses
-- ../../components/radix-platform/radix-platform
-- ../../components/radix-platform/radix-cost-allocation
-- ../../components/radix-platform/radix-vulnerability-scanner
-- ../../components/radix-platform/radix-app-ingresses
-- ../../components/third-party/azure-workload-identity
-- ../../components/third-party/blob-csi-driver
-- ../../components/third-party/cert-manager
-- ../../components/third-party/cert-manager-certs
-- ../../components/third-party/cert-manager-issuers/digicert/dns01
-- ../../components/third-party/cert-manager-issuers/digicert/externalaccount
-- ../../components/third-party/cert-manager-issuers/digicert/http01
-- ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
-- ../../components/third-party/external-secrets
-- ../../components/third-party/grafana
-- ../../components/third-party/ingress-nginx
-- ../../components/third-party/kube-prometheus-stack
-- ../../components/third-party/kubernetes-replicator
-- ../../components/third-party/keda
-- ../../components/third-party/tekton
-- ../../components/third-party/velero
-- ../../components/radix-platform/radix-ingress-default-backend
-- ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
-- ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
-- ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
-- ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
-- ./overlay/radix-platform/radix-operator/radix-operator.yaml
+  - flux-system
+  - ../../components/flux/externalsecrets
+  - ../../components/flux/image-update-automation
+  - ../../components/flux/namespaces
+  - ../../components/flux/storageclasses
+  - ../../components/third-party/gateway-api
+  - ../../components/radix-platform/radix-platform
+  - ../../components/radix-platform/radix-cost-allocation
+  - ../../components/radix-platform/radix-vulnerability-scanner
+  - ../../components/radix-platform/radix-app-ingresses
+  - ../../components/third-party/azure-workload-identity
+  - ../../components/third-party/blob-csi-driver
+  - ../../components/third-party/cert-manager
+  - ../../components/third-party/cert-manager-certs
+  - ../../components/third-party/cert-manager-issuers/digicert/dns01
+  - ../../components/third-party/cert-manager-issuers/digicert/externalaccount
+  - ../../components/third-party/cert-manager-issuers/digicert/http01
+  - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
+  - ../../components/third-party/external-secrets
+  - ../../components/third-party/grafana
+  - ../../components/third-party/ingress-nginx
+  - ../../components/third-party/kube-prometheus-stack
+  - ../../components/third-party/kubernetes-replicator
+  - ../../components/third-party/keda
+  - ../../components/third-party/tekton
+  - ../../components/third-party/velero
+  - ../../components/radix-platform/radix-ingress-default-backend
+  - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
+  - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
+  - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
+  - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
+  - ./overlay/radix-platform/radix-operator/radix-operator.yaml
 
 patches:
   - path: ./postBuild.yaml
