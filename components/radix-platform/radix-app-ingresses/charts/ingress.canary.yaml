@@ -3,9 +3,6 @@ kind: Ingress
 metadata:
   annotations:
     ingress.kubernetes.io/force-ssl-redirect: "true"
-  labels:
-    radix-app: radix-canary-golang
-    radix-component: www
   name: www.custom-domain
   namespace: radix-canary-golang-${RADIX_APP_ENV:=tba}
 spec:

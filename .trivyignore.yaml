@@ -9,6 +9,7 @@ misconfigurations:
     statement: Flux needs to manage secrets
     paths:
       - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
       - clusters/development/flux-system/gotk-components.yaml
       - clusters/monitoring/flux-system/gotk-components.yaml
       - clusters/playground/flux-system/gotk-components.yaml
@@ -18,6 +19,7 @@ misconfigurations:
     statement: Flux controllers require full access to manage all Flux custom resources and cluster-wide operations
     paths:
       - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
       - clusters/development/flux-system/gotk-components.yaml
       - clusters/monitoring/flux-system/gotk-components.yaml
       - clusters/playground/flux-system/gotk-components.yaml
@@ -32,6 +34,12 @@ misconfigurations:
       - clusters/c2-production/kustomize-controller.yaml
       - clusters/c2-production/notification-controller.yaml
       - clusters/c2-production/source-controller.yaml
+      - clusters/c3/helm-controller.yaml
+      - clusters/c3/image-automation-controller.yaml
+      - clusters/c3/image-reflector-controller.yaml
+      - clusters/c3/kustomize-controller.yaml
+      - clusters/c3/notification-controller.yaml
+      - clusters/c3/source-controller.yaml
       - clusters/development/helm-controller.yaml
       - clusters/development/image-automation-controller.yaml
       - clusters/development/image-reflector-controller.yaml
@@ -61,6 +69,7 @@ misconfigurations:
     statement: Flux controllers require access to configmaps for state management
     paths:
       - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
       - clusters/development/flux-system/gotk-components.yaml
       - clusters/monitoring/flux-system/gotk-components.yaml
       - clusters/playground/flux-system/gotk-components.yaml
@@ -70,6 +79,7 @@ misconfigurations:
     statement: Flux cluster-reconciler requires elevated permissions for cluster-wide reconciliation
     paths:
       - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
       - clusters/development/flux-system/gotk-components.yaml
       - clusters/monitoring/flux-system/gotk-components.yaml
       - clusters/playground/flux-system/gotk-components.yaml
@@ -79,6 +89,7 @@ misconfigurations:
     statement: Flux controllers use official images from ghcr.io/fluxcd which is a trusted registry
     paths:
       - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
       - clusters/development/flux-system/gotk-components.yaml
       - clusters/monitoring/flux-system/gotk-components.yaml
       - clusters/playground/flux-system/gotk-components.yaml
