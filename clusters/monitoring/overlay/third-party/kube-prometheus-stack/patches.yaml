@@ -146,6 +146,49 @@ spec:
                           federated: prod.c2.radix.equinor.com
                           RadixCluster: c2prod
 
+                  - job_name: "federated-c3.radix.equinor.com"
+                    honor_labels: true
+                    scrape_interval: 15s
+                    scrape_timeout: 10s
+                    metrics_path: /federate
+                    scheme: https
+                    authorization:
+                      type:  Bearer
+                      credentials_file: /var/run/secrets/scraper-tokens/scraper-token
+                    params:
+                      'match[]':
+                        - '{job="ingress-nginx-controller-metrics",__name__="nginx_ingress_controller_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_resource_limits"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_info"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_container_status_ready"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_allocatable"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_status_condition"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_created"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_labels"}'
+                        - '{job="kube-state-metrics",__name__="kube_pod_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_namespace_status_phase"}'
+                        - '{job="kube-state-metrics",__name__="kube_node_spec_taint"}'
+                        - '{job="kubelet",__name__="container_memory_working_set_bytes"}'
+                        - '{job="kubelet",__name__="container_cpu_usage_seconds_total"}'
+                        - '{job="kubelet",__name__="kubelet_volume_stats_used_bytes"}'
+                        - '{job="kubelet",__name__="kubelet_volume_stats_capacity_bytes"}'
+                        - '{job="node-exporter",__name__="node_cpu_seconds_total"}'
+                        - '{job="node-exporter",__name__="node_memory_MemAvailable_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_avail_bytes"}'
+                        - '{job="node-exporter",__name__="node_filesystem_size_bytes"}'
+                        - '{job="velero",__name__="velero_backup_failure_total"}'
+                        - '{job="velero",__name__="velero_backup_last_status"}'
+                        - '{__name__=~"radix_.*"}'
+                        - '{__name__=~"gotk.*"}' # Flux metrics
+                        - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                    static_configs:
+                      - targets: ["prometheus.c3.radix.equinor.com"]
+                        labels:
+                          federated: c3.radix.equinor.com
+                          RadixCluster: c3
+
                   - job_name: "federated-playground.playground.radix.equinor.com"
                     honor_labels: true
                     scrape_interval: 15s
@@ -232,7 +275,7 @@ spec:
                           federated: dev.radix.equinor.com
                           RadixCluster: dev
         
-                  # blackbox probing of apis on prod, playground, dev
+                  # blackbox probing of apis dev
                   - job_name: 'uptime-probe-dev'
                     metrics_path: /probe
                     scrape_interval: 10s
@@ -257,7 +300,7 @@ spec:
                       - target_label: __address__
                         replacement: prometheus-blackbox-exporter:9115
         
-                  # blackbox probing of apis on prod, playground, dev
+                  # blackbox probing of apis playground
                   - job_name: 'uptime-probe-playground'
                     metrics_path: /probe
                     scrape_interval: 10s
@@ -282,7 +325,7 @@ spec:
                       - target_label: __address__
                         replacement: prometheus-blackbox-exporter:9115
         
-                  # blackbox probing of apis on prod, playground, dev
+                  # blackbox probing of apis prod
                   - job_name: 'uptime-probe-prod'
                     metrics_path: /probe
                     scrape_interval: 10s
@@ -307,7 +350,7 @@ spec:
                       - target_label: __address__
                         replacement: prometheus-blackbox-exporter:9115
         
-                  # blackbox probing of apis on prod2
+                  # blackbox probing of apis on c2
                   - job_name: 'uptime-probe-c2prod'
                     metrics_path: /probe
                     scrape_interval: 10s
@@ -331,6 +374,32 @@ spec:
                         target_label: instance
                       - target_label: __address__
                         replacement: prometheus-blackbox-exporter:9115
+
+                  # blackbox probing of apis on c3
+                  - job_name: 'uptime-probe-c3'
+                    metrics_path: /probe
+                    scrape_interval: 10s
+                    scrape_timeout: 10s
+                    params:
+                      module: [http_2xx]  # Look for a HTTP 200 response.
+                    static_configs:
+                      - targets:
+                          - https://api.c3.radix.equinor.com/health/
+                          - https://canary.c3.radix.equinor.com
+                          - https://webhook.c3.radix.equinor.com/health
+                          - https://www.c3.radix.equinor.com
+                          - https://console.c3.radix.equinor.com/ping
+                          - https://cost-api.c3.radix.equinor.com/health/
+                        labels:
+                          RadixCluster: c3
+                    relabel_configs:
+                      - source_labels: [__address__]
+                        target_label: __param_target
+                      - source_labels: [__param_target]
+                        target_label: instance
+                      - target_label: __address__
+                        replacement: prometheus-blackbox-exporter:9115
+
                 retention: 90d
                 volumes:
                   - name: scraper-token

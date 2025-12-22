@@ -18,6 +18,9 @@ spec:
             valuesKey: config
           values:
             controller:
+              allowSnippetAnnotations: true      # NB! To be removed: https://github.com/equinor/radix-platform/issues/1822
+              config:
+                annotations-risk-level: "Critical" # NB! To be removed: https://github.com/equinor/radix-platform/issues/1822
               replicaCount: 2
               resources:
                 limits:

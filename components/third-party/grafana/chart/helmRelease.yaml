@@ -39,13 +39,17 @@ spec:
                 path: /spec/template/spec/containers/0/securityContext
                 value:
                   readOnlyRootFilesystem: true
-            
+
               - op: add
                 path: /spec/template/spec/shareProcessNamespace
                 value: true
   values:
-    global:
-      imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
+    # global:
+    #  imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
+    image:
+      registry: ghcr.io
+      repository: equinor/radix/grafana
+      tag: 12.3.0.2-test
 
     ingress:
       enabled: true
@@ -69,16 +73,16 @@ spec:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
-          - matchExpressions:
-            - key: kubernetes.io/os
-              operator: In
-              values:
-              - linux
-            - key: kubernetes.io/arch
-              operator: In
-              values:
-              - amd64
-    nodeSelector: {"kubernetes.io/os": "linux"}
+            - matchExpressions:
+                - key: kubernetes.io/os
+                  operator: In
+                  values:
+                    - linux
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                    - amd64
+    nodeSelector: { "kubernetes.io/os": "linux" }
     env:
       GF_AUTH_ANONYMOUS_ENABLED: "false"
       GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
@@ -92,7 +96,7 @@ spec:
       GF_DATABASE_SSL_MODE: "skip-verify"
       GF_DATABASE_URL: mysql://${GRAFANA_DB_USERNAME}:$__file{/var/run/secrets/ossrdbms-aad/token}@${GRAFANA_DB_HOST}/grafana?allowCleartextPasswords=1
       GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
-      GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor"     # Viewer|Editor|Admin
+      GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor" # Viewer|Editor|Admin
       # GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ""   # Set by secret
       # GF_DATABASE_PASSWORD: ""                  # Set by secret
       # GF_DATABASE_TYPE: mysql                   # Removed after 8.9.0
@@ -100,9 +104,9 @@ spec:
     # envFromSecret: grafana-secrets
     extraContainerVolumes:
       - name: access-token-volume
-        emptyDir: { }
+        emptyDir: {}
       - name: grafana-lib
-        emptyDir: { }
+        emptyDir: {}
     extraInitContainers:
       - name: fetch-token
         image: mcr.microsoft.com/azure-cli:2.61.0
@@ -111,7 +115,7 @@ spec:
         restartPolicy: Always
         startupProbe:
           exec:
-            command: [ 'sh', '-c', '[ -s /tmp/token ]' ] # Check token exist and is not empty
+            command: ["sh", "-c", "[ -s /tmp/token ]"] # Check token exist and is not empty
           initialDelaySeconds: 5
         volumeMounts:
           - name: access-token-volume
@@ -120,19 +124,18 @@ spec:
           - name: HOME
             value: "/tmp"
         command:
-          - 'sh'
-          - '-c'
+          - "sh"
+          - "-c"
           - |
             echo "$(date): starting..."
             az login --service-principal --username $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --federated-token "$(cat $AZURE_FEDERATED_TOKEN_FILE)" --allow-no-subscriptions
             az account get-access-token --resource-type oss-rdbms --query accessToken --output tsv > /tmp/token
-            
-            
+
+
             echo "$(date): Restarting grafana..."
             killall -q -SIGINT grafana # If grafana already runs, kill it so it reloads with new token
-            
+
             sleepSeconds="$(jq -R 'split(".") | .[1] | @base64d | fromjson | .exp - now - 120 | floor' /tmp/token)"
             echo "$(date): Sleeping for $sleepSeconds seconds..."
             sleep "$sleepSeconds"
             echo "$(date): Finished."
-            

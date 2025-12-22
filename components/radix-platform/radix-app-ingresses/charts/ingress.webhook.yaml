@@ -3,9 +3,6 @@ kind: Ingress
 metadata:
   annotations:
     ingress.kubernetes.io/force-ssl-redirect: "true"
-  labels:
-    radix-app: radix-github-webhook
-    radix-component: webhook
   name: webhook.custom-domain
   namespace: radix-github-webhook-${RADIX_APP_ENV:=tba}
 spec:

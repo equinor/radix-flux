@@ -1,0 +1,55 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: velero
+  namespace: flux-system
+spec:
+  postBuild:
+    substitute:
+      RADIX_ZONE_MIGRATE: ${RADIX_ZONE_MIGRATE} # Set in postBuild development
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+  patches:
+    - target:
+        kind: HelmRelease
+        name: velero
+        namespace: velero
+      patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: velero
+          namespace: velero
+        spec:
+          chart:
+            spec:
+              version: ${VELERO_VERSION} # Set in postBuild
+          values:
+            podSecurityContext:
+              fsGroup: 1000
+              runAsGroup: 1000
+              runAsUser: 1000
+            resources:
+              limits:
+                cpu: 200m
+                memory: 1Gi
+              requests:
+                cpu: 200m
+                memory: 1Gi
+            rbac:
+              clusterAdministrator: false
+            configuration:
+              backupStorageLocation:
+              - name: default
+                provider: azure
+                default: true
+                bucket: ${clusterName}
+                config:
+                  resourceGroup: common-${RADIX_ZONE_MIGRATE}
+                  storageAccount: radixvelero${RADIX_ZONE_MIGRATE}
+                  useAAD: "true"
+              volumeSnapshotLocation:
+                - name: azure
+                  provider: azure
+                  apitimeout: 300s

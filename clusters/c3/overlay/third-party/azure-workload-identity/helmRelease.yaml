@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: workload-identity-webhook
+  namespace: azure-workload-identity-system
+spec:
+  chart:
+    spec:
+      version: 1.4.1 # https://artifacthub.io/packages/helm/azure-workload-identity/workload-identity-webhook

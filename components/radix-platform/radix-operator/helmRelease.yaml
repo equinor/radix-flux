@@ -130,9 +130,3 @@ spec:
       enforce:
         level: baseline
         version: v1.23
-      audit:
-        level: restricted
-        version: v1.23
-      warn:
-        level: restricted
-        version: v1.23

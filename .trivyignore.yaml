@@ -1,0 +1,96 @@
+misconfigurations:
+  - id: AVD-KSV-0111
+    statement: Radix Cluster Operators needs RBAC for access
+    paths:
+      - components/radix-platform/radix-platform/rbac/radix-platform-operators-admin.yaml
+      - components/radix-platform/radix-platform/rbac/radix-platform-operators-edit.yaml
+
+  - id: AVD-KSV-0041
+    statement: Flux needs to manage secrets
+    paths:
+      - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
+      - clusters/development/flux-system/gotk-components.yaml
+      - clusters/monitoring/flux-system/gotk-components.yaml
+      - clusters/playground/flux-system/gotk-components.yaml
+      - clusters/production/flux-system/gotk-components.yaml
+
+  - id: AVD-KSV-0046
+    statement: Flux controllers require full access to manage all Flux custom resources and cluster-wide operations
+    paths:
+      - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
+      - clusters/development/flux-system/gotk-components.yaml
+      - clusters/monitoring/flux-system/gotk-components.yaml
+      - clusters/playground/flux-system/gotk-components.yaml
+      - clusters/production/flux-system/gotk-components.yaml
+
+  - id: AVD-KSV-0118
+    statement: Flux controllers already has default security context when merged together
+    paths:
+      - clusters/c2-production/helm-controller.yaml
+      - clusters/c2-production/image-automation-controller.yaml
+      - clusters/c2-production/image-reflector-controller.yaml
+      - clusters/c2-production/kustomize-controller.yaml
+      - clusters/c2-production/notification-controller.yaml
+      - clusters/c2-production/source-controller.yaml
+      - clusters/c3/helm-controller.yaml
+      - clusters/c3/image-automation-controller.yaml
+      - clusters/c3/image-reflector-controller.yaml
+      - clusters/c3/kustomize-controller.yaml
+      - clusters/c3/notification-controller.yaml
+      - clusters/c3/source-controller.yaml
+      - clusters/development/helm-controller.yaml
+      - clusters/development/image-automation-controller.yaml
+      - clusters/development/image-reflector-controller.yaml
+      - clusters/development/kustomize-controller.yaml
+      - clusters/development/notification-controller.yaml
+      - clusters/development/source-controller.yaml
+      - clusters/monitoring/helm-controller.yaml
+      - clusters/monitoring/image-automation-controller.yaml
+      - clusters/monitoring/image-reflector-controller.yaml
+      - clusters/monitoring/kustomize-controller.yaml
+      - clusters/monitoring/notification-controller.yaml
+      - clusters/monitoring/source-controller.yaml
+      - clusters/playground/helm-controller.yaml
+      - clusters/playground/image-automation-controller.yaml
+      - clusters/playground/image-reflector-controller.yaml
+      - clusters/playground/kustomize-controller.yaml
+      - clusters/playground/notification-controller.yaml
+      - clusters/playground/source-controller.yaml
+      - clusters/production/helm-controller.yaml
+      - clusters/production/image-automation-controller.yaml
+      - clusters/production/image-reflector-controller.yaml
+      - clusters/production/kustomize-controller.yaml
+      - clusters/production/notification-controller.yaml
+      - clusters/production/source-controller.yaml
+
+  - id: AVD-KSV-0049
+    statement: Flux controllers require access to configmaps for state management
+    paths:
+      - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
+      - clusters/development/flux-system/gotk-components.yaml
+      - clusters/monitoring/flux-system/gotk-components.yaml
+      - clusters/playground/flux-system/gotk-components.yaml
+      - clusters/production/flux-system/gotk-components.yaml
+
+  - id: AVD-KSV-0111
+    statement: Flux cluster-reconciler requires elevated permissions for cluster-wide reconciliation
+    paths:
+      - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
+      - clusters/development/flux-system/gotk-components.yaml
+      - clusters/monitoring/flux-system/gotk-components.yaml
+      - clusters/playground/flux-system/gotk-components.yaml
+      - clusters/production/flux-system/gotk-components.yaml
+
+  - id: AVD-KSV-0125
+    statement: Flux controllers use official images from ghcr.io/fluxcd which is a trusted registry
+    paths:
+      - clusters/c2-production/flux-system/gotk-components.yaml
+      - clusters/c3/flux-system/gotk-components.yaml
+      - clusters/development/flux-system/gotk-components.yaml
+      - clusters/monitoring/flux-system/gotk-components.yaml
+      - clusters/playground/flux-system/gotk-components.yaml
+      - clusters/production/flux-system/gotk-components.yaml

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-system
+  labels:
+    purpose: radix-base-ns
+    radix-wildcard-sync: radix-wildcard-tls-cert

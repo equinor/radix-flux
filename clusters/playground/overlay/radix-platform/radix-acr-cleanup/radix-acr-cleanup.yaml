@@ -56,7 +56,6 @@ spec:
               - radix-job-scheduler
               - radix-batch-scheduler
               - radix-vulnerability-scanner
-              - kubed
               - oauth2-proxy
               - radix-cluster-cleanup
               - radix-buildkit-builder

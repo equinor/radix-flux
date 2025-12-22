@@ -3,9 +3,6 @@ kind: Ingress
 metadata:
   annotations:
     ingress.kubernetes.io/force-ssl-redirect: "true"
-  labels:
-    radix-app: radix-cost-allocation-api
-    radix-component: server
   name: server.custom-domain
   namespace: radix-cost-allocation-api-${RADIX_APP_ENV:=tba}
 spec:
