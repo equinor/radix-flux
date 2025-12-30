@@ -26,7 +26,7 @@ spec:
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
       GRAFANA_DB_USERNAME: radix-id-grafana-admin-dev
       GRAFANA_LOKI: 2.10.3 # https://artifacthub.io/packages/helm/grafana/loki-stack
-      GRAFANA_VERSION: 10.4.0 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 10.4.1 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a
       KEDA_VERSION: 2.18.3 # https://artifacthub.io/packages/helm/kedacore/keda
       KUBE_PROMETHEUS_STACK: 80.8.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
