@@ -5,14 +5,12 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/gateway-api/crds"
+  path: "./clusters/playground/overlay/third-party/gateway-api/crds"
   prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  wait: true
-  postBuild:
-    substitute:
-      GATEWAY_API_VERSION: ${GATEWAY_API_VERSION:=tba}
+
 
 

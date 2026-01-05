@@ -6,7 +6,6 @@ resources:
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
-  - ../../components/third-party/gateway-api
   - ../../components/radix-platform/radix-platform
   - ../../components/radix-platform/radix-cost-allocation
   - ../../components/radix-platform/radix-vulnerability-scanner
@@ -20,8 +19,10 @@ resources:
   - ../../components/third-party/cert-manager-issuers/digicert/http01
   - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
   - ../../components/third-party/external-secrets
+  - ../../components/third-party/gateway
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
+  - ../../components/third-party/istio
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/kubernetes-replicator
   - ../../components/third-party/keda
@@ -33,6 +34,7 @@ resources:
   - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
   - ./overlay/radix-platform/radix-operator/radix-operator.yaml
+  - ./overlay/third-party/gateway-api
 
 patches:
   - path: ./postBuild.yaml
