@@ -1,0 +1,37 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: istio-gateway #Default gateway
+  namespace: istio-system
+spec:
+  gatewayClassName: istio
+  infrastructure:
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-${zone} # set in configmap flux-system/radix-flux-config
+      service.beta.kubernetes.io/azure-pip-name: ${pip_gateway_ip} # set in configmap flux-system/radix-flux-config
+    # parametersRef:
+    #   group: ""
+    #   kind: ConfigMap
+    #   name: istio-gateway-config 
+  allowedListeners:
+    namespaces:
+      from: All
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: https
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        certificateRefs:
+          - group: ""
+            kind: Secret
+            name: radix-wildcard-tls-cert
+        mode: Terminate
