@@ -22,14 +22,14 @@ resources:
   - ../../components/third-party/external-secrets
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
-  - ../../components/third-party/istio
+  # - ../../components/third-party/istio
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/kubernetes-replicator
   - ../../components/radix-platform/radix-ingress-default-backend
   - ../../components/third-party/keda
   - ../../components/third-party/tekton
   - ../../components/third-party/velero
-  - ./overlay/third-party/istio/gateway.yaml
+  # - ./overlay/third-party/istio/gateway.yaml
   - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
   - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
   - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
@@ -52,7 +52,7 @@ patches:
   - path: ./overlay/third-party/external-secrets/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
-  - path: ./overlay/third-party/istio/patches.yaml
+  #- path: ./overlay/third-party/istio/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
