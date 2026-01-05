@@ -33,7 +33,7 @@ spec:
       NGINX_VERSION: 4.13.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       OAUTH2PROXY_TAG: "v7.12.0"
       OAUTH2REDIS_TAG: 8.2.2-alpine3.22
-      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.0 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
+      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.1 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixc2prod.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixc2app.azurecr.io
       RADIX_APP_ENV: prod
