@@ -50,7 +50,7 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixplatformcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixplatformcache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixplatformcache.azurecr.io/alpine:3.20
-      RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
+      RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.3 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: platform
       RADIX_ZONE: prod # dev | playground | prod
