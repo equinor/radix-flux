@@ -1,7 +1,7 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: istio-gateway
+  name: istio-gateway #Default gateway
   namespace: istio-system
 spec:
   gatewayClassName: istio
@@ -11,7 +11,7 @@ spec:
     parametersRef:
       group: ""
       kind: ConfigMap
-      name: istio-gateway-config
+      name: istio-gateway-config 
   allowedListeners:
     namespaces:
       from: All

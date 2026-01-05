@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: gateway-api
+    - name: gateway-crd
   interval: 5m
   path: "./components/third-party/istio/chart"
   prune: true
