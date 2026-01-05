@@ -7,9 +7,9 @@ spec:
   interval: 5m
   path: "./components/third-party/gateway/chart"
   postBuild:
-    substitute:
-      PIP_GATEWAY_IP: ${PIP_GATEWAY_IP:=tba}
-      AZURE_RESOURCE_GROUP: ${AZURE_RESOURCE_GROUP:=tba}
+    # substitute:
+    #   PIP_GATEWAY_IP: ${PIP_GATEWAY_IP:=tba}
+    #   AZURE_RESOURCE_GROUP: ${AZURE_RESOURCE_GROUP:=tba}
     substituteFrom:
     - kind: ConfigMap
       name: radix-flux-config

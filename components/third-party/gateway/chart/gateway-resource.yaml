@@ -9,10 +9,6 @@ spec:
     annotations:
       service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-${zone} # set in configmap flux-system/radix-flux-config
       service.beta.kubernetes.io/azure-pip-name: ${pip_gateway_ip} # set in configmap flux-system/radix-flux-config
-    # parametersRef:
-    #   group: ""
-    #   kind: ConfigMap
-    #   name: istio-gateway-config 
   allowedListeners:
     namespaces:
       from: All
