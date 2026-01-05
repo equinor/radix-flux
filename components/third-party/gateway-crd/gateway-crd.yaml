@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/gateway-crds/crds"
+  path: "./components/third-party/gateway-crd/crds"
   prune: true
   sourceRef:
     kind: GitRepository
