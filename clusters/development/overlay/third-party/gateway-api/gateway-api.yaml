@@ -5,10 +5,12 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
+  path: "./clusters/development/overlay/third-party/gateway-api/crds"
   prune: true
   wait: true
-  resources:
-  - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.0/experimental-install.yaml
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
 
 
 
