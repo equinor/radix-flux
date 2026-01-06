@@ -13,5 +13,6 @@ spec:
   wait: true
   postBuild:
     substitute:
-      GATEWAY_API_VERSION: v1.4.0
+      GATEWAY_API_VERSION: ${GATEWAY_API_VERSION:=tba}
+
 
