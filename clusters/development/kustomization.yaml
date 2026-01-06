@@ -20,7 +20,7 @@ resources:
   - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
   - ../../components/third-party/external-secrets
   - ../../components/third-party/gateway
-  - ../../components/third-party/gateway-api
+  # - ../../components/third-party/gateway-api
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/istio
