@@ -6,7 +6,7 @@ resources:
 patches:
   - target:
       kind: Service
-      name: gateway
+      name: gateway-istio
       namespace: istio-system
     patch: |-
       - op: replace
