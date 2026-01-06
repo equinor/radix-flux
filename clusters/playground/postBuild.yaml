@@ -13,7 +13,7 @@ spec:
       BLOB_CSI_DRIVER: 1.27.0 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: fb932ba4-56e6-468d-9e75-4389507a3fde # MI radix-id-certmanager-playground
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-playground
-      CERT_MANAGER_VERSION: 1.18.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: b1a842b2-8e0e-4c2f-807e-8355eeb21f32
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-playground.database.windows.net
       EXTERNAL_SECRET_MI_CLIENT_ID: 4e3784c7-1a3e-4885-9783-b7227f8d1fb3
