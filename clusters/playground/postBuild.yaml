@@ -58,7 +58,7 @@ spec:
       SECCOMP_IMAGE_TAG: 3.22.1
       TEKTON_VERSION: v0.53.0
       VELERO_MI_CLIENT_ID: 50671a4a-0236-4f40-9b6e-54a559cbe824
-      velero_plugin_azure: v1.13.0 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
+      velero_plugin_azure: v1.13.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_VERSION: 11.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: a59fc37e-f966-4a53-ba73-cac5e2590b24
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-playground.database.windows.net
