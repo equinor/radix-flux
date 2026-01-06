@@ -11,6 +11,4 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
-  postBuild:
-    substitute:
-      GATEWAY_API_VERSION: ${GATEWAY_API_VERSION:=tba} # Set in clusters/<cluster>/postBuild
+
