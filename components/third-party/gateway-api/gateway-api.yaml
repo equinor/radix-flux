@@ -11,4 +11,7 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
+  postBuild:
+    substitute:
+      GATEWAY_API_VERSION: v1.4.0
 
