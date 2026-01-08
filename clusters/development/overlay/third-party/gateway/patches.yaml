@@ -9,7 +9,7 @@ spec:
         kind: ConfigMap
         name: istio-gateway-config
         namespace: istio-system
-      patch: |-
+      patch: |- # https://istio.io/latest/docs/tasks/traffic-management/ingress/gateway-api/
         apiVersion: v1
         kind: ConfigMap
         metadata:
@@ -18,5 +18,4 @@ spec:
         data:
           deployment: |
             spec:
-              replicas: 2
-
+              replicas: 1
