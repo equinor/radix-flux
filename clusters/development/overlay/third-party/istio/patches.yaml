@@ -27,7 +27,7 @@ spec:
         version: v1
       patch: |-
         - op: add
-          path: /spec/ingress/-/from
+          path: /spec/ingress/0/from
           value:
             - namespaceSelector:
                 matchLabels:
