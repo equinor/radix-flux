@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-gateway-config
+  namespace: istio-system
+data:
+  deployment: |
+    spec:
+      replicas: 2
