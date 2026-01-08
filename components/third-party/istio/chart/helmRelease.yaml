@@ -21,8 +21,6 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
-    networkPolicy:
-      enabled: true
     env:
       PILOT_ENABLE_GATEWAY_API: "true"
       PILOT_ENABLE_GATEWAY_API_STATUS: "true"
@@ -33,3 +31,5 @@ spec:
       accessLogEncoding: JSON
     global:
       logAsJson: true
+      networkPolicy:
+        enabled: true
