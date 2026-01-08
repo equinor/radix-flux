@@ -20,9 +20,22 @@ spec:
               spec:
                 version: ${ISTIO_VERSION} # Set in postBuild development
     - target:
-        group: networking.k8s.io
-        version: v1
         kind: NetworkPolicy
         name: istiod
         namespace: istio-system
-      path: istiod-networkpolicy-ingress.yaml
+        group: networking.k8s.io
+        version: v1
+      patch: |-
+        - op: replace
+          path: /spec/ingress/0/from
+          value:
+            - namespaceSelector:
+                matchLabels:
+                  kubernetes.io/metadata.name: monitor
+        - op: replace
+          path: /spec/ingress/1/from
+          value:
+            - namespaceSelector:
+                matchLabels:
+                  kubernetes.io/metadata.name: monitor
+
