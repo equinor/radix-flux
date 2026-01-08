@@ -19,11 +19,10 @@ spec:
             chart:
               spec:
                 version: ${ISTIO_VERSION} # Set in postBuild development
-  patchesJson6902:
-  - target:
-      group: networking.k8s.io
-      version: v1
-      kind: NetworkPolicy
-      name: istiod
-      namespace: istio-system
-    path: istiod-networkpolicy-ingress.json
+    - target:
+        group: networking.k8s.io
+        version: v1
+        kind: NetworkPolicy
+        name: istiod
+        namespace: istio-system
+      path: istiod-networkpolicy-ingress.yaml
