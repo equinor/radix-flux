@@ -26,7 +26,7 @@ spec:
         group: networking.k8s.io
         version: v1
       patch: |-
-        - op: add
+        - op: replace
           path: /spec/ingress/0/from
           value:
             - namespaceSelector:
