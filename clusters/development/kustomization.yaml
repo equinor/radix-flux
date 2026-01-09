@@ -6,7 +6,6 @@ resources:
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
-  - ../../components/third-party/gateway-api
   - ../../components/radix-platform/radix-platform
   - ../../components/radix-platform/radix-cost-allocation
   - ../../components/radix-platform/radix-vulnerability-scanner
@@ -20,6 +19,7 @@ resources:
   - ../../components/third-party/cert-manager-issuers/digicert/http01
   - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
   - ../../components/third-party/external-secrets
+  - ../../components/third-party/gateway
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/istio
@@ -29,12 +29,12 @@ resources:
   - ../../components/third-party/keda
   - ../../components/third-party/tekton
   - ../../components/third-party/velero
-  - ./overlay/third-party/istio/gateway.yaml
   - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
   - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
   - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
   - ./overlay/radix-platform/radix-operator/radix-operator.yaml
+  - ./overlay/third-party/gateway-api
 
 patches:
   - path: ./postBuild.yaml
@@ -50,6 +50,7 @@ patches:
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/external-secrets/patches.yaml
+  - path: ./overlay/third-party/gateway/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/istio/patches.yaml

@@ -31,3 +31,5 @@ spec:
       accessLogEncoding: JSON
     global:
       logAsJson: true
+      networkPolicy:
+        enabled: false

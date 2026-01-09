@@ -1,13 +1,14 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: istio-gateway
+  name: gateway
   namespace: istio-system
 spec:
   gatewayClassName: istio
   infrastructure:
     annotations:
-      service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-dev
+      service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-${zone}
+      service.beta.kubernetes.io/azure-pip-name: ${pip_gateway_ip}
     parametersRef:
       group: ""
       kind: ConfigMap
