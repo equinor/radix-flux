@@ -4,4 +4,4 @@ resources:
 - helmRepo.yaml
 - helmRelease.yaml
 - ingressclass.yaml
-- networkpolicy.yaml
+# - networkpolicy.yaml
