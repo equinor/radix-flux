@@ -32,4 +32,4 @@ spec:
     global:
       logAsJson: true
       networkPolicy:
-        enabled: true
+        enabled: false
