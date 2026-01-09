@@ -40,7 +40,7 @@ spec:
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.36
       RADIX_BUILDKIT_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-buildkit-builder:tag"}
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
-      RADIX_CICD_CANARY_CHART_VERSION: 1.5.1 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
+      RADIX_CICD_CANARY_CHART_VERSION: 1.5.2 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
       RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.1 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
       RADIX_ENVIRONMENT: prod # dev | prod
       RADIX_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-image-builder:tag"}
