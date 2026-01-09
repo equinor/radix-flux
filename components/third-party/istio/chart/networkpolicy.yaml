@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: istiod
+  namespace: istio-system
+  labels:
+    app: istiod
+spec:
+  podSelector:
+    matchLabels:
+      app: istiod
+      istio.io/rev: default
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - ports:
+        - port: 15017
+          protocol: TCP
+      from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitor
+    - ports:
+        - port: 15010
+          protocol: TCP
+        - port: 15011
+          protocol: TCP
+        - port: 15012
+          protocol: TCP
+        - port: 8080
+          protocol: TCP
+        - port: 15014
+          protocol: TCP
+      from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitor
+  egress:
+    - {}
