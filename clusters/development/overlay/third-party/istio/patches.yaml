@@ -26,8 +26,14 @@ spec:
         group: networking.k8s.io
         version: v1
       patch: |-
-        - op: replace
+        - op: add
           path: /spec/ingress/0/from
+          value:
+            - namespaceSelector:
+                matchLabels:
+                  kubernetes.io/metadata.name: monitor
+        - op: add
+          path: /spec/ingress/1/from
           value:
             - namespaceSelector:
                 matchLabels:
