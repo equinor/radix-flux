@@ -25,7 +25,7 @@ spec:
       GRAFANA_AR_CLIENT_ID: e1f72508-ae39-4231-87f1-27f517aa044a
       GRAFANA_DB_HOST: s941-radix-grafana-playground.mysql.database.azure.com
       GRAFANA_DB_USERNAME: radix-id-grafana-admin-playground
-      GRAFANA_VERSION: 9.3.2 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 10.4.0 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_WI_CLIENT_ID: f8597620-379a-40ac-9f1d-1fed7da71204
       KEDA_VERSION: 2.18.3 # https://artifacthub.io/packages/helm/kedacore/keda
       KUBE_PROMETHEUS_STACK: 76.4.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
