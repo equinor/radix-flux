@@ -4,7 +4,6 @@ resources:
   - flux-system
   - ../../components/flux/image-update-automation
   - ../../components/flux/storageclasses
-  - ../../components/third-party/gateway-api
   - ../../components/third-party/cert-manager
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
