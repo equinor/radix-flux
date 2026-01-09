@@ -23,8 +23,8 @@ spec:
         kind: NetworkPolicy
         name: istiod
         namespace: istio-system
-        # group: networking.k8s.io
-        # version: v1
+        group: networking.k8s.io
+        version: v1
       patch: |-
         - op: add
           path: /spec/ingress/0/from
@@ -38,5 +38,6 @@ spec:
             - namespaceSelector:
                 matchLabels:
                   kubernetes.io/metadata.name: monitor
+
 
 
