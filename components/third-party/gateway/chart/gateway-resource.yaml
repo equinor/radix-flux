@@ -8,7 +8,7 @@ spec:
   infrastructure:
     annotations:
       service.beta.kubernetes.io/azure-load-balancer-resource-group: clusters-${zone}
-      service.beta.kubernetes.io/azure-pip-name: ${pip_gateway_ip}
+      service.beta.kubernetes.io/azure-pip-name: ${pipGatewayIp}
     parametersRef:
       group: ""
       kind: ConfigMap
