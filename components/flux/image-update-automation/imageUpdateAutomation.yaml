@@ -11,13 +11,13 @@ spec:
   git:
     checkout:
       ref:
-        branch: master
+        branch: 3109-cert-manager-gateway-api
     commit:
       author:
         email: radix@statoilsrm.onmicrosoft.com
         name: FluxBot
       messageTemplate: |
-        Automated image update
+        Automated image update (ignore this PR, just for testing in branch 3109-cert-manager-gateway-api)
 
         Cluster: ${clusterName}
 
@@ -38,7 +38,7 @@ spec:
         - {{.}}
         {{ end -}}
     push:
-      branch: flux-image-updates
+      branch: flux-image-updates-3109-cert-manager-gateway-api
   update:
     path: ${FLUX_CONFIG_PATH}
     strategy: Setters
