@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 1.20.0 # Set by flux patch
+      version: ${chartVersion}
       sourceRef:
         kind: HelmRepository
         name: external-dns
@@ -27,11 +27,11 @@ spec:
 
     policy: sync
 
-    txtOwnerId: weekly-02
-    txtPrefix: istio-
+    txtOwnerId: ${clusterName}
+    # txtPrefix: istio-
 
     domainFilters:
-      - dev.radix.equinor.com
+      - ${dnsZone}
 
     sources:
       - gateway-httproute
@@ -46,7 +46,7 @@ spec:
 
     serviceAccount:
       annotations:
-        azure.workload.identity/client-id: bc6dbaac-41d6-4c3f-a373-5e679075d858
+        azure.workload.identity/client-id: ${managedIdentityId} #bc6dbaac-41d6-4c3f-a373-5e679075d858
 
     podLabels:
       azure.workload.identity/use: "true"

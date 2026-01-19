@@ -49,6 +49,11 @@ spec:
                 groups:
                   - a5dfa635-dc00-4a28-9ad9-9e7f1e56919d # Radix Platform Developers
                   - 64b28659-4fe4-4222-8497-85dd7e43e25b # Radix Platform Users
+            
+            ingress:
+              certificate:
+                automation:
+                  clusterIssuer: digicert-http01
       target:
         kind: HelmRelease
         name: radix-operator

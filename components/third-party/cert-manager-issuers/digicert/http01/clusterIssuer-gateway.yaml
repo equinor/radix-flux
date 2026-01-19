@@ -1,0 +1,27 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: digicert-clusterissuer-gateway-http01
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: cert-manager
+    - name: external-secrets-operator
+  interval: 5m
+  path: "./components/third-party/cert-manager-issuers/digicert/http01/gateway"
+  postBuild:
+    substitute:
+      certManagerNamespace: cert-manager
+      clusterIssuerName: digicert-gateway-http01
+      accountHMACSecretName: digicert-http01-account-hmac-key
+      accountHMACSecretKey: secret
+      privateKeySecretName: digicert-gateway-http01-private-key
+    substituteFrom:
+      - kind: Secret
+        name: digicert-clusterissuer-flux-values
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  timeout: 2m

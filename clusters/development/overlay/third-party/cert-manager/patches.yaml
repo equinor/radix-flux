@@ -4,6 +4,8 @@ metadata:
   name: cert-manager
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: gateway-api
   patches:
     - target:
         kind: HelmRelease

@@ -7,7 +7,16 @@ spec:
   interval: 5m
   path: "./components/third-party/external-dns/chart"
   prune: true
+  dependsOn:
+    - name: gateway-api
   sourceRef:
     kind: GitRepository
     name: flux-system
+  postBuild:
+    substitute:
+      managedIdentityId: bc6dbaac-41d6-4c3f-a373-5e679075d858
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+        optional: false
 
