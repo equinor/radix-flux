@@ -15,6 +15,7 @@ spec:
   postBuild:
     substitute:
       managedIdentityId: bc6dbaac-41d6-4c3f-a373-5e679075d858
+      chartVersion: 1.20.0
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
