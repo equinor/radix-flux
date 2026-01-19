@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/external-dns/chart"
+  path: "./components/third-party/external-dns"
   prune: true
   dependsOn:
     - name: gateway-api
