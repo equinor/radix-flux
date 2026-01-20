@@ -44,8 +44,8 @@ spec:
 
     extraArgs:
       - --dry-run
-      # - --gateway-name=gateway
-      # - --gateway-namespace=istio-system
+      - --gateway-name=gateway
+      - --gateway-namespace=istio-system
 
     serviceAccount:
       annotations:
