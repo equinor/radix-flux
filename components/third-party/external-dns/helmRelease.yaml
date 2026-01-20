@@ -52,8 +52,9 @@ spec:
 
     extraVolumes:
       - name: azure-config-file
-        secret:
-          secretName: external-dns-azure
+        configMap:
+          name: external-dns-azure
+          items: ["azure.json"]
 
     extraVolumeMounts:
       - name: azure-config-file
