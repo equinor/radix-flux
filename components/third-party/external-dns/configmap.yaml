@@ -6,7 +6,7 @@ metadata:
 data:
   azure.json: |
     {
-      "tenantId": "${tenantId}"
+      "tenantId": "${tenantId}",
       "subscriptionId": "${subscriptionId}",
       "resourceGroup": "${resourceGroup}",
       "useWorkloadIdentityExtension": true
