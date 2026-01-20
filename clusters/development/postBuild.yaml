@@ -7,27 +7,27 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: weekly-03
+      ACTIVE_CLUSTER: weekly-04
       AZ_RESOURCE_DNS: dev.radix.equinor.com
-      AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
+      AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b # gitleaks:allow
       BLOB_CSI_DRIVER: 1.27.0 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
-      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: a22f9976-c8a8-4802-b95b-d6e08aac203a # MI radix-id-certmanager-dev
+      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: a22f9976-c8a8-4802-b95b-d6e08aac203a # gitleaks:allow
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-dev
       CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
-      COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c
+      COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c # gitleaks:allow
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
-      EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d
+      EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d # gitleaks:allow
       EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
-      EXTERNAL_SECRETS: 1.2.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
+      EXTERNAL_SECRETS: 1.2.1 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/development
       GIT_CLONE_TAG: "2.45.2"
-      GRAFANA_AR_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70
+      GRAFANA_AR_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70 # gitleaks:allow
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
       GRAFANA_DB_USERNAME: radix-id-grafana-admin-dev
       GRAFANA_LOKI: 2.10.3 # https://artifacthub.io/packages/helm/grafana/loki-stack
       GRAFANA_VERSION: 10.4.0 # https://artifacthub.io/packages/helm/grafana/grafana
-      GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a
+      GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a # gitleaks:allow
       KEDA_VERSION: 2.18.3 # https://artifacthub.io/packages/helm/kedacore/keda
       KUBE_PROMETHEUS_STACK: 80.8.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.12.2 # https://github.com/mittwald/kubernetes-replicator
@@ -61,10 +61,10 @@ spec:
       RADIX_ZONE: dev # dev | playground | prod
       SECCOMP_IMAGE_TAG: 3.22.1
       TEKTON_VERSION: v0.53.0
-      VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94
+      VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94 # gitleaks:allow
       velero_plugin_azure: v1.13.1 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_VERSION: 11.2.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
-      VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
+      VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549 # gitleaks:allow
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
     substituteFrom:
       - kind: ConfigMap
