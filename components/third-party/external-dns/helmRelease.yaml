@@ -26,6 +26,8 @@ spec:
 
     policy: sync
 
+    triggerLoopOnEvent: true
+
     txtOwnerId: ${clusterName}
     # txtPrefix: istio-
 
