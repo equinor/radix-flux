@@ -54,9 +54,6 @@ spec:
       - name: azure-config-file
         configMap:
           name: external-dns-azure
-          items:
-            - key: azure.json
-              path: azure.json
 
     extraVolumeMounts:
       - name: azure-config-file
