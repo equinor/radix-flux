@@ -43,7 +43,7 @@ spec:
       - A
 
     extraArgs:
-      - --dry-run
+      # - --dry-run
       - --gateway-name=gateway
       - --gateway-namespace=istio-system
 
