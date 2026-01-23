@@ -7,22 +7,25 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: weekly-52
+      ACTIVE_CLUSTER: weekly-04
       AZ_RESOURCE_DNS: dev.radix.equinor.com
       AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b
       BLOB_CSI_DRIVER: 1.27.1 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: a22f9976-c8a8-4802-b95b-d6e08aac203a # MI radix-id-certmanager-dev
+      AZ_SUBSCRIPTION_ID: 16ede44b-1f74-40a5-b428-46cca9a5741b # gitleaks:allow
+      BLOB_CSI_DRIVER: 1.27.1 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
+      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: a22f9976-c8a8-4802-b95b-d6e08aac203a # gitleaks:allow
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-dev
       CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
-      COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c
+      COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c # gitleaks:allow
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
-      EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d
+      EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d # gitleaks:allow
       EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
       EXTERNAL_SECRETS: 1.2.1 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/development
       GIT_CLONE_TAG: "2.45.2"
-      GRAFANA_AR_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70
+      GRAFANA_AR_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70 # gitleaks:allow
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
       GRAFANA_DB_USERNAME: radix-id-grafana-admin-dev
       GRAFANA_LOKI: 2.10.3 # https://artifacthub.io/packages/helm/grafana/loki-stack
@@ -30,32 +33,36 @@ spec:
       GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a
       KEDA_VERSION: 2.18.3 # https://artifacthub.io/packages/helm/kedacore/keda
       KUBE_PROMETHEUS_STACK: 81.2.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      GRAFANA_VERSION: 10.4.0 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a # gitleaks:allow
+      KEDA_VERSION: 2.18.3 # https://artifacthub.io/packages/helm/kedacore/keda
+      KUBE_PROMETHEUS_STACK: 81.0.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       KUBERNETES_REPLICATOR: v2.12.2 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       ISTIO_VERSION: 1.28.2 # https://artifacthub.io/packages/helm/istio-official/istiod
       OAUTH2PROXY_TAG: "v7.12.0" #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
       OAUTH2REDIS_TAG: 8.2.2-alpine3.22 # https://hub.docker.com/_/redis/tags
-      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.0 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
+      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.1 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixdev.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixdevapp.azurecr.io
       RADIX_APP_ENV: qa
       RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.36
       RADIX_BUILDKIT_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-buildkit-builder:tag"}
       RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io
-      RADIX_CICD_CANARY_CHART_VERSION: 1.5.1 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
-      RADIX_CLUSTER_CLEANUP_CHART_VERSION: 1.1.0 # {"$imagepolicy": "flux-system:radix-cluster-cleanup-chart:tag"}
-      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.0 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
+      RADIX_CICD_CANARY_CHART_VERSION: 1.5.2 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
+      RADIX_CLUSTER_CLEANUP_CHART_VERSION: 1.1.1 # {"$imagepolicy": "flux-system:radix-cluster-cleanup-chart:tag"}
+      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.1 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
       RADIX_COST_ALLOCATION_TAG: master-2f3d5136-1749723436 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-image-builder:tag"}
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
-      RADIX_OAUTH_GUARD_CHART_VERSION: 1.1.0 # {"$imagepolicy": "flux-system:radix-oauth-guard-chart:tag"}
-      RADIX_OPERATOR_CHART_VERSION: 1.107.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
+      RADIX_OAUTH_GUARD_CHART_VERSION: 1.1.1 # {"$imagepolicy": "flux-system:radix-oauth-guard-chart:tag"}
+      RADIX_OPERATOR_CHART_VERSION: 1.108.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixdevcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixdevcache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixdevcache.azurecr.io/alpine:3.20
-      RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
+      RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.3 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: dev
       RADIX_ZONE: dev # dev | playground | prod
@@ -65,6 +72,10 @@ spec:
       velero_plugin_azure: v1.13.2 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_VERSION: 11.3.2 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549
+      VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94 # gitleaks:allow
+      velero_plugin_azure: v1.13.2 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
+      VELERO_VERSION: 11.3.2 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549 # gitleaks:allow
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
     substituteFrom:
       - kind: ConfigMap

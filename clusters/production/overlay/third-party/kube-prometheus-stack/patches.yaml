@@ -27,10 +27,10 @@ spec:
               resources:
                 limits:
                   cpu: 800m
-                  memory: 256Mi
+                  memory: 512Mi
                 requests:
                   cpu: 400m
-                  memory: 128Mi
+                  memory: 256Mi
               affinity:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:

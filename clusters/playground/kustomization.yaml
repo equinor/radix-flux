@@ -6,7 +6,6 @@ resources:
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
-  - ../../components/third-party/gateway-api
   - ../../components/radix-platform/radix-platform
   - ../../components/radix-platform/radix-cost-allocation
   - ../../components/radix-platform/radix-vulnerability-scanner

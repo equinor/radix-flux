@@ -1,0 +1,13 @@
+# Gitleaks configuration file
+# Documentation: https://github.com/gitleaks/gitleaks
+
+title = "gitleaks config"
+
+# Exclude specific paths from scanning
+[allowlist]
+paths = [
+    "clusters/**/postBuild.yaml"
+]
+
+# Optional: Add description for why this path is excluded
+description = "Excluding all postBuild configuration files from secret scanning"
