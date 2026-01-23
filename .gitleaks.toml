@@ -6,7 +6,7 @@ title = "gitleaks config"
 # Exclude specific paths from scanning
 [allowlist]
 paths = [
-    '''clusters/**/postBuild.yaml'''
+    "clusters/**/postBuild.yaml"
 ]
 
 # Optional: Add description for why this path is excluded
