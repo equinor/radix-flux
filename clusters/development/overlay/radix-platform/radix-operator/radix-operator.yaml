@@ -54,7 +54,7 @@ spec:
         name: radix-operator
         namespace: default
     - patch: |-
-        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        apiVersion: image.toolkit.fluxcd.io/v1beta2
         kind: ImagePolicy
         metadata:
           name: radix-image-builder
@@ -68,7 +68,7 @@ spec:
         name: radix-image-builder
         namespace: flux-system
     - patch: |-
-        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        apiVersion: image.toolkit.fluxcd.io/v1beta2
         kind: ImagePolicy
         metadata:
           name: radix-buildkit-builder
@@ -82,7 +82,7 @@ spec:
         name: radix-buildkit-builder
         namespace: flux-system
     - patch: |-
-        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        apiVersion: image.toolkit.fluxcd.io/v1beta2
         kind: ImagePolicy
         metadata:
           name: radix-operator-chart

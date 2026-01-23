@@ -40,7 +40,7 @@ spec:
         name: radix-cluster-cleanup
         namespace: default
     - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
-        apiVersion: image.toolkit.fluxcd.io/v1beta1
+        apiVersion: image.toolkit.fluxcd.io/v1beta2
         kind: ImagePolicy
         metadata:
           name: radix-cluster-cleanup-chart
