@@ -4,4 +4,13 @@
 #   name: gateway-api
 #   namespace: flux-system
 # spec:
+#   interval: 5m
 #   path: "./components/third-party/gateway-api/v1.4.0"
+#   prune: true
+#   wait: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+
+
+
