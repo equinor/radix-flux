@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./clusters/development/overlay/third-party/gateway-api/crds"
+  path: "./components/third-party/gateway-api/v1.4.0"
   prune: true
   wait: true
   sourceRef:
