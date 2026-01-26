@@ -31,6 +31,7 @@ resources:
 - ../../components/third-party/cert-manager-issuers/digicert/dns01
 - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
 - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
+- ./overlay/third-party/gateway-api/gateway-api.yaml
 
 patches:
   - path: ./postBuild.yaml
