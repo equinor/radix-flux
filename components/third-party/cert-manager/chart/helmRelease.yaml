@@ -19,6 +19,10 @@ spec:
       retries: 3
   values:
     # resources: xx # Set by flux patch
+    config: # https://cert-manager.io/docs/installation/configuring-components/#configuration-file
+      apiVersion: controller.config.cert-manager.io/v1alpha1
+      kind: ControllerConfiguration
+      enableGatewayAPI: true
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
