@@ -1,5 +1,5 @@
 # This is a hack, since image update automation cant scan HelmRepositories
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: radix-prometheus-proxy-chart

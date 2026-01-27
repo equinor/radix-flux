@@ -147,7 +147,7 @@ The ImageRepository defines the container registry where Flux should look for ne
 ```yaml
 # file: components/radix-platform/radix-operator/imageRepo.yaml
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: radix-operator
@@ -164,7 +164,7 @@ The imagePolicy resource specifies how Flux will identify the latest container i
 ```yaml
 # file: components/radix-platform/radix-operator/imagePolicy.yaml
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: radix-operator
@@ -187,7 +187,7 @@ The imageUpdateAutomation resource specifies which Git repository and branch Flu
 ```yaml
 # file: components/flux/imageUpdateAutomation.yaml
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
   name: radix-dev-acr-auto-update
