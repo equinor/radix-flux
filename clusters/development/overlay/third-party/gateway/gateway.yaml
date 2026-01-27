@@ -1,0 +1,54 @@
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: gateway-lb
+#   namespace: flux-system
+# spec:
+#   patches:
+#     - target:
+#         kind: ConfigMap
+#         name: istio-gateway-config
+#         namespace: istio-system
+#       patch: |- # https://istio.io/latest/docs/tasks/traffic-management/ingress/gateway-api/
+#         apiVersion: v1
+#         kind: ConfigMap
+#         metadata:
+#           name: istio-gateway-config
+#           namespace: istio-system
+#         data:
+#           deployment: |
+#             spec:
+#               replicas: 1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: gateway-lb
+  namespace: flux-system
+spec:
+  patches:
+    - target:
+        kind: ConfigMap
+        name: istio-gateway-config
+        namespace: istio-system
+      patch: |- # https://istio.io/latest/docs/tasks/traffic-management/ingress/gateway-api/
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: istio-gateway-config
+          namespace: istio-system
+        data:
+          deployment: |
+            spec:
+              replicas: 1
+  interval: 5m
+  path: "./components/third-party/gateway/chart"
+  postBuild:
+    substituteFrom:
+    - kind: ConfigMap
+      name: radix-flux-config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: gateway-api
