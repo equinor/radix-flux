@@ -4,6 +4,14 @@ metadata:
   name: istio
   namespace: flux-system
 spec:
+  interval: 5m
+  path: "./components/third-party/istio/chart"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: gateway-api
   patches:
     - target:
         kind: HelmRelease
@@ -18,12 +26,4 @@ spec:
           spec:
             chart:
               spec:
-                version: ${ISTIO_VERSION} # Set in postBuild development
-  interval: 5m
-  path: "./components/third-party/istio/chart"
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  dependsOn:
-    - name: gateway-api
+                version: 1.28.2 # https://artifacthub.io/packages/helm/istio-official/istiod
