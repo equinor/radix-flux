@@ -34,9 +34,9 @@ resources:
   - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
   - ./overlay/radix-platform/radix-operator/radix-operator.yaml
-  - ./overlay/third-party/gateway-api/gateway-api.yaml
-  - ./overlay/third-party/gateway/gateway.yaml
-  - ./overlay/third-party/istio/istio.yaml
+  - ./infrastructure/third-party/gateway-api/gateway-api.yaml
+  - ./infrastructure/third-party/gateway/gateway.yaml
+  - ./infrastructure/third-party/istio/istio.yaml
 
 patches:
   - path: ./postBuild.yaml
