@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/istio/chart"
+  path: "./components/third-party/istio_v2"
   prune: true
   sourceRef:
     kind: GitRepository

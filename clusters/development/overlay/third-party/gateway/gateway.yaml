@@ -20,7 +20,7 @@ spec:
             spec:
               replicas: 1
   interval: 5m
-  path: "./components/third-party/gateway/chart"
+  path: "./components/third-party/gateway_v2"
   postBuild:
     substituteFrom:
     - kind: ConfigMap
