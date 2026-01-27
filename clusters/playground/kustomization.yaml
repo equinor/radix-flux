@@ -19,6 +19,7 @@ resources:
   - ../../components/third-party/cert-manager-issuers/digicert/http01
   - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
   - ../../components/third-party/external-secrets
+  - ../../components/third-party/gateway
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack
@@ -48,6 +49,7 @@ patches:
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/external-secrets/patches.yaml
+  - path: ./overlay/third-party/gateway/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml

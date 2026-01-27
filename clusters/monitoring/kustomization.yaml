@@ -5,12 +5,14 @@ resources:
   - ../../components/flux/image-update-automation
   - ../../components/flux/storageclasses
   - ../../components/third-party/cert-manager
+  - ../../components/third-party/gateway
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/prometheus-blackbox-exporter
   - ../../components/third-party/external-secrets
   - overlay/radix-platform/radix-prometheus-proxy/patches.yaml
+  - ./overlay/third-party/gateway-api/gateway-api.yaml
 patches:
   - path: ./postBuild.yaml
   - path: ./helm-controller.yaml
@@ -19,6 +21,7 @@ patches:
   - path: ./kustomize-controller.yaml
   - path: ./notification-controller.yaml
   - path: ./source-controller.yaml
+  - path: ./overlay/third-party/gateway/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
