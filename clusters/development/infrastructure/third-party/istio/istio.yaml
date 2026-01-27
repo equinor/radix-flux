@@ -1,0 +1,29 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: istio
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./components/third-party/istio_v2"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: gateway-api
+  patches:
+    - target:
+        kind: HelmRelease
+        name: istiod
+        namespace: istio-system
+      patch: |-
+          apiVersion: helm.toolkit.fluxcd.io/v2
+          kind: HelmRelease
+          metadata:
+            name: istiod
+            namespace: istio-system
+          spec:
+            chart:
+              spec:
+                version: 1.28.2 # https://artifacthub.io/packages/helm/istio-official/istiod
