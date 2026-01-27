@@ -22,7 +22,7 @@ resources:
   # - ../../components/third-party/gateway
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
-  - ../../components/third-party/istio
+  # - ../../components/third-party/istio
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/kubernetes-replicator
   - ../../components/radix-platform/radix-ingress-default-backend
@@ -36,6 +36,7 @@ resources:
   - ./overlay/radix-platform/radix-operator/radix-operator.yaml
   - ./overlay/third-party/gateway-api/gateway-api.yaml
   - ./overlay/third-party/gateway/gateway.yaml
+  - ./overlay/third-party/istio/istio.yaml
 
 patches:
   - path: ./postBuild.yaml
@@ -54,7 +55,7 @@ patches:
   # - path: ./overlay/third-party/gateway/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
-  - path: ./overlay/third-party/istio/patches.yaml
+  # - path: ./overlay/third-party/istio/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
