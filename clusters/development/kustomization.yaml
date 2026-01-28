@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - flux-system
+  - ./infrastructure/third-party
   - ../../components/flux/externalsecrets
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
@@ -19,10 +20,8 @@ resources:
   - ../../components/third-party/cert-manager-issuers/digicert/http01
   - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
   - ../../components/third-party/external-secrets
-  - ../../components/third-party/gateway
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
-  - ../../components/third-party/istio
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/kubernetes-replicator
   - ../../components/radix-platform/radix-ingress-default-backend
@@ -34,7 +33,6 @@ resources:
   - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
   - ./overlay/radix-platform/radix-operator/radix-operator.yaml
-  - ./overlay/third-party/gateway-api/gateway-api.yaml
 
 patches:
   - path: ./postBuild.yaml
@@ -50,10 +48,8 @@ patches:
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/external-secrets/patches.yaml
-  - path: ./overlay/third-party/gateway/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
-  - path: ./overlay/third-party/istio/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml

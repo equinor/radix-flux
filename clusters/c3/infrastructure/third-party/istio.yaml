@@ -1,19 +1,17 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: gateway-lb
+  name: istio
   namespace: flux-system
 spec:
-  
   interval: 5m
-  path: "./components/third-party/gateway/chart"
-  postBuild:
-    substituteFrom:
-    - kind: ConfigMap
-      name: radix-flux-config
+  path: "./components/third-party/istio"
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   dependsOn:
     - name: gateway-api
+  postBuild:
+    substitute:
+      ISTIO_VERSION: "1.28.2" # https://artifacthub.io/packages/helm/istio-official/istiod

@@ -32,7 +32,6 @@ spec:
       KUBE_PROMETHEUS_STACK: 80.14.4 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack # newer version fails. ref: https://github.com/equinor/radix-platform/issues/1849
       KUBERNETES_REPLICATOR: v2.12.2 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      ISTIO_VERSION: 1.28.2 # https://artifacthub.io/packages/helm/istio-official/istiod
       OAUTH2PROXY_TAG: "v7.12.0" #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
       OAUTH2REDIS_TAG: 8.2.2-alpine3.22 # https://hub.docker.com/_/redis/tags
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.1 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
