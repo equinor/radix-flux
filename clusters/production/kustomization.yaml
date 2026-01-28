@@ -10,7 +10,6 @@ resources:
   - ../../components/radix-platform/radix-platform
   - ../../components/third-party/blob-csi-driver
   - ../../components/third-party/external-secrets
-  - ../../components/third-party/gateway
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack

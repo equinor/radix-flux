@@ -1,0 +1,1 @@
+- Filename should be the same as the actual kustomization to make it more readable in Flux

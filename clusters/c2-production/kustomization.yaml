@@ -12,7 +12,6 @@ resources:
   - ../../components/third-party/cert-manager
   - ../../components/third-party/cert-manager-certs
   - ../../components/third-party/external-secrets
-  - ../../components/third-party/gateway
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack

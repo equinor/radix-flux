@@ -20,10 +20,8 @@ resources:
   - ../../components/third-party/cert-manager-issuers/digicert/http01
   - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
   - ../../components/third-party/external-secrets
-  # - ../../components/third-party/gateway
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
-  # - ../../components/third-party/istio
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/kubernetes-replicator
   - ../../components/radix-platform/radix-ingress-default-backend
@@ -35,9 +33,6 @@ resources:
   - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
   - ./overlay/radix-platform/radix-operator/radix-operator.yaml
-  # - ./infrastructure/third-party/gateway-api/gateway-api.yaml
-  # - ./infrastructure/third-party/gateway/gateway.yaml
-  # - ./infrastructure/third-party/istio/istio.yaml
 
 patches:
   - path: ./postBuild.yaml
