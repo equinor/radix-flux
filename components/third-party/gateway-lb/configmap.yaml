@@ -1,3 +1,5 @@
+# https://istio.io/latest/docs/tasks/traffic-management/ingress/gateway-api/
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,3 +9,6 @@ data:
   service: |
     spec:
       externalTrafficPolicy: Local
+  deployment: |
+    spec:
+      replicas: ${DEPLOYMENT_REPLICAS:=1}

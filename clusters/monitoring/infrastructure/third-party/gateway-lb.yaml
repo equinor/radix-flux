@@ -16,18 +16,3 @@ spec:
     name: flux-system
   dependsOn:
     - name: gateway-api
-  patches:
-    - target:
-        kind: ConfigMap
-        name: istio-gateway-config
-        namespace: istio-system
-      patch: |- # https://istio.io/latest/docs/tasks/traffic-management/ingress/gateway-api/
-        apiVersion: v1
-        kind: ConfigMap
-        metadata:
-          name: istio-gateway-config
-          namespace: istio-system
-        data:
-          deployment: |
-            spec:
-              replicas: 1
