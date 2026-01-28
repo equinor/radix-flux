@@ -4,6 +4,18 @@ metadata:
   name: gateway-lb
   namespace: flux-system
 spec:
+  interval: 5m
+  path: "./components/third-party/gateway-lb"
+  postBuild:
+    substituteFrom:
+    - kind: ConfigMap
+      name: radix-flux-config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: gateway-api
   patches:
     - target:
         kind: ConfigMap
@@ -19,15 +31,3 @@ spec:
           deployment: |
             spec:
               replicas: 1
-  interval: 5m
-  path: "./components/third-party/gateway_v2"
-  postBuild:
-    substituteFrom:
-    - kind: ConfigMap
-      name: radix-flux-config
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  dependsOn:
-    - name: gateway-api
