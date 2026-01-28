@@ -37,7 +37,6 @@ spec:
       radix_acr_repo_url: radixplayground.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixplaygroundapp.azurecr.io
       RADIX_APP_ENV: prod
-      RADIX_BUILDAH_IMAGE_BUILDER_IMAGE: quay.io/buildah/stable:v1.36
       RADIX_BUILDKIT_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-buildkit-builder:tag"}
       RADIX_CACHE_REGISTRY: radixplaygroundcache.azurecr.io
       RADIX_CICD_CANARY_CHART_VERSION: 1.5.2 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
