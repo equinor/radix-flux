@@ -20,7 +20,6 @@ patches:
   - path: ./kustomize-controller.yaml
   - path: ./notification-controller.yaml
   - path: ./source-controller.yaml
-  - path: ./overlay/third-party/gateway/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
