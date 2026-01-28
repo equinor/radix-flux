@@ -12,18 +12,6 @@ spec:
     name: flux-system
   dependsOn:
     - name: gateway-api
-  patches:
-    - target:
-        kind: HelmRelease
-        name: istiod
-        namespace: istio-system
-      patch: |-
-          apiVersion: helm.toolkit.fluxcd.io/v2
-          kind: HelmRelease
-          metadata:
-            name: istiod
-            namespace: istio-system
-          spec:
-            chart:
-              spec:
-                version: 1.28.2 # https://artifacthub.io/packages/helm/istio-official/istiod
+  postBuild:
+    substitute:
+      ISTIO_VERSION: "1.28.2" # https://artifacthub.io/packages/helm/istio-official/istiod

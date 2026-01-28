@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: istiod
-      version: xx # Set by flux patch
+      version: ${ISTIO_VERSION} # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: istio
