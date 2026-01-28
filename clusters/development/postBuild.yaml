@@ -29,7 +29,7 @@ spec:
       GRAFANA_VERSION: 10.4.0 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a # gitleaks:allow
       KEDA_VERSION: 2.18.3 # https://artifacthub.io/packages/helm/kedacore/keda
-      KUBE_PROMETHEUS_STACK: 80.14.4 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack # never version fails because of required https link for titleLink in alertmanagerconfigs...
+      KUBE_PROMETHEUS_STACK: 80.14.4 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack # newer version fails. ref: https://github.com/equinor/radix-platform/issues/1849
       KUBERNETES_REPLICATOR: v2.12.2 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       ISTIO_VERSION: 1.28.2 # https://artifacthub.io/packages/helm/istio-official/istiod
