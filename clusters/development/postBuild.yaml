@@ -48,7 +48,7 @@ spec:
       RADIX_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-image-builder:tag"}
       RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_OAUTH_GUARD_CHART_VERSION: 1.1.1 # {"$imagepolicy": "flux-system:radix-oauth-guard-chart:tag"}
-      RADIX_OPERATOR_CHART_VERSION: 1.108.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
+      RADIX_OPERATOR_CHART_VERSION: 1.108.1-rc.1 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixdevcache.azurecr.io/bash:5.2
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixdevcache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixdevcache.azurecr.io/alpine:3.20
