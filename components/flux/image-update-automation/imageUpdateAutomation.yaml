@@ -35,7 +35,7 @@ spec:
         {{- range $_, $change := $changes }}
             - {{ $change.OldValue }} -> {{ $change.NewValue }}
         {{ end -}}
-        {{ end -}}  
+        {{ end -}}
     push:
       branch: flux-image-updates
   update:
