@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: external-dns-azure
+  namespace: external-dns
+data:
+  azure.json: |
+    {
+      "tenantId": "${tenantId}",
+      "subscriptionId": "${subscriptionId}",
+      "resourceGroup": "${resourceGroup}",
+      "useWorkloadIdentityExtension": true
+    }
