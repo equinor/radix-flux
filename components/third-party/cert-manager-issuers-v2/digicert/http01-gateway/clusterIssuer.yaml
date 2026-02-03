@@ -1,0 +1,25 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: ${clusterIssuerName}
+spec:
+  acme:
+    email: ${accountEmail}
+    externalAccountBinding:
+      keyID: ${accountKeyID}
+      keySecretRef:
+        key: secret
+        name: digicert-http01-gateway-account-hmac-key
+    privateKeySecretRef:
+      name: digicert-http01-gateway-private-key
+    server: ${acmeServer}
+    skipTLSVerify: false
+    solvers:
+    - http01:
+        gatewayHTTPRoute:
+          parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: Gateway
+            name: gateway
+            namespace: istio-system
+      selector: {}

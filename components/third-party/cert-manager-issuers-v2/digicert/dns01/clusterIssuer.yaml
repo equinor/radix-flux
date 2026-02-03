@@ -1,0 +1,25 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: digicert-dns01
+spec:
+  acme:
+    email: ${accountEmail}
+    externalAccountBinding:
+      keyID: ${accountKeyID}
+      keySecretRef:
+        key: secret
+        name: digicert-dns01-account-hmac-key
+    privateKeySecretRef:
+      name: digicert-dns01-private-key
+    server: ${acmeServer}
+    skipTLSVerify: false
+    solvers:
+    - dns01:
+        azureDNS:
+          environment: AzurePublicCloud
+          hostedZoneName: ${dnsZone}
+          managedIdentity:
+            clientID: ${radixIdCertManager}
+          resourceGroupName: ${dnsZoneResourceGroup}
+          subscriptionID: ${subscriptionId}
