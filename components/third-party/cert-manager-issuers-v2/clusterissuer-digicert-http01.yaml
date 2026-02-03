@@ -9,9 +9,9 @@ spec:
       keyID: ${accountKeyID}
       keySecretRef:
         key: secret
-        name: digicert-http01-ingress-account-hmac-key
+        name: digicert-account-hmac-key
     privateKeySecretRef:
-      name: digicert-http01-ingress-private-key
+      name: digicert-http01-private-key
     server: ${acmeServer}
     skipTLSVerify: false
     solvers:

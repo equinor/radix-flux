@@ -9,7 +9,7 @@ spec:
       keyID: ${accountKeyID}
       keySecretRef:
         key: secret
-        name: digicert-http01-gateway-account-hmac-key
+        name: digicert-account-hmac-key
     privateKeySecretRef:
       name: digicert-http01-gateway-private-key
     server: ${acmeServer}

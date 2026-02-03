@@ -9,7 +9,7 @@ spec:
       keyID: ${accountKeyID}
       keySecretRef:
         key: secret
-        name: digicert-dns01-account-hmac-key
+        name: digicert-account-hmac-key
     privateKeySecretRef:
       name: digicert-dns01-private-key
     server: ${acmeServer}
