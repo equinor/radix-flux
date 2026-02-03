@@ -18,7 +18,7 @@ resources:
   # - ../../components/third-party/cert-manager-issuers/digicert/dns01
   # - ../../components/third-party/cert-manager-issuers/digicert/externalaccount
   # - ../../components/third-party/cert-manager-issuers/digicert/http01
-  - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
+  # - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
   - ../../components/third-party/external-secrets
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
