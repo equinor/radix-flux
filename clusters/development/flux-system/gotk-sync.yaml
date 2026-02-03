@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: 3175-configure-digicert-clusterissuer-for-gateway-api
+    branch: master
   secretRef:
     name: flux-system
   url: ssh://git@github.com/equinor/radix-flux
