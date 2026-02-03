@@ -4,3 +4,4 @@ resources:
   - gateway-api.yaml
   - gateway-lb.yaml
   - istio.yaml
+  - digicert-externalaccount.yaml
