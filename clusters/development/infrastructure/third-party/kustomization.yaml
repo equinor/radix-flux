@@ -7,3 +7,4 @@ resources:
   - digicert-externalaccount.yaml
   - digicert-clusterissuer-http01-gateway.yaml
   - digicert-clusterissuer-http01.yaml
+  - digicert-clusterissuer-dns01.yaml
