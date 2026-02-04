@@ -9,5 +9,5 @@ data:
       "tenantId": "${tenantId}",
       "subscriptionId": "${subscriptionId}",
       "resourceGroup": "${resourceGroup}",
-      "useWorkloadIdentityExtension": true
+      "useWorkloadIdentityExtension": true,
     }
