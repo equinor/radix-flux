@@ -1,0 +1,25 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: external-dns
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./components/third-party/external-dns"
+  prune: true
+  dependsOn:
+    - name: gateway-api
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  postBuild:
+    substitute:
+      chartVersion: 1.20.0 # https://artifacthub.io/packages/helm/external-dns/external-dns
+      managedIdentityId: "091b4efe-c593-40ee-9512-3b5168a7f51d" # radix-id-external-dns-c2
+      tenantId: "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
+      subscriptionId: "ded7ca41-37c8-4085-862f-b11d21ab341a"
+      resourceGroup: "common-c2"
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+        optional: false
