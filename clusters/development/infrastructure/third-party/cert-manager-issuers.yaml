@@ -1,0 +1,23 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cert-manager-issuers
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: cert-manager
+    - name: externalsecrets
+  interval: 5m
+  path: "./components/third-party/cert-manager-issuers-v2"
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: digicert-clusterissuer-account-values
+      - kind: ConfigMap
+        name: radix-flux-config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  timeout: 2m
