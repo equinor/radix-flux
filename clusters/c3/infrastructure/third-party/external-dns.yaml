@@ -17,8 +17,6 @@ spec:
       chartVersion: 1.20.0 # https://artifacthub.io/packages/helm/external-dns/external-dns
       managedIdentityId: "3c1bbad2-4234-495c-aebb-bac8e0791b9c" # radix-id-external-dns-c3
       tenantId: "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
-      subscriptionId: "ded7ca41-37c8-4085-862f-b11d21ab341a"
-      resourceGroup: "common-c3"
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config

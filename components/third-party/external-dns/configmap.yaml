@@ -8,6 +8,6 @@ data:
     {
       "tenantId": "${tenantId}",
       "subscriptionId": "${subscriptionId}",
-      "resourceGroup": "${resourceGroup}",
+      "resourceGroup": "${dnsZoneResourceGroup}",
       "useWorkloadIdentityExtension": true
     }
