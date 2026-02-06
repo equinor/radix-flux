@@ -1,0 +1,67 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  releaseName: external-dns
+  chart:
+    spec:
+      chart: external-dns
+      version: ${chartVersion}
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+  values:
+    provider:
+      name: azure
+
+    policy: sync
+
+    triggerLoopOnEvent: true
+
+    txtOwnerId: ${clusterName}
+    # txtPrefix: istio-
+
+    domainFilters:
+      - ${dnsZone}
+
+    sources:
+      - gateway-httproute
+
+    annotationFilter: "radix.equinor.com/radix-preview-nextgen-router=true"
+
+    managedRecordTypes:
+      - A
+
+    extraArgs:
+      # - --dry-run
+      - --gateway-name=gateway
+      - --gateway-namespace=istio-system
+
+    serviceAccount:
+      labels:
+        azure.workload.identity/use: "true"
+      annotations:
+        azure.workload.identity/client-id: ${managedIdentityId}
+
+    podLabels:
+      azure.workload.identity/use: "true"
+
+    extraVolumes:
+      - name: azure-config-file
+        configMap:
+          name: external-dns-azure
+
+    extraVolumeMounts:
+      - name: azure-config-file
+        mountPath: /etc/kubernetes
+        readOnly: true
