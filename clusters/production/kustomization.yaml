@@ -27,10 +27,6 @@ resources:
   - ../../components/third-party/azure-workload-identity
   - ../../components/third-party/cert-manager
   - ../../components/third-party/cert-manager-certs
-  - ../../components/third-party/cert-manager-issuers/digicert/externalaccount
-  - ../../components/third-party/cert-manager-issuers/digicert/http01
-  - ../../components/third-party/cert-manager-issuers/digicert/dns01
-  - ../../components/third-party/cert-manager-issuers/letsencrypt/dns01
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
 
 patches:
