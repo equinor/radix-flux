@@ -97,6 +97,7 @@ spec:
                         - '{__name__=~"radix_.*"}'
                         - '{__name__=~"gotk.*"}' # Flux metrics
                         - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                        - '{__name__="istio_requests_total"}'
                     static_configs:
                       - targets: ["prometheus.radix.equinor.com"]
                         labels:
@@ -140,6 +141,7 @@ spec:
                         - '{__name__=~"radix_.*"}'
                         - '{__name__=~"gotk.*"}' # Flux metrics
                         - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                        - '{__name__="istio_requests_total"}'
                     static_configs:
                       - targets: ["prometheus.c2.radix.equinor.com"]
                         labels:
@@ -183,6 +185,7 @@ spec:
                         - '{__name__=~"radix_.*"}'
                         - '{__name__=~"gotk.*"}' # Flux metrics
                         - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                        - '{__name__="istio_requests_total"}'
                     static_configs:
                       - targets: ["prometheus.c3.radix.equinor.com"]
                         labels:
@@ -226,6 +229,7 @@ spec:
                         - '{__name__=~"radix_.*"}'
                         - '{__name__=~"gotk.*"}' # Flux metrics
                         - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                        - '{__name__="istio_requests_total"}'
                     static_configs:
                       - targets: ["prometheus.playground.radix.equinor.com"]
                         labels:
@@ -269,6 +273,7 @@ spec:
                         - '{__name__=~"radix_.*"}'
                         - '{__name__=~"gotk.*"}' # Flux metrics
                         - '{__name__=~"certmanager_.*"}' # cert-manager metrics
+                        - '{__name__="istio_requests_total"}'
                     static_configs:
                       - targets: ["prometheus.dev.radix.equinor.com"]
                         labels:
