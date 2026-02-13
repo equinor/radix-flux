@@ -7,6 +7,9 @@ jobs:
   pull-request:
     name: Open PR to master
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
     - name: checkout
       uses: actions/checkout@v4
