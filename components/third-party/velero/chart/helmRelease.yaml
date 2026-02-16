@@ -30,7 +30,7 @@ spec:
       image:
         repository: docker.io/alpine/k8s
         tag: "1.34.4"
-        
+
     updateStrategy: RollingUpdate
     initContainers:
       - name: velero-plugin-for-microsoft-azure
@@ -80,7 +80,7 @@ spec:
                 - key: kubernetes.io/arch
                   operator: In
                   values:
-                    - arm64
+                    - amd64
   # valuesFrom:
   #   - kind: ConfigMap
   #     name: velero-flux-values
