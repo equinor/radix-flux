@@ -28,8 +28,7 @@ spec:
     # TODO: Use recommended approach when https://github.com/vmware-tanzu/helm-charts/issues/698 is resolved
     kubectl:
       image:
-        repository: docker.io/alpine/k8s
-        tag: "1.34.4"
+        repository: public.ecr.aws/bitnami/kubectl
 
     updateStrategy: RollingUpdate
     initContainers:
@@ -80,7 +79,7 @@ spec:
                 - key: kubernetes.io/arch
                   operator: In
                   values:
-                    - amd64
+                    - arm64
   # valuesFrom:
   #   - kind: ConfigMap
   #     name: velero-flux-values
