@@ -79,7 +79,7 @@ spec:
                 - key: kubernetes.io/arch
                   operator: In
                   values:
-                    - arm64
+                    - amd64
   # valuesFrom:
   #   - kind: ConfigMap
   #     name: velero-flux-values
