@@ -22,6 +22,15 @@ spec:
   values:
     image:
       repository: ${RADIX_CACHE_REGISTRY}/velero/velero
+      imagePullSecrets:
+        - radix-external-registry-default-auth
+
+    # TODO: Use recommended approach when https://github.com/vmware-tanzu/helm-charts/issues/698 is resolved
+    kubectl:
+      image:
+        repository: docker.io/alpine/k8s
+        tag: "1.34.4"
+        
     updateStrategy: RollingUpdate
     initContainers:
       - name: velero-plugin-for-microsoft-azure
@@ -63,7 +72,7 @@ spec:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
-              - matchExpressions:
+            - matchExpressions:
                 - key: kubernetes.io/os
                   operator: In
                   values:
