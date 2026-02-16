@@ -22,9 +22,6 @@ spec:
   values:
     image:
       repository: ${RADIX_CACHE_REGISTRY}/velero/velero
-      imagePullSecrets:
-        - radix-external-registry-default-auth
-
     # TODO: Use recommended approach when https://github.com/vmware-tanzu/helm-charts/issues/698 is resolved
     kubectl:
       image:
