@@ -1,4 +1,7 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name:   radix-api-${RADIX_APP_ENV:=tba}
+  name: radix-api-${RADIX_APP_ENV:=tba}
+  labels:
+    radix-app: radix-api
+    radix-env: ${RADIX_APP_ENV:=tba}

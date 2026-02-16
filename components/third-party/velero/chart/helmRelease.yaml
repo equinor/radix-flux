@@ -22,6 +22,11 @@ spec:
   values:
     image:
       repository: ${RADIX_CACHE_REGISTRY}/velero/velero
+    # TODO: Use recommended approach when https://github.com/vmware-tanzu/helm-charts/issues/698 is resolved
+    kubectl:
+      image:
+        repository: public.ecr.aws/bitnami/kubectl
+
     updateStrategy: RollingUpdate
     initContainers:
       - name: velero-plugin-for-microsoft-azure
@@ -63,7 +68,7 @@ spec:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
-              - matchExpressions:
+            - matchExpressions:
                 - key: kubernetes.io/os
                   operator: In
                   values:
@@ -71,7 +76,7 @@ spec:
                 - key: kubernetes.io/arch
                   operator: In
                   values:
-                    - arm64
+                    - amd64
   # valuesFrom:
   #   - kind: ConfigMap
   #     name: velero-flux-values

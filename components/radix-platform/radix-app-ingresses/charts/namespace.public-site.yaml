@@ -2,3 +2,6 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: radix-public-site-${RADIX_APP_ENV:=tba}
+  labels:
+    radix-app: radix-public-site
+    radix-env: ${RADIX_APP_ENV:=tba}

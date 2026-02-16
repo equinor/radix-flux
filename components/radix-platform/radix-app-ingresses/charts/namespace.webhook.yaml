@@ -1,4 +1,7 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name:  radix-github-webhook-${RADIX_APP_ENV:=tba}
+  name: radix-github-webhook-${RADIX_APP_ENV:=tba}
+  labels:
+    radix-app: radix-github-webhook
+    radix-env: ${RADIX_APP_ENV:=tba}
