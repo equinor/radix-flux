@@ -2,3 +2,6 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: radix-cost-allocation-api-${RADIX_APP_ENV:=tba}
+  labels:
+    radix-app: radix-cost-allocation-api
+    radix-env: ${RADIX_APP_ENV:=tba}
