@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: radix-flux
+  title: Radix Flux
+  description: "Flux is a GitOps-based continuous delivery tool keeping clusters in sync with configuration 3rd party components."
+  annotations:
+    github.com/project-slug: equinor/radix-flux
+  links:
+    - url: https://github.com/equinor/radix-flux/blob/master/README.md
+      title: Radix Flux readme
+      icon: docs
+spec:
+  type: tool
+  lifecycle: production
+  owner: team-radix
+  system: system:default/Radix
