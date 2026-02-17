@@ -48,9 +48,6 @@ spec:
                 cpu: 100m
                 memory: 1Gi
 
-            radixGroups: # deprecated: remove after https://github.com/equinor/radix-private/issues/443
-              user: 4b8ec60e-714c-4a9d-8e0a-3e4cfb3c3d31
-
             rbac:
               createApp:
                 groups:
