@@ -14,4 +14,4 @@ spec:
     - name: gateway-api
   postBuild:
     substitute:
-      ISTIO_VERSION: "1.28.2" # https://artifacthub.io/packages/helm/istio-official/istiod
+      ISTIO_VERSION: 1.29.0 # https://artifacthub.io/packages/helm/istio-official/istiod
