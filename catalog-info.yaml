@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: radix-flux
+  annotations:
+    github.com/project-slug: equinor/radix-flux
+spec:
+  type: other
+  lifecycle: unknown
+  owner: team-radix
