@@ -40,6 +40,14 @@ spec:
           namespace: default
         spec:
           values:
+            resources:
+              limits:
+                cpu: "2"
+                memory: 2Gi
+              requests:
+                cpu: 100m
+                memory: 1Gi
+
             radixGroups: # deprecated: remove after https://github.com/equinor/radix-private/issues/443
               user: 64b28659-4fe4-4222-8497-85dd7e43e25b
 
