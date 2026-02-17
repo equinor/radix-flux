@@ -33,23 +33,23 @@ spec:
       NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       OAUTH2PROXY_TAG: "v7.14.2"
       OAUTH2REDIS_TAG: "8.6.0-alpine3.23"
-      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.1 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
+      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixc2prod.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixc2app.azurecr.io
       RADIX_APP_ENV: prod
       RADIX_BUILDKIT_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-buildkit-builder:tag"}
       RADIX_CACHE_REGISTRY: radixc2cache.azurecr.io
-      RADIX_CICD_CANARY_CHART_VERSION: 1.5.2 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
-      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.1 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
+      RADIX_CICD_CANARY_CHART_VERSION: 1.5.3 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
+      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
       RADIX_ENVIRONMENT: prod # dev | prod
       RADIX_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-image-builder:tag"}
-      RADIX_OAUTH_GUARD_CHART_VERSION: 1.1.1 # {"$imagepolicy": "flux-system:radix-oauth-guard-chart:tag"}
+      RADIX_OAUTH_GUARD_CHART_VERSION: 1.1.2 # {"$imagepolicy": "flux-system:radix-oauth-guard-chart:tag"}
       RADIX_OPERATOR_CHART_VERSION: 1.108.1 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixc2cache.azurecr.io/bash:5.2
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixc2cache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixc2cache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixc2cache.azurecr.io/alpine:3.20
-      RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.3 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
+      RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.4 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: c2
       RADIX_ZONE: c2 # dev | playground | prod
