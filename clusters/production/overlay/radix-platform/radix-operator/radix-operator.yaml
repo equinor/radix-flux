@@ -41,15 +41,18 @@ spec:
         spec:
           values:
             resources:
+              limits:
+                cpu: 4000m
+                memory: 10Gi
               requests:
-                memory: 3Gi
+                cpu: 2000m
+                memory: 8Gi
 
-            
             ingress:
               certificate:
                 automation:
                   clusterIssuer: digicert-http01
-                
+
       target:
         kind: HelmRelease
         name: radix-operator

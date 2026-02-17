@@ -40,6 +40,13 @@ spec:
           namespace: default
         spec:
           values:
+            resources:
+              limits:
+                cpu: "2"
+                memory: 2Gi
+              requests:
+                cpu: 100m
+                memory: 1Gi
 
             ingress:
               certificate:
