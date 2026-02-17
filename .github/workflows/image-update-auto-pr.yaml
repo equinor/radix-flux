@@ -1,7 +1,12 @@
 name: Image Update Auto-PR
+
 on:
   push:
     branches: ['flux-image-updates']
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   pull-request:
