@@ -49,7 +49,7 @@ spec:
     image:
       registry: ghcr.io
       repository: equinor/radix/grafana
-      tag: 12.3.0.2-test
+      tag: 12.3.3.1-test
 
     ingress:
       enabled: true
