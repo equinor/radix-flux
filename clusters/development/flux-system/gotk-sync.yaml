@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: grafana-12.3.3 # master
+    branch: master
   secretRef:
     name: flux-system
   url: ssh://git@github.com/equinor/radix-flux

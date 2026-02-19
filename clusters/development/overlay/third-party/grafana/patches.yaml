@@ -17,12 +17,6 @@ spec:
           namespace: monitor
         spec:
           values:
-
-            image:
-              registry: ghcr.io
-              repository: equinor/radix/grafana
-              tag: 12.3.3.1-test
-              
             resources:
               limits:
                 cpu: 40m
