@@ -1,11 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: external-secrets-operator-stores
+  name: external-secrets-stores
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/external-secrets/stores"
+  path: "./components/third-party/externalsecrets-v2/stores"
   dependsOn:
     - name: external-secrets-operator
   prune: true
@@ -16,4 +16,5 @@ spec:
   timeout: 2m
   postBuild:
     substitute:
-      EXTERNAL_SECRET_URL: ${EXTERNAL_SECRET_URL} # Set in clusters/<cluster>/postBuild
+      EXTERNAL_SECRET_URL: ${EXTERNAL_SECRET_URL}
+      EXTERNAL_SECRET_MI_CLIENT_ID: ${EXTERNAL_SECRET_MI_CLIENT_ID}
