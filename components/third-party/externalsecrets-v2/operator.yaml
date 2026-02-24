@@ -12,6 +12,7 @@ spec:
     name: flux-system
   wait: true
   timeout: 2m
-  # postBuild:
-  #   substitute:
-  #     EXTERNAL_SECRET_MI_CLIENT_ID: ${EXTERNAL_SECRET_MI_CLIENT_ID} # Set in clusters/<cluster>/postBuild
+  postBuild:
+    substitute:
+      EXTERNAL_SECRET_MI_CLIENT_ID: ${EXTERNAL_SECRET_MI_CLIENT_ID}
+      EXTERNAL_SECRETS_VERSION: ${EXTERNAL_SECRETS_VERSION}
