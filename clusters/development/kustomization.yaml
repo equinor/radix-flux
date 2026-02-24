@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - flux-system
   - ./infrastructure/third-party
-  - ../../components/flux/externalsecrets
+  # - ../../components/flux/externalsecrets
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
@@ -15,7 +15,7 @@ resources:
   - ../../components/third-party/blob-csi-driver
   - ../../components/third-party/cert-manager
   - ../../components/third-party/cert-manager-certs
-  - ../../components/third-party/external-secrets
+  # - ../../components/third-party/external-secrets
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack

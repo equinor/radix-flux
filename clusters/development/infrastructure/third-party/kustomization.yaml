@@ -6,3 +6,4 @@ resources:
   - gateway-api.yaml
   - gateway-lb.yaml
   - istio.yaml
+  - externalsecrets.yaml
