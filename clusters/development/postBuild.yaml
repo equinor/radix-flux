@@ -16,9 +16,6 @@ spec:
       CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c # gitleaks:allow
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
-      EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d # gitleaks:allow
-      EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
-      EXTERNAL_SECRETS: 1.2.1 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/development
       GIT_CLONE_TAG: "2.45.2"
@@ -33,7 +30,7 @@ spec:
       KUBERNETES_REPLICATOR: v2.12.2 # https://github.com/mittwald/kubernetes-replicator
       NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       OAUTH2PROXY_TAG: "v7.14.2" #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
-      OAUTH2REDIS_TAG: "8.6.0-alpine3.23" # https://hub.docker.com/_/redis/tags
+      OAUTH2REDIS_TAG: "8.6.0-alpine3.23" # https://hub.docker.com/_/redis/tags # gitleaks:allow
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixdev.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixdevapp.azurecr.io
