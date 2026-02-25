@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: external-secrets
-      version: ${EXTERNAL_SECRETS_VERSION} # Set in clusters/<cluster>/postBuild
+      version: ${EXTERNAL_SECRETS_VERSION}
       sourceRef:
         kind: HelmRepository
         name: external-secrets-operator
