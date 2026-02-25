@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - operator.yaml
 - stores.yaml
+- secrets.yaml
