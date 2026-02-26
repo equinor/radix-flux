@@ -37,7 +37,7 @@ spec:
     sources:
       - gateway-httproute
 
-    annotationFilter: "radix.equinor.com/radix-preview-nextgen-router=true"
+    annotationFilter: "radix.equinor.com/preview-gateway-mode=true"
 
     managedRecordTypes:
       - A
