@@ -4,6 +4,7 @@ metadata:
   name: external-secrets-operator
   namespace: external-secrets
 spec:
+  createNamespace: true
   releaseName: external-secrets-operator
   chart:
     spec:
