@@ -4,7 +4,10 @@ metadata:
   name: external-secrets-operator
   namespace: external-secrets
 spec:
-  createNamespace: true
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
   releaseName: external-secrets-operator
   chart:
     spec:
@@ -15,9 +18,6 @@ spec:
         name: external-secrets-operator
         namespace: flux-system
   interval: 5m
-  install:
-    remediation:
-      retries: 3
   values:
     podLabels:
       grafana.radix.equinor.com/monitor-health: "true"
