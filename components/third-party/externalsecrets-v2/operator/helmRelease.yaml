@@ -1,0 +1,43 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-secrets-operator
+  namespace: external-secrets
+spec:
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  releaseName: external-secrets-operator
+  chart:
+    spec:
+      chart: external-secrets
+      version: ${EXTERNAL_SECRETS_VERSION}
+      sourceRef:
+        kind: HelmRepository
+        name: external-secrets-operator
+        namespace: flux-system
+  interval: 5m
+  values:
+    podLabels:
+      grafana.radix.equinor.com/monitor-health: "true"
+    webhook:
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
+    certController:
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
+    global:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/os
+                operator: In
+                values:
+                - linux
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - arm64
