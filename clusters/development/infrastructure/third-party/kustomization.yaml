@@ -7,3 +7,5 @@ resources:
   - gateway-lb.yaml
   - istio.yaml
   - external-secrets-operator.yaml
+  - external-secrets-stores.yaml
+  - external-secrets-secrets.yaml
