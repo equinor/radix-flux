@@ -6,7 +6,7 @@ metadata:
 spec:
   dependsOn:
     - name: cert-manager
-    - name: externalsecrets
+    - name: external-secrets-secrets
   interval: 5m
   path: "./components/third-party/cert-manager-issuers-v2"
   postBuild:
