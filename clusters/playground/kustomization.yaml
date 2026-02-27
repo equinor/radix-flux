@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - flux-system
   - ./infrastructure/third-party
-  - ../../components/flux/externalsecrets
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
@@ -15,21 +14,19 @@ resources:
   - ../../components/third-party/blob-csi-driver
   - ../../components/third-party/cert-manager
   - ../../components/third-party/cert-manager-certs
-  - ../../components/third-party/external-secrets
   - ../../components/third-party/grafana
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/kubernetes-replicator
+  - ../../components/radix-platform/radix-ingress-default-backend
   - ../../components/third-party/keda
   - ../../components/third-party/tekton
   - ../../components/third-party/velero
-  - ../../components/radix-platform/radix-ingress-default-backend
   - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
   - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
   - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
   - ./overlay/radix-platform/radix-operator/radix-operator.yaml
-
 
 patches:
   - path: ./postBuild.yaml
@@ -44,7 +41,6 @@ patches:
   - path: ./overlay/radix-platform/radix-platform/rbac.yaml
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
-  - path: ./overlay/third-party/external-secrets/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
