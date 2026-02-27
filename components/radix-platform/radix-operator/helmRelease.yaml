@@ -35,6 +35,17 @@ spec:
     kubeClientRateLimitQPS: 500
     externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
 
+    ingress:
+      certificate:
+        automation:
+          clusterIssuer: digicert-http01
+          gatewayClusterIssuer: digicert-http01-gateway
+          
+      gateway:
+        name: "gateway"
+        namespace: "istio-system"
+        sectionName: "https"
+
     resources:
       limits:
         cpu: "2"

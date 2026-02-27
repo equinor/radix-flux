@@ -48,11 +48,6 @@ spec:
                 cpu: 100m
                 memory: 1Gi
 
-            ingress:
-              certificate:
-                automation:
-                  clusterIssuer: digicert-http01
-
       target:
         kind: HelmRelease
         name: radix-operator
