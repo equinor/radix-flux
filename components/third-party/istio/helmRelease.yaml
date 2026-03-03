@@ -21,12 +21,12 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
-    env:
+    env: # https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
       PILOT_ENABLE_GATEWAY_API: "true"
       PILOT_ENABLE_GATEWAY_API_STATUS: "true"
       PILOT_ENABLE_GATEWAY_API_DEPLOYMENT_CONTROLLER: "true"
       PILOT_ENABLE_ALPHA_GATEWAY_API: "true"
-      PILOT_HTTP10: "false"
+      PILOT_HTTP10: "true"
     meshConfig:
       accessLogFile: /dev/stdout
       accessLogEncoding: JSON
