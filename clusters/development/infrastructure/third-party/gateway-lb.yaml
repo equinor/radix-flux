@@ -32,7 +32,7 @@ spec:
                   - name: istio-proxy
                     resources:
                       requests:
-                        cpu: 1234m
+                        cpu: 98m
 
       target:
         kind: ConfigMap
