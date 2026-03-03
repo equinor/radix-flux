@@ -25,14 +25,14 @@ spec:
         data:
           deployment: |
             spec:
-              replicas: 2
+              replicas: 3
               template:
                 spec:
                   containers:
                   - name: istio-proxy
                     resources:
                       requests:
-                        cpu: 99m
+                        cpu: 1234m
 
       target:
         kind: ConfigMap
