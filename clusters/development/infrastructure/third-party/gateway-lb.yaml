@@ -1,5 +1,5 @@
-kind: Kustomization
 apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
 metadata:
   name: gateway-lb
   namespace: flux-system
@@ -16,17 +16,3 @@ spec:
     name: flux-system
   dependsOn:
     - name: gateway-api
-  patches:
-    - patch: |-
-        apiVersion: v1
-        kind: ConfigMap
-        metadata:
-          name: istio-gateway-config
-        data:
-          deployment: |
-            spec:
-              replicas: 2
-      target:
-        kind: ConfigMap
-        name: istio-gateway-config
-        namespace: istio-system
