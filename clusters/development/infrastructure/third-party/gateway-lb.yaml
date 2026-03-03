@@ -19,9 +19,7 @@ spec:
   patches:
     - patch: |-
         data:
-          deployment: |-
-            spec:
-              replicas: 2
+          deployment2: test
       target:
         kind: ConfigMap
         name: istio-gateway-config
