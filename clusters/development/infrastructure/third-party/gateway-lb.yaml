@@ -25,7 +25,8 @@ spec:
         data:
           deployment: |
             spec:
-              replicas: 2
+              replicas: 3
+
       target:
         kind: ConfigMap
         name: istio-gateway-config
