@@ -23,7 +23,7 @@ spec:
         metadata:
           name: istio-gateway-config
         data:
-          deployment: |
+          deployment: |-
             spec:
               replicas: 2
               template:
