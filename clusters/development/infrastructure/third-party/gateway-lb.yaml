@@ -19,7 +19,7 @@ spec:
   patches:
     - patch: |-
         data:
-          deployment: |
+          deployment: |-
             spec:
               replicas: 2
       target:
