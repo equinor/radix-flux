@@ -17,7 +17,7 @@ spec:
   dependsOn:
     - name: gateway-api
   patches:
-    - patch: |-
+    - patch: |
         apiVersion: v1
         kind: ConfigMap
         metadata:
