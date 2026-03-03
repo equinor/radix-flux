@@ -9,6 +9,6 @@ data:
   service: |
     spec:
       externalTrafficPolicy: Local
-  deployment: |
+  deployment: |-
     spec:
       replicas: 1

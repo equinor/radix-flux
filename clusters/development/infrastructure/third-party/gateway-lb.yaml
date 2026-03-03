@@ -32,7 +32,7 @@ spec:
                   - name: istio-proxy
                     resources:
                       requests:
-                        cpu: 51m
+                        cpu: 52m
                         memory: 100Mi
                       limits:
                         cpu: 200m
