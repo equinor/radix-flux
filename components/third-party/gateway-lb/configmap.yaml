@@ -11,4 +11,4 @@ data:
       externalTrafficPolicy: Local
   deployment: |
     spec:
-      replicas: ${DEPLOYMENT_REPLICAS:=1}
+      replicas: 1
