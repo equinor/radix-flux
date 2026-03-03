@@ -32,12 +32,11 @@ spec:
                   - name: istio-proxy
                     resources:
                       requests:
-                        cpu: 50m
+                        cpu: 51m
                         memory: 100Mi
                       limits:
                         cpu: 200m
                         memory: 500Mi
-
       target:
         kind: ConfigMap
         name: istio-gateway-config
