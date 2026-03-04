@@ -76,9 +76,9 @@ spec:
         - grafana.${AZ_RESOURCE_DNS}
         filters:
         - responseHeaderModifier:
-          add:
-          - name: Strict-Transport-Security
-            value: max-age=31536000; includeSubDomains
+            add:
+            - name: Strict-Transport-Security
+              value: max-age=31536000; includeSubDomains
           type: ResponseHeaderModifier
             
     podLabels:
