@@ -339,6 +339,20 @@ spec:
                     values:
                       - amd64
     prometheus:
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          ingress.kubernetes.io/force-ssl-redirect: "true"
+          nginx.ingress.kubernetes.io/auth-url: "http://prometheus-guard-radix-oauth-guard.monitor.svc.cluster.local:8000/auth"
+        hosts:
+          - prometheus.${AZ_RESOURCE_DNS}
+        paths:
+          - /
+        tls:
+          - secretName: radix-wildcard-tls-cert
+            hosts:
+              - prometheus.${AZ_RESOURCE_DNS}
       prometheusSpec:
         image:
           registry: ${RADIX_CACHE_REGISTRY}
