@@ -16,3 +16,28 @@ spec:
     name: flux-system
   dependsOn:
     - name: gateway-api
+  patches:
+    - patch: |
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: istio-gateway-config
+        data:
+          deployment: |-
+            spec:
+              replicas: 2
+              template:
+                spec:
+                  containers:
+                  - name: istio-proxy
+                    resources:
+                      requests:
+                        cpu: 100m
+                        memory: 200Mi
+                      limits:
+                        cpu: 1000m
+                        memory: 1Gi
+      target:
+        kind: ConfigMap
+        name: istio-gateway-config
+        namespace: istio-system
