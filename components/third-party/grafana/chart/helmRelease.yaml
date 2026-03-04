@@ -62,6 +62,25 @@ spec:
             - grafana.${clusterName}.${AZ_RESOURCE_DNS}
             - grafana.${AZ_RESOURCE_DNS}
 
+    route:
+      main:
+        enabled: true
+        parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: Gateway
+          name: gateway
+          namespace: istio-system
+          sectionName: https        
+        hostnames:
+        - grafana.${clusterName}.${AZ_RESOURCE_DNS}
+        - grafana.${AZ_RESOURCE_DNS}
+        filters:
+        - responseHeaderModifier:
+            add:
+            - name: Strict-Transport-Security
+              value: max-age=31536000; includeSubDomains
+          type: ResponseHeaderModifier
+            
     podLabels:
       azure.workload.identity/use: "true"
       grafana.radix.equinor.com/monitor-health: "true"
