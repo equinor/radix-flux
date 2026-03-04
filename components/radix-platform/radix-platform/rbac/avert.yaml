@@ -36,7 +36,7 @@ rules:
       - get
       - list
       - watch
-      
+
   - apiGroups:
       - apps
     resources:
@@ -114,7 +114,8 @@ kind: ClusterRoleBinding
 metadata:
   name: avert-reader-binding
 subjects:
-  - kind: User
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
     name: "0ddd187b-d3d3-4b3f-a8df-dab2ebbb73d9"
 roleRef:
   kind: ClusterRole
