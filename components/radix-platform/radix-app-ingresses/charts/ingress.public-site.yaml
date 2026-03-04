@@ -18,29 +18,40 @@ spec:
                   number: 8080
             path: /
             pathType: Prefix
-    - host: "www.${AZ_RESOURCE_DNS:=tba}"
-      http:
-        paths:
-          - backend:
-              service:
-                name: public-site
-                port:
-                  number: 8080
-            path: /
-            pathType: Prefix
-    - host: "www.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}"
-      http:
-        paths:
-          - backend:
-              service:
-                name: public-site
-                port:
-                  number: 8080
-            path: /
-            pathType: Prefix
   tls:
     - hosts:
         - "${AZ_RESOURCE_DNS:=tba}"
-        - "www.${AZ_RESOURCE_DNS:=tba}"
-        - "www.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}"
       secretName: radix-wildcard-tls-cert
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: public-site-at.custom-domain
+  namespace: radix-public-site-${RADIX_APP_ENV:=tba}
+spec:
+  hostnames:
+    - "${AZ_RESOURCE_DNS:=tba}"
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: gateway
+      namespace: istio-system
+      sectionName: https
+  rules:
+    - backendRefs:
+        - group: ""
+          kind: Service
+          name: public-site
+          port: 8080
+          weight: 1
+      filters:
+        - responseHeaderModifier:
+            add:
+              - name: Strict-Transport-Security
+                value: max-age=31536000; includeSubDomains
+          type: ResponseHeaderModifier
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+---
