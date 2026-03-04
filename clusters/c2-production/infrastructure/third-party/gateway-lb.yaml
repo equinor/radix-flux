@@ -27,6 +27,9 @@ spec:
             spec:
               replicas: 5
               template:
+                metadata:
+                  labels:
+                    grafana.radix.equinor.com/monitor-health: "true"
                 spec:
                   containers:
                   - name: istio-proxy
