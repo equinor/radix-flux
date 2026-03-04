@@ -24,11 +24,6 @@ spec:
               requests:
                 cpu: 20m
                 memory: 128Mi
-            route:
-              main:
-                annotations:
-                  external-dns.alpha.kubernetes.io/ttl: "30"
-                  radix.equinor.com/preview-gateway-mode: "true"                
             env:
               GF_AUTH_GENERIC_OAUTH_ENABLED: "false"
               GF_AUTH_AZUREAD_ENABLED: "true"
