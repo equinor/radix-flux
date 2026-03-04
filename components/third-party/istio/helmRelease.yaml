@@ -21,6 +21,8 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
+    podLabels:
+      grafana.radix.equinor.com/monitor-health: "true"
     env: # https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
       PILOT_ENABLE_GATEWAY_API: "true"
       PILOT_ENABLE_GATEWAY_API_STATUS: "true"
