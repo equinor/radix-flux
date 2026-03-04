@@ -17,7 +17,6 @@ rules:
       - radixalerts
       - radixjobs
       - radixdeployments
-      - radixalerts
       - radixbatches
       - radixdnsaliases
     verbs:
@@ -29,15 +28,19 @@ rules:
   - apiGroups:
       - ""
     resources:
-      - deployments
       - pods
-      - pods/log
-      - configmaps
       - events
-      - pods
-      - pods/log
       - services
       - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+      
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
     verbs:
       - get
       - list
