@@ -130,6 +130,13 @@ spec:
         cost-api: radix-cost-allocation-api
         webhook: radix-github-webhook
         www: radix-public-site
+      
+      reservedDNSAliases:
+        - grafana
+        - prometheus
+        - app
+        - playground
+        - dev
 
     affinity:
       nodeAffinity:
