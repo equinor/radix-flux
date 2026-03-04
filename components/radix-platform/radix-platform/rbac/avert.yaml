@@ -1,0 +1,122 @@
+# Cluster Role and ClusterRoleBinding for Avert
+# app-reader
+# app-reader-envs
+# alle RRs
+# alle REs
+# alle RadixDNSAlias
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: avert-reader
+rules:
+  # RADIX CORE
+  - apiGroups:
+      - radix.equinor.com
+    resources:
+      - radixapplications
+      - radixregistrations
+      - radixalerts
+      - radixjobs
+      - radixdeployments
+      - radixalerts
+      - radixbatches
+      - radixdnsaliases
+    verbs:
+      - get
+      - list
+      - watch
+
+  # Kubernetes
+  - apiGroups:
+      - ""
+    resources:
+      - deployments
+      - pods
+      - pods/log
+      - configmaps
+      - events
+      - pods
+      - pods/log
+      - services
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+
+  - apiGroups:
+      - batch
+    resources:
+      - jobs
+    verbs:
+      - get
+      - list
+      - watch
+
+  # Networking
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - gateway.networking.k8s.io
+      - gateway.networking.x-k8s.io
+    resources:
+      - gateways
+      - httproutes
+      - listenersets
+      - xlistenersets
+    verbs:
+      - get
+      - list
+      - watch
+
+  # Autoscaling
+  - apiGroups:
+      - autoscaling
+    resources:
+      - horizontalpodautoscalers
+    verbs:
+      - get
+      - list
+      - watch
+
+  - apiGroups:
+      - keda.sh
+    resources:
+      - scaledobjects
+    verbs:
+      - get
+      - list
+      - watch
+
+  # Tekton
+  - apiGroups:
+      - tekton.dev
+    resources:
+      - pipelineruns
+      - taskruns
+    verbs:
+      - get
+      - list
+      - watch
+
+---
+# ClusterRoleBinding for Avert
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: avert-reader-binding
+subjects:
+  - kind: User
+    name: "0ddd187b-d3d3-4b3f-a8df-dab2ebbb73d9"
+
+roleRef:
+  kind: ClusterRole
+  name: avert-reader
+  apiGroup: rbac.authorization.k8s.io
