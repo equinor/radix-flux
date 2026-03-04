@@ -4,8 +4,5 @@ resources:
   - namespace.public-site.yaml
   - ingress.public-site.yaml
 
-  - namespace.webhook.yaml
-  - ingress.webhook.yaml
-
   - namespace.api.yaml
   - ingress.api.yaml
