@@ -1,9 +1,7 @@
 # Cluster Role and ClusterRoleBinding for Avert
-# app-reader
-# app-reader-envs
-# alle RRs
-# alle REs
-# alle RadixDNSAlias
+# radix-app-reader
+# radix-app-reader-envs
+# as well as all RRs, REs and RadixDNSAlias
 
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -115,7 +113,6 @@ metadata:
 subjects:
   - kind: User
     name: "0ddd187b-d3d3-4b3f-a8df-dab2ebbb73d9"
-
 roleRef:
   kind: ClusterRole
   name: avert-reader
