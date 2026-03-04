@@ -123,6 +123,21 @@ spec:
       requireAdGroups: true
       requireConfigurationItem: true
 
+      reservedAppDNSAliases:
+        api: radix-api
+        canary: radix-canary-golang
+        console: radix-web-console
+        cost-api: radix-cost-allocation-api
+        webhook: radix-github-webhook
+        www: radix-public-site
+      
+      reservedDNSAliases:
+        - grafana
+        - prometheus
+        - app
+        - playground
+        - dev
+
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
