@@ -28,6 +28,26 @@ spec:
                 operator: In
                 values:
                 - amd64
+      initContainers:
+      - name: cookie-secret
+        args:
+          - dd if=/dev/urandom bs=32 count=1 > /etc/cookie-secret/cookie.secret
+        resources:
+          limits:
+            memory: 20M
+          requests:
+            cpu: 10m
+            memory: 100M
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
+        volumeMounts:
+        - name: cookie-secret
+          mountPath: /etc/cookie-secret
       containers:
       - name: proxy
         image: quay.io/oauth2-proxy/oauth2-proxy:v7.14.2
@@ -43,7 +63,7 @@ spec:
         - --client-id=extmonprom
         - --client-secret=unused
         - --session-cookie-minimal=true
-        - --cookie-secret=unused
+        - --cookie-secret-file=/etc/cookie-secret/cookie.secret
         ports:
         - containerPort: 4180
           name: http
@@ -73,11 +93,17 @@ spec:
         - name: allowed-subjects
           mountPath: /etc/oauth2-proxy
           readOnly: true
+        - name: cookie-secret
+          mountPath: /etc/cookie-secret
+          readOnly: true
       securityContext:
         runAsNonRoot: true
         seccompProfile:
           type: RuntimeDefault
       volumes:
+      - name: cookie-secret
+        emptyDir:
+          sizeLimit: 1Ki
       - name: allowed-subjects
         configMap:
           name: oauth2-proxy-prometheus-allowed-subjects
