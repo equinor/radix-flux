@@ -4,7 +4,7 @@ metadata:
   annotations:
     ingress.kubernetes.io/force-ssl-redirect: "true"
   name: public-site-at.custom-domain
-  namespace: radix-public-site-${RADIX_APP_ENV:=tba}
+  namespace: radix-public-site-prod
 spec:
   ingressClassName: nginx
   rules:
@@ -27,7 +27,7 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: public-site-at.custom-domain
-  namespace: radix-public-site-${RADIX_APP_ENV:=tba}
+  namespace: radix-public-site-prod
 spec:
   hostnames:
     - "${AZ_RESOURCE_DNS:=tba}"
