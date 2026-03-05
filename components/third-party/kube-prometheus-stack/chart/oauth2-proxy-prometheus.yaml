@@ -7,12 +7,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      radix-app: oauth-demo
-      radix-aux-component: web
-      radix-aux-component-type: oauth
+      app.kubernetes.io/name: oauth2-proxy-prometheus
   strategy:
     type: RollingUpdate
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: oauth2-proxy-prometheus
     spec:
       affinity:
         nodeAffinity:
