@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: "${AZ_RESOURCE_DNS:=tba}"
+    - host: "${dnsZone}"
       http:
         paths:
           - backend:
