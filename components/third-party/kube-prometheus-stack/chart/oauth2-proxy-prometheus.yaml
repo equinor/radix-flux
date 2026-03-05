@@ -128,9 +128,7 @@ metadata:
   namespace: monitor
 spec:
   selector:
-    radix-app: oauth-demo
-    radix-aux-component: web
-    radix-aux-component-type: oauth
+    rapp.kubernetes.io/name: oauth2-proxy-prometheus
   ports:
   - name: http
     port: 4180
