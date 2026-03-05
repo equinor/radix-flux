@@ -30,6 +30,7 @@ spec:
                 - amd64
       initContainers:
       - name: cookie-secret
+        image: alpine:3.23
         args:
           - dd if=/dev/urandom bs=32 count=1 > /etc/cookie-secret/cookie.secret
         resources:
