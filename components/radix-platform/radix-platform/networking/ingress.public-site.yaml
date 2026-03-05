@@ -20,7 +20,7 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - "${AZ_RESOURCE_DNS:=tba}"
+        - "${dnsZone}"
       secretName: radix-wildcard-tls-cert
 ---
 apiVersion: gateway.networking.k8s.io/v1
@@ -30,7 +30,7 @@ metadata:
   namespace: radix-public-site-prod
 spec:
   hostnames:
-    - "${AZ_RESOURCE_DNS:=tba}"
+    - "${dnsZone}"
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway

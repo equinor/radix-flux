@@ -3,10 +3,11 @@ kind: Kustomization
 resources:
   - flux-system
   - ./infrastructure/third-party
+  - ./infrastructure/radix-platform
+
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
-  - ../../components/radix-platform/radix-platform
   - ../../components/third-party/blob-csi-driver
   - ../../components/third-party/cert-manager
   - ../../components/third-party/cert-manager-certs
@@ -21,7 +22,6 @@ resources:
   - ./overlay/radix-platform/radix-operator/radix-operator.yaml
   - ../../components/radix-platform/radix-vulnerability-scanner
   - ../../components/radix-platform/radix-cost-allocation
-  - ../../components/radix-platform/radix-app-ingresses
   - ../../components/third-party/keda
   - ../../components/third-party/tekton
   - ../../components/third-party/azure-workload-identity

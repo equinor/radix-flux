@@ -3,13 +3,13 @@ kind: Kustomization
 resources:
   - flux-system
   - ./infrastructure/third-party
+  - ./infrastructure/radix-platform
+
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
-  - ../../components/radix-platform/radix-platform
   - ../../components/radix-platform/radix-cost-allocation
   - ../../components/radix-platform/radix-vulnerability-scanner
-  - ../../components/radix-platform/radix-app-ingresses
   - ../../components/third-party/azure-workload-identity
   - ../../components/third-party/blob-csi-driver
   - ../../components/third-party/cert-manager
@@ -38,7 +38,6 @@ patches:
   - path: ./source-controller.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
-  - path: ./overlay/radix-platform/radix-platform/rbac.yaml
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/grafana/patches.yaml

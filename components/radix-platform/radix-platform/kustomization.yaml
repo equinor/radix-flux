@@ -2,4 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - component-priority-class.yaml
-  - rbac.yaml
+  - rbac/radix-platform-operators.yaml
+  - rbac/radix-platform-view.yaml
+  - rbac/radix-platform-edit.yaml
+  - networking/namespace.public-site.yaml
+  - networking/ingress.public-site.yaml
