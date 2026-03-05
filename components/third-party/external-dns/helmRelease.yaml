@@ -55,6 +55,7 @@ spec:
 
     podLabels:
       azure.workload.identity/use: "true"
+      grafana.radix.equinor.com/monitor-health: "true"
 
     extraVolumes:
       - name: azure-config-file
