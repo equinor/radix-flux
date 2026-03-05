@@ -107,7 +107,7 @@ spec:
       volumes:
       - name: cookie-secret
         emptyDir:
-          sizeLimit: 1Ki
+          sizeLimit: 10Mi
       - name: allowed-subjects
         configMap:
           name: oauth2-proxy-prometheus-allowed-subjects
