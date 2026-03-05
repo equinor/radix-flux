@@ -128,7 +128,7 @@ metadata:
   namespace: monitor
 spec:
   selector:
-    rapp.kubernetes.io/name: oauth2-proxy-prometheus
+    app.kubernetes.io/name: oauth2-proxy-prometheus
   ports:
   - name: http
     port: 4180
