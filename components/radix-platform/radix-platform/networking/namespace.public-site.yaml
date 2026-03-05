@@ -1,0 +1,7 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: radix-public-site-prod
+  labels:
+    radix-app: radix-public-site
+    radix-env: prod
