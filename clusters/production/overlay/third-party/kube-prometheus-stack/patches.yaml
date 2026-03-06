@@ -9,6 +9,19 @@ spec:
       ALERT_WEB_CONSOLE_BASE_URL: "https://console.radix.equinor.com"
   patches:
     - target:
+        kind: HTTPRoute
+        name: oauth2-proxy-prometheus
+        namespace: monitor
+      patch: |-
+        apiVersion: gateway.networking.k8s.io/v1
+        kind: HTTPRoute
+        metadata:
+          name: oauth2-proxy-prometheus
+          namespace: monitor
+          annotations:
+            external-dns.alpha.kubernetes.io/ttl: "30"
+            radix.equinor.com/preview-gateway-mode: "true"  
+    - target:
         kind: HelmRelease
         name: kube-prometheus-stack
         namespace: monitor
