@@ -71,7 +71,7 @@ spec:
         - --client-secret=unused
         - --session-cookie-minimal=true
         - --cookie-secret-file=/etc/cookie-secret/cookie.secret
-        - --skip_provider_button=true
+        - --skip-provider-button=true
         ports:
         - containerPort: 4180
           name: http
