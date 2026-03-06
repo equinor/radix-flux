@@ -16,6 +16,7 @@ spec:
       labels:
         app.kubernetes.io/name: oauth2-proxy-prometheus
         app.kubernetes.io/instance: oauth2-proxy-prometheus
+        grafana.radix.equinor.com/monitor-health: "true"
     spec:
       affinity:
         nodeAffinity:
@@ -143,6 +144,10 @@ kind: HTTPRoute
 metadata:
   name: oauth2-proxy-prometheus
   namespace: monitor
+  annotations:
+    annotations:
+      external-dns.alpha.kubernetes.io/ttl: "30"
+      radix.equinor.com/preview-gateway-mode: "true"
 spec:
   parentRefs:
   - group: gateway.networking.k8s.io
