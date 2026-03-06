@@ -20,10 +20,30 @@ spec:
       enabled: true
       hosts:
         - uptime.${AZ_RESOURCE_DNS:=tba}
-        - uptme.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+        - uptime.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
       annotations:
         cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
       certSecretName: "uptime-cert"
+
+    route:
+      main:
+        enabled: true
+        parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: Gateway
+          name: gateway
+          namespace: istio-system
+          sectionName: https
+        hostnames:
+        - uptime.${AZ_RESOURCE_DNS:=tba}
+        - uptime.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+        filters:
+        - responseHeaderModifier:
+            add:
+            - name: Strict-Transport-Security
+              value: max-age=31536000; includeSubDomains
+          type: ResponseHeaderModifier
+
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
