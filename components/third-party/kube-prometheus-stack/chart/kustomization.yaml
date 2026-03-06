@@ -4,5 +4,4 @@ resources:
 - namespace.yaml
 - helmRepo.yaml
 - helmRelease.yaml
-- ingress.yaml
-
+- oauth2-proxy-prometheus.yaml
