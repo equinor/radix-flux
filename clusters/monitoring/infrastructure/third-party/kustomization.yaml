@@ -4,3 +4,5 @@ resources:
   - gateway-api.yaml
   - gateway-lb.yaml
   - istio.yaml
+  - cert-manager-issuers.yaml
+  - cert-manager-certs.yaml

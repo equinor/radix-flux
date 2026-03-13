@@ -21,8 +21,6 @@ spec:
       hosts:
         - uptime.${AZ_RESOURCE_DNS:=tba}
         - uptime.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
-      annotations:
-        cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
       certSecretName: "uptime-cert"
 
     route:

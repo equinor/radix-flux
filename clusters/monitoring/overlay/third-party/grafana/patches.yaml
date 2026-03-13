@@ -19,8 +19,6 @@ spec:
           values:
             ingress:
               enabled: true
-              annotations:
-                cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
               hosts:
               - grafana.${clusterName}.${AZ_RESOURCE_DNS}
               - grafana.${AZ_RESOURCE_DNS}
