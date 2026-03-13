@@ -1,0 +1,11 @@
+# https://istio.io/latest/docs/tasks/traffic-management/ingress/gateway-api/
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-gateway-config
+  namespace: istio-system
+data:
+  service: |
+    spec:
+      externalTrafficPolicy: Local
