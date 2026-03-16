@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: grafana-tls
-  namespace: monitor
+  namespace: istio-system
 spec:
   secretName: grafana-tls
   issuerRef:
@@ -14,18 +14,3 @@ spec:
   dnsNames:
   - grafana.${clusterName}.${AZ_RESOURCE_DNS}
   - grafana.${AZ_RESOURCE_DNS}
----
-apiVersion: gateway.networking.k8s.io/v1beta1
-kind: ReferenceGrant
-metadata:
-  name: grafana-tls
-  namespace: monitor
-spec:
-  from:
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      namespace: istio-system
-  to:
-  - group: ""
-    kind: Secret
-    name: grafana-tls
