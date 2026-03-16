@@ -33,22 +33,10 @@ spec:
         certificateRefs:
           - group: ""
             kind: Secret
-            name: radix-wildcard-tls-cert
-        mode: Terminate          
-    # - name: https
-    #   port: 443
-    #   protocol: HTTPS
-    #   allowedRoutes:
-    #     namespaces:
-    #       from: All
-    #   tls:
-    #     certificateRefs:
-    #       - group: ""
-    #         kind: Secret
-    #         name: grafana-tls
-    #         namespace: monitor
-    #       - group: ""
-    #         kind: Secret
-    #         name: uptime-cert
-    #         namespace: monitor
-    #     mode: Terminate
+            name: grafana-tls
+            namespace: monitor
+          - group: ""
+            kind: Secret
+            name: uptime-cert
+            namespace: monitor
+        mode: Terminate
