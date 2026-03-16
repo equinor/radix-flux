@@ -34,7 +34,9 @@ spec:
           - group: ""
             kind: Secret
             name: grafana-tls
+            namespace: monitor
           - group: ""
             kind: Secret
-            name: uptime-tls
+            name: uptime-cert
+            namespace: monitor
         mode: Terminate
