@@ -33,8 +33,5 @@ spec:
         certificateRefs:
           - group: ""
             kind: Secret
-            name: grafana-tls
-          - group: ""
-            kind: Secret
-            name: uptime-cert
+            name: tls-cert
         mode: Terminate
