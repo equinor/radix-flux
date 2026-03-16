@@ -31,7 +31,7 @@ spec:
           kind: Gateway
           name: gateway
           namespace: istio-system
-          sectionName: https
+          sectionName: uptime
         hostnames:
         - uptime.${AZ_RESOURCE_DNS:=tba}
         - uptime.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
