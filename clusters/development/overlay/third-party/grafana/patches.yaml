@@ -33,3 +33,5 @@ spec:
               GF_AUTH_AZUREAD_CLIENT_AUTHENTICATION: "workload_identity"
               GF_AUTH_AZUREAD_FEDERATED_CREDENTIAL_AUDIENCE: "api://AzureADTokenExchange"
               GF_AUTH_AZUREAD_ALLOWED_ORGANIZATIONS: "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
+              GF_AUTH_AZUREAD_ALLOW_ASSIGN_GRAFANA_ADMIN: "true"
+              GF_AUTH_DISABLE_LOGIN_FORM: "true"
