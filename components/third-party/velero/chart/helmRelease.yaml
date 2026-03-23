@@ -22,7 +22,9 @@ spec:
   values:
     image:
       repository: ${RADIX_CACHE_REGISTRY}/velero/velero
+    
     # TODO: Use recommended approach when https://github.com/vmware-tanzu/helm-charts/issues/698 is resolved
+    # TODO: Remove this when Velero chart 1.12 is released everywhere (app version 1.18)
     kubectl:
       image:
         repository: public.ecr.aws/bitnami/kubectl

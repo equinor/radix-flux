@@ -53,3 +53,7 @@ spec:
                 - name: azure
                   provider: azure
                   apitimeout: 300s
+
+            kubectl:
+              image:
+                repository: registry.k8s.io/kubectl
