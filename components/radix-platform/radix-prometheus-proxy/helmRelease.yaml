@@ -17,13 +17,7 @@ spec:
   values:
     prometheusUrl: http://prometheus-operator-prometheus:9090
     ingress:
-      enabled: true
-      hosts:
-        - uptime.${AZ_RESOURCE_DNS:=tba}
-        - uptime.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
-      annotations:
-        cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
-      certSecretName: "uptime-cert"
+      enabled: false
 
     route:
       main:

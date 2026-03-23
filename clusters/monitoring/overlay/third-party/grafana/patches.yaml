@@ -18,18 +18,7 @@ spec:
         spec:
           values:
             ingress:
-              enabled: true
-              annotations:
-                cert-manager.io/cluster-issuer: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
-              hosts:
-              - grafana.${clusterName}.${AZ_RESOURCE_DNS}
-              - grafana.${AZ_RESOURCE_DNS}
-              tls:
-              - secretName: grafana-tls
-                hosts:
-                - grafana.${clusterName}.${AZ_RESOURCE_DNS}
-                - grafana.${AZ_RESOURCE_DNS}
-            
+              enabled: false
             env:
               GF_AZURE_WORKLOAD_IDENTITY_ENABLED: "true"
               GF_AUTH_GENERIC_OAUTH_ENABLED: "false"
