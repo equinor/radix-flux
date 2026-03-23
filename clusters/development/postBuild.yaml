@@ -13,7 +13,7 @@ spec:
       BLOB_CSI_DRIVER: 1.27.3 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: a22f9976-c8a8-4802-b95b-d6e08aac203a # gitleaks:allow
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-dev
-      CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.20.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c # gitleaks:allow
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
@@ -23,12 +23,12 @@ spec:
       GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
       GRAFANA_DB_USERNAME: radix-id-grafana-admin-dev
       GRAFANA_LOKI: 2.10.3 # https://artifacthub.io/packages/helm/grafana/loki-stack
-      GRAFANA_VERSION: 10.4.0 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 10.5.15 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a # gitleaks:allow
-      KEDA_VERSION: 2.18.3 # https://artifacthub.io/packages/helm/kedacore/keda
+      KEDA_VERSION: 2.19.0 # https://artifacthub.io/packages/helm/kedacore/keda
       KUBE_PROMETHEUS_STACK: 81.3.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack # newer version fails. ref: https://github.com/equinor/radix-platform/issues/1849
-      KUBERNETES_REPLICATOR: v2.12.2 # https://github.com/mittwald/kubernetes-replicator
-      NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      KUBERNETES_REPLICATOR: v2.12.3 # https://github.com/mittwald/kubernetes-replicator
+      NGINX_VERSION: 4.15.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       OAUTH2PROXY_TAG: "v7.14.2" #https://quay.io/repository/oauth2-proxy/oauth2-proxy?tag=latest&tab=tags
       OAUTH2REDIS_TAG: "8.6.0-alpine3.23" # https://hub.docker.com/_/redis/tags # gitleaks:allow
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
@@ -56,8 +56,8 @@ spec:
       SECCOMP_IMAGE_TAG: 3.22.1
       TEKTON_VERSION: v0.53.0
       VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94 # gitleaks:allow
-      velero_plugin_azure: v1.13.2 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
-      VELERO_VERSION: 11.3.2 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      velero_plugin_azure: v1.14.0 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
+      VELERO_VERSION: 12.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 3eb2d577-be3f-43cf-8b12-c516d724d549 # gitleaks:allow
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-dev.database.windows.net
     substituteFrom:
