@@ -48,6 +48,7 @@ spec:
                 config:
                   resourceGroup: common-${RADIX_ZONE_MIGRATE}
                   storageAccount: radixvelero${RADIX_ZONE_MIGRATE}
+                  subscriptionId: ${subscriptionId} # Set in configmap
                   useAAD: "true"
               volumeSnapshotLocation:
                 - name: azure
