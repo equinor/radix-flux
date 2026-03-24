@@ -1,0 +1,27 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: grafana
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./components/third-party/grafana"
+  dependsOn:
+    - name: external-secrets-operator
+    - name: kube-prometheus-stack
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+    substitute:
+      GRAFANA_VERSION: 10.3.0 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_AR_CLIENT_ID: f5f73701-390c-4ab4-944c-4ece6ae493cd # gitleaks:allow
+      GRAFANA_DB_HOST: s940-radix-grafana-c2-prod.mysql.database.azure.com
+      GRAFANA_DB_USERNAME: radix-id-grafana-admin-c2
+      GRAFANA_WI_CLIENT_ID: fa6ac394-78ec-4710-9923-77b772f5de74 # gitleaks:allow
+  wait: true
+  timeout: 2m

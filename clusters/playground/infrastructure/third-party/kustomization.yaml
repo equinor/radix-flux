@@ -9,3 +9,4 @@ resources:
   - external-secrets-operator.yaml
   - external-secrets-stores.yaml
   - external-secrets-secrets.yaml
+  - grafana.yaml
