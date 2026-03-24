@@ -6,3 +6,4 @@ resources:
   - istio.yaml
   - cert-manager-issuers.yaml
   - cert-manager-certs.yaml
+  - grafana.yaml

@@ -45,22 +45,30 @@ spec:
                 value: true
   values:
     # global:
-    #  imageRegistry: ${RADIX_CACHE_REGISTRY:=tba}
+    #  imageRegistry: ${cacheRegistry}
     image:
       registry: ghcr.io
       repository: equinor/radix/grafana
       tag: 12.3.3.1-test
 
+    resources:
+      limits:
+        cpu: 256m
+        memory: 512Mi
+      requests:
+        cpu: 128m
+        memory: 256Mi
+
     ingress:
       enabled: true
       hosts:
-        - grafana.${clusterName}.${AZ_RESOURCE_DNS}
-        - grafana.${AZ_RESOURCE_DNS}
+        - grafana.${clusterName}.${dnsZone}
+        - grafana.${dnsZone}
       tls:
         - secretName: radix-wildcard-tls-cert
           hosts:
-            - grafana.${clusterName}.${AZ_RESOURCE_DNS}
-            - grafana.${AZ_RESOURCE_DNS}
+            - grafana.${clusterName}.${dnsZone}
+            - grafana.${dnsZone}
 
     route:
       main:
@@ -69,21 +77,21 @@ spec:
           external-dns.alpha.kubernetes.io/ttl: "30"
           radix.equinor.com/preview-gateway-mode: "true"
         parentRefs:
-        - group: gateway.networking.k8s.io
-          kind: Gateway
-          name: gateway
-          namespace: istio-system
-          sectionName: https        
+          - group: gateway.networking.k8s.io
+            kind: Gateway
+            name: gateway
+            namespace: istio-system
+            sectionName: https
         hostnames:
-        - grafana.${clusterName}.${AZ_RESOURCE_DNS}
-        - grafana.${AZ_RESOURCE_DNS}
+          - grafana.${clusterName}.${dnsZone}
+          - grafana.${dnsZone}
         filters:
-        - responseHeaderModifier:
-            add:
-            - name: Strict-Transport-Security
-              value: max-age=31536000; includeSubDomains
-          type: ResponseHeaderModifier
-            
+          - responseHeaderModifier:
+              add:
+                - name: Strict-Transport-Security
+                  value: max-age=31536000; includeSubDomains
+            type: ResponseHeaderModifier
+
     podLabels:
       azure.workload.identity/use: "true"
       grafana.radix.equinor.com/monitor-health: "true"
@@ -106,24 +114,27 @@ spec:
                     - amd64
     nodeSelector: { "kubernetes.io/os": "linux" }
     env:
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
       GF_AUTH_ANONYMOUS_ENABLED: "false"
-      GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
-      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/authorize
-      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ${GRAFANA_AR_CLIENT_ID}
-      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
-      GF_AUTH_GENERIC_OAUTH_NAME: Azure AD
-      GF_AUTH_GENERIC_OAUTH_SCOPES: openid email name
-      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
+      GF_AUTH_GENERIC_OAUTH_ENABLED: "false"
+      GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: "true"
+
+      GF_AUTH_AZUREAD_ENABLED: "true"
+      GF_AZURE_WORKLOAD_IDENTITY_ENABLED: "true"
+      GF_AUTH_AZUREAD_ALLOW_ASSIGN_GRAFANA_ADMIN: "true"
+      GF_AUTH_AZUREAD_CLIENT_ID: "${GRAFANA_AR_CLIENT_ID}"
+      GF_AUTH_AZUREAD_AUTH_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/authorize"
+      GF_AUTH_AZUREAD_TOKEN_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token"
+      GF_AUTH_AZUREAD_CLIENT_AUTHENTICATION: "workload_identity"
+      GF_AUTH_AZUREAD_FEDERATED_CREDENTIAL_AUDIENCE: "api://AzureADTokenExchange"
+      GF_AUTH_AZUREAD_ALLOWED_ORGANIZATIONS: "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
+
       GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
       GF_DATABASE_SSL_MODE: "skip-verify"
       GF_DATABASE_URL: mysql://${GRAFANA_DB_USERNAME}:$__file{/var/run/secrets/ossrdbms-aad/token}@${GRAFANA_DB_HOST}/grafana?allowCleartextPasswords=1
-      GF_SERVER_ROOT_URL: https://grafana.${AZ_RESOURCE_DNS}
+      GF_SERVER_ROOT_URL: https://grafana.${dnsZone}
       GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor" # Viewer|Editor|Admin
-      # GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ""   # Set by secret
-      # GF_DATABASE_PASSWORD: ""                  # Set by secret
-      # GF_DATABASE_TYPE: mysql                   # Removed after 8.9.0
-      # GF_SERVER_ROOT_URL: ""                    # Set by secret
-    # envFromSecret: grafana-secrets
+
     extraContainerVolumes:
       - name: access-token-volume
         emptyDir: {}
