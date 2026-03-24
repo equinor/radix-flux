@@ -19,9 +19,9 @@ spec:
         name: radix-flux-config
     substitute:
       GRAFANA_VERSION: 10.3.0 # https://artifacthub.io/packages/helm/grafana/grafana
-      GRAFANA_AR_CLIENT_ID: f5f73701-390c-4ab4-944c-4ece6ae493cd # gitleaks:allow
-      GRAFANA_DB_HOST: s940-radix-grafana-c2-prod.mysql.database.azure.com
-      GRAFANA_DB_USERNAME: radix-id-grafana-admin-c2
-      GRAFANA_WI_CLIENT_ID: fa6ac394-78ec-4710-9923-77b772f5de74 # gitleaks:allow
+      GRAFANA_AR_CLIENT_ID: f545deb5-f721-4d20-87cd-b046b5119d70 # gitleaks:allow
+      GRAFANA_DB_HOST: s941-radix-grafana-dev.mysql.database.azure.com
+      GRAFANA_DB_USERNAME: radix-id-grafana-admin-dev
+      GRAFANA_WI_CLIENT_ID: 1150acff-2bc7-47df-a1b2-b45dbeaaf58a # gitleaks:allow
   wait: true
   timeout: 2m
