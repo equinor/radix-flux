@@ -25,7 +25,6 @@ spec:
         data:
           deployment: |-
             spec:
-              replicas: 2
               template:
                 metadata:
                   labels:

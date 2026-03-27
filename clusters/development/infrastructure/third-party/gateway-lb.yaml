@@ -25,7 +25,6 @@ spec:
         data:
           deployment: |-
             spec:
-              # replicas: 2
               template:
                 metadata:
                   labels:
@@ -39,6 +38,7 @@ spec:
                         memory: 100Mi
                       limits:
                         memory: 500Mi
+                        cpu: 2000m
       target:
         kind: ConfigMap
         name: istio-gateway-config
