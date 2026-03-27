@@ -25,7 +25,6 @@ spec:
         data:
           deployment: |-
             spec:
-              replicas: 2
               template:
                 metadata:
                   labels:
@@ -38,7 +37,7 @@ spec:
                         cpu: 100m
                         memory: 200Mi
                       limits:
-                        cpu: 1000m
+                        cpu: 2000m
                         memory: 1Gi
       target:
         kind: ConfigMap

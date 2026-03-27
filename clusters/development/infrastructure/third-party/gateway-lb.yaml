@@ -25,7 +25,6 @@ spec:
         data:
           deployment: |-
             spec:
-              replicas: 1
               template:
                 metadata:
                   labels:
@@ -35,11 +34,11 @@ spec:
                   - name: istio-proxy
                     resources:
                       requests:
-                        cpu: 50m
+                        cpu: 100m
                         memory: 100Mi
                       limits:
-                        cpu: 200m
                         memory: 500Mi
+                        cpu: 2000m
       target:
         kind: ConfigMap
         name: istio-gateway-config
