@@ -14,26 +14,27 @@ data:
     spec:
       minReplicas: 2
       maxReplicas: 5
-    metrics:
-      - resource:
-          name: cpu
-          target:
-            averageUtilization: 80
-            type: Utilization
-        type: Resource
-    behavior:
-      scaleUp:
-        stabilizationWindowSeconds: 0
-        policies:
-          - type: Percent
-            value: 100
-            periodSeconds: 15
-      scaleDown:
-        stabilizationWindowSeconds: 300
-        policies:
-          - type: Pods
-            value: 1
-            periodSeconds: 60
+      
+      metrics:
+        - resource:
+            name: cpu
+            target:
+              averageUtilization: 80
+              type: Utilization
+          type: Resource
+      behavior:
+        scaleUp:
+          stabilizationWindowSeconds: 0
+          policies:
+            - type: Percent
+              value: 100
+              periodSeconds: 15
+        scaleDown:
+          stabilizationWindowSeconds: 300
+          policies:
+            - type: Pods
+              value: 1
+              periodSeconds: 60
 
   podDisruptionBudget: |
     spec:
