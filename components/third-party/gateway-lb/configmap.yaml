@@ -9,3 +9,12 @@ data:
   service: |
     spec:
       externalTrafficPolicy: Local
+
+  horizontalPodAutoscaler: |
+    spec:
+      minReplicas: 2
+      maxReplicas: 5
+
+  podDisruptionBudget: |
+    spec:
+      minAvailable: 1
