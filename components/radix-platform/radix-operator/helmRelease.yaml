@@ -34,6 +34,7 @@ spec:
     kubeClientRateLimitBurst: 500
     kubeClientRateLimitQPS: 500
     externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
+    safeToRestartBatchJobThreshold: 1576800000 # 3 days, currently 50 years
 
     ingress:
       certificate:
