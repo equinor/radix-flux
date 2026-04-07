@@ -23,12 +23,16 @@ spec:
   values:
     podLabels:
       grafana.radix.equinor.com/monitor-health: "true"
-    env: # https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+    
+    # See https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars for options
+    env:
       PILOT_ENABLE_GATEWAY_API: "true"
       PILOT_ENABLE_GATEWAY_API_STATUS: "true"
       PILOT_ENABLE_GATEWAY_API_DEPLOYMENT_CONTROLLER: "true"
       PILOT_ENABLE_ALPHA_GATEWAY_API: "true"
       PILOT_HTTP10: "true"
+    
+    # See https://istio.io/docs/reference/config/istio.mesh.v1alpha1/ for all available options
     meshConfig:
       accessLogFile: /dev/stdout
       accessLogEncoding: JSON
