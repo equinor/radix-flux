@@ -5,10 +5,14 @@ metadata:
 spec:
   profile: lite
   targetNamespace: tekton-pipelines
+  chain:
+    disabled: true
+  dashboard:
+    options:
+      disabled: true
+  result:
+    disabled: true
+  trigger:
+    disabled: false
   pruner:
     disabled: true
-    # resources:
-    # - pipelinerun
-    # - taskrun
-    # keep: 100
-    # schedule: "0 8 * * *"
