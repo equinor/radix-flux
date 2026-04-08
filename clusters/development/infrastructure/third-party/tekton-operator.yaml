@@ -1,0 +1,13 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: tekton-operator
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./components/third-party/tekton-v2/operator/v0.79.0"
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
