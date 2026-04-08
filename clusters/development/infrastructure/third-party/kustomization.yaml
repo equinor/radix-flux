@@ -11,3 +11,4 @@ resources:
   - external-secrets-secrets.yaml
   - grafana.yaml
   - tekton-operator.yaml
+  - tekton-config.yaml
