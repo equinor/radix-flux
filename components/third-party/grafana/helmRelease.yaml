@@ -114,7 +114,7 @@ spec:
                     - amd64
     nodeSelector: { "kubernetes.io/os": "linux" }
     env:
-      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_AUTH_DISABLE_LOGIN_FORM: "${GF_AUTH_DISABLE_LOGIN_FORM:=true}"
       GF_AUTH_ANONYMOUS_ENABLED: "false"
       GF_AUTH_GENERIC_OAUTH_ENABLED: "false"
       GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: "true"
