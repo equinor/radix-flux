@@ -3,7 +3,7 @@ kind: TektonConfig
 metadata:
   name: config
 spec:
-  profile: lite
+  profile: lite # Ref bug https://github.com/tektoncd/operator/issues/2781
   targetNamespace: tekton-pipelines
   chain:
     disabled: true
@@ -16,3 +16,5 @@ spec:
     disabled: false
   pruner:
     disabled: true
+  pipeline:
+    running-in-environment-with-injected-sidecars: false
