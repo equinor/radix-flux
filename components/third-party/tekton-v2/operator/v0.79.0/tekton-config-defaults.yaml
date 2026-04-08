@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tekton-config-defaults
+  namespace: tekton-operator
+data:
+  AUTOINSTALL_COMPONENTS: "false"
