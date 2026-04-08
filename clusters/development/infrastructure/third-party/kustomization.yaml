@@ -10,3 +10,4 @@ resources:
   - external-secrets-stores.yaml
   - external-secrets-secrets.yaml
   - grafana.yaml
+  - tekton-operator.yaml
