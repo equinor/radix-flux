@@ -13,7 +13,10 @@ spec:
         name: tekton-pipelines
         namespace: flux-system
   interval: 5m
+  upgrade:
+    crds: Skip
   install:
+    crds: Skip
     remediation:
       retries: 3
 
