@@ -20,7 +20,6 @@ resources:
   - ../../components/radix-platform/radix-vulnerability-scanner
   - ../../components/radix-platform/radix-cost-allocation
   - ../../components/third-party/keda
-  - ../../components/third-party/tekton
   - ../../components/third-party/azure-workload-identity
   - ../../components/third-party/cert-manager
   - ../../components/third-party/cert-manager-certs
