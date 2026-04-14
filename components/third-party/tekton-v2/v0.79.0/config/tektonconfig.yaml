@@ -18,3 +18,4 @@ spec:
     disabled: true
   pipeline:
     running-in-environment-with-injected-sidecars: false
+    enable-git-resolver: false
