@@ -22,7 +22,6 @@ resources:
   - ../../components/radix-platform/radix-vulnerability-scanner
   - ../../components/radix-platform/radix-cost-allocation
   - ../../components/third-party/keda
-  - ../../components/third-party/tekton
   - ../../components/third-party/azure-workload-identity
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
 

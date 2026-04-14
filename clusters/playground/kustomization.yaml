@@ -19,7 +19,6 @@ resources:
   - ../../components/third-party/kubernetes-replicator
   - ../../components/radix-platform/radix-ingress-default-backend
   - ../../components/third-party/keda
-  - ../../components/third-party/tekton
   - ../../components/third-party/velero
   - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
   - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
