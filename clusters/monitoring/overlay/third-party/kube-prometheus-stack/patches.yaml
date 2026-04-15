@@ -40,7 +40,7 @@ spec:
                   timeout: 60s
                 resources:
                   limits:
-                    cpu: 2
+                    cpu: 4
                     memory: 14Gi
                   requests:
                     cpu: 1
