@@ -21,3 +21,16 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
         optional: false
+  patches:
+    - patch: |
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: external-dns
+          namespace: external-dns
+        spec:
+          values:
+            annotationFilter: "radix.equinor.com/preview-gateway-mode=never"
+      target:
+        kind: HelmRelease
+        name: external-dns
