@@ -14,7 +14,9 @@ data:
     spec:
       minReplicas: 2
       maxReplicas: 5
-
+      behavior:      
+        scaleDown:
+          stabilizationWindowSeconds: 1800
   podDisruptionBudget: |
     spec:
       minAvailable: 1
