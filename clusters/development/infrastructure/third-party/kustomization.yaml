@@ -6,7 +6,7 @@ resources:
   - gateway-api.yaml
   - gateway-lb.yaml
   - istio.yaml
-  # - istio-envoyfilter.yaml
+  - istio-envoyfilter.yaml
   - external-secrets-operator.yaml
   - external-secrets-stores.yaml
   - external-secrets-secrets.yaml
