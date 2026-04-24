@@ -20,13 +20,14 @@ spec:
         name: envoy.filters.http.lua
         typed_config:
           "@type": type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua
-          inlineCode: |
-            function envoy_on_request(handle)
-              local headers = handle:headers()
-              local authority = headers:get(":authority")
-              if authority ~= nil and authority ~= "" then
-                headers:replace("x-forwarded-host", authority)
-              else
-                headers:remove("x-forwarded-host")
+          defaultSourceCode:
+            inlineString: |
+              function envoy_on_request(handle)
+                local headers = handle:headers()
+                local authority = headers:get(":authority")
+                if authority ~= nil and authority ~= "" then
+                  headers:replace("x-forwarded-host", authority)
+                else
+                  headers:remove("x-forwarded-host")
+                end
               end
-            end
