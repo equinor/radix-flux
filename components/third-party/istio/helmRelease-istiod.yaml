@@ -5,6 +5,9 @@ metadata:
   namespace: istio-system
 spec:
   releaseName: istiod
+  dependsOn:
+  - name: istio-base
+    namespace: istio-system
   chart:
     spec:
       chart: istiod
@@ -42,6 +45,8 @@ spec:
             disabled: true
           server:
             disabled: true
+          xForwardedPort:
+            enabled: true
     global:
       logAsJson: true
       networkPolicy:
