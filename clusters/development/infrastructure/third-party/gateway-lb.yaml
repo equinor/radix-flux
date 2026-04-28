@@ -30,6 +30,7 @@ spec:
                   labels:
                     grafana.radix.equinor.com/monitor-health: "true"
                 spec:
+                  terminationGracePeriodSeconds: 40
                   containers:
                   - name: istio-proxy
                     resources:
