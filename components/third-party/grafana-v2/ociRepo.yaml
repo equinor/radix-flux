@@ -1,7 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
-  name: radix-operator-chart
+  name: grafana-chart
   namespace: flux-system
 spec:
   interval: 1m
