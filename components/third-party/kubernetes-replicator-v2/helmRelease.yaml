@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: kubernetes-replicator
-      version: ${KUBERNETES_REPLICATOR} # Set by flux patch
+      version: ${KUBERNETES_REPLICATOR_VERSION} # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: kubernetes-replicator
