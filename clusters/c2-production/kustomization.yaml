@@ -13,7 +13,6 @@ resources:
   - ../../components/third-party/cert-manager-certs
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack
-  - ../../components/third-party/kubernetes-replicator
   - ../../components/radix-platform/radix-ingress-default-backend
   - ../../components/third-party/velero
   - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
@@ -38,6 +37,5 @@ patches:
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
-  - path: ./overlay/third-party/kubernetes-replicator/helmRelease.yaml
   - path: ./overlay/third-party/velero/patches.yaml
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
