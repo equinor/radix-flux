@@ -28,8 +28,10 @@ spec:
                   - mountPath: /var/run/secrets/ossrdbms-aad
                     name: access-token-volume
                     readOnly: true
-                  - mountPath: /var/lib/grafana/
+                  - mountPath: /var/lib/grafana
                     name: grafana-lib
+                  - mountPath: /var/lib/grafana-search
+                    name: grafana-search
 
               - op: add
                 path: /spec/template/spec/containers/0/securityContext
@@ -41,7 +43,7 @@ spec:
                 value: true
   values:
     global:
-     imageRegistry: ${cacheRegistry} # set in radix-flux-config configmap
+      imageRegistry: ${cacheRegistry} # set in radix-flux-config configmap
 
     resources:
       limits:
@@ -133,6 +135,8 @@ spec:
       - name: access-token-volume
         emptyDir: {}
       - name: grafana-lib
+        emptyDir: {}
+      - name: grafana-search
         emptyDir: {}
     extraInitContainers:
       - name: fetch-token
