@@ -32,6 +32,8 @@ spec:
                     name: grafana-lib
                   - mountPath: /var/lib/grafana-search
                     name: grafana-search
+                  - mountPath: /tmp
+                    name: tmp
 
               - op: add
                 path: /spec/template/spec/containers/0/securityContext
