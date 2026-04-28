@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: radix-operator-chart
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: oci://ghcr.io/grafana-community/helm-charts/grafana
+  ref:
+    tag: ${GRAFANA_VERSION}
