@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/grafana-v2"
+  path: "./components/third-party/grafana"
   dependsOn:
     - name: external-secrets-operator
     - name: kube-prometheus-stack
