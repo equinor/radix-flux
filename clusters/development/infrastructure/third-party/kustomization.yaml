@@ -12,5 +12,6 @@ resources:
   - istio-envoyfilter.yaml
   - istio.yaml
   - kubernetes-replicator.yaml
+  - multi-wildcard-cert.yaml
   - tekton-config.yaml
   - tekton-operator.yaml

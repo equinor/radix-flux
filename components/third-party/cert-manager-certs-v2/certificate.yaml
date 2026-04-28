@@ -1,0 +1,22 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: radix-wildcard-tls-cert
+  namespace: istio-system 
+spec:
+  secretName: radix-wildcard-tls-cert
+  secretTemplate:
+    annotations:
+      replicator.v1.mittwald.de/replicate-to-matching: "radix-wildcard-sync=radix-wildcard-tls-cert"
+  issuerRef:
+    kind: ClusterIssuer
+    name: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
+  duration: 2160h # 90d
+  renewBefore: 762h # 32d. Let's Encrypt will email an alert if 30d remain and cert has not been renewed.
+  commonName: "*.${dnsZone}"
+  dnsNames:
+  - "*.${dnsZone}"
+  - "${dnsZone}"
+  - "*.app.${dnsZone}"
+  - "*.${clusterName}.${dnsZone}"

@@ -12,7 +12,6 @@ resources:
   - ../../components/third-party/azure-workload-identity
   - ../../components/third-party/blob-csi-driver
   - ../../components/third-party/cert-manager
-  - ../../components/third-party/cert-manager-certs
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/radix-platform/radix-ingress-default-backend
