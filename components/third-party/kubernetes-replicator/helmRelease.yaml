@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: kubernetes-replicator
-      version: xx # Set by flux patch
+      version: ${KUBERNETES_REPLICATOR_VERSION} # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: kubernetes-replicator
@@ -21,7 +21,7 @@ spec:
     podLabels:
       grafana.radix.equinor.com/monitor-health: "true"
     image:
-      repository: ${RADIX_CACHE_REGISTRY}/mittwald/kubernetes-replicator
+      repository: ${cacheRegistry}/mittwald/kubernetes-replicator
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:

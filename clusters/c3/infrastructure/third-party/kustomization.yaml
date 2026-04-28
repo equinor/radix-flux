@@ -3,14 +3,15 @@ kind: Kustomization
 resources:
   - cert-manager-issuers.yaml
   - external-dns.yaml
+  - external-secrets-operator.yaml
+  - external-secrets-secrets.yaml
+  - external-secrets-stores.yaml
   - gateway-api.yaml
   - gateway-lb.yaml
-  - istio.yaml
-  - istio-envoyfilter.yaml
-  - external-secrets-operator.yaml
-  - external-secrets-stores.yaml
-  - external-secrets-secrets.yaml
   - grafana.yaml
-  - tekton-operator.yaml
+  - istio-envoyfilter.yaml
+  - istio.yaml
+  - kubernetes-replicator.yaml
   - tekton-config.yaml
+  - tekton-operator.yaml
   
