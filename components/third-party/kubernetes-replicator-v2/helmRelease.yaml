@@ -1,0 +1,57 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kubernetes-replicator
+  namespace: kubernetes-replicator
+spec:
+  releaseName: kubernetes-replicator
+  chart:
+    spec:
+      chart: kubernetes-replicator
+      version: ${KUBERNETES_REPLICATOR} # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: kubernetes-replicator
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    podLabels:
+      grafana.radix.equinor.com/monitor-health: "true"
+    image:
+      repository: ${cacheRegistry}/mittwald/kubernetes-replicator
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - arm64
+    resources:
+      limits:
+        cpu: 200m
+        memory: 512Mi
+      requests:
+        cpu: 50m
+        memory: 256Mi
+    podSecurityContext:
+      fsGroup: 1000
+      runAsGroup: 1000
+      runAsUser: 1000
+    securityContext:
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      runAsNonRoot: true
+      privileged: false
+      runAsUser: 1000
+      capabilities:
+        drop:
+        - ALL

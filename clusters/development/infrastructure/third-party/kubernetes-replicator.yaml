@@ -1,0 +1,20 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: kubernetes-replicator
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./components/third-party/kubernetes-replicator-v2"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+    substitute:
+      KUBERNETES_REPLICATOR: v2.12.3 # https://github.com/mittwald/kubernetes-replicator
+  wait: true
+  timeout: 2m
