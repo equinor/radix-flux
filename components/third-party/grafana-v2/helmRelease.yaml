@@ -140,6 +140,8 @@ spec:
         emptyDir: {}
       - name: grafana-search
         emptyDir: {}
+      - name: tmp
+        emptyDir: {}
     extraInitContainers:
       - name: fetch-token
         image: mcr.microsoft.com/azure-cli:2.61.0
