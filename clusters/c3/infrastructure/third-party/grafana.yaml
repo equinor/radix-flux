@@ -18,7 +18,7 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      GRAFANA_VERSION: 10.3.0 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 12.2.1 # {"$imagepolicy": "flux-system:grafana-chart:tag"}
       GRAFANA_AR_CLIENT_ID: c396d980-889d-40c9-9b52-079b325fb814 # gitleaks:allow
       GRAFANA_DB_HOST: radix-grafana-c3.mysql.database.azure.com
       GRAFANA_DB_USERNAME: radix-id-grafana-admin-c3
