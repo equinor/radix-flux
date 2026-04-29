@@ -40,6 +40,7 @@ spec:
       accessLogFile: /dev/stdout
       accessLogEncoding: JSON
       defaultConfig:
+        terminationDrainDuration: 30s # base on article https://oneuptime.com/blog/post/2026-02-24-how-to-configure-termination-drain-duration-in-istio/view
         proxyHeaders:
           envoyDebugHeaders:
             disabled: true
