@@ -21,7 +21,6 @@ resources:
   - ../../components/third-party/keda
   - ../../components/third-party/azure-workload-identity
   - ../../components/third-party/cert-manager
-  - ../../components/third-party/cert-manager-certs
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
 
 patches:
