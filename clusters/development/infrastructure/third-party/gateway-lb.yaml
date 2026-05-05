@@ -39,13 +39,6 @@ spec:
                       limits:
                         memory: 500Mi
                         cpu: 2000m
-          horizontalPodAutoscaler: |
-            spec:
-              minReplicas: 3
-              maxReplicas: 5
-              behavior:      
-                scaleDown:
-                  stabilizationWindowSeconds: 100
       target:
         kind: ConfigMap
         name: istio-gateway-config
