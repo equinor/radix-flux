@@ -18,9 +18,6 @@ spec:
         metadata:
           name: oauth2-proxy-prometheus
           namespace: monitor
-          annotations:
-            external-dns.alpha.kubernetes.io/ttl: "30"
-            radix.equinor.com/preview-gateway-mode: "true"
     - target:
         kind: HelmRelease
         name: kube-prometheus-stack
