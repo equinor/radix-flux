@@ -69,9 +69,6 @@ spec:
     route:
       main:
         enabled: true
-        annotations:
-          external-dns.alpha.kubernetes.io/ttl: "30"
-          radix.equinor.com/preview-gateway-mode: "true"
         parentRefs:
           - group: gateway.networking.k8s.io
             kind: Gateway
