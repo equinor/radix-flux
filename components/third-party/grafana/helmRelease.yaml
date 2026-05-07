@@ -56,15 +56,7 @@ spec:
         memory: 256Mi
 
     ingress:
-      enabled: true
-      hosts:
-        - grafana.${clusterName}.${dnsZone}
-        - grafana.${dnsZone}
-      tls:
-        - secretName: radix-wildcard-tls-cert
-          hosts:
-            - grafana.${clusterName}.${dnsZone}
-            - grafana.${dnsZone}
+      enabled: false
 
     route:
       main:
