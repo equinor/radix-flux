@@ -1,28 +1,3 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    ingress.kubernetes.io/force-ssl-redirect: "true"
-  name: public-site-at.custom-domain
-  namespace: radix-public-site-prod
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: "${dnsZone}"
-      http:
-        paths:
-          - backend:
-              service:
-                name: public-site
-                port:
-                  number: 8080
-            path: /
-            pathType: Prefix
-  tls:
-    - hosts:
-        - "${dnsZone}"
-      secretName: radix-wildcard-tls-cert
----
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -54,4 +29,3 @@ spec:
         - path:
             type: PathPrefix
             value: /
----

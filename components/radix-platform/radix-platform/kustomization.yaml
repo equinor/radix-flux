@@ -7,4 +7,4 @@ resources:
   - rbac/radix-platform-operators-edit.yaml
   - rbac/radix-platform-operators-admin.yaml
   - networking/namespace.public-site.yaml
-  - networking/ingress.public-site.yaml
+  - networking/httproute.public-site.yaml
