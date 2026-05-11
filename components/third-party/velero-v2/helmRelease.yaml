@@ -21,7 +21,7 @@ spec:
       retries: 3
   values:
     image:
-      repository: ${RADIX_CACHE_REGISTRY}/velero/velero
+      repository: ${cacheRegistry}/velero/velero
     
     # TODO: Use recommended approach when https://github.com/vmware-tanzu/helm-charts/issues/698 is resolved
     # TODO: Remove this when Velero chart 1.12 is released everywhere (app version 1.18)
@@ -53,7 +53,7 @@ spec:
     updateStrategy: RollingUpdate
     initContainers:
       - name: velero-plugin-for-microsoft-azure
-        image: ${RADIX_CACHE_REGISTRY}/velero/velero-plugin-for-microsoft-azure:${VELERO_PLUGIN_AZURE}
+        image: ${cacheRegistry}/velero/velero-plugin-for-microsoft-azure:${VELERO_PLUGIN_AZURE}
         securityContext:
           readOnlyRootFilesystem: true
           runAsNonRoot: true
