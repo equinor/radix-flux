@@ -14,4 +14,6 @@ resources:
   - multi-wildcard-cert.yaml
   - tekton-config.yaml
   - tekton-operator.yaml
+  - velero-schedule.yaml
+  - velero.yaml
   
