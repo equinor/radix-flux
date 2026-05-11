@@ -16,7 +16,6 @@ resources:
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/radix-platform/radix-ingress-default-backend
   - ../../components/third-party/keda
-  - ../../components/third-party/velero
   - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
   - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
   - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml
@@ -37,4 +36,3 @@ patches:
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
-  - path: ./overlay/third-party/velero/patches.yaml

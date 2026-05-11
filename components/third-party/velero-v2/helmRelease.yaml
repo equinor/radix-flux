@@ -1,0 +1,95 @@
+# For velero chart doc see https://github.com/vmware-tanzu/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  releaseName: velero
+  chart:
+    spec:
+      chart: velero
+      version: ${VELERO_VERSION}
+      sourceRef:
+        kind: HelmRepository
+        name: velero
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    image:
+      repository: ${cacheRegistry}/velero/velero
+    podSecurityContext:
+      fsGroup: 1000
+      runAsGroup: 1000
+      runAsUser: 1000
+    rbac:
+      clusterAdministrator: false
+    configuration:
+      backupStorageLocation:
+      - name: default
+        provider: azure
+        default: true
+        bucket: ${clusterName}
+        config:
+          resourceGroup: ${dnsZoneResourceGroup}
+          storageAccount: radixvelero${zone}
+          subscriptionId: ${subscriptionId} # Set in configmap
+          useAAD: "true"
+      volumeSnapshotLocation:
+        - name: azure
+          provider: azure
+          apitimeout: 300s
+
+    updateStrategy: RollingUpdate
+    initContainers:
+      - name: velero-plugin-for-microsoft-azure
+        image: ${cacheRegistry}/velero/velero-plugin-for-microsoft-azure:${VELERO_PLUGIN_AZURE}
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
+    credentials:
+      useSecret: false
+    serviceAccount:
+      server:
+        annotations:
+          azure.workload.identity/client-id: ${VELERO_MI_CLIENT_ID}
+        create: true
+        labels:
+          azure.workload.identity/use: "true"
+        name: velero
+    podLabels:
+      azure.workload.identity/use: "true"
+      grafana.radix.equinor.com/monitor-health: "true"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    priorityClassName: radix-component-priority
+    upgradeJobResources:
+      limits:
+        memory: 256Mi
+      requests:
+        cpu: 50m
+        memory: 256Mi
+    containerSecurityContext:
+      readOnlyRootFilesystem: true
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/os
+                  operator: In
+                  values:
+                    - linux
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                    - amd64
