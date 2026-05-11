@@ -22,12 +22,6 @@ spec:
   values:
     image:
       repository: ${cacheRegistry}/velero/velero
-    
-    # TODO: Use recommended approach when https://github.com/vmware-tanzu/helm-charts/issues/698 is resolved
-    # TODO: Remove this when Velero chart 1.12 is released everywhere (app version 1.18)
-    kubectl:
-      image:
-        repository: registry.k8s.io/kubectl
     podSecurityContext:
       fsGroup: 1000
       runAsGroup: 1000
