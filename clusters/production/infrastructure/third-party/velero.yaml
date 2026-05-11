@@ -19,7 +19,7 @@ spec:
     substitute:
       VELERO_VERSION: 12.0.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VELERO_PLUGIN_AZURE: v1.14.0 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
-      VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94 # gitleaks:allow
+      VELERO_MI_CLIENT_ID: 7b222fb8-30d2-462f-9128-66bad1df2267 # gitleaks:allow
   patches:
     - target:
         kind: HelmRelease
@@ -35,11 +35,11 @@ spec:
           values:
             resources:
               limits:
-                cpu: 300m
-                memory: 256Mi
+                cpu: "6"
+                memory: 4096Mi
               requests:
-                cpu: 300m
-                memory: 128Mi
+                cpu: "2"
+                memory: 2048Mi
   wait: true
   timeout: 2m
   healthChecks:
