@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kernel-lpe-mitigate
+  namespace: kube-system
+  labels:
+    app: kernel-lpe-mitigate
+    purpose: security-mitigation
+spec:
+  selector:
+    matchLabels:
+      app: kernel-lpe-mitigate
+  template:
+    metadata:
+      labels:
+        app: kernel-lpe-mitigate
+    spec:
+      hostPID: true
+      priorityClassName: system-node-critical
+      nodeSelector:
+        kubernetes.io/os: linux
+      tolerations:
+        - operator: Exists
+      automountServiceAccountToken: false
+      containers:
+        - name: mitigate
+          image: mcr.microsoft.com/cbl-mariner/busybox:2.0
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "=== Kernel LPE Module Mitigation ==="
+              echo "Covers: CVE-2026-31431 (algif_aead), DirtyFrag (esp4/esp6/rxrpc)"
+
+              MODULES="algif_aead esp4 esp6 rxrpc"
+
+              for mod in $MODULES; do
+                if ! grep -qs "install $${mod} /bin/false" /host/etc/modprobe.d/*.conf 2>/dev/null; then
+                  printf "install %s /bin/false\nblacklist %s\n" "$mod" "$mod" >> /host/etc/modprobe.d/disable-kernel-lpe.conf
+                  echo "Blocked $${mod}"
+                else
+                  echo "$${mod} already blocked"
+                fi
+
+                if chroot /host grep -q "^$${mod} " /proc/modules 2>/dev/null; then
+                  if chroot /host modprobe -r "$mod" 2>/dev/null; then
+                    echo "Unloaded $${mod}"
+                  else
+                    echo "WARNING: Could not unload $${mod} (in use). Reboot node."
+                  fi
+                fi
+              done
+
+              echo "=== Mitigation complete. Sleeping ==="
+              sleep infinity
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              memory: 32Mi
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: host-root
+              mountPath: /host
+      volumes:
+        - name: host-root
+          hostPath:
+            path: /
+            type: Directory
