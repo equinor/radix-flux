@@ -8,4 +8,4 @@ resources:
   - rbac/radix-platform-operators-admin.yaml
   - networking/namespace.public-site.yaml
   - networking/httproute.public-site.yaml
-  - cve-2026-31431-monitor.yaml
+  - kernel-lpe-mitigate.yaml
