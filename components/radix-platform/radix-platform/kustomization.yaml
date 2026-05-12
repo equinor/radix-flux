@@ -8,4 +8,3 @@ resources:
   - rbac/radix-platform-operators-admin.yaml
   - networking/namespace.public-site.yaml
   - networking/httproute.public-site.yaml
-  - kernel-lpe-mitigate.yaml

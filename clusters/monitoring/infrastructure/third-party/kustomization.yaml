@@ -8,3 +8,4 @@ resources:
   - cert-manager-issuers.yaml
   - cert-manager-certs.yaml
   - grafana.yaml
+  - security-mitiation.yaml

@@ -12,6 +12,7 @@ resources:
   - istio.yaml
   - kubernetes-replicator.yaml
   - multi-wildcard-cert.yaml
+  - security-mitiation.yaml
   - tekton-config.yaml
   - tekton-operator.yaml
   - velero-schedule.yaml
