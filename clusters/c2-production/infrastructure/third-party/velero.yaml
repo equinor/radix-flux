@@ -35,11 +35,11 @@ spec:
           values:
             resources:
               limits:
-                cpu: 200m
-                memory: 1Gi
+                cpu: "6"
+                memory: 4Gi
               requests:
-                cpu: 200m
-                memory: 1Gi
+                cpu: "2"
+                memory: 2Gi
   wait: true
   timeout: 2m
   healthChecks:

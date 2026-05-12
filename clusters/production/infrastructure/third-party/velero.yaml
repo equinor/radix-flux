@@ -36,10 +36,10 @@ spec:
             resources:
               limits:
                 cpu: "6"
-                memory: 4096Mi
+                memory: 4Gi
               requests:
                 cpu: "2"
-                memory: 2048Mi
+                memory: 2Gi
   wait: true
   timeout: 2m
   healthChecks:
