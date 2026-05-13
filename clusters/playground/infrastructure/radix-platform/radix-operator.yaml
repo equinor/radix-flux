@@ -13,7 +13,7 @@ spec:
   postBuild:
     substitute:
       GIT_CLONE_TAG: "2.45.2"
-      OAUTH2PROXY_TAG: ${OAUTH2PROXY_TAG:=tba}
+      OAUTH2PROXY_TAG: "v7.15.2"
       OAUTH2REDIS_IMAGE: ${RADIX_CACHE_REGISTRY:=tba}/library/redis
       OAUTH2REDIS_TAG: ${OAUTH2REDIS_TAG:=tba}
       radix_acr_repo_url: ${radix_acr_repo_url} # Set in postBuild
