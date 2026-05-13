@@ -20,8 +20,8 @@ spec:
       RADIX_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-image-builder:tag"}
       RADIX_OPERATOR_CHART_VERSION: 1.114.3-rc.1 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixc2cache.azurecr.io/bash:5.2
-      RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE:=tba}
-      RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: ${RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE:=tba}
+      RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixc2cache.azurecr.io/alpine/git:2.45.2
+      RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixc2cache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: ${RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE:=tba}
       RADIX_ZONE: ${RADIX_ZONE:=tba} # Set in postBuild
       SECCOMP_IMAGE_TAG: ${SECCOMP_IMAGE_TAG:=tba}
