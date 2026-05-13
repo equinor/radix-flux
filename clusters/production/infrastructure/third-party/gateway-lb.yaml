@@ -58,6 +58,7 @@ spec:
                                   values:
                                     - gateway
                             topologyKey: kubernetes.io/hostname
+                  terminationGracePeriodSeconds: 40
                   containers:
                   - name: istio-proxy
                     resources:
