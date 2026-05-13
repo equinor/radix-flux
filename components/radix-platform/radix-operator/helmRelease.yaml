@@ -129,7 +129,7 @@ spec:
 
       image:
         repository: radixdev.azurecr.io/radix-api-server
-        tag: bundle-api-server-dev
+        tag: bundle-api-server-497f84c0a1ebe61be669ef1119a20846b8e6b1d2
 
       routes:
         main:
@@ -147,7 +147,7 @@ spec:
 
       image:
         repository: radixdev.azurecr.io/radix-webhook
-        tag: bundle-api-server-dev
+        tag: bundle-api-server-497f84c0a1ebe61be669ef1119a20846b8e6b1d2
 
       reservedAppDNSAliases:
         api: radix-api
