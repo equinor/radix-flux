@@ -24,6 +24,11 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixc2cache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixc2cache.azurecr.io/alpine:3.20
       SECCOMP_IMAGE_TAG: 3.22.1
+
+      oidcKubernetesIssuer: "https://westeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/b7dc35c2-80b1-48c0-9382-90544fad1f9a/"
+      oidcKubernetesAudience: "https://westeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/b7dc35c2-80b1-48c0-9382-90544fad1f9a/"
+      clusterOidcIssuers: "https://westeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/b7dc35c2-80b1-48c0-9382-90544fad1f9a/"
+      clusterEgressIps: "20.61.119.40/29,20.61.122.0/28"
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config

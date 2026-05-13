@@ -123,10 +123,10 @@ spec:
       oidcAzureIssuer: https://sts.windows.net/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/
       useProfiler: false
 
-      oidcKubernetesIssuer: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/1322bae7-5ff4-49c9-857b-9b3ef6fc4054/"
-      oidcKubernetesAudience: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/1322bae7-5ff4-49c9-857b-9b3ef6fc4054/"
-      clusterOidcIssuers: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/1322bae7-5ff4-49c9-857b-9b3ef6fc4054/"
-      clusterEgressIps: "104.45.84.0/30"
+      oidcKubernetesIssuer: ${oidcKubernetesIssuer}
+      oidcKubernetesAudience: ${oidcKubernetesAudience}
+      clusterOidcIssuers: ${clusterOidcIssuers}
+      clusterEgressIps: ${clusterEgressIps}
 
       routes:
         main:

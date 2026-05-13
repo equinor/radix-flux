@@ -27,6 +27,11 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixc2cache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixc2cache.azurecr.io/alpine:3.20
       SECCOMP_IMAGE_TAG: 3.22.1
+
+      oidcKubernetesIssuer: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/68221e7f-018a-4359-bc19-9573d3310084/"
+      oidcKubernetesAudience: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/68221e7f-018a-4359-bc19-9573d3310084/"
+      clusterOidcIssuers: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/68221e7f-018a-4359-bc19-9573d3310084/"
+      clusterEgressIps: "4.208.69.48/28,4.231.159.192/28,20.105.86.80/28,20.234.86.176/28,52.178.214.192/29,68.219.4.80/28,128.251.5.16/28,137.135.191.80/28"
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2
