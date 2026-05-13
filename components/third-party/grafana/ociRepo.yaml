@@ -6,5 +6,8 @@ metadata:
 spec:
   interval: 1m
   url: oci://ghcr.io/grafana-community/helm-charts/grafana
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
   ref:
     tag: ${GRAFANA_VERSION}
