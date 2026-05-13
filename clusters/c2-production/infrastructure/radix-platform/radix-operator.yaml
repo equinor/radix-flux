@@ -23,7 +23,6 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixc2cache.azurecr.io/alpine/git:2.45.2
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixc2cache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixc2cache.azurecr.io/alpine:3.20
-      RADIX_ZONE: ${RADIX_ZONE:=tba} # Set in postBuild
       SECCOMP_IMAGE_TAG: ${SECCOMP_IMAGE_TAG:=tba}
     substituteFrom:
       - kind: ConfigMap
