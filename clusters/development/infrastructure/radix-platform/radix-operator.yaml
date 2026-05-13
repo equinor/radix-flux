@@ -16,7 +16,7 @@ spec:
       OAUTH2PROXY_TAG: "v7.15.2"
       OAUTH2REDIS_TAG: "8.6.0-alpine3.23"
       RADIX_APP_ACR_REPO_URL: radixdevapp.azurecr.io
-      RADIX_BUILDKIT_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-buildkit-builder:tag"}
+      RADIX_BUILDKIT_IMAGE_BUILDER_TAG: "1.0.1" # {"$imagepolicy": "flux-system:radix-buildkit-builder:tag"}
       RADIX_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-image-builder:tag"}
       RADIX_OPERATOR_CHART_VERSION: 1.114.3-rc.1 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
       RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixc2cache.azurecr.io/bash:5.2
