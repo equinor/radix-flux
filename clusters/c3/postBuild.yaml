@@ -17,7 +17,6 @@ spec:
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-c3.database.windows.net
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
       FLUX_CONFIG_PATH: ./clusters/c3
-      GIT_CLONE_TAG: "2.45.2"
       KEDA_VERSION: 2.18.3 # https://artifacthub.io/packages/helm/kedacore/keda
       KUBE_PROMETHEUS_STACK: 81.3.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
