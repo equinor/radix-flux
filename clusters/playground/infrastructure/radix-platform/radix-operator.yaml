@@ -12,7 +12,6 @@ spec:
   prune: false
   postBuild:
     substitute:
-      AZ_SUBSCRIPTION_ID: ${AZ_SUBSCRIPTION_ID:=tba} # Set in postBuild
       GIT_CLONE_TAG: ${GIT_CLONE_TAG:=tba}
       OAUTH2PROXY_TAG: ${OAUTH2PROXY_TAG:=tba}
       OAUTH2REDIS_IMAGE: ${RADIX_CACHE_REGISTRY:=tba}/library/redis
