@@ -136,6 +136,7 @@ spec:
           hostnames:
             - api.dev.radix.equinor.com
             - server-radix-api-qa.dev.radix.equinor.com
+            - server-radix-api-qa.weekly-19.dev.radix.equinor.com
             - server-radix-api-qa.weekly-20.dev.radix.equinor.com
 
     radixWebhook:
