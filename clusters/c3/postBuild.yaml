@@ -31,7 +31,6 @@ spec:
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: c3
       RADIX_ZONE: c3 # dev | playground | prod
-      SECCOMP_IMAGE_TAG: 3.22.1
       TEKTON_VERSION: v0.53.0
       VULNERABILITY_SCANNER_SQL_CLIENT_ID: 6fe670be-f591-4fa1-80b4-ab5d33f56ff3
       VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-c3.database.windows.net
