@@ -117,6 +117,27 @@ spec:
           - 64b28659-4fe4-4222-8497-85dd7e43e25b # Radix Platform Users
           - 4e1761bc-0c4f-4672-a16d-7f3d8608e366 # AZAPPL Radix Platform
 
+    radixApiServer:
+      prometheusUrl: http://prometheus-operator-prometheus.monitor.svc.cluster.local:9090
+      oidcAzureAudience: 6dae42f8-4368-4678-94ff-3960e28e3630
+      oidcAzureIssuer: https://sts.windows.net/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/
+      oidcKubernetesIssuer: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/1322bae7-5ff4-49c9-857b-9b3ef6fc4054/"
+      oidcKubernetesAudience: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/1322bae7-5ff4-49c9-857b-9b3ef6fc4054/"
+      clusterOidcIssuers: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/1322bae7-5ff4-49c9-857b-9b3ef6fc4054/"
+      clusterEgressIps: "104.45.84.0/30"
+      useProfiler: false
+
+      image:
+        repository: radixdev.azurecr.io/radix-api-server
+        tag: bundle-api-server-dev
+
+      routes:
+        main:
+          hostnames:
+            - api.dev.radix.equinor.com
+            - server-radix-api-qa.dev.radix.equinor.com
+            - server-radix-api-qa.weekly-20.dev.radix.equinor.com
+
     radixWebhook:
       enabled: true
       logLevel: info
