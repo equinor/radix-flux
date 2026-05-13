@@ -22,7 +22,6 @@ spec:
       NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixc3.azurecr.io
-      RADIX_BUILDKIT_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-buildkit-builder:tag"}
       RADIX_CACHE_REGISTRY: radixc3cache.azurecr.io
       RADIX_CICD_CANARY_CHART_VERSION: 1.5.3 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
       RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
