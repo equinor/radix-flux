@@ -41,6 +41,8 @@ spec:
           namespace: default
         spec:
           values:
+            # The configmap is configured to platform, it should probably be named prod instead
+            radixZone: prod
             resources:
               limits:
                 cpu: 4000m
@@ -48,7 +50,6 @@ spec:
               requests:
                 cpu: 2000m
                 memory: 8Gi
-              radixZone: prod # set to platform in configmap !!!
 
       target:
         kind: HelmRelease
