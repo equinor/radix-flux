@@ -11,6 +11,9 @@ spec:
   path: ./components/radix-platform/radix-operator
   prune: false
   postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
     substitute:
       GIT_CLONE_TAG: "2.45.2"
       OAUTH2PROXY_TAG: "v7.15.2"
@@ -29,27 +32,3 @@ spec:
       oidcKubernetesAudience: "https://swedencentral.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/8b1c9802-20bf-43d0-8689-bd4ad8449b53/"
       clusterOidcIssuers: "https://swedencentral.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/8b1c9802-20bf-43d0-8689-bd4ad8449b53/"
       clusterEgressIps: "51.107.182.144/28,51.107.181.16/28,51.107.182.192/28"
-    substituteFrom:
-      - kind: ConfigMap
-        name: radix-flux-config
-  patches:
-    - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: radix-operator
-          namespace: default
-        spec:
-          values:
-            resources:
-              limits:
-                cpu: "2"
-                memory: 2Gi
-              requests:
-                cpu: 100m
-                memory: 1Gi
-
-      target:
-        kind: HelmRelease
-        name: radix-operator
-        namespace: default
