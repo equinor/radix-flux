@@ -141,6 +141,28 @@ spec:
             - server-radix-api-prod.${dnsZone}
             - server-radix-api-prod.${clusterName}.${dnsZone}
 
+      networkPolicy:
+        ingress:
+          from:
+            - namespaceSelector:
+                matchLabels:
+                  purpose: radix-base-ns
+              podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: ingress-nginx
+            - namespaceSelector:
+                matchLabels:
+                  purpose: radix-base-ns
+              podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: prometheus
+            - namespaceSelector:
+                matchLabels:
+                  purpose: radix-base-ns
+              podSelector:
+                matchLabels:
+                  gateway.networking.k8s.io/gateway-name: gateway
+
     radixWebhook:
       enabled: true
       logLevel: info
