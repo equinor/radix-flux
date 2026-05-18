@@ -28,6 +28,13 @@ spec:
       runAsUser: 1000
     rbac:
       clusterAdministrator: false
+    resources:
+      limits:
+        cpu: "6"
+        memory: 4Gi
+      requests:
+        cpu: "2"
+        memory: 2Gi
     configuration:
       backupStorageLocation:
       - name: default

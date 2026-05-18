@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/velero-v2"
+  path: "./components/third-party/velero"
   dependsOn:
     - name: external-secrets-operator
   prune: true
