@@ -10,7 +10,6 @@ spec:
       ACTIVE_CLUSTER: c2-11
       AZ_RESOURCE_DNS: c2.radix.equinor.com
       AZ_SUBSCRIPTION_ID: ded7ca41-37c8-4085-862f-b11d21ab341a
-      BLOB_CSI_DRIVER: 1.27.1 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: abdbd354-57e3-4bac-9fc6-b99ef03c0905 # MI radix-id-certmanager-c2
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-c2
       CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
@@ -23,7 +22,7 @@ spec:
       KUBE_PROMETHEUS_STACK: 81.3.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       OAUTH2PROXY_TAG: "v7.15.2"
-      OAUTH2REDIS_TAG: "8.6.0-alpine3.23"
+      OAUTH2REDIS_TAG: "8.6.0-alpine3.23" # gitleaks:allow
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixc2prod.azurecr.io
       RADIX_APP_ACR_REPO_URL: radixc2app.azurecr.io
