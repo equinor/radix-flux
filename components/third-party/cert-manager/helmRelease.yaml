@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: cert-manager
-      version: xx # Set by flux patch
+      version: ${CERT_MANAGER_VERSION} # Set by flux patch
       sourceRef:
         kind: HelmRepository
         name: cert-manager
@@ -23,6 +23,13 @@ spec:
       apiVersion: controller.config.cert-manager.io/v1alpha1
       kind: ControllerConfiguration
       enableGatewayAPI: true
+    resources:
+      limits:
+        cpu: 200m
+        memory: 1Gi
+      requests:
+        cpu: 150m
+        memory: 800Mi
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -41,7 +48,7 @@ spec:
       rbac:
         create: true
     image:
-      repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-controller
+      repository: ${cacheRegistry}/jetstack/cert-manager-controller
     podLabels:
       azure.workload.identity/use: "true"
       grafana.radix.equinor.com/monitor-health: "true"
@@ -49,10 +56,17 @@ spec:
       labels:
         azure.workload.identity/use: "true"
     cainjector:
+      resources:
+        limits:
+          cpu: 5m
+          memory: 256Mi
+        requests:
+          cpu: 5m
+          memory: 256Mi
       podLabels:
         grafana.radix.equinor.com/monitor-health: "true"
       image:
-        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-cainjector
+        repository: ${cacheRegistry}/jetstack/cert-manager-cainjector
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -67,10 +81,17 @@ spec:
                 values:
                 - arm64
     webhook:
+      resources:
+        limits:
+          cpu: 5m
+          memory: 128Mi
+        requests:
+          cpu: 5m
+          memory: 128Mi
       podLabels:
         grafana.radix.equinor.com/monitor-health: "true"
       image:
-        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-webhook
+        repository: ${cacheRegistry}/jetstack/cert-manager-webhook
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -84,11 +105,9 @@ spec:
                 operator: In
                 values:
                 - arm64
-
     acmesolver:
       image:
-        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-acmesolver
-
+        repository: ${cacheRegistry}/jetstack/cert-manager-acmesolver
     startupapicheck:
       image:
-        repository: ${RADIX_CACHE_REGISTRY}/jetstack/cert-manager-startupapicheck
+        repository: ${cacheRegistry}/jetstack/cert-manager-startupapicheck
