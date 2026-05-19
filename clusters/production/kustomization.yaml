@@ -7,7 +7,6 @@ resources:
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
-  - ../../components/third-party/blob-csi-driver
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/radix-platform/radix-ingress-default-backend
