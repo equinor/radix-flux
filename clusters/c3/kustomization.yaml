@@ -18,7 +18,6 @@ resources:
   - ../../components/radix-platform/radix-vulnerability-scanner
   - ../../components/radix-platform/radix-cost-allocation
   - ../../components/third-party/keda
-  - ../../components/third-party/azure-workload-identity
   - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
 
 patches:
@@ -34,4 +33,3 @@ patches:
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
-  - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
