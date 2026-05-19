@@ -123,10 +123,10 @@ spec:
       oidcAzureIssuer: https://sts.windows.net/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/
       useProfiler: false
 
-      oidcKubernetesIssuer: ${oidcKubernetesIssuer}
-      oidcKubernetesAudience: ${oidcKubernetesAudience}
-      clusterOidcIssuers: ${clusterOidcIssuers}
-      clusterEgressIps: ${clusterEgressIps}
+      oidcKubernetesIssuer: ${kubernetesIssuerUrl} # set in configmap flux-system/radix-flux-config
+      oidcKubernetesAudience: ${kubernetesIssuerUrl} # set in configmap flux-system/radix-flux-config
+      clusterOidcIssuers: ${clusterOidcIssuers} # set in configmap flux-system/radix-flux-config
+      clusterEgressIps: ${clusterEgressIPs} # set in configmap flux-system/radix-flux-config
 
       routes:
         main:

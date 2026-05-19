@@ -11,6 +11,9 @@ spec:
   path: ./components/radix-platform/radix-operator
   prune: false
   postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
     substitute:
       RADIX_OPERATOR_CHART_VERSION: 1.115.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
 
@@ -25,14 +28,6 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixplaygroundcache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixplaygroundcache.azurecr.io/alpine:3.20
       SECCOMP_IMAGE_TAG: 3.22.1
-
-      oidcKubernetesIssuer: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/2000308d-8631-43c6-8bf7-64caea92b89a/"
-      oidcKubernetesAudience: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/2000308d-8631-43c6-8bf7-64caea92b89a/"
-      clusterOidcIssuers: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/2000308d-8631-43c6-8bf7-64caea92b89a/"
-      clusterEgressIps: "104.45.86.104/30,40.127.110.8/29"
-    substituteFrom:
-      - kind: ConfigMap
-        name: radix-flux-config
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2

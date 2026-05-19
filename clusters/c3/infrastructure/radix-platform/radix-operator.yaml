@@ -28,8 +28,3 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixc3cache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixc3cache.azurecr.io/alpine:3.20
       SECCOMP_IMAGE_TAG: 3.22.1
-
-      oidcKubernetesIssuer: "https://swedencentral.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/8b1c9802-20bf-43d0-8689-bd4ad8449b53/"
-      oidcKubernetesAudience: "https://swedencentral.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/8b1c9802-20bf-43d0-8689-bd4ad8449b53/"
-      clusterOidcIssuers: "https://swedencentral.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/8b1c9802-20bf-43d0-8689-bd4ad8449b53/"
-      clusterEgressIps: "51.107.182.144/28,51.107.181.16/28,51.107.182.192/28"
