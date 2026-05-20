@@ -15,8 +15,7 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      RADIX_OPERATOR_CHART_VERSION: 1.116.0-rc.2 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
-
+      RADIX_OPERATOR_CHART_VERSION: 1.116.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
       GIT_CLONE_TAG: "2.45.2"
       OAUTH2PROXY_TAG: "v7.15.2"
       OAUTH2REDIS_TAG: "8.6.0-alpine3.23"
@@ -29,25 +28,7 @@ spec:
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixdevcache.azurecr.io/alpine:3.20
       SECCOMP_IMAGE_TAG: 3.22.1
   patches:
-    - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: radix-operator
-          namespace: default
-        spec:
-          values:
-            rbac:
-              createApp:
-                groups:
-                  - a5dfa635-dc00-4a28-9ad9-9e7f1e56919d # Radix Platform Developers
-                  - 64b28659-4fe4-4222-8497-85dd7e43e25b # Radix Platform Users
-            
-            radixApiServer:
-              routes:
-                main:
-                  enabled: true
-
+    - patch: "apiVersion: helm.toolkit.fluxcd.io/v2\nkind: HelmRelease\nmetadata:\n  name: radix-operator\n  namespace: default\nspec:\n  values:\n    rbac:\n      createApp:\n        groups:\n          - a5dfa635-dc00-4a28-9ad9-9e7f1e56919d # Radix Platform Developers\n          - 64b28659-4fe4-4222-8497-85dd7e43e25b # Radix Platform Users\n    \n    radixApiServer:\n      routes:\n        main:\n          enabled: true"
       target:
         kind: HelmRelease
         name: radix-operator
