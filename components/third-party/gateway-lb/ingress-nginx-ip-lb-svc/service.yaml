@@ -12,6 +12,11 @@ spec:
   ipFamilies:
     - IPv4
   ports:
+  - appProtocol: tcp
+    name: status-port
+    port: 15021
+    protocol: TCP
+    targetPort: 15021
   - appProtocol: http
     name: http
     port: 80
