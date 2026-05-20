@@ -130,7 +130,6 @@ spec:
 
       routes:
         main:
-          enabled: false # change to true when ready
           hostnames:
             - api.${dnsZone}
             - api.${clusterName}.${dnsZone}
@@ -140,6 +139,9 @@ spec:
 
             - server-radix-api-prod.${dnsZone}
             - server-radix-api-prod.${clusterName}.${dnsZone}
+
+      autoscaling:
+        minReplicas: 2
 
       networkPolicy:
         ingress:
