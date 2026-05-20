@@ -9,6 +9,7 @@ spec:
   type: LoadBalancer
   ipFamilyPolicy: PreferDualStack
   loadBalancerIP: ${ingressIP}
+  externalTrafficPolicy: Local
   ipFamilies:
     - IPv4
   ports:
