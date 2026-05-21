@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - blob-csi-driver.yaml
   - cert-manager-issuers.yaml
+  - cert-manager.yaml
   - external-secrets-operator.yaml
   - external-secrets-secrets.yaml
   - external-secrets-stores.yaml

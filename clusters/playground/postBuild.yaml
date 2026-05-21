@@ -9,9 +9,6 @@ spec:
     substitute:
       ACTIVE_CLUSTER: playground-29
       AZ_RESOURCE_DNS: playground.radix.equinor.com
-      CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: fb932ba4-56e6-468d-9e75-4389507a3fde # MI radix-id-certmanager-playground
-      CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-playground
-      CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       COST_ALLOCATION_SQL_CLIENT_ID: b1a842b2-8e0e-4c2f-807e-8355eeb21f32
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-playground.database.windows.net
       EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"

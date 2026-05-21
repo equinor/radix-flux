@@ -4,6 +4,23 @@ metadata:
   name: cert-manager
   namespace: flux-system
 spec:
+  interval: 5m
+  path: "./components/third-party/cert-manager"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: cert-manager
+      namespace: cert-manager
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+    substitute:
+      CERT_MANAGER_VERSION: 1.20.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
   patches:
     - target:
         kind: HelmRelease
@@ -16,17 +33,14 @@ spec:
           name: cert-manager
           namespace: cert-manager
         spec:
-          chart:
-            spec:
-              version: ${CERT_MANAGER_VERSION} # Set in postBuild development
           values:
             resources:
               limits:
                 cpu: 200m
-                memory: 1Gi
+                memory: 500Mi
               requests:
                 cpu: 150m
-                memory: 800Mi
+                memory: 300Mi
             cainjector:
               resources:
                 limits:
@@ -43,3 +57,5 @@ spec:
                 requests:
                   cpu: 5m
                   memory: 50Mi
+  wait: true
+  timeout: 2m

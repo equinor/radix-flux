@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/cert-manager/chart"
+  path: "./components/third-party/cert-manager"
   prune: true
   sourceRef:
     kind: GitRepository
@@ -20,4 +20,6 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      RADIX_CACHE_REGISTRY: ${RADIX_CACHE_REGISTRY:=tba}
+      CERT_MANAGER_VERSION: 1.20.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+  wait: true
+  timeout: 2m
