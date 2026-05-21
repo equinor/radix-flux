@@ -9,13 +9,11 @@ spec:
     substitute:
       ACTIVE_CLUSTER: ext-mon-11
       AZ_RESOURCE_DNS: ext-mon.radix.equinor.com
-      CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       EXTERNAL_SECRET_MI_CLIENT_ID: 4817cdf9-b4bf-4884-863d-c2877ef03757
       EXTERNAL_SECRET_URL: https://radix-keyv-extmon.vault.azure.net/
       EXTERNAL_SECRETS: 0.18.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       FLUX_CONFIG_PATH: ./clusters/monitoring
       KUBE_PROMETHEUS_STACK: 81.3.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      NGINX_VERSION: 4.12.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
       RADIX_PROMETHEUS_PROXY_CHART_VERSION: 1.13.0 # {"$imagepolicy": "flux-system:radix-prometheus-proxy-chart:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-prod # installed by platform scripts

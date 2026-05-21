@@ -1,0 +1,113 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cert-manager
+  namespace: cert-manager
+spec:
+  releaseName: cert-manager
+  chart:
+    spec:
+      chart: cert-manager
+      version: ${CERT_MANAGER_VERSION} # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: cert-manager
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    # resources: xx # Set by flux patch
+    config: # https://cert-manager.io/docs/installation/configuring-components/#configuration-file
+      apiVersion: controller.config.cert-manager.io/v1alpha1
+      kind: ControllerConfiguration
+      enableGatewayAPI: true
+    resources:
+      limits:
+        cpu: 200m
+        memory: 1Gi
+      requests:
+        cpu: 150m
+        memory: 800Mi
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - arm64
+    installCRDs: true
+    global:
+      rbac:
+        create: true
+    image:
+      repository: ${cacheRegistry}/jetstack/cert-manager-controller
+    podLabels:
+      azure.workload.identity/use: "true"
+      grafana.radix.equinor.com/monitor-health: "true"
+    serviceAccount:
+      labels:
+        azure.workload.identity/use: "true"
+    cainjector:
+      resources:
+        limits:
+          cpu: 5m
+          memory: 256Mi
+        requests:
+          cpu: 5m
+          memory: 256Mi
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
+      image:
+        repository: ${cacheRegistry}/jetstack/cert-manager-cainjector
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/os
+                operator: In
+                values:
+                - linux
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - arm64
+    webhook:
+      resources:
+        limits:
+          cpu: 5m
+          memory: 128Mi
+        requests:
+          cpu: 5m
+          memory: 128Mi
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
+      image:
+        repository: ${cacheRegistry}/jetstack/cert-manager-webhook
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/os
+                operator: In
+                values:
+                - linux
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - arm64
+    acmesolver:
+      image:
+        repository: ${cacheRegistry}/jetstack/cert-manager-acmesolver
+    startupapicheck:
+      image:
+        repository: ${cacheRegistry}/jetstack/cert-manager-startupapicheck
