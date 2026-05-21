@@ -14,7 +14,6 @@ resources:
   - ../../components/radix-platform/radix-cost-allocation
   - ../../components/third-party/keda
   - ../../components/third-party/azure-workload-identity
-  - ./overlay/radix-platform/radix-oauth-guard/radix-oauth-guard.yaml
 
 patches:
   - path: ./postBuild.yaml
