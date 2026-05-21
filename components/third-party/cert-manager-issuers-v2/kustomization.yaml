@@ -4,5 +4,4 @@ resources:
   - clusterissuer-letsencrypt-dns01.yaml
   - secret-digicert-account-hmac.yaml
   - clusterissuer-digicert-dns01.yaml
-  - clusterissuer-digicert-http01.yaml
   - clusterissuer-digicert-http01-gateway.yaml

@@ -1,9 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: grafana-loki
-  namespace: flux-system
-spec:
-  interval: 10m
-  url: https://grafana.github.io/helm-charts
-

@@ -7,4 +7,4 @@ spec:
   interval: 1m
   url: oci://ghcr.io/equinor/radix/charts/radix-operator
   ref:
-    tag: ${RADIX_OPERATOR_CHART_VERSION} # Set in cluster postBuild.yaml
+    tag: ${RADIX_OPERATOR_CHART_VERSION}

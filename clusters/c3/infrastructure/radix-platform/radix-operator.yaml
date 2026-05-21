@@ -1,0 +1,29 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-operator
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-operator
+  prune: false
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+    substitute:
+      RADIX_OPERATOR_CHART_VERSION: 1.116.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
+      GIT_CLONE_TAG: "2.45.2"
+      OAUTH2PROXY_TAG: "v7.15.2"
+      OAUTH2REDIS_TAG: "8.6.0-alpine3.23"
+      RADIX_APP_ACR_REPO_URL: radixc3app.azurecr.io
+      RADIX_BUILDKIT_IMAGE_BUILDER_TAG: "1.0.1" # {"$imagepolicy": "flux-system:radix-buildkit-builder:tag"}
+      RADIX_IMAGE_BUILDER_TAG: "1.0.0" # {"$imagepolicy": "flux-system:radix-image-builder:tag"}
+      RADIX_PIPELINE_GIT_CLONE_BASH_IMAGE: radixc3cache.azurecr.io/bash:5.2
+      RADIX_PIPELINE_GIT_CLONE_GIT_IMAGE: radixc3cache.azurecr.io/alpine/git:2.45.2
+      RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixc3cache.azurecr.io/alpine:3.20
+      RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixc3cache.azurecr.io/alpine:3.20
+      SECCOMP_IMAGE_TAG: 3.22.1
