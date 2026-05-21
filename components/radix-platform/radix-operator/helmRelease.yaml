@@ -151,12 +151,6 @@ spec:
                   purpose: radix-base-ns
               podSelector:
                 matchLabels:
-                  app.kubernetes.io/name: ingress-nginx
-            - namespaceSelector:
-                matchLabels:
-                  purpose: radix-base-ns
-              podSelector:
-                matchLabels:
                   app.kubernetes.io/name: prometheus
             - namespaceSelector:
                 matchLabels:
