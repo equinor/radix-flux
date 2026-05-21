@@ -9,7 +9,6 @@ spec:
     substitute:
       ACTIVE_CLUSTER: weekly-21
       AZ_RESOURCE_DNS: dev.radix.equinor.com
-      BLOB_CSI_DRIVER: 1.27.3 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: a22f9976-c8a8-4802-b95b-d6e08aac203a # gitleaks:allow
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-dev
       CERT_MANAGER_VERSION: 1.20.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager

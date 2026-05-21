@@ -9,7 +9,6 @@ spec:
     substitute:
       ACTIVE_CLUSTER: playground-29
       AZ_RESOURCE_DNS: playground.radix.equinor.com
-      BLOB_CSI_DRIVER: 1.27.1 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: fb932ba4-56e6-468d-9e75-4389507a3fde # MI radix-id-certmanager-playground
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-playground
       CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager

@@ -9,7 +9,6 @@ spec:
     substitute:
       ACTIVE_CLUSTER: c3-50
       AZ_RESOURCE_DNS: c3.radix.equinor.com
-      BLOB_CSI_DRIVER: 1.27.1 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
       CERT_MANAGER_CLUSTER_ISSUER_DNZ_ZONE_MI: 699f601f-a919-4f86-9048-a242e3253081 # MI radix-id-certmanager-c3
       CERT_MANAGER_DNZ_ZONE_RESOURCE_GROUP: common-c3
       CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
