@@ -8,7 +8,6 @@ resources:
   - gateway-api.yaml
   - gateway-lb.yaml
   - grafana.yaml
-  - ingress-nginx-ip-lb-svc.yaml
   - istio-envoyfilter.yaml
   - istio.yaml
   - kubernetes-replicator.yaml
