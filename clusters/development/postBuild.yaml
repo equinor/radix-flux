@@ -19,7 +19,6 @@ spec:
       FLUX_CONFIG_PATH: ./clusters/development
       KEDA_VERSION: 2.19.0 # https://artifacthub.io/packages/helm/kedacore/keda
       KUBE_PROMETHEUS_STACK: 81.3.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack # newer version fails. ref: https://github.com/equinor/radix-platform/issues/1849
-      NGINX_VERSION: 4.15.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixdev.azurecr.io
       RADIX_CACHE_REGISTRY: radixdevcache.azurecr.io # use `cacheRegistry` from configmap instead
@@ -28,7 +27,6 @@ spec:
       RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
       RADIX_COST_ALLOCATION_TAG: master-2f3d5136-1749723436 # {"$imagepolicy": "flux-system:radix-cost-allocation:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
-      RADIX_INGRESS_DEFAULT_BACKEND_TAG: v1.1.0 # https://github.com/equinor/radix-ingress-default-backend
       RADIX_OAUTH_GUARD_CHART_VERSION: 1.1.2 # {"$imagepolicy": "flux-system:radix-oauth-guard-chart:tag"}
       RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.4 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01

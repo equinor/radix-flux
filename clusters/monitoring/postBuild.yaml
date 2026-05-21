@@ -15,7 +15,6 @@ spec:
       EXTERNAL_SECRETS: 0.18.0 # https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets
       FLUX_CONFIG_PATH: ./clusters/monitoring
       KUBE_PROMETHEUS_STACK: 81.3.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      NGINX_VERSION: 4.12.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
       RADIX_PROMETHEUS_PROXY_CHART_VERSION: 1.13.0 # {"$imagepolicy": "flux-system:radix-prometheus-proxy-chart:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-prod # installed by platform scripts

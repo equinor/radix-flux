@@ -13,9 +13,7 @@ resources:
   - ../../components/third-party/azure-workload-identity
   - ../../components/third-party/blob-csi-driver
   - ../../components/third-party/cert-manager
-  - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack
-  - ../../components/radix-platform/radix-ingress-default-backend
   - ../../components/third-party/keda
   - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
   - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
@@ -34,5 +32,4 @@ patches:
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
   - path: ./overlay/third-party/azure-workload-identity/helmRelease.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
-  - path: ./overlay/third-party/ingress-nginx/patches.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
