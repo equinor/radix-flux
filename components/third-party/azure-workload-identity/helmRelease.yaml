@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: workload-identity-webhook
-      version: xx # Set by flux patch
+      version: ${AZURE_WORKLOAD_IDENTITY_VERSION}
       sourceRef:
         kind: HelmRepository
         name: azure-workload-identity
