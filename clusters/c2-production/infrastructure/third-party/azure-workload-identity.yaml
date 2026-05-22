@@ -1,0 +1,15 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: azure-workload-identity
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./components/third-party/azure-workload-identity"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  postBuild:
+    substitute:
+      AZURE_WORKLOAD_IDENTITY_VERSION: 1.4.1 # https://artifacthub.io/packages/helm/azure-workload-identity/workload-identity-webhook
