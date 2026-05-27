@@ -15,8 +15,20 @@ function create-pr() {
     fi
 
     if [[ -z "${PR_NAME}" ]]; then
+        if [[ -z "${ZONE}" && "${PR_BRANCH}" == flux-image-updates-* ]]; then
+            ZONE=$(echo "${PR_BRANCH}" | sed -E 's/^flux-image-updates-([^-]+)-.*$/\1/')
+        fi
+
+        if [[ -z "${UPDATE_SCOPE}" && "${PR_BRANCH}" == flux-image-updates-* ]]; then
+            UPDATE_SCOPE=$(echo "${PR_BRANCH}" | sed -E 's/^flux-image-updates-[^-]+-(.*)$/\1/')
+        fi
+
         if [[ -n "${ZONE}" ]]; then
-            PR_NAME="Automatic Pull Request - ${ZONE} - ${date_stamp}"
+            if [[ -n "${UPDATE_SCOPE}" ]]; then
+                PR_NAME="Automatic Pull Request - ${ZONE} - ${UPDATE_SCOPE} - ${date_stamp}"
+            else
+                PR_NAME="Automatic Pull Request - ${ZONE} - ${date_stamp}"
+            fi
         else
             PR_NAME="Automatic Pull Request"
         fi
@@ -24,7 +36,11 @@ function create-pr() {
 
     if [[ -z "${PR_BODY}" ]]; then
         if [[ -n "${ZONE}" ]]; then
-            PR_BODY=$'**Automatic Pull Request**\n\nZone: '${ZONE}$'\nLast updated: '${date_stamp}
+            if [[ -n "${UPDATE_SCOPE}" ]]; then
+                PR_BODY=$'**Automatic Pull Request**\n\nZone: '${ZONE}$'\nScope: '${UPDATE_SCOPE}$'\nLast updated: '${date_stamp}
+            else
+                PR_BODY=$'**Automatic Pull Request**\n\nZone: '${ZONE}$'\nLast updated: '${date_stamp}
+            fi
         else
             PR_BODY=$'**Automatic Pull Request**\n\nLast updated: '${date_stamp}
         fi
