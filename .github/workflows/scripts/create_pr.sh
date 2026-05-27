@@ -9,6 +9,7 @@ MAX_RETRIES=3
 function create-pr() {
     retry_nr=$1
     sleep_before_retry=$(($retry_nr * 2))
+    date_stamp="$(date +%Y-%m-%d)"
     if [[ -z "${PR_BRANCH}" ]]; then
         PR_BRANCH="flux-image-updates"
     fi
