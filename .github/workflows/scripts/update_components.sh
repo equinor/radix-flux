@@ -8,12 +8,41 @@ if [[ -z "${PR_BRANCH}" ]]; then
     PR_BRANCH="flux-image-updates"
 fi
 
-if [[ -z "${SOURCE_CLUSTER}" ]]; then
-    SOURCE_CLUSTER="development"
+if [[ -z "${ZONE}" ]]; then
+    ZONE="dev"
 fi
 
-if [[ -z "${DESTINATION_CLUSTER}" ]]; then
-    DESTINATION_CLUSTER="development"
+if [[ -z "${CLUSTER}" ]]; then
+    case "${ZONE}" in
+    c2)
+        CLUSTER="c2-production"
+        ;;
+    c3)
+        CLUSTER="c3"
+        ;;
+    dev)
+        CLUSTER="development"
+        ;;
+    monitor)
+        CLUSTER="monitoring"
+        ;;
+    playground)
+        CLUSTER="playground"
+        ;;
+    platform)
+        CLUSTER="production"
+        ;;
+    *)
+        echo "Unsupported zone '${ZONE}'. Expected one of: c2, c3, dev, monitor, playground, platform"
+        exit 1
+        ;;
+    esac
+fi
+
+cluster_infrastructure_path="${GITHUB_WORKSPACE}/clusters/${CLUSTER}/infrastructure"
+if [[ ! -d "${cluster_infrastructure_path}" ]]; then
+    echo "Cluster infrastructure path not found: ${cluster_infrastructure_path}"
+    exit 1
 fi
 
 numberOfChanges=0
@@ -33,31 +62,21 @@ function get_version() {
         local package_name=${repo##*/}
 
         if [[ "${current}" ]]; then
-            if [[ "${SOURCE_CLUSTER}" == "${DESTINATION_CLUSTER}" ]]; then
-                # Get version from ArtifactHub
-                newest=$(curl "https://artifacthub.io/api/v1/packages/helm/${repo}" \
+            # Get version from ArtifactHub, then fallback to latest GitHub tag.
+            newest=$(curl "https://artifacthub.io/api/v1/packages/helm/${repo}" \
+                --request "GET" \
+                --header "accept: application/json" \
+                --silent |
+                jq -er '.version // empty' ||
+                curl "https://api.github.com/repos/${repo}/tags" \
                     --request "GET" \
-                    --header "accept: application/json" \
+                    --header "Accept: application/vnd.github.v3+json" \
                     --silent |
-                    jq -er '.version // empty' ||
-                    # Try GitHub
-                    curl "https://api.github.com/repos/${repo}/tags" \
-                        --request "GET" \
-                        --header "Accept: application/vnd.github.v3+json" \
-                        --silent |
-                    jq -er '.[0].name // empty') || {
-                    echo "Version for $package_name not found. $current"
-                    continue
-                }
-                #--header "Authorization: token ${GITHUB_TOKEN}" \
-            else
-                # Update versions in destination cluster with versions in source cluster
-                newest="${current}"
-                file=$(echo ${file} | sed 's/'${SOURCE_CLUSTER}'/'${DESTINATION_CLUSTER}'/')
-                if [[ -f "${file}" ]]; then
-                    current=$(grep "${repo}" "${file}" | awk '{print $2}')
-                fi
-            fi
+                jq -er '.[0].name // empty') || {
+                echo "Version for $package_name not found. $current"
+                continue
+            }
+            #--header "Authorization: token ${GITHUB_TOKEN}" \
 
             if [[ "${newest}" == *beta* || "${newest}" == *alpha* || "${newest}" == *rc*  ]]; then 
                 printf "Skipping %s for %s - Current %s\n" "${newest}" "${package_name}" "${current}"
@@ -80,7 +99,7 @@ function get_version() {
         else
             printf "Could not find package version locally."
         fi
-    done < <(grep -rn -E 'artifacthub.io|github.com' ${GITHUB_WORKSPACE}'/clusters/'${SOURCE_CLUSTER} --exclude-dir 'flux-system' | grep -v -e "tag:")
+    done < <(grep -rn -E 'artifacthub.io|github.com' "${cluster_infrastructure_path}" | grep -v -e "tag:")
 
     if [[ "${push}" == true ]]; then
         echo "push"

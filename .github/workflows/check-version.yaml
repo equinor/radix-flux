@@ -5,64 +5,65 @@ on:
     - cron: '0 12 * * *'
   workflow_dispatch:
     inputs:
-      sourceCluster:
-        description: 'Source cluster'
+      zone:
+        description: 'Zone to check'
         required: false
         type: choice
         options:
-          - 'development'
-          - 'monitoring'
+          - 'all'
+          - 'c2'
+          - 'c3'
+          - 'dev'
+          - 'monitor'
           - 'playground'
-          - 'production'
-          - 'c2-production'
-      destinationCluster:
-        description: 'Destination cluster'
-        required: false
-        type: choice
-        options:
-          - 'development'
-          - 'monitoring'
-          - 'playground'
-          - 'production'
-          - 'c2-production'
+          - 'platform'
 
 permissions: {}
 jobs:
   check-version:
-    name: Check for new versions
+    name: Check for new versions (${{ matrix.zone }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        zone:
+          - c2
+          - c3
+          - dev
+          - monitor
+          - playground
+          - platform
     permissions:
       contents: write
       pull-requests: write
 
     steps:
       - name: checkout
+        if: github.event_name != 'workflow_dispatch' || inputs.zone == 'all' || inputs.zone == matrix.zone
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Set environments
+        if: github.event_name != 'workflow_dispatch' || inputs.zone == 'all' || inputs.zone == matrix.zone
         run: |
+          DATE_STAMP="$(date +%Y-%m-%d)"
+          ZONE="${{ matrix.zone }}"
           PR_BRANCH_TEMP="automatic-version-update"
           PR_NAME_TEMP="Automatic Pull Request"
-          destinationCluster="${{ inputs.destinationCluster }}"
 
-          if [ -z $destinationCluster ]; then
-            echo "PR_BRANCH=${PR_BRANCH_TEMP}-development" >> $GITHUB_ENV
-            echo "PR_NAME=${PR_NAME_TEMP} - development" >> $GITHUB_ENV
-          else
-            echo "PR_BRANCH=${PR_BRANCH_TEMP}-${destinationCluster}" >> $GITHUB_ENV
-            echo "PR_NAME=${PR_NAME_TEMP} - ${destinationCluster}" >> $GITHUB_ENV
-          fi
+          echo "ZONE=${ZONE}" >> $GITHUB_ENV
+          echo "PR_BRANCH=${PR_BRANCH_TEMP}-${ZONE}" >> $GITHUB_ENV
+          echo "PR_NAME=${PR_NAME_TEMP} - ${ZONE} - ${DATE_STAMP}" >> $GITHUB_ENV
 
       - name: Check version
+        if: github.event_name != 'workflow_dispatch' || inputs.zone == 'all' || inputs.zone == matrix.zone
         id: checkversion
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SOURCE_CLUSTER: ${{ inputs.sourceCluster }}
-          DESTINATION_CLUSTER: ${{ inputs.destinationCluster }}
+          ZONE: ${{ env.ZONE }}
         run: .github/workflows/scripts/update_components.sh
 
       - name: Create PR
-        if: ${{ steps.checkversion.outputs.numberOfChanges > 0 }}
+        if: (github.event_name != 'workflow_dispatch' || inputs.zone == 'all' || inputs.zone == matrix.zone) && steps.checkversion.outputs.numberOfChanges > 0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}

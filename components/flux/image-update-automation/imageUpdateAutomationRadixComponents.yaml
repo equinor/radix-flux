@@ -1,7 +1,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
-  name: radix-acr-auto-update-third-party
+  name: radix-acr-auto-update-radix-components
   namespace: flux-system
 spec:
   interval: 1m0s
@@ -21,7 +21,7 @@ spec:
 
         Cluster: ${clusterName}
         Zone: ${zone}
-        Scope: third-party
+        Scope: radix-components
 
         Automation name: {{ .AutomationObject }}
 
@@ -39,7 +39,7 @@ spec:
         {{ end -}}
         {{ end -}}
     push:
-      branch: flux-image-updates-${zone}-third-party
+      branch: flux-image-updates-${zone}-radix-components
   update:
-    path: ${FLUX_CONFIG_PATH}/infrastructure/third-party
+    path: ${FLUX_CONFIG_PATH}/infrastructure/radix-platform
     strategy: Setters

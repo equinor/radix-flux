@@ -2,7 +2,8 @@ name: Image Update Auto-PR
 
 on:
   push:
-    branches: ['flux-image-updates']
+    branches:
+      - 'flux-image-updates-*'
 
 permissions:
   contents: write
@@ -20,5 +21,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-        PR_BRANCH: flux-image-updates
+        PR_BRANCH: ${{ github.ref_name }}
       run: .github/workflows/scripts/create_pr.sh
