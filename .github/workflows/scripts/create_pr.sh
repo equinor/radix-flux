@@ -19,30 +19,44 @@ function create-pr() {
             ZONE=$(echo "${PR_BRANCH}" | sed -E 's/^flux-image-updates-([^-]+)-.*$/\1/')
         fi
 
+        if [[ -z "${ZONE}" && "${PR_BRANCH}" == automatic-version-update-* ]]; then
+            ZONE=$(echo "${PR_BRANCH}" | sed -E 's/^automatic-version-update-([^-]+).*$/\1/')
+        fi
+
         if [[ -z "${UPDATE_SCOPE}" && "${PR_BRANCH}" == flux-image-updates-* ]]; then
             UPDATE_SCOPE=$(echo "${PR_BRANCH}" | sed -E 's/^flux-image-updates-[^-]+-(.*)$/\1/')
         fi
 
-        if [[ -n "${ZONE}" ]]; then
-            if [[ -n "${UPDATE_SCOPE}" ]]; then
-                PR_NAME="Automatic Pull Request - ${ZONE} - ${UPDATE_SCOPE} - ${date_stamp}"
+        if [[ "${PR_BRANCH}" == flux-image-updates-* ]]; then
+            if [[ -n "${ZONE}" ]]; then
+                PR_NAME="Flux Image Pull Request - ${ZONE}"
             else
-                PR_NAME="Automatic Pull Request - ${ZONE} - ${date_stamp}"
+                PR_NAME="Flux Image Pull Request"
+            fi
+        elif [[ "${PR_BRANCH}" == automatic-version-update-* ]]; then
+            if [[ -n "${ZONE}" ]]; then
+                PR_NAME="Automatic Pull Request - ${ZONE}"
+            else
+                PR_NAME="Automatic Pull Request"
             fi
         else
-            PR_NAME="Automatic Pull Request"
+            if [[ -n "${ZONE}" ]]; then
+                PR_NAME="Automatic Pull Request - ${ZONE}"
+            else
+                PR_NAME="Automatic Pull Request"
+            fi
         fi
     fi
 
     if [[ -z "${PR_BODY}" ]]; then
         if [[ -n "${ZONE}" ]]; then
             if [[ -n "${UPDATE_SCOPE}" ]]; then
-                PR_BODY=$'**Automatic Pull Request**\n\nZone: '${ZONE}$'\nScope: '${UPDATE_SCOPE}$'\nLast updated: '${date_stamp}
+                printf -v PR_BODY '**Automatic Pull Request**\n\nZone: %s\nScope: %s' "${ZONE}" "${UPDATE_SCOPE}"
             else
-                PR_BODY=$'**Automatic Pull Request**\n\nZone: '${ZONE}$'\nLast updated: '${date_stamp}
+                printf -v PR_BODY '**Automatic Pull Request**\n\nZone: %s' "${ZONE}"
             fi
         else
-            PR_BODY=$'**Automatic Pull Request**\n\nLast updated: '${date_stamp}
+            PR_BODY='**Automatic Pull Request**'
         fi
     fi
 
