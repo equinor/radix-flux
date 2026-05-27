@@ -36,7 +36,7 @@ jobs:
 
           echo "ZONE=${ZONE}" >> $GITHUB_ENV
           echo "PR_BRANCH=${PR_BRANCH_TEMP}-${ZONE}" >> $GITHUB_ENV
-          echo "PR_NAME=${PR_NAME_TEMP} - ${ZONE}" >> $GITHUB_ENV
+          echo "PR_NAME=${PR_NAME_TEMP} - ${ZONE}(3party)" >> $GITHUB_ENV
 
       - name: Check version
         id: checkversion

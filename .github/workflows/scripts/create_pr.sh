@@ -9,7 +9,6 @@ MAX_RETRIES=3
 function create-pr() {
     retry_nr=$1
     sleep_before_retry=$(($retry_nr * 2))
-    date_stamp="$(date +%Y-%m-%d)"
     if [[ -z "${PR_BRANCH}" ]]; then
         PR_BRANCH="flux-image-updates"
     fi
@@ -29,13 +28,19 @@ function create-pr() {
 
         if [[ "${PR_BRANCH}" == flux-image-updates-* ]]; then
             if [[ -n "${ZONE}" ]]; then
-                PR_NAME="Flux Image Pull Request - ${ZONE}"
+                if [[ "${UPDATE_SCOPE}" == "third-party" ]]; then
+                    PR_NAME="Flux Image Pull Request - ${ZONE}(fluximage)"
+                elif [[ "${UPDATE_SCOPE}" == "radix-components" ]]; then
+                    PR_NAME="Flux Image Pull Request - ${ZONE}(radix)"
+                else
+                    PR_NAME="Flux Image Pull Request - ${ZONE}"
+                fi
             else
                 PR_NAME="Flux Image Pull Request"
             fi
         elif [[ "${PR_BRANCH}" == automatic-version-update-* ]]; then
             if [[ -n "${ZONE}" ]]; then
-                PR_NAME="Automatic Pull Request - ${ZONE}"
+                PR_NAME="Automatic Pull Request - ${ZONE}(3party)"
             else
                 PR_NAME="Automatic Pull Request"
             fi
