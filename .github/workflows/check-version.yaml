@@ -10,6 +10,9 @@ jobs:
   check-version:
     name: Check for new versions (${{ matrix.zone }})
     runs-on: ubuntu-latest
+    concurrency:
+      group: check-version-${{ matrix.zone }}
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -31,7 +34,7 @@ jobs:
       - name: Set environments
         run: |
           ZONE="${{ matrix.zone }}"
-          PR_BRANCH_TEMP="automatic-version-update"
+          PR_BRANCH_TEMP="automatic-3party-update"
           PR_NAME_TEMP="Automatic Pull Request"
 
           echo "ZONE=${ZONE}" >> $GITHUB_ENV
