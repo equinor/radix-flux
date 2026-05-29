@@ -39,7 +39,7 @@ spec:
         {{ end -}}
         {{ end -}}
     push:
-      branch: flux-image-updates-${zone}-radix-components
+      branch: automatic-radix-update-${zone}
   update:
     path: ${FLUX_CONFIG_PATH}/infrastructure/radix-platform
     strategy: Setters

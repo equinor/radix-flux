@@ -3,7 +3,7 @@ name: Image Update Auto-PR
 on:
   push:
     branches:
-      - 'flux-image-updates-*'
+      - 'automatic-radix-update-*'
       - 'automatic-3party-update-*'
 
 concurrency:
