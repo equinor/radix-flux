@@ -13,7 +13,7 @@ spec:
   timeout: 2m0s
   postBuild:
     substitute:
-      BLOB_CSI_DRIVER: 1.27.1 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
+      BLOB_CSI_DRIVER: 1.27.5 # https://artifacthub.io/packages/helm/blob-csi-driver/blob-csi-driver
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
