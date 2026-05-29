@@ -24,6 +24,10 @@ function create-pr() {
             ZONE=$(echo "${PR_BRANCH}" | sed -E 's/^flux-image-updates-([^-]+)-.*$/\1/')
         fi
 
+        if [[ -z "${ZONE}" && "${PR_BRANCH}" == automatic-radix-update-* ]]; then
+            ZONE=$(echo "${PR_BRANCH}" | sed -E 's/^automatic-radix-update-([^-]+).*$/\1/')
+        fi
+
         if [[ -z "${ZONE}" && "${PR_BRANCH}" == automatic-3party-update-* ]]; then
             ZONE=$(echo "${PR_BRANCH}" | sed -E 's/^automatic-3party-update-([^-]+).*$/\1/')
         fi
@@ -41,6 +45,16 @@ function create-pr() {
                 else
                     PR_NAME="Flux Image Pull Request - ${ZONE}"
                 fi
+            else
+                PR_NAME="Flux Image Pull Request"
+            fi
+        elif [[ "${PR_BRANCH}" == automatic-radix-update-* ]]; then
+            if [[ -z "${UPDATE_SCOPE}" ]]; then
+                UPDATE_SCOPE="radix-components"
+            fi
+
+            if [[ -n "${ZONE}" ]]; then
+                PR_NAME="Flux Image Pull Request - ${ZONE}(radix)"
             else
                 PR_NAME="Flux Image Pull Request"
             fi
