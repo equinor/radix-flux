@@ -20,7 +20,7 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      CERT_MANAGER_VERSION: 1.20.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.20.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
   patches:
     - target:
         kind: HelmRelease
