@@ -10,7 +10,6 @@ resources:
   - ../../components/radix-platform/radix-cost-allocation
   - ../../components/radix-platform/radix-vulnerability-scanner
   - ../../components/third-party/kube-prometheus-stack
-  - ../../components/third-party/keda
   - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
   - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
   - ./overlay/radix-platform/radix-cluster-cleanup/radix-cluster-cleanup.yaml

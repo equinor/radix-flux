@@ -13,6 +13,7 @@ resources:
   - grafana.yaml
   - istio-envoyfilter.yaml
   - istio.yaml
+  - keda.yaml
   - kubernetes-replicator.yaml
   - multi-wildcard-cert.yaml
   - security-mitiation.yaml

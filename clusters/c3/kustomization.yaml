@@ -12,7 +12,6 @@ resources:
   - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
   - ../../components/radix-platform/radix-vulnerability-scanner
   - ../../components/radix-platform/radix-cost-allocation
-  - ../../components/third-party/keda
 
 patches:
   - path: ./postBuild.yaml
