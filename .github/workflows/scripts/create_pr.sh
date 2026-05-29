@@ -10,7 +10,13 @@ function create-pr() {
     retry_nr=$1
     sleep_before_retry=$(($retry_nr * 2))
     if [[ -z "${PR_BRANCH}" ]]; then
-        PR_BRANCH="flux-image-updates"
+        if [[ -n "${GITHUB_REF_NAME}" ]]; then
+            PR_BRANCH="${GITHUB_REF_NAME}"
+        elif [[ -n "${ZONE}" ]]; then
+            PR_BRANCH="automatic-3party-update-${ZONE}"
+        else
+            PR_BRANCH="automatic-3party-update-dev"
+        fi
     fi
 
     if [[ -z "${PR_NAME}" ]]; then
@@ -18,8 +24,8 @@ function create-pr() {
             ZONE=$(echo "${PR_BRANCH}" | sed -E 's/^flux-image-updates-([^-]+)-.*$/\1/')
         fi
 
-        if [[ -z "${ZONE}" && "${PR_BRANCH}" == automatic-version-update-* ]]; then
-            ZONE=$(echo "${PR_BRANCH}" | sed -E 's/^automatic-version-update-([^-]+).*$/\1/')
+        if [[ -z "${ZONE}" && "${PR_BRANCH}" == automatic-3party-update-* ]]; then
+            ZONE=$(echo "${PR_BRANCH}" | sed -E 's/^automatic-3party-update-([^-]+).*$/\1/')
         fi
 
         if [[ -z "${UPDATE_SCOPE}" && "${PR_BRANCH}" == flux-image-updates-* ]]; then
@@ -29,7 +35,7 @@ function create-pr() {
         if [[ "${PR_BRANCH}" == flux-image-updates-* ]]; then
             if [[ -n "${ZONE}" ]]; then
                 if [[ "${UPDATE_SCOPE}" == "third-party" ]]; then
-                    PR_NAME="Flux Image Pull Request - ${ZONE}(fluximage)"
+                    PR_NAME="Flux Image Pull Request - ${ZONE}(flux-policy)"
                 elif [[ "${UPDATE_SCOPE}" == "radix-components" ]]; then
                     PR_NAME="Flux Image Pull Request - ${ZONE}(radix)"
                 else
@@ -38,7 +44,7 @@ function create-pr() {
             else
                 PR_NAME="Flux Image Pull Request"
             fi
-        elif [[ "${PR_BRANCH}" == automatic-version-update-* ]]; then
+        elif [[ "${PR_BRANCH}" == automatic-3party-update-* ]]; then
             if [[ -n "${ZONE}" ]]; then
                 PR_NAME="Automatic Pull Request - ${ZONE}(3party)"
             else

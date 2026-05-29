@@ -39,7 +39,7 @@ spec:
         {{ end -}}
         {{ end -}}
     push:
-      branch: flux-image-updates-${zone}-third-party
+      branch: automatic-3party-update-${zone}
   update:
     path: ${FLUX_CONFIG_PATH}/infrastructure/third-party
     strategy: Setters

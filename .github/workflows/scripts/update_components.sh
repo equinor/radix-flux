@@ -5,7 +5,11 @@
 # Please update the documentation if any changes are made to this script.
 
 if [[ -z "${PR_BRANCH}" ]]; then
-    PR_BRANCH="flux-image-updates"
+    if [[ -n "${ZONE}" ]]; then
+        PR_BRANCH="automatic-3party-update-${ZONE}"
+    else
+        PR_BRANCH="automatic-3party-update-dev"
+    fi
 fi
 
 if [[ -z "${ZONE}" ]]; then
