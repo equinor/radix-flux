@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: xx # Set by flux patch
+      version: ${KUBE_PROMETHEUS_STACK}
       sourceRef:
         kind: HelmRepository
         name: kube-prometheus-stack
@@ -33,7 +33,8 @@ spec:
       podLabels:
         grafana.radix.equinor.com/monitor-health: "true"
       image:
-        registry: ${RADIX_CACHE_REGISTRY}
+        registry: ${cacheRegistry}
+
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -49,11 +50,13 @@ spec:
           memory: "100Mi"
       prometheusConfigReloader:
         image:
-          registry: ${RADIX_CACHE_REGISTRY}
+          registry: ${cacheRegistry}
+
       admissionWebhooks:
         deployment:
           image:
-            registry: ${RADIX_CACHE_REGISTRY}
+            registry: ${cacheRegistry}
+
     kube-state-metrics:
       rbac:
         extraRules:
@@ -343,7 +346,8 @@ spec:
         enabled: false
       prometheusSpec:
         image:
-          registry: ${RADIX_CACHE_REGISTRY}
+          registry: ${cacheRegistry}
+
         query:
           timeout: 10s
         affinity:
@@ -408,7 +412,8 @@ spec:
           resolve_timeout: 5m
       alertmanagerSpec:
         image:
-          registry: ${RADIX_CACHE_REGISTRY}
+          registry: ${cacheRegistry}
+
         affinity:
           nodeAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:

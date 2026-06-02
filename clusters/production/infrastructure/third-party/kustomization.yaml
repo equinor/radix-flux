@@ -14,6 +14,7 @@ resources:
   - istio-envoyfilter.yaml
   - istio.yaml
   - keda.yaml
+  - kube-prometheus-stack.yaml
   - kubernetes-replicator.yaml
   - multi-wildcard-cert.yaml
   - security-mitiation.yaml

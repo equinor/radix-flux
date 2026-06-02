@@ -5,7 +5,6 @@ resources:
   - ./infrastructure/third-party
   - ../../components/flux/image-update-automation
   - ../../components/flux/storageclasses
-  - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/prometheus-blackbox-exporter
   - ../../components/third-party/external-secrets
   - overlay/radix-platform/radix-prometheus-proxy/patches.yaml
@@ -17,6 +16,5 @@ patches:
   - path: ./kustomize-controller.yaml
   - path: ./notification-controller.yaml
   - path: ./source-controller.yaml
-  - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml
   - path: ./overlay/third-party/prometheus-blackbox-exporter/helmRelease.yaml
   - path: ./overlay/third-party/external-secrets/patches.yaml
