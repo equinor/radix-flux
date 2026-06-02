@@ -9,4 +9,5 @@ resources:
   - cert-manager-issuers.yaml
   - cert-manager-certs.yaml
   - grafana.yaml
+  - kube-prometheus-stack.yaml
   - security-mitiation.yaml

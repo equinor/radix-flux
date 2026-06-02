@@ -4,9 +4,20 @@ metadata:
   name: kube-prometheus-stack
   namespace: flux-system
 spec:
+  interval: 5m
+  path: "./components/third-party/kube-prometheus-stack"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
   postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
     substitute:
-      ALERT_WEB_CONSOLE_BASE_URL: "https://console.playground.radix.equinor.com"
+      EXTMON_CLUSTER_ISSUER: https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/
+      KUBE_PROMETHEUS_STACK: 81.3.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack # newer version fails. ref: https://github.com/equinor/radix-platform/issues/1849
+      ALERT_WEB_CONSOLE_BASE_URL: "https://console.dev.radix.equinor.com"
   patches:
     - target:
         kind: HTTPRoute
@@ -29,16 +40,14 @@ spec:
           name: kube-prometheus-stack
           namespace: monitor
         spec:
-          chart:
-            spec:
-              version: ${KUBE_PROMETHEUS_STACK}
           values:
             prometheus:
               prometheusSpec:
+                retention: 60d # default
                 resources:
                   limits:
                     cpu: 600m
-                    memory: 8Gi
+                    memory: 6Gi
                   requests:
                     cpu: 600m
                     memory: 4Gi
@@ -62,8 +71,10 @@ spec:
             kube-state-metrics:
               resources:
                 limits:
-                  cpu: 50m
-                  memory: 800Mi
-                requests:
                   cpu: 10m
-                  memory: 400Mi
+                  memory: 256Mi
+                requests:
+                  cpu: 5m
+                  memory: 64Mi
+  wait: true
+  timeout: 2m

@@ -7,7 +7,6 @@ resources:
   - ../../components/flux/image-update-automation
   - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
-  - ../../components/third-party/kube-prometheus-stack
   - ./overlay/radix-platform/radix-acr-cleanup/radix-acr-cleanup.yaml
   - ./overlay/radix-platform/radix-cicd-canary/radix-cicd-canary.yaml
   - ../../components/radix-platform/radix-vulnerability-scanner
@@ -23,4 +22,3 @@ patches:
   - path: ./source-controller.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
-  - path: ./overlay/third-party/kube-prometheus-stack/patches.yaml

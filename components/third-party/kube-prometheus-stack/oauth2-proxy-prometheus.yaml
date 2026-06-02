@@ -153,7 +153,7 @@ spec:
     namespace: istio-system
     sectionName: https
   hostnames:
-  - prometheus.${AZ_RESOURCE_DNS}
+  - prometheus.${dnsZone}
   rules:
   - matches:
     - path:

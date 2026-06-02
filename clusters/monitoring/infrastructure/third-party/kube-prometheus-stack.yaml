@@ -4,10 +4,20 @@ metadata:
   name: kube-prometheus-stack
   namespace: flux-system
 spec:
+  interval: 5m
+  path: "./components/third-party/kube-prometheus-stack"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
   postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
     substitute:
+      EXTMON_CLUSTER_ISSUER: https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/
+      KUBE_PROMETHEUS_STACK: 81.3.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack # newer version fails. ref: https://github.com/equinor/radix-platform/issues/1849
       ALERT_WEB_CONSOLE_BASE_URL: "https://console.dev.radix.equinor.com"
-      EXTMON_CLUSTER_ISSUER: "https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/"
   patches:
     - target:
         kind: HelmRelease
@@ -20,9 +30,6 @@ spec:
           name: kube-prometheus-stack
           namespace: monitor
         spec:
-          chart:
-            spec:
-              version: ${KUBE_PROMETHEUS_STACK}
           values:
             prometheusOperator:
               resources:
@@ -423,3 +430,5 @@ spec:
                   memory: 64Mi
               extraArgs: []  
             additionalPrometheusRulesMap: null
+  wait: true
+  timeout: 2m
