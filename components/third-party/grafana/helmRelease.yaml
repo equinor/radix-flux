@@ -108,10 +108,8 @@ spec:
       GF_AZURE_WORKLOAD_IDENTITY_ENABLED: "true"
       GF_AUTH_AZUREAD_ALLOW_ASSIGN_GRAFANA_ADMIN: "true"
       GF_AUTH_AZUREAD_CLIENT_ID: "${GRAFANA_AR_CLIENT_ID}"
-      GF_AUTH_AZUREAD_AUTH_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5\
-        -9195-7fcf05b459b0/oauth2/v2.0/authorize"
-      GF_AUTH_AZUREAD_TOKEN_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d\
-        5-9195-7fcf05b459b0/oauth2/v2.0/token"
+      GF_AUTH_AZUREAD_AUTH_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/authorize"
+      GF_AUTH_AZUREAD_TOKEN_URL: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token"
       GF_AUTH_AZUREAD_CLIENT_AUTHENTICATION: "workload_identity"
       GF_AUTH_AZUREAD_FEDERATED_CREDENTIAL_AUDIENCE: "api://AzureADTokenExchange"
       GF_AUTH_AZUREAD_ALLOWED_ORGANIZATIONS: "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
@@ -122,6 +120,9 @@ spec:
       GF_SERVER_ROOT_URL: https://grafana.${dnsZone}
       GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Editor" # Viewer|Editor|Admin
 
+      # Disable new feature popup
+      GF_HELP_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
     extraContainerVolumes:
       - name: access-token-volume
         emptyDir: {}
@@ -139,7 +140,7 @@ spec:
         restartPolicy: Always
         startupProbe:
           exec:
-            command: [ "sh", "-c", "[ -s /tmp/token ]" ] # Check token exist and is not empty
+            command: ["sh", "-c", "[ -s /tmp/token ]"] # Check token exist and is not empty
           initialDelaySeconds: 5
         volumeMounts:
           - name: access-token-volume
