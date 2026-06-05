@@ -1,7 +1,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-patches:
-  - path: flux-patches.yaml
-    target:
-      kind: Deployment
-      namespace: flux-system
+patchesStrategicMerge:
+  - flux-patches.yaml
