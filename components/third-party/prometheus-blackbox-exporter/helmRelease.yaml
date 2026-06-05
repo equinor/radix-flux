@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: prometheus-blackbox-exporter
-      version: xx # Set by flux patch
+      version: ${BLACKBOX_EXPORTER_VERSION}
       sourceRef:
         kind: HelmRepository
         name: prometheus-blackbox-exporter
@@ -20,9 +20,11 @@ spec:
   values:
     resources:
       limits:
-        memory: 300Mi
+        cpu: 40m
+        memory: 256Mi
       requests:
-        memory: 50Mi
+        cpu: 20m
+        memory: 128Mi
     config:
       modules:
         http_2xx:
