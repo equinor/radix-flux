@@ -15,7 +15,7 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      RADIX_OPERATOR_CHART_VERSION: 1.117.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
+      RADIX_OPERATOR_CHART_VERSION: 1.117.2 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
       GIT_CLONE_TAG: "2.45.2"
       OAUTH2PROXY_TAG: "v7.15.2"
       OAUTH2REDIS_TAG: "8.6.0-alpine3.23"
