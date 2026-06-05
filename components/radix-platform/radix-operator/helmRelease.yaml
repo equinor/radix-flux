@@ -161,15 +161,15 @@ spec:
           matches:
             - path:
                 type: PathPrefix
-                value: /events/github
+                value: /
 
           filters:
             # Rewrite path from /events/github to /api/v1/webhooks/github?appName=XXXX
             - type: URLRewrite
               urlRewrite:
                 path:
-                  type: ReplacePrefixMatch
-                  replacePrefixMatch: /api/v1/webhooks/github
+                  replaceFullPath: /api/v1/webhooks/github
+                  type: ReplaceFullPath
 
       autoscaling:
         minReplicas: 2
