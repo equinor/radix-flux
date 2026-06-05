@@ -1,5 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+bases:
+  - ../../components/flux/flux-patches-base
 resources:
   - flux-system
   - ./infrastructure/third-party
@@ -15,6 +17,5 @@ resources:
 
 patches:
   - path: ./postBuild.yaml
-  - path: ../../components/flux/flux-patches.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
