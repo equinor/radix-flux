@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/tekton-v2/v0.79.0/operator"
+  path: "./components/third-party/tekton/v0.79.0/operator"
   prune: true
   wait: true
   sourceRef:
