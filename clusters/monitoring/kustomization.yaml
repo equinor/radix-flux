@@ -8,4 +8,4 @@ resources:
   - overlay/radix-platform/radix-prometheus-proxy/patches.yaml
 patches:
   - path: ./postBuild.yaml
-  - path: ../../components/flux/flux-patches.yaml
+  - path: ./flux-patches.yaml
