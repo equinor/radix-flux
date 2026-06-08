@@ -15,6 +15,6 @@ resources:
 
 patches:
   - path: ./postBuild.yaml
-  - path: ../../components/flux/flux-patches.yaml
+  - path: ./flux-patches.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml

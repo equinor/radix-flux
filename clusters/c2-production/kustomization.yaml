@@ -14,12 +14,6 @@ resources:
 
 patches:
   - path: ./postBuild.yaml
-  - path: ../../components/flux/flux-patches.yaml
-  # - path: ../../components/flux/flux-patches/helm-controller.yaml
-  # - path: ../../components/flux/flux-patches/image-automation-controller.yaml
-  # - path: ../../components/flux/flux-patches/image-reflector-controller.yaml
-  # - path: ../../components/flux/flux-patches/kustomize-controller.yaml
-  # - path: ../../components/flux/flux-patches/notification-controller.yaml
-  # - path: ../../components/flux/flux-patches/source-controller.yaml
+  - path: ./flux-patches.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
