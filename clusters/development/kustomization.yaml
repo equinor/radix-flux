@@ -15,11 +15,6 @@ resources:
 
 patches:
   - path: ./postBuild.yaml
-  - path: ./helm-controller.yaml
-  - path: ./image-automation-controller.yaml
-  - path: ./image-reflector-controller.yaml
-  - path: ./kustomize-controller.yaml
-  - path: ./notification-controller.yaml
-  - path: ./source-controller.yaml
+  - path: ./flux-patches.yaml
   - path: ./overlay/radix-platform/radix-cost-allocation/patches.yaml
   - path: ./overlay/radix-platform/radix-vulnerability-scanner/patches.yaml
