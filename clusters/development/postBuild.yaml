@@ -7,7 +7,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: weekly-23
+      ACTIVE_CLUSTER: weekly-24
       AZ_RESOURCE_DNS: dev.radix.equinor.com
       COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c # gitleaks:allow
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
