@@ -45,6 +45,8 @@ spec:
               routes:
                 legacy-github-webhook:
                   enabled: true
+                webhook-health:
+                  enabled: true
       target:
         kind: HelmRelease
         name: radix-operator
