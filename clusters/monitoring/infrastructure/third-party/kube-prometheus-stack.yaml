@@ -267,7 +267,7 @@ spec:
                         labels:
                           federated: dev.radix.equinor.com
                           RadixCluster: dev
-        
+
                   # blackbox probing of apis dev
                   - job_name: 'uptime-probe-dev'
                     metrics_path: /probe
@@ -279,6 +279,7 @@ spec:
                       - targets:
                           - https://api.dev.radix.equinor.com/health/
                           - https://canary.dev.radix.equinor.com
+                          - https://webhook.dev.radix.equinor.com/health
                           - https://www.dev.radix.equinor.com
                           - https://console.dev.radix.equinor.com/ping
                           - https://cost-api.dev.radix.equinor.com/health/
@@ -291,7 +292,7 @@ spec:
                         target_label: instance
                       - target_label: __address__
                         replacement: prometheus-blackbox-exporter:9115
-        
+
                   # blackbox probing of apis playground
                   - job_name: 'uptime-probe-playground'
                     metrics_path: /probe
@@ -316,7 +317,7 @@ spec:
                         target_label: instance
                       - target_label: __address__
                         replacement: prometheus-blackbox-exporter:9115
-        
+
                   # blackbox probing of apis prod
                   - job_name: 'uptime-probe-prod'
                     metrics_path: /probe
@@ -341,7 +342,7 @@ spec:
                         target_label: instance
                       - target_label: __address__
                         replacement: prometheus-blackbox-exporter:9115
-        
+
                   # blackbox probing of apis on c2
                   - job_name: 'uptime-probe-c2prod'
                     metrics_path: /probe
