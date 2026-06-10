@@ -279,7 +279,6 @@ spec:
                       - targets:
                           - https://api.dev.radix.equinor.com/health/
                           - https://canary.dev.radix.equinor.com
-                          - https://webhook.dev.radix.equinor.com/health
                           - https://www.dev.radix.equinor.com
                           - https://console.dev.radix.equinor.com/ping
                           - https://cost-api.dev.radix.equinor.com/health/
