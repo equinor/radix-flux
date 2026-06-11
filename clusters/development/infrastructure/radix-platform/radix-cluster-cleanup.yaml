@@ -1,37 +1,49 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: radix-cost-allocation
+  name: radix-cluster-cleanup
   namespace: flux-system
 spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-cluster-cleanup
+  prune: false
   postBuild:
     substitute:
-      RADIX_COST_ALLOCATION_CHART_VERSION: ${RADIX_COST_ALLOCATION_CHART_VERSION:=tba} # From postBuild.yaml
+      RADIX_CLUSTER_CLEANUP_CHART_VERSION: 1.1.3 # {"$imagepolicy": "flux-system:radix-cluster-cleanup-chart:tag"}
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2
         kind: HelmRelease
         metadata:
-          name: radix-cost-allocation
-          namespace: radix-cost-allocation
+          name: radix-cluster-cleanup
         spec:
           values:
+            cleanupStart: "08:00"
+            cleanupEnd: "16:00"
+            period: 15m
+            command: stop-and-delete-rrs-continuously
+            logLevel: DEBUG
             resources:
               limits:
                 cpu: "2"
-                memory: 100Mi
+                memory: 150Mi
               requests:
-                cpu: 100m
-                memory: 100Mi
+                cpu: 50m
+                memory: 150Mi
+            securityContext:
+              readOnlyRootFilesystem: true
       target:
         kind: HelmRelease
-        name: radix-cost-allocation
-        namespace: radix-cost-allocation
+        name: radix-cluster-cleanup
+        namespace: default
     - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
         apiVersion: image.toolkit.fluxcd.io/v1beta2
         kind: ImagePolicy
         metadata:
-          name: radix-cost-allocation-chart
+          name: radix-cluster-cleanup-chart
           namespace: flux-system
         spec:
           policy:
@@ -39,5 +51,5 @@ spec:
               range: '>=0.0.0-0'
       target:
         kind: ImagePolicy
-        name: radix-cost-allocation-chart
-        namespace: flux-system
+        name: radix-cluster-cleanup-chart
+        namespace: flux-system        

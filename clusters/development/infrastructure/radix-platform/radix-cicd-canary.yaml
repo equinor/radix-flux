@@ -1,55 +1,54 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: radix-cluster-cleanup
+  name: radix-cicd-canary
   namespace: flux-system
 spec:
   interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./components/radix-platform/radix-cluster-cleanup
+  path: ./components/radix-platform/radix-cicd-canary
   prune: false
   postBuild:
     substitute:
-      RADIX_CLUSTER_CLEANUP_CHART_VERSION: ${RADIX_CLUSTER_CLEANUP_CHART_VERSION:=tba} # From postBuild.yaml
+      RADIX_CICD_CANARY_CHART_VERSION: 1.5.3 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2
         kind: HelmRelease
         metadata:
-          name: radix-cluster-cleanup
+          name: radix-cicd-canary
+          namespace: radix-cicd-canary
         spec:
           values:
-            cleanupStart: "08:00"
-            cleanupEnd: "16:00"
-            period: 15m
-            command: stop-and-delete-rrs-continuously
-            logLevel: DEBUG
-            resources:
-              limits:
-                cpu: "2"
-                memory: 150Mi
-              requests:
-                cpu: 50m
-                memory: 150Mi
-            securityContext:
-              readOnlyRootFilesystem: true
+            radixApiPrefix: server-radix-api-qa
+            radixWebhookPrefix: webhook-radix-github-webhook-qa
+            clusterFqdn: ${clusterName}.${dnsZone}
+            radixGroups:
+              user: 64b28659-4fe4-4222-8497-85dd7e43e25b
       target:
         kind: HelmRelease
-        name: radix-cluster-cleanup
-        namespace: default
+        name: radix-cicd-canary
+        namespace: radix-cicd-canary
     - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
         apiVersion: image.toolkit.fluxcd.io/v1beta2
         kind: ImagePolicy
         metadata:
-          name: radix-cluster-cleanup-chart
+          name: radix-cicd-canary-chart
           namespace: flux-system
         spec:
+          imageRepositoryRef:
+            name: radix-cicd-canary-chart
           policy:
             semver:
               range: '>=0.0.0-0'
       target:
         kind: ImagePolicy
-        name: radix-cluster-cleanup-chart
-        namespace: flux-system        
+        name: radix-cicd-canary-chart
+        namespace: flux-system
+
+
