@@ -146,8 +146,12 @@ spec:
           hostnames:
             - webhook.${dnsZone}
             - webhook.${clusterName}.${dnsZone}
+
             - webhook-radix-github-webhook-prod.${dnsZone}
             - webhook-radix-github-webhook-prod.${clusterName}.${dnsZone}
+
+            - webhook-radix-github-webhook-qa.${dnsZone}
+            - webhook-radix-github-webhook-qa.${clusterName}.${dnsZone}
 
           parentRefs:
             - group: gateway.networking.k8s.io
@@ -176,8 +180,12 @@ spec:
           hostnames:
             - webhook.${dnsZone}
             - webhook.${clusterName}.${dnsZone}
+
             - webhook-radix-github-webhook-prod.${dnsZone}
             - webhook-radix-github-webhook-prod.${clusterName}.${dnsZone}
+
+            - webhook-radix-github-webhook-qa.${dnsZone}
+            - webhook-radix-github-webhook-qa.${clusterName}.${dnsZone}
 
           parentRefs:
             - group: gateway.networking.k8s.io
