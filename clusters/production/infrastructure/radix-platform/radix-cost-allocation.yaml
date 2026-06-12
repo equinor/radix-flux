@@ -12,8 +12,8 @@ spec:
     name: flux-system
   postBuild:
     substitute:
-      COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c # gitleaks:allow
-      COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
+      COST_ALLOCATION_SQL_CLIENT_ID: 081fa1b1-e38b-43c0-88fe-4a4807f1798b
+      COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-platform.database.windows.net
       RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
   patches:
     - patch: |-

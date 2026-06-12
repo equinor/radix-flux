@@ -9,23 +9,14 @@ spec:
     substitute:
       ACTIVE_CLUSTER: playground-29
       AZ_RESOURCE_DNS: playground.radix.equinor.com
-      COST_ALLOCATION_SQL_CLIENT_ID: b1a842b2-8e0e-4c2f-807e-8355eeb21f32
-      COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-playground.database.windows.net
       FLUX_CONFIG_PATH: ./clusters/playground
-      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       radix_acr_repo_url: radixplayground.azurecr.io
       RADIX_CACHE_REGISTRY: radixplaygroundcache.azurecr.io
-      RADIX_CICD_CANARY_CHART_VERSION: 1.5.3 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
-      RADIX_CLUSTER_CLEANUP_CHART_VERSION: 1.1.3 # {"$imagepolicy": "flux-system:radix-cluster-cleanup-chart:tag"}
-      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
       RADIX_ENVIRONMENT: dev # dev | prod
-      RADIX_VULNERABILITY_SCANNER_CHART_VERSION: 1.4.4 # {"$imagepolicy": "flux-system:radix-vulnerability-scanner-chart:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: playground
       RADIX_ZONE: playground # dev | playground | prod
       TEKTON_VERSION: v0.53.0
-      VULNERABILITY_SCANNER_SQL_CLIENT_ID: a59fc37e-f966-4a53-ba73-cac5e2590b24
-      VULNERABILITY_SCANNER_SQL_SERVER: sql-radix-vulnerability-scan-playground.database.windows.net
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config

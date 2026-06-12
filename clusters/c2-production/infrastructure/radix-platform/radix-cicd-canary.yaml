@@ -1,51 +1,54 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: radix-cost-allocation
+  name: radix-cicd-canary
   namespace: flux-system
 spec:
-  interval: 5m
-  path: "./components/radix-platform/radix-cost-allocation"
-  prune: true
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
+  path: ./components/radix-platform/radix-cicd-canary
+  prune: false
   postBuild:
     substitute:
-      COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c # gitleaks:allow
-      COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
-      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
+      RADIX_CICD_CANARY_CHART_VERSION: 1.5.3 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2
         kind: HelmRelease
         metadata:
-          name: radix-cost-allocation
-          namespace: radix-cost-allocation
+          name: radix-cicd-canary
+          namespace: radix-cicd-canary
         spec:
           values:
-            resources:
-              limits:
-                cpu: "2"
-                memory: 100Mi
-              requests:
-                cpu: 100m
-                memory: 100Mi
+            radixApiPrefix: server-radix-api-qa
+            radixWebhookPrefix: webhook-radix-github-webhook-qa
+            clusterFqdn: ${clusterName}.${dnsZone}
+            radixGroups:
+              user: 64b28659-4fe4-4222-8497-85dd7e43e25b
       target:
         kind: HelmRelease
-        name: radix-cost-allocation
-        namespace: radix-cost-allocation
+        name: radix-cicd-canary
+        namespace: radix-cicd-canary
     - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
         apiVersion: image.toolkit.fluxcd.io/v1beta2
         kind: ImagePolicy
         metadata:
-          name: radix-cost-allocation-chart
+          name: radix-cicd-canary-chart
           namespace: flux-system
         spec:
+          imageRepositoryRef:
+            name: radix-cicd-canary-chart
           policy:
             semver:
               range: '>=0.0.0-0'
       target:
         kind: ImagePolicy
-        name: radix-cost-allocation-chart
+        name: radix-cicd-canary-chart
         namespace: flux-system
+
+
