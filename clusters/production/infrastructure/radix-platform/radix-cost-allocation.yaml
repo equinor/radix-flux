@@ -20,32 +20,23 @@ spec:
         apiVersion: helm.toolkit.fluxcd.io/v2
         kind: HelmRelease
         metadata:
-          name: radix-cost-allocation
-          namespace: radix-cost-allocation
+          name: radix-vulnerability-scanner
+          namespace: radix-vulnerability-scanner
         spec:
           values:
+            workloadIdentityRegistries: 
+            - "${radix_acr_repo_url}"
             resources:
               limits:
-                cpu: "2"
-                memory: 100Mi
+                cpu: "4"
+                memory: 32Gi
               requests:
-                cpu: 100m
-                memory: 100Mi
+                cpu: 500m
+                memory: 4Gi
+            workers: 4
+            securityContext:
+              readOnlyRootFilesystem: true
       target:
         kind: HelmRelease
-        name: radix-cost-allocation
-        namespace: radix-cost-allocation
-    - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
-        apiVersion: image.toolkit.fluxcd.io/v1beta2
-        kind: ImagePolicy
-        metadata:
-          name: radix-cost-allocation-chart
-          namespace: flux-system
-        spec:
-          policy:
-            semver:
-              range: '>=0.0.0-0'
-      target:
-        kind: ImagePolicy
-        name: radix-cost-allocation-chart
-        namespace: flux-system
+        name: radix-vulnerability-scanner
+        namespace: radix-vulnerability-scanner

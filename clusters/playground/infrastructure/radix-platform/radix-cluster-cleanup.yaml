@@ -21,8 +21,8 @@ spec:
           name: radix-cluster-cleanup
         spec:
           values:
-            cleanupStart: "08:00"
-            cleanupEnd: "16:00"
+            cleanupStart: "09:00"
+            cleanupEnd: "12:00"
             period: 15m
             command: stop-and-delete-rrs-continuously
             logLevel: DEBUG
@@ -39,17 +39,3 @@ spec:
         kind: HelmRelease
         name: radix-cluster-cleanup
         namespace: default
-    - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
-        apiVersion: image.toolkit.fluxcd.io/v1beta2
-        kind: ImagePolicy
-        metadata:
-          name: radix-cluster-cleanup-chart
-          namespace: flux-system
-        spec:
-          policy:
-            semver:
-              range: '>=0.0.0-0'
-      target:
-        kind: ImagePolicy
-        name: radix-cluster-cleanup-chart
-        namespace: flux-system        

@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - radix-acr-cleanup.yaml
   - radix-cicd-canary.yaml
-  - radix-cluster-cleanup.yaml
   - radix-cost-allocation.yaml
   - radix-operator.yaml
   - radix-platform.yaml
