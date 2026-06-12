@@ -190,7 +190,7 @@ spec:
 
           matches:
             - path:
-                type: exact
+                type: Exact
                 value: /health
 
           filters:
