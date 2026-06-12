@@ -130,6 +130,7 @@ spec:
 
       routes:
         main:
+          enabled: true
           hostnames:
             - api.${dnsZone}
             - api.${clusterName}.${dnsZone}
@@ -142,7 +143,7 @@ spec:
 
         # https://webhook.dev.radix.equinor.com/events/github?appName=XXXX
         legacy-github-webhook:
-          enabled: false
+          enabled: true
           hostnames:
             - webhook.${dnsZone}
             - webhook.${clusterName}.${dnsZone}
@@ -176,7 +177,7 @@ spec:
                   type: ReplaceFullPath
 
         webhook-health:
-          enabled: false
+          enabled: true
           hostnames:
             - webhook.${dnsZone}
             - webhook.${clusterName}.${dnsZone}
