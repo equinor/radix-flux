@@ -21,6 +21,13 @@ spec:
     serviceAccount:
       annotations:
         azure.workload.identity/client-id: ${COST_ALLOCATION_SQL_CLIENT_ID}
+    resources:
+      limits:
+        cpu: "2"
+        memory: 300Mi
+      requests:
+        cpu: 100m
+        memory: 300Mi
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
