@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/radix-platform/radix-cost-allocation-v2"
+  path: "./components/radix-platform/radix-cost-allocation"
   prune: true
   sourceRef:
     kind: GitRepository
