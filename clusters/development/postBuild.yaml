@@ -8,7 +8,6 @@ spec:
   postBuild:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/development
-      RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
