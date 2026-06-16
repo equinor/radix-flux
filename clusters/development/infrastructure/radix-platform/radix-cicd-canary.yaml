@@ -29,7 +29,7 @@ spec:
             radixWebhookPrefix: webhook-radix-github-webhook-qa
             clusterFqdn: ${clusterName}.${dnsZone}
             radixGroups:
-              user: 4b8ec60e-714c-4a9d-8e0a-3e4cfb3c3d31
+              user: ec8c30af-ffb6-4928-9c5c-4abf6ae6f82e # Radix
       target:
         kind: HelmRelease
         name: radix-cicd-canary
