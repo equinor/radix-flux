@@ -8,7 +8,6 @@ spec:
   postBuild:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/c2-production
-      radix_acr_repo_url: radixc2prod.azurecr.io
       RADIX_CACHE_REGISTRY: radixc2cache.azurecr.io
       RADIX_ENVIRONMENT: prod # dev | prod
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01

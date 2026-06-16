@@ -8,7 +8,6 @@ spec:
   postBuild:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/playground
-      radix_acr_repo_url: radixplayground.azurecr.io
       RADIX_CACHE_REGISTRY: radixplaygroundcache.azurecr.io
       RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
