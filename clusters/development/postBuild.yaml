@@ -8,7 +8,6 @@ spec:
   postBuild:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/development
-      RADIX_ENVIRONMENT: dev # dev | prod
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
       RADIX_ZONE_MIGRATE: dev
       RADIX_ZONE: dev # dev | playground | prod

@@ -119,7 +119,6 @@ spec:
   postBuild:
     substitute:
       RADIX_ZONE: dev # dev | playground | prod
-      RADIX_ENVIRONMENT: dev # dev | prod
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
