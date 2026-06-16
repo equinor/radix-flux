@@ -23,26 +23,26 @@ spec:
       main:
         enabled: true
         parentRefs:
-        - group: gateway.networking.k8s.io
-          kind: Gateway
-          name: gateway
-          namespace: istio-system
-          sectionName: https
+          - group: gateway.networking.k8s.io
+            kind: Gateway
+            name: gateway
+            namespace: istio-system
+            sectionName: https
         hostnames:
-        - uptime.${AZ_RESOURCE_DNS:=tba}
-        - uptime.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+          - uptime.${dnsZone}
+          - uptime.${clusterName}.${dnsZone}
         filters:
-        - responseHeaderModifier:
-            add:
-            - name: Strict-Transport-Security
-              value: max-age=31536000; includeSubDomains
-          type: ResponseHeaderModifier
+          - responseHeaderModifier:
+              add:
+                - name: Strict-Transport-Security
+                  value: max-age=31536000; includeSubDomains
+            type: ResponseHeaderModifier
 
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
-              - matchExpressions:
+            - matchExpressions:
                 - key: kubernetes.io/os
                   operator: In
                   values:

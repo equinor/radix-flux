@@ -8,7 +8,6 @@ spec:
   postBuild:
     substitute:
       ACTIVE_CLUSTER: ext-mon-11
-      AZ_RESOURCE_DNS: ext-mon.radix.equinor.com
       FLUX_CONFIG_PATH: ./clusters/monitoring
       RADIX_CACHE_REGISTRY: radixplatformcache.azurecr.io
       RADIX_PROMETHEUS_PROXY_CHART_VERSION: 1.13.0 # {"$imagepolicy": "flux-system:radix-prometheus-proxy-chart:tag"}
