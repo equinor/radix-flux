@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
   - flux-system
   - ./infrastructure/third-party
+  - ./infrastructure/radix-platform
   - ../../components/flux/image-update-automation
   - ../../components/flux/storageclasses
-  - overlay/radix-platform/radix-prometheus-proxy/patches.yaml
 patches:
   - path: ./postBuild.yaml
   - path: ./flux-patches.yaml
