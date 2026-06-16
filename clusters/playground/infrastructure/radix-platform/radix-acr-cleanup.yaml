@@ -13,53 +13,8 @@ spec:
   postBuild:
     substitute:
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
+      REGISTRY: radixplayground
+      ACTIVE_CLUSTER: playground-29
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
-  patches:
-    - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: radix-acr-cleanup
-          namespace: default
-        spec:
-          values:
-            registry: radixplayground
-            deleteUntagged: true
-            retainLatestUntagged: 0
-            activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild playground
-            resources:
-              limits:
-                cpu: "2"
-                memory: 250Mi
-              requests:
-                cpu: 50m
-                memory: 250Mi
-            whitelisted:
-              - radix-operator
-              - radix-pipeline
-              - rx
-              - buildx
-              - radix-cicd-canary
-              - radix-image-builder
-              - radix-image-builderx
-              - radix-tekton
-              - radix-image-scanner
-              - radix-acr-cleanup
-              - gitclone
-              - radix-velero-plugin
-              - sima-runtime
-              - radix-config-2-map
-              - radix-cost-allocation
-              - radix-job-scheduler-server
-              - radix-job-scheduler
-              - radix-batch-scheduler
-              - radix-vulnerability-scanner
-              - oauth2-proxy
-              - radix-cluster-cleanup
-              - radix-buildkit-builder
-      target:
-        kind: HelmRelease
-        name: radix-acr-cleanup
-        namespace: default

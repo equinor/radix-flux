@@ -7,7 +7,6 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: c3-50
       AZ_RESOURCE_DNS: c3.radix.equinor.com
       FLUX_CONFIG_PATH: ./clusters/c3
       radix_acr_repo_url: radixc3.azurecr.io

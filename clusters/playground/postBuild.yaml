@@ -7,7 +7,6 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: playground-29
       AZ_RESOURCE_DNS: playground.radix.equinor.com
       FLUX_CONFIG_PATH: ./clusters/playground
       radix_acr_repo_url: radixplayground.azurecr.io
