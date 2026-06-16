@@ -9,7 +9,6 @@ spec:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/production
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
-      RADIX_ZONE_MIGRATE: platform
       RADIX_ZONE: prod # dev | playground | prod
       TEKTON_VERSION: v0.53.0
     substituteFrom:
