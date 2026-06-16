@@ -9,7 +9,6 @@ spec:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/c2-production
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
-      TEKTON_VERSION: v0.53.0
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
