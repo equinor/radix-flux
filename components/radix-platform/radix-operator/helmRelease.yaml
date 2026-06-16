@@ -237,11 +237,9 @@ spec:
       requireConfigurationItem: true
 
       reservedAppDNSAliases:
-        api: radix-api
         canary: radix-canary-golang
         console: radix-web-console
         cost-api: radix-cost-allocation-api
-        webhook: radix-github-webhook
         www: radix-public-site
 
       reservedDNSAliases:
@@ -250,6 +248,8 @@ spec:
         - app
         - playground
         - dev
+        - api
+        - webhook
 
     affinity:
       nodeAffinity:
