@@ -8,43 +8,54 @@ The Git repository contains the following top directories:
 ```
 ├── clusters
 │   │
-│   ├── c2-production
+│   ├── c2-production
 │   │   ├── (flux-system)
-│   │   ├── overlay
+│   │   ├── infrastructure
+│   │   │   ├── radix-platform
+│   │   │   └── third-party
+│   │   ├── flux-patches.yaml
 │   │   ├── healthChecks.yaml
-│   │   ├── kustomization.yaml
-│   │   └── postBuild.yaml
-│   │
-│   ├── development
-│   │   ├── (flux-system)
-│   │   ├── overlay
-│   │   ├── healthChecks.yaml
-│   │   ├── kustomization.yaml
-│   │   └── postBuild.yaml
-│   │
-│   ├── monitoring
-│   │   ├── (flux-system)
-│   │   ├── overlay
 │   │   └── kustomization.yaml
 │   │
-│   ├── playground 
+│   ├── development
 │   │   ├── (flux-system)
-│   │   ├── overlay
+│   │   ├── infrastructure
+│   │   │   ├── radix-platform
+│   │   │   └── third-party
+│   │   ├── flux-patches.yaml
 │   │   ├── healthChecks.yaml
-│   │   ├── kustomization.yaml
-│   │   └── postBuild.yaml
+│   │   └── kustomization.yaml
 │   │
-│   └── production
+│   ├── monitoring
+│   │   ├── (flux-system)
+│   │   ├── infrastructure
+│   │   │   ├── radix-platform
+│   │   │   └── third-party
+│   │   ├── flux-patches.yaml
+│   │   └── kustomization.yaml
+│   │
+│   ├── playground
+│   │   ├── (flux-system)
+│   │   ├── infrastructure
+│   │   │   ├── radix-platform
+│   │   │   └── third-party
+│   │   ├── flux-patches.yaml
+│   │   ├── healthChecks.yaml
+│   │   └── kustomization.yaml
+│   │
+│   └── production
 │       ├── (flux-system)
-│       ├── overlay
+│       ├── infrastructure
+│       │   ├── radix-platform
+│       │   └── third-party
+│       ├── flux-patches.yaml
 │       ├── healthChecks.yaml
-│       ├── kustomization.yaml
-│       └── postBuild.yaml
+│       └── kustomization.yaml
 │
 └── components
-    ├── flux
-    ├── third-party
-    └── radix-platform
+    ├── flux
+    ├── third-party
+    └── radix-platform
 ```
 
 # Clusters
@@ -53,14 +64,30 @@ The Git repository contains the following top directories:
 
 The `flux-system` directory underneath parent folder `clusters` is created and managed by Flux.
 
-## Overlay
+## Infrastructure
 
-In Radix we want separate configurations per cluster. In order to achieve this we use Flux overlays which override the configuration defined in the `components` directory. The `overlay` directory has the same structure as the `components` directory, but contains only files for the resources to be overridden. The files then need to be included in the `kustomization.yaml` file in the cluster environment directory.
+Each cluster contains an `infrastructure` directory with two sub-directories: `radix-platform` and `third-party`. Each file in these directories is a Flux `Kustomization` manifest that deploys the corresponding component from the `components` directory. The cluster-specific configuration — such as patches and substitute variables — is defined directly in each Kustomization manifest.
 
-For example, radix-operator uses cluster-specific configuration which requires overriding the helm release. The variable is substituted by Flux with the key found in `postBuild.yaml`.
+The cluster's `kustomization.yaml` imports these directories:
 
 ```yaml
-# file: clusters/development/overlay/radix-platform/radix-operator/radix-operator.yaml
+# file: clusters/development/kustomization.yaml
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - flux-system
+  - ./infrastructure/third-party
+  - ./infrastructure/radix-platform
+  - ../../components/flux/storageclasses
+patches:
+  - path: ./flux-patches.yaml
+```
+
+Each Kustomization in the `infrastructure` directory points to a path in `components` and includes its own `patches` and `substitute` variables. For example, `radix-operator` defines cluster-specific helm values and image versions directly:
+
+```yaml
+# file: clusters/development/infrastructure/radix-platform/radix-operator.yaml
 
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -68,6 +95,18 @@ metadata:
   name: radix-operator
   namespace: flux-system
 spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-operator
+  prune: false
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+    substitute:
+      RADIX_OPERATOR_CHART_VERSION: 1.119.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2
@@ -76,49 +115,24 @@ spec:
           name: radix-operator
           namespace: default
         spec:
-          values: {}
+          values:
+            rbac:
+              createApp:
+                groups:
+                  - ec8c30af-ffb6-4928-9c5c-4abf6ae6f82e # Radix
+      target:
+        kind: HelmRelease
+        name: radix-operator
+        namespace: default
 ```
 
-```yaml
-# file: clusters/development/postBuild.yaml
+## Flux patches
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: flux-system
-  namespace: flux-system
-spec:
-  postBuild:
-    substitute: {}
-```
+The `flux-patches.yaml` file in each cluster directory patches the Flux controller `Deployment` resources directly. This is used to configure cluster-specific settings such as node affinity for the Flux controllers.
 
-The radix-operator kustomization file needs to be included in the `kustomization.yaml` file.
+## Health checks
 
-```yaml
-# file: clusters/development/kustomization.yaml
-
-apiVersion: kustomize.config.k8s.io/v1
-kind: Kustomization
-resources:
-- ./overlay/radix-platform/radix-operator/radix-operator.yaml
-```
-
-We patch the `flux-system` Kustomization with cluster environment specific configuration. To make it clear which parts of the configuration is changed, we have separate files for separate fields. For example, we use `postBuild.yaml` to patch the `postBuild` spec of `flux-system` Kustomization, and `healthChecks.yaml` to patch the `healthChecks` spec.
-
-```yaml
-# file: clusters/development/postBuild.yaml
-
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: flux-system
-  namespace: flux-system
-spec:
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: radix-flux-config
-```
+The `healthChecks.yaml` file patches the `flux-system` Kustomization to define health checks for the cluster:
 
 ```yaml
 # file: clusters/development/healthChecks.yaml
@@ -161,7 +175,7 @@ spec:
 
 ### imagePolicy
 
-The imagePolicy resource specifies how Flux will identify the latest container image scanned from the imageRepository. The `policy` spec specifies whether the latest image is found by a SemVer range or by alphabetical or numberical sorting. If the image tag contains a timestamp, the timestamp can be filtered and extracted using the `filterTags` spec.
+The imagePolicy resource specifies how Flux will identify the latest container image scanned from the imageRepository. The `policy` spec specifies whether the latest image is found by a SemVer range or by alphabetical or numerical sorting. If the image tag contains a timestamp, the timestamp can be filtered and extracted using the `filterTags` spec.
 
 ```yaml
 # file: components/radix-platform/radix-operator/imagePolicy.yaml
@@ -215,24 +229,19 @@ spec:
     strategy: Setters
 ```
 
-The `path` spec specifies a directory with files, which is scanned regularly by Flux to find the values which should be changed. This prevents Flux from updating the overlay in all cluster environment configurations. The variable is defined in the `postBuild.yaml` file for the cluster. Flux identifies the values to change by looking for an "image policy marker" which contains the name and namespace of the imagePolicy. The marker also specifies whether it is the name or the tag which is the value.
+Flux identifies the values to change by looking for an "image policy marker" which contains the name and namespace of the imagePolicy. The marker also specifies whether it is the image name or the tag which is the value.
 
 - `{"$imagepolicy": "namespace:radix-operator"}` resolves to `radixdev.azurecr.io/radix-operator:master-a5e880b9-1634484632`
 - `{"$imagepolicy": "namespace:radix-operator:name"}` resolves to `radixdev.azurecr.io/radix-operator`
 - `{"$imagepolicy": "namespace:radix-operator:tag"}` resolves to `master-a5e880b9-1634484632`
 
-```yaml
-# file: clusters/development/overlay/radix-platform/radix-operator/radix-operator.yaml
+Image policy markers are placed inline in the Kustomization manifests under `clusters/<cluster>/infrastructure/`:
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: flux-system
-  namespace: flux-system
-spec:
-  postBuild:
+```yaml
+# file: clusters/development/infrastructure/radix-platform/radix-operator.yaml
+
     substitute:
-      RADIX_OPERATOR_CHART_VERSION: 1.100.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
+      RADIX_OPERATOR_CHART_VERSION: 1.119.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
 ```
 
 ## kustomization.yaml
@@ -241,9 +250,9 @@ In each of the cluster environment directories and component sub-directories, th
 
 # Components
 
-All components are defined in the `components` directory with base configuration, which is the configuration that is common for all cluster environments such as the helm repository and namespace. The helm release of components are also defined here, but only with the values common for all cluster environments; the rest being set by the overlay.
+All components are defined in the `components` directory with base configuration that is common for all cluster environments, such as the Helm repository, namespace, and shared Helm release values. Each cluster's Kustomization manifest in `infrastructure/` points to the relevant path in `components/` and adds its own cluster-specific patches and substitute variables on top.
 
-In each component directory there is also a `kustomization.yaml` file which defines the resources in that directory which are to be deployed. This enables specifying only the path to the directory in the `kustomization.yaml` file in the cluster environment directory, rather than specifying each file in the directory separately. The `kustomization.yaml` file acts like an index.
+In each component directory there is also a `kustomization.yaml` file which defines the resources in that directory which are to be deployed. This enables specifying only the path to the directory in a Flux Kustomization manifest, rather than specifying each file in the directory separately. The `kustomization.yaml` file acts like an index.
 
 Want to contribute? Read our [contributing guidelines](./CONTRIBUTING.md)  
 
