@@ -41,7 +41,7 @@ spec:
                 groups:
                   - a5dfa635-dc00-4a28-9ad9-9e7f1e56919d # Radix Platform Developers
                   - 64b28659-4fe4-4222-8497-85dd7e43e25b # Radix Platform Users
-                  - 69500e3b-6820-42ec-9a58-6204fee2fc8a # Radix Privileged Accounts
+                  - 0095272d-cb0a-4284-b1b5-86787b692627 # AZAPPL S941 - Contributor
                   - ec8c30af-ffb6-4928-9c5c-4abf6ae6f82e # Radix
 
       target:
