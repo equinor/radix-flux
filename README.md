@@ -76,8 +76,7 @@ spec:
           name: radix-operator
           namespace: default
         spec:
-          values:
-            radixZone: ${RADIX_ZONE} # Set in postBuild development
+          values: {}
 ```
 
 ```yaml
@@ -90,8 +89,7 @@ metadata:
   namespace: flux-system
 spec:
   postBuild:
-    substitute:
-      RADIX_ZONE: dev # dev | playground | prod
+    substitute: {}
 ```
 
 The radix-operator kustomization file needs to be included in the `kustomization.yaml` file.
@@ -117,8 +115,6 @@ metadata:
   namespace: flux-system
 spec:
   postBuild:
-    substitute:
-      RADIX_ZONE: dev # dev | playground | prod
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
