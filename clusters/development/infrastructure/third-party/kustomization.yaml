@@ -11,6 +11,7 @@ resources:
   - gateway-api.yaml
   - gateway-lb.yaml
   - grafana.yaml
+  - image-update-automation.yaml
   - istio-envoyfilter.yaml
   - istio.yaml
   - keda.yaml
