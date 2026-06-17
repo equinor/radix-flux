@@ -7,16 +7,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: c3-50
-      AZ_RESOURCE_DNS: c3.radix.equinor.com
       FLUX_CONFIG_PATH: ./clusters/c3
-      radix_acr_repo_url: radixc3.azurecr.io
-      RADIX_CACHE_REGISTRY: radixc3cache.azurecr.io
-      RADIX_ENVIRONMENT: prod # dev | prod
-      RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-dns01
-      RADIX_ZONE_MIGRATE: c3
-      RADIX_ZONE: c3 # dev | playground | prod
-      TEKTON_VERSION: v0.53.0
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config

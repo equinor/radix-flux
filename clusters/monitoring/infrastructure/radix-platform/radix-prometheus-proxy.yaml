@@ -11,8 +11,9 @@ spec:
   path: ./components/radix-platform/radix-prometheus-proxy
   prune: false
   postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
     substitute:
-      RADIX_PROMETHEUS_PROXY_CHART_VERSION: ${RADIX_PROMETHEUS_PROXY_CHART_VERSION:=tba} # From postBuild.yaml
-      RADIX_WILDCARD_CERTIFICATE_ISSUER: ${RADIX_WILDCARD_CERTIFICATE_ISSUER:=tba}
-      AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba}
-      clusterName: ${clusterName:=tba}
+      RADIX_PROMETHEUS_PROXY_CHART_VERSION: 1.13.0 # {"$imagepolicy": "flux-system:radix-prometheus-proxy-chart:tag"}
+      RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-prod # installed by platform scripts

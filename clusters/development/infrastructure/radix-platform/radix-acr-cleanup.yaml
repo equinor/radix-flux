@@ -13,6 +13,7 @@ spec:
   postBuild:
     substitute:
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
+      ACTIVE_CLUSTER: weekly-24
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -25,46 +26,13 @@ spec:
           namespace: default
         spec:
           values:
-            registry: radixdev
             deleteUntagged: false
-            activeClusterName: ${ACTIVE_CLUSTER} # Set in postBuild development
-            cleanupStart: "06:00"
-            cleanupEnd: "09:00"
-            resources:
-              limits:
-                cpu: "2"
-                memory: 250Mi
-              requests:
-                cpu: 50m
-                memory: 250Mi
-            whitelisted:
-              - radix-operator
-              - radix-pipeline
-              - rx
-              - buildx
-              - radix-cicd-canary
-              - radix-image-builder
-              - radix-image-builderx
-              - radix-tekton
-              - radix-image-scanner
-              - radix-acr-cleanup
-              - gitclone
-              - radix-velero-plugin
-              - sima-runtime
-              - radix-config-2-map
-              - radix-cost-allocation
-              - radix-job-scheduler
-              - radix-batch-scheduler
-              - radix-vulnerability-scanner
-              - oauth2-proxy
-              - radix-cluster-cleanup
-              - radix-buildah-image-builder
-              - radix-buildkit-builder
       target:
         kind: HelmRelease
         name: radix-acr-cleanup
         namespace: default
-    - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
+    - patch: |-
+        # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
         apiVersion: image.toolkit.fluxcd.io/v1beta2
         kind: ImagePolicy
         metadata:

@@ -4,9 +4,6 @@ resources:
   - flux-system
   - ./infrastructure/third-party
   - ./infrastructure/radix-platform
-  - ../../components/flux/image-update-automation
-  - ../../components/flux/namespaces
   - ../../components/flux/storageclasses
 patches:
-  - path: ./postBuild.yaml
   - path: ./flux-patches.yaml

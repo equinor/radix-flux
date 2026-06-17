@@ -15,23 +15,3 @@ spec:
       COST_ALLOCATION_SQL_CLIENT_ID: d0d73460-78cb-4bb5-87fc-615279c2b132
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-c3.database.windows.net
       RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
-  patches:
-    - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: radix-cost-allocation
-          namespace: radix-cost-allocation
-        spec:
-          values:
-            resources:
-              limits:
-                cpu: "2"
-                memory: 300Mi
-              requests:
-                cpu: 100m
-                memory: 300Mi
-      target:
-        kind: HelmRelease
-        name: radix-cost-allocation
-        namespace: radix-cost-allocation

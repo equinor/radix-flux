@@ -12,7 +12,7 @@ spec:
   duration: 2160h
   renewBefore: 762h
   dnsNames:
-  - grafana.${clusterName}.${AZ_RESOURCE_DNS}
-  - grafana.${AZ_RESOURCE_DNS}
-  - uptime.${AZ_RESOURCE_DNS:=tba}
-  - uptime.${clusterName:=tba}.${AZ_RESOURCE_DNS:=tba}
+    - grafana.${clusterName}.${dnsZone}
+    - grafana.${dnsZone}
+    - uptime.${dnsZone}
+    - uptime.${clusterName}.${dnsZone}
