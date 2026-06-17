@@ -9,7 +9,6 @@ spec:
     substitute:
       ACTIVE_CLUSTER: ext-mon-11
       FLUX_CONFIG_PATH: ./clusters/monitoring
-      RADIX_PROMETHEUS_PROXY_CHART_VERSION: 1.13.0 # {"$imagepolicy": "flux-system:radix-prometheus-proxy-chart:tag"}
       VELERO_MI_CLIENT_ID: 069f097a-be9a-4e59-bffc-9b1e3d5cbbe9
     substituteFrom:
       - kind: ConfigMap

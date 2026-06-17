@@ -15,5 +15,5 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      RADIX_PROMETHEUS_PROXY_CHART_VERSION: ${RADIX_PROMETHEUS_PROXY_CHART_VERSION:=tba} # From postBuild.yaml
+      RADIX_PROMETHEUS_PROXY_CHART_VERSION: 1.13.0 # {"$imagepolicy": "flux-system:radix-prometheus-proxy-chart:tag"}
       RADIX_WILDCARD_CERTIFICATE_ISSUER: letsencrypt-prod # installed by platform scripts
