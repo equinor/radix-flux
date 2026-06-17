@@ -16,5 +16,4 @@ spec:
         name: radix-flux-config
     substitute:
       RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
-      REGISTRY: radixc3
       ACTIVE_CLUSTER: c3-50

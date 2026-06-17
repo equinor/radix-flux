@@ -15,7 +15,7 @@ spec:
   values:
     clusterType: ${clusterType} # Read from radix-flux-config configmap
     activeClusterName: ${ACTIVE_CLUSTER} # Set by zone-specific overlay
-    registry: ${REGISTRY}
+    registry: ${imageRegistry}
     deleteUntagged: true
     retainLatestUntagged: 0
     performDelete: true
