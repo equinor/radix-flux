@@ -11,6 +11,7 @@ resources:
   - istio-envoyfilter.yaml
   - cert-manager-issuers.yaml
   - cert-manager-certs.yaml
+  - image-update-automation.yaml
   - grafana.yaml
   - kube-prometheus-stack.yaml
   - prometheus-blackbox-exporter.yaml

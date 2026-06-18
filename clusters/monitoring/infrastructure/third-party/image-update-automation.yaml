@@ -1,15 +1,18 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: flux-system
+  name: image-update-automation
   namespace: flux-system
 spec:
-  prune: false
+  interval: 5m
+  path: "./components/flux/image-update-automation"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
   postBuild:
     substitute:
-      ACTIVE_CLUSTER: ext-mon-11
       FLUX_CONFIG_PATH: ./clusters/monitoring
-      VELERO_MI_CLIENT_ID: 069f097a-be9a-4e59-bffc-9b1e3d5cbbe9
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
