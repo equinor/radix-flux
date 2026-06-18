@@ -13,3 +13,6 @@ spec:
   postBuild:
     substitute:
       FLUX_CONFIG_PATH: ./clusters/development
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
