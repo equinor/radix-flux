@@ -12,4 +12,4 @@ spec:
     name: flux-system
   postBuild:
     substitute:
-      AZURE_WORKLOAD_IDENTITY_VERSION: 1.5.1 # https://artifacthub.io/packages/helm/azure-workload-identity/workload-identity-webhook
+      AZURE_WORKLOAD_IDENTITY_VERSION: 1.6.0 # https://artifacthub.io/packages/helm/azure-workload-identity/workload-identity-webhook
