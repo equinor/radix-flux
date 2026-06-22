@@ -6,9 +6,6 @@ metadata:
   namespace: istio-system 
 spec:
   secretName: radix-wildcard-tls-cert
-  secretTemplate:
-    annotations:
-      replicator.v1.mittwald.de/replicate-to-matching: "radix-wildcard-sync=radix-wildcard-tls-cert"
   issuerRef:
     kind: ClusterIssuer
     name: ${RADIX_WILDCARD_CERTIFICATE_ISSUER}
