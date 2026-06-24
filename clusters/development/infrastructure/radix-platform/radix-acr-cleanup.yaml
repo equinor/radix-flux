@@ -12,7 +12,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.3-rc.1 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
+      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.3 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       ACTIVE_CLUSTER: weekly-26
     substituteFrom:
       - kind: ConfigMap
