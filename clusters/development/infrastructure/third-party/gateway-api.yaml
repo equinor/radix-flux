@@ -5,8 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/gateway-api/v1.5.0"
-  prune: true
+  path: "./components/third-party/gateway-api/v1.4.0"
+  prune: false
   wait: true
   sourceRef:
     kind: GitRepository
