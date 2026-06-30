@@ -17,7 +17,7 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      VELERO_VERSION: 12.0.2 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
+      VELERO_VERSION: 12.1.0 # https://artifacthub.io/packages/helm/vmware-tanzu/velero
       VELERO_PLUGIN_AZURE: v1.14.0 # https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
       VELERO_MI_CLIENT_ID: e95cda7a-e806-45a6-b44b-fe0fa6c33a94 # gitleaks:allow
   patches:
