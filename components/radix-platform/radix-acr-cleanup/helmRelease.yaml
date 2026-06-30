@@ -13,9 +13,12 @@ spec:
     name: radix-acr-cleanup-chart
     namespace: flux-system
   values:
-    clusterType: ${clusterType}                                       # Read from radix-flux-config configmap
-    activeClusterName: xx                                             # Set by zone-specific overlay
-    deleteUntagged: xx                                                # Set by flux patch
+    clusterType: ${clusterType} # Read from radix-flux-config configmap
+    activeClusterName: ${ACTIVE_CLUSTER} # Set by zone-specific overlay
+    currentClusterName: ${clusterName} # set in radix-flux-config configmap
+    registry: ${imageRegistry}
+    deleteUntagged: true
+    retainLatestUntagged: 0
     performDelete: true
     period: 1h
     cleanupStart: "0:00"
@@ -25,24 +28,55 @@ spec:
     securityContext:
       readOnlyRootFilesystem: true
     extraVolumes:
-    - name: tmp
-      emptyDir:
-        sizeLimit: 1M
-    - name: azurehome
-      emptyDir:
-        sizeLimit: 100M
+      - name: tmp
+        emptyDir:
+          sizeLimit: 1M
+      - name: azurehome
+        emptyDir:
+          sizeLimit: 100M
     extraVolumeMounts:
-    - name: tmp
-      mountPath: /tmp
-    - name: azurehome
-      mountPath: /home/nonroot/.azure
-    - name: azurehome # TODO: Backward-compatibility with old acr-cleanup users. remove after radix-acr-cleanup merged to release and installed in all clusters
-      mountPath: /home/acr-cleanup/.azure
+      - name: tmp
+        mountPath: /tmp
+      - name: azurehome
+        mountPath: /home/nonroot/.azure
+      - name: azurehome # TODO: Backward-compatibility with old acr-cleanup users. remove after radix-acr-cleanup merged to release and installed in all clusters
+        mountPath: /home/acr-cleanup/.azure
+    whitelisted:
+      - radix-operator
+      - radix-pipeline
+      - rx
+      - buildx
+      - radix-cicd-canary
+      - radix-image-builder
+      - radix-image-builderx
+      - radix-tekton
+      - radix-image-scanner
+      - radix-acr-cleanup
+      - gitclone
+      - radix-velero-plugin
+      - sima-runtime
+      - radix-config-2-map
+      - radix-cost-allocation
+      - radix-job-scheduler-server
+      - radix-job-scheduler
+      - radix-batch-scheduler
+      - radix-vulnerability-scanner
+      - oauth2-proxy
+      - radix-buildkit-builder
+      - radix-cluster-cleanup
+      - radix-buildah-image-builder
+    resources:
+      limits:
+        cpu: "2"
+        memory: 1Gi
+      requests:
+        cpu: 50m
+        memory: 250Mi
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
-              - matchExpressions:
+            - matchExpressions:
                 - key: kubernetes.io/os
                   operator: In
                   values:

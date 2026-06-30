@@ -3,18 +3,7 @@ kind: Kustomization
 resources:
   - flux-system
   - ./infrastructure/third-party
-  - ../../components/flux/image-update-automation
+  - ./infrastructure/radix-platform
   - ../../components/flux/storageclasses
-  - ../../components/third-party/prometheus-blackbox-exporter
-  - ../../components/third-party/external-secrets
-  - overlay/radix-platform/radix-prometheus-proxy/patches.yaml
 patches:
-  - path: ./postBuild.yaml
-  - path: ./helm-controller.yaml
-  - path: ./image-automation-controller.yaml
-  - path: ./image-reflector-controller.yaml
-  - path: ./kustomize-controller.yaml
-  - path: ./notification-controller.yaml
-  - path: ./source-controller.yaml
-  - path: ./overlay/third-party/prometheus-blackbox-exporter/helmRelease.yaml
-  - path: ./overlay/third-party/external-secrets/patches.yaml
+  - path: ./flux-patches.yaml

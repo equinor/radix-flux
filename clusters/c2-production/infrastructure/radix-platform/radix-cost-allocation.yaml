@@ -1,0 +1,18 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-cost-allocation
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./components/radix-platform/radix-cost-allocation"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  postBuild:
+    substitute:
+      COST_ALLOCATION_SQL_CLIENT_ID: e48dda41-942a-4b25-94a6-c017014abaa9
+      COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-c2.database.windows.net
+      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.2 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
+

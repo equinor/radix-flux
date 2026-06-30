@@ -11,6 +11,7 @@ resources:
   - gateway-api.yaml
   - gateway-lb.yaml
   - grafana.yaml
+  - image-update-automation.yaml
   - istio-envoyfilter.yaml
   - istio.yaml
   - keda.yaml
@@ -22,4 +23,3 @@ resources:
   - tekton-operator.yaml
   - velero-schedule.yaml
   - velero.yaml
-  

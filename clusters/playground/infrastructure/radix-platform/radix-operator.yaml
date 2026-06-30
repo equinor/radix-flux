@@ -15,7 +15,7 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      RADIX_OPERATOR_CHART_VERSION: 1.117.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
+      RADIX_OPERATOR_CHART_VERSION: 1.120.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
       GIT_CLONE_TAG: "2.45.2"
       OAUTH2PROXY_TAG: "v7.15.2"
       OAUTH2REDIS_TAG: "8.6.0-alpine3.23"
@@ -42,7 +42,6 @@ spec:
                   - 4b8ec60e-714c-4a9d-8e0a-3e4cfb3c3d31 # Radix Playground Users
                   - 64b28659-4fe4-4222-8497-85dd7e43e25b # Radix Platform Users
                   - 4e1761bc-0c4f-4672-a16d-7f3d8608e366 # AZAPPL Radix Platform
-
             radixWebhook:
               requireAdGroups: false
               requireConfigurationItem: false

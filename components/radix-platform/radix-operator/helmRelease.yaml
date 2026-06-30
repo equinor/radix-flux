@@ -130,6 +130,7 @@ spec:
 
       routes:
         main:
+          enabled: true
           hostnames:
             - api.${dnsZone}
             - api.${clusterName}.${dnsZone}
@@ -139,6 +140,75 @@ spec:
 
             - server-radix-api-prod.${dnsZone}
             - server-radix-api-prod.${clusterName}.${dnsZone}
+
+        # https://webhook.dev.radix.equinor.com/events/github?appName=XXXX
+        legacy-github-webhook:
+          enabled: true
+          hostnames:
+            - webhook.${dnsZone}
+            - webhook.${clusterName}.${dnsZone}
+
+            - webhook-radix-github-webhook-prod.${dnsZone}
+            - webhook-radix-github-webhook-prod.${clusterName}.${dnsZone}
+
+            - webhook-radix-github-webhook-qa.${dnsZone}
+            - webhook-radix-github-webhook-qa.${clusterName}.${dnsZone}
+
+          parentRefs:
+            - group: gateway.networking.k8s.io
+              kind: Gateway
+              name: gateway
+              namespace: istio-system
+              sectionName: https
+
+          backendPort: 3002
+
+          matches:
+            - path:
+                type: PathPrefix
+                value: /
+
+          filters:
+            # Rewrite path from /events/github to /api/v1/webhooks/github?appName=XXXX
+            - type: URLRewrite
+              urlRewrite:
+                path:
+                  replaceFullPath: /api/v1/webhooks/github
+                  type: ReplaceFullPath
+
+        webhook-health:
+          enabled: true
+          hostnames:
+            - webhook.${dnsZone}
+            - webhook.${clusterName}.${dnsZone}
+
+            - webhook-radix-github-webhook-prod.${dnsZone}
+            - webhook-radix-github-webhook-prod.${clusterName}.${dnsZone}
+
+            - webhook-radix-github-webhook-qa.${dnsZone}
+            - webhook-radix-github-webhook-qa.${clusterName}.${dnsZone}
+
+          parentRefs:
+            - group: gateway.networking.k8s.io
+              kind: Gateway
+              name: gateway
+              namespace: istio-system
+              sectionName: https
+
+          backendPort: 3002
+
+          matches:
+            - path:
+                type: Exact
+                value: /health
+
+          filters:
+            # Rewrite path from /health to /health/
+            - type: URLRewrite
+              urlRewrite:
+                path:
+                  replaceFullPath: /health/
+                  type: ReplaceFullPath
 
       autoscaling:
         minReplicas: 2
@@ -167,11 +237,9 @@ spec:
       requireConfigurationItem: true
 
       reservedAppDNSAliases:
-        api: radix-api
         canary: radix-canary-golang
         console: radix-web-console
         cost-api: radix-cost-allocation-api
-        webhook: radix-github-webhook
         www: radix-public-site
 
       reservedDNSAliases:
@@ -180,6 +248,8 @@ spec:
         - app
         - playground
         - dev
+        - api
+        - webhook
 
     affinity:
       nodeAffinity:

@@ -1,0 +1,41 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-cluster-cleanup
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-cluster-cleanup
+  prune: false
+  postBuild:
+    substitute:
+      RADIX_CLUSTER_CLEANUP_CHART_VERSION: 1.1.3 # {"$imagepolicy": "flux-system:radix-cluster-cleanup-chart:tag"}
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: radix-cluster-cleanup
+        spec:
+          values:
+            cleanupStart: "09:00"
+            cleanupEnd: "12:00"
+            period: 15m
+            command: stop-and-delete-rrs-continuously
+            logLevel: DEBUG
+            resources:
+              limits:
+                cpu: "2"
+                memory: 150Mi
+              requests:
+                cpu: 50m
+                memory: 150Mi
+            securityContext:
+              readOnlyRootFilesystem: true
+      target:
+        kind: HelmRelease
+        name: radix-cluster-cleanup
+        namespace: default

@@ -10,8 +10,6 @@ spec:
   interval: 5m
   path: "./components/radix-monitoring/cert-manager-certs"
   postBuild:
-    substitute:
-      AZ_RESOURCE_DNS: ${AZ_RESOURCE_DNS:=tba}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config

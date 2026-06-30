@@ -1,0 +1,48 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-acr-cleanup
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-acr-cleanup
+  prune: false
+  postBuild:
+    substitute:
+      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.3 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
+      ACTIVE_CLUSTER: weekly-26
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: radix-acr-cleanup
+          namespace: default
+        spec:
+          values:
+            deleteUntagged: false
+      target:
+        kind: HelmRelease
+        name: radix-acr-cleanup
+        namespace: default
+    - patch: |-
+        # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
+        apiVersion: image.toolkit.fluxcd.io/v1beta2
+        kind: ImagePolicy
+        metadata:
+          name: radix-acr-cleanup-chart
+          namespace: flux-system
+        spec:
+          policy:
+            semver:
+              range: '>=0.0.0-0'
+      target:
+        kind: ImagePolicy
+        name: radix-acr-cleanup-chart
+        namespace: flux-system
