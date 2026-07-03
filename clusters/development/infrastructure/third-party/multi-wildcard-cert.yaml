@@ -7,7 +7,7 @@ spec:
   interval: 5m
   path: "./components/third-party/cert-manager-certs"
   dependsOn:
-    - name: cert-manager
+    - name: cert-manager-issuers
   prune: true
   sourceRef:
     kind: GitRepository
