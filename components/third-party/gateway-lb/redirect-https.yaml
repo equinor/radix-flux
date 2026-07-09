@@ -17,5 +17,5 @@ spec:
       filters:
         - type: RequestRedirect
           requestRedirect:
-            statusCode: 301
+            statusCode: 308
             scheme: https
