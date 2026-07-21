@@ -15,3 +15,18 @@ spec:
   postBuild:
     substitute:
       ISTIO_VERSION: 1.30.2 # https://artifacthub.io/packages/helm/istio-official/istiod
+  patches:
+    - target:
+        kind: HelmRelease
+        name: istiod
+        namespace: istio-system
+      patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: istiod
+          namespace: istio-system
+        spec:
+          values:
+            env:
+              PILOT_HTTP10: "false"
