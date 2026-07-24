@@ -27,6 +27,8 @@ spec:
         spec:
           values:
             deleteUntagged: false
+            cleanupStart: "06:00"
+            cleanupEnd: "09:00"
       target:
         kind: HelmRelease
         name: radix-acr-cleanup
