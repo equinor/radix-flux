@@ -71,10 +71,10 @@ spec:
             kube-state-metrics:
               resources:
                 limits:
-                  cpu: 10m
+                  cpu: 50m
                   memory: 256Mi
                 requests:
-                  cpu: 5m
+                  cpu: 10m
                   memory: 64Mi
   wait: true
   timeout: 2m
