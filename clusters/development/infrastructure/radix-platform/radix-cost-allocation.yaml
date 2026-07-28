@@ -14,7 +14,7 @@ spec:
     substitute:
       COST_ALLOCATION_SQL_CLIENT_ID: 89cd29bf-1e13-421c-a383-2492c1150b4c # gitleaks:allow
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-dev.database.windows.net
-      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.3-rc.1 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
+      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.3 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
   patches:
     - patch: |-
         # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
