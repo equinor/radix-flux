@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: tekton-operator
+  namespace: tekton-operator
+spec:
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  releaseName: tekton-operator
+  chart:
+    spec:
+      chart: tekton-operator
+      version: ${TEKTON_OPERATOR_CHART_VERSION} # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tekton-operator
+        namespace: flux-system
+  interval: 5m
+  values:
+    installCRDs: true
+    operator:
+      autoInstallComponents: false

@@ -5,9 +5,12 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./components/third-party/tekton/v0.79.0/operator"
+  path: "./components/third-party/tekton/operator"
   prune: true
   wait: true
   sourceRef:
     kind: GitRepository
     name: flux-system
+  postBuild:
+    substitute:
+      TEKTON_OPERATOR_CHART_VERSION: 0.79.1 # https://artifacthub.io/packages/olm/community-operators/tektoncd-operator
