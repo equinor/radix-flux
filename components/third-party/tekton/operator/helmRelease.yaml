@@ -17,7 +17,6 @@ spec:
         kind: HelmRepository
         name: tekton-operator
         namespace: flux-system
-    namespace: flux-system
   interval: 5m
   values:
     installCRDs: true
