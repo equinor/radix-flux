@@ -13,4 +13,4 @@ spec:
     name: flux-system
   postBuild:
     substitute:
-      TEKTON_OPERATOR_CHART_VERSION: 0.80.0 # {"$imagepolicy": "flux-system:tekton-operator-chart:tag"}
+      TEKTON_OPERATOR_CHART_VERSION: 0.79.1
