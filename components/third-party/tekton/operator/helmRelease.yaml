@@ -14,3 +14,9 @@ spec:
     name: tekton-operator-chart
     namespace: flux-system
   interval: 5m
+  values:
+    installCRDs: true
+    operator:
+      # Matches AUTOINSTALL_COMPONENTS: "false" from the radix-flux kustomize config:
+      # the operator does NOT create a default TektonConfig; we supply our own.
+      autoInstallComponents: false
