@@ -7,7 +7,6 @@ spec:
   interval: 5m
   path: "./components/third-party/grafana"
   dependsOn:
-    - name: external-secrets-operator
     - name: kube-prometheus-stack
   prune: true
   sourceRef:
