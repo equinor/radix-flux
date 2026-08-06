@@ -14,7 +14,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      RADIX_CICD_CANARY_CHART_VERSION: 1.5.7-rc.3 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
+      RADIX_CICD_CANARY_CHART_VERSION: 1.5.7 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
