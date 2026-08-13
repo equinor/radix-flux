@@ -9,14 +9,10 @@ spec:
     remediation:
       retries: 3
   releaseName: tekton-operator
-  chart:
-    spec:
-      chart: tekton-operator
-      version: ${TEKTON_OPERATOR_CHART_VERSION} # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: tekton-operator
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: tekton-operator-chart
+    namespace: flux-system
   interval: 5m
   values:
     installCRDs: true
