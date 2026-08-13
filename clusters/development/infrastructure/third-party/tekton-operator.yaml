@@ -13,4 +13,5 @@ spec:
     name: flux-system
   postBuild:
     substitute:
-      TEKTON_OPERATOR_CHART_VERSION: 0.79.0 # https://artifacthub.io/packages/olm/community-operators/tektoncd-operator
+      TEKTON_OPERATOR_CHART_VERSION: 0.81.0 # {"$imagepolicy": "flux-system:tekton-operator-chart:tag"}
+
