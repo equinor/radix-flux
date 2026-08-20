@@ -423,11 +423,11 @@ spec:
             kube-state-metrics:
               resources:
                 limits:
-                  cpu: 10m
-                  memory: 128Mi
+                  cpu: 50m
+                  memory: 250Mi
                 requests:
-                  cpu: 5m
-                  memory: 64Mi
+                  cpu: 10m
+                  memory: 150Mi
               extraArgs: []  
             additionalPrometheusRulesMap: null
   wait: true
