@@ -22,6 +22,8 @@ spec:
       upgradeJob:
         enabled: true
         forceConflicts: true
+        podLabels:
+          grafana.radix.equinor.com/monitor-health: "true"
     global:
       rbac:
         createAggregateClusterRoles: true
@@ -330,6 +332,8 @@ spec:
                       source_name: [spec, sourceRef, name]
       containerSecurityContext:
         readOnlyRootFilesystem: true
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
       extraArgs:
         - --metric-labels-allowlist=pods=[radix-app,radix-component,grafana.radix.equinor.com/monitor-health],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
       affinity:
