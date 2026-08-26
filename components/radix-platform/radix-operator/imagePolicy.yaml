@@ -8,10 +8,9 @@ spec:
     name: radix-operator-chart
   policy:
     semver:
-      range: '>=0.0.0'
+      range: ">=0.0.0"
 
 ---
-
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
@@ -22,10 +21,9 @@ spec:
     name: radix-image-builder
   policy:
     semver:
-      range: '>=0.0.0'
+      range: ">=0.0.0"
 
 ---
-
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
@@ -36,4 +34,16 @@ spec:
     name: radix-buildkit-builder
   policy:
     semver:
-      range: '>=0.0.0'
+      range: ">=0.0.0"
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: oauth2-proxy
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: oauth2-proxy
+  policy:
+    semver:
+      range: ">=0.0.0"
