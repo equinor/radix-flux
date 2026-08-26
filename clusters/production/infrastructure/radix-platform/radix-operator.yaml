@@ -17,7 +17,7 @@ spec:
     substitute:
       RADIX_OPERATOR_CHART_VERSION: 1.127.0 # {"$imagepolicy": "flux-system:radix-operator-chart:tag"}
       GIT_CLONE_TAG: "2.45.2"
-      OAUTH2PROXY_TAG: "v7.15.2"
+      OAUTH2PROXY_TAG: "v7.15.4" # {"$imagepolicy": "flux-system:oauth2-proxy:tag"}
       OAUTH2REDIS_TAG: "8.6.0-alpine3.23"
       JOBAUX_TAG: "5.3.15-alpine3.24"
       RADIX_APP_ACR_REPO_URL: radixprodapp.azurecr.io
