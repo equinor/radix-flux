@@ -119,10 +119,10 @@ spec:
                   scrapeTimeout: 20s
               resources:
                 limits:
-                  cpu: 128m
+                  cpu: "2"
                   memory: 4Gi
                 requests:
-                  cpu: 64m
+                  cpu: "1"
                   memory: 2Gi
   wait: true
   timeout: 2m
