@@ -50,8 +50,6 @@ spec:
         alertControllerThreads: 21
         kubeClientRateLimitBurst: 500
         kubeClientRateLimitQPS: 500
-        externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
-        safeToRestartBatchJobThreshold: 259200 # 3 days in seconds
 
     ingress:
       certificate:
