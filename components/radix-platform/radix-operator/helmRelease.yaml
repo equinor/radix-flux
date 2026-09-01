@@ -36,6 +36,21 @@ spec:
     externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
     safeToRestartBatchJobThreshold: 259200 # 3 days in seconds
 
+    config:
+      common:
+        clusterName: ${clusterName}
+      operator:
+        logLevel: info
+        logPrettyPrint: false
+        registrationControllerThreads: 21
+        applicationControllerThreads: 21
+        environmentControllerThreads: 21
+        deploymentControllerThreads: 21
+        jobControllerThreads: 21
+        alertControllerThreads: 21
+        kubeClientRateLimitBurst: 500
+        kubeClientRateLimitQPS: 500
+
     ingress:
       certificate:
         automation:
