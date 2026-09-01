@@ -14,7 +14,7 @@ spec:
     substitute:
       COST_ALLOCATION_SQL_CLIENT_ID: 081fa1b1-e38b-43c0-88fe-4a4807f1798b
       COST_ALLOCATION_SQL_SERVER: sql-radix-cost-allocation-platform.database.windows.net
-      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.3 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
+      RADIX_COST_ALLOCATION_CHART_VERSION: 1.4.4 # {"$imagepolicy": "flux-system:radix-cost-allocation-chart:tag"}
   patches:
     - patch: |-
         apiVersion: helm.toolkit.fluxcd.io/v2
