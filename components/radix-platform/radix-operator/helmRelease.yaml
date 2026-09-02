@@ -39,6 +39,15 @@ spec:
     config:
       common:
         clusterName: ${clusterName}
+        oauth2Proxy:
+          defaultOIDCIssuer: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0"
+          proxyImage:
+            repository: quay.io/oauth2-proxy/oauth2-proxy
+            tag: ${OAUTH2PROXY_TAG}
+          redisImage:
+            repository: docker.io/redis
+            tag: ${OAUTH2REDIS_TAG}
+
       operator:
         logLevel: info
         logPrettyPrint: false
