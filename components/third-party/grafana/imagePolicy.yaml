@@ -8,4 +8,4 @@ spec:
     name: grafana-chart
   policy:
     semver:
-      range: "<13.0.0"
+      range: "<=12.10.3 >=1.0.0"
