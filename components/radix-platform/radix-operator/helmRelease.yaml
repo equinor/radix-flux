@@ -63,6 +63,9 @@ spec:
         kubeClientRateLimitBurst: 500
         kubeClientRateLimitQPS: 500
 
+        containerRegistry: ${imageRegistry}
+        appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
+
         defaultAppAdminGroups: [] # No default app admins (overriden in playground)
 
         appNsLimitRange:
