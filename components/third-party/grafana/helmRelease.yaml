@@ -13,25 +13,6 @@ spec:
   install:
     remediation:
       retries: 3
-  # postRenderers:
-  #   - kustomize:
-  #       patches:
-  #         - target:
-  #             version: v1
-  #             kind: Deployment
-  #             name: grafana
-  #             namespace: monitor
-  #           patch: |
-  #             - op: add
-  #               path: /spec/template/spec/containers/0/volumeMounts
-  #               value: 
-  #                 - mountPath: /var/run/secrets/ossrdbms-aad
-  #                   name: access-token-volume
-  #                   readOnly: true
-  #                 - mountPath: /var/lib/grafana
-  #                   name: grafana-lib
-  #                 - mountPath: /var/lib/grafana-search
-  #                   name: grafana-search
   values:
     global:
       imageRegistry: ${cacheRegistry} # set in radix-flux-config configmap
