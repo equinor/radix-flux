@@ -8,4 +8,4 @@ spec:
     name: prometheus-operator-chart
   policy:
     semver:
-      range: ">=0.0.0-0"
+      range: ">=0.0.0"
