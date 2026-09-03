@@ -47,16 +47,6 @@ spec:
             repository: docker.io/redis
             tag: ${OAUTH2REDIS_TAG}
           proxyDefaults:
-            scope: "openid profile email"
-            proxyPrefix: "/oauth2"
-            setXAuthRequestHeaders: false
-            setAuthorizationHeader: false
-            sessionStoreType: cookie
-            cookie:
-              name: "_oauth2_proxy"
-              expire: "168h0m0s"
-              refresh: "60m0s"
-              sameSite: "lax"
             oidc:
               issuerUrl: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0"
               skipDiscovery: false
