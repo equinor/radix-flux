@@ -32,13 +32,6 @@ spec:
                     name: grafana-lib
                   - mountPath: /var/lib/grafana-search
                     name: grafana-search
-                  - mountPath: /tmp
-                    name: tmp
-
-              - op: add
-                path: /spec/template/spec/containers/0/securityContext
-                value:
-                  readOnlyRootFilesystem: true
 
               - op: add
                 path: /spec/template/spec/shareProcessNamespace
@@ -130,8 +123,6 @@ spec:
       - name: grafana-lib
         emptyDir: {}
       - name: grafana-search
-        emptyDir: {}
-      - name: tmp
         emptyDir: {}
     extraInitContainers:
       - name: fetch-token
