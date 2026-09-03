@@ -13,29 +13,25 @@ spec:
   install:
     remediation:
       retries: 3
-  postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              version: v1
-              kind: Deployment
-              name: grafana
-              namespace: monitor
-            patch: |
-              - op: add
-                path: /spec/template/spec/containers/0/volumeMounts
-                value: 
-                  - mountPath: /var/run/secrets/ossrdbms-aad
-                    name: access-token-volume
-                    readOnly: true
-                  - mountPath: /var/lib/grafana
-                    name: grafana-lib
-                  - mountPath: /var/lib/grafana-search
-                    name: grafana-search
-
-              - op: add
-                path: /spec/template/spec/shareProcessNamespace
-                value: true
+  # postRenderers:
+  #   - kustomize:
+  #       patches:
+  #         - target:
+  #             version: v1
+  #             kind: Deployment
+  #             name: grafana
+  #             namespace: monitor
+  #           patch: |
+  #             - op: add
+  #               path: /spec/template/spec/containers/0/volumeMounts
+  #               value: 
+  #                 - mountPath: /var/run/secrets/ossrdbms-aad
+  #                   name: access-token-volume
+  #                   readOnly: true
+  #                 - mountPath: /var/lib/grafana
+  #                   name: grafana-lib
+  #                 - mountPath: /var/lib/grafana-search
+  #                   name: grafana-search
   values:
     global:
       imageRegistry: ${cacheRegistry} # set in radix-flux-config configmap
@@ -76,7 +72,7 @@ spec:
     serviceAccount:
       annotations:
         azure.workload.identity/client-id: ${GRAFANA_WI_CLIENT_ID}
-
+    shareProcessNamespace: true
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -117,6 +113,10 @@ spec:
       # Disable new feature popup
       GF_HELP_ENABLED: "false"
       GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+    extraVolumeMounts:
+      - mountPath: /var/run/secrets/ossrdbms-aad
+        name: access-token-volume
+        readOnly: true
     extraContainerVolumes:
       - name: access-token-volume
         emptyDir: {}
