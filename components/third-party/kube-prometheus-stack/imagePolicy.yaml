@@ -1,0 +1,11 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: prometheus-operator-chart
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: prometheus-operator-chart
+  policy:
+    semver:
+      range: ">=0.0.0"

@@ -42,6 +42,15 @@ spec:
         spec:
           values:
             prometheus:
+              networkPolicy:
+                enabled: true
+                egress:
+                  - {}
+                ingress:
+                  - from:
+                      - namespaceSelector:
+                          matchLabels:
+                            kubernetes.io/metadata.name: monitor
               prometheusSpec:
                 retention: 60d # default
                 resources:
