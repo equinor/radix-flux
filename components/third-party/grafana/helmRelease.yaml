@@ -36,6 +36,8 @@ spec:
     global:
       imageRegistry: ${cacheRegistry} # set in radix-flux-config configmap
 
+    shadowBundledPlugins: true
+
     resources:
       limits:
         cpu: 256m
