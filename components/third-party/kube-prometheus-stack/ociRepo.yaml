@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: kube-prometheus-stack-chart
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
+  ref:
+    tag: ${KUBE_PROMETHEUS_STACK}

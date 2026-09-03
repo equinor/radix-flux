@@ -3,5 +3,8 @@ kind: Kustomization
 resources:
 - namespace.yaml
 - helmRepo.yaml
+- ociRepo.yaml
 - helmRelease.yaml
 - oauth2-proxy-prometheus.yaml
+- imageRepo.yaml
+- imagePolicy.yaml
