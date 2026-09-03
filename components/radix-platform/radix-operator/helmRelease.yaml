@@ -63,6 +63,11 @@ spec:
         kubeClientRateLimitBurst: 500
         kubeClientRateLimitQPS: 500
 
+        defaultAppAdminGroups: [] # No default app admins (overriden in playground)
+
+        appNsLimitRange:
+          defaultMemory: 500M
+
     ingress:
       certificate:
         automation:
