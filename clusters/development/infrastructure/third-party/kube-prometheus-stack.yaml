@@ -16,7 +16,7 @@ spec:
         name: radix-flux-config
     substitute:
       EXTMON_CLUSTER_ISSUER: https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/
-      KUBE_PROMETHEUS_STACK: 89.2.0 # {"$imagepolicy": "flux-system:kube-prometheus-stack-chart:tag"}
+      KUBE_PROMETHEUS_STACK: 89.2.1 # {"$imagepolicy": "flux-system:kube-prometheus-stack-chart:tag"}
       ALERT_WEB_CONSOLE_BASE_URL: "https://console.dev.radix.equinor.com"
   patches:
     - target:
