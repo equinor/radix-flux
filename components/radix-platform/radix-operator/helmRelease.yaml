@@ -21,7 +21,6 @@ spec:
     subscriptionId: ${subscriptionId} # set in configmap flux-system/radix-flux-config
 
     tenantId: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
-    radixZone: ${zone}
     containerRegistry: ${imageRegistry}
     appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
 
@@ -38,7 +37,20 @@ spec:
 
     config:
       common:
+        dnsZone: ${dnsZone} # set in configmap flux-system/radix-flux-config
         clusterName: ${clusterName}
+        oauth2Proxy:
+          proxyImage:
+            repository: quay.io/oauth2-proxy/oauth2-proxy
+            tag: ${OAUTH2PROXY_TAG}
+          redisImage:
+            repository: docker.io/redis
+            tag: ${OAUTH2REDIS_TAG}
+          proxyDefaults:
+            oidc:
+              issuerUrl: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0"
+              skipDiscovery: false
+
       operator:
         logLevel: info
         logPrettyPrint: false
@@ -50,6 +62,24 @@ spec:
         alertControllerThreads: 21
         kubeClientRateLimitBurst: 500
         kubeClientRateLimitQPS: 500
+
+        appAliasBaseURL: ${appAliasBaseURL} # set in configmap flux-system/radix-flux-config
+        containerRegistry: ${imageRegistry}
+        appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
+
+        defaultAppAdminGroups: [] # No default app admins (overriden in playground)
+
+        appNsLimitRange:
+          defaultMemory: 500M
+        builderResources:
+          limits:
+            memory: 10G
+          requests:
+            memory: 1G
+            cpu: 800m
+
+          jobSchedulerImage:
+            tag: ${RADIX_OPERATOR_CHART_VERSION}
 
     ingress:
       certificate:
