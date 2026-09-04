@@ -50,6 +50,9 @@ spec:
                   - from:
                       - namespaceSelector:
                           matchLabels:
+                            kubernetes.io/metadata.name: default
+                      - namespaceSelector:
+                          matchLabels:
                             kubernetes.io/metadata.name: monitor
               prometheusSpec:
                 retention: 60d # default
@@ -69,6 +72,8 @@ spec:
                     cpu: 32m
                     memory: 64Mi
             alertmanager:
+              networkPolicy:
+                enabled: true
               alertmanagerSpec:
                 resources:
                   limits:
