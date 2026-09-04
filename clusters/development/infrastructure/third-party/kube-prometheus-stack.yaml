@@ -16,7 +16,7 @@ spec:
         name: radix-flux-config
     substitute:
       EXTMON_CLUSTER_ISSUER: https://northeurope.oic.prod-aks.azure.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/a2d93ba1-cbde-4408-8979-c100cce7b448/
-      KUBE_PROMETHEUS_STACK: 88.6.3 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      KUBE_PROMETHEUS_STACK: 88.6.5 # {"$imagepolicy": "flux-system:kube-prometheus-stack-chart:tag"}
       ALERT_WEB_CONSOLE_BASE_URL: "https://console.dev.radix.equinor.com"
   patches:
     - target:
@@ -40,6 +40,11 @@ spec:
           name: kube-prometheus-stack
           namespace: monitor
         spec:
+          chart: null
+          chartRef:
+            kind: OCIRepository
+            name: kube-prometheus-stack-chart
+            namespace: flux-system
           values:
             prometheus:
               networkPolicy:
@@ -48,6 +53,9 @@ spec:
                   - {}
                 ingress:
                   - from:
+                      - namespaceSelector:
+                          matchLabels:
+                            kubernetes.io/metadata.name: default
                       - namespaceSelector:
                           matchLabels:
                             kubernetes.io/metadata.name: monitor
@@ -69,6 +77,8 @@ spec:
                     cpu: 32m
                     memory: 64Mi
             alertmanager:
+              networkPolicy:
+                enabled: true
               alertmanagerSpec:
                 resources:
                   limits:
