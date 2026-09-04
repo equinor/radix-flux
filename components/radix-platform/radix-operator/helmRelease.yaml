@@ -69,7 +69,13 @@ spec:
         defaultAppAdminGroups: [] # No default app admins (overriden in playground)
 
         appNsLimitRange:
-          defaultMemory: 500M
+          defaultMemory: 500M  
+        builderResources:
+          limits:
+            memory: 10G
+          requests:
+            memory: 1G
+            cpu: 800m
 
     ingress:
       certificate:
