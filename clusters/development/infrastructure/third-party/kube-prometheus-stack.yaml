@@ -40,7 +40,6 @@ spec:
           name: kube-prometheus-stack
           namespace: monitor
         spec:
-          chart: null
           chartRef:
             kind: OCIRepository
             name: kube-prometheus-stack-chart
