@@ -72,6 +72,8 @@ spec:
                     cpu: 32m
                     memory: 64Mi
             alertmanager:
+              networkPolicy:
+                enabled: true
               alertmanagerSpec:
                 resources:
                   limits:
