@@ -4,5 +4,5 @@ metadata:
   name: kube-prometheus-stack-chart
   namespace: flux-system
 spec:
-  image: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
+  image: ghcr.io/prometheus-community/charts/kube-prometheus-stack
   interval: 1m0s
