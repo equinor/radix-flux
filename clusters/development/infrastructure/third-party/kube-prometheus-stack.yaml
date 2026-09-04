@@ -50,6 +50,12 @@ spec:
                   - from:
                       - namespaceSelector:
                           matchLabels:
+                            kubernetes.io/metadata.name: default
+                      - namespaceSelector:
+                          matchLabels:
+                            kubernetes.io/metadata.name: istio-system
+                      - namespaceSelector:
+                          matchLabels:
                             kubernetes.io/metadata.name: monitor
               prometheusSpec:
                 retention: 60d # default
