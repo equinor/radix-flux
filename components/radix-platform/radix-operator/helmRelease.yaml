@@ -63,6 +63,7 @@ spec:
         kubeClientRateLimitBurst: 500
         kubeClientRateLimitQPS: 500
 
+        appAliasBaseURL: ${appAliasBaseURL} # set in configmap flux-system/radix-flux-config
         containerRegistry: ${imageRegistry}
         appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
 
