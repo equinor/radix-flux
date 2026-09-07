@@ -91,6 +91,9 @@ spec:
               level: "baseline"
               version: "v1.23"
 
+        buildkitImageBuilder:
+          tag: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
+          
     ingress:
       certificate:
         automation:
