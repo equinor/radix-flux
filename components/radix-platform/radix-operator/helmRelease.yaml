@@ -91,7 +91,7 @@ spec:
               level: "baseline"
               version: "v1.23"
 
-        buildKitImageBuilder:
+        builderImage:
           tag: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
 
     ingress:
