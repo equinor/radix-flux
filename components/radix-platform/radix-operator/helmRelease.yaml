@@ -77,8 +77,6 @@ spec:
           requests:
             memory: 1G
             cpu: 800m
-          jobSchedulerImage:
-            tag: ${RADIX_OPERATOR_CHART_VERSION}
 
         podSecurityStandard:
           appNamespace:
