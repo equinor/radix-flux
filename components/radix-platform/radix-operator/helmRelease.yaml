@@ -77,9 +77,18 @@ spec:
           requests:
             memory: 1G
             cpu: 800m
-
           jobSchedulerImage:
             tag: ${RADIX_OPERATOR_CHART_VERSION}
+
+        podSecurityStandard:
+          appNamespace:
+            enforce:
+              level: "privileged"
+              version: "v1.23"
+          envNamespace:
+            enforce:
+              level: "baseline"
+              version: "v1.23"
 
     ingress:
       certificate:
