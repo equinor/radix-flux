@@ -74,12 +74,15 @@ spec:
 
         appNsLimitRange:
           defaultMemory: 500M
-        builderResources:
-          limits:
-            memory: 10G
-          requests:
-            memory: 1G
-            cpu: 800m
+        builder:
+          builderImage:
+            tag: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
+          resources:
+            limits:
+              memory: 10G
+            requests:
+              memory: 1G
+              cpu: 800m
 
         podSecurityStandard:
           appNamespace:
@@ -90,9 +93,6 @@ spec:
             enforce:
               level: "baseline"
               version: "v1.23"
-
-        builderImage:
-          tag: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
 
     ingress:
       certificate:
