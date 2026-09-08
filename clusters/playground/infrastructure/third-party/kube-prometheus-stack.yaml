@@ -60,6 +60,7 @@ spec:
                           matchLabels:
                             kubernetes.io/metadata.name: monitor
               prometheusSpec:
+                enableAdminAPI: true
                 resources:
                   limits:
                     cpu: 600m
