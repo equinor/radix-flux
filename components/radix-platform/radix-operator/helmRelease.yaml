@@ -96,6 +96,9 @@ spec:
               level: "baseline"
               version: "v1.23"
 
+        jobSchedulerAuxImage:
+          tag: ${JOBAUX_TAG}
+
     ingress:
       certificate:
         automation:
