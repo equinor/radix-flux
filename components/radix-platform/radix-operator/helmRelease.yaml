@@ -75,7 +75,7 @@ spec:
         appNsLimitRange:
           defaultMemory: 500M
         builder:
-          builderImage:
+          image:
             tag: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
           resources:
             limits:
