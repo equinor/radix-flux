@@ -60,6 +60,7 @@ spec:
                           matchLabels:
                             kubernetes.io/metadata.name: monitor
               prometheusSpec:
+                enableAdminAPI: true
                 retention: 60d # default
                 resources:
                   limits:
