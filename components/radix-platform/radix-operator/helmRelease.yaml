@@ -67,6 +67,7 @@ spec:
 
         containerRegistry: ${imageRegistry}
         appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
+        externalRegistryDefaultAuthSecret: radix-external-registry-default-auth
 
         clusterType: ${clusterType} # set in configmap flux-system/radix-flux-config
 
