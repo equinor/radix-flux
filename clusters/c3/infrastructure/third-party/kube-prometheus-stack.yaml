@@ -40,25 +40,8 @@ spec:
           name: kube-prometheus-stack
           namespace: monitor
         spec:
-          chart: null
-          chartRef:
-            kind: OCIRepository
-            name: kube-prometheus-stack-chart
-            namespace: flux-system
           values:
             prometheus:
-              networkPolicy:
-                enabled: true
-                egress:
-                  - {}
-                ingress:
-                  - from:
-                      - namespaceSelector:
-                          matchLabels:
-                            kubernetes.io/metadata.name: default
-                      - namespaceSelector:
-                          matchLabels:
-                            kubernetes.io/metadata.name: monitor
               prometheusSpec:
                 resources:
                   limits:
@@ -84,8 +67,6 @@ spec:
                   cpu: 50m
                   memory: 64Mi
             alertmanager:
-              networkPolicy:
-                enabled: true
               alertmanagerSpec:
                 resources:
                   limits:

@@ -5,14 +5,10 @@ metadata:
   namespace: monitor
 spec:
   releaseName: kube-prometheus-stack
-  chart:
-    spec:
-      chart: kube-prometheus-stack
-      version: ${KUBE_PROMETHEUS_STACK}
-      sourceRef:
-        kind: HelmRepository
-        name: kube-prometheus-stack
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: kube-prometheus-stack-chart
+    namespace: flux-system
   interval: 5m
   install:
     remediation:
@@ -346,9 +342,22 @@ spec:
                     values:
                       - amd64
     prometheus:
+      networkPolicy:
+        enabled: true
+        egress:
+          - {}
+        ingress:
+          - from:
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: default
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: monitor
       ingress:
         enabled: false
       prometheusSpec:
+        enableAdminAPI: true
         image:
           registry: ${cacheRegistry}
 
@@ -417,6 +426,8 @@ spec:
           cpu: 50m
           memory: 32Mi
     alertmanager:
+      networkPolicy:
+        enabled: true
       config:
         global:
           resolve_timeout: 5m
