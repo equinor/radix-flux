@@ -104,6 +104,9 @@ spec:
           namespace: "istio-system"
           sectionName: "https"
 
+        certificateAutomation:
+          gatewayClusterIssuer: digicert-http01-gateway
+
     ingress:
       certificate:
         automation:
