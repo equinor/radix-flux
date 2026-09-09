@@ -99,6 +99,11 @@ spec:
         jobSchedulerAuxImage:
           tag: ${JOBAUX_TAG}
 
+        gateway:
+          name: "gateway"
+          namespace: "istio-system"
+          sectionName: "https"
+
     ingress:
       certificate:
         automation:
