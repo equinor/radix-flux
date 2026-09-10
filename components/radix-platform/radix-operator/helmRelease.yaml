@@ -107,6 +107,10 @@ spec:
         certificateAutomation:
           gatewayClusterIssuer: digicert-http01-gateway
 
+        gitCloneImage:
+          tag: ${GIT_CLONE_TAG}
+          repository: docker.io/alpine/git
+
     ingress:
       certificate:
         automation:
