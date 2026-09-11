@@ -105,6 +105,24 @@ spec:
 
         certificateAutomation:
           gatewayClusterIssuer: digicert-http01-gateway
+      webhook:
+        requireAdGroups: true
+        requireConfigurationItem: true
+
+        reservedAppDNSAliases:
+          canary: radix-canary-golang
+          console: radix-web-console
+          cost-api: radix-cost-allocation-api
+          www: radix-public-site
+
+        reservedDNSAliases:
+          - grafana
+          - prometheus
+          - app
+          - playground
+          - dev
+          - api
+          - webhook
 
     ingress:
       certificate:
