@@ -38,7 +38,10 @@ spec:
     config:
       common:
         dnsZone: ${dnsZone} # set in configmap flux-system/radix-flux-config
-        clusterName: ${clusterName}
+        clusterName: ${clusterName} # set in configmap flux-system/radix-flux-config
+        clusterType: ${clusterType}
+        appAliasBaseURL: ${appAliasBaseURL} # set in configmap flux-system/radix-flux-config
+        externalRegistryAuthSecret: radix-external-registry-default-auth
         oauth2Proxy:
           proxyImage:
             repository: quay.io/oauth2-proxy/oauth2-proxy
@@ -50,7 +53,21 @@ spec:
             oidc:
               issuerUrl: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0"
               skipDiscovery: false
-
+      pipelineRunner:
+        containerRegistry: ${imageRegistry}
+        cacheContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
+        builder:
+          image:
+            tag: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
+          resources:
+            limits:
+              memory: 10G
+            requests:
+              memory: 1G
+              cpu: 800m
+        gitCloneImage:
+          tag: ${GIT_CLONE_TAG}
+          repository: docker.io/alpine/git
       operator:
         logLevel: info
         logPrettyPrint: false
@@ -61,28 +78,12 @@ spec:
         jobControllerThreads: 21
         alertControllerThreads: 21
         kubeClientRateLimitBurst: 500
+        azureKeyVaultTenantID: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
         kubeClientRateLimitQPS: 500
-
-        appAliasBaseURL: ${appAliasBaseURL} # set in configmap flux-system/radix-flux-config
-
-        containerRegistry: ${imageRegistry}
-        appContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
-
-        clusterType: ${clusterType} # set in configmap flux-system/radix-flux-config
-
         defaultAppAdminGroups: [] # No default app admins (overriden in playground)
 
         appNsLimitRange:
           defaultMemory: 500M
-        builder:
-          image:
-            tag: ${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
-          resources:
-            limits:
-              memory: 10G
-            requests:
-              memory: 1G
-              cpu: 800m
 
         podSecurityStandard:
           appNamespace:
@@ -93,6 +94,50 @@ spec:
             enforce:
               level: "baseline"
               version: "v1.23"
+
+        jobSchedulerAuxImage:
+          tag: ${JOBAUX_TAG}
+
+        gateway:
+          name: "gateway"
+          namespace: "istio-system"
+          sectionName: "https"
+
+        certificateAutomation:
+          gatewayClusterIssuer: digicert-http01-gateway
+      webhook:
+        requireGroups: true
+        requireConfigurationItem: true
+
+        reservedAppDNSAliases:
+          canary: radix-canary-golang
+          console: radix-web-console
+          cost-api: radix-cost-allocation-api
+          www: radix-public-site
+
+        reservedDNSAliases:
+          - grafana
+          - prometheus
+          - app
+          - playground
+          - dev
+          - api
+          - webhook
+
+      apiServer:
+        prometheusUrl: http://prometheus-operator-prometheus.monitor.svc.cluster.local:9090
+        useProfiler: false
+
+        azureOidc:
+          audience: 6dae42f8-4368-4678-94ff-3960e28e3630
+          issuer: https://sts.windows.net/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/
+
+        kubernetesOidc:
+          issuer: ${kubernetesIssuerUrl} # set in configmap flux-system/radix-flux-config
+          audience: ${kubernetesIssuerUrl}
+
+        clusterOidcIssuers: ${clusterOidcIssuers} # set in configmap flux-system/radix-flux-config
+        clusterEgressIps: ${clusterEgressIPs} # set in configmap flux-system/radix-flux-config
 
     ingress:
       certificate:
