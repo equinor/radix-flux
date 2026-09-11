@@ -56,9 +56,33 @@ spec:
                       - namespaceSelector:
                           matchLabels:
                             kubernetes.io/metadata.name: default
+                        podSelector:
+                          matchLabels:
+                            app.kubernetes.io/name: radix-api-server
                       - namespaceSelector:
                           matchLabels:
                             kubernetes.io/metadata.name: monitor
+                        podSelector:
+                          matchLabels:
+                            app.kubernetes.io/name: grafana
+                      - namespaceSelector:
+                          matchLabels:
+                            kubernetes.io/metadata.name: monitor
+                        podSelector:
+                          matchLabels:
+                            app.kubernetes.io/name: oauth2-proxy-prometheus
+                      - namespaceSelector:
+                          matchLabels:
+                            kubernetes.io/metadata.name: monitor
+                        podSelector:
+                          matchLabels:
+                            batch.kubernetes.io/job-name: prometheus-backup-upload
+                      - namespaceSelector:
+                          matchLabels:
+                            kubernetes.io/metadata.name: monitor
+                        podSelector:
+                          matchLabels:
+                            batch.kubernetes.io/job-name: prometheus-restore
               prometheusSpec:
                 enableAdminAPI: true
                 retention: 60d # default
