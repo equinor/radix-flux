@@ -365,6 +365,12 @@ spec:
                     kubernetes.io/metadata.name: monitor
                 podSelector:
                   matchLabels:
+                    app.kubernetes.io/name: oauth2-proxy-prometheus
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: monitor
+                podSelector:
+                  matchLabels:
                     batch.kubernetes.io/job-name: prometheus-backup-upload
               - namespaceSelector:
                   matchLabels:
