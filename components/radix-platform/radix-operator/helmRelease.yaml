@@ -106,7 +106,7 @@ spec:
         certificateAutomation:
           gatewayClusterIssuer: digicert-http01-gateway
       webhook:
-        requireAdGroups: true
+        requireGroups: true
         requireConfigurationItem: true
 
         reservedAppDNSAliases:
