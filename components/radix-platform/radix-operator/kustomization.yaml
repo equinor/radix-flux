@@ -1,7 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: default
 resources:
 - ociRepo.yaml
 - helmRelease.yaml
 - imageRepo.yaml
 - imagePolicy.yaml
+configMapGenerator:
+  - name: radix-core-helm-values
+    literals:
+      - clusterOidcIssuers={${clusterOidcIssuers}}
+      - clusterEgressIps={${clusterEgressIPs}}
+generatorOptions:
+  disableNameSuffixHash: true

@@ -12,6 +12,15 @@ spec:
     kind: OCIRepository
     name: radix-operator-chart
     namespace: flux-system
+  valuesFrom:
+    - kind: ConfigMap
+      name: radix-core-helm-values
+      valuesKey: clusterOidcIssuers
+      targetPath: config.apiServer.clusterOidcIssuers
+    - kind: ConfigMap
+      name: radix-core-helm-values
+      valuesKey: clusterEgressIps
+      targetPath: config.apiServer.clusterEgressIps
   values:
     dnsZone: ${dnsZone} # set in configmap flux-system/radix-flux-config
     appAliasBaseURL: ${appAliasBaseURL} # set in configmap flux-system/radix-flux-config
@@ -135,9 +144,6 @@ spec:
         kubernetesOidc:
           issuer: ${kubernetesIssuerUrl} # set in configmap flux-system/radix-flux-config
           audience: ${kubernetesIssuerUrl}
-
-        clusterOidcIssuers: ${clusterOidcIssuers} # set in configmap flux-system/radix-flux-config
-        clusterEgressIps: ${clusterEgressIPs} # set in configmap flux-system/radix-flux-config
 
     ingress:
       certificate:
