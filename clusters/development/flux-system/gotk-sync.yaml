@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: 1947-migrate-config-into-config2
+    branch: fix-refactor-config-config2
   secretRef:
     name: flux-system
   url: ssh://git@github.com/equinor/radix-flux
