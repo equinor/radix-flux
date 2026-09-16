@@ -128,7 +128,7 @@ spec:
         prometheusUrl: http://prometheus-operator-prometheus.monitor.svc.cluster.local:9090
         useProfiler: false
         clusterOidcIssuers: ${clusterOidcIssuersJson}
-        clusterEgressIps: ${clusterEgressIpsJson}
+        clusterEgressIps: ${clusterEgressIPsJson}
 
         authenticators:
           azure:
