@@ -12,4 +12,4 @@ spec:
     name: flux-system
   postBuild:
     substitute:
-      BLACKBOX_EXPORTER_VERSION: 11.17.2 # https://artifacthub.io/packages/helm/prometheus-community/prometheus-blackbox-exporter
+      BLACKBOX_EXPORTER_VERSION: 11.18.0 # https://artifacthub.io/packages/helm/prometheus-community/prometheus-blackbox-exporter
