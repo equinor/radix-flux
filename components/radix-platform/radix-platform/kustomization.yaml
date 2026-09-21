@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - component-priority-class.yaml
   - rbac/avert.yaml
+  - rbac/varia.yaml
   - rbac/radix-platform-operators-view.yaml
   - rbac/radix-platform-operators-edit.yaml
   - rbac/radix-platform-operators-admin.yaml

@@ -1,0 +1,27 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: varia-reader
+rules:
+  - apiGroups:
+      - radix.equinor.com
+    resources:
+      - radixregistrations
+    verbs:
+      - get
+      - list
+      - watch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: varia-reader-binding
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: "d57fb4fe-8e0e-4408-8c62-d3b150ea4a35"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: varia-reader
