@@ -1,0 +1,83 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: radix-web-console
+  namespace: radix-web-console
+spec:
+  targetNamespace: radix-web-console
+  interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  chartRef:
+    kind: OCIRepository
+    name: radix-web-console-chart
+    namespace: flux-system
+  values:
+    config:
+      dnsZone: ${dnsZone}
+      clusterName: ${clusterName}
+      clusterType: ${clusterType}
+      environment: ${targetEnvironment}
+      oauth2:
+        clientId: ${radixWebConsoleOauth2ClientId}
+        authority: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0/
+      radixApiScopes: openid profile offline_access 6dae42f8-4368-4678-94ff-3960e28e3630/user.read email
+      serviceNowProxyScopes: 1b4a22f1-d4a1-4b6a-81b2-fd936daf1786/Application.Read
+      serviceNowProxyBaseUrl: https://api-radix-servicenow-proxy-${targetEnvironment}.${clusterName}.${dnsZone}/api/v1
+      cmdbCiUrl: https://equinor.service-now.com/selfservice?id=form&table=cmdb_ci_business_app&sys_id={CIID}
+      clusters:
+        Development:
+          href: https://console.dev.radix.equinor.com/
+          baseUrl: dev.radix.equinor.com
+          isDev: true
+        Playground:
+          href: https://console.playground.radix.equinor.com/
+          baseUrl: playground.radix.equinor.com
+          isPlayground: true
+        Platform (North Europe):
+          href: https://console.radix.equinor.com/
+          baseUrl: radix.equinor.com
+        Platform 2 (West Europe):
+          href: https://console.c2.radix.equinor.com/
+          baseUrl: c2.radix.equinor.com
+        Platform 3 (Sweden Central):
+          href: https://console.c3.radix.equinor.com/
+          baseUrl: c3.radix.equinor.com
+
+    upstreams:
+      apiUrl: https://api.${clusterName}.${dnsZone}
+      costApiUrl: https://server-radix-cost-allocation-api-${targetEnvironment}.${clusterName}.${dnsZone}/api/v1/
+      logApiUrl: https://server-radix-log-api-${targetEnvironment}.${clusterName}.${dnsZone}/api/v1/
+      scanApiUrl: https://server-radix-vulnerability-scanner-api-${targetEnvironment}.${clusterName}.${dnsZone}/api/v1/
+
+    httproute:
+      enabled: true
+      parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: Gateway
+          name: gateway
+          namespace: istio-system
+          sectionName: https
+      hostnames:
+        - console.${clusterName}.${dnsZone}
+        - console.${dnsZone}
+
+    autoscaling:
+      enabled: true
+      minReplicas: 1
+
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/os
+                  operator: In
+                  values:
+                    - linux
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                    - arm64
