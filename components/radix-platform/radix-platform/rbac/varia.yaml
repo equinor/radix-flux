@@ -20,7 +20,7 @@ metadata:
 subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: User
-    name: "d57fb4fe-8e0e-4408-8c62-d3b150ea4a35"
+    name: "3f0d2d14-33f1-46d0-a974-aff1319d42a7" # Must be ObjectID for app registrations, `varia-dev` (client id: "d57fb4fe-8e0e-4408-8c62-d3b150ea4a35")
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
