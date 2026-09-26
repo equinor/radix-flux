@@ -1,0 +1,35 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: radix-web-console
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./components/radix-platform/radix-web-console
+  prune: false
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+    substitute:
+      radixWebConsoleChartVersion: 1.0.0 # {"$imagepolicy": "flux-system:radix-web-console-chart:tag"}
+      targetEnvironment: qa
+      radixWebConsoleOauth2ClientId: 5687b237-eda3-4ec3-a2a1-023e85a2bd84
+  patches:
+    - patch: |-
+        apiVersion: image.toolkit.fluxcd.io/v1
+        kind: ImagePolicy
+        metadata:
+          name: radix-web-console-chart
+          namespace: flux-system
+        spec:
+          policy:
+            semver:
+              range: '>=0.0.0-0'
+      target:
+        kind: ImagePolicy
+        name: radix-web-console-chart
+        namespace: flux-system
