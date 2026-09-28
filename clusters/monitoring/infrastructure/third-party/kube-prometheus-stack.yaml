@@ -42,6 +42,15 @@ spec:
             prometheus:
               ingress:
                 enabled: false
+              networkPolicy:
+                ingress:
+                  - from:
+                      - namespaceSelector:
+                          matchLabels:
+                            kubernetes.io/metadata.name: monitor
+                        podSelector:
+                          matchLabels:
+                            app.kubernetes.io/name: radix-prometheus-proxy
               prometheusSpec:
                 query:
                   timeout: 60s
