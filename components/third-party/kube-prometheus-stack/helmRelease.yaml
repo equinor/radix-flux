@@ -378,6 +378,12 @@ spec:
                 podSelector:
                   matchLabels:
                     batch.kubernetes.io/job-name: prometheus-restore
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: monitor
+                podSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: radix-prometheus-proxy
       ingress:
         enabled: false
       prometheusSpec:
