@@ -51,6 +51,7 @@ spec:
       costApiUrl: https://server-radix-cost-allocation-api-${targetEnvironment}.${clusterName}.${dnsZone}/api/v1/
       logApiUrl: https://server-radix-log-api-${targetEnvironment}.${clusterName}.${dnsZone}/api/v1/
       scanApiUrl: https://server-radix-vulnerability-scanner-api-${targetEnvironment}.${clusterName}.${dnsZone}/api/v1/
+      uptimeUrl: https://uptime.ext-mon.radix.equinor.com/
 
     httproute:
       enabled: true
