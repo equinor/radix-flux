@@ -15,7 +15,7 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      radixWebConsoleChartVersion: 1.0.0 # {"$imagepolicy": "flux-system:radix-web-console-chart:tag"}
+      radixWebConsoleChartVersion: 4.14.0 # {"$imagepolicy": "flux-system:radix-web-console-chart:tag"}
       targetEnvironment: qa
       radixWebConsoleOauth2ClientId: 5687b237-eda3-4ec3-a2a1-023e85a2bd84
   patches:
