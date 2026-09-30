@@ -6,4 +6,5 @@ resources:
   - radix-cost-allocation.yaml
   - radix-operator.yaml
   - radix-platform.yaml
+  - radix-web-console.yaml
   - radix-vulnerability-scanner.yaml
