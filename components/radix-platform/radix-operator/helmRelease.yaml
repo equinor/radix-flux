@@ -144,24 +144,25 @@ spec:
         pipelineRunnerTemplate: {}
         oauth2ProxyTemplate: {}
         oauth2SessionStoreTemplate:
-          spec:
-            affinity:
-              nodeAffinity:
-                requiredDuringSchedulingIgnoredDuringExecution:
-                  nodeSelectorTerms:
-                    - matchExpressions:
-                        - key: kubernetes.io/os
-                          operator: In
-                          values:
-                            - linux
-                        - key: kubernetes.io/arch
-                          operator: In
-                          values:
-                            - amd64
+          overlay:
+            spec:
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                      - matchExpressions:
+                          - key: kubernetes.io/os
+                            operator: In
+                            values:
+                              - linux
+                          - key: kubernetes.io/arch
+                            operator: In
+                            values:
+                              - amd64
 
-            containers:
-              - name: session-store
-                image: docker.io/redis:${OAUTH2REDIS_TAG}
+              containers:
+                - name: session-store
+                  image: docker.io/redis:${OAUTH2REDIS_TAG}
 
     ingress:
       certificate:
