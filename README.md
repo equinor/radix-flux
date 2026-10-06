@@ -154,25 +154,6 @@ spec:
 
 Flux v2 can automatically track container registries for new pushed versions of container images and update the Flux configuration repository to upgrade the configured components, deployed to the cluster. To set up automatic image updates, three components are required.
 
-### ImageRepository
-
-The ImageRepository defines the container registry where Flux should look for new versions of container images. If the container registry is private and requires authentication, a secret can be defined which contains credentials to access it.
-
-```yaml
-# file: components/radix-platform/radix-operator/imageRepo.yaml
-
-apiVersion: image.toolkit.fluxcd.io/v1
-kind: ImageRepository
-metadata:
-  name: radix-operator
-  namespace: flux-system
-spec:
-  image: radixdev.azurecr.io/radix-operator
-  interval: 1m0s
-  secretRef:
-    name: radix-docker
-```
-
 ### imagePolicy
 
 The imagePolicy resource specifies how Flux will identify the latest container image scanned from the imageRepository. The `policy` spec specifies whether the latest image is found by a SemVer range or by alphabetical or numerical sorting. If the image tag contains a timestamp, the timestamp can be filtered and extracted using the `filterTags` spec.
