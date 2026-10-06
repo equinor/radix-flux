@@ -5,14 +5,10 @@ metadata:
   namespace: monitor
 spec:
   releaseName: kube-prometheus-stack
-  chart:
-    spec:
-      chart: kube-prometheus-stack
-      version: ${KUBE_PROMETHEUS_STACK}
-      sourceRef:
-        kind: HelmRepository
-        name: kube-prometheus-stack
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: kube-prometheus-stack-chart
+    namespace: flux-system
   interval: 5m
   install:
     remediation:
@@ -22,6 +18,8 @@ spec:
       upgradeJob:
         enabled: true
         forceConflicts: true
+        podLabels:
+          grafana.radix.equinor.com/monitor-health: "true"
     global:
       rbac:
         createAggregateClusterRoles: true
@@ -80,7 +78,7 @@ spec:
               - imagerepositories
               - imagepolicies
               - imageupdateautomations
-            verbs: [ "list", "watch" ]
+            verbs: ["list", "watch"]
       customResourceState:
         enabled: true
         config:
@@ -98,13 +96,13 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      revision: [ status, lastAppliedRevision ]
-                      source_name: [ spec, sourceRef, name ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      revision: [status, lastAppliedRevision]
+                      source_name: [spec, sourceRef, name]
               - groupVersionKind:
                   group: helm.toolkit.fluxcd.io
                   version: v2
@@ -117,16 +115,16 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      revision: [ status, history, "0", chartVersion ]
-                      chart_name: [ status, history, "0", chartName ]
-                      chart_app_version: [ status, history, "0", appVersion ]
-                      chart_ref_name: [ spec, chartRef, name ]
-                      chart_source_name: [ spec, chart, spec, sourceRef, name ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      revision: [status, history, "0", chartVersion]
+                      chart_name: [status, history, "0", chartName]
+                      chart_app_version: [status, history, "0", appVersion]
+                      chart_ref_name: [spec, chartRef, name]
+                      chart_source_name: [spec, chart, spec, sourceRef, name]
               - groupVersionKind:
                   group: source.toolkit.fluxcd.io
                   version: v1
@@ -139,13 +137,13 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      revision: [ status, artifact, revision ]
-                      url: [ spec, url ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      revision: [status, artifact, revision]
+                      url: [spec, url]
               - groupVersionKind:
                   group: source.toolkit.fluxcd.io
                   version: v1
@@ -158,14 +156,14 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      revision: [ status, artifact, revision ]
-                      endpoint: [ spec, endpoint ]
-                      bucket_name: [ spec, bucketName ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      revision: [status, artifact, revision]
+                      endpoint: [spec, endpoint]
+                      bucket_name: [spec, bucketName]
               - groupVersionKind:
                   group: source.toolkit.fluxcd.io
                   version: v1
@@ -178,13 +176,13 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      revision: [ status, artifact, revision ]
-                      url: [ spec, url ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      revision: [status, artifact, revision]
+                      url: [spec, url]
               - groupVersionKind:
                   group: source.toolkit.fluxcd.io
                   version: v1
@@ -197,17 +195,17 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      revision: [ status, artifact, revision ]
-                      chart_name: [ spec, chart ]
-                      chart_version: [ spec, version ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      revision: [status, artifact, revision]
+                      chart_name: [spec, chart]
+                      chart_version: [spec, version]
               - groupVersionKind:
                   group: source.toolkit.fluxcd.io
-                  version: v1beta2
+                  version: v1
                   kind: OCIRepository
                 metricNamePrefix: gotk
                 metrics:
@@ -217,13 +215,13 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      revision: [ status, artifact, revision ]
-                      url: [ spec, url ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      revision: [status, artifact, revision]
+                      url: [spec, url]
               - groupVersionKind:
                   group: notification.toolkit.fluxcd.io
                   version: v1beta3
@@ -236,10 +234,10 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      suspended: [ spec, suspend ]
+                      exported_namespace: [metadata, namespace]
+                      suspended: [spec, suspend]
               - groupVersionKind:
                   group: notification.toolkit.fluxcd.io
                   version: v1beta3
@@ -252,10 +250,10 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      suspended: [ spec, suspend ]
+                      exported_namespace: [metadata, namespace]
+                      suspended: [spec, suspend]
               - groupVersionKind:
                   group: notification.toolkit.fluxcd.io
                   version: v1
@@ -268,15 +266,15 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      webhook_path: [ status, webhookPath ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      webhook_path: [status, webhookPath]
               - groupVersionKind:
                   group: image.toolkit.fluxcd.io
-                  version: v1beta2
+                  version: v1
                   kind: ImageRepository
                 metricNamePrefix: gotk
                 metrics:
@@ -286,15 +284,15 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      image: [ spec, image ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      image: [spec, image]
               - groupVersionKind:
                   group: image.toolkit.fluxcd.io
-                  version: v1beta2
+                  version: v1
                   kind: ImagePolicy
                 metricNamePrefix: gotk
                 metrics:
@@ -304,15 +302,15 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      source_name: [ spec, imageRepositoryRef, name ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      source_name: [spec, imageRepositoryRef, name]
               - groupVersionKind:
                   group: image.toolkit.fluxcd.io
-                  version: v1beta2
+                  version: v1
                   kind: ImageUpdateAutomation
                 metricNamePrefix: gotk
                 metrics:
@@ -322,14 +320,16 @@ spec:
                       type: Info
                       info:
                         labelsFromPath:
-                          name: [ metadata, name ]
+                          name: [metadata, name]
                     labelsFromPath:
-                      exported_namespace: [ metadata, namespace ]
-                      ready: [ status, conditions, "[type=Ready]", status ]
-                      suspended: [ spec, suspend ]
-                      source_name: [ spec, sourceRef, name ]
+                      exported_namespace: [metadata, namespace]
+                      ready: [status, conditions, "[type=Ready]", status]
+                      suspended: [spec, suspend]
+                      source_name: [spec, sourceRef, name]
       containerSecurityContext:
         readOnlyRootFilesystem: true
+      podLabels:
+        grafana.radix.equinor.com/monitor-health: "true"
       extraArgs:
         - --metric-labels-allowlist=pods=[radix-app,radix-component,grafana.radix.equinor.com/monitor-health],namespaces=[radix-app,radix-env],jobs=[radix-app,radix-component,radix-job-type,radix-job-name,radix-pipeline]
       affinity:
@@ -342,9 +342,52 @@ spec:
                     values:
                       - amd64
     prometheus:
+      networkPolicy:
+        enabled: true
+        egress:
+          - {}
+        ingress:
+          - from:
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: default
+                podSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: radix-api-server
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: monitor
+                podSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: grafana
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: monitor
+                podSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: oauth2-proxy-prometheus
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: monitor
+                podSelector:
+                  matchLabels:
+                    batch.kubernetes.io/job-name: prometheus-backup-upload
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: monitor
+                podSelector:
+                  matchLabels:
+                    batch.kubernetes.io/job-name: prometheus-restore
+              - namespaceSelector:
+                  matchLabels:
+                    kubernetes.io/metadata.name: monitor
+                podSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: radix-prometheus-proxy
       ingress:
         enabled: false
       prometheusSpec:
+        enableAdminAPI: true
         image:
           registry: ${cacheRegistry}
 
@@ -365,7 +408,7 @@ spec:
           volumeClaimTemplate:
             spec:
               storageClassName: managed-premium-retain-nocache
-              accessModes: [ "ReadWriteOnce" ]
+              accessModes: ["ReadWriteOnce"]
               resources:
                 requests:
                   storage: 128Gi # default 50Gi
@@ -376,24 +419,30 @@ spec:
             kubernetes_sd_configs:
               - role: pod
             relabel_configs:
-              - source_labels: [ __meta_kubernetes_pod_annotation_prometheus_io_scrape ]
+              - source_labels:
+                  [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
                 action: keep
                 regex: true
-              - source_labels: [ __meta_kubernetes_pod_annotation_prometheus_io_path ]
+              - source_labels:
+                  [__meta_kubernetes_pod_annotation_prometheus_io_path]
                 action: replace
                 target_label: __metrics_path__
                 regex: (.+)
-              - source_labels: [ __address__, __meta_kubernetes_pod_annotation_prometheus_io_port ]
+              - source_labels:
+                  [
+                    __address__,
+                    __meta_kubernetes_pod_annotation_prometheus_io_port,
+                  ]
                 action: replace
                 regex: ([^:]+)(?::\d+)?;(\d+)
                 replacement: $1:$2
                 target_label: __address__
               - action: labelmap
                 regex: __meta_kubernetes_pod_label_(.+)
-              - source_labels: [ __meta_kubernetes_namespace ]
+              - source_labels: [__meta_kubernetes_namespace]
                 action: replace
                 target_label: kubernetes_namespace
-              - source_labels: [ __meta_kubernetes_pod_name ]
+              - source_labels: [__meta_kubernetes_pod_name]
                 action: replace
                 target_label: kubernetes_pod_name
     prometheus-node-exporter:
@@ -407,6 +456,8 @@ spec:
           cpu: 50m
           memory: 32Mi
     alertmanager:
+      networkPolicy:
+        enabled: true
       config:
         global:
           resolve_timeout: 5m
@@ -427,7 +478,7 @@ spec:
           volumeClaimTemplate:
             spec:
               storageClassName: managed-premium-retain-nocache
-              accessModes: [ "ReadWriteOnce" ]
+              accessModes: ["ReadWriteOnce"]
               resources:
                 requests:
                   storage: 512Mi # default 50Gi
@@ -498,12 +549,14 @@ spec:
                   severity: error
                   radixscope: env
                 annotations:
-                  description: Component {{ $labels.label_radix_component}} in environment {{
+                  description:
+                    Component {{ $labels.label_radix_component}} in environment {{
                     $labels.label_radix_env }} for application {{
                     $labels.label_radix_app}} is restarting {{ printf "%.2f"
                     $value }} times / 10 minutes.
                   summary: Component is crash looping
-                  consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
+                  consoleUrl:
+                    ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
                     $labels.label_radix_app }}/envs/{{ $labels.label_radix_env
                     }}/component/{{ $labels.label_radix_component }}
                 for: 5m
@@ -519,12 +572,14 @@ spec:
                   severity: warning
                   radixscope: env
                 annotations:
-                  description: Component {{ $labels.label_radix_component}} in environment {{
+                  description:
+                    Component {{ $labels.label_radix_component}} in environment {{
                     $labels.label_radix_env }} for application {{
                     $labels.label_radix_app}} has been in a non-ready state for
                     more than 10 minutes.
                   summary: Component is not ready
-                  consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
+                  consoleUrl:
+                    ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
                     $labels.label_radix_app }}/envs/{{ $labels.label_radix_env
                     }}/component/{{ $labels.label_radix_component }}
                 for: 10m
@@ -541,11 +596,13 @@ spec:
                   severity: warning
                   radixscope: env
                 annotations:
-                  description: Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env
+                  description:
+                    Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env
                     }} for application {{ $labels.label_radix_app}} has been in
                     a non-ready state for more than 10 minutes.
                   summary: Job is not ready
-                  consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
+                  consoleUrl:
+                    ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
                     $labels.label_radix_app }}/envs/{{ $labels.label_radix_env
                     }}/jobcomponent/{{ $labels.label_radix_component }}
                 for: 10m
@@ -562,10 +619,12 @@ spec:
                   severity: error
                   radixscope: env
                 annotations:
-                  description: Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env
+                  description:
+                    Job {{ $labels.job_name}} in environment {{ $labels.label_radix_env
                     }} for application {{ $labels.label_radix_app}} failed.
                   summary: Job failed
-                  consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
+                  consoleUrl:
+                    ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
                     $labels.label_radix_app }}/envs/{{ $labels.label_radix_env
                     }}/jobcomponent/{{ $labels.label_radix_component }}
                 keep_firing_for: 1h
@@ -584,10 +643,12 @@ spec:
                   severity: error
                   radixscope: app
                 annotations:
-                  description: Pipeline job {{ $labels.label_radix_job_name}} for application {{
+                  description:
+                    Pipeline job {{ $labels.label_radix_job_name}} for application {{
                     $labels.label_radix_app}} failed.
                   summary: Pipeline job failed
-                  consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
+                  consoleUrl:
+                    ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
                     $labels.label_radix_app }}/jobs/view/{{
                     $labels.label_radix_job_name }}
                 keep_firing_for: 1h
@@ -602,11 +663,13 @@ spec:
                   > 0 < (24*60*60)
               - alert: RadixDeploymentActivated
                 annotations:
-                  description: Activated Radix deployment {{ $labels.label_radix_deployment}} for
+                  description:
+                    Activated Radix deployment {{ $labels.label_radix_deployment}} for
                     application {{ $labels.label_radix_app}} in environment {{
                     $labels.label_radix_env}}.
                   summary: Radix deployment activated
-                  consoleUrl: ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
+                  consoleUrl:
+                    ${ALERT_WEB_CONSOLE_BASE_URL:=https://console.radix.equinor.com}/applications/{{
                     $labels.label_radix_app }}/deployments/{{
                     $labels.label_radix_deployment }}
                 for: 1m

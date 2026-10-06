@@ -9,10 +9,12 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./components/radix-platform/radix-cicd-canary
+  dependsOn:
+    - name: keda
   prune: false
   postBuild:
     substitute:
-      RADIX_CICD_CANARY_CHART_VERSION: 1.5.4 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
+      RADIX_CICD_CANARY_CHART_VERSION: 1.5.8 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
@@ -35,7 +37,7 @@ spec:
         name: radix-cicd-canary
         namespace: radix-cicd-canary
     - patch: |- # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
-        apiVersion: image.toolkit.fluxcd.io/v1beta2
+        apiVersion: image.toolkit.fluxcd.io/v1
         kind: ImagePolicy
         metadata:
           name: radix-cicd-canary-chart

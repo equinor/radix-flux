@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: tekton-operator-chart
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: oci://ghcr.io/tektoncd/operator/charts/tekton-operator
+  ref:
+    tag: ${TEKTON_OPERATOR_CHART_VERSION}

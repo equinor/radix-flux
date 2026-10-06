@@ -12,7 +12,7 @@ spec:
   prune: false
   postBuild:
     substitute:
-      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.3 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
+      RADIX_ACR_CLEANUP_CHART_VERSION: 1.4.5 # {"$imagepolicy": "flux-system:radix-acr-cleanup-chart:tag"}
       ACTIVE_CLUSTER: weekly-41
     substituteFrom:
       - kind: ConfigMap
@@ -27,13 +27,15 @@ spec:
         spec:
           values:
             deleteUntagged: false
+            cleanupStart: "07:00"
+            cleanupEnd: "10:00"
       target:
         kind: HelmRelease
         name: radix-acr-cleanup
         namespace: default
     - patch: |-
         # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
-        apiVersion: image.toolkit.fluxcd.io/v1beta2
+        apiVersion: image.toolkit.fluxcd.io/v1
         kind: ImagePolicy
         metadata:
           name: radix-acr-cleanup-chart

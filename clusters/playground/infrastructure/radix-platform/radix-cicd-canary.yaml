@@ -9,10 +9,12 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./components/radix-platform/radix-cicd-canary
+  dependsOn:
+    - name: keda
   prune: false
   postBuild:
     substitute:
-      RADIX_CICD_CANARY_CHART_VERSION: 1.5.4 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
+      RADIX_CICD_CANARY_CHART_VERSION: 1.5.8 # {"$imagepolicy": "flux-system:radix-cicd-canary-chart:tag"}
     substituteFrom:
       - kind: ConfigMap
         name: radix-flux-config
