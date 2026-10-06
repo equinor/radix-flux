@@ -46,6 +46,9 @@ spec:
           proxyImage:
             repository: quay.io/oauth2-proxy/oauth2-proxy
             tag: ${OAUTH2PROXY_TAG}
+          redisImage:
+            repository: docker.io/redis
+            tag: ${OAUTH2REDIS_TAG}
           proxyDefaults:
             oidc:
               issuerUrl: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0"
@@ -142,7 +145,26 @@ spec:
         jobSchedulerTemplate: {}
         jobSchedulerAuxTemplate: {}
         pipelineRunnerTemplate: {}
-        oauth2ProxyTemplate: {}
+        oauth2ProxyTemplate:
+          overlay:
+            spec:
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                      - matchExpressions:
+                          - key: kubernetes.io/os
+                            operator: In
+                            values:
+                              - linux
+                          - key: kubernetes.io/arch
+                            operator: In
+                            values:
+                              - amd64
+              containers:
+                - name: proxy
+                  image: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG}
+
         oauth2SessionStoreTemplate:
           overlay:
             spec:
