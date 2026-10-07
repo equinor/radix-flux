@@ -144,7 +144,28 @@ spec:
         specialNodeTypes: {}
         jobSchedulerTemplate: {}
         jobSchedulerAuxTemplate: {}
-        pipelineRunnerTemplate: {}
+        pipelineRunnerTemplate:
+          overlay:
+            spec:
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                    - matchExpressions:
+                      - key: nodepooltasks
+                        operator: Exists
+                      - key: kubernetes.io/os
+                        operator: In
+                        values:
+                        - linux
+                      - key: kubernetes.io/arch
+                        operator: In
+                        values:
+                        - arm64
+                tolerations:
+                - effect: NoSchedule
+                  key: nodepooltasks
+                  operator: Exists
         oauth2ProxyTemplate:
           overlay:
             spec:
