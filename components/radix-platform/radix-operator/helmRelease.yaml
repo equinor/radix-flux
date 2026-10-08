@@ -166,6 +166,9 @@ spec:
                 - effect: NoSchedule
                   key: nodepooltasks
                   operator: Exists
+              initContainers:
+              - name: clone-config
+                image: docker.io/alpine/git:${GIT_CLONE_TAG}
         oauth2ProxyTemplate:
           overlay:
             spec:
@@ -173,18 +176,18 @@ spec:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:
                     nodeSelectorTerms:
-                      - matchExpressions:
-                          - key: kubernetes.io/os
-                            operator: In
-                            values:
-                              - linux
-                          - key: kubernetes.io/arch
-                            operator: In
-                            values:
-                              - amd64
+                    - matchExpressions:
+                      - key: kubernetes.io/os
+                        operator: In
+                        values:
+                        - linux
+                      - key: kubernetes.io/arch
+                        operator: In
+                        values:
+                        - amd64
               containers:
-                - name: proxy
-                  image: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG}
+              - name: proxy
+                image: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG}
 
         oauth2SessionStoreTemplate:
           overlay:
@@ -193,19 +196,19 @@ spec:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:
                     nodeSelectorTerms:
-                      - matchExpressions:
-                          - key: kubernetes.io/os
-                            operator: In
-                            values:
-                              - linux
-                          - key: kubernetes.io/arch
-                            operator: In
-                            values:
-                              - amd64
+                    - matchExpressions:
+                      - key: kubernetes.io/os
+                        operator: In
+                        values:
+                        - linux
+                      - key: kubernetes.io/arch
+                        operator: In
+                        values:
+                        - amd64
 
               containers:
-                - name: session-store
-                  image: docker.io/redis:${OAUTH2REDIS_TAG}
+              - name: session-store
+                image: docker.io/redis:${OAUTH2REDIS_TAG}
 
     ingress:
       certificate:
