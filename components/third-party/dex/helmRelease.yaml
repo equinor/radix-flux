@@ -1,0 +1,111 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: dex
+  namespace: dex
+spec:
+  releaseName: dex
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  chartRef:
+    kind: OCIRepository
+    name: dex-chart
+    namespace: flux-system
+  values:
+    envFrom:
+      - secretRef:
+          name: dex-secrets
+
+    envVars:
+      # Created manually, not managed by Flux
+      - name: DEX_CLIENT_RIHAG_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: dex-client-rihag
+            key: clientSecret
+
+    config:
+      issuer: https://auth.${dnsZone}
+
+      storage:
+        type: kubernetes
+        config:
+          inCluster: true
+
+      oauth2:
+        skipApprovalScreen: true
+
+      connectors:
+        - type: microsoft
+          id: microsoft
+          name: Equinor
+          config:
+            clientID: ${DEX_AZURE_CLIENT_ID}
+            # Escaped from Flux substitution; expanded by Dex at runtime
+            clientSecret: $${DEX_AZURE_CLIENT_SECRET}
+            tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+            redirectURI: https://auth.${dnsZone}/callback
+
+      staticClients:
+        - id: rihag.dev.radix.equinor.com
+          name: rihag
+          secretEnv: DEX_CLIENT_RIHAG_SECRET
+          redirectURIs:
+            - https://rihag.dev.radix.equinor.com/oauth2/callback
+
+    httpRoute:
+      enabled: true
+      parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: Gateway
+          name: gateway
+          namespace: istio-system
+          sectionName: https
+      hostnames:
+        - auth.${dnsZone}
+      rules:
+        - matches:
+            - path:
+                type: PathPrefix
+                value: /
+          filters:
+            - type: ResponseHeaderModifier
+              responseHeaderModifier:
+                add:
+                  - name: Strict-Transport-Security
+                    value: max-age=31536000; includeSubDomains
+
+    podSecurityContext:
+      runAsNonRoot: true
+      seccompProfile:
+        type: RuntimeDefault
+
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+          - ALL
+
+    resources:
+      limits:
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
+
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/os
+                  operator: In
+                  values:
+                    - linux
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                    - amd64

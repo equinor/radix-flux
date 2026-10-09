@@ -1,0 +1,25 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: dex
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "./components/third-party/dex"
+  dependsOn:
+    - name: external-secrets-operator
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: radix-flux-config
+    substitute:
+      DEX_CHART_VERSION: 0.25.2 # {"$imagepolicy": "flux-system:dex-chart:tag"}
+      DEX_AZURE_CLIENT_ID: 62477cbd-ddbe-4903-9d60-a071209277a1 # gitleaks:allow
+      EXTERNAL_SECRET_URL: https://radix-keyv-dev.vault.azure.net/
+      EXTERNAL_SECRET_MI_CLIENT_ID: b3f4e788-84bd-458e-9f49-d62f1c325a8d # gitleaks:allow
+  wait: true
+  timeout: 2m
