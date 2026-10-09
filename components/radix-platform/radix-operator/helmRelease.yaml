@@ -169,6 +169,8 @@ spec:
               initContainers:
               - name: clone-config
                 image: docker.io/alpine/git:${GIT_CLONE_TAG}
+                imagePullPolicy: IfNotPresent
+
         oauth2ProxyTemplate:
           overlay:
             spec:
@@ -205,7 +207,6 @@ spec:
                         operator: In
                         values:
                         - amd64
-
               containers:
               - name: session-store
                 image: docker.io/redis:${OAUTH2REDIS_TAG}
