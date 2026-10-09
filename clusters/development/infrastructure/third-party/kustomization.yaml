@@ -4,6 +4,7 @@ resources:
   - azure-workload-identity.yaml
   - blob-csi-driver.yaml
   - cert-manager-issuers.yaml
+  - dex.yaml
   - cert-manager.yaml
   - external-secrets-operator.yaml
   - external-secrets-secrets.yaml
