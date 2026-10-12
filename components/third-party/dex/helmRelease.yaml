@@ -26,6 +26,15 @@ spec:
             name: dex-client-rihag
             key: clientSecret
 
+    # Entrypoint renders the config to /tmp before starting
+    volumes:
+      - name: tmp
+        emptyDir:
+          sizeLimit: 10Mi
+    volumeMounts:
+      - name: tmp
+        mountPath: /tmp
+
     config:
       issuer: https://simpleauth.${dnsZone}
 
