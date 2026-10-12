@@ -28,14 +28,14 @@ spec:
       enabled: true
     securityContext:
       readOnlyRootFilesystem: true
-    volumes:
+    extraVolumes:
       - name: tmp
         emptyDir:
           sizeLimit: 1M
       - name: azurehome
         emptyDir:
           sizeLimit: 100M
-    volumeMounts:
+    extraVolumeMounts:
       - name: tmp
         mountPath: /tmp
       - name: azurehome
