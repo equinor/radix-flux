@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: 3914-move-radix-acr-cleanup-from-default-to-radix-acr-cleanup-namespace
+    branch: master
   secretRef:
     name: flux-system
   url: ssh://git@github.com/equinor/radix-flux
