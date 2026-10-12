@@ -79,6 +79,9 @@ spec:
 
     podSecurityContext:
       runAsNonRoot: true
+      # Image sets a non-numeric USER (dex:dex = 1001:1001)
+      runAsUser: 1001
+      runAsGroup: 1001
       seccompProfile:
         type: RuntimeDefault
 
