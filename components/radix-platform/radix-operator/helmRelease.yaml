@@ -162,10 +162,10 @@ spec:
                         operator: In
                         values:
                         - arm64
-                tolerations:
-                - effect: NoSchedule
-                  key: nodepooltasks
-                  operator: Exists
+              tolerations:
+              - effect: NoSchedule
+                key: nodepooltasks
+                operator: Exists
               initContainers:
               - name: clone-config
                 image: docker.io/alpine/git:${GIT_CLONE_TAG}
