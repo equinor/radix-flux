@@ -45,6 +45,12 @@ spec:
 
       oauth2:
         skipApprovalScreen: true
+        #   # PKCE (Proof Key for Code Exchange) configuration
+        pkce:
+          # If true, PKCE is required for all authorization code flows (OAuth 2.1).
+          enforce: false
+          # Supported code challenge methods. Defaults to ["S256", "plain"].
+          codeChallengeMethodsSupported: ["S256"]
 
       connectors:
         - type: microsoft
