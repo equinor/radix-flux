@@ -32,14 +32,9 @@ spec:
       - name: tmp
         emptyDir:
           sizeLimit: 1M
-      - name: azurehome
-        emptyDir:
-          sizeLimit: 100M
     extraVolumeMounts:
       - name: tmp
         mountPath: /tmp
-      - name: azurehome
-        mountPath: /home/nonroot/.azure
     resources:
       limits:
         cpu: "2"
