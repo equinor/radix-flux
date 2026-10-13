@@ -7,4 +7,5 @@ resources:
   - imagePolicy.yaml
   - secretStore.yaml
   - externalSecret.yaml
+  - error-template.yaml
   - helmRelease.yaml

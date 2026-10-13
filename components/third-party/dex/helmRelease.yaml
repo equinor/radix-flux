@@ -31,12 +31,24 @@ spec:
       - name: tmp
         emptyDir:
           sizeLimit: 10Mi
+      - name: error-template
+        configMap:
+          name: dex-error-template
     volumeMounts:
       - name: tmp
         mountPath: /tmp
+      - name: error-template
+        mountPath: /srv/dex/web/templates/error.html
+        subPath: error.html
+        readOnly: true
 
     config:
       issuer: https://simpleauth.${dnsZone}
+
+      frontend:
+        dir: /srv/dex/web
+        issuer: Radix
+        theme: light
 
       storage:
         type: kubernetes
