@@ -387,7 +387,7 @@ spec:
       ingress:
         enabled: false
       prometheusSpec:
-        enableAdminAPI: true
+        enableAdminAPI: false
         image:
           registry: ${cacheRegistry}
 
