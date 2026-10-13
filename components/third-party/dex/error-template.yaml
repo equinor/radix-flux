@@ -49,11 +49,9 @@ data:
             text-decoration: none;
           }
 
-          .brand-mark {
-            background: #ff1243;
-            border-radius: 2px;
-            height: 18px;
-            width: 3px;
+          .brand-logo {
+            height: 32px;
+            width: 32px;
           }
 
           .page {
@@ -122,7 +120,16 @@ data:
       </head>
       <body>
         <header class="topbar">
-          <span class="brand"><span class="brand-mark" aria-hidden="true"></span>Radix</span>
+          <span class="brand">
+            <svg class="brand-logo" viewBox="0 0 48 48" role="img" aria-label="Radix">
+              <g fill="none" stroke="#FF1243" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19.5010505 19.0323946c-.1606586-2.4745046.6549939-5.9524726 2.3607749-8.6755137C24.1748936 6.6643915 27.8748111 4.5 33 4.5h.5v.5c0 10.0701025-5.4406847 14.9048912-13.525049 14.4993722l-.445031-.0223232z" />
+                <path d="M27 11c-3.3333333 2.6666667-5.6666667 5.3333333-7 8-2.6666667 4 0 12 7 24" />
+                <path d="M22 33c5.6666667 4 11.3333333 5.4166667 17 4.25M24 38c-4 3.3333333-8 4.3333333-12 3M20 29c-1 4-4 8-12 9" />
+              </g>
+            </svg>
+            Radix
+          </span>
         </header>
         <main class="page">
           <section class="error-panel" role="alert">
