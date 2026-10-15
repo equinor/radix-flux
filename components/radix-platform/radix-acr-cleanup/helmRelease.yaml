@@ -16,7 +16,6 @@ spec:
     clusterType: ${clusterType} # Read from radix-flux-config configmap
     activeClusterName: ${ACTIVE_CLUSTER} # Set by zone-specific overlay
     currentClusterName: ${clusterName} # set in radix-flux-config configmap
-    subscriptionId: ${subscriptionId} # set in radix-flux-config configmap
     registry: ${imageRegistry}
     azureClientId: ${radixIdAcrCleanup}
     deleteUntagged: true
