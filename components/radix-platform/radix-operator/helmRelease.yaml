@@ -139,8 +139,7 @@ spec:
             audience: ${kubernetesIssuerUrl}
 
       runtime:
-        architectures: {}
-        defaultArchitecture: {}
+        defaultArchitecture: amd64
         specialNodeTypes: {}
         jobSchedulerTemplate: {}
         jobSchedulerAuxTemplate: {}
@@ -151,25 +150,33 @@ spec:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:
                     nodeSelectorTerms:
-                    - matchExpressions:
-                      - key: nodepooltasks
-                        operator: Exists
-                      - key: kubernetes.io/os
-                        operator: In
-                        values:
-                        - linux
-                      - key: kubernetes.io/arch
-                        operator: In
-                        values:
-                        - arm64
+                      - matchExpressions:
+                          - key: nodepooltasks
+                            operator: Exists
+                          - key: kubernetes.io/os
+                            operator: In
+                            values:
+                              - linux
+                          - key: kubernetes.io/arch
+                            operator: In
+                            values:
+                              - arm64
               tolerations:
-              - effect: NoSchedule
-                key: nodepooltasks
-                operator: Exists
+                - effect: NoSchedule
+                  key: nodepooltasks
+                  operator: Exists
               initContainers:
-              - name: clone-config
-                image: docker.io/alpine/git:${GIT_CLONE_TAG}
-                imagePullPolicy: IfNotPresent
+                - name: clone-config
+                  image: docker.io/alpine/git:${GIT_CLONE_TAG}
+                  imagePullPolicy: IfNotPresent
+
+        pipelineBuilderTemplate:
+          overlay:
+            spec:
+              containers:
+                - name: builder
+                  image: docker.io/alpine/git:${GIT_CLONE_TAG}
+                  imagePullPolicy: IfNotPresent
 
         oauth2ProxyTemplate:
           overlay:
@@ -178,18 +185,18 @@ spec:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:
                     nodeSelectorTerms:
-                    - matchExpressions:
-                      - key: kubernetes.io/os
-                        operator: In
-                        values:
-                        - linux
-                      - key: kubernetes.io/arch
-                        operator: In
-                        values:
-                        - amd64
+                      - matchExpressions:
+                          - key: kubernetes.io/os
+                            operator: In
+                            values:
+                              - linux
+                          - key: kubernetes.io/arch
+                            operator: In
+                            values:
+                              - amd64
               containers:
-              - name: proxy
-                image: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG}
+                - name: proxy
+                  image: quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2PROXY_TAG}
 
         oauth2SessionStoreTemplate:
           overlay:
@@ -198,18 +205,78 @@ spec:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:
                     nodeSelectorTerms:
-                    - matchExpressions:
-                      - key: kubernetes.io/os
-                        operator: In
-                        values:
-                        - linux
-                      - key: kubernetes.io/arch
-                        operator: In
-                        values:
-                        - amd64
+                      - matchExpressions:
+                          - key: kubernetes.io/os
+                            operator: In
+                            values:
+                              - linux
+                          - key: kubernetes.io/arch
+                            operator: In
+                            values:
+                              - amd64
               containers:
-              - name: session-store
-                image: docker.io/redis:${OAUTH2REDIS_TAG}
+                - name: session-store
+                  image: docker.io/redis:${OAUTH2REDIS_TAG}
+
+        architectures:
+          amd64:
+            pipelineBuilderOverlayPodSpec:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: nodepooltasks
+                          operator: Exists
+                        - key: kubernetes.io/os
+                          operator: In
+                          values:
+                            - linux
+                        - key: kubernetes.io/arch
+                          operator: In
+                          values:
+                            - amd64
+
+          arm64:
+            pipelineBuilderOverlayPodSpec:
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                      - matchExpressions:
+                          - key: nodepooltasks
+                            operator: Exists
+                          - key: kubernetes.io/os
+                            operator: In
+                            values:
+                              - linux
+                          - key: kubernetes.io/arch
+                            operator: In
+                            values:
+                              - arm64
+            # jobPodSpec:
+            #   nodeAffinity:
+            #     requiredDuringSchedulingIgnoredDuringExecution:
+            #       nodeSelectorTerms:
+            #         - matchExpressions:
+            #             - key: "kubernetes.io/arch"
+            #               operator: "In"
+            #               values:
+            #                 - "arm64"
+            #         - matchExpressions:
+            #             - key: "node.kubernetes.io/pipeline"
+            #               operator: "Exists"
+            # componentPodSpec:
+            #   nodeAffinity:
+            #     requiredDuringSchedulingIgnoredDuringExecution:
+            #       nodeSelectorTerms:
+            #         - matchExpressions:
+            #             - key: "kubernetes.io/arch"
+            #               operator: "In"
+            #               values:
+            #                 - "arm64"
+            #         - matchExpressions:
+            #             - key: "node.kubernetes.io/userpool"
+            #               operator: "Exists"
 
     ingress:
       certificate:
