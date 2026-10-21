@@ -95,9 +95,6 @@ spec:
               level: "baseline"
               version: "v1.23"
 
-        jobSchedulerAuxImage:
-          tag: ${JOBAUX_TAG}
-
         gateway:
           name: "gateway"
           namespace: "istio-system"
@@ -178,7 +175,7 @@ spec:
                               - amd64
               containers:
                 - name: aux
-                  image: docker.io/bash:5.3.20-alpine3.24
+                  image: docker.io/bash:${JOBAUX_TAG}
                   imagePullPolicy: IfNotPresent
 
         pipelineRunnerTemplate:
