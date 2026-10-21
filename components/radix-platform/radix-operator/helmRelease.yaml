@@ -160,7 +160,27 @@ spec:
                             values:
                               - amd64
 
-        jobSchedulerAuxTemplate: {}
+        jobSchedulerAuxTemplate:
+          overlay:
+            spec:
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                      - matchExpressions:
+                          - key: kubernetes.io/os
+                            operator: In
+                            values:
+                              - linux
+                          - key: kubernetes.io/arch
+                            operator: In
+                            values:
+                              - amd64
+              containers:
+                - name: aux
+                  image: docker.io/bash:5.3.20-alpine3.24
+                  imagePullPolicy: IfNotPresent
+
         pipelineRunnerTemplate:
           overlay:
             spec:
