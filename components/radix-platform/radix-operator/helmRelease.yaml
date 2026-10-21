@@ -95,6 +95,10 @@ spec:
               level: "baseline"
               version: "v1.23"
 
+        # TODO: Delete after operator has been released without this field
+        jobSchedulerAuxImage:
+          tag: ${JOBAUX_TAG}
+
         gateway:
           name: "gateway"
           namespace: "istio-system"
