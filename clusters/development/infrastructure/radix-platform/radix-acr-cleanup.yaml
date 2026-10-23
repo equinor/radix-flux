@@ -23,7 +23,7 @@ spec:
         kind: HelmRelease
         metadata:
           name: radix-acr-cleanup
-          namespace: default
+          namespace: radix-acr-cleanup
         spec:
           values:
             deleteUntagged: false
@@ -32,7 +32,7 @@ spec:
       target:
         kind: HelmRelease
         name: radix-acr-cleanup
-        namespace: default
+        namespace: radix-acr-cleanup
     - patch: |-
         # We patch the semver.range instead of using postBuild.substitute to avoid the $quote hack when substitution variable contains YAML control characters (> and *) https://fluxcd.io/flux/components/kustomize/kustomizations/#post-build-substitution-of-numbers-and-booleans
         apiVersion: image.toolkit.fluxcd.io/v1
