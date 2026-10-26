@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: zerocopy-module-monitor
-  namespace: kube-system
+  namespace: default
   labels:
     app: zerocopy-module-monitor
     purpose: security-mitigation
