@@ -41,6 +41,7 @@ spec:
               MODULES="nlmon nft_queue nfnetlink_queue cls_u32 act_pedit act_mirred esp4"
               HEARTBEAT_EVERY=60
               i=0
+              prev=""
 
               echo "{\"node\":\"$NODE_NAME\",\"status\":\"START\",\"monitor\":\"zdi-can-33367\",\"modules\":\"$MODULES\"}"
 
@@ -56,8 +57,10 @@ spec:
 
                 if [ -n "$found" ]; then
                   echo "{\"timestamp\":\"$ts\",\"node\":\"$NODE_NAME\",\"status\":\"ALERT\",\"monitor\":\"zdi-can-33367\",\"loaded_vulnerable_modules\":\"$found\"}"
-                elif [ $((i % HEARTBEAT_EVERY)) -eq 0 ]; then
+                  prev="ALERT"
+                elif [ "$prev" != "OK" ] || [ $((i % HEARTBEAT_EVERY)) -eq 0 ]; then
                   echo "{\"timestamp\":\"$ts\",\"node\":\"$NODE_NAME\",\"status\":\"OK\",\"monitor\":\"zdi-can-33367\",\"loaded_vulnerable_modules\":\"none\"}"
+                  prev="OK"
                 fi
 
                 i=$((i + 1))
