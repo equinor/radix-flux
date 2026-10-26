@@ -114,9 +114,20 @@ kind: ClusterRoleBinding
 metadata:
   name: avert-reader-binding
 subjects:
+  # avert-api-test service principal
   - apiGroup: rbac.authorization.k8s.io
     kind: User
-    name: "0ddd187b-d3d3-4b3f-a8df-dab2ebbb73d9"
+    name: "0ddd187b-d3d3-4b3f-a8df-dab2ebbb73d9" # Object id
+
+  # avert-api-prod
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: "92d79b9e-faf6-45f7-afa6-05fd4cd7bc6a" # Object id of `avert-api-prod` service principal
+
+  # avert-api-qa
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: "a5a3959b-514a-4577-b2f6-87580b6e1206" # Object id of `avert-api-qa` service principal
 roleRef:
   kind: ClusterRole
   name: avert-reader
