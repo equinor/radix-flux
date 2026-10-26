@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: zerocopy-module-monitor
+  namespace: kube-system
+  labels:
+    app: zerocopy-module-monitor
+    purpose: security-mitigation
+spec:
+  selector:
+    matchLabels:
+      app: zerocopy-module-monitor
+  template:
+    metadata:
+      labels:
+        app: zerocopy-module-monitor
+        purpose: security-mitigation
+    spec:
+      priorityClassName: system-node-critical
+      nodeSelector:
+        kubernetes.io/os: linux
+      tolerations:
+        - operator: Exists
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: monitor
+          image: mcr.microsoft.com/cbl-mariner/busybox:2.0
+          command:
+            - /bin/sh
+            - -c
+            - |
+              # ZDI-CAN-33367 (skb_zerocopy() LPE): logs if any module required by the public PoC is loaded.
+              # /proc/modules is global to the node kernel, so no host access is needed.
+              # Tracking: https://github.com/equinor/radix-private/issues/785
+              MODULES="nlmon nft_queue nfnetlink_queue cls_u32 act_pedit act_mirred esp4"
+              HEARTBEAT_EVERY=60
+              i=0
+
+              echo "{\"node\":\"$NODE_NAME\",\"status\":\"START\",\"monitor\":\"zdi-can-33367\",\"modules\":\"$MODULES\"}"
+
+              while true; do
+                found=""
+                for mod in $MODULES; do
+                  if grep -q "^$mod " /proc/modules; then
+                    found="$found,$mod"
+                  fi
+                done
+                found="${found#,}"
+                ts="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+                if [ -n "$found" ]; then
+                  echo "{\"timestamp\":\"$ts\",\"node\":\"$NODE_NAME\",\"status\":\"ALERT\",\"monitor\":\"zdi-can-33367\",\"loaded_vulnerable_modules\":\"$found\"}"
+                elif [ $((i % HEARTBEAT_EVERY)) -eq 0 ]; then
+                  echo "{\"timestamp\":\"$ts\",\"node\":\"$NODE_NAME\",\"status\":\"OK\",\"monitor\":\"zdi-can-33367\",\"loaded_vulnerable_modules\":\"none\"}"
+                fi
+
+                i=$((i + 1))
+                sleep 10
+              done
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          resources:
+            requests:
+              cpu: 5m
+              memory: 8Mi
+            limits:
+              memory: 32Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
