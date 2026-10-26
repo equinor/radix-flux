@@ -122,12 +122,12 @@ subjects:
   # avert-api-prod
   - apiGroup: rbac.authorization.k8s.io
     kind: User
-    name: "92d79b9e-faf6-45f7-afa6-05fd4cd7bc6a" # Object id of `avert-api-prod` service principal
+    name: "92d79b9e-faf6-45f7-afa6-05fd4cd7bc6a" # Object id
 
   # avert-api-qa
   - apiGroup: rbac.authorization.k8s.io
     kind: User
-    name: "a5a3959b-514a-4577-b2f6-87580b6e1206" # Object id of `avert-api-qa` service principal
+    name: "a5a3959b-514a-4577-b2f6-87580b6e1206" # Object id
 roleRef:
   kind: ClusterRole
   name: avert-reader
