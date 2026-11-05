@@ -173,11 +173,14 @@ spec:
         pipelineBuilderTemplate:
           overlay:
             spec:
-              containers:
-                - name: builder
+              initContainers:
+                - name: clone
                   image: docker.io/alpine/git:${GIT_CLONE_TAG}
                   imagePullPolicy: IfNotPresent
-
+              containers:
+                - name: build
+                  image: ghcr.io/equinor/radix/buildkit-builder:${RADIX_BUILDKIT_IMAGE_BUILDER_TAG}
+                  imagePullPolicy: IfNotPresent
         oauth2ProxyTemplate:
           overlay:
             spec:
@@ -220,7 +223,7 @@ spec:
 
         architectures:
           amd64:
-            pipelineBuilderOverlayPodSpec:
+            builderTemplate:
               nodeAffinity:
                 requiredDuringSchedulingIgnoredDuringExecution:
                   nodeSelectorTerms:
@@ -235,9 +238,13 @@ spec:
                           operator: In
                           values:
                             - amd64
+              tolerations:
+                - effect: NoSchedule
+                  key: nodepooltasks
+                  operator: Exists
 
           arm64:
-            pipelineBuilderOverlayPodSpec:
+            builderTemplate:
               affinity:
                 nodeAffinity:
                   requiredDuringSchedulingIgnoredDuringExecution:
@@ -253,30 +260,57 @@ spec:
                             operator: In
                             values:
                               - arm64
-            # jobPodSpec:
-            #   nodeAffinity:
-            #     requiredDuringSchedulingIgnoredDuringExecution:
-            #       nodeSelectorTerms:
-            #         - matchExpressions:
-            #             - key: "kubernetes.io/arch"
-            #               operator: "In"
-            #               values:
-            #                 - "arm64"
-            #         - matchExpressions:
-            #             - key: "node.kubernetes.io/pipeline"
-            #               operator: "Exists"
-            # componentPodSpec:
-            #   nodeAffinity:
-            #     requiredDuringSchedulingIgnoredDuringExecution:
-            #       nodeSelectorTerms:
-            #         - matchExpressions:
-            #             - key: "kubernetes.io/arch"
-            #               operator: "In"
-            #               values:
-            #                 - "arm64"
-            #         - matchExpressions:
-            #             - key: "node.kubernetes.io/userpool"
-            #               operator: "Exists"
+              tolerations:
+                - effect: NoSchedule
+                  key: nodepooltasks
+                  operator: Exists
+        nodeTypes:
+          "memory-optimized-2-v1":
+            disabled: false
+            description: "1946 GB memory, 96 cores Intel Xeon 4th Gen Scalable (Sapphire Rapids)"
+            architecture: amd64
+            builderTemplate:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: nodepooltasks
+                          operator: Exists
+                        - key: kubernetes.io/os
+                          operator: In
+                          values:
+                            - linux
+                        - key: kubernetes.io/arch
+                          operator: In
+                          values:
+                            - amd64
+              tolerations:
+                - effect: NoSchedule
+                  key: nodepooltasks
+                  operator: Exists
+          "gpu-nvidia-1-v1":
+            disabled: false
+            description: "1 x Nvidia PCIe H100 GPU 94 GB, 320 GB memory, 40 cores AMD EPYC (Genoa)"
+            architecture: amd64
+            builderTemplate:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: nodepooltasks
+                          operator: Exists
+                        - key: kubernetes.io/os
+                          operator: In
+                          values:
+                            - linux
+                        - key: kubernetes.io/arch
+                          operator: In
+                          values:
+                            - amd64
+              tolerations:
+                - effect: NoSchedule
+                  key: nodepooltasks
+                  operator: Exists
 
     ingress:
       certificate:
