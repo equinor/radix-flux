@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: azure-workload-identity
-  namespace: flux-system
-spec:
-  interval: 10m
-  url: https://azure.github.io/azure-workload-identity/charts
