@@ -18,6 +18,14 @@ spec:
     remediation:
       retries: 3
   values:
+    pushAllowedSourceNamespaces:
+      - ".*"
+    replicationEnabled:
+      secrets: true
+      configMaps: false
+      roles: false
+      roleBindings: false
+      serviceAccounts: false
     podLabels:
       grafana.radix.equinor.com/monitor-health: "true"
     image:
