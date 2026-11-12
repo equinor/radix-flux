@@ -42,22 +42,5 @@ spec:
                 cpu: 50m
                 memory: 256Mi
             podLabels: null
-            serviceAnnotations: null
-            cainjector:
-              resources:
-                limits:
-                  cpu: 5m
-                  memory: 100Mi
-                requests:
-                  cpu: 5m
-                  memory: 100Mi
-            webhook:
-              resources:
-                limits:
-                  cpu: 5m
-                  memory: 25Mi
-                requests:
-                  cpu: 5m
-                  memory: 25Mi
   wait: true
   timeout: 2m

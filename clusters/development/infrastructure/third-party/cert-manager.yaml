@@ -41,21 +41,5 @@ spec:
               requests:
                 cpu: 50m
                 memory: 256Mi
-            cainjector:
-              resources:
-                limits:
-                  cpu: 5m
-                  memory: 256Mi
-                requests:
-                  cpu: 5m
-                  memory: 256Mi
-            webhook:
-              resources:
-                limits:
-                  cpu: 5m
-                  memory: 128Mi
-                requests:
-                  cpu: 5m
-                  memory: 128Mi
   wait: true
   timeout: 2m
