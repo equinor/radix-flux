@@ -8,3 +8,6 @@ spec:
   url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
   ref:
     tag: ${KUBE_PROMETHEUS_STACK}
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
