@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: radix-easyauth-chart
+  namespace: flux-system
+spec:
+  image: ghcr.io/equinor/radix/charts/radix-easyauth
+  interval: 1m0s
