@@ -100,21 +100,10 @@ function create-pr() {
         echo "Create PR"
         PR_URL=$(gh pr create --title "${PR_NAME}" --base master --body "${PR_BODY}")
         if [[ ${PR_URL} ]]; then
-            curl --request POST \
-                --header 'Content-type: application/json' \
-                --data '{"text":"@omnia-radix Please review PR '${PR_URL}'","link_names":1}' \
-                --url ${SLACK_WEBHOOK_URL} \
-                --fail
-            return
+            printf -v PR_NAME '**Automatic Pull Request**\n\nZone: %s' "${ZONE}"
         elif [ "$retry_nr" -lt $MAX_RETRIES ]; then
             sleep $sleep_before_retry
             create-pr $(($retry_nr + 1))
-        else
-            curl --request POST \
-                --header 'Content-type: application/json' \
-                --data '{"text":"@omnia-radix Creating PR from '${GITHUB_REF_NAME}' to master failed. https://github.com/'${GITHUB_REPOSITORY}'/actions/runs/'${GITHUB_RUN_ID}'","link_names":1}' \
-                --url ${SLACK_WEBHOOK_URL}
-            return 1
         fi
     fi
 }

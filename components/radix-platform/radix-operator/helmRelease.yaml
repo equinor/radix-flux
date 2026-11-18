@@ -53,6 +53,17 @@ spec:
             oidc:
               issuerUrl: "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0"
               skipDiscovery: false
+        certificateAutomation:
+          defaultIssuer: digicert
+          issuers:
+            digicert:
+              clusterIssuerName: digicert-http01-gateway
+              renewBefore: 768h
+              duration: 2160h
+            letsencrypt:
+              clusterIssuerName: letsencrypt-http01
+              renewBefore: 768h
+              duration: 2160h
       pipelineRunner:
         containerRegistry: ${imageRegistry}
         cacheContainerRegistry: ${RADIX_APP_ACR_REPO_URL}
