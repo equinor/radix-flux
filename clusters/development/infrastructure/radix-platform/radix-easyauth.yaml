@@ -21,7 +21,7 @@ spec:
       RADIX_EASYAUTH_CHART_VERSION: 1.134.0-rc.2 # {"$imagepolicy": "flux-system:radix-easyauth-chart:tag"}
       EASYAUTH_ENTRA_CLIENT_ID: 62477cbd-ddbe-4903-9d60-a071209277a1 # Radix EasyAuth Dev # gitleaks:allow
       EASYAUTH_DEX_MI_CLIENT_ID: f8988038-ab21-4e57-b9a0-200eb6e255be # gitleaks:allow
-      EASYAUTH_DEX_MI_NAME: radix-id-easyauth-dex-dev
+      EASYAUTH_POSTGRES_USER: Radix SQL server admin - dev # Entra admin group on the Postgres server
       EASYAUTH_POSTGRES_HOST: psql-radix-easyauth-dev.postgres.database.azure.com
       EASYAUTH_DEFAULT_GROUP: a636269f-a967-45b2-bb4e-3e02dbb624a2 # Equinor All # gitleaks:allow
   patches:

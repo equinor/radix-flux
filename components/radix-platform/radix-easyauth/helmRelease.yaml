@@ -44,8 +44,9 @@ spec:
             host: ${EASYAUTH_POSTGRES_HOST}
             port: 5432
             database: dex
-            # Entra principal name of the Dex managed identity. The password is read from PGPASSFILE
-            user: ${EASYAUTH_DEX_MI_NAME}
+            # Name of the Entra admin group on the server, exactly as registered (case-sensitive). The Dex managed
+            # identity is a member of the group, and the password is its access token, read from PGPASSFILE
+            user: "${EASYAUTH_POSTGRES_USER}"
             ssl:
               mode: require
         connectors:
