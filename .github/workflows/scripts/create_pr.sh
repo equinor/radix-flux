@@ -104,6 +104,7 @@ function create-pr() {
         elif [ "$retry_nr" -lt $MAX_RETRIES ]; then
             sleep $sleep_before_retry
             create-pr $(($retry_nr + 1))
+        fi
     fi
 }
 
