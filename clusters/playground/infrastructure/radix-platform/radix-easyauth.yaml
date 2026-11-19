@@ -19,8 +19,8 @@ spec:
         name: radix-flux-config
     substitute:
       RADIX_EASYAUTH_CHART_VERSION: 1.134.0 # {"$imagepolicy": "flux-system:radix-easyauth-chart:tag"}
-      EASYAUTH_ENTRA_CLIENT_ID: 00000000-0000-0000-0000-000000000000 # TODO: client ID of Radix EasyAuth Playground # gitleaks:allow
-      EASYAUTH_DEX_MI_CLIENT_ID: 00000000-0000-0000-0000-000000000000 # TODO: client ID of radix-id-easyauth-dex-playground # gitleaks:allow
+      EASYAUTH_ENTRA_CLIENT_ID: 7425ed4d-d8f8-48ed-bc89-a57d3dd2a9a2 # client ID of Radix EasyAuth Playground # gitleaks:allow
+      EASYAUTH_DEX_MI_CLIENT_ID: 0ad9ba51-a6e0-456e-871f-b57b869b22de # gitleaks:allow
       EASYAUTH_POSTGRES_USER: Radix SQL server admin - playground # Entra admin group on the Postgres server
-      EASYAUTH_POSTGRES_HOST: TODO-postgres-host # TODO: FQDN of psql-radix-easyauth-playground
-      EASYAUTH_DEFAULT_GROUP: a636269f-a967-45b2-bb4e-3e02dbb624a2 # Equinor All
+      EASYAUTH_POSTGRES_HOST: psql-radix-easyauth-playground.postgres.database.azure.com
+      EASYAUTH_DEFAULT_GROUP: a636269f-a967-45b2-bb4e-3e02dbb624a2 # Equinor All # gitleaks:allow
