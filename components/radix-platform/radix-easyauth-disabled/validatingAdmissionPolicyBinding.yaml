@@ -1,0 +1,7 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: easyauth-disabled.radix.equinor.com
+spec:
+  policyName: easyauth-disabled.radix.equinor.com
+  validationActions: [Deny]

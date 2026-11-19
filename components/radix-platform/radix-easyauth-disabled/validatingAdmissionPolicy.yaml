@@ -1,0 +1,25 @@
+# Rejects the EasyAuth annotations on RadixApplications in clusters where radix-easyauth is not installed,
+# so users don't believe their application is protected by EasyAuth when it is not.
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: easyauth-disabled.radix.equinor.com
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ["radix.equinor.com"]
+        apiVersions: ["*"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["radixapplications"]
+  # Allow finalizers to be removed from RadixApplications being deleted
+  matchConditions:
+    - name: not-deleting
+      expression: "!has(object.metadata.deletionTimestamp)"
+  validations:
+    - expression: "!has(object.metadata.annotations) || !('easyauth.radix.equinor.com' in object.metadata.annotations)"
+      message: "EasyAuth is not available in this cluster. Remove the annotation easyauth.radix.equinor.com from radixconfig.yaml"
+      reason: Invalid
+    - expression: "!has(object.metadata.annotations) || !('easyauth.radix.equinor.com/allowed-identities' in object.metadata.annotations)"
+      message: "EasyAuth is not available in this cluster. Remove the annotation easyauth.radix.equinor.com/allowed-identities from radixconfig.yaml"
+      reason: Invalid
