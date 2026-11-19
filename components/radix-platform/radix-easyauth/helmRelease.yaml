@@ -1,0 +1,146 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: radix-easyauth
+  namespace: radix-easyauth
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  chartRef:
+    kind: OCIRepository
+    name: radix-easyauth-chart
+    namespace: flux-system
+  values:
+    fullnameOverride: radix-easyauth
+    config:
+      enforced: false
+      issuerUrl: https://easyauth.${clusterName}.${dnsZone}
+      clusterName: ${clusterName} # set in configmap flux-system/radix-flux-config
+      dnsZone: ${dnsZone} # set in configmap flux-system/radix-flux-config
+      appAliasBaseURL: ${appAliasBaseURL} # set in configmap flux-system/radix-flux-config
+      oauth2:
+        allowedGroups:
+          - ${EASYAUTH_DEFAULT_GROUP}
+        groupClaim: groups
+        scope: openid profile email groups offline_access
+        setAuthorizationHeader: false
+        setXAuthRequestHeaders: false
+        setUserHeaders: true
+        sessionStoreType: systemManaged
+    serviceMonitor:
+      enabled: true
+      
+    dex:
+      image:
+        tag: v2.46.1
+      podLabels:
+        azure.workload.identity/use: "true"
+      serviceAccount:
+        annotations:
+          azure.workload.identity/client-id: ${EASYAUTH_DEX_MI_CLIENT_ID}
+      serviceMonitor:
+        enabled: true
+      config:
+        storage:
+          type: postgres
+          config:
+            host: ${EASYAUTH_POSTGRES_HOST}
+            port: 5432
+            database: dex
+            # Name of the Entra admin group on the server, exactly as registered (case-sensitive). The Dex managed
+            # identity is a member of the group, and the password is its access token, read from PGPASSFILE
+            user: "${EASYAUTH_POSTGRES_USER}"
+            ssl:
+              mode: require
+        connectors:
+          - type: microsoft
+            id: azuread
+            name: Equinor
+            config:
+              clientID: ${EASYAUTH_ENTRA_CLIENT_ID}
+              # Workload identity token, federated with the app registration
+              clientAssertion: /var/run/secrets/azure/tokens/azure-identity-token
+              tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+              redirectURI: https://easyauth.${clusterName}.${dnsZone}/callback
+              groupNameFormat: id
+              onlySecurityGroups: true
+      extraEnv:
+        - name: PGPASSFILE
+          value: /var/run/pgpass/pgpass
+      extraVolumes:
+        - name: pgpass
+          emptyDir:
+            medium: Memory
+        - name: azure-cli-home
+          emptyDir: {}
+        # az needs a writable temporary directory, since the root filesystem is read-only
+        - name: azure-cli-tmp
+          emptyDir: {}
+      extraVolumeMounts:
+        - name: pgpass
+          mountPath: /var/run/pgpass
+          readOnly: true
+      # Native sidecar that keeps an Entra token for Postgres in the pgpass file read by Dex. Dex (lib/pq) reads
+      # PGPASSFILE for every new connection, so a refreshed token is used without restarting Dex.
+      # Shell variables are escaped as $${VAR} to avoid Flux post-build substitution.
+      initContainers:
+        - name: fetch-token
+          image: mcr.microsoft.com/azure-cli:2.93.0
+          restartPolicy: Always
+          env:
+            - name: HOME
+              value: /home/az
+          volumeMounts:
+            - name: pgpass
+              mountPath: /var/run/pgpass
+            - name: azure-cli-home
+              mountPath: /home/az
+            - name: azure-cli-tmp
+              mountPath: /tmp
+          startupProbe:
+            exec:
+              command: ["sh", "-c", "[ -s /var/run/pgpass/pgpass ]"] # Check token exist and is not empty
+            periodSeconds: 5
+            failureThreshold: 60
+          command:
+            - sh
+            - -c
+            - |
+              set -eu
+              # lib/pq ignores a pgpass file readable by group or others
+              umask 077
+              while true; do
+                echo "$(date): Fetching token..."
+                az login --service-principal --username "$${AZURE_CLIENT_ID}" --tenant "$${AZURE_TENANT_ID}" --federated-token "$(cat "$${AZURE_FEDERATED_TOKEN_FILE}")" --allow-no-subscriptions --output none
+                token="$(az account get-access-token --resource-type oss-rdbms --query accessToken --output tsv)"
+
+                # pgpass format is hostname:port:database:username:password. Write atomically, since Dex can read it at any time
+                printf '*:*:*:*:%s\n' "$${token}" > /var/run/pgpass/pgpass.tmp
+                mv -f /var/run/pgpass/pgpass.tmp /var/run/pgpass/pgpass
+
+                # Refresh 10 minutes before the token expires. The JWT payload is base64url encoded
+                sleepSeconds="$(jq -R 'split(".") | .[1] | @base64d | fromjson | .exp - now - 120 | floor' /var/run/pgpass/pgpass)"
+
+                [ "$${sleepSeconds}" -lt 60 ] && sleepSeconds=60
+                echo "$(date): Sleeping for $${sleepSeconds} seconds..."
+                sleep "$${sleepSeconds}"
+              done
+          securityContext:
+            # Same user as Dex, so Dex can read the pgpass file with mode 0600
+            runAsUser: 1001
+            runAsGroup: 1001
+            privileged: false
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+      httpRoute:
+        parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: Gateway
+            name: gateway
+            namespace: istio-system
+            sectionName: https

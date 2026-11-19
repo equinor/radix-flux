@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: radix-easyauth-chart
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: oci://ghcr.io/equinor/radix/charts/radix-easyauth
+  ref:
+    tag: ${RADIX_EASYAUTH_CHART_VERSION} # Set in cluster postBuild.yaml
