@@ -70,6 +70,9 @@ spec:
             medium: Memory
         - name: azure-cli-home
           emptyDir: {}
+        # az needs a writable temporary directory, since the root filesystem is read-only
+        - name: azure-cli-tmp
+          emptyDir: {}
       extraVolumeMounts:
         - name: pgpass
           mountPath: /var/run/pgpass
@@ -89,6 +92,8 @@ spec:
               mountPath: /var/run/pgpass
             - name: azure-cli-home
               mountPath: /home/az
+            - name: azure-cli-tmp
+              mountPath: /tmp
           startupProbe:
             exec:
               command: ["sh", "-c", "[ -s /var/run/pgpass/pgpass ]"] # Check token exist and is not empty
