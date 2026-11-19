@@ -5,7 +5,7 @@ resources:
   - radix-cicd-canary.yaml
   - radix-cluster-cleanup.yaml
   - radix-cost-allocation.yaml
-#  - radix-easyauth.yaml
+  - radix-easyauth.yaml
   - radix-operator.yaml
   - radix-platform.yaml
   - radix-web-console.yaml

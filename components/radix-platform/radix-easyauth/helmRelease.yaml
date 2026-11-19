@@ -29,6 +29,9 @@ spec:
         setXAuthRequestHeaders: false
         setUserHeaders: true
         sessionStoreType: systemManaged
+    serviceMonitor:
+      enabled: true
+      
     dex:
       image:
         tag: v2.46.1
@@ -37,6 +40,8 @@ spec:
       serviceAccount:
         annotations:
           azure.workload.identity/client-id: ${EASYAUTH_DEX_MI_CLIENT_ID}
+      serviceMonitor:
+        enabled: true
       config:
         storage:
           type: postgres
