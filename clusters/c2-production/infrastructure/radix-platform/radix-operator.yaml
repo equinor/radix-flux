@@ -28,3 +28,20 @@ spec:
       RADIX_PIPELINE_GIT_CLONE_NSLOOKUP_IMAGE: radixc2cache.azurecr.io/alpine:3.20
       RADIX_SECCOMP_PROFILE_INSTALLER_IMAGE: radixc2cache.azurecr.io/alpine:3.20
       SECCOMP_IMAGE_TAG: 3.22.1
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2
+        kind: HelmRelease
+        metadata:
+          name: radix-operator
+          namespace: default
+        spec:
+          values:
+            config:
+              common:
+                certificateAutomation:
+                  defaultIssuer: letsencrypt
+      target:
+        kind: HelmRelease
+        name: radix-operator
+        namespace: default
