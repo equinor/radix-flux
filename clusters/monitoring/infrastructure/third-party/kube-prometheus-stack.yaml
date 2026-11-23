@@ -52,7 +52,7 @@ spec:
                   requests:
                     cpu: 1
                     memory: 7Gi
-                additionalScrapeConfigs: 
+                additionalScrapeConfigs:
                   - job_name: "federated-prod.radix.equinor.com"
                     honor_labels: true
                     scrape_interval: 15s
@@ -60,10 +60,10 @@ spec:
                     metrics_path: /federate
                     scheme: https
                     authorization:
-                      type:  Bearer
+                      type: Bearer
                       credentials_file: /var/run/secrets/scraper-tokens/scraper-token
                     params:
-                      'match[]':
+                      "match[]":
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_limits"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
@@ -103,10 +103,10 @@ spec:
                     metrics_path: /federate
                     scheme: https
                     authorization:
-                      type:  Bearer
+                      type: Bearer
                       credentials_file: /var/run/secrets/scraper-tokens/scraper-token
                     params:
-                      'match[]':
+                      "match[]":
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_limits"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
@@ -146,10 +146,10 @@ spec:
                     metrics_path: /federate
                     scheme: https
                     authorization:
-                      type:  Bearer
+                      type: Bearer
                       credentials_file: /var/run/secrets/scraper-tokens/scraper-token
                     params:
-                      'match[]':
+                      "match[]":
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_limits"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
@@ -189,10 +189,10 @@ spec:
                     metrics_path: /federate
                     scheme: https
                     authorization:
-                      type:  Bearer
+                      type: Bearer
                       credentials_file: /var/run/secrets/scraper-tokens/scraper-token
                     params:
-                      'match[]':
+                      "match[]":
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_limits"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
@@ -232,10 +232,10 @@ spec:
                     metrics_path: /federate
                     scheme: https
                     authorization:
-                      type:  Bearer
+                      type: Bearer
                       credentials_file: /var/run/secrets/scraper-tokens/scraper-token
                     params:
-                      'match[]':
+                      "match[]":
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_requests"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_resource_limits"}'
                         - '{job="kube-state-metrics",__name__="kube_pod_container_status_terminated_reason"}'
@@ -269,12 +269,12 @@ spec:
                           RadixCluster: dev
 
                   # blackbox probing of apis dev
-                  - job_name: 'uptime-probe-dev'
+                  - job_name: "uptime-probe-dev"
                     metrics_path: /probe
                     scrape_interval: 10s
                     scrape_timeout: 10s
                     params:
-                      module: [http_2xx]  # Look for a HTTP 200 response.
+                      module: [http_2xx] # Look for a HTTP 200 response.
                     static_configs:
                       - targets:
                           - https://api.dev.radix.equinor.com/health/
@@ -294,12 +294,12 @@ spec:
                         replacement: prometheus-blackbox-exporter:9115
 
                   # blackbox probing of apis playground
-                  - job_name: 'uptime-probe-playground'
+                  - job_name: "uptime-probe-playground"
                     metrics_path: /probe
                     scrape_interval: 10s
                     scrape_timeout: 10s
                     params:
-                      module: [http_2xx]  # Look for a HTTP 200 response.
+                      module: [http_2xx] # Look for a HTTP 200 response.
                     static_configs:
                       - targets:
                           - https://api.playground.radix.equinor.com/health/
@@ -319,12 +319,12 @@ spec:
                         replacement: prometheus-blackbox-exporter:9115
 
                   # blackbox probing of apis prod
-                  - job_name: 'uptime-probe-prod'
+                  - job_name: "uptime-probe-prod"
                     metrics_path: /probe
                     scrape_interval: 10s
                     scrape_timeout: 10s
                     params:
-                      module: [http_2xx]  # Look for a HTTP 200 response.
+                      module: [http_2xx] # Look for a HTTP 200 response.
                     static_configs:
                       - targets:
                           - https://api.radix.equinor.com/health/
@@ -344,12 +344,12 @@ spec:
                         replacement: prometheus-blackbox-exporter:9115
 
                   # blackbox probing of apis on c2
-                  - job_name: 'uptime-probe-c2prod'
+                  - job_name: "uptime-probe-c2prod"
                     metrics_path: /probe
                     scrape_interval: 10s
                     scrape_timeout: 10s
                     params:
-                      module: [http_2xx]  # Look for a HTTP 200 response.
+                      module: [http_2xx] # Look for a HTTP 200 response.
                     static_configs:
                       - targets:
                           - https://api.c2.radix.equinor.com/health/
@@ -369,12 +369,12 @@ spec:
                         replacement: prometheus-blackbox-exporter:9115
 
                   # blackbox probing of apis on c3
-                  - job_name: 'uptime-probe-c3'
+                  - job_name: "uptime-probe-c3"
                     metrics_path: /probe
                     scrape_interval: 10s
                     scrape_timeout: 10s
                     params:
-                      module: [http_2xx]  # Look for a HTTP 200 response.
+                      module: [http_2xx] # Look for a HTTP 200 response.
                     static_configs:
                       - targets:
                           - https://api.c3.radix.equinor.com/health/
@@ -428,7 +428,8 @@ spec:
                 requests:
                   cpu: 10m
                   memory: 150Mi
-              extraArgs: []  
+              extraArgs: []
             additionalPrometheusRulesMap: null
+
   wait: true
   timeout: 2m
