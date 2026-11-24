@@ -55,6 +55,10 @@ spec:
             radixWebhook:
               requireAdGroups: false
               requireConfigurationItem: false
+            config:
+              common:
+                certificateAutomation:
+                  defaultIssuer: letsencrypt
       target:
         kind: HelmRelease
         name: radix-operator
