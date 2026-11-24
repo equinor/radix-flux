@@ -18,7 +18,7 @@ spec:
       - kind: ConfigMap
         name: radix-flux-config
     substitute:
-      RADIX_EASYAUTH_CHART_VERSION: 1.134.0 # {"$imagepolicy": "flux-system:radix-easyauth-chart:tag"}
+      RADIX_EASYAUTH_CHART_VERSION: 1.134.1-rc.2 # {"$imagepolicy": "flux-system:radix-easyauth-chart:tag"}
       EASYAUTH_ENTRA_CLIENT_ID: 62477cbd-ddbe-4903-9d60-a071209277a1 # Radix EasyAuth Dev # gitleaks:allow
       EASYAUTH_DEX_MI_CLIENT_ID: f8988038-ab21-4e57-b9a0-200eb6e255be # gitleaks:allow
       EASYAUTH_POSTGRES_USER: Radix SQL server admin - dev # Entra admin group on the Postgres server
